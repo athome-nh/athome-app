@@ -2,12 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 
-import 'package:athome/configuration.dart';
-import 'package:athome/home/AllItem.dart';
-import 'package:athome/home/Categories.dart';
-import 'package:athome/home/ItemDeatil.dart';
-import 'package:athome/home/Notfication.dart';
-import 'package:athome/home/test.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Home/AllItem.dart';
+import 'package:athome/Home/Categories.dart';
+import 'package:athome/Home/ItemDeatil.dart';
+import 'package:athome/Home/Notfication.dart';
+import 'package:athome/Home/test.dart';
 
 // ignore: camel_case_types
 class Home_SC extends StatefulWidget {

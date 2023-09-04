@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:athome/configuration.dart';
-import 'package:athome/home/CheckOut.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Home/CheckOut.dart';
 
 class MyCart extends StatefulWidget {
   const MyCart({super.key});

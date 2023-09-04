@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:athome/landing/complate_account.dart';
+import 'package:athome/Landing/complate_account.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
-import '../configuration.dart';
+import '../Config/property.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});

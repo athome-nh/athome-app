@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/Home/NavSwitch.dart';
 
-import '../configuration.dart';
+import '../Config/property.dart';
 
 
 class CompleteAccount extends StatefulWidget {

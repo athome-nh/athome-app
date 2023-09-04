@@ -1,7 +1,7 @@
 import 'package:athome/Account/about_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../configuration.dart';
+import '../Config/property.dart';
 import 'language_screen.dart';
 import 'order_screen.dart';
 import 'profile_screen.dart';

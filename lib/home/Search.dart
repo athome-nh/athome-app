@@ -3,8 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-import 'package:athome/configuration.dart';
-import 'package:athome/home/AllItem.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Home/AllItem.dart';
 
 
 class Search extends StatefulWidget {

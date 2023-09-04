@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:athome/configuration.dart';
+import 'package:athome/Config/property.dart';
 
 class NotficationScreen extends StatefulWidget {
   const NotficationScreen({super.key});

@@ -1,4 +1,4 @@
-import 'package:athome/configuration.dart';
+import 'package:athome/Config/property.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 

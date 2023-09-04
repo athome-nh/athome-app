@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../configuration.dart';
+import '../Config/property.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});

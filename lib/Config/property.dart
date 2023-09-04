@@ -1,0 +1,45 @@
+/// All the necessary methods for Fonts, Colors and Images to build the Athome App
+import 'package:flutter/material.dart';
+
+
+/// Define { Fonts } in AtHome
+String mainFontMontserrat1='Montserrat1';
+String mainFontMontserrat2='Montserrat2'; 
+String mainFontMontserrat3='Montserrat3'; 
+String mainFontMontserrat4='Montserrat4'; 
+String mainFontMontserrat5='Montserrat5'; 
+String mainFontMontserrat6='Montserrat6'; 
+String mainFontMontserrat7='Montserrat7'; 
+String mainFontMontserrat8='Montserrat8'; 
+String mainFontMontserrat9='Montserrat9';
+
+
+/// Define { Colors } in AtHome
+Color mainColorRed =const Color(0xFFe73339);
+Color mainColorSuger =const Color(0xFFe0d5bb);
+Color mainColorGrey =const Color(0xFF3a393b);
+Color mainColorLightGrey = const Color(0xFFf2f2f2);
+Color mainColorWhite = const Color(0XFFffffff);
+Color mainColorBlack = const Color(0XFF000000);
+Color mainFacebookColor = const Color(0xff367FC0);
+Color mainGoogleColor = const Color(0xffDD4B39);
+
+
+///Define { Images } in AtHome
+String mainImagePattern = 'assets/images/001_pattern.jpg';
+String mainImageLogo1 = 'assets/images/002_logo_1.png';
+
+
+
+
+
+
+/// Define { Width and Height } of the device screen
+double getWidth(BuildContext context, double percentage) {
+  double h = MediaQuery.of(context).size.width;
+  return (h / 100) * percentage;
+}
+double getHeight(BuildContext context, double percentage) {
+  double h = MediaQuery.of(context).size.height;
+  return (h / 100) * percentage;
+}

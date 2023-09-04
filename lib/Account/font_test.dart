@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../configuration.dart';
+import '../Config/property.dart';
 
 class FontTest extends StatefulWidget {
   const FontTest({super.key});

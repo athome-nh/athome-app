@@ -1,7 +1,7 @@
-import 'package:athome/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../configuration.dart';
+import '../Config/property.dart';
+import '../Landing/splash_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

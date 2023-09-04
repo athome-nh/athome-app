@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 import 'package:ionicons/ionicons.dart';
 
-import 'package:athome/configuration.dart';
-import 'package:athome/home/itemCategories.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Home/itemCategories.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});

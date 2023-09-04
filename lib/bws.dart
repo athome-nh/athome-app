@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:athome/screens/splash_screen.dart';
-import '../configuration.dart';
+import 'Config/property.dart';
+import 'main.dart';
 
 class ReadyWidgetBWSS extends StatefulWidget {
   const ReadyWidgetBWSS({super.key});
@@ -42,7 +42,7 @@ class _ReadyWidgetBWSSState extends State<ReadyWidgetBWSS> {
               GestureDetector(
                 onTap: () {
                    Navigator.push(context,MaterialPageRoute( 
-                    builder: (context) =>const SplashScreen(),
+                    builder: (context) =>const AtHomeApp(),
                     ),
                     );
                 },

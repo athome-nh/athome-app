@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:athome/Account/all_text.dart';
-import 'package:athome/screens/login_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import '../configuration.dart';
+import '../Config/property.dart';
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});

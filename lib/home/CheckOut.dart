@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/route_manager.dart';
-import 'package:ionicons/ionicons.dart';
-
-import 'package:athome/configuration.dart';
-import 'package:athome/home/NavSwitch.dart';
-import 'package:athome/home/TrackOrder.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Home/NavSwitch.dart';
+import 'package:athome/Home/TrackOrder.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:athome/configuration.dart';
-import 'package:athome/landing/otp_screen.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Landing/otp_screen.dart';
 
 
 
