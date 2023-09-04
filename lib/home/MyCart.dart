@@ -224,7 +224,7 @@ class _MyCartState extends State<MyCart> {
                           ),
                         ),
                       ),
-                    )),
+                    )),   
                       SizedBox(height: getHeight(context, 1),),
                 Padding(
                    padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
