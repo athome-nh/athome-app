@@ -1,9 +1,9 @@
+import 'package:athome/Landing/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Account/all_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import '../Config/property.dart';
-import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -66,7 +66,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()),
+                                  builder: (context) => const PhoneScreen()),
                             );
                           },
                           child: Text(
@@ -93,7 +93,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const LoginScreen()),
+                                          const PhoneScreen()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
@@ -179,7 +179,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const LoginScreen()),
+                                              const PhoneScreen()),
                                     );
                                   } else {
                                     buttonCarouselController.nextPage();

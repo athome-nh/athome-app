@@ -95,7 +95,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
+                    builder: (context) => const PhoneScreen(),
                   ),
                 );
               },
