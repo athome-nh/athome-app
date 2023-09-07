@@ -19,6 +19,8 @@ dependencies:
   ionicons: ^0.2.2
   otp_pin_field: ^1.2.2
   get: ^4.6.5
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
 
 dev_dependencies:
   flutter_test:

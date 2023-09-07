@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1011426718162",
+    "project_id": "athome-bb55d",
+    "storage_bucket": "athome-bb55d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011426718162:android:c0148224d3e5171b12d80b",
+        "android_client_info": {
+          "package_name": "nl.nutriholland.athome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011426718162-pdrpmibsle8236iimmus8ks86eqq1tod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBty0ndrY2xTpjbmDjeS6w1Ywxllfo5tAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011426718162-pdrpmibsle8236iimmus8ks86eqq1tod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
