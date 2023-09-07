@@ -107,7 +107,7 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
                       GestureDetector(
                          onTap: () {
                            Navigator.push(context,MaterialPageRoute( 
-                             builder: (context) =>const LoginScreen(),
+                             builder: (context) =>const PhoneScreen(),
                              ),
                              );
                                },

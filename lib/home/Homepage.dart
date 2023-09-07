@@ -7,7 +7,6 @@ import 'package:athome/Home/AllItem.dart';
 import 'package:athome/Home/Categories.dart';
 import 'package:athome/Home/ItemDeatil.dart';
 import 'package:athome/Home/Notfication.dart';
-import 'package:athome/Home/test.dart';
 
 // ignore: camel_case_types
 class Home_SC extends StatefulWidget {

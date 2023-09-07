@@ -99,7 +99,7 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                       GestureDetector(
                          onTap: () {
                            Navigator.push(context,MaterialPageRoute( 
-                             builder: (context) =>const LoginScreen(),
+                             builder: (context) =>const PhoneScreen(),
                              ),
                              );
                                },
