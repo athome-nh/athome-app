@@ -17,7 +17,7 @@ class _AboutScreenState extends State<AboutScreen> {
         title: Text(
           "About Us",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat1, fontSize: 20),
+              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -40,8 +40,8 @@ class _AboutScreenState extends State<AboutScreen> {
                 padding: EdgeInsets.only(
                   top: getHeight(context, 10),
                 ),
-                child: Image.asset(
-                  'assets/images/logo_red.png',
+                child: Image.asset(mainImageLogo1,
+                width: getWidth(context, 80),
                 ),
               ),
 
@@ -54,7 +54,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -68,7 +68,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -82,7 +82,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -96,7 +96,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -110,7 +110,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -124,7 +124,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -138,7 +138,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -152,7 +152,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: mainFontMontserrat1,
+                      fontFamily: mainFontMontserrat4,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),

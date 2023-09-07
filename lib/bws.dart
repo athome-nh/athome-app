@@ -23,7 +23,7 @@ class _ReadyWidgetBWSSState extends State<ReadyWidgetBWSS> {
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
-                  fontFamily: mainFontMontserrat1,
+                  fontFamily: mainFontMontserrat4,
                   fontWeight: FontWeight.w100,
                   fontStyle: FontStyle.italic,
                   fontSize: 30,

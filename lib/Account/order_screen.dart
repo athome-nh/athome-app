@@ -18,7 +18,7 @@ class _OrderScreenState extends State<OrderScreen> {
         title: Text(
           "My Order",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat1, fontSize: 20),
+              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -76,14 +76,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                         "Order ID : 123456789",
                                         style: TextStyle(
                                             fontSize: 18,
-                                            fontFamily: mainFontMontserrat1,
+                                            fontFamily: mainFontMontserrat4,
                                             color: mainColorGrey),
                                       ), 
                                       subtitle:     Text(
                                     "Order ID : 123456789",
                                     style: TextStyle(
                                         fontSize: 10,
-                                        fontFamily: mainFontMontserrat1,
+                                        fontFamily: mainFontMontserrat4,
                                         color: mainColorGrey),
                                   ),
                                   ),

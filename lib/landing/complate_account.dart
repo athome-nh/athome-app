@@ -91,17 +91,15 @@ class _CompleteAccountState extends State<CompleteAccount> {
           backgroundColor: mainColorWhite,
           leading: IconButton(onPressed: (){
         Navigator.pop(context);
-          }, icon: Icon(Icons.arrow_back_ios,color: mainColorRed,)),
+          }, icon: Icon(Icons.arrow_back_ios,color: mainColorRed,),),
         ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Image.asset(
-                'assets/images/logo_red.png',
-                width: getWidth(context, 100),
-                height: getHeight(context, 30),
+              Image.asset(mainImageLogo1,
+              width: getWidth(context, 80),
               ),
               const Text(
                 "Information",
@@ -130,7 +128,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       hintText: '   Enter your name',
                       border: InputBorder.none,
                     ),
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
               ),
@@ -150,7 +148,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                   children: <Widget>[
                     const Text(
                       'Select Your Gender : ',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(width: 10),
                     DropdownButton<String>(

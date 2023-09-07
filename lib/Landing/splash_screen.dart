@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
               fit: BoxFit.cover,
             ),
             Center(
-              child: Image.asset(mainImageLogo1,),
+              child: Image.asset(mainImageLogo1,width: getWidth(context, 80),),
             ),
           ],
         ),

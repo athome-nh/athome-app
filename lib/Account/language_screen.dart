@@ -19,7 +19,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
         title: Text(
           "Language",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat1, fontSize: 20),
+              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -69,7 +69,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                 "English",
                                 style: TextStyle(
                                     fontSize: 16,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                               
@@ -119,7 +119,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                 "English",
                                 style: TextStyle(
                                     fontSize: 16,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                               
@@ -169,7 +169,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                 "English",
                                 style: TextStyle(
                                     fontSize: 16,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                               

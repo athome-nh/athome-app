@@ -19,7 +19,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(
           "Profile Information",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat1, fontSize: 20),
+              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,

@@ -23,7 +23,7 @@ class _AccountScreenState extends State<AccountScreen> {
         title: Text(
           "Account",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat1, fontSize: 24),
+              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -69,7 +69,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 "Profile Information",
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                             ],
@@ -138,7 +138,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 "My Order",
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                             ],
@@ -199,7 +199,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               "My Offers",
                               style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: mainFontMontserrat1,
+                                  fontFamily: mainFontMontserrat4,
                                   color: mainColorGrey),
                             ),
                           ],
@@ -259,7 +259,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               "Notifications",
                               style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: mainFontMontserrat1,
+                                  fontFamily: mainFontMontserrat4,
                                   color: mainColorGrey),
                             ),
                           ],
@@ -319,7 +319,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               "Address",
                               style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: mainFontMontserrat1,
+                                  fontFamily: mainFontMontserrat4,
                                   color: mainColorGrey),
                             ),
                           ],
@@ -387,7 +387,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 "Languages",
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                             ],
@@ -456,7 +456,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 "About Us",
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: mainFontMontserrat1,
+                                    fontFamily: mainFontMontserrat4,
                                     color: mainColorGrey),
                               ),
                             ],

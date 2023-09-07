@@ -20,7 +20,7 @@ class _FontTestState extends State<FontTest> {
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
-                  fontFamily: mainFontMontserrat1,
+                  fontFamily: mainFontMontserrat4,
                    fontSize: 30,
                    ),
               ),

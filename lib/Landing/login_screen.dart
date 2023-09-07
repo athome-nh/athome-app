@@ -33,31 +33,47 @@ class _PhoneScreenState extends State<PhoneScreen> {
           }, icon: Icon(Icons.arrow_back_ios,color: mainColorRed,)),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-        
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-
-             Image.asset(mainImageLogo1),
-    
-    
-            SizedBox(height: getHeight(context, 10),),
-        
+            
+            
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+              "Join Us",
+              style: TextStyle(fontSize: 40,fontFamily: mainFontMontserrat7,color: mainColorRed),
+            ),
             Text(
-              "Dwaye si3araki jwan danosin lera",
-              style: TextStyle(fontSize: 20,fontFamily: mainFontMontserrat6),
+              "Now",
+              style: TextStyle(fontSize: 70,fontFamily: mainFontMontserrat7),
             ),
+
+                  ],
+                ),
+                Icon(
+                            Icons.call,
+                            color: mainColorRed,
+                          ),
+              ],
+              
+            )
+
+
         
-            SizedBox(height: getHeight(context, 1),),
-        
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Enter your phone number & we'll get started!",
-                style: TextStyle(fontSize: 10,fontFamily: mainFontMontserrat4),
-              ),
+            SizedBox(height: getHeight(context, 5),),
+
+            Text(
+              "What is Your\nPhone Number ?",
+              style: TextStyle(fontSize: 40,fontFamily: mainFontMontserrat7),
+              textDirection: TextDirection.ltr,
             ),
+
+            SizedBox(height: getHeight(context, 7),),
+            
+            
 
             Center(
               child: Container(
@@ -79,7 +95,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                       width: getWidth(context, 15),
                       child: TextField(
                         enabled: false,
-                        style: TextStyle(fontSize: 20,fontFamily: mainFontMontserrat4,color: mainColorGrey),
+                        style: TextStyle(fontSize: 20,fontFamily: mainFontMontserrat6,color: mainColorGrey),
                         controller: countryController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
@@ -96,7 +112,6 @@ class _PhoneScreenState extends State<PhoneScreen> {
                     ),
                     Expanded(
                         child: TextField(
-
                          style: TextStyle(fontSize: 20,fontFamily: mainFontMontserrat4,color: mainColorGrey),
                       keyboardType: TextInputType.phone,
                       decoration: const InputDecoration(
@@ -111,22 +126,24 @@ class _PhoneScreenState extends State<PhoneScreen> {
               ),
             ),
             SizedBox( height: getHeight(context, 3),),
-            SizedBox(
-              width: getWidth(context, 85),
-              height: getHeight(context, 7),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: mainColorRed,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),)),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  const OtpScreen()),
-                    );
-                  },
-                  child: Text("Send",style: TextStyle(fontSize: getWidth(context, 6),fontFamily: mainFontMontserrat6),),),
+            Center(
+              child: SizedBox(
+                width: getWidth(context, 85),
+                height: getHeight(context, 7),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: mainColorRed,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),)),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  const OtpScreen()),
+                      );
+                    },
+                    child: Text("Send",style: TextStyle(fontSize: getWidth(context, 6),fontFamily: mainFontMontserrat6),),),
+              ),
             ),
 
             SizedBox(

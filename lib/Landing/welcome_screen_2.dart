@@ -36,10 +36,11 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
             flex: 2,
             child: Container(
               margin: EdgeInsets.only(bottom: getHeight(context, 3),),
-              width: getWidth(context, 100),
+              width: getWidth(context, 80),
               height: getHeight(context, 100),
               child: Image.asset(
               mainImageLogo1,
+
             ),
             ),
           ),

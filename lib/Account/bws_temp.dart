@@ -17,7 +17,7 @@ class _AboutScreenState extends State<AboutScreen> {
         title: Text(
           "About Us",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat1, fontSize: 20),
+              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
