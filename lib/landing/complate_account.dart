@@ -13,73 +13,27 @@ class CompleteAccount extends StatefulWidget {
 }
 
 class _CompleteAccountState extends State<CompleteAccount> {
-  String selectedGender = 'Male'; // Default gender selection
-  String selectedAge = '10-20'; // Default age selection
+  String selectedAge = '18'; // Default age selection
 
-  List<DropdownMenuItem<String>> genderItems = [
-    const DropdownMenuItem(
-      value: 'Male',
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.person, color: Colors.blue),
-          SizedBox(width: 10),
-          Text('Male'),
-        ],
-      ),
-    ),
-    const DropdownMenuItem(
-      value: 'Female',
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.female, color: Colors.pink),
-          SizedBox(width: 10),
-          Text('Female'),
-        ],
-      ),
-    ),
-  ];
 
   List<DropdownMenuItem<String>> ageItems = [
     const DropdownMenuItem(
-      value: '10-20',
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.calendar_today, color: Colors.blue),
-          SizedBox(width: 10),
-          Text('10 - 20'),
-        ],
-      ),
+      value: '18',
+      child: Text('18'),
     ),
     const DropdownMenuItem(
-      value: '21-30',
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.calendar_today, color: Colors.green),
-          SizedBox(width: 10),
-          Text('21 - 30'),
-        ],
-      ),
+      value: '19',
+      child: Text('19'),
     ),
     const DropdownMenuItem(
-      value: '31-50',
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.calendar_today, color: Colors.orange),
-          SizedBox(width: 10),
-          Text('31 - 50'),
-        ],
-      ),
+      value: '20',
+      child: Text('20'),
     ),
     const DropdownMenuItem(
-      value: '51+',
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.calendar_today, color: Colors.red),
-          SizedBox(width: 10),
-          Text(' 51 + '),
-        ],
-      ),
+      value: '21',
+      child: Text('21'),
     ),
+    
   ];
 
   @override
@@ -98,17 +52,26 @@ class _CompleteAccountState extends State<CompleteAccount> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Image.asset(mainImageLogo1,
-              width: getWidth(context, 80),
-              ),
-              const Text(
-                "Information",
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "Please write your name ... ",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "What is Your",
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Name ?",
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color:mainColorRed),
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: getWidth(context, 1),),
+                  Icon(Icons.person_outline, color: mainColorRed,size: 60,),
+                ],
               ),
               SizedBox(
                 height: getHeight(context, 5),
@@ -143,23 +106,14 @@ class _CompleteAccountState extends State<CompleteAccount> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'Select Your Gender : ',
                       style: TextStyle(fontSize: 16),
                     ),
-                    const SizedBox(width: 10),
-                    DropdownButton<String>(
-                      value: selectedGender,
-                      onChanged: (newValue) {
-                        setState(() {
-                          selectedGender = newValue!;
-                        });
-                      },
-                      items: genderItems,
-                    ),
+                    SizedBox(width: 10),
                   ],
                 ),
               ),
