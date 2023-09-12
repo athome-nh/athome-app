@@ -38,6 +38,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
               height: getHeight(context, 100),
               child: Image.asset(
                 mainImageLogo1,
+                fit:BoxFit.fitWidth
               ),
             ),
           ),
@@ -47,7 +48,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
               margin: EdgeInsets.symmetric(
                 vertical: getHeight(context, 2),
               ),
-              width: getWidth(context, 80),
+              width: getWidth(context, 100),
               height: getHeight(context, 100),
               child: Image.asset(
                 'assets/images/003_welcome_3.png',

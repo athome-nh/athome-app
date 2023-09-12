@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Landing/otp_screen.dart';
 
-
-
 class PhoneScreen extends StatefulWidget {
   const PhoneScreen({Key? key}) : super(key: key);
 
@@ -34,11 +32,10 @@ class _PhoneScreenState extends State<PhoneScreen> {
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-            
-            
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   children: [
@@ -50,31 +47,34 @@ class _PhoneScreenState extends State<PhoneScreen> {
               "Now",
               style: TextStyle(fontSize: 70,fontFamily: mainFontMontserrat7),
             ),
-
+      
                   ],
                 ),
-                Icon(
-                            Icons.call,
-                            color: mainColorRed,
-                          ),
+                Image.asset(
+                'assets/images/004_phone_1.png',
+                width: getWidth(context, 30),
+              ),
               ],
               
-            )
-
-
+            ),
+      
+      
         
             SizedBox(height: getHeight(context, 5),),
-
-            Text(
-              "What is Your\nPhone Number ?",
-              style: TextStyle(fontSize: 40,fontFamily: mainFontMontserrat7),
-              textDirection: TextDirection.ltr,
+      
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 7),),
+              child: Text(
+                "What is Your\nPhone Number ?",
+                style: TextStyle(fontSize: 30,fontFamily: mainFontMontserrat7),
+                textDirection: TextDirection.ltr,
+              ),
             ),
-
+      
             SizedBox(height: getHeight(context, 7),),
             
             
-
+      
             Center(
               child: Container(
                 width: getWidth(context, 85),
@@ -145,12 +145,12 @@ class _PhoneScreenState extends State<PhoneScreen> {
                     child: Text("Send",style: TextStyle(fontSize: getWidth(context, 6),fontFamily: mainFontMontserrat6),),),
               ),
             ),
-
+      
             SizedBox(
                   height: getHeight(context, 2),
                 ),
-
-
+      
+      
                 // Text(
                 //   "or Get Started with",
                 //   style: TextStyle(

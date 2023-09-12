@@ -29,14 +29,14 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
             child: Container(
               margin: EdgeInsets.only(bottom: getHeight(context, 3),),
               width: getWidth(context, 80),
-              height: getHeight(context, 100),
-              child: Image.asset(
-              mainImageLogo1,
-            ),
+              child:Image.asset(mainImageLogo1,
+              fit:BoxFit.fitWidth
+              ),
+              
             ),
           ),
 
-
+          
           Expanded(
             flex: 4,
             child: Container(

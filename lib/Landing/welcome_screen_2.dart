@@ -40,6 +40,7 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
               height: getHeight(context, 100),
               child: Image.asset(
               mainImageLogo1,
+              fit:BoxFit.fitWidth
 
             ),
             ),
