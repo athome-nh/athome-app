@@ -15,10 +15,10 @@ List welcomeDescription = [
 
 // welcome page Images' link
 List welcomeImages = [
-  "assets/images/welcome1.png",
-  "assets/images/welcome2.png",
-  "assets/images/welcome3.png",
+  "assets/images/003_welcome_1.png",
+  "assets/images/003_welcome_2.png",
+  "assets/images/003_welcome_3.png",
 ];
 
 // welcome page Logo's link
-String welcomeLogoRed = "assets/images/logo_red.png";
+String welcomeLogoRed = "assets/images/002_logo_1.png";
