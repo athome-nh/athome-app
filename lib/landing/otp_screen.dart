@@ -155,11 +155,11 @@ class _OtpScreenState extends State<OtpScreen> {
                       borderRadius: BorderRadius.circular(50),
                     )),
                 onPressed: () {
-    // Navigator.push(
-    //       context,
-    //       MaterialPageRoute(builder: (context) =>  CompleteAccount(phone_number: widget.phone_number, uid: "gdgdg",)),
-    //     );
-                 verifySmsCode();
+                  // Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (context) =>  CompleteAccount(phone_number: widget.phone_number, uid: "gdgdg",)),
+                  //     );
+                  verifySmsCode();
                 },
                 child: Text(
                   "Confirm",
@@ -245,24 +245,27 @@ class _OtpScreenState extends State<OtpScreen> {
       phoneNumber: widget.phone_number,
       verificationCompleted: (PhoneAuthCredential credential) async {
         await _auth.signInWithCredential(credential);
-         var data = {
+        var data = {
           "phone": widget.phone_number,
           "password": _auth.currentUser!.uid.toString(),
         };
         Network(false).postData("login", data, context).then((value) {
-          if (value["code"]=="200") {
+          if (value["code"] == "200") {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => NavSwitch()),
             );
-          }else if (value["code"]=="422"){
-  Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>  CompleteAccount(phone_number: widget.phone_number, uid: _auth.currentUser!.uid,)),
-        );
+          } else if (value["code"] == "422") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CompleteAccount(
+                        phone_number: widget.phone_number,
+                        uid: _auth.currentUser!.uid,
+                      )),
+            );
           } else {}
         });
-      
       },
       verificationFailed: (FirebaseAuthException e) {},
       codeSent: (String verificationId, int? resendToken) {
@@ -284,27 +287,26 @@ class _OtpScreenState extends State<OtpScreen> {
     try {
       await _auth.signInWithCredential(credential);
       var data = {
-          "phone": widget.phone_number,
-          "password": _auth.currentUser!.uid.toString(),
-        };
-         Network(false).postData("login", data,context).then((value) {
-                     
-                      print(value["user"]);
-                    });
-  //       Network(false).postData("register", data,context).then((value) {
-  //         print(value);
-  // //         if (value["code"]=="200") {
-  // //           Navigator.push(
-  // //             context,
-  // //             MaterialPageRoute(builder: (context) => NavSwitch()),
-  // //           );
-  // //         }else if (value["code"]=="422"){
-  // // Navigator.push(
-  // //         context,
-  // //         MaterialPageRoute(builder: (context) =>  CompleteAccount(phone_number: widget.phone_number, uid: _auth.currentUser!.uid,)),
-  // //       );
-  // //         } else {}
-  //       });
+        "phone": widget.phone_number,
+        "password": _auth.currentUser!.uid.toString(),
+      };
+      Network(false).postData("login", data, context).then((value) {
+        print(value);
+      });
+      //       Network(false).postData("register", data,context).then((value) {
+      //         print(value);
+      // //         if (value["code"]=="200") {
+      // //           Navigator.push(
+      // //             context,
+      // //             MaterialPageRoute(builder: (context) => NavSwitch()),
+      // //           );
+      // //         }else if (value["code"]=="422"){
+      // // Navigator.push(
+      // //         context,
+      // //         MaterialPageRoute(builder: (context) =>  CompleteAccount(phone_number: widget.phone_number, uid: _auth.currentUser!.uid,)),
+      // //       );
+      // //         } else {}
+      //       });
     } catch (e) {
       setState(() {
         print(e);
