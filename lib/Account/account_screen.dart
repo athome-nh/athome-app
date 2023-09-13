@@ -1,4 +1,5 @@
 import 'package:athome/Account/about_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../Config/property.dart';
@@ -89,75 +90,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 SizedBox(
                   height: getHeight(context, 3),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const OrderScreen()),
-                    );
-                  },
-                  child: Container(
-                    width: getWidth(context, 85),
-                    height: getHeight(context, 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: mainColorLightGrey),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 2),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: getWidth(context, 20),
-                                height: getHeight(context, 15),
-                                padding: const EdgeInsets.all(5),
-                                child: Card(
-                                  elevation: 5,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                  child: CircleAvatar(
-                                    backgroundColor: mainColorLightGrey,
-                                    child: Icon(
-                                      Icons.shopping_bag,
-                                      size: getHeight(context, 4),
-                                      color: mainColorRed,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: getWidth(context, 3),
-                              ),
-                              Text(
-                                "My Order",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: mainFontMontserrat4,
-                                    color: mainColorGrey),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            color: mainColorRed,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: getHeight(context, 1),
-                ),
+              
                 Container(
                   width: getWidth(context, 85),
                   height: getHeight(context, 10),
@@ -473,6 +406,72 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: getHeight(context, 1),
+                ),
+                  GestureDetector(
+                  onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  },
+                  child: Container(
+                    width: getWidth(context, 85),
+                    height: getHeight(context, 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
+                        color: mainColorLightGrey),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(context, 2),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: getWidth(context, 20),
+                                height: getHeight(context, 15),
+                                padding: const EdgeInsets.all(5),
+                                child: Card(
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  child: CircleAvatar(
+                                    backgroundColor: mainColorLightGrey,
+                                    child: Icon(
+                                      Icons.logout,
+                                      size: getHeight(context, 4),
+                                      color: mainColorRed,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: getWidth(context, 3),
+                              ),
+                              Text(
+                                "log Out",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: mainFontMontserrat4,
+                                    color: mainColorGrey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            color: mainColorRed,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                
               ],
             ),
           ),

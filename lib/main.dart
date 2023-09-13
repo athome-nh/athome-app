@@ -1,4 +1,5 @@
 import 'package:athome/Landing/splash_screen.dart';
+import 'package:athome/landing/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -21,7 +22,7 @@ class AtHomeApp extends StatelessWidget {
     return const MaterialApp(
       title: 'AtHome Market',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: RegisterWithPhoneNumber(),
     );
   }
 }

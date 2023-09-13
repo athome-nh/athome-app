@@ -1,9 +1,17 @@
+import 'dart:io';
+
+import 'package:athome/Network/Network.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+
 import 'package:flutter/material.dart';
 import 'package:athome/Home/NavSwitch.dart';
 import '../Config/property.dart';
 
 class CompleteAccount extends StatefulWidget {
-  const CompleteAccount({super.key});
+  String phone_number = "";
+  String uid = "";
+
+  CompleteAccount({required this.phone_number, required this.uid});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -11,8 +19,19 @@ class CompleteAccount extends StatefulWidget {
 }
 
 class _CompleteAccountState extends State<CompleteAccount> {
-  final List<String> items = ['Erbil', 'Sulaymaniyah', 'Duhok', 'Halabja'];
-  int selectedNumber = 18;
+  TextEditingController nameController = TextEditingController();
+  String city = "Select City";
+  String gender = "";
+  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  int age = 18;
+  List<String> items = [
+    'Select City',
+    'Erbil',
+    'Sulaymaniyah',
+    'Duhok',
+    'Halabja'
+  ];
+
   int i = 0;
   @override
   Widget build(BuildContext context) {
@@ -81,9 +100,10 @@ class _CompleteAccountState extends State<CompleteAccount> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextField(
+                    controller: nameController,
                     decoration: InputDecoration(
                       hintText: 'Enter your name ...',
                       border: InputBorder.none,
@@ -135,16 +155,22 @@ class _CompleteAccountState extends State<CompleteAccount> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: DropdownButton<String>(
+                    value: city,
                     items: items.map(
                       (String item) {
                         return DropdownMenuItem<String>(
                           value: item,
                           child: Text(item),
+                          enabled: item == "Erbil" ? true : false,
                         );
                       },
                     ).toList(),
-                    onChanged: (String? selectedItem) {},
-                    hint: const Text('Erbil'), // Placeholder text
+                    onChanged: (String? selectedItem) {
+                      setState(() {
+                        city = selectedItem!;
+                      });
+                    },
+                    // hint: const Text('Erbil'), // Placeholder text
                     isExpanded: true,
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -168,7 +194,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                         text: 'Select Your ',
                       ),
                       TextSpan(
-                        text: ' Geneer ',
+                        text: ' Gender',
                         style: TextStyle(
                             fontFamily: mainFontMontserrat6,
                             color: mainColorRed,
@@ -192,8 +218,10 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       setState(() {
                         if (i == 1) {
                           i = 0;
+                          gender = "";
                         } else {
                           i = 1;
+                          gender = "Male";
                         }
                       });
                     },
@@ -238,8 +266,10 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       setState(() {
                         if (i == 2) {
                           i = 0;
+                          gender = "";
                         } else {
                           i = 2;
+                          gender = "Female";
                         }
                       });
                     },
@@ -281,7 +311,6 @@ class _CompleteAccountState extends State<CompleteAccount> {
               SizedBox(
                 height: getHeight(context, 4),
               ),
-
               Container(
                 width: getWidth(context, 85),
                 height: getHeight(context, 7),
@@ -297,11 +326,11 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Text(
                         'Select Your Age : ',
-                        style: TextStyle(fontSize: 18,fontFamily: mainFontMontserrat6),
+                        style: TextStyle(
+                            fontSize: 18, fontFamily: mainFontMontserrat6),
                       ),
                     ),
                     const SizedBox(width: 10),
-                    
                     Container(
                       width: getWidth(context, 25),
                       height: getHeight(context, 7),
@@ -312,10 +341,10 @@ class _CompleteAccountState extends State<CompleteAccount> {
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: DropdownButton<int>(
-                        value: selectedNumber,
+                        value: age,
                         onChanged: (int? newValue) {
                           setState(() {
-                            selectedNumber = newValue ?? selectedNumber;
+                            age = newValue ?? age;
                           });
                         },
 
@@ -367,12 +396,34 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       )),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NavSwitch()),
-                    );
+                  onPressed: () async {
+                    var data={
+                      "phone": widget.phone_number,
+                      "name": nameController.text,
+                      "city": city,
+                      "age": age,
+                      "gender": gender,
+                      "img": "img",
+                      "fcmToken": "dfgfdsdgbdfgsfhuwei",
+                      "device": Platform.isAndroid
+                          ? _readAndroidBuildData(
+                              await deviceInfoPlugin.androidInfo)
+                          : "",
+                      "platform": Platform.isAndroid ? "android" : "ios",
+                      "password": widget.uid,
+                    };
+                    Network(false).postData("register", data,context).then((value) {
+                     
+                      if(value !=""){
+                         Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NavSwitch()),
+                      );
+                      }else{
+
+                      }
+                    });
                   },
                   child: Text(
                     "Confirm",
@@ -387,5 +438,25 @@ class _CompleteAccountState extends State<CompleteAccount> {
         ),
       ),
     );
+  }
+
+  _readAndroidBuildData(AndroidDeviceInfo build) {
+    return build.device;
+  }
+
+  _readIosDeviceInfo(IosDeviceInfo data) {
+    return data.model;
+    // 'name': data.name,
+    // 'systemName': data.systemName,
+    // 'systemVersion': data.systemVersion,
+    // 'model': data.model,
+    // 'localizedModel': data.localizedModel,
+    // 'identifierForVendor': data.identifierForVendor,
+    // 'isPhysicalDevice': data.isPhysicalDevice,
+    // 'utsname.sysname:': data.utsname.sysname,
+    // 'utsname.nodename:': data.utsname.nodename,
+    // 'utsname.release:': data.utsname.release,
+    // 'utsname.version:': data.utsname.version,
+    // 'utsname.machine:': data.utsname.machine,
   }
 }

@@ -23,6 +23,12 @@ dependencies:
   firebase_auth: ^4.9.0
   dio: ^5.3.2
   connectivity_plus: ^4.0.2
+  device_info_plus: ^9.0.3
+  animate_do: ^3.1.2
+  intl_phone_number_input: ^0.7.3+1
+  flutter_verification_code: ^1.1.7
+  flutter_otp_text_field: ^1.1.1
+  gender_picker: ^1.1.0
   
 dev_dependencies:
   flutter_test:

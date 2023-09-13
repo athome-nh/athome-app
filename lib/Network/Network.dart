@@ -37,27 +37,33 @@ class Network {
     } catch (e) {}
   }
 
-  Future postData(String rout, Map data) async {
+  Future postData(String rout, Map data,BuildContext context) async {
+  
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.wifi ||
         connectivityResult == ConnectivityResult.mobile) {
+         
       try {
+         
         Response response = await dio.post(
           serverUrl + rout,
           data: data,
         );
+     
         return response.data;
       } catch (e) {
-        ScaffoldMessenger.of(navigatorKey.currentContext!)
+          print("request erorr");
+        ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(
               duration: const Duration(seconds: 4),
-              content: const Text(
+              content:  Text(
                 'An error occured, Please try again.',
+                style: TextStyle(color: mainColorWhite),
               ),
               backgroundColor: mainColorGrey,
             ))
             .closed
-            .then((value) => ScaffoldMessenger.of(navigatorKey.currentContext!)
+            .then((value) => ScaffoldMessenger.of(context)
                 .clearSnackBars());
         
         return "";
