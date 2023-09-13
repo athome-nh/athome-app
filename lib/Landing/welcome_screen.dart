@@ -1,8 +1,6 @@
 import 'package:athome/Landing/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:athome/Account/all_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import '../Config/property.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -72,10 +70,9 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                           child: Text(
                             "Get Start",
                             style: TextStyle(
-                                fontFamily: 'Segoe UI',
-                                fontSize: 19,
-                                color: mainColorWhite,
-                                fontWeight: FontWeight.w600),
+                                fontFamily: mainFontMontserrat6,
+                                fontSize: getWidth(context, 4),
+                                color: mainColorWhite,),
                           ),
                         ),
                       )
@@ -102,10 +99,9 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                               child: Text(
                                 'SKIP',
                                 style: TextStyle(
-                                    fontFamily: 'Segoe UI',
-                                    fontSize: 19,
-                                    color: mainColorGrey,
-                                    fontWeight: FontWeight.w600),
+                                    fontFamily: mainFontMontserrat6,
+                                    fontSize: getHeight(context, 2),
+                                    color: mainColorBlack,),
                                 textAlign: TextAlign.left,
                               ),
                             ),
@@ -194,8 +190,8 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                                       Text(
                                         currentIndex == 2 ? 'FINISH' : 'Next',
                                         style: TextStyle(
-                                          fontFamily: 'Segoe UI',
-                                          fontSize: 18,
+                                          fontFamily: mainFontMontserrat6,
+                                          fontSize: getHeight(context, 2),
                                           color: mainColorWhite,
                                         ),
                                         textAlign: TextAlign.left,
@@ -222,47 +218,48 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: getHeight(context, 3),),
         Expanded(
           child: Image.asset(
-            welcomeLogoRed,
+            "assets/images/002_logo_1.png",
+            width: getWidth(context, 80),
+            height: getHeight(context, 100),
+            fit: BoxFit.cover,
           ),
         ),
+        SizedBox(height: getHeight(context, 3),),
         Expanded(
           flex: 2,
           child: Image.asset(
-            welcomeImages[currentIndex],
+            "assets/images/003_welcome_1.png",
           ),
         ),
         SizedBox(
-          height: (getWidth(context, 5) + getHeight(context, 5)) / 2,
+          height: getHeight(context, 5),
         ),
         //texts
         Expanded(
           child: Column(
             children: [
               Text(
-                welcomeTitle[currentIndex],
+                "Shop Smarter & Easier",
                 style: TextStyle(
-                    fontFamily: 'Segoe UI',
-                    fontSize:
-                        (getWidth(context, 5) + getHeight(context, 5)) / 2,
-                    color: mainColorGrey,
-                    fontWeight: FontWeight.w600),
+                    fontFamily: mainFontMontserrat6,
+                    fontSize:getHeight(context, 3),
+                    color: mainColorGrey,),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: (getWidth(context, 5) + getHeight(context, 5)) / 2,
+                height: getHeight(context, 2),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal:getWidth(context, 7),),
                 child: Text(
-                  welcomeDescription[currentIndex],
+                  "is an innovative platform designed to enhance your online shopping experience.",
                   style: TextStyle(
-                      fontFamily: 'Segoe UI',
-                      fontSize:
-                          (getWidth(context, 3) + getHeight(context, 3)) / 2,
-                      color: mainColorGrey,
-                      overflow: TextOverflow.clip),
+                      fontFamily: mainFontMontserrat4,
+                      fontSize:getHeight(context, 2),
+                      color: mainColorGrey,),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -279,47 +276,48 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: getHeight(context, 3),),
         Expanded(
           child: Image.asset(
-            welcomeLogoRed,
+            "assets/images/002_logo_1.png",
+            width: getWidth(context, 80),
+            height: getHeight(context, 100),
+            fit: BoxFit.cover,
           ),
         ),
+        SizedBox(height: getHeight(context, 3),),
         Expanded(
           flex: 2,
           child: Image.asset(
-            welcomeImages[currentIndex],
+            "assets/images/003_welcome_2.png",
           ),
         ),
         SizedBox(
-          height: (getWidth(context, 5) + getHeight(context, 5)) / 2,
+          height: getHeight(context, 5),
         ),
         //texts
         Expanded(
           child: Column(
             children: [
               Text(
-                welcomeTitle[currentIndex],
+                "Learn From the Best",
                 style: TextStyle(
-                    fontFamily: 'Segoe UI',
-                    fontSize:
-                        (getWidth(context, 5) + getHeight(context, 5)) / 2,
-                    color: mainColorGrey,
-                    fontWeight: FontWeight.w600),
+                    fontFamily: mainFontMontserrat6,
+                    fontSize:getHeight(context, 3),
+                    color: mainColorBlack,),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: (getWidth(context, 5) + getHeight(context, 5)) / 2,
+                height: getHeight(context, 2),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal:getWidth(context, 7),),
                 child: Text(
-                  welcomeDescription[currentIndex],
+                  "We will guide you with the best tutors and experts in Kurdistan/Iraq",
                   style: TextStyle(
-                      fontFamily: 'Segoe UI',
-                      fontSize:
-                          (getWidth(context, 3) + getHeight(context, 3)) / 2,
-                      color: mainColorGrey,
-                      overflow: TextOverflow.clip),
+                      fontFamily: mainFontMontserrat4,
+                      fontSize:getHeight(context, 2),
+                      color: mainColorGrey,),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -334,47 +332,48 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
   Widget slid3() {
     return Column(
       children: [
+        SizedBox(height: getHeight(context, 3),),        
         Expanded(
           child: Image.asset(
-            welcomeLogoRed,
+            "assets/images/002_logo_1.png",
+            width: getWidth(context, 80),
+            height: getHeight(context, 100),
+            fit: BoxFit.cover,
           ),
         ),
+        SizedBox(height: getHeight(context, 3),),
         Expanded(
           flex: 2,
           child: Image.asset(
-            welcomeImages[currentIndex],
+            "assets/images/003_welcome_3.png",
           ),
         ),
         SizedBox(
-          height: (getWidth(context, 3) + getHeight(context, 3)) / 2,
+          height: getHeight(context, 5),
         ),
         //texts
         Expanded(
           child: Column(
             children: [
               Text(
-                welcomeTitle[currentIndex],
+                "Your Pocket's Friend",
                 style: TextStyle(
-                    fontFamily: 'Segoe UI',
-                    fontSize:
-                        (getWidth(context, 5) + getHeight(context, 5)) / 2,
-                    color: mainColorGrey,
-                    fontWeight: FontWeight.w600),
+                    fontFamily: mainFontMontserrat6,
+                    fontSize:getHeight(context, 3),
+                    color: mainColorGrey,),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: (getWidth(context, 5) + getHeight(context, 5)) / 2,
+                height: getHeight(context, 2),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal:getWidth(context, 7),),
                 child: Text(
-                  welcomeDescription[currentIndex],
+                  "Learn whatever you want, whenever or wherever you are.",
                   style: TextStyle(
-                      fontFamily: 'Segoe UI',
-                      fontSize:
-                          (getWidth(context, 3) + getHeight(context, 3)) / 2,
-                      color: mainColorGrey,
-                      overflow: TextOverflow.clip),
+                      fontFamily: mainFontMontserrat4,
+                      fontSize:getHeight(context, 2),
+                      color: mainColorGrey,),
                   textAlign: TextAlign.center,
                 ),
               ),
