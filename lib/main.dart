@@ -39,8 +39,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
           lang = value;
           Get.updateLocale(Locale(value));
         } else {
-          lang = "kur";
-          Get.updateLocale(const Locale("kur"));
+          lang = "en";
+          Get.updateLocale(const Locale("en"));
         }
       });
     });

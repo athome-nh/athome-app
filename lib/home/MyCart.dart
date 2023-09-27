@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/CheckOut.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:quickalert/quickalert.dart';
 
@@ -31,7 +32,7 @@ class _MyCartState extends State<MyCart> {
       backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
-          "My Cart",
+          "My Cart".tr,
           style: TextStyle(
               color: mainColorGrey,
               fontFamily: mainFontMontserrat4,
@@ -44,8 +45,8 @@ class _MyCartState extends State<MyCart> {
           IconButton(
               onPressed: () {
                 if (cartProvider.cartItems.length > 0) {
-                  confirmAlertMycart(context, "Delete All Items",
-                      "are you sure delete all items", cartProvider);
+                  confirmAlertMycart(context, "Delete All Items".tr,
+                      "are you sure delete all items".tr, cartProvider);
                 }
               },
               icon: Icon(
@@ -170,7 +171,7 @@ class _MyCartState extends State<MyCart> {
                                                   ],
                                                 ),
                                                 Text(
-                                                  "info:3Kg",
+                                                  "info: 3Kg".tr,
                                                   style: TextStyle(
                                                       color: mainColorGrey,
                                                       fontFamily:
@@ -300,8 +301,8 @@ class _MyCartState extends State<MyCart> {
                                   color: mainColorGrey,
                                   fontFamily: mainFontMontserrat6,
                                   fontSize: 14),
-                              labelText: "Delivery Instrusctions",
-                              hintText: 'Type Notes here',
+                              labelText: "Delivery Instrusctions".tr,
+                              hintText: "Type Notes here".tr,
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: mainColorGrey,
@@ -337,7 +338,7 @@ class _MyCartState extends State<MyCart> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Sub Total",
+                              "Sub Total".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
                                   fontFamily: mainFontMontserrat4,
@@ -364,7 +365,7 @@ class _MyCartState extends State<MyCart> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Delivery Cost",
+                              "Delivery Cost".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
                                   fontFamily: mainFontMontserrat4,
@@ -402,7 +403,7 @@ class _MyCartState extends State<MyCart> {
                           children: [
                             Text(
                               textAlign: TextAlign.start,
-                              "Total",
+                              "Total".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
                                   fontFamily: mainFontMontserrat4,
@@ -434,7 +435,7 @@ class _MyCartState extends State<MyCart> {
                             );
                           },
                           child: Text(
-                            'Checkout',
+                            "Checkout".tr,
                             style: TextStyle(
                               color: mainColorWhite,
                               fontSize: 16,
@@ -467,8 +468,8 @@ class _MyCartState extends State<MyCart> {
       type: QuickAlertType.warning,
       title: title,
       text: content,
-      confirmBtnText: 'Yes',
-      cancelBtnText: 'No',
+      confirmBtnText: "Yes".tr,
+      cancelBtnText: "No".tr,
       onConfirmBtnTap: () {
         cartprovider.clearCart();
         Navigator.pop(context);

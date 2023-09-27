@@ -3,6 +3,7 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/NavSwitch.dart';
 import 'package:athome/Home/TrackOrder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
@@ -51,7 +52,7 @@ class _CheckOutState extends State<CheckOut> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Delivery Address",
+                      "Delivery Address".tr,
                       style: TextStyle(
                           color: mainColorGrey,
                           fontFamily: mainFontMontserrat4,
@@ -88,7 +89,7 @@ class _CheckOutState extends State<CheckOut> {
                         TextButton(
                           onPressed: () {},
                           child: Text(
-                            "Change",
+                            "Change".tr,
                             style: TextStyle(
                                 color: mainColorRed,
                                 fontFamily: mainFontMontserrat6,
@@ -119,7 +120,7 @@ class _CheckOutState extends State<CheckOut> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Pyment Method",
+                      "Pyment Method".tr,
                       style: TextStyle(
                           color: mainColorGrey,
                           fontFamily: mainFontMontserrat4,
@@ -143,7 +144,7 @@ class _CheckOutState extends State<CheckOut> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Cash on delivery",
+                                "Cash on delivery".tr,
                                 style: TextStyle(
                                     color: mainColorGrey,
                                     fontFamily: mainFontMontserrat4,
@@ -244,7 +245,7 @@ class _CheckOutState extends State<CheckOut> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Sub Total",
+                            "Sub Total".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontFamily: mainFontMontserrat4,
@@ -271,7 +272,7 @@ class _CheckOutState extends State<CheckOut> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Delivery Cost",
+                            "Delivery Cost".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontFamily: mainFontMontserrat4,
@@ -298,7 +299,7 @@ class _CheckOutState extends State<CheckOut> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Discount",
+                            "Discount".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontFamily: mainFontMontserrat4,
@@ -398,14 +399,14 @@ class _CheckOutState extends State<CheckOut> {
                                         size: getHeight(context, 20),
                                       ),
                                       Text(
-                                        'Thank You!',
+                                        "Thank You!".tr,
                                         style: TextStyle(
                                             fontSize: 24,
                                             color: mainColorGrey,
                                             fontFamily: mainFontMontserrat4),
                                       ),
                                       Text(
-                                        'for yor order',
+                                        "for yor order".tr,
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: mainColorGrey,
@@ -415,7 +416,7 @@ class _CheckOutState extends State<CheckOut> {
                                         height: getHeight(context, 1),
                                       ),
                                       Text(
-                                        'Order Number: 5509',
+                                        "Order Number: 5509".tr,
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: mainColorGrey,
@@ -428,7 +429,7 @@ class _CheckOutState extends State<CheckOut> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: getWidth(context, 4)),
                                         child: Text(
-                                          'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order',
+                                          "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order".tr,
                                           style: TextStyle(
                                               fontSize: 14,
                                               color: mainColorGrey,
@@ -451,7 +452,7 @@ class _CheckOutState extends State<CheckOut> {
                                             );
                                           },
                                           child: Text(
-                                            'Track My Order',
+                                            "Track My Order".tr,
                                             style: TextStyle(
                                               color: mainColorWhite,
                                               fontSize: 16,
@@ -479,7 +480,7 @@ class _CheckOutState extends State<CheckOut> {
                                           ); // Close the bottom sheet
                                         },
                                         child: Text(
-                                          'Back to Home',
+                                          "Back to Home".tr,
                                           style: TextStyle(
                                               color: mainColorGrey,
                                               fontFamily: mainFontMontserrat4,
@@ -494,7 +495,7 @@ class _CheckOutState extends State<CheckOut> {
                           );
                         },
                         child: Text(
-                          'Send Order',
+                          "Send Order",
                           style: TextStyle(
                             color: mainColorWhite,
                             fontSize: 18,

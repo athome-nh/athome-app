@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class AllItem extends StatefulWidget {
@@ -35,7 +36,7 @@ class _AllItemState extends State<AllItem> {
 
     late List<ProductModel> products = type == "discount"
         ? productPro.getProductsByDiscount()
-        : type == "Highlight"
+        : type == "Highlight".tr
             ? productPro.getProductsByHighlight()
             : productPro.getProductsByBestsell();
     return Scaffold(
@@ -43,10 +44,10 @@ class _AllItemState extends State<AllItem> {
       appBar: AppBar(
         title: Text(
           type == "discount"
-              ? "Discount"
+              ? "Discount".tr
               : type == "Highlight"
-                  ? "Highlight"
-                  : "Best Sell",
+                  ? "Highlight".tr
+                  : "Best Sell".tr,
           style: TextStyle(
               color: mainColorGrey,
               fontFamily: mainFontMontserrat4,

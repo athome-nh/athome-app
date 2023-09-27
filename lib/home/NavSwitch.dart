@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:athome/Account/profilo.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:athome/Account/order_screen.dart';
 import 'package:athome/Config/property.dart';
@@ -91,7 +92,7 @@ class _NavSwitchState extends State<NavSwitch> {
             selectedItemColor: mainColorRed,
             unselectedItemColor: mainColorGrey,
 
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   activeIcon: Icon(
                     Ionicons.home,
@@ -99,7 +100,7 @@ class _NavSwitchState extends State<NavSwitch> {
                   icon: Icon(
                     Ionicons.home_outline,
                   ),
-                  label: 'Home'),
+                  label: "Home".tr),
               BottomNavigationBarItem(
                 icon: Icon(
                   Ionicons.search_outline,
@@ -107,7 +108,7 @@ class _NavSwitchState extends State<NavSwitch> {
                 activeIcon: Icon(
                   Ionicons.search,
                 ),
-                label: 'Search',
+                label: 'Search'.tr,
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -116,7 +117,7 @@ class _NavSwitchState extends State<NavSwitch> {
                 activeIcon: Icon(
                   Icons.shopping_bag,
                 ),
-                label: 'My Orders',
+                label: 'My Orders'.tr,
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -125,7 +126,7 @@ class _NavSwitchState extends State<NavSwitch> {
                 activeIcon: Icon(
                   Ionicons.person,
                 ),
-                label: 'Account',
+                label: 'Account'.tr,
               ),
             ],
 
@@ -172,7 +173,7 @@ class _NavSwitchState extends State<NavSwitch> {
                             children: [
                               const SizedBox(),
                               Text(
-                                "Are you sure exiting the app",
+                                "Are you sure exiting the app".tr,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: mainColorWhite.withOpacity(0.7),
@@ -193,8 +194,8 @@ class _NavSwitchState extends State<NavSwitch> {
                                     onPressed: () async {
                                       Navigator.pop(context);
                                     },
-                                    child: const Text(
-                                      "No",
+                                    child: Text(
+                                      "No".tr,
                                       style: TextStyle(
                                           fontSize: 18, fontFamily: "RK"),
                                     ),
@@ -210,8 +211,8 @@ class _NavSwitchState extends State<NavSwitch> {
                                     onPressed: () {
                                       exit(0);
                                     },
-                                    child: const Text(
-                                      "Yes",
+                                    child: Text(
+                                      "Yes".tr,
                                       style: TextStyle(
                                           fontSize: 18, fontFamily: "RK"),
                                     ),

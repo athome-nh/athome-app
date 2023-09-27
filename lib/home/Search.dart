@@ -9,6 +9,7 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
@@ -81,7 +82,7 @@ class _SearchState extends State<Search> {
                                     },
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Search",
+                                        hintText: "Search".tr,
                                         hintStyle: TextStyle(
                                             color: mainColorGrey
                                                 .withOpacity(0.45))),
@@ -97,7 +98,7 @@ class _SearchState extends State<Search> {
                               productPro.setsearch("");
                             },
                             child: Text(
-                              "Clear",
+                              "Clear".tr,
                               style: TextStyle(
                                   color: mainColorRed,
                                   fontFamily: mainFontMontserrat6,
@@ -437,7 +438,7 @@ class _SearchState extends State<Search> {
                         padding: EdgeInsets.symmetric(
                             horizontal: getWidth(context, 2)),
                         child: Text(
-                          "Highlight ",
+                          "Highlight".tr,
                           style: TextStyle(
                               color: mainColorGrey,
                               fontSize: 16,
@@ -458,7 +459,7 @@ class _SearchState extends State<Search> {
                                 );
                               },
                               child: Text(
-                                "View All",
+                                "View All".tr,
                                 style: TextStyle(
                                     color: mainColorRed,
                                     fontSize: 14,

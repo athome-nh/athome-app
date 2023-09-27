@@ -276,7 +276,7 @@ class _Home_SCState extends State<Home_SC> {
     // final String jsonString =
     //     await rootBundle.loadString('assets/images/example2.json');
     var jsonString = json.encode(collectionData);
-    print(jsonString);
+    
     final directory = await getTemporaryDirectory();
     String path = "${directory.path}/dict.json";
 
@@ -535,7 +535,7 @@ class _Home_SCState extends State<Home_SC> {
                                   );
                                 },
                                 child: Text(
-                                  "View All",
+                                  "View All".tr,
                                   style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
@@ -625,7 +625,7 @@ class _Home_SCState extends State<Home_SC> {
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 2)),
                           child: Text(
-                            "Discount",
+                            "Discount".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
@@ -647,7 +647,7 @@ class _Home_SCState extends State<Home_SC> {
                                   );
                                 },
                                 child: Text(
-                                  "View All",
+                                  "View All".tr,
                                   style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
@@ -728,8 +728,8 @@ class _Home_SCState extends State<Home_SC> {
                                               if (!isLogin) {
                                                 confirmAlertlogin(
                                                     context,
-                                                    "Login Please",
-                                                    "You need to login first");
+                                                    "Login Please".tr,
+                                                    "You need to login first".tr);
                                                 return;
                                               }
                                               final cartItem = CartItem(
@@ -873,7 +873,7 @@ class _Home_SCState extends State<Home_SC> {
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 2)),
                           child: Text(
-                            "Highlight ",
+                            "Highlight".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
@@ -895,7 +895,7 @@ class _Home_SCState extends State<Home_SC> {
                                   );
                                 },
                                 child: Text(
-                                  "View All",
+                                  "View All".tr,
                                   style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
@@ -973,8 +973,8 @@ class _Home_SCState extends State<Home_SC> {
                                           if (!isLogin) {
                                             confirmAlertlogin(
                                                 context,
-                                                "Login Please",
-                                                "You need to login first");
+                                                "Login Please".tr,
+                                                "You need to login first".tr);
                                             return;
                                           }
                                           final cartItem =
@@ -1139,7 +1139,7 @@ class _Home_SCState extends State<Home_SC> {
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 2)),
                           child: Text(
-                            "Best Seller",
+                            "Best Seller".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
@@ -1351,7 +1351,7 @@ class _Home_SCState extends State<Home_SC> {
       type: QuickAlertType.info,
       title: title,
       text: content,
-      confirmBtnText: 'Login',
+      confirmBtnText: "Login",
       onConfirmBtnTap: () {
         Navigator.push(
           context,

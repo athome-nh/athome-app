@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 
 class ItemDeatil extends StatefulWidget {
   const ItemDeatil({super.key});
@@ -19,7 +20,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
       backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
-          "Single Oroduct",
+          "Single Oroduct".tr,
           style: TextStyle(
               color: mainColorGrey,
               fontFamily: mainFontMontserrat4,
@@ -104,7 +105,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           ),
                         ),
                         Text(
-                          "Melon Imported ",
+                          "Melon Imported".tr,
                           style: TextStyle(
                               color: mainColorGrey,
                               fontFamily: mainFontMontserrat6,
@@ -114,7 +115,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           height: getHeight(context, 1),
                         ),
                         Text(
-                          "info:3Kg",
+                          "info: 3Kg".tr,
                           style: TextStyle(
                               color: mainColorGrey,
                               fontFamily: mainFontMontserrat4,
@@ -223,7 +224,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                         TextButton(
                           onPressed: () {},
                           child: Text(
-                            'Place Order',
+                            "Place Order",
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 18,
@@ -245,7 +246,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                         TextButton(
                           onPressed: () {},
                           child: Text(
-                            'Add To Cart',
+                            "Add To Cart".tr,
                             style: TextStyle(
                                 color: mainColorWhite,
                                 fontSize: 18,
@@ -289,7 +290,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 15.0),
                   child: Text(
-                    "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
+                    "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:".tr,
                     style: TextStyle(
                         height: 1.5,
                         color: mainColorGrey,
