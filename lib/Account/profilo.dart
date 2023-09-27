@@ -2,6 +2,7 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Switchscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Setting extends StatefulWidget {
   const Setting({super.key});
@@ -178,7 +179,7 @@ class _SettingState extends State<Setting> {
                                           color: Colors.white,
                                         ),
                                         Text(
-                                          "Save",
+                                          "Save".tr,
                                           style: TextStyle(
                                               fontFamily: mainFontMontserrat6,
                                               fontSize: 12,
@@ -210,7 +211,7 @@ class _SettingState extends State<Setting> {
                                         color: Colors.white,
                                       ),
                                       Text(
-                                        "Cancle",
+                                        "Cancle".tr,
                                         style: TextStyle(
                                             fontFamily: mainFontMontserrat6,
                                             fontSize: 12,
@@ -249,7 +250,7 @@ class _SettingState extends State<Setting> {
                                           color: Colors.white,
                                         ),
                                         Text(
-                                          " Edit",
+                                          "Edit".tr,
                                           style: TextStyle(
                                               fontFamily: mainFontMontserrat6,
                                               fontSize: 12,
@@ -276,7 +277,7 @@ class _SettingState extends State<Setting> {
                                       color: Colors.white,
                                     ),
                                     Text(
-                                      " I want to Delete my account",
+                                      "I want to Delete my account".tr,
                                       style: TextStyle(
                                           fontFamily: mainFontMontserrat6,
                                           fontSize: 12,
@@ -327,7 +328,7 @@ class _SettingState extends State<Setting> {
                                       ),
                                     ),
                                     suffixIconColor: mainColorWhite,
-                                    hintText: 'Enter Name',
+                                    hintText: 'Enter Name'.tr,
                                     hintStyle: TextStyle(color: mainColorWhite),
                                     suffixIcon: Icon(
                                       isEdit ? Icons.edit : Icons.person,
@@ -358,7 +359,7 @@ class _SettingState extends State<Setting> {
                                       ),
                                     ),
                                     suffixIconColor: mainColorWhite,
-                                    hintText: 'Enter Age',
+                                    hintText: 'Enter Age'.tr,
                                     hintStyle: TextStyle(color: mainColorWhite),
                                     suffixIcon: Icon(
                                       isEdit
@@ -477,7 +478,7 @@ class _SettingState extends State<Setting> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "Loyalty point",
+                                "Loyalty point".tr,
                                 style: TextStyle(
                                     fontFamily: mainFontMontserrat6,
                                     fontSize: 16,
@@ -511,7 +512,7 @@ class _SettingState extends State<Setting> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "Address",
+                                "Address".tr,
                                 style: TextStyle(
                                     fontFamily: mainFontMontserrat6,
                                     fontSize: 16,
@@ -545,7 +546,7 @@ class _SettingState extends State<Setting> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "About us",
+                                "About us".tr,
                                 style: TextStyle(
                                     fontFamily: mainFontMontserrat6,
                                     fontSize: 16,

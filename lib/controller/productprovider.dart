@@ -1,6 +1,5 @@
 import 'package:athome/model/category_model/category_model.dart';
 import 'package:athome/model/product_model/product_model.dart';
-import 'package:athome/model/product_model/product_model.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:flutter/material.dart';
 

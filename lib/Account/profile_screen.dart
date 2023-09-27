@@ -1,11 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Switchscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-
-import '../Config/athome_functions.dart';
 import '../Config/property.dart';
 import '../Landing/splash_screen.dart';
 
