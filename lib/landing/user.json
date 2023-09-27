@@ -1,0 +1,16 @@
+{"id": 45, 
+"name": "jegr",
+ "phone": "+9647500000000",
+  "city": "Erbil",
+   "age": 30, 
+"gender": "Male",
+ "img": "img", 
+ "fcmToken": "dfgfdsdgbdfgsfhuwei",
+
+ "password": "$2y$10$BCi5.5R.GwbyR7thC5gVd.u4oeIlDawm2Od6zbXAejpU.CqK7XZUK", 
+ "token": "eeee",
+  "platform": "android",
+   "device": "alioth",
+    "isActive": 1,
+     "isDeleted": 0
+      }

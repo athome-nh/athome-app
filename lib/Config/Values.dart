@@ -1,2 +1,2 @@
-const serverUrl = "http://192.168.0.122/api/";
-const domain = "192.168.0.122/api/";
+const serverUrl = "http://192.168.0.123/api/";
+const domain = "192.168.0.123/api/";

@@ -7,15 +7,12 @@ import 'dio_connectivity_request_retrier.dart';
 
 class RetryOnConnectionChangeInterceptor extends Interceptor {
   final DioConnectivityRequestRetrier requestRetrier;
-  RetryOnConnectionChangeInterceptor(
-   
-    {
+  RetryOnConnectionChangeInterceptor({
     @required required this.requestRetrier,
   });
 
-
   @override
-  Future onError(DioException err,handler) async {
+  Future onError(DioException err, handler) async {
     if (_shouldRetry(err)) {
       try {
         return requestRetrier.scheduleRequestRetry(err.requestOptions);

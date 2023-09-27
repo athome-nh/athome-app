@@ -6,6 +6,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Home/NavSwitch.dart';
 import '../Config/property.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CompleteAccount extends StatefulWidget {
   String phone_number = "";
@@ -239,8 +240,8 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            i == 1
+                          CachedNetworkImage(
+                            imageUrl: i == 1
                                 ? 'assets/images/005_male_white.png'
                                 : 'assets/images/005_male_red.png',
                             width: getWidth(context, 10),
@@ -287,8 +288,8 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            i == 2
+                          CachedNetworkImage(
+                            imageUrl: i == 2
                                 ? 'assets/images/005_female_white.png'
                                 : 'assets/images/005_female_red.png',
                             width: getWidth(context, 10),
@@ -397,31 +398,35 @@ class _CompleteAccountState extends State<CompleteAccount> {
                         borderRadius: BorderRadius.circular(50),
                       )),
                   onPressed: () async {
-                    var data={
+                    var data = {
                       "phone": widget.phone_number,
                       "name": nameController.text,
                       "city": city,
-                      "age": age,
+                      "age": age.toString(),
                       "gender": gender,
                       "img": "img",
                       "fcmToken": "dfgfdsdgbdfgsfhuwei",
                       "device": Platform.isAndroid
                           ? _readAndroidBuildData(
-                              await deviceInfoPlugin.androidInfo)
+                                  await deviceInfoPlugin.androidInfo)
+                              .toString()
                           : "",
                       "platform": Platform.isAndroid ? "android" : "ios",
                       "password": widget.uid,
                     };
-                    Network(false).postData("register", data,context).then((value) {
-                     
-                      if(value !=""){
-                         Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NavSwitch()),
-                      );
-                      }else{
-
+                    Network(false)
+                        .postData("register", data, context)
+                        .then((value) {
+                      if (value != "") {
+                        if (value["code"] == "201") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NavSwitch()),
+                          );
+                        }
+                      } else {
+                        print("jegr");
                       }
                     });
                   },

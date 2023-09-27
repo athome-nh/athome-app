@@ -1,4 +1,9 @@
 import 'package:athome/Account/about_screen.dart';
+import 'package:athome/Config/local_data.dart';
+import 'package:athome/Config/my_widget.dart';
+
+import 'package:athome/Switchscreen.dart';
+import 'package:athome/landing/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +11,6 @@ import '../Config/property.dart';
 import 'language_screen.dart';
 import 'order_screen.dart';
 import 'profile_screen.dart';
-
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -24,7 +28,9 @@ class _AccountScreenState extends State<AccountScreen> {
         title: Text(
           "Account",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 24),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -39,11 +45,19 @@ class _AccountScreenState extends State<AccountScreen> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfileScreen()),
-                    );
+                    if (isLogin) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfileScreen()),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterWithPhoneNumber()),
+                      );
+                    }
                   },
                   child: Container(
                     width: getWidth(context, 85),
@@ -58,16 +72,39 @@ class _AccountScreenState extends State<AccountScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              const CircleAvatar(
-                                radius: 30,
-                                backgroundImage:
-                                    AssetImage('assets/images/orange.png'),
-                              ),
+                              isLogin
+                                  ? CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage: AssetImage(
+                                          'assets/images/orange.png'),
+                                    )
+                                  : Container(
+                                      width: getWidth(context, 20),
+                                      height: getHeight(context, 15),
+                                      padding: const EdgeInsets.all(5),
+                                      child: Card(
+                                        elevation: 5,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                        ),
+                                        child: CircleAvatar(
+                                          backgroundColor: mainColorLightGrey,
+                                          child: Icon(
+                                            Icons.account_circle_outlined,
+                                            size: getHeight(context, 4),
+                                            color: mainColorRed,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                               SizedBox(
                                 width: getWidth(context, 3),
                               ),
                               Text(
-                                "Profile Information",
+                                isLogin
+                                    ? "Profile Information"
+                                    : "Create account",
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontFamily: mainFontMontserrat4,
@@ -90,7 +127,6 @@ class _AccountScreenState extends State<AccountScreen> {
                 SizedBox(
                   height: getHeight(context, 3),
                 ),
-              
                 Container(
                   width: getWidth(context, 85),
                   height: getHeight(context, 10),
@@ -409,9 +445,14 @@ class _AccountScreenState extends State<AccountScreen> {
                 SizedBox(
                   height: getHeight(context, 1),
                 ),
-                  GestureDetector(
+                GestureDetector(
                   onTap: () {
-                  FirebaseAuth.instance.signOut();
+                    FirebaseAuth.instance.signOut();
+                    setBoolPrefs("islogin", false);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Switchscreen()),
+                    );
                   },
                   child: Container(
                     width: getWidth(context, 85),
@@ -471,7 +512,6 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),

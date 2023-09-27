@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'package:athome/Switchscreen.dart';
+import 'package:athome/home/NavSwitch.dart';
 import 'package:flutter/material.dart';
 import '../Config/property.dart';
 import 'welcome_screen_1.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const WelcomeScreenOne(),
+            builder: (context) => const Switchscreen(),
           ),
         );
       },
@@ -41,10 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Center(
               child: Image.asset(
-                
                 mainImageLogo1,
-              width: getWidth(context, 75),
-            ),
+                width: getWidth(context, 75),
+              ),
             ),
           ],
         ),

@@ -1,4 +1,7 @@
-import 'package:athome/Landing/login_screen.dart';
+import 'package:athome/Config/local_data.dart';
+
+import 'package:athome/home/NavSwitch.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../Config/property.dart';
@@ -10,7 +13,8 @@ class WelcomeScreen extends StatefulWidget {
   State<StatefulWidget> createState() => WelcomeScreenState();
 }
 
-class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
+class WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
   int currentIndex = 0;
   CarouselController buttonCarouselController = CarouselController();
 
@@ -26,7 +30,6 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
         backgroundColor: mainColorWhite,
         body: Column(
           children: [
-            
             CarouselSlider(
               carouselController: buttonCarouselController,
               options: CarouselOptions(
@@ -61,18 +64,20 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                             borderRadius: BorderRadius.circular(50)),
                         child: TextButton(
                           onPressed: () {
+                            setBoolPrefs("onbord", true);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const PhoneScreen()),
+                                  builder: (context) => const NavSwitch()),
                             );
                           },
                           child: Text(
                             "Get Start",
                             style: TextStyle(
-                                fontFamily: mainFontMontserrat6,
-                                fontSize: getWidth(context, 4),
-                                color: mainColorWhite,),
+                              fontFamily: mainFontMontserrat6,
+                              fontSize: getWidth(context, 4),
+                              color: mainColorWhite,
+                            ),
                           ),
                         ),
                       )
@@ -83,14 +88,13 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-
                             TextButton(
                               onPressed: () {
+                                setBoolPrefs("onbord", true);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PhoneScreen()),
+                                      builder: (context) => const NavSwitch()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
@@ -99,17 +103,16 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                               child: Text(
                                 'SKIP',
                                 style: TextStyle(
-                                    fontFamily: mainFontMontserrat6,
-                                    fontSize: getHeight(context, 2),
-                                    color: mainColorBlack,),
+                                  fontFamily: mainFontMontserrat6,
+                                  fontSize: getHeight(context, 2),
+                                  color: mainColorBlack,
+                                ),
                                 textAlign: TextAlign.left,
                               ),
                             ),
-                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: getWidth(context, 1), left: 5),
@@ -126,7 +129,6 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                                         : mainColorBlack,
                                   ),
                                 ),
-
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: getWidth(context, 1), left: 5),
@@ -143,7 +145,6 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                                         : mainColorBlack,
                                   ),
                                 ),
-
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: getWidth(context, 1), left: 5),
@@ -160,7 +161,6 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                                         : mainColorBlack,
                                   ),
                                 ),
-                                
                               ],
                             ),
                             Container(
@@ -171,12 +171,6 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                               child: TextButton(
                                 onPressed: () {
                                   if (currentIndex == 2) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const PhoneScreen()),
-                                    );
                                   } else {
                                     buttonCarouselController.nextPage();
                                   }
@@ -218,20 +212,24 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: getHeight(context, 3),),
+        SizedBox(
+          height: getHeight(context, 3),
+        ),
         Expanded(
-          child: Image.asset(
-            "assets/images/002_logo_1.png",
+          child: CachedNetworkImage(
+            imageUrl: "assets/images/002_logo_1.png",
             width: getWidth(context, 80),
             height: getHeight(context, 100),
             fit: BoxFit.cover,
           ),
         ),
-        SizedBox(height: getHeight(context, 3),),
+        SizedBox(
+          height: getHeight(context, 3),
+        ),
         Expanded(
           flex: 2,
-          child: Image.asset(
-            "assets/images/003_welcome_1.png",
+          child: CachedNetworkImage(
+            imageUrl: "assets/images/003_welcome_1.png",
           ),
         ),
         SizedBox(
@@ -244,22 +242,26 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
               Text(
                 "Shop Smarter & Easier",
                 style: TextStyle(
-                    fontFamily: mainFontMontserrat6,
-                    fontSize:getHeight(context, 3),
-                    color: mainColorGrey,),
+                  fontFamily: mainFontMontserrat6,
+                  fontSize: getHeight(context, 3),
+                  color: mainColorGrey,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: getHeight(context, 2),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal:getWidth(context, 7),),
+                padding: EdgeInsets.symmetric(
+                  horizontal: getWidth(context, 7),
+                ),
                 child: Text(
                   "is an innovative platform designed to enhance your online shopping experience.",
                   style: TextStyle(
-                      fontFamily: mainFontMontserrat4,
-                      fontSize:getHeight(context, 2),
-                      color: mainColorGrey,),
+                    fontFamily: mainFontMontserrat4,
+                    fontSize: getHeight(context, 2),
+                    color: mainColorGrey,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -276,20 +278,24 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: getHeight(context, 3),),
+        SizedBox(
+          height: getHeight(context, 3),
+        ),
         Expanded(
-          child: Image.asset(
-            "assets/images/002_logo_1.png",
+          child: CachedNetworkImage(
+            imageUrl: "assets/images/002_logo_1.png",
             width: getWidth(context, 80),
             height: getHeight(context, 100),
             fit: BoxFit.cover,
           ),
         ),
-        SizedBox(height: getHeight(context, 3),),
+        SizedBox(
+          height: getHeight(context, 3),
+        ),
         Expanded(
           flex: 2,
-          child: Image.asset(
-            "assets/images/003_welcome_2.png",
+          child: CachedNetworkImage(
+            imageUrl: "assets/images/003_welcome_2.png",
           ),
         ),
         SizedBox(
@@ -302,22 +308,26 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
               Text(
                 "Learn From the Best",
                 style: TextStyle(
-                    fontFamily: mainFontMontserrat6,
-                    fontSize:getHeight(context, 3),
-                    color: mainColorBlack,),
+                  fontFamily: mainFontMontserrat6,
+                  fontSize: getHeight(context, 3),
+                  color: mainColorBlack,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: getHeight(context, 2),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal:getWidth(context, 7),),
+                padding: EdgeInsets.symmetric(
+                  horizontal: getWidth(context, 7),
+                ),
                 child: Text(
                   "We will guide you with the best tutors and experts in Kurdistan/Iraq",
                   style: TextStyle(
-                      fontFamily: mainFontMontserrat4,
-                      fontSize:getHeight(context, 2),
-                      color: mainColorGrey,),
+                    fontFamily: mainFontMontserrat4,
+                    fontSize: getHeight(context, 2),
+                    color: mainColorGrey,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -332,20 +342,24 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
   Widget slid3() {
     return Column(
       children: [
-        SizedBox(height: getHeight(context, 3),),        
+        SizedBox(
+          height: getHeight(context, 3),
+        ),
         Expanded(
-          child: Image.asset(
-            "assets/images/002_logo_1.png",
+          child: CachedNetworkImage(
+            imageUrl: "assets/images/002_logo_1.png",
             width: getWidth(context, 80),
             height: getHeight(context, 100),
             fit: BoxFit.cover,
           ),
         ),
-        SizedBox(height: getHeight(context, 3),),
+        SizedBox(
+          height: getHeight(context, 3),
+        ),
         Expanded(
           flex: 2,
-          child: Image.asset(
-            "assets/images/003_welcome_3.png",
+          child: CachedNetworkImage(
+            imageUrl: "assets/images/003_welcome_3.png",
           ),
         ),
         SizedBox(
@@ -358,22 +372,26 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
               Text(
                 "Your Pocket's Friend",
                 style: TextStyle(
-                    fontFamily: mainFontMontserrat6,
-                    fontSize:getHeight(context, 3),
-                    color: mainColorGrey,),
+                  fontFamily: mainFontMontserrat6,
+                  fontSize: getHeight(context, 3),
+                  color: mainColorGrey,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: getHeight(context, 2),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal:getWidth(context, 7),),
+                padding: EdgeInsets.symmetric(
+                  horizontal: getWidth(context, 7),
+                ),
                 child: Text(
                   "Learn whatever you want, whenever or wherever you are.",
                   style: TextStyle(
-                      fontFamily: mainFontMontserrat4,
-                      fontSize:getHeight(context, 2),
-                      color: mainColorGrey,),
+                    fontFamily: mainFontMontserrat4,
+                    fontSize: getHeight(context, 2),
+                    color: mainColorGrey,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Config/property.dart';
-import 'login_screen.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 
 class WelcomeScreenThree extends StatefulWidget {
   const WelcomeScreenThree({super.key});
@@ -36,10 +37,8 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
               ),
               width: getWidth(context, 80),
               height: getHeight(context, 100),
-              child: Image.asset(
-                mainImageLogo1,
-                fit:BoxFit.fitWidth
-              ),
+              child: CachedNetworkImage(
+                  imageUrl: mainImageLogo1, fit: BoxFit.fitWidth),
             ),
           ),
           Expanded(
@@ -50,8 +49,8 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
               ),
               width: getWidth(context, 100),
               height: getHeight(context, 100),
-              child: Image.asset(
-                'assets/images/003_welcome_3.png',
+              child: CachedNetworkImage(
+                imageUrl: 'assets/images/003_welcome_3.png',
               ),
             ),
           ),
@@ -92,14 +91,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
           ),
           Expanded(
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PhoneScreen(),
-                  ),
-                );
-              },
+              onTap: () {},
               child: Container(
                 margin: EdgeInsets.symmetric(
                   vertical: getHeight(context, 2),

@@ -17,15 +17,15 @@ class _AboutScreenState extends State<AboutScreen> {
         title: Text(
           "About Us",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            
-          },
+          onPressed: () {},
           icon: Icon(
             Icons.arrow_back_ios,
             color: mainColorRed,

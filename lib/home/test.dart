@@ -8,10 +8,9 @@ class test extends StatefulWidget {
 }
 
 class _testState extends State<test> {
-  
   @override
   Widget build(BuildContext context) {
-    return    DefaultTabController(
+    return DefaultTabController(
       length: 3, // Number of tabs
       child: Scaffold(
         appBar: AppBar(

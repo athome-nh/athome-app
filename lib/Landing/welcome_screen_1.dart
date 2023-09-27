@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../Config/property.dart';
-import 'login_screen.dart';
+
 import 'welcome_screen_2.dart';
 import 'welcome_screen_3.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class WelcomeScreenOne extends StatefulWidget {
   const WelcomeScreenOne({super.key});
@@ -29,7 +30,8 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                 bottom: getHeight(context, 3),
               ),
               width: getWidth(context, 80),
-              child: Image.asset(mainImageLogo1, fit: BoxFit.fitWidth),
+              child: CachedNetworkImage(
+                  imageUrl: mainImageLogo1, fit: BoxFit.fitWidth),
             ),
           ),
           Expanded(
@@ -40,8 +42,8 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
               ),
               width: getWidth(context, 100),
               height: getHeight(context, 100),
-              child: Image.asset(
-                'assets/images/003_welcome_1.png',
+              child: CachedNetworkImage(
+                imageUrl: 'assets/images/003_welcome_1.png',
               ),
             ),
           ),
@@ -95,14 +97,7 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PhoneScreen(),
-                          ),
-                        );
-                      },
+                      onTap: () {},
                       child: Container(
                         width: getWidth(context, 25),
                         height: getHeight(context, 5),
@@ -190,7 +185,6 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                         );
                       },
                       child: Container(
-                        
                         width: getWidth(context, 25),
                         height: getHeight(context, 5),
                         decoration: BoxDecoration(

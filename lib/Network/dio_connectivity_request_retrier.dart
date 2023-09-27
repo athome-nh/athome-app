@@ -6,8 +6,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-
-
 import 'Network.dart';
 
 class DioConnectivityRequestRetrier {

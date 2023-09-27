@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class TrackOrder extends StatefulWidget {
   const TrackOrder({super.key});
@@ -62,8 +63,8 @@ class _TrackOrderState extends State<TrackOrder> {
               ),
               Column(
                 children: [
-                  Image.asset(
-                    "assets/images/003_welcome_1.png",
+                  CachedNetworkImage(
+                    imageUrl: "assets/images/003_welcome_1.png",
                     width: getWidth(context, 60),
                     height: getHeight(context, 40),
                   ),

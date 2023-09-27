@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1011426718162',
     projectId: 'athome-bb55d',
     storageBucket: 'athome-bb55d.appspot.com',
-    iosClientId: '1011426718162-hoaj4kp3mm2m39837517ahvs5k6rbcmu.apps.googleusercontent.com',
+    iosClientId:
+        '1011426718162-hoaj4kp3mm2m39837517ahvs5k6rbcmu.apps.googleusercontent.com',
     iosBundleId: 'nl.nutriholland.athome',
   );
 }

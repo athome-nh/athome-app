@@ -1,27 +1,67 @@
-import 'package:athome/Landing/welcome_screen.dart';
+import 'package:athome/Config/local_data.dart';
+import 'package:athome/Switchscreen.dart';
+import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/controller/productprovider.dart';
+import 'package:athome/landing/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'Language/Translation.dart';
 import 'firebase_options.dart';
-final navigatorKey = GlobalKey<NavigatorState>();
 
+final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
-   WidgetsFlutterBinding.ensureInitialized();
- 
+  WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const AtHomeApp());
 }
 
-class AtHomeApp extends StatelessWidget {
+String lang = "";
+
+class AtHomeApp extends StatefulWidget {
   const AtHomeApp({super.key});
 
   @override
+  State<AtHomeApp> createState() => _AtHomeAppState();
+}
+
+class _AtHomeAppState extends State<AtHomeApp> {
+  @override
+  void initState() {
+    getStringPrefs("lang").then((value) {
+      setState(() {
+        if (value != "") {
+          lang = value;
+          Get.updateLocale(Locale(value));
+        } else {
+          lang = "kur";
+          Get.updateLocale(const Locale("kur"));
+        }
+      });
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'AtHome Market',
-      debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => productProvider()),
+      ],
+      child: GetMaterialApp(
+        translations: Translation(),
+        locale: const Locale("en"),
+        fallbackLocale: const Locale("en"),
+        title: 'AtHome Market',
+        debugShowCheckedModeBanner: false,
+        home: Switchscreen(),
+      ),
     );
   }
 }

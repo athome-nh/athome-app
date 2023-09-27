@@ -1,6 +1,7 @@
 import 'package:athome/Config/property.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class Address extends StatefulWidget {
   const Address({super.key});
@@ -18,7 +19,9 @@ class _AddressState extends State<Address> {
         title: Text(
           "Saved Address",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 24),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -62,8 +65,8 @@ class _AddressState extends State<Address> {
                                             color: mainColorRed,
                                             fontFamily: mainFontMontserrat4),
                                       )),
-                                  leading: Image.asset(
-                                    "assets/images/402.png",
+                                  leading: CachedNetworkImage(
+                                    imageUrl: "assets/images/402.png",
                                     width: getWidth(context, 15),
                                     height: getHeight(context, 7),
                                   ),
@@ -89,8 +92,8 @@ class _AddressState extends State<Address> {
             Card(
               elevation: 5,
               shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Container(
                 height: getHeight(context, 7),
                 width: getWidth(context, 80),

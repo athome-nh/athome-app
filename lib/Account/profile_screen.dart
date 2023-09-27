@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:athome/Switchscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
+import '../Config/athome_functions.dart';
 import '../Config/property.dart';
 import '../Landing/splash_screen.dart';
 
@@ -12,6 +18,11 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainColorWhite,
@@ -19,7 +30,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(
           "Profile Information",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -53,8 +66,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               child: ClipOval(
-                child: Image.asset(
-                  'assets/images/orange.png',
+                child: CachedNetworkImage(
+                  imageUrl: 'assets/images/orange.png',
                   width: getWidth(context, 25),
                   height: getWidth(context, 25),
                   fit: BoxFit.cover,
@@ -64,8 +77,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(
               height: getHeight(context, 5),
             ),
-            const Text(
-              "Hi there Brosli ! ",
+            Text(
+              userData["name"].toString(),
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
@@ -90,9 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: const TextField(
+              child: TextField(
                 decoration: InputDecoration(
-                  hintText: '   Full Name',
+                  hintText: userData["name"].toString(),
                   border: InputBorder.none,
                 ),
               ),
@@ -108,9 +121,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: const TextField(
+              child: TextField(
                 decoration: InputDecoration(
-                  hintText: '   Phone Number',
+                  hintText: userData["phone"].toString(),
                   border: InputBorder.none,
                 ),
               ),
@@ -126,9 +139,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: const TextField(
+              child: TextField(
                 decoration: InputDecoration(
-                  hintText: '   City & Country',
+                  hintText: userData["city"].toString(),
                   border: InputBorder.none,
                 ),
               ),
@@ -144,9 +157,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: const TextField(
+              child: TextField(
                 decoration: InputDecoration(
-                  hintText: '   Addres',
+                  hintText: userData["age"].toString(),
                   border: InputBorder.none,
                 ),
               ),

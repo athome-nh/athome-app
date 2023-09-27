@@ -1,6 +1,9 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemDeatil extends StatefulWidget {
   const ItemDeatil({super.key});
@@ -18,7 +21,9 @@ class _ItemDeatilState extends State<ItemDeatil> {
         title: Text(
           "Single Oroduct",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 24),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -39,7 +44,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
           children: [
             Center(
               child: Stack(
-                  alignment: Alignment.topRight,
+                alignment: Alignment.centerRight,
                 children: [
                   Container(
                     width: getWidth(context, 90),
@@ -51,10 +56,52 @@ class _ItemDeatilState extends State<ItemDeatil> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          "assets/images/408.png",
-                          width: getHeight(context, 30),
-                          height: getHeight(context, 30),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 2)),
+                          child: Container(
+                            width: getWidth(context, 100),
+                            height: getHeight(context, 30),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: CarouselSlider(
+                                items: [
+                                  ClipRRect(
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pbGt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                                      width: getWidth(context, 100),
+                                      height: getHeight(context, 20),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  CachedNetworkImage(
+                                    imageUrl:
+                                        "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pbGt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                                    width: getWidth(context, 100),
+                                    height: getHeight(context, 20),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  CachedNetworkImage(
+                                    imageUrl:
+                                        "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pbGt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                                    width: getWidth(context, 100),
+                                    height: getHeight(context, 20),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ],
+                                options: CarouselOptions(
+                                  autoPlay: true,
+                                  aspectRatio: 16 / 9,
+                                  viewportFraction: 1.0,
+                                  enlargeCenterPage: true,
+                                  autoPlayInterval: Duration(seconds: 5),
+                                  autoPlayAnimationDuration:
+                                      Duration(milliseconds: 3000),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                         Text(
                           "Melon Imported ",
@@ -130,10 +177,11 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                       width: getHeight(context, 4),
                                       height: getHeight(context, 4),
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                           border: Border.all(
-                                              color:
-                                                  mainColorGrey.withOpacity(0.5)),
+                                              color: mainColorGrey
+                                                  .withOpacity(0.5)),
                                           color: mainColorGrey),
                                       child: Icon(Icons.add,
                                           color: mainColorWhite,
@@ -155,10 +203,11 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                       width: getHeight(context, 4),
                                       height: getHeight(context, 4),
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                           border: Border.all(
-                                              color:
-                                                  mainColorGrey.withOpacity(0.5)),
+                                              color: mainColorGrey
+                                                  .withOpacity(0.5)),
                                           color: mainColorGrey),
                                       child: Icon(Icons.delete,
                                           color: mainColorWhite,
@@ -182,8 +231,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xffF2F2F2),
-                            fixedSize:
-                                Size(getWidth(context, 65), getHeight(context, 5)),
+                            fixedSize: Size(
+                                getWidth(context, 65), getHeight(context, 5)),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                               side: BorderSide(color: mainColorRed, width: 1.0),
@@ -204,8 +253,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: mainColorRed,
-                            fixedSize:
-                                Size(getWidth(context, 65), getHeight(context, 5)),
+                            fixedSize: Size(
+                                getWidth(context, 65), getHeight(context, 5)),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                               side: BorderSide(color: mainColorRed, width: 1.0),
@@ -215,15 +264,14 @@ class _ItemDeatilState extends State<ItemDeatil> {
                       ],
                     ),
                   ),
-                 GestureDetector(
-                                  onTap: () {},
-                                  child: Padding(
-                                    padding:  EdgeInsets.all(10.0),
-                                    child: Icon(Icons.favorite,
-                                        color: mainColorGrey,
-                                        size: getWidth(context, 15)),
-                                  ),
-                                ),
+                  // GestureDetector(
+                  //   onTap: () {},
+                  //   child: Padding(
+                  //     padding: EdgeInsets.all(10.0),
+                  //     child: Icon(Icons.favorite,
+                  //         color: mainColorGrey, size: getWidth(context, 15)),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -237,17 +285,17 @@ class _ItemDeatilState extends State<ItemDeatil> {
                   color: Color(0xffF2F2F2),
                   borderRadius: BorderRadius.circular(15)),
               child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: getWidth(context, 7)),
+                padding: EdgeInsets.symmetric(horizontal: getWidth(context, 7)),
                 child: Padding(
-                  padding: const EdgeInsets.only(top:15.0),
+                  padding: const EdgeInsets.only(top: 15.0),
                   child: Text(
                     "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
                     style: TextStyle(
-                       height: 1.5,
+                        height: 1.5,
                         color: mainColorGrey,
                         fontFamily: mainFontMontserrat4,
                         fontSize: 14),
-                        textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),

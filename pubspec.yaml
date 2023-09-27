@@ -17,7 +17,6 @@ dependencies:
   carousel_slider: ^4.2.1
   font_awesome_flutter: ^10.5.0
   ionicons: ^0.2.2
-  otp_pin_field: ^1.2.2
   get: ^4.6.5
   firebase_core: ^2.15.1
   firebase_auth: ^4.9.0
@@ -27,9 +26,20 @@ dependencies:
   animate_do: ^3.1.2
   intl_phone_number_input: ^0.7.3+1
   flutter_verification_code: ^1.1.7
-  flutter_otp_text_field: ^1.1.1
   gender_picker: ^1.1.0
+  path_provider: ^2.0.11
+  encrypt: ^5.0.1
+  shared_preferences: ^2.2.1
+  fluttertoast: ^8.1.1
+  firebase_messaging: ^14.6.8
+  cached_network_image: ^3.2.3
+  provider: ^6.0.0
+  quickalert: ^1.0.2
   
+ 
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -21,67 +21,66 @@ class _FontTestState extends State<FontTest> {
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat4,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat2,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat3,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat4,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat5,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat6,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat7,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat8,
-                   fontSize: 30,
-                   ),
+                  fontSize: 30,
+                ),
               ),
-
               Text(
                 "Bawar Wahid Saber",
                 style: TextStyle(
                   fontFamily: mainFontMontserrat9,
-                   //fontWeight: FontWeight.w900,
-                   //fontStyle: FontStyle.italic,
-                   fontSize: 30,
-                   ),
+                  //fontWeight: FontWeight.w900,
+                  //fontStyle: FontStyle.italic,
+                  fontSize: 30,
+                ),
               ),
             ],
           ),

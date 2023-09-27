@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/NavSwitch.dart';
 import 'package:athome/Home/TrackOrder.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
@@ -19,7 +20,9 @@ class _CheckOutState extends State<CheckOut> {
         title: Text(
           "Checkout",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 24),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -173,7 +176,8 @@ class _CheckOutState extends State<CheckOut> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Image.asset("assets/images/fib.png"),
+                              CachedNetworkImage(
+                                  imageUrl: "assets/images/fib.png"),
                               Icon(
                                 Icons.circle_outlined,
                                 color: mainColorRed,
@@ -201,7 +205,8 @@ class _CheckOutState extends State<CheckOut> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Image.asset("assets/images/fast.png"),
+                              CachedNetworkImage(
+                                  imageUrl: "assets/images/fast.png"),
                               Icon(
                                 Icons.circle_outlined,
                                 color: mainColorRed,
@@ -374,8 +379,8 @@ class _CheckOutState extends State<CheckOut> {
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
-                             isDismissible: false,
-                              enableDrag: false,
+                            isDismissible: false,
+                            enableDrag: false,
                             builder: (BuildContext context) {
                               return Container(
                                 // Set the height of the bottom sheet as needed
@@ -407,7 +412,7 @@ class _CheckOutState extends State<CheckOut> {
                                             fontFamily: mainFontMontserrat4),
                                       ),
                                       SizedBox(
-                                         height: getHeight(context, 1),
+                                        height: getHeight(context, 1),
                                       ),
                                       Text(
                                         'Order Number: 5509',
@@ -416,11 +421,12 @@ class _CheckOutState extends State<CheckOut> {
                                             color: mainColorGrey,
                                             fontFamily: mainFontMontserrat6),
                                       ),
-                                     SizedBox(
-                                         height: getHeight(context, 1),
+                                      SizedBox(
+                                        height: getHeight(context, 1),
                                       ),
                                       Padding(
-                                        padding:  EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 4)),
                                         child: Text(
                                           'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order',
                                           style: TextStyle(
@@ -432,7 +438,6 @@ class _CheckOutState extends State<CheckOut> {
                                       SizedBox(
                                         height: getHeight(context, 2),
                                       ),
-                                 
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: getWidth(context, 4)),
@@ -466,13 +471,20 @@ class _CheckOutState extends State<CheckOut> {
                                       ),
                                       TextButton(
                                         onPressed: () {
-                                                                 Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NavSwitch()),
-                          );// Close the bottom sheet
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NavSwitch()),
+                                          ); // Close the bottom sheet
                                         },
-                                        child: Text('Back to Home',style: TextStyle(color: mainColorGrey,fontFamily: mainFontMontserrat4,fontSize: 14),),
+                                        child: Text(
+                                          'Back to Home',
+                                          style: TextStyle(
+                                              color: mainColorGrey,
+                                              fontFamily: mainFontMontserrat4,
+                                              fontSize: 14),
+                                        ),
                                       ),
                                     ],
                                   ),

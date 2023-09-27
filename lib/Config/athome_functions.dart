@@ -1,4 +1,9 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:encrypt/encrypt.dart' as encryption;
+import 'package:path_provider/path_provider.dart';
 
 //// a fast way to push to a new screen
 void to(BuildContext context, Widget screen) {
@@ -39,20 +44,43 @@ String textCount(String txt, int num) {
   return r;
 }
 
+String encryptAES(String plainText) {
+  if (plainText.isEmpty) {
+    return "";
+  }
+  final key = encryption.Key.fromUtf8('1#qw34?r5tgvfdcx>Az678u!jnbg&Klp');
+  final iv = encryption.IV.fromLength(16);
+  final encrypter = encryption.Encrypter(
+      encryption.AES(key, mode: encryption.AESMode.ctr, padding: null));
+  final encrypted = encrypter.encrypt(plainText, iv: iv);
 
+  return encrypted.base64;
+}
 
+String decryptAES(String ciphertext) {
+  if (ciphertext.isEmpty) {
+    return "";
+  }
+  final key = encryption.Key.fromUtf8('1#qw34?r5tgvfdcx>Az678u!jnbg&Klp');
+  final iv = encryption.IV.fromLength(16);
+  final decrypter = encryption.Encrypter(
+      encryption.AES(key, mode: encryption.AESMode.ctr, padding: null));
+  final decrypted = decrypter
+      .decryptBytes(encryption.Encrypted.fromBase64(ciphertext), iv: iv);
+  final decryptedData = utf8.decode(decrypted);
+
+  return decryptedData.toString();
+}
 
 /// Main {}
-Future<DateTime> getDatetime(
-    BuildContext context) async {
+Future<DateTime> getDatetime(BuildContext context) async {
   DateTime selectedDate = DateTime.now();
 
   final picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now()
-          .add(const Duration(days: 29)));
+      lastDate: DateTime.now().add(const Duration(days: 29)));
 
   if (picked != null && picked != selectedDate) {
     selectedDate = picked;
@@ -60,27 +88,50 @@ Future<DateTime> getDatetime(
   return selectedDate;
 }
 
-Future<DateTime> getDatetime2(
-    BuildContext context) async {
+Future<DateTime> getDatetime2(BuildContext context) async {
   DateTime selectedDate = DateTime.now();
 
   final picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now()
-          .add(const Duration(days: 29)));
+      lastDate: DateTime.now().add(const Duration(days: 29)));
   if (picked != null && picked != selectedDate) {
     selectedDate = picked;
   }
   return selectedDate;
 }
 
+Future<bool> Save_data_josn(String filename, Map data) async {
+  try {
+    final directory = await getTemporaryDirectory();
+    String path = "${directory.path}/${filename}.json";
+    File f = File(path);
+    var jsonData = json.encode(data);
+    f.writeAsStringSync(encryptAES(jsonData),
+        flush: true, mode: FileMode.write);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
-
+Future<Map> Load_data_josn(String filename) async {
+  final directory = await getTemporaryDirectory();
+  String path = "${directory.path}/${filename}.json";
+  File f = File(path);
+  if (f.existsSync()) {
+    final jsonData = f.readAsStringSync();
+    var data = json.decode(decryptAES(jsonData));
+    print(data);
+    return data;
+    //  return (data as List).map((x) => DictData.fromJson(x)).toList();
+  } else {
+    return {};
+  }
+}
 
 /// #Check this CODEs Latter
-
 
 // ignore_for_file: unrelated_type_equality_checks
 // import 'dart:convert';
@@ -102,14 +153,13 @@ Future<DateTime> getDatetime2(
 //   DateTime _ntpTime;
 //   bool retrive = false;
 
-  // /// Or you could get NTP current (It will call DateTime.now() and add NTP offset to it)
-  // _myTime = DateTime.now();
+// /// Or you could get NTP current (It will call DateTime.now() and add NTP offset to it)
+// _myTime = DateTime.now();
 
-  // /// Or get NTP offset (in milliseconds) and add it yourself
-  // final int offset = await NTP.getNtpOffset(localTime: DateTime.now());
-  // _ntpTime = _myTime.add(Duration(milliseconds: offset));
+// /// Or get NTP offset (in milliseconds) and add it yourself
+// final int offset = await NTP.getNtpOffset(localTime: DateTime.now());
+// _ntpTime = _myTime.add(Duration(milliseconds: offset));
 
- 
 //   if ((_ntpTime.difference(_myTime).inMinutes) >= 1 ||
 //       (_ntpTime.difference(_myTime).inMinutes) <= -1) {
 //     retrive = true;
@@ -201,7 +251,6 @@ Future<DateTime> getDatetime2(
 
 //   return decryptedData.toString();
 // }
-
 
 // //// get date form user with the specific format
 // Future<String> getDate(BuildContext context) async {
@@ -366,13 +415,9 @@ Future<DateTime> getDatetime2(
 //   return regex.hasMatch(value);
 // }
 
-
-
 /// #Local Dataa
 
-
 // import 'package:shared_preferences/shared_preferences.dart';
-
 
 // ///// The following methods are used to manage all types of shared preferences
 // Future<String> getStringPrefs(String key) async {

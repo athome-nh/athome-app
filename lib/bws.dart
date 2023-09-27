@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Config/property.dart';
 import 'main.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ReadyWidgetBWSS extends StatefulWidget {
   const ReadyWidgetBWSS({super.key});
@@ -18,7 +19,6 @@ class _ReadyWidgetBWSSState extends State<ReadyWidgetBWSS> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-
               ////Text
               Text(
                 "Bawar Wahid Saber",
@@ -32,8 +32,8 @@ class _ReadyWidgetBWSSState extends State<ReadyWidgetBWSS> {
               ),
 
               ////Image
-              Image.asset(
-                'assets/images/002_logo_red.png',
+              CachedNetworkImage(
+                imageUrl: 'assets/images/002_logo_red.png',
                 width: getWidth(context, 70),
                 fit: BoxFit.cover,
               ),
@@ -41,13 +41,15 @@ class _ReadyWidgetBWSSState extends State<ReadyWidgetBWSS> {
               ////get in to other page
               GestureDetector(
                 onTap: () {
-                   Navigator.push(context,MaterialPageRoute( 
-                    builder: (context) =>const AtHomeApp(),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AtHomeApp(),
                     ),
-                    );
+                  );
                 },
                 child: Container(),
-              ), 
+              ),
             ],
           ),
         ),

@@ -1,8 +1,17 @@
+import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Switchscreen.dart';
+import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/controller/productprovider.dart';
+
+import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/model/cart.dart';
+import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
 class AllItem extends StatefulWidget {
   const AllItem({super.key});
@@ -13,14 +22,35 @@ class AllItem extends StatefulWidget {
 
 class _AllItemState extends State<AllItem> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final productPro = Provider.of<productProvider>(context, listen: true);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
+    String type = productPro.allitemType;
+
+    late List<ProductModel> products = type == "discount"
+        ? productPro.getProductsByDiscount()
+        : type == "Highlight"
+            ? productPro.getProductsByHighlight()
+            : productPro.getProductsByBestsell();
     return Scaffold(
       backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
-          "Discount",
+          type == "discount"
+              ? "Discount"
+              : type == "Highlight"
+                  ? "Highlight"
+                  : "Best Sell",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 24),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -41,7 +71,6 @@ class _AllItemState extends State<AllItem> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-          
               Container(
                 height: getHeight(context, 90),
                 width: getWidth(context, 95),
@@ -50,12 +79,14 @@ class _AllItemState extends State<AllItem> {
                     crossAxisCount: 2,
                     crossAxisSpacing: getWidth(context, 0.5),
                     mainAxisSpacing: getHeight(context, 2),
-                    childAspectRatio: getHeight(context, 0.09),
+                    childAspectRatio: getHeight(context, 0.085),
                   ),
 
-                  itemCount: 20, // Number of items in the grid
+                  itemCount: products.length, // Number of items in the grid
                   itemBuilder: (BuildContext context, int index) {
-                    // Build each grid item here
+                    final product = products[index];
+                    final isItemInCart = cartProvider.itemExistsInCart(product);
+                    final isFavInCart = cartProvider.FavExistsInCart(product);
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: getWidth(context, 2)),
@@ -78,104 +109,193 @@ class _AllItemState extends State<AllItem> {
                                           borderRadius:
                                               BorderRadius.circular(15)),
                                       child: Center(
-                                        child: Image.asset(
-                                          "assets/images/408.png",
+                                        child: CachedNetworkImage(
+                                          imageUrl: product.imageUrl!,
+                                          placeholder: (context, url) =>
+                                              Image.asset(
+                                                  "assets/images/002_logo_1.png"),
+                                          errorWidget: (context, url, error) =>
+                                              Image.asset(
+                                                  "assets/images/002_logo_1.png"),
                                           width: getHeight(context, 18),
                                           height: getHeight(context, 18),
                                         ),
                                       ),
                                     ),
                                     GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        setState(() {
+                                          if (!isLogin) {
+                                            loginFirstModal(context);
+                                            return;
+                                          }
+                                          final cartItem =
+                                              CartItem(product: product.id!);
+                                          cartProvider.addFavToCart(cartItem);
+                                        });
+                                      },
                                       child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
+                                        padding: const EdgeInsets.all(6.0),
                                         child: Container(
-                                            width: getHeight(context, 5),
-                                            height: getHeight(context, 5),
-                                            decoration: BoxDecoration(
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
-                                              border: Border.all(
-                                                  color: mainColorGrey
-                                                      .withOpacity(0.5)),
-                                            ),
-                                            child: Icon(Icons.add,
-                                                color: mainColorGrey,
-                                                size: getHeight(context, 3))),
+                                                  BorderRadius.circular(50),
+                                              color: isFavInCart
+                                                  ? mainColorRed
+                                                      .withOpacity(0.1)
+                                                  : mainColorGrey
+                                                      .withOpacity(0.2)),
+                                          child: isFavInCart
+                                              ? Icon(
+                                                  FontAwesomeIcons
+                                                      .heartCircleCheck,
+                                                  color: mainColorRed,
+                                                  size: getHeight(context, 2.5))
+                                              : Icon(
+                                                  FontAwesomeIcons
+                                                      .heartCirclePlus,
+                                                  color: mainColorWhite,
+                                                  size:
+                                                      getHeight(context, 2.5)),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                Container(
-                                    width: getHeight(context, 8),
-                                    height: getHeight(context, 3),
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        //  topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(20.0),
-                                        // bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(20.0),
-                                      ),
-                                      color: mainColorRed,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          "30\%",
-                                          style: TextStyle(
-                                              color: mainColorWhite,
-                                              fontFamily: mainFontMontserrat4,
-                                              fontSize: 12),
+                                product.discount!
+                                    ? Container(
+                                        width: getHeight(context, 8),
+                                        height: getHeight(context, 3),
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                            //  topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                            // bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(20.0),
+                                          ),
+                                          color: mainColorRed,
                                         ),
-                                        Icon(Icons.discount_rounded,
-                                            color: mainColorWhite, size: 15),
-                                      ],
-                                    )),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Text(
+                                              "30\%",
+                                              style: TextStyle(
+                                                  color: mainColorWhite,
+                                                  fontFamily:
+                                                      mainFontMontserrat4,
+                                                  fontSize: 12),
+                                            ),
+                                            Icon(Icons.discount_rounded,
+                                                color: mainColorWhite,
+                                                size: 15),
+                                          ],
+                                        ))
+                                    : SizedBox(),
                               ],
                             ),
-                            SizedBox(
-                              height: getHeight(context, 1),
-                            ),
-                            Container(
-                              width: getHeight(context, 20),
-                              child: Text(
-                                "Nutriholland number 3 ",
-                                maxLines: 2,
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontMontserrat6,
-                                    fontSize: 14),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                width: getHeight(context, 19),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "200,000 IQD",
-                                      style: TextStyle(
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                          color: mainColorGrey,
-                                          fontFamily: mainFontMontserrat4,
-                                          fontSize: 12),
-                                    ),
-                                    Text(
-                                      "100,500 IQD",
-                                      style: TextStyle(
-                                          color: mainColorRed,
-                                          fontFamily: mainFontMontserrat4,
-                                          fontSize: 12),
-                                    ),
-                                  ],
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  //   width: getHeight(context, 1),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        product.name!,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            color: mainColorGrey,
+                                            fontFamily: mainFontMontserrat6,
+                                            fontSize: 16),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        product.content.toString(),
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            color:
+                                                mainColorGrey.withOpacity(0.5),
+                                            fontFamily: mainFontMontserrat6,
+                                            fontSize: 9),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        "200,000 IQD",
+                                        style: TextStyle(
+                                            decoration: product.discount!
+                                                ? TextDecoration.lineThrough
+                                                : TextDecoration.none,
+                                            color: mainColorGrey,
+                                            fontFamily: mainFontMontserrat4,
+                                            fontSize: 11),
+                                      ),
+                                      product.discount!
+                                          ? Text(
+                                              "100,500 IQD",
+                                              style: TextStyle(
+                                                  color: mainColorRed,
+                                                  fontFamily:
+                                                      mainFontMontserrat6,
+                                                  fontSize: 11),
+                                            )
+                                          : SizedBox(),
+                                    ],
+                                  ),
                                 ),
-                              ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      if (!isLogin) {
+                                        loginFirstModal(context);
+                                        return;
+                                      }
+                                      final cartItem =
+                                          CartItem(product: product.id!);
+                                      cartProvider.addToCart(cartItem);
+                                    });
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: Container(
+                                        width: getWidth(context, 10),
+                                        height: getHeight(context, 4),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(
+                                                color: mainColorGrey
+                                                    .withOpacity(0.5)),
+                                            color: mainColorGrey),
+                                        child: isItemInCart
+                                            ? Center(
+                                                child: Text(
+                                                  cartProvider
+                                                      .calculateQuantityForProduct(
+                                                          int.parse(product.id
+                                                              .toString()))
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      color: mainColorWhite),
+                                                ),
+                                              )
+                                            : Icon(
+                                                FontAwesomeIcons.cartShopping,
+                                                color: mainColorWhite,
+                                                size: getHeight(context, 2))),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -188,21 +308,7 @@ class _AllItemState extends State<AllItem> {
           ),
         ),
       ),
-       floatingActionButton: Visibility(
-        
-          visible: true,
-          child: FloatingActionButton(
-            shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15), 
-          ),
-          onPressed: () {
-           
-          },
-          child: Icon(Ionicons.cart_sharp,size: getHeight(context, 5),), 
-          backgroundColor: mainColorRed,
-              ),
-              
-        ),
+      floatingActionButton: buildFAB(context),
     );
   }
 }

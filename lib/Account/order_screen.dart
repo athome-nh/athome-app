@@ -18,7 +18,9 @@ class _OrderScreenState extends State<OrderScreen> {
         title: Text(
           "My Order",
           style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontMontserrat4, fontSize: 20),
+              color: mainColorGrey,
+              fontFamily: mainFontMontserrat4,
+              fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -34,66 +36,65 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
       ),
       body: Center(
-        child: ListView.builder( itemCount: 20,
-                itemBuilder: (BuildContext context, int index) {
-                  return 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const OrderScreen()),
-                      );
-                    },
-                    child: Container(
-                      width: getWidth(context, 90),
-                      height: getHeight(context, 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),),
-                      child: Card(
-                        elevation: 5,
-                         color: mainColorWhite,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                             ),
-                             
-                        child: ListTile(
-                          trailing: Icon(Icons.arrow_forward_ios,color: mainColorRed,),
-                          leading: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Container(
+        child: ListView.builder(
+            itemCount: 20,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    width: getWidth(context, 90),
+                    height: getHeight(context, 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: Card(
+                      elevation: 5,
+                      color: mainColorWhite,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: mainColorRed,
+                        ),
+                        leading: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Container(
                               width: getWidth(context, 13),
                               height: getHeight(context, 18),
                               decoration: BoxDecoration(
                                 color: mainColorLightGrey,
                                 borderRadius: BorderRadius.circular(5),
                               ),
-                              child: Icon(Icons.shopping_cart,color: mainColorRed,size: 30,)),
-                          ),
-                                    title:  Text(
-                                        "Order ID : 123456789",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontFamily: mainFontMontserrat4,
-                                            color: mainColorGrey),
-                                      ), 
-                                      subtitle:     Text(
-                                    "Order ID : 123456789",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontFamily: mainFontMontserrat4,
-                                        color: mainColorGrey),
-                                  ),
-                                  ),
+                              child: Icon(
+                                Icons.shopping_cart,
+                                color: mainColorRed,
+                                size: 30,
+                              )),
+                        ),
+                        title: Text(
+                          "Order ID : 123456789",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: mainFontMontserrat4,
+                              color: mainColorGrey),
+                        ),
+                        subtitle: Text(
+                          "Order ID : 123456789",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontFamily: mainFontMontserrat4,
+                              color: mainColorGrey),
+                        ),
                       ),
                     ),
                   ),
-                );
-        
-                
-                }),
+                ),
+              );
+            }),
       ),
     );
   }
