@@ -15,6 +15,8 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:provider/provider.dart';
 
+import '../Config/athome_functions.dart';
+
 class Categories extends StatefulWidget {
   const Categories({super.key});
 
@@ -36,7 +38,7 @@ class _CategoriesState extends State<Categories> {
     List<ProductModel> CardItemshow =
         productPro.getProductsByIds(cartProvider.ListFavId());
     return Directionality(
-      textDirection: lang=="en"?TextDirection.ltr:TextDirection.rtl,
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: DefaultTabController(
         length: 2, // Number of tabs
         child: Scaffold(
@@ -75,7 +77,7 @@ class _CategoriesState extends State<Categories> {
                 Tab(text: "Favorite".tr),
               ],
             ),
-    
+
             // Change the color of the unselected tab labels
           ),
           body: Padding(
@@ -89,7 +91,8 @@ class _CategoriesState extends State<Categories> {
                         height: getHeight(context, 90),
                         width: getWidth(context, 95),
                         child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 4, // Number of columns
                           ),
                           itemCount: productPro
@@ -125,11 +128,12 @@ class _CategoriesState extends State<Categories> {
                                                 BorderRadius.circular(100)),
                                         child: Center(
                                           child: CachedNetworkImage(
-                                            imageUrl: cateItem.imageUrl!,
+                                            imageUrl: cateItem.img!,
                                             placeholder: (context, url) =>
                                                 Image.asset(
                                                     "assets/images/002_logo_1.png"),
-                                            errorWidget: (context, url, error) =>
+                                            errorWidget: (context, url,
+                                                    error) =>
                                                 Image.asset(
                                                     "assets/images/002_logo_1.png"),
                                             width: getHeight(context, 5),
@@ -140,7 +144,11 @@ class _CategoriesState extends State<Categories> {
                                     ),
                                   ),
                                   Text(
-                                    cateItem.name!,
+                                    lang == "en"
+                                        ? cateItem.nameEn!
+                                        : lang == "ar"
+                                            ? cateItem.nameAr!
+                                            : cateItem.nameKu!,
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontMontserrat4,
@@ -169,9 +177,9 @@ class _CategoriesState extends State<Categories> {
                               crossAxisCount: 2,
                               crossAxisSpacing: getWidth(context, 0.5),
                               mainAxisSpacing: getHeight(context, 2),
-                              childAspectRatio: getHeight(context, 0.085),
+                              childAspectRatio: getHeight(context, 0.07),
                             ),
-    
+
                             itemCount: CardItemshow
                                 .length, // Number of items in the grid
                             itemBuilder: (BuildContext context, int index) {
@@ -186,13 +194,18 @@ class _CategoriesState extends State<Categories> {
                                 child: Container(
                                   // decoration: BoxDecoration(border: Border.all()),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Stack(
-                                        alignment: Alignment.bottomLeft,
+                                        alignment: lang == "en"
+                                            ? Alignment.bottomLeft
+                                            : Alignment.bottomRight,
                                         children: [
                                           Stack(
-                                            alignment: Alignment.topRight,
+                                            alignment: lang == "en"
+                                                ? Alignment.topRight
+                                                : Alignment.topLeft,
                                             children: [
                                               Container(
                                                 width: getHeight(context, 20),
@@ -204,15 +217,17 @@ class _CategoriesState extends State<Categories> {
                                                             15)),
                                                 child: Center(
                                                   child: CachedNetworkImage(
-                                                    imageUrl: product.imageUrl!,
-                                                    placeholder: (context, url) =>
+                                                    imageUrl: product.coverImg!,
+                                                    placeholder: (context,
+                                                            url) =>
                                                         Image.asset(
                                                             "assets/images/002_logo_1.png"),
                                                     errorWidget: (context, url,
                                                             error) =>
                                                         Image.asset(
                                                             "assets/images/002_logo_1.png"),
-                                                    width: getHeight(context, 18),
+                                                    width:
+                                                        getHeight(context, 18),
                                                     height:
                                                         getHeight(context, 18),
                                                   ),
@@ -239,11 +254,12 @@ class _CategoriesState extends State<Categories> {
                                                     height: 35,
                                                     decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                50),
+                                                            BorderRadius
+                                                                .circular(50),
                                                         color: isFavInCart
                                                             ? mainColorRed
-                                                                .withOpacity(0.1)
+                                                                .withOpacity(
+                                                                    0.1)
                                                             : mainColorGrey
                                                                 .withOpacity(
                                                                     0.2)),
@@ -257,7 +273,8 @@ class _CategoriesState extends State<Categories> {
                                                         : Icon(
                                                             FontAwesomeIcons
                                                                 .heartCirclePlus,
-                                                            color: mainColorWhite,
+                                                            color:
+                                                                mainColorWhite,
                                                             size: getHeight(
                                                                 context, 2.5)),
                                                   ),
@@ -265,20 +282,30 @@ class _CategoriesState extends State<Categories> {
                                               ),
                                             ],
                                           ),
-                                          product.discount!
+                                          product.offerPrice! > 0
                                               ? Container(
                                                   width: getHeight(context, 8),
                                                   height: getHeight(context, 3),
                                                   decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        const BorderRadius.only(
-                                                      //  topLeft: Radius.circular(20.0),
-                                                      topRight:
-                                                          Radius.circular(20.0),
-                                                      // bottomLeft: Radius.circular(0.0),
-                                                      bottomRight:
-                                                          Radius.circular(20.0),
-                                                    ),
+                                                    borderRadius: lang == "en"
+                                                        ? BorderRadius.only(
+                                                            //  topLeft: Radius.circular(20.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                            // bottomLeft: Radius.circular(0.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                          )
+                                                        : BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                          ),
                                                     color: mainColorRed,
                                                   ),
                                                   child: Row(
@@ -287,16 +314,25 @@ class _CategoriesState extends State<Categories> {
                                                             .spaceEvenly,
                                                     children: [
                                                       Text(
-                                                        "30\%",
+                                                        calculatePercentageDiscount(
+                                                            double.parse(product
+                                                                .price!
+                                                                .toString()),
+                                                            double.parse(product
+                                                                .offerPrice!
+                                                                .toString())),
                                                         style: TextStyle(
-                                                            color: mainColorWhite,
+                                                            color:
+                                                                mainColorWhite,
                                                             fontFamily:
                                                                 mainFontMontserrat4,
                                                             fontSize: 12),
                                                       ),
-                                                      Icon(Icons.discount_rounded,
+                                                      Icon(
+                                                          Icons
+                                                              .discount_rounded,
                                                           color: mainColorWhite,
-                                                          size: 15),
+                                                          size: 12),
                                                     ],
                                                   ))
                                               : SizedBox(),
@@ -307,13 +343,21 @@ class _CategoriesState extends State<Categories> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(
-                                            //   width: getHeight(context, 1),
+                                            width: getWidth(context, 32),
+                                            height: getHeight(context, 13),
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  product.name!,
+                                                  lang == "en"
+                                                      ? product.nameEn
+                                                          .toString()
+                                                      : lang == "ar"
+                                                          ? product.nameAr
+                                                              .toString()
+                                                          : product.nameKu
+                                                              .toString(),
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       color: mainColorGrey,
@@ -325,7 +369,14 @@ class _CategoriesState extends State<Categories> {
                                                   height: 3,
                                                 ),
                                                 Text(
-                                                  product.content.toString(),
+                                                  lang == "en"
+                                                      ? product.contentsEn
+                                                          .toString()
+                                                      : lang == "ar"
+                                                          ? product.contentsAr
+                                                              .toString()
+                                                          : product.contentsKu
+                                                              .toString(),
                                                   maxLines: 1,
                                                   style: TextStyle(
                                                       color: mainColorGrey
@@ -338,10 +389,12 @@ class _CategoriesState extends State<Categories> {
                                                   height: 3,
                                                 ),
                                                 Text(
-                                                  "200,000 IQD",
+                                                  product.price!.toString() +
+                                                      " IQD",
                                                   style: TextStyle(
                                                       decoration: product
-                                                              .discount!
+                                                                  .offerPrice! >
+                                                              0
                                                           ? TextDecoration
                                                               .lineThrough
                                                           : TextDecoration.none,
@@ -350,9 +403,11 @@ class _CategoriesState extends State<Categories> {
                                                           mainFontMontserrat4,
                                                       fontSize: 11),
                                                 ),
-                                                product.discount!
+                                                product.offerPrice! > 0
                                                     ? Text(
-                                                        "100,500 IQD",
+                                                        product.offerPrice!
+                                                                .toString() +
+                                                            " IQD",
                                                         style: TextStyle(
                                                             color: mainColorRed,
                                                             fontFamily:
@@ -372,11 +427,13 @@ class _CategoriesState extends State<Categories> {
                                                 }
                                                 final cartItem = CartItem(
                                                     product: product.id!);
-                                                cartProvider.addToCart(cartItem);
+                                                cartProvider
+                                                    .addToCart(cartItem);
                                               });
                                             },
                                             child: Padding(
-                                              padding: const EdgeInsets.all(2.0),
+                                              padding:
+                                                  const EdgeInsets.all(2.0),
                                               child: Container(
                                                   width: getWidth(context, 10),
                                                   height: getHeight(context, 4),
@@ -386,16 +443,18 @@ class _CategoriesState extends State<Categories> {
                                                               5),
                                                       border: Border.all(
                                                           color: mainColorGrey
-                                                              .withOpacity(0.5)),
+                                                              .withOpacity(
+                                                                  0.5)),
                                                       color: mainColorGrey),
                                                   child: isItemInCart
                                                       ? Center(
                                                           child: Text(
                                                             cartProvider
                                                                 .calculateQuantityForProduct(
-                                                                    int.parse(product
-                                                                        .id
-                                                                        .toString()))
+                                                                    int.parse(
+                                                                        product
+                                                                            .id
+                                                                            .toString()))
                                                                 .toString(),
                                                             style: TextStyle(
                                                                 fontSize: 16,

@@ -13,6 +13,8 @@ import 'package:athome/Home/MyCart.dart';
 import 'package:athome/Home/Search.dart';
 import 'package:provider/provider.dart';
 
+import '../main.dart';
+
 class NavSwitch extends StatefulWidget {
   const NavSwitch({super.key});
 
@@ -67,74 +69,77 @@ class _NavSwitchState extends State<NavSwitch> {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
-    return WillPopScope(
-      onWillPop: () async {
-        yesNoOption(context);
-        return false;
-      },
-      child: Scaffold(
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                color: mainColorGrey.withOpacity(0.1), // Border color
-                width: 1.0, // Border width
+    return Directionality(
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+      child: WillPopScope(
+        onWillPop: () async {
+          yesNoOption(context);
+          return false;
+        },
+        child: Scaffold(
+          body: Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: mainColorGrey.withOpacity(0.1), // Border color
+                  width: 1.0, // Border width
+                ),
               ),
             ),
-          ),
-          child: BottomNavigationBar(
-            //showUnselectedLabels: false,
+            child: BottomNavigationBar(
+              //showUnselectedLabels: false,
 
-            backgroundColor: Color(0xffF2F2F2),
-            selectedItemColor: mainColorRed,
-            unselectedItemColor: mainColorGrey,
+              backgroundColor: Color(0xffF2F2F2),
+              selectedItemColor: mainColorRed,
+              unselectedItemColor: mainColorGrey,
 
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  activeIcon: Icon(
-                    Ionicons.home,
-                  ),
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    activeIcon: Icon(
+                      Ionicons.home,
+                    ),
+                    icon: Icon(
+                      Ionicons.home_outline,
+                    ),
+                    label: "Home".tr),
+                BottomNavigationBarItem(
                   icon: Icon(
-                    Ionicons.home_outline,
+                    Ionicons.search_outline,
                   ),
-                  label: "Home".tr),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Ionicons.search_outline,
+                  activeIcon: Icon(
+                    Ionicons.search,
+                  ),
+                  label: 'Search'.tr,
                 ),
-                activeIcon: Icon(
-                  Ionicons.search,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.shopping_bag_outlined,
+                  ),
+                  activeIcon: Icon(
+                    Icons.shopping_bag,
+                  ),
+                  label: 'My Orders'.tr,
                 ),
-                label: 'Search'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.shopping_bag_outlined,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Ionicons.person_outline,
+                  ),
+                  activeIcon: Icon(
+                    Ionicons.person,
+                  ),
+                  label: 'Account'.tr,
                 ),
-                activeIcon: Icon(
-                  Icons.shopping_bag,
-                ),
-                label: 'My Orders'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Ionicons.person_outline,
-                ),
-                activeIcon: Icon(
-                  Ionicons.person,
-                ),
-                label: 'Account'.tr,
-              ),
-            ],
+              ],
 
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+            ),
           ),
+          floatingActionButton: buildFAB(context),
         ),
-        floatingActionButton: buildFAB(context),
       ),
     );
   }

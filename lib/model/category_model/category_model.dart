@@ -4,26 +4,46 @@ import 'package:collection/collection.dart';
 
 class CategoryModel {
   final int? id;
-  final String? name;
-  final String? imageUrl;
+  final String? nameEn;
+  final String? nameAr;
+  final String? nameKu;
+  final int? branchId;
+  final bool? isShow;
+  final String? img;
 
-  const CategoryModel({this.id, this.name, this.imageUrl});
+  const CategoryModel({
+    this.id,
+    this.nameEn,
+    this.nameAr,
+    this.nameKu,
+    this.branchId,
+    this.isShow,
+    this.img,
+  });
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, name: $name, imageUrl: $imageUrl)';
+    return 'CategoryModel(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, branchId: $branchId, isShow: $isShow, img: $img)';
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> data) => CategoryModel(
         id: data['id'] as int?,
-        name: data['name'] as String?,
-        imageUrl: data['image_url'] as String?,
+        nameEn: data['nameEN'] as String?,
+        nameAr: data['nameAR'] as String?,
+        nameKu: data['nameKU'] as String?,
+        branchId: data['branch_id'] as int?,
+        isShow: data['isShow'] as bool?,
+        img: data['img'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
         'id': id,
-        'name': name,
-        'image_url': imageUrl,
+        'nameEN': nameEn,
+        'nameAR': nameAr,
+        'nameKU': nameKu,
+        'branch_id': branchId,
+        'isShow': isShow,
+        'img': img,
       };
 
   /// `dart:convert`
@@ -40,13 +60,21 @@ class CategoryModel {
 
   CategoryModel copyWith({
     int? id,
-    String? name,
-    String? imageUrl,
+    String? nameEn,
+    String? nameAr,
+    String? nameKu,
+    int? branchId,
+    bool? isShow,
+    String? img,
   }) {
     return CategoryModel(
       id: id ?? this.id,
-      name: name ?? this.name,
-      imageUrl: imageUrl ?? this.imageUrl,
+      nameEn: nameEn ?? this.nameEn,
+      nameAr: nameAr ?? this.nameAr,
+      nameKu: nameKu ?? this.nameKu,
+      branchId: branchId ?? this.branchId,
+      isShow: isShow ?? this.isShow,
+      img: img ?? this.img,
     );
   }
 
@@ -59,5 +87,12 @@ class CategoryModel {
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ imageUrl.hashCode;
+  int get hashCode =>
+      id.hashCode ^
+      nameEn.hashCode ^
+      nameAr.hashCode ^
+      nameKu.hashCode ^
+      branchId.hashCode ^
+      isShow.hashCode ^
+      img.hashCode;
 }
