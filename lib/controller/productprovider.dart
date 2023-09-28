@@ -4,6 +4,8 @@ import 'package:athome/model/product_model/product_model.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class productProvider extends ChangeNotifier {
   // List to store your products
   List<ProductModel> _products = [];
@@ -20,21 +22,29 @@ class productProvider extends ChangeNotifier {
   String get allitemType => _allitemType;
   int get cateType => _cateType;
   List<ProductModel> getProductsByCategory(int category) {
-    return _products.where((product) => product.category == category).toList();
+    return _products
+        .where((product) => product.categoryId == category)
+        .toList();
   }
 
   List<ProductModel> getProductsByDiscount() {
-    return _products.where((product) => product.discount == true).toList();
+    return _products.where((product) => product.offerPrice! > 0).toList();
   }
 
   List<ProductModel> getProductsByBestsell() {
-    return _products.where((product) => product.bestsell == true).toList();
+    return _products.where((product) => product.bestSell == true).toList();
   }
 
   List<ProductModel> getProductsBySearch(String value) {
     return _products
-        .where((product) =>
-            product.name!.toLowerCase().contains(value.toLowerCase()) == true)
+        .where((product) => lang == "en"
+            ? product.nameEn!.toLowerCase().contains(value.toLowerCase()) ==
+                true
+            : lang == "ar"
+                ? product.nameAr!.toLowerCase().contains(value.toLowerCase()) ==
+                    true
+                : product.nameKu!.toLowerCase().contains(value.toLowerCase()) ==
+                    true)
         .toList();
   }
 
@@ -50,7 +60,7 @@ class productProvider extends ChangeNotifier {
 
   List<SubCategory> getsubcateById(int idToRetrieve) {
     return subCategores
-        .where((product) => product.idcate == idToRetrieve)
+        .where((subcate) => subcate.categoryId == idToRetrieve)
         .toList();
   }
 

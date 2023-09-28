@@ -91,25 +91,27 @@ class CartProvider extends ChangeNotifier {
 
   loadCartFromPreferences() {
     getStringPrefs('cartData').then((value) {
-      var jsonList = jsonDecode(decryptAES(value));
-
-      List<CartItem> cart =
-          (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
-
-      cartItems = cart;
-      notifyListeners();
+      if (value != "") {
+        var jsonList = jsonDecode(decryptAES(value));
+        List<CartItem> cart =
+            (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
+        cartItems = cart;
+        notifyListeners();
+      }
     });
   }
 
   loadFavCartFromPreferences() {
     getStringPrefs('Fav').then((value) {
-      var jsonList = jsonDecode(decryptAES(value));
+      if (value != "") {
+        var jsonList = jsonDecode(decryptAES(value));
 
-      List<CartItem> cart =
-          (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
+        List<CartItem> cart =
+            (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
 
-      FavItems = cart;
-      notifyListeners();
+        FavItems = cart;
+        notifyListeners();
+      }
     });
   }
 

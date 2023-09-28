@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:path_provider/path_provider.dart';
@@ -131,6 +132,29 @@ Future<Map> Load_data_josn(String filename) async {
   }
 }
 
+String calculatePercentageDiscount(
+    double originalPrice, double discountedPrice) {
+  if (originalPrice <= 0 ||
+      discountedPrice <= 0 ||
+      originalPrice <= discountedPrice) {
+    return 'N/A'; // Handle invalid or zero values, or when the original price is less than or equal to the discounted price.
+  }
+
+  double discountAmount = originalPrice - discountedPrice;
+  double percentageDiscount = (discountAmount / originalPrice) * 100;
+
+  return '${percentageDiscount.toStringAsFixed(0)}%';
+}
+
+String fontBoldChoose() {
+  String font = lang == "en" ? "" : "";
+  return font;
+}
+
+String fontNormalChoose() {
+  String font = lang == "en" ? "" : "";
+  return font;
+}
 /// #Check this CODEs Latter
 
 // ignore_for_file: unrelated_type_equality_checks

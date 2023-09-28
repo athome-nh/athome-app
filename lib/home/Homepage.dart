@@ -48,211 +48,228 @@ class _Home_SCState extends State<Home_SC> {
     "items": [
       {
         "id": 1,
-        "name": "Apples",
+        "nameEN": "Apples",
+        "nameAR": "تفاح",
+        "nameKU": "سێوسێوسێوسێوسێوسێوسێوسێوسێوسێوسێوسێوسێوسێوسێوسێو",
+        "contentsEN": "600 ml",
+        "contentsAR": "600 مل",
+        "contentsKU": "600 ملم",
+        "descriptionEN":
+            "Our digital platform allows the user to order from their mobile device or web access the shopping list of their groceries and household items.",
+        "descriptionAR":
+            "تتيح منصتنا الرقمية للمستخدم الطلب من أجهزته المحمولة أو الوصول إلى الويب إلى قائمة التسوق الخاصة بالبقالة والأدوات المنزلية.",
+        "descriptionKU":
+            "پلاتفۆرمی دیجیتاڵی ئێمە ڕێگە بە بەکارهێنەر دەدات کە داواکاری بکات لە ڕێگەی ئامێری مۆبایلەکەیەوە یان لە ڕێگەی ئینتەرنێتەوە بچێتە لیستی کڕین و کەلوپەلی ماڵەوە.",
+        "categoryId": 1,
+        "SubCategoryId": 2,
+        "purchase_price": 1500,
         "price": 2000,
-        "bestsell": false,
+        "price2": 2250,
+        "offer_price": 500,
+        "stock": 15,
+        "order_limit": 2,
         "highlight": true,
-        "discount": false,
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 5,
-        "category": 1,
-        "image_url":
+        "bestSell": false,
+        "available": true,
+        "coverImg":
             "https://www.pngall.com/wp-content/uploads/4/Grocery-PNG-Free-Download.png"
       },
       {
         "id": 2,
-        "name": "Milk",
-        "content": "700 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 2,
-        "bestsell": false,
-        "highlight": false,
-        "discount": true,
-        "price": 4000,
-        "category": 2,
-        "image_url":
+        "nameEN": "Apples",
+        "nameAR": "تفاح",
+        "nameKU": "سێو",
+        "contentsEN": "600 ml",
+        "contentsAR": "600 مل",
+        "contentsKU": "600 ملم",
+        "descriptionEN":
+            "Our digital platform allows the user to order from their mobile device or web access the shopping list of their groceries and household items.",
+        "descriptionAR":
+            "تتيح منصتنا الرقمية للمستخدم الطلب من أجهزته المحمولة أو الوصول إلى الويب إلى قائمة التسوق الخاصة بالبقالة والأدوات المنزلية.",
+        "descriptionKU":
+            "پلاتفۆرمی دیجیتاڵی ئێمە ڕێگە بە بەکارهێنەر دەدات کە داواکاری بکات لە ڕێگەی ئامێری مۆبایلەکەیەوە یان لە ڕێگەی ئینتەرنێتەوە بچێتە لیستی کڕین و کەلوپەلی ماڵەوە.",
+        "categoryId": 2,
+        "SubCategoryId": 2,
+        "purchase_price": 1500,
+        "price": 2000,
+        "price2": 2250,
+        "offer_price": 1750,
+        "stock": 15,
+        "order_limit": 2,
+        "highlight": true,
+        "bestSell": true,
+        "available": true,
+        "coverImg":
             "https://www.pngall.com/wp-content/uploads/4/Grocery-Transparent-Free-PNG.png"
       },
       {
         "id": 3,
-        "name": "Bread",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 1,
-        "bestsell": false,
-        "highlight": false,
-        "discount": true,
-        "price": 5000,
-        "category": 3,
-        "image_url":
+        "nameEN": "Apples",
+        "nameAR": "تفاح",
+        "nameKU": "سێو",
+        "contentsEN": "600 ml",
+        "contentsAR": "600 مل",
+        "contentsKU": "600 ملم",
+        "descriptionEN":
+            "Our digital platform allows the user to order from their mobile device or web access the shopping list of their groceries and household items.",
+        "descriptionAR":
+            "تتيح منصتنا الرقمية للمستخدم الطلب من أجهزته المحمولة أو الوصول إلى الويب إلى قائمة التسوق الخاصة بالبقالة والأدوات المنزلية.",
+        "descriptionKU":
+            "پلاتفۆرمی دیجیتاڵی ئێمە ڕێگە بە بەکارهێنەر دەدات کە داواکاری بکات لە ڕێگەی ئامێری مۆبایلەکەیەوە یان لە ڕێگەی ئینتەرنێتەوە بچێتە لیستی کڕین و کەلوپەلی ماڵەوە.",
+        "categoryId": 2,
+        "SubCategoryId": 2,
+        "purchase_price": 1500,
+        "price": 3000,
+        "price2": 3000,
+        "offer_price": 2000,
+        "stock": 15,
+        "order_limit": 2,
+        "highlight": true,
+        "bestSell": true,
+        "available": true,
+        "coverImg":
             "https://freepngimg.com/thumb/grocery/53730-5-grain-hd-download-free-image-thumb.png"
       },
       {
         "id": 4,
-        "name": "Eggs",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 1,
-        "bestsell": false,
-        "highlight": false,
-        "discount": true,
-        "price": 7000,
-        "category": 2,
-        "image_url":
-            "https://freepngimg.com/thumb/grocery/54005-1-grocery-image-png-file-hd-thumb.png"
-      },
-      {
-        "id": 6,
-        "name": "Eggs",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 1,
-        "bestsell": false,
+        "nameEN": "Apples",
+        "nameAR": "تفاح",
+        "nameKU": "سێو",
+        "contentsEN": "600 ml",
+        "contentsAR": "600 مل",
+        "contentsKU": "600 ملم",
+        "descriptionEN":
+            "Our digital platform allows the user to order from their mobile device or web access the shopping list of their groceries and household items.",
+        "descriptionAR":
+            "تتيح منصتنا الرقمية للمستخدم الطلب من أجهزته المحمولة أو الوصول إلى الويب إلى قائمة التسوق الخاصة بالبقالة والأدوات المنزلية.",
+        "descriptionKU":
+            "پلاتفۆرمی دیجیتاڵی ئێمە ڕێگە بە بەکارهێنەر دەدات کە داواکاری بکات لە ڕێگەی ئامێری مۆبایلەکەیەوە یان لە ڕێگەی ئینتەرنێتەوە بچێتە لیستی کڕین و کەلوپەلی ماڵەوە.",
+        "categoryId": 2,
+        "SubCategoryId": 2,
+        "purchase_price": 1500,
+        "price": 2000,
+        "price2": 2250,
+        "offer_price": 0,
+        "stock": 15,
+        "order_limit": 2,
         "highlight": true,
-        "discount": false,
-        "price": 7000,
-        "category": 2,
-        "image_url":
-            "https://www.pngplay.com/wp-content/uploads/7/Grocery-Bag-PNG-Clipart-Background.png"
-      },
-      {
-        "id": 7,
-        "name": "Eggs",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 1,
-        "bestsell": false,
-        "highlight": true,
-        "discount": false,
-        "price": 7000,
-        "category": 2,
-        "image_url":
-            "https://www.pngplay.com/wp-content/uploads/7/Grocery-Items-PNG-HD-Quality.png"
-      },
-      {
-        "id": 8,
-        "name": "Eggs",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 1,
-        "bestsell": true,
-        "highlight": true,
-        "discount": false,
-        "price": 7000,
-        "category": 2,
-        "image_url":
-            "https://freepngimg.com/thumb/grocery/41637-4-groceries-free-hd-image-thumb.png"
-      },
-      {
-        "id": 9,
-        "name": "MIR",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 1,
-        "bestsell": true,
-        "highlight": true,
-        "discount": false,
-        "price": 7000,
-        "category": 2,
-        "image_url":
+        "bestSell": false,
+        "available": true,
+        "coverImg":
             "https://freepngimg.com/thumb/grocery/54005-1-grocery-image-png-file-hd-thumb.png"
       },
       {
         "id": 5,
-        "name": "MIRO",
-        "content": "600 ml",
-        "description":
-            "Example text A common form of Lorem ipsum reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa.",
-        "quantity": 2,
-        "bestsell": true,
-        "highlight": false,
-        "discount": false,
-        "price": 8000,
-        "category": 5,
-        "image_url":
-            "https://freepngimg.com/thumb/grocery/41629-3-groceries-png-download-free-thumb.png"
+        "nameEN": "Apples",
+        "nameAR": "تفاح",
+        "nameKU": "سێو",
+        "contentsEN": "600 ml",
+        "contentsAR": "600 مل",
+        "contentsKU": "600 ملم",
+        "descriptionEN":
+            "Our digital platform allows the user to order from their mobile device or web access the shopping list of their groceries and household items.",
+        "descriptionAR":
+            "تتيح منصتنا الرقمية للمستخدم الطلب من أجهزته المحمولة أو الوصول إلى الويب إلى قائمة التسوق الخاصة بالبقالة والأدوات المنزلية.",
+        "descriptionKU":
+            "پلاتفۆرمی دیجیتاڵی ئێمە ڕێگە بە بەکارهێنەر دەدات کە داواکاری بکات لە ڕێگەی ئامێری مۆبایلەکەیەوە یان لە ڕێگەی ئینتەرنێتەوە بچێتە لیستی کڕین و کەلوپەلی ماڵەوە.",
+        "categoryId": 2,
+        "SubCategoryId": 2,
+        "purchase_price": 1500,
+        "price": 2000,
+        "price2": 2250,
+        "offer_price": 0,
+        "stock": 15,
+        "order_limit": 2,
+        "highlight": true,
+        "bestSell": true,
+        "available": true,
+        "coverImg":
+            "https://www.pngplay.com/wp-content/uploads/7/Grocery-Bag-PNG-Clipart-Background.png"
       }
     ],
     "cate": [
       {
         "id": 1,
-        "name": "Fruits",
-        "image_url":
-            "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+        "nameEN": "Fruits",
+        "nameAR": "فواكه",
+        "nameKU": "میوە",
+        "branch_id": 1,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       },
       {
         "id": 2,
-        "name": "Dairy",
-        "image_url":
-            "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+        "nameEN": "Dairy",
+        "nameAR": "الالبان",
+        "nameKU": "شیرەمەنی",
+        "branch_id": 1,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       },
       {
         "id": 3,
-        "name": "Bakery",
-        "image_url":
-            "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+        "nameEN": "Bakery",
+        "nameAR": "مخبز",
+        "nameKU": "نانەواخانە",
+        "branch_id": 1,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       },
       {
-        "id": 5,
-        "name": "Vegetables",
-        "image_url":
-            "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+        "id": 4,
+        "nameEN": "Vegetables",
+        "nameAR": "خضروات",
+        "nameKU": "سەوزە",
+        "branch_id": 1,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       }
     ],
     "subCate": [
       {
         "id": 1,
-        "idcate": 2,
-        "name": "Fruits",
+        "nameEN": "Fruits",
+        "nameAR": "فواكه",
+        "nameKU": "میوە",
+        "categoryId": 1,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+      },
+      {
+        "id": 2,
+        "nameEN": "Fruits",
+        "nameAR": "فواكه",
+        "nameKU": "میوە",
+        "categoryId": 2,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+      },
+      {
+        "id": 3,
+        "nameEN": "Fruits",
+        "nameAR": "فواكه",
+        "nameKU": "میوە",
+        "categoryId": 2,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       },
       {
         "id": 4,
-        "idcate": 2,
-        "name": "Dairy",
+        "nameEN": "Fruits",
+        "nameAR": "فواكه",
+        "nameKU": "میوە",
+        "categoryId": 2,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       },
       {
         "id": 5,
-        "idcate": 3,
-        "name": "Bakery",
-      },
-      {
-        "id": 4,
-        "idcate": 5,
-        "name": "Dairy1",
-      },
-      {
-        "id": 6,
-        "idcate": 5,
-        "name": "Dairy2",
-      },
-      {
-        "id": 6,
-        "idcate": 3,
-        "name": "Dairy3",
-      },
-      {
-        "id": 8,
-        "idcate": 2,
-        "name": "Dairy4",
-      },
-      {
-        "id": 9,
-        "idcate": 3,
-        "name": "Dairy5",
-      },
-      {
-        "id": 8,
-        "idcate": 2,
-        "name": "Vegetables",
+        "nameEN": "Fruits",
+        "nameAR": "فواكه",
+        "nameKU": "میوە",
+        "categoryId": 1,
+        "isShow": true,
+        "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
       }
     ]
   };
@@ -262,6 +279,7 @@ class _Home_SCState extends State<Home_SC> {
     final directory = await getTemporaryDirectory();
     String path = "${directory.path}/dict.json";
     File f = File(path);
+    print(f.existsSync());
     if (f.existsSync()) {
       final jsonData = f.readAsStringSync();
       var data = json.decode(decryptAES(jsonData));
@@ -276,7 +294,7 @@ class _Home_SCState extends State<Home_SC> {
     // final String jsonString =
     //     await rootBundle.loadString('assets/images/example2.json');
     var jsonString = json.encode(collectionData);
-    
+
     final directory = await getTemporaryDirectory();
     String path = "${directory.path}/dict.json";
 
@@ -296,7 +314,7 @@ class _Home_SCState extends State<Home_SC> {
 
     receivePort.listen((data) {
       isolate.kill();
-      print(data);
+
       if (!go) {
         update(context, data);
       }
@@ -334,7 +352,11 @@ class _Home_SCState extends State<Home_SC> {
     if (loadData) {
       loadPostData().then((data) {
         loadData = false;
-        update(context, data);
+
+        if (data.toString() != "[]") {
+          update(context, data);
+        }
+
         getPost();
       });
     } else {
@@ -465,7 +487,7 @@ class _Home_SCState extends State<Home_SC> {
                   children: [
                     // Container(
                     //   width: getWidth(context, 100),
-                    //   height: getHeight(context, 25),
+                    //   height: getHeight(context, 28),
                     //   decoration: const BoxDecoration(
                     //     color: Color(0xffF2F2F2),
                     //   ),
@@ -588,7 +610,7 @@ class _Home_SCState extends State<Home_SC> {
                                               BorderRadius.circular(100)),
                                       child: Center(
                                         child: CachedNetworkImage(
-                                          imageUrl: cateItem.imageUrl!,
+                                          imageUrl: cateItem.img!,
                                           placeholder: (context, url) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
@@ -606,7 +628,11 @@ class _Home_SCState extends State<Home_SC> {
                                   height: getHeight(context, 1),
                                 ),
                                 Text(
-                                  cateItem.name!,
+                                  lang == "en"
+                                      ? cateItem.nameEn!
+                                      : lang == "ar"
+                                          ? cateItem.nameAr!
+                                          : cateItem.nameKu!,
                                   style: TextStyle(
                                       color: mainColorGrey,
                                       fontFamily: mainFontMontserrat4,
@@ -665,7 +691,7 @@ class _Home_SCState extends State<Home_SC> {
                       ],
                     ),
                     Container(
-                      height: getHeight(context, 25),
+                      height: getHeight(context, 28),
                       //  decoration: BoxDecoration(border: Border.all()),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -683,10 +709,14 @@ class _Home_SCState extends State<Home_SC> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Stack(
-                                  alignment: Alignment.bottomLeft,
+                                  alignment: lang == "en"
+                                      ? Alignment.bottomLeft
+                                      : Alignment.bottomRight,
                                   children: [
                                     Stack(
-                                      alignment: Alignment.topRight,
+                                      alignment: lang == "en"
+                                          ? Alignment.topRight
+                                          : Alignment.topLeft,
                                       children: [
                                         GestureDetector(
                                           onTap: () {
@@ -708,7 +738,7 @@ class _Home_SCState extends State<Home_SC> {
                                             child: Center(
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    product.imageUrl.toString(),
+                                                    product.coverImg.toString(),
                                                 placeholder: (context, url) =>
                                                     Image.asset(
                                                         "assets/images/002_logo_1.png"),
@@ -729,7 +759,8 @@ class _Home_SCState extends State<Home_SC> {
                                                 confirmAlertlogin(
                                                     context,
                                                     "Login Please".tr,
-                                                    "You need to login first".tr);
+                                                    "You need to login first"
+                                                        .tr);
                                                 return;
                                               }
                                               final cartItem = CartItem(
@@ -777,12 +808,21 @@ class _Home_SCState extends State<Home_SC> {
                                         width: getHeight(context, 6),
                                         height: getHeight(context, 3),
                                         decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.only(
-                                            //  topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0),
-                                            // bottomLeft: Radius.circular(0.0),
-                                            bottomRight: Radius.circular(20.0),
-                                          ),
+                                          borderRadius: lang == "en"
+                                              ? BorderRadius.only(
+                                                  //  topLeft: Radius.circular(20.0),
+                                                  topRight:
+                                                      Radius.circular(20.0),
+                                                  // bottomLeft: Radius.circular(0.0),
+                                                  bottomRight:
+                                                      Radius.circular(20.0),
+                                                )
+                                              : BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(20.0),
+                                                  bottomLeft:
+                                                      Radius.circular(20.0),
+                                                ),
                                           color: mainColorRed,
                                         ),
                                         child: Row(
@@ -790,7 +830,12 @@ class _Home_SCState extends State<Home_SC> {
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Text(
-                                              "30\%",
+                                              calculatePercentageDiscount(
+                                                  double.parse(product.price!
+                                                      .toString()),
+                                                  double.parse(product
+                                                      .offerPrice!
+                                                      .toString())),
                                               style: TextStyle(
                                                   color: mainColorWhite,
                                                   fontFamily:
@@ -799,7 +844,7 @@ class _Home_SCState extends State<Home_SC> {
                                             ),
                                             Icon(Icons.discount_rounded,
                                                 color: mainColorWhite,
-                                                size: 15),
+                                                size: 12),
                                           ],
                                         )),
                                   ],
@@ -807,14 +852,18 @@ class _Home_SCState extends State<Home_SC> {
                                 Container(
                                   //decoration: BoxDecoration(border: Border.all()),
                                   width: getWidth(context, 32),
-                                  height: getHeight(context, 10),
+                                  height: getHeight(context, 13),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        product.name.toString(),
+                                        lang == "en"
+                                            ? product.nameEn.toString()
+                                            : lang == "ar"
+                                                ? product.nameAr.toString()
+                                                : product.nameKu.toString(),
                                         maxLines: 2,
                                         style: TextStyle(
                                             color: mainColorGrey,
@@ -825,7 +874,11 @@ class _Home_SCState extends State<Home_SC> {
                                         height: 3,
                                       ),
                                       Text(
-                                        product.content.toString(),
+                                        lang == "en"
+                                            ? product.contentsEn.toString()
+                                            : lang == "ar"
+                                                ? product.contentsAr.toString()
+                                                : product.contentsKu.toString(),
                                         maxLines: 1,
                                         style: TextStyle(
                                             color:
@@ -837,7 +890,7 @@ class _Home_SCState extends State<Home_SC> {
                                         height: 3,
                                       ),
                                       Text(
-                                        "200,000 IQD",
+                                        product.price!.toString() + " IQD",
                                         maxLines: 1,
                                         style: TextStyle(
                                             decoration:
@@ -847,7 +900,7 @@ class _Home_SCState extends State<Home_SC> {
                                             fontSize: 11),
                                       ),
                                       Text(
-                                        "100,500 IQD",
+                                        product.offerPrice!.toString() + " IQD",
                                         maxLines: 1,
                                         style: TextStyle(
                                             color: mainColorRed,
@@ -866,6 +919,7 @@ class _Home_SCState extends State<Home_SC> {
                     SizedBox(
                       height: getHeight(context, 1),
                     ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -913,7 +967,7 @@ class _Home_SCState extends State<Home_SC> {
                       ],
                     ),
                     Container(
-                      height: getHeight(context, 25),
+                      height: getHeight(context, 28),
                       //  decoration: BoxDecoration(border: Border.all()),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -931,7 +985,9 @@ class _Home_SCState extends State<Home_SC> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Stack(
-                                  alignment: Alignment.topRight,
+                                  alignment: lang == "en"
+                                      ? Alignment.topRight
+                                      : Alignment.topLeft,
                                   children: [
                                     GestureDetector(
                                       onTap: () {
@@ -953,7 +1009,7 @@ class _Home_SCState extends State<Home_SC> {
                                         child: Center(
                                           child: CachedNetworkImage(
                                             imageUrl:
-                                                product.imageUrl.toString(),
+                                                product.coverImg.toString(),
                                             placeholder: (context, url) =>
                                                 Image.asset(
                                                     "assets/images/002_logo_1.png"),
@@ -1020,14 +1076,18 @@ class _Home_SCState extends State<Home_SC> {
                                 Container(
                                   //decoration: BoxDecoration(border: Border.all()),
                                   width: getWidth(context, 32),
-                                  height: getHeight(context, 8),
+                                  height: getHeight(context, 13),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        product.name.toString(),
+                                        lang == "en"
+                                            ? product.nameEn.toString()
+                                            : lang == "ar"
+                                                ? product.nameAr.toString()
+                                                : product.nameKu.toString(),
                                         maxLines: 2,
                                         style: TextStyle(
                                             color: mainColorGrey,
@@ -1038,7 +1098,11 @@ class _Home_SCState extends State<Home_SC> {
                                         height: 3,
                                       ),
                                       Text(
-                                        product.content.toString(),
+                                        lang == "en"
+                                            ? product.contentsEn.toString()
+                                            : lang == "ar"
+                                                ? product.contentsAr.toString()
+                                                : product.contentsKu.toString(),
                                         maxLines: 1,
                                         style: TextStyle(
                                             color:
@@ -1050,7 +1114,7 @@ class _Home_SCState extends State<Home_SC> {
                                         height: 3,
                                       ),
                                       Text(
-                                        "200,000 IQD",
+                                        product.price!.toString() + " IQD",
                                         maxLines: 1,
                                         style: TextStyle(
                                             color: mainColorGrey,
@@ -1066,6 +1130,7 @@ class _Home_SCState extends State<Home_SC> {
                         },
                       ),
                     ),
+
                     SizedBox(
                       height: getHeight(context, 1),
                     ),
@@ -1179,7 +1244,7 @@ class _Home_SCState extends State<Home_SC> {
                       ],
                     ),
                     Container(
-                      height: getHeight(context, 25),
+                      height: getHeight(context, 28),
                       //  decoration: BoxDecoration(border: Border.all()),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -1197,7 +1262,9 @@ class _Home_SCState extends State<Home_SC> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Stack(
-                                  alignment: Alignment.topRight,
+                                  alignment: lang == "en"
+                                      ? Alignment.topRight
+                                      : Alignment.topLeft,
                                   children: [
                                     GestureDetector(
                                       onTap: () {
@@ -1219,7 +1286,7 @@ class _Home_SCState extends State<Home_SC> {
                                         child: Center(
                                           child: CachedNetworkImage(
                                             imageUrl:
-                                                product.imageUrl.toString(),
+                                                product.coverImg.toString(),
                                             placeholder: (context, url) =>
                                                 Image.asset(
                                                     "assets/images/002_logo_1.png"),
@@ -1239,8 +1306,8 @@ class _Home_SCState extends State<Home_SC> {
                                           if (!isLogin) {
                                             confirmAlertlogin(
                                                 context,
-                                                "Login Please",
-                                                "You need to login first");
+                                                "Login Please".tr,
+                                                "You need to login first".tr);
                                             return;
                                           }
                                           final cartItem =
@@ -1286,14 +1353,18 @@ class _Home_SCState extends State<Home_SC> {
                                 Container(
                                   //decoration: BoxDecoration(border: Border.all()),
                                   width: getWidth(context, 32),
-                                  height: getHeight(context, 8),
+                                  height: getHeight(context, 13),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        product.name.toString(),
+                                        lang == "en"
+                                            ? product.nameEn.toString()
+                                            : lang == "ar"
+                                                ? product.nameAr.toString()
+                                                : product.nameKu.toString(),
                                         maxLines: 2,
                                         style: TextStyle(
                                             color: mainColorGrey,
@@ -1304,7 +1375,11 @@ class _Home_SCState extends State<Home_SC> {
                                         height: 3,
                                       ),
                                       Text(
-                                        product.content.toString(),
+                                        lang == "en"
+                                            ? product.contentsEn.toString()
+                                            : lang == "ar"
+                                                ? product.contentsAr.toString()
+                                                : product.contentsKu.toString(),
                                         maxLines: 1,
                                         style: TextStyle(
                                             color:
@@ -1316,7 +1391,7 @@ class _Home_SCState extends State<Home_SC> {
                                         height: 3,
                                       ),
                                       Text(
-                                        "200,000 IQD",
+                                        product.price!.toString() + " IQD",
                                         maxLines: 1,
                                         style: TextStyle(
                                             color: mainColorGrey,

@@ -2,26 +2,49 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
+
 class SubCategory {
   final int? id;
-  final int? idcate;
-  final String? name;
+  final String? nameEn;
+  final String? nameAr;
+  final String? nameKu;
+  final int? categoryId;
+  final bool? isShow;
+  final String? img;
 
-  const SubCategory({this.id, this.idcate, this.name});
+  const SubCategory({
+    this.id,
+    this.nameEn,
+    this.nameAr,
+    this.nameKu,
+    this.categoryId,
+    this.isShow,
+    this.img,
+  });
 
   @override
-  String toString() => 'SubCategory(id: $id, idcate: $idcate, name: $name)';
+  String toString() {
+    return 'SubCategory(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, categoryId: $categoryId, isShow: $isShow, img: $img)';
+  }
 
   factory SubCategory.fromMap(Map<String, dynamic> data) => SubCategory(
         id: data['id'] as int?,
-        idcate: data['idcate'] as int?,
-        name: data['name'] as String?,
+        nameEn: data['nameEN'] as String?,
+        nameAr: data['nameAR'] as String?,
+        nameKu: data['nameKU'] as String?,
+        categoryId: data['categoryId'] as int?,
+        isShow: data['isShow'] as bool?,
+        img: data['img'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
         'id': id,
-        'idcate': idcate,
-        'name': name,
+        'nameEN': nameEn,
+        'nameAR': nameAr,
+        'nameKU': nameKu,
+        'categoryId': categoryId,
+        'isShow': isShow,
+        'img': img,
       };
 
   /// `dart:convert`
@@ -38,13 +61,21 @@ class SubCategory {
 
   SubCategory copyWith({
     int? id,
-    int? idcate,
-    String? name,
+    String? nameEn,
+    String? nameAr,
+    String? nameKu,
+    int? categoryId,
+    bool? isShow,
+    String? img,
   }) {
     return SubCategory(
       id: id ?? this.id,
-      idcate: idcate ?? this.idcate,
-      name: name ?? this.name,
+      nameEn: nameEn ?? this.nameEn,
+      nameAr: nameAr ?? this.nameAr,
+      nameKu: nameKu ?? this.nameKu,
+      categoryId: categoryId ?? this.categoryId,
+      isShow: isShow ?? this.isShow,
+      img: img ?? this.img,
     );
   }
 
@@ -57,5 +88,12 @@ class SubCategory {
   }
 
   @override
-  int get hashCode => id.hashCode ^ idcate.hashCode ^ name.hashCode;
+  int get hashCode =>
+      id.hashCode ^
+      nameEn.hashCode ^
+      nameAr.hashCode ^
+      nameKu.hashCode ^
+      categoryId.hashCode ^
+      isShow.hashCode ^
+      img.hashCode;
 }
