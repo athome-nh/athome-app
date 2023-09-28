@@ -2,20 +2,21 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 SnackBar noInternetSnackBar = SnackBar(
   duration: const Duration(seconds: 4),
-  content: const Text(
-    'You\'re offline, connect to a network.',
+  content: Text(
+    'You\'re offline, connect to a network.'.tr,
   ),
   backgroundColor: mainColorGrey,
 );
-SnackBar internetBackSnackBar = const SnackBar(
+SnackBar internetBackSnackBar = SnackBar(
   duration: Duration(seconds: 3),
   content: Text(
-    'You\'re online ✅',
+    'You\'re online ✅'.tr,
   ),
   backgroundColor: Colors.green,
 );
@@ -104,8 +105,8 @@ Future<void> confirmAlertAthome(
     type: QuickAlertType.confirm,
     title: title,
     text: content,
-    confirmBtnText: 'Yes',
-    cancelBtnText: 'No',
+    confirmBtnText: 'Yes'.tr,
+    cancelBtnText: 'No'.tr,
   );
 }
 
@@ -189,7 +190,7 @@ Future<void> alert(BuildContext context, String title, String message) async {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "OK",
+                      "OK".tr,
                       style: TextStyle(
                           fontFamily: 'defaultf',
                           color: mainColorWhite,
@@ -279,7 +280,7 @@ Future<void> yesNoOptrins(
                             // Get.back();
                           },
                           child: Text(
-                            "Cancle",
+                            "Cancle".tr,
                             style: TextStyle(
                                 fontFamily: 'defaultf',
                                 color: mainColorRed,
@@ -305,7 +306,7 @@ Future<void> yesNoOptrins(
                         child: TextButton(
                           onPressed: () {},
                           child: Text(
-                            "ok",
+                            "OK".tr,
                             style: TextStyle(
                                 fontFamily: 'defaultf',
                                 color: mainColorGrey,
@@ -362,7 +363,7 @@ loginFirstContainer(BuildContext context) {
                   ),
                   child: Center(
                     child: Text(
-                      "Warning",
+                      "Warning".tr,
                       style: TextStyle(
                         fontFamily: "RK",
                         color: mainColorWhite,
@@ -397,7 +398,7 @@ loginFirstContainer(BuildContext context) {
                 ),
                 SizedBox(height: getHeight(context, 4)),
                 Text(
-                  "You need to login first",
+                  "You need to login first".tr,
                   style: TextStyle(
                       fontFamily: 'defaultf',
                       color: mainColorWhite,
@@ -424,7 +425,7 @@ loginFirstContainer(BuildContext context) {
                       );
                     },
                     child: Text(
-                      'Log in',
+                      'Log in'.tr,
                       style: TextStyle(
                         fontFamily: 'defaultf',
                         fontSize: 18,
@@ -486,7 +487,7 @@ loginFirstModal(BuildContext context) {
                         ),
                         child: Center(
                           child: Text(
-                            "Warning",
+                            "Warning".tr,
                             style: TextStyle(
                               fontFamily: "RK",
                               color: mainColorWhite,
@@ -522,7 +523,7 @@ loginFirstModal(BuildContext context) {
                       ),
                       SizedBox(height: getHeight(context, 4)),
                       Text(
-                        "You need to login first",
+                        "You need to login first".tr,
                         style: TextStyle(
                             fontFamily: 'defaultf',
                             color: mainColorRed,
@@ -550,7 +551,7 @@ loginFirstModal(BuildContext context) {
                             );
                           },
                           child: Text(
-                            'Log in',
+                            'Log in'.tr,
                             style: TextStyle(
                               fontFamily: 'defaultf',
                               fontSize: 18,

@@ -1,5 +1,6 @@
 import 'package:athome/Config/property.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -17,7 +18,7 @@ class _AddressState extends State<Address> {
       backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
-          "Saved Address",
+          "Saved Address".tr,
           style: TextStyle(
               color: mainColorGrey,
               fontFamily: mainFontMontserrat4,
@@ -109,7 +110,7 @@ class _AddressState extends State<Address> {
                       color: mainColorRed,
                     ),
                     Text(
-                      "Add your New address",
+                      "Add your New address".tr,
                       style: TextStyle(
                           color: mainColorGrey,
                           fontFamily: mainFontMontserrat4,

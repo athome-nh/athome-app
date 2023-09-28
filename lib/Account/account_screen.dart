@@ -1,15 +1,10 @@
 import 'package:athome/Account/about_screen.dart';
 import 'package:athome/Config/local_data.dart';
-import 'package:athome/Config/my_widget.dart';
-
 import 'package:athome/Switchscreen.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../Config/property.dart';
-import 'language_screen.dart';
-import 'order_screen.dart';
 import 'profile_screen.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -308,13 +303,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   height: getHeight(context, 1),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LanguageScreen()),
-                    );
-                  },
+                  onTap: () {},
                   child: Container(
                     width: getWidth(context, 85),
                     height: getHeight(context, 10),
