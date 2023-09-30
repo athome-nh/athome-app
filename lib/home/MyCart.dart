@@ -38,7 +38,7 @@ class _MyCartState extends State<MyCart> {
           title: Text(
             "My Cart".tr,
             style: TextStyle(
-                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -151,7 +151,8 @@ class _MyCartState extends State<MyCart> {
                                                       maxLines: 2,
                                                       style: TextStyle(
                                                           color: mainColorGrey,
-                                                          fontFamily: spedaBold,
+                                                          fontFamily:
+                                                              mainFontbold,
                                                           fontSize: 13),
                                                     ),
                                                   ),
@@ -172,7 +173,7 @@ class _MyCartState extends State<MyCart> {
                                                             color:
                                                                 mainColorGrey,
                                                             fontFamily:
-                                                                spedaBold,
+                                                                mainFontbold,
                                                             fontSize: 10),
                                                       ),
                                                       cartitem.offerPrice! > 0
@@ -184,7 +185,7 @@ class _MyCartState extends State<MyCart> {
                                                                   color:
                                                                       mainColorRed,
                                                                   fontFamily:
-                                                                      spedaBold,
+                                                                      mainFontbold,
                                                                   fontSize: 10),
                                                             )
                                                           : SizedBox(),
@@ -197,7 +198,8 @@ class _MyCartState extends State<MyCart> {
                                                         style: TextStyle(
                                                             color:
                                                                 mainColorGrey,
-                                                            fontFamily: Speda,
+                                                            fontFamily:
+                                                                mainFontnormal,
                                                             fontSize: 12),
                                                       ),
                                                       Text(
@@ -215,7 +217,8 @@ class _MyCartState extends State<MyCart> {
                                                         style: TextStyle(
                                                             color:
                                                                 mainColorGrey,
-                                                            fontFamily: Speda,
+                                                            fontFamily:
+                                                                mainFontnormal,
                                                             fontSize: 12),
                                                       ),
                                                     ],
@@ -276,7 +279,8 @@ class _MyCartState extends State<MyCart> {
                                                           .toString(),
                                                       style: TextStyle(
                                                           color: mainColorGrey,
-                                                          fontFamily: Speda,
+                                                          fontFamily:
+                                                              mainFontnormal,
                                                           fontSize: 18),
                                                     ),
                                                     GestureDetector(
@@ -340,7 +344,7 @@ class _MyCartState extends State<MyCart> {
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: spedaBold,
+                                    fontFamily: mainFontbold,
                                     fontSize: 14),
                                 labelText: "Delivery Instrusctions".tr,
                                 hintText: "Type Notes here".tr,
@@ -382,7 +386,7 @@ class _MyCartState extends State<MyCart> {
                                 "Sub Total".tr,
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: Speda,
+                                    fontFamily: mainFontnormal,
                                     fontSize: 13),
                               ),
                               Text(
@@ -390,7 +394,7 @@ class _MyCartState extends State<MyCart> {
                                 total.toStringAsFixed(2),
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: spedaBold,
+                                    fontFamily: mainFontbold,
                                     fontSize: 14),
                               ),
                             ],
@@ -409,7 +413,7 @@ class _MyCartState extends State<MyCart> {
                                 "Delivery Cost".tr,
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: Speda,
+                                    fontFamily: mainFontnormal,
                                     fontSize: 13),
                               ),
                               Text(
@@ -417,7 +421,7 @@ class _MyCartState extends State<MyCart> {
                                 "20,000 IQD",
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: spedaBold,
+                                    fontFamily: mainFontbold,
                                     fontSize: 14),
                               ),
                             ],
@@ -447,7 +451,7 @@ class _MyCartState extends State<MyCart> {
                                 "Total".tr,
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: Speda,
+                                    fontFamily: mainFontnormal,
                                     fontSize: 13),
                               ),
                               Text(
@@ -455,7 +459,7 @@ class _MyCartState extends State<MyCart> {
                                 "60,000 IQD",
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: spedaBold,
+                                    fontFamily: mainFontbold,
                                     fontSize: 18),
                               ),
                             ],
@@ -507,7 +511,7 @@ class _MyCartState extends State<MyCart> {
     return QuickAlert.show(
       context: context,
       confirmBtnColor: mainColorRed,
-      type: QuickAlertType.warning,
+      type: QuickAlertType.error,
       title: title,
       text: content,
       confirmBtnText: "Yes".tr,

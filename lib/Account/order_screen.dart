@@ -17,8 +17,8 @@ class _OrderScreenState extends State<OrderScreen> {
       appBar: AppBar(
         title: Text(
           "My Order",
-          style:
-              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 20),
+          style: TextStyle(
+              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -77,14 +77,14 @@ class _OrderScreenState extends State<OrderScreen> {
                           "Order ID : 123456789",
                           style: TextStyle(
                               fontSize: 18,
-                              fontFamily: Speda,
+                              fontFamily: mainFontnormal,
                               color: mainColorGrey),
                         ),
                         subtitle: Text(
                           "Order ID : 123456789",
                           style: TextStyle(
                               fontSize: 10,
-                              fontFamily: Speda,
+                              fontFamily: mainFontnormal,
                               color: mainColorGrey),
                         ),
                       ),

@@ -17,8 +17,8 @@ class _NotficationScreenState extends State<NotficationScreen> {
       appBar: AppBar(
         title: Text(
           "Notfication",
-          style:
-              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+          style: TextStyle(
+              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -64,7 +64,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                       style: TextStyle(
                                           fontSize: 20,
                                           color: mainColorGrey,
-                                          fontFamily: spedaBold),
+                                          fontFamily: mainFontbold),
                                     ),
                                   ),
                                   SizedBox(
@@ -74,12 +74,12 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 2)),
                                     child: Text(
-                                      'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order',
-                                      style: TextStyle(
+                                        'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order',
+                                        style: TextStyle(
                                           fontSize: 16,
                                           color: mainColorGrey,
-                                          fontFamily: Speda),
-                                    ),
+                                          fontFamily: mainFontnormal,
+                                        )),
                                   ),
                                 ],
                               ),
@@ -103,14 +103,14 @@ class _NotficationScreenState extends State<NotficationScreen> {
                               "You orders has been picked up",
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: Speda,
+                                  fontFamily: mainFontnormal,
                                   fontSize: 14),
                             ),
                             subtitle: Text(
                               "Now",
                               style: TextStyle(
                                   color: mainColorGrey.withOpacity(0.5),
-                                  fontFamily: Speda,
+                                  fontFamily: mainFontnormal,
                                   fontSize: 12),
                             ),
                           ),

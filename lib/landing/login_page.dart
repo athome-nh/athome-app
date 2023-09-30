@@ -123,7 +123,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   child: Text(
                     'Wellcome back',
                     style: TextStyle(
-                        fontFamily: spedaBold,
+                        fontFamily: mainFontbold,
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
                         color: mainColorGrey),

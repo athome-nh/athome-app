@@ -34,32 +34,11 @@ class _SettingState extends State<Setting> {
             backgroundColor: mainColorWhite,
             title: Text(
               'My App',
-              style: TextStyle(color: mainColorGrey),
+              style: TextStyle(
+                  color: mainColorGrey, fontFamily: mainFontbold, fontSize: 25),
             ),
             centerTitle: true,
             actions: [
-              //     DropdownButton<String>(
-              //   value: selectedLanguage,
-              //   onChanged: (value) {
-              //     setState(() {
-              //       selectedLanguage = value!;
-              //     });
-              //   },
-              // items: const [
-              //   DropdownMenuItem<String>(
-              //     value: 'English',
-              //     child: Text('English'),
-              //   ),
-              //   DropdownMenuItem<String>(
-              //     value: 'Spanish',
-              //     child: Text('Spanish'),
-              //   ),
-              //   DropdownMenuItem<String>(
-              //     value: 'French',
-              //     child: Text('French'),
-              //   ),
-              // ],
-              // ),
               Padding(
                 padding: const EdgeInsets.only(right: 25),
                 child: DropdownButton<String>(
@@ -97,7 +76,10 @@ class _SettingState extends State<Setting> {
                   items: [
                     DropdownMenuItem(
                       value: 'English',
-                      child: const Text('EN '),
+                      child: Text(
+                        'EN ',
+                        style: TextStyle(fontFamily: mainFontnormal),
+                      ),
                     ),
                     const DropdownMenuItem(
                       value: 'Arabic',
@@ -149,7 +131,7 @@ class _SettingState extends State<Setting> {
                                   Text(
                                     "Jeger Hunar Iphony",
                                     style: TextStyle(
-                                        fontFamily: spedaBold,
+                                        fontFamily: mainFontbold,
                                         fontSize: 18,
                                         color: mainColorGrey),
                                   ),
@@ -159,7 +141,7 @@ class _SettingState extends State<Setting> {
                                   Text(
                                     "+964 7xx xxx xxxx",
                                     style: TextStyle(
-                                        fontFamily: spedaBold,
+                                        fontFamily: mainFontbold,
                                         fontSize: 18,
                                         color: mainColorGrey),
                                   ),
@@ -200,7 +182,7 @@ class _SettingState extends State<Setting> {
                                           Text(
                                             "Save",
                                             style: TextStyle(
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 12,
                                                 color: mainColorWhite),
                                           ),
@@ -233,7 +215,7 @@ class _SettingState extends State<Setting> {
                                         Text(
                                           "Cancle",
                                           style: TextStyle(
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 12,
                                               color: mainColorWhite),
                                         ),
@@ -273,7 +255,7 @@ class _SettingState extends State<Setting> {
                                           Text(
                                             " Edit",
                                             style: TextStyle(
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 12,
                                                 color: mainColorWhite),
                                           ),
@@ -301,7 +283,7 @@ class _SettingState extends State<Setting> {
                                       Text(
                                         " I want to Delete my account",
                                         style: TextStyle(
-                                            fontFamily: spedaBold,
+                                            fontFamily: mainFontbold,
                                             fontSize: 12,
                                             color: mainColorWhite),
                                       ),
@@ -351,8 +333,9 @@ class _SettingState extends State<Setting> {
                                       ),
                                       suffixIconColor: mainColorWhite,
                                       hintText: 'Enter Name',
-                                      hintStyle:
-                                          TextStyle(color: mainColorWhite),
+                                      hintStyle: TextStyle(
+                                          color: mainColorWhite,
+                                          fontFamily: mainFontnormal),
                                       suffixIcon: Icon(
                                         isEdit ? Icons.edit : Icons.person,
                                       ),
@@ -504,7 +487,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "Loyalty point",
                                   style: TextStyle(
-                                      fontFamily: spedaBold,
+                                      fontFamily: mainFontbold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),
@@ -538,7 +521,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "Address",
                                   style: TextStyle(
-                                      fontFamily: spedaBold,
+                                      fontFamily: mainFontbold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),
@@ -572,7 +555,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "About us",
                                   style: TextStyle(
-                                      fontFamily: spedaBold,
+                                      fontFamily: mainFontbold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),
@@ -606,7 +589,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "Signout",
                                   style: TextStyle(
-                                      fontFamily: spedaBold,
+                                      fontFamily: mainFontbold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),

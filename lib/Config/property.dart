@@ -1,9 +1,17 @@
 /// All the necessary methods for Fonts, Colors and Images to build the Athome App
 import 'package:flutter/material.dart';
 
-/// Define { Fonts } in AtHome
-String spedaBold = 'spedaBold';
-String Speda = 'Speda';
+/// Define {NRT Fonts } in AtHome
+String mainFontbold = 'nrtB';
+String mainFontnormal = 'nrtN';
+
+/// Define {SPEDA Fonts } in AtHome
+// String mainFontbold = 'spedaB';
+// String mainFontnormal = 'spedaN';
+
+/// Define {Iranyakan Fonts } in AtHome
+// String mainFontbold = 'iraniB';
+// String mainFontnormal = 'iraniN';
 
 /// Define { Colors } in AtHome
 Color mainColorRed = const Color(0xFFe73339);

@@ -74,7 +74,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                           child: Text(
                             "Get Start",
                             style: TextStyle(
-                              fontFamily: spedaBold,
+                              fontFamily: mainFontbold,
                               fontSize: getWidth(context, 4),
                               color: mainColorWhite,
                             ),
@@ -103,7 +103,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                               child: Text(
                                 'SKIP',
                                 style: TextStyle(
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: getHeight(context, 2),
                                   color: mainColorBlack,
                                 ),
@@ -184,7 +184,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                       Text(
                                         currentIndex == 2 ? 'FINISH' : 'Next',
                                         style: TextStyle(
-                                          fontFamily: spedaBold,
+                                          fontFamily: mainFontbold,
                                           fontSize: getHeight(context, 2),
                                           color: mainColorWhite,
                                         ),
@@ -242,7 +242,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
               Text(
                 "Shop Smarter & Easier",
                 style: TextStyle(
-                  fontFamily: spedaBold,
+                  fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
                   color: mainColorGrey,
                 ),
@@ -258,7 +258,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                 child: Text(
                   "is an innovative platform designed to enhance your online shopping experience.",
                   style: TextStyle(
-                    fontFamily: Speda,
+                    fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
                     color: mainColorGrey,
                   ),
@@ -308,7 +308,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
               Text(
                 "Learn From the Best",
                 style: TextStyle(
-                  fontFamily: spedaBold,
+                  fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
                   color: mainColorBlack,
                 ),
@@ -324,7 +324,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                 child: Text(
                   "We will guide you with the best tutors and experts in Kurdistan/Iraq",
                   style: TextStyle(
-                    fontFamily: Speda,
+                    fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
                     color: mainColorGrey,
                   ),
@@ -372,7 +372,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
               Text(
                 "Your Pocket's Friend",
                 style: TextStyle(
-                  fontFamily: spedaBold,
+                  fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
                   color: mainColorGrey,
                 ),
@@ -388,7 +388,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                 child: Text(
                   "Learn whatever you want, whenever or wherever you are.",
                   style: TextStyle(
-                    fontFamily: Speda,
+                    fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
                     color: mainColorGrey,
                   ),

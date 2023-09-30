@@ -47,7 +47,9 @@ class _CategoriesState extends State<Categories> {
             title: Text(
               "All Categories".tr,
               style: TextStyle(
-                  color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+                  color: mainColorGrey,
+                  fontFamily: mainFontnormal,
+                  fontSize: 24),
             ),
             centerTitle: true,
             backgroundColor: mainColorWhite,
@@ -63,7 +65,9 @@ class _CategoriesState extends State<Categories> {
             bottom: TabBar(
               labelColor: mainColorGrey,
               labelStyle: TextStyle(
-                  fontSize: 14, fontFamily: Speda, color: mainColorGrey),
+                  fontSize: 14,
+                  fontFamily: mainFontnormal,
+                  color: mainColorGrey),
               // Change the color of the selected tab indicator
               indicatorColor: mainColorRed,
               tabs: [
@@ -153,7 +157,7 @@ class _CategoriesState extends State<Categories> {
                                               : cateItem.nameKu!,
                                       style: TextStyle(
                                           color: mainColorGrey,
-                                          fontFamily: Speda,
+                                          fontFamily: mainFontnormal,
                                           fontSize: 14),
                                     ),
                                   ),
@@ -327,7 +331,8 @@ class _CategoriesState extends State<Categories> {
                                                         style: TextStyle(
                                                             color:
                                                                 mainColorWhite,
-                                                            fontFamily: Speda,
+                                                            fontFamily:
+                                                                mainFontnormal,
                                                             fontSize: 12),
                                                       ),
                                                       Icon(
@@ -363,7 +368,7 @@ class _CategoriesState extends State<Categories> {
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       color: mainColorGrey,
-                                                      fontFamily: spedaBold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 16),
                                                 ),
                                                 SizedBox(
@@ -382,7 +387,7 @@ class _CategoriesState extends State<Categories> {
                                                   style: TextStyle(
                                                       color: mainColorGrey
                                                           .withOpacity(0.5),
-                                                      fontFamily: spedaBold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 9),
                                                 ),
                                                 SizedBox(
@@ -399,7 +404,8 @@ class _CategoriesState extends State<Categories> {
                                                               .lineThrough
                                                           : TextDecoration.none,
                                                       color: mainColorGrey,
-                                                      fontFamily: Speda,
+                                                      fontFamily:
+                                                          mainFontnormal,
                                                       fontSize: 11),
                                                 ),
                                                 product.offerPrice! > 0
@@ -410,7 +416,7 @@ class _CategoriesState extends State<Categories> {
                                                         style: TextStyle(
                                                             color: mainColorRed,
                                                             fontFamily:
-                                                                spedaBold,
+                                                                mainFontbold,
                                                             fontSize: 11),
                                                       )
                                                     : SizedBox(),

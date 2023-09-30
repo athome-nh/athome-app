@@ -80,7 +80,7 @@ class _SearchState extends State<Search> {
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: mainColorGrey,
-                                        fontFamily: spedaBold),
+                                        fontFamily: mainFontbold),
                                     keyboardType: TextInputType.text,
                                     onChanged: (value) {
                                       productPro.setsearch(searchCon.text);
@@ -106,7 +106,7 @@ class _SearchState extends State<Search> {
                               "Clear".tr,
                               style: TextStyle(
                                   color: mainColorRed,
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: 16),
                             ))
                       ],
@@ -270,7 +270,8 @@ class _SearchState extends State<Search> {
                                                         style: TextStyle(
                                                             color:
                                                                 mainColorWhite,
-                                                            fontFamily: Speda,
+                                                            fontFamily:
+                                                                mainFontnormal,
                                                             fontSize: 12),
                                                       ),
                                                       Icon(
@@ -306,7 +307,7 @@ class _SearchState extends State<Search> {
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       color: mainColorGrey,
-                                                      fontFamily: spedaBold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 16),
                                                 ),
                                                 SizedBox(
@@ -325,7 +326,7 @@ class _SearchState extends State<Search> {
                                                   style: TextStyle(
                                                       color: mainColorGrey
                                                           .withOpacity(0.5),
-                                                      fontFamily: spedaBold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 9),
                                                 ),
                                                 SizedBox(
@@ -342,7 +343,8 @@ class _SearchState extends State<Search> {
                                                               .lineThrough
                                                           : TextDecoration.none,
                                                       color: mainColorGrey,
-                                                      fontFamily: Speda,
+                                                      fontFamily:
+                                                          mainFontnormal,
                                                       fontSize: 11),
                                                 ),
                                                 product.offerPrice! > 0
@@ -353,7 +355,7 @@ class _SearchState extends State<Search> {
                                                         style: TextStyle(
                                                             color: mainColorRed,
                                                             fontFamily:
-                                                                spedaBold,
+                                                                mainFontbold,
                                                             fontSize: 11),
                                                       )
                                                     : SizedBox(),
@@ -482,7 +484,7 @@ class _SearchState extends State<Search> {
                           style: TextStyle(
                               color: mainColorGrey,
                               fontSize: 16,
-                              fontFamily: spedaBold),
+                              fontFamily: mainFontbold),
                         ),
                       ),
                       Padding(
@@ -499,13 +501,12 @@ class _SearchState extends State<Search> {
                                       builder: (context) => AllItem()),
                                 );
                               },
-                              child: Text(
-                                "View All".tr,
-                                style: TextStyle(
+                              child: Text("View All".tr,
+                                  style: TextStyle(
                                     color: mainColorRed,
                                     fontSize: 14,
-                                    fontFamily: Speda),
-                              ),
+                                    fontFamily: mainFontnormal,
+                                  )),
                             ),
                             Icon(
                               Icons.arrow_forward_ios_outlined,
@@ -634,7 +635,7 @@ class _SearchState extends State<Search> {
                                       maxLines: 2,
                                       style: TextStyle(
                                           color: mainColorGrey,
-                                          fontFamily: spedaBold,
+                                          fontFamily: mainFontbold,
                                           fontSize: 16),
                                     ),
                                     SizedBox(
@@ -649,7 +650,7 @@ class _SearchState extends State<Search> {
                                       maxLines: 1,
                                       style: TextStyle(
                                           color: mainColorGrey.withOpacity(0.5),
-                                          fontFamily: spedaBold,
+                                          fontFamily: mainFontbold,
                                           fontSize: 9),
                                     ),
                                     SizedBox(
@@ -660,7 +661,7 @@ class _SearchState extends State<Search> {
                                       maxLines: 1,
                                       style: TextStyle(
                                           color: mainColorGrey,
-                                          fontFamily: spedaBold,
+                                          fontFamily: mainFontbold,
                                           fontSize: 11),
                                     ),
                                   ],

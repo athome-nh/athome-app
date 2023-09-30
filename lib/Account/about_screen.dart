@@ -17,8 +17,8 @@ class _AboutScreenState extends State<AboutScreen> {
       appBar: AppBar(
         title: Text(
           "About Us",
-          style:
-              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 20),
+          style: TextStyle(
+              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -57,7 +57,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -73,7 +73,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -89,7 +89,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -105,7 +105,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -121,7 +121,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -137,7 +137,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -153,7 +153,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
@@ -169,7 +169,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
-                      fontFamily: Speda,
+                      fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),

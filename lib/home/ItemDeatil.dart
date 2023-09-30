@@ -26,7 +26,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
           title: Text(
             "Single Oroduct".tr,
             style: TextStyle(
-                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -110,7 +110,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                             "Melon Imported".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
-                                fontFamily: spedaBold,
+                                fontFamily: mainFontbold,
                                 fontSize: 24),
                           ),
                           SizedBox(
@@ -120,7 +120,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                             "info: 3Kg".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
-                                fontFamily: Speda,
+                                fontFamily: mainFontnormal,
                                 fontSize: 16),
                           ),
                           // Padding(
@@ -148,7 +148,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           //       "5Kg",
                           //       style: TextStyle(
                           //           color: mainColorWhite,
-                          //           fontFamily: spedaBold,
+                          //           fontFamily: mainFontbold,
                           //           fontSize: 13),
                           //     ),
                           //   ),
@@ -195,7 +195,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                   "1",
                                   style: TextStyle(
                                       color: mainColorGrey,
-                                      fontFamily: Speda,
+                                      fontFamily: mainFontnormal,
                                       fontSize: 18),
                                 ),
                                 GestureDetector(
@@ -225,13 +225,12 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
-                              "Place Order",
-                              style: TextStyle(
+                            child: Text("Place Order",
+                                style: TextStyle(
                                   color: mainColorGrey,
                                   fontSize: 18,
-                                  fontFamily: Speda),
-                            ),
+                                  fontFamily: mainFontnormal,
+                                )),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xffF2F2F2),
                               fixedSize: Size(
@@ -248,13 +247,12 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
-                              "Add To Cart".tr,
-                              style: TextStyle(
+                            child: Text("Add To Cart".tr,
+                                style: TextStyle(
                                   color: mainColorWhite,
                                   fontSize: 18,
-                                  fontFamily: Speda),
-                            ),
+                                  fontFamily: mainFontnormal,
+                                )),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: mainColorRed,
                               fixedSize: Size(
@@ -300,7 +298,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                       style: TextStyle(
                           height: 1.5,
                           color: mainColorGrey,
-                          fontFamily: Speda,
+                          fontFamily: mainFontnormal,
                           fontSize: 14),
                       textAlign: TextAlign.center,
                     ),

@@ -3,7 +3,7 @@ import 'package:athome/Switchscreen.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:flutter/material.dart';
 import '../Config/property.dart';
-import 'welcome_screen_1.dart';
+
 import 'package:cached_network_image/cached_network_image.dart';
 
 class SplashScreen extends StatefulWidget {

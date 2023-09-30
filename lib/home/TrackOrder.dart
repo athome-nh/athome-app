@@ -18,8 +18,8 @@ class _TrackOrderState extends State<TrackOrder> {
       appBar: AppBar(
         title: Text(
           "Track Order",
-          style:
-              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+          style: TextStyle(
+              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -43,16 +43,18 @@ class _TrackOrderState extends State<TrackOrder> {
             children: [
               Column(
                 children: [
-                  Text(
-                    "Order #678678",
-                    style: TextStyle(
-                        color: mainColorGrey, fontSize: 28, fontFamily: Speda),
-                  ),
-                  Text(
-                    "Mon,24 Oct 2023",
-                    style: TextStyle(
-                        color: mainColorGrey, fontSize: 20, fontFamily: Speda),
-                  ),
+                  Text("Order #678678",
+                      style: TextStyle(
+                        color: mainColorGrey,
+                        fontSize: 28,
+                        fontFamily: mainFontnormal,
+                      )),
+                  Text("Mon,24 Oct 2023",
+                      style: TextStyle(
+                        color: mainColorGrey,
+                        fontSize: 20,
+                        fontFamily: mainFontnormal,
+                      )),
                 ],
               ),
               Column(
@@ -113,20 +115,21 @@ class _TrackOrderState extends State<TrackOrder> {
               ),
               Column(
                 children: [
-                  Text(
-                    "Order Placed",
-                    style: TextStyle(
-                        color: mainColorGrey, fontSize: 28, fontFamily: Speda),
-                  ),
+                  Text("Order Placed",
+                      style: TextStyle(
+                        color: mainColorGrey,
+                        fontSize: 28,
+                        fontFamily: mainFontnormal,
+                      )),
                   Container(
                     width: getWidth(context, 70),
                     child: Text(
-                      "Your order is on way to delvier you jdsncjndscjkndkcnkdsjnc",
-                      style: TextStyle(
+                        "Your order is on way to delvier you jdsncjndscjkndkcnkdsjnc",
+                        style: TextStyle(
                           color: mainColorGrey,
                           fontSize: 16,
-                          fontFamily: Speda),
-                    ),
+                          fontFamily: mainFontnormal,
+                        )),
                   ),
                 ],
               ),
@@ -139,7 +142,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         "Total",
                         style: TextStyle(
                             fontSize: 18,
-                            fontFamily: Speda,
+                            fontFamily: mainFontnormal,
                             color: mainColorGrey),
                       ),
                       Row(
@@ -148,7 +151,7 @@ class _TrackOrderState extends State<TrackOrder> {
                             "3000",
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: spedaBold,
+                                fontFamily: mainFontbold,
                                 color: mainColorRed),
                           ),
                           SizedBox(
@@ -158,7 +161,7 @@ class _TrackOrderState extends State<TrackOrder> {
                             "IQD",
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: spedaBold,
+                                fontFamily: mainFontbold,
                                 color: mainColorGrey),
                           ),
                         ],
@@ -167,13 +170,12 @@ class _TrackOrderState extends State<TrackOrder> {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: Text(
-                      'Cancle order',
-                      style: TextStyle(
+                    child: Text('Cancle order',
+                        style: TextStyle(
                           color: mainColorGrey,
                           fontSize: 16,
-                          fontFamily: Speda),
-                    ),
+                          fontFamily: mainFontnormal,
+                        )),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColorLightGrey,
                       fixedSize:

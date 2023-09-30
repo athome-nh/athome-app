@@ -267,7 +267,7 @@ class _Home_SCState extends State<Home_SC> {
         //         color: mainColorRed,
         //         fontSize: 18,
         //         fontWeight: FontWeight.w500,
-        //         fontFamily: Speda),
+        //         fontFamily: mainFontnormal,)
         //   ),
         //   actions: [
         //     Row(
@@ -416,7 +416,7 @@ class _Home_SCState extends State<Home_SC> {
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
-                                fontFamily: spedaBold),
+                                fontFamily: mainFontbold),
                           ),
                         ),
                         Padding(
@@ -435,13 +435,12 @@ class _Home_SCState extends State<Home_SC> {
                                                   Categories()),
                                         );
                                 },
-                                child: Text(
-                                  "View All".tr,
-                                  style: TextStyle(
+                                child: Text("View All".tr,
+                                    style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
-                                      fontFamily: Speda),
-                                ),
+                                      fontFamily: mainFontnormal,
+                                    )),
                               ),
                               Icon(
                                 Icons.arrow_forward_ios_outlined,
@@ -507,7 +506,7 @@ class _Home_SCState extends State<Home_SC> {
                                       "cateItem",
                                       style: TextStyle(
                                           color: mainColorGrey,
-                                          fontFamily: Speda,
+                                          fontFamily: mainFontnormal,
                                           fontSize: 14),
                                     ),
                                   ],
@@ -577,7 +576,7 @@ class _Home_SCState extends State<Home_SC> {
                                             : cateItem.nameKu!,
                                     style: TextStyle(
                                         color: mainColorGrey,
-                                        fontFamily: Speda,
+                                        fontFamily: mainFontnormal,
                                         fontSize: 14),
                                   ),
                                 ],
@@ -598,7 +597,7 @@ class _Home_SCState extends State<Home_SC> {
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
-                                fontFamily: spedaBold),
+                                fontFamily: mainFontbold),
                           ),
                         ),
                         Padding(
@@ -617,13 +616,12 @@ class _Home_SCState extends State<Home_SC> {
                                     );
                                   }
                                 },
-                                child: Text(
-                                  "View All".tr,
-                                  style: TextStyle(
+                                child: Text("View All".tr,
+                                    style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
-                                      fontFamily: Speda),
-                                ),
+                                      fontFamily: mainFontnormal,
+                                    )),
                               ),
                               Icon(
                                 Icons.arrow_forward_ios_outlined,
@@ -770,7 +768,8 @@ class _Home_SCState extends State<Home_SC> {
                                                           6.toString())),
                                                   style: TextStyle(
                                                       color: mainColorWhite,
-                                                      fontFamily: Speda,
+                                                      fontFamily:
+                                                          mainFontnormal,
                                                       fontSize: 12),
                                                 ),
                                                 Icon(Icons.discount_rounded,
@@ -799,7 +798,7 @@ class _Home_SCState extends State<Home_SC> {
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 16),
                                           ),
                                           SizedBox(
@@ -815,7 +814,7 @@ class _Home_SCState extends State<Home_SC> {
                                             style: TextStyle(
                                                 color: mainColorGrey
                                                     .withOpacity(0.5),
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 9),
                                           ),
                                           SizedBox(
@@ -828,7 +827,7 @@ class _Home_SCState extends State<Home_SC> {
                                                 decoration:
                                                     TextDecoration.lineThrough,
                                                 color: mainColorGrey,
-                                                fontFamily: Speda,
+                                                fontFamily: mainFontnormal,
                                                 fontSize: 11),
                                           ),
                                           Text(
@@ -836,7 +835,7 @@ class _Home_SCState extends State<Home_SC> {
                                             maxLines: 1,
                                             style: TextStyle(
                                                 color: mainColorRed,
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 11),
                                           ),
                                         ],
@@ -999,7 +998,7 @@ class _Home_SCState extends State<Home_SC> {
                                                         .toString())),
                                                 style: TextStyle(
                                                     color: mainColorWhite,
-                                                    fontFamily: Speda,
+                                                    fontFamily: mainFontnormal,
                                                     fontSize: 12),
                                               ),
                                               Icon(Icons.discount_rounded,
@@ -1028,7 +1027,7 @@ class _Home_SCState extends State<Home_SC> {
                                           maxLines: 2,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 16),
                                         ),
                                         SizedBox(
@@ -1046,7 +1045,7 @@ class _Home_SCState extends State<Home_SC> {
                                           style: TextStyle(
                                               color: mainColorGrey
                                                   .withOpacity(0.5),
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 9),
                                         ),
                                         SizedBox(
@@ -1059,7 +1058,7 @@ class _Home_SCState extends State<Home_SC> {
                                               decoration:
                                                   TextDecoration.lineThrough,
                                               color: mainColorGrey,
-                                              fontFamily: Speda,
+                                              fontFamily: mainFontnormal,
                                               fontSize: 11),
                                         ),
                                         Text(
@@ -1068,7 +1067,7 @@ class _Home_SCState extends State<Home_SC> {
                                           maxLines: 1,
                                           style: TextStyle(
                                               color: mainColorRed,
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 11),
                                         ),
                                       ],
@@ -1096,7 +1095,7 @@ class _Home_SCState extends State<Home_SC> {
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
-                                fontFamily: spedaBold),
+                                fontFamily: mainFontbold),
                           ),
                         ),
                         Padding(
@@ -1115,13 +1114,12 @@ class _Home_SCState extends State<Home_SC> {
                                     );
                                   }
                                 },
-                                child: Text(
-                                  "View All".tr,
-                                  style: TextStyle(
+                                child: Text("View All".tr,
+                                    style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
-                                      fontFamily: Speda),
-                                ),
+                                      fontFamily: mainFontnormal,
+                                    )),
                               ),
                               Icon(
                                 Icons.arrow_forward_ios_outlined,
@@ -1249,7 +1247,7 @@ class _Home_SCState extends State<Home_SC> {
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 16),
                                           ),
                                           SizedBox(
@@ -1265,7 +1263,7 @@ class _Home_SCState extends State<Home_SC> {
                                             style: TextStyle(
                                                 color: mainColorGrey
                                                     .withOpacity(0.5),
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 9),
                                           ),
                                           SizedBox(
@@ -1278,7 +1276,7 @@ class _Home_SCState extends State<Home_SC> {
                                                 decoration:
                                                     TextDecoration.lineThrough,
                                                 color: mainColorGrey,
-                                                fontFamily: Speda,
+                                                fontFamily: mainFontnormal,
                                                 fontSize: 11),
                                           ),
                                         ],
@@ -1414,7 +1412,7 @@ class _Home_SCState extends State<Home_SC> {
                                           maxLines: 2,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 16),
                                         ),
                                         SizedBox(
@@ -1432,7 +1430,7 @@ class _Home_SCState extends State<Home_SC> {
                                           style: TextStyle(
                                               color: mainColorGrey
                                                   .withOpacity(0.5),
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 9),
                                         ),
                                         SizedBox(
@@ -1443,7 +1441,7 @@ class _Home_SCState extends State<Home_SC> {
                                           maxLines: 1,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 11),
                                         ),
                                       ],
@@ -1534,7 +1532,7 @@ class _Home_SCState extends State<Home_SC> {
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
-                                fontFamily: spedaBold),
+                                fontFamily: mainFontbold),
                           ),
                         ),
                         Padding(
@@ -1553,13 +1551,12 @@ class _Home_SCState extends State<Home_SC> {
                                     );
                                   }
                                 },
-                                child: Text(
-                                  "View All",
-                                  style: TextStyle(
+                                child: Text("View All",
+                                    style: TextStyle(
                                       color: mainColorRed,
                                       fontSize: 14,
-                                      fontFamily: Speda),
-                                ),
+                                      fontFamily: mainFontnormal,
+                                    )),
                               ),
                               Icon(
                                 Icons.arrow_forward_ios_outlined,
@@ -1687,7 +1684,7 @@ class _Home_SCState extends State<Home_SC> {
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 16),
                                           ),
                                           SizedBox(
@@ -1703,7 +1700,7 @@ class _Home_SCState extends State<Home_SC> {
                                             style: TextStyle(
                                                 color: mainColorGrey
                                                     .withOpacity(0.5),
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 9),
                                           ),
                                           SizedBox(
@@ -1716,7 +1713,7 @@ class _Home_SCState extends State<Home_SC> {
                                                 decoration:
                                                     TextDecoration.lineThrough,
                                                 color: mainColorGrey,
-                                                fontFamily: Speda,
+                                                fontFamily: mainFontnormal,
                                                 fontSize: 11),
                                           ),
                                         ],
@@ -1852,7 +1849,7 @@ class _Home_SCState extends State<Home_SC> {
                                           maxLines: 2,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 16),
                                         ),
                                         SizedBox(
@@ -1870,7 +1867,7 @@ class _Home_SCState extends State<Home_SC> {
                                           style: TextStyle(
                                               color: mainColorGrey
                                                   .withOpacity(0.5),
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 9),
                                         ),
                                         SizedBox(
@@ -1881,7 +1878,7 @@ class _Home_SCState extends State<Home_SC> {
                                           maxLines: 1,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: spedaBold,
+                                              fontFamily: mainFontbold,
                                               fontSize: 11),
                                         ),
                                       ],

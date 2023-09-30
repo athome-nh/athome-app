@@ -57,14 +57,30 @@ flutter:
 
 
   fonts:
-    - family: spedaBold
+    - family: nrtB
       fonts:
-        - asset: assets/fonts/Montserrat/Speda-Bold.ttf
+        - asset: assets/fonts/NRT-Bd.ttf
          
 
-    - family: speda
+    - family: nrtN
       fonts:          
-        - asset: assets/fonts/Montserrat/Speda.ttf
+        - asset: assets/fonts/NRT-Reg.ttf
+
+    - family: spedaB
+      fonts:
+        - asset: assets/fonts/Speda-Bold.ttf
+         
+
+    - family: spedaN
+      fonts:          
+        - asset: assets/fonts/speda.ttf    
         
-      
+    - family: iraniB
+      fonts:
+        - asset: assets/fonts/iraniB.ttf
+         
+
+    - family: iraniN
+      fonts:          
+        - asset: assets/fonts/iraniN.ttf  
 

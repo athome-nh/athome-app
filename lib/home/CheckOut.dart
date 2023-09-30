@@ -25,7 +25,7 @@ class _CheckOutState extends State<CheckOut> {
           title: Text(
             "Checkout",
             style: TextStyle(
-                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -57,7 +57,7 @@ class _CheckOutState extends State<CheckOut> {
                         "Delivery Address".tr,
                         style: TextStyle(
                             color: mainColorGrey,
-                            fontFamily: Speda,
+                            fontFamily: mainFontnormal,
                             fontSize: 13),
                       ),
                       SizedBox(
@@ -74,7 +74,7 @@ class _CheckOutState extends State<CheckOut> {
                                 "Erbil ,Italian City 1",
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: spedaBold,
+                                    fontFamily: mainFontbold,
                                     fontSize: 14),
                               ),
                               SizedBox(height: 5),
@@ -83,7 +83,7 @@ class _CheckOutState extends State<CheckOut> {
                                 "House Number 646",
                                 style: TextStyle(
                                     color: mainColorGrey,
-                                    fontFamily: spedaBold,
+                                    fontFamily: mainFontbold,
                                     fontSize: 14),
                               ),
                             ],
@@ -94,7 +94,7 @@ class _CheckOutState extends State<CheckOut> {
                               "Change".tr,
                               style: TextStyle(
                                   color: mainColorRed,
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: 14),
                             ),
                           ),
@@ -125,7 +125,7 @@ class _CheckOutState extends State<CheckOut> {
                         "Pyment Method".tr,
                         style: TextStyle(
                             color: mainColorGrey,
-                            fontFamily: Speda,
+                            fontFamily: mainFontnormal,
                             fontSize: 13),
                       ),
                       SizedBox(
@@ -149,7 +149,7 @@ class _CheckOutState extends State<CheckOut> {
                                   "Cash on delivery".tr,
                                   style: TextStyle(
                                       color: mainColorGrey,
-                                      fontFamily: Speda,
+                                      fontFamily: mainFontnormal,
                                       fontSize: 12),
                                 ),
                                 Icon(
@@ -250,7 +250,7 @@ class _CheckOutState extends State<CheckOut> {
                               "Sub Total".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: Speda,
+                                  fontFamily: mainFontnormal,
                                   fontSize: 13),
                             ),
                             Text(
@@ -258,7 +258,7 @@ class _CheckOutState extends State<CheckOut> {
                               "20,000 IQD",
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: 14),
                             ),
                           ],
@@ -277,7 +277,7 @@ class _CheckOutState extends State<CheckOut> {
                               "Delivery Cost".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: Speda,
+                                  fontFamily: mainFontnormal,
                                   fontSize: 13),
                             ),
                             Text(
@@ -285,7 +285,7 @@ class _CheckOutState extends State<CheckOut> {
                               "20,000 IQD",
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: 14),
                             ),
                           ],
@@ -304,7 +304,7 @@ class _CheckOutState extends State<CheckOut> {
                               "Discount".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: Speda,
+                                  fontFamily: mainFontnormal,
                                   fontSize: 13),
                             ),
                             Text(
@@ -312,7 +312,7 @@ class _CheckOutState extends State<CheckOut> {
                               "20,000 IQD",
                               style: TextStyle(
                                   color: mainColorRed,
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: 14),
                             ),
                           ],
@@ -342,7 +342,7 @@ class _CheckOutState extends State<CheckOut> {
                               "Total",
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: Speda,
+                                  fontFamily: mainFontnormal,
                                   fontSize: 13),
                             ),
                             Text(
@@ -350,7 +350,7 @@ class _CheckOutState extends State<CheckOut> {
                               "40,000 IQD",
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: spedaBold,
+                                  fontFamily: mainFontbold,
                                   fontSize: 18),
                             ),
                           ],
@@ -402,20 +402,18 @@ class _CheckOutState extends State<CheckOut> {
                                           color: mainColorRed,
                                           size: getHeight(context, 20),
                                         ),
-                                        Text(
-                                          "Thank You!".tr,
-                                          style: TextStyle(
+                                        Text("Thank You!".tr,
+                                            style: TextStyle(
                                               fontSize: 24,
                                               color: mainColorGrey,
-                                              fontFamily: Speda),
-                                        ),
-                                        Text(
-                                          "for yor order".tr,
-                                          style: TextStyle(
+                                              fontFamily: mainFontnormal,
+                                            )),
+                                        Text("for yor order".tr,
+                                            style: TextStyle(
                                               fontSize: 16,
                                               color: mainColorGrey,
-                                              fontFamily: Speda),
-                                        ),
+                                              fontFamily: mainFontnormal,
+                                            )),
                                         SizedBox(
                                           height: getHeight(context, 1),
                                         ),
@@ -424,7 +422,7 @@ class _CheckOutState extends State<CheckOut> {
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: mainColorGrey,
-                                              fontFamily: spedaBold),
+                                              fontFamily: mainFontbold),
                                         ),
                                         SizedBox(
                                           height: getHeight(context, 1),
@@ -433,13 +431,13 @@ class _CheckOutState extends State<CheckOut> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: getWidth(context, 4)),
                                           child: Text(
-                                            "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
-                                                .tr,
-                                            style: TextStyle(
+                                              "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
+                                                  .tr,
+                                              style: TextStyle(
                                                 fontSize: 14,
                                                 color: mainColorGrey,
-                                                fontFamily: Speda),
-                                          ),
+                                                fontFamily: mainFontnormal,
+                                              )),
                                         ),
                                         SizedBox(
                                           height: getHeight(context, 2),
@@ -488,7 +486,7 @@ class _CheckOutState extends State<CheckOut> {
                                             "Back to Home".tr,
                                             style: TextStyle(
                                                 color: mainColorGrey,
-                                                fontFamily: Speda,
+                                                fontFamily: mainFontnormal,
                                                 fontSize: 14),
                                           ),
                                         ),

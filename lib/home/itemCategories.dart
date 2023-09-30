@@ -36,7 +36,7 @@ class _itemCategoriesState extends State<itemCategories> {
           title: Text(
             productPro.cateType.toString(),
             style: TextStyle(
-                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
+                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -84,7 +84,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                   cateItem.nameEn!,
                                   style: TextStyle(
                                       color: mainColorWhite,
-                                      fontFamily: spedaBold,
+                                      fontFamily: mainFontbold,
                                       fontSize: 13),
                                 ),
                               ),
@@ -238,7 +238,8 @@ class _itemCategoriesState extends State<itemCategories> {
                                                           .toString())),
                                                   style: TextStyle(
                                                       color: mainColorWhite,
-                                                      fontFamily: Speda,
+                                                      fontFamily:
+                                                          mainFontnormal,
                                                       fontSize: 12),
                                                 ),
                                                 Icon(Icons.discount_rounded,
@@ -268,7 +269,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 16),
                                           ),
                                           SizedBox(
@@ -286,7 +287,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                             style: TextStyle(
                                                 color: mainColorGrey
                                                     .withOpacity(0.5),
-                                                fontFamily: spedaBold,
+                                                fontFamily: mainFontbold,
                                                 fontSize: 9),
                                           ),
                                           SizedBox(
@@ -301,7 +302,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                                             .lineThrough
                                                         : TextDecoration.none,
                                                 color: mainColorGrey,
-                                                fontFamily: Speda,
+                                                fontFamily: mainFontnormal,
                                                 fontSize: 11),
                                           ),
                                           product.offerPrice! > 0
@@ -311,7 +312,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                                       " IQD",
                                                   style: TextStyle(
                                                       color: mainColorRed,
-                                                      fontFamily: spedaBold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 11),
                                                 )
                                               : SizedBox(),
