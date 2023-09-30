@@ -2,15 +2,8 @@
 import 'package:flutter/material.dart';
 
 /// Define { Fonts } in AtHome
-String mainFontMontserrat1 = 'Montserrat1';
-String mainFontMontserrat2 = 'Montserrat2';
-String mainFontMontserrat3 = 'Montserrat3';
-String mainFontMontserrat4 = 'Montserrat4';
-String mainFontMontserrat5 = 'Montserrat5';
-String mainFontMontserrat6 = 'Montserrat6';
-String mainFontMontserrat7 = 'Montserrat7';
-String mainFontMontserrat8 = 'Montserrat8';
-String mainFontMontserrat9 = 'Montserrat9';
+String spedaBold = 'spedaBold';
+String Speda = 'Speda';
 
 /// Define { Colors } in AtHome
 Color mainColorRed = const Color(0xFFe73339);

@@ -149,7 +149,7 @@ class _SettingState extends State<Setting> {
                                   Text(
                                     "Jeger Hunar Iphony",
                                     style: TextStyle(
-                                        fontFamily: mainFontMontserrat6,
+                                        fontFamily: spedaBold,
                                         fontSize: 18,
                                         color: mainColorGrey),
                                   ),
@@ -159,7 +159,7 @@ class _SettingState extends State<Setting> {
                                   Text(
                                     "+964 7xx xxx xxxx",
                                     style: TextStyle(
-                                        fontFamily: mainFontMontserrat6,
+                                        fontFamily: spedaBold,
                                         fontSize: 18,
                                         color: mainColorGrey),
                                   ),
@@ -200,7 +200,7 @@ class _SettingState extends State<Setting> {
                                           Text(
                                             "Save",
                                             style: TextStyle(
-                                                fontFamily: mainFontMontserrat6,
+                                                fontFamily: spedaBold,
                                                 fontSize: 12,
                                                 color: mainColorWhite),
                                           ),
@@ -233,7 +233,7 @@ class _SettingState extends State<Setting> {
                                         Text(
                                           "Cancle",
                                           style: TextStyle(
-                                              fontFamily: mainFontMontserrat6,
+                                              fontFamily: spedaBold,
                                               fontSize: 12,
                                               color: mainColorWhite),
                                         ),
@@ -273,7 +273,7 @@ class _SettingState extends State<Setting> {
                                           Text(
                                             " Edit",
                                             style: TextStyle(
-                                                fontFamily: mainFontMontserrat6,
+                                                fontFamily: spedaBold,
                                                 fontSize: 12,
                                                 color: mainColorWhite),
                                           ),
@@ -301,7 +301,7 @@ class _SettingState extends State<Setting> {
                                       Text(
                                         " I want to Delete my account",
                                         style: TextStyle(
-                                            fontFamily: mainFontMontserrat6,
+                                            fontFamily: spedaBold,
                                             fontSize: 12,
                                             color: mainColorWhite),
                                       ),
@@ -504,7 +504,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "Loyalty point",
                                   style: TextStyle(
-                                      fontFamily: mainFontMontserrat6,
+                                      fontFamily: spedaBold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),
@@ -538,7 +538,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "Address",
                                   style: TextStyle(
-                                      fontFamily: mainFontMontserrat6,
+                                      fontFamily: spedaBold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),
@@ -572,7 +572,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "About us",
                                   style: TextStyle(
-                                      fontFamily: mainFontMontserrat6,
+                                      fontFamily: spedaBold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),
@@ -606,7 +606,7 @@ class _SettingState extends State<Setting> {
                                 Text(
                                   "Signout",
                                   style: TextStyle(
-                                      fontFamily: mainFontMontserrat6,
+                                      fontFamily: spedaBold,
                                       fontSize: 16,
                                       color: mainColorWhite),
                                 ),

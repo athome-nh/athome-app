@@ -18,10 +18,8 @@ class _TrackOrderState extends State<TrackOrder> {
       appBar: AppBar(
         title: Text(
           "Track Order",
-          style: TextStyle(
-              color: mainColorGrey,
-              fontFamily: mainFontMontserrat4,
-              fontSize: 24),
+          style:
+              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -48,16 +46,12 @@ class _TrackOrderState extends State<TrackOrder> {
                   Text(
                     "Order #678678",
                     style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 28,
-                        fontFamily: mainFontMontserrat4),
+                        color: mainColorGrey, fontSize: 28, fontFamily: Speda),
                   ),
                   Text(
                     "Mon,24 Oct 2023",
                     style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 20,
-                        fontFamily: mainFontMontserrat4),
+                        color: mainColorGrey, fontSize: 20, fontFamily: Speda),
                   ),
                 ],
               ),
@@ -122,9 +116,7 @@ class _TrackOrderState extends State<TrackOrder> {
                   Text(
                     "Order Placed",
                     style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 28,
-                        fontFamily: mainFontMontserrat4),
+                        color: mainColorGrey, fontSize: 28, fontFamily: Speda),
                   ),
                   Container(
                     width: getWidth(context, 70),
@@ -133,7 +125,7 @@ class _TrackOrderState extends State<TrackOrder> {
                       style: TextStyle(
                           color: mainColorGrey,
                           fontSize: 16,
-                          fontFamily: mainFontMontserrat4),
+                          fontFamily: Speda),
                     ),
                   ),
                 ],
@@ -147,7 +139,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         "Total",
                         style: TextStyle(
                             fontSize: 18,
-                            fontFamily: mainFontMontserrat4,
+                            fontFamily: Speda,
                             color: mainColorGrey),
                       ),
                       Row(
@@ -156,7 +148,7 @@ class _TrackOrderState extends State<TrackOrder> {
                             "3000",
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: mainFontMontserrat8,
+                                fontFamily: spedaBold,
                                 color: mainColorRed),
                           ),
                           SizedBox(
@@ -166,7 +158,7 @@ class _TrackOrderState extends State<TrackOrder> {
                             "IQD",
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: mainFontMontserrat8,
+                                fontFamily: spedaBold,
                                 color: mainColorGrey),
                           ),
                         ],
@@ -180,7 +172,7 @@ class _TrackOrderState extends State<TrackOrder> {
                       style: TextStyle(
                           color: mainColorGrey,
                           fontSize: 16,
-                          fontFamily: mainFontMontserrat4),
+                          fontFamily: Speda),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColorLightGrey,

@@ -136,7 +136,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         style: TextStyle(
                             color: mainColorGrey,
                             fontSize: 30,
-                            fontFamily: mainFontMontserrat6),
+                            fontFamily: spedaBold),
                       )),
                   SizedBox(
                     height: getHeight(context, 4),

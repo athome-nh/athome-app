@@ -68,14 +68,13 @@ class _CompleteAccountState extends State<CompleteAccount> {
                     children: [
                       Text(
                         "What is Your",
-                        style: TextStyle(
-                            fontSize: 30, fontFamily: mainFontMontserrat7),
+                        style: TextStyle(fontSize: 30, fontFamily: spedaBold),
                       ),
                       Text(
                         "Name ?",
                         style: TextStyle(
                             fontSize: 30,
-                            fontFamily: mainFontMontserrat7,
+                            fontFamily: spedaBold,
                             color: mainColorRed),
                       ),
                     ],
@@ -123,7 +122,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
-                        fontFamily: mainFontMontserrat6,
+                        fontFamily: spedaBold,
                         color: mainColorBlack,
                         fontSize: 20),
                     children: <TextSpan>[
@@ -133,7 +132,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       TextSpan(
                         text: ' City ',
                         style: TextStyle(
-                            fontFamily: mainFontMontserrat6,
+                            fontFamily: spedaBold,
                             color: mainColorRed,
                             fontSize: 20),
                       ),
@@ -187,7 +186,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
-                        fontFamily: mainFontMontserrat6,
+                        fontFamily: spedaBold,
                         color: mainColorBlack,
                         fontSize: 20),
                     children: <TextSpan>[
@@ -197,7 +196,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       TextSpan(
                         text: ' Gender',
                         style: TextStyle(
-                            fontFamily: mainFontMontserrat6,
+                            fontFamily: spedaBold,
                             color: mainColorRed,
                             fontSize: 20),
                       ),
@@ -252,7 +251,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                             'Male',
                             style: TextStyle(
                                 color: mainColorBlack,
-                                fontFamily: mainFontMontserrat6,
+                                fontFamily: spedaBold,
                                 fontSize: 17),
                           ),
                         ],
@@ -300,7 +299,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                             'Female',
                             style: TextStyle(
                                 color: mainColorBlack,
-                                fontFamily: mainFontMontserrat6,
+                                fontFamily: spedaBold,
                                 fontSize: 17),
                           ),
                         ],
@@ -327,8 +326,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Text(
                         'Select Your Age : ',
-                        style: TextStyle(
-                            fontSize: 18, fontFamily: mainFontMontserrat6),
+                        style: TextStyle(fontSize: 18, fontFamily: spedaBold),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -356,7 +354,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                         ), //Custom Icon
                         style: TextStyle(
                             fontSize: 25,
-                            fontFamily: mainFontMontserrat6,
+                            fontFamily: spedaBold,
                             color: mainColorWhite),
                         underline: Container(), // Remove the underline
                         dropdownColor: mainColorRed,
@@ -373,7 +371,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                                   '${index + 18}',
                                   style: TextStyle(
                                       fontSize: 25,
-                                      fontFamily: mainFontMontserrat6,
+                                      fontFamily: spedaBold,
                                       color: mainColorWhite),
                                 ),
                               ),

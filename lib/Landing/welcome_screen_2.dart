@@ -70,7 +70,7 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
                   Text(
                     "Learn From the Best",
                     style: TextStyle(
-                      fontFamily: mainFontMontserrat6,
+                      fontFamily: spedaBold,
                       fontSize: getHeight(context, 3),
                     ),
                   ),
@@ -81,7 +81,7 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
                     child: Text(
                       "We will guide you with the best tutors and experts in Kurdistan/Iraq",
                       style: TextStyle(
-                        fontFamily: mainFontMontserrat4,
+                        fontFamily: Speda,
                         fontSize: getHeight(context, 2),
                       ),
                       textAlign: TextAlign.center,
@@ -118,7 +118,7 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
                           child: Text(
                             'SKIP',
                             style: TextStyle(
-                              fontFamily: mainFontMontserrat6,
+                              fontFamily: spedaBold,
                               fontSize: 16,
                               color: mainColorBlack,
                             ),
@@ -207,7 +207,7 @@ class _WelcomeScreenTwoState extends State<WelcomeScreenTwo> {
                           child: Text(
                             'NEXT',
                             style: TextStyle(
-                              fontFamily: mainFontMontserrat6,
+                              fontFamily: spedaBold,
                               fontSize: 16,
                               color: mainColorWhite,
                             ),

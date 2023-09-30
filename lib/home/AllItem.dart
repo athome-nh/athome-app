@@ -54,9 +54,7 @@ class _AllItemState extends State<AllItem> {
                     ? "Highlight".tr
                     : "Best Sell".tr,
             style: TextStyle(
-                color: mainColorGrey,
-                fontFamily: mainFontMontserrat4,
-                fontSize: 24),
+                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -212,8 +210,7 @@ class _AllItemState extends State<AllItem> {
                                                         .toString())),
                                                 style: TextStyle(
                                                     color: mainColorWhite,
-                                                    fontFamily:
-                                                        mainFontMontserrat4,
+                                                    fontFamily: Speda,
                                                     fontSize: 12),
                                               ),
                                               Icon(Icons.discount_rounded,
@@ -244,7 +241,7 @@ class _AllItemState extends State<AllItem> {
                                           maxLines: 2,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: mainFontMontserrat6,
+                                              fontFamily: spedaBold,
                                               fontSize: 16),
                                         ),
                                         SizedBox(
@@ -262,7 +259,7 @@ class _AllItemState extends State<AllItem> {
                                           style: TextStyle(
                                               color: mainColorGrey
                                                   .withOpacity(0.5),
-                                              fontFamily: mainFontMontserrat6,
+                                              fontFamily: spedaBold,
                                               fontSize: 9),
                                         ),
                                         SizedBox(
@@ -276,7 +273,7 @@ class _AllItemState extends State<AllItem> {
                                                   ? TextDecoration.lineThrough
                                                   : TextDecoration.none,
                                               color: mainColorGrey,
-                                              fontFamily: mainFontMontserrat4,
+                                              fontFamily: Speda,
                                               fontSize: 11),
                                         ),
                                         product.offerPrice! > 0
@@ -285,8 +282,7 @@ class _AllItemState extends State<AllItem> {
                                                     " IQD",
                                                 style: TextStyle(
                                                     color: mainColorRed,
-                                                    fontFamily:
-                                                        mainFontMontserrat6,
+                                                    fontFamily: spedaBold,
                                                     fontSize: 11),
                                               )
                                             : SizedBox(),

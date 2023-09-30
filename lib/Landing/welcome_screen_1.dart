@@ -61,7 +61,7 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                   Text(
                     "Shop Smarter & Easier",
                     style: TextStyle(
-                      fontFamily: mainFontMontserrat6,
+                      fontFamily: spedaBold,
                       fontSize: getHeight(context, 3),
                     ),
                   ),
@@ -72,7 +72,7 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                     child: Text(
                       "is an innovative platform designed to enhance your online shopping experience.",
                       style: TextStyle(
-                        fontFamily: mainFontMontserrat4,
+                        fontFamily: Speda,
                         fontSize: getHeight(context, 2),
                       ),
                       textAlign: TextAlign.center,
@@ -109,7 +109,7 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                           child: Text(
                             'SKIP',
                             style: TextStyle(
-                              fontFamily: mainFontMontserrat6,
+                              fontFamily: spedaBold,
                               fontSize: 16,
                               color: mainColorBlack,
                             ),
@@ -195,7 +195,7 @@ class _WelcomeScreenOneState extends State<WelcomeScreenOne> {
                           child: Text(
                             'NEXT',
                             style: TextStyle(
-                              fontFamily: mainFontMontserrat6,
+                              fontFamily: spedaBold,
                               fontSize: 16,
                               color: mainColorWhite,
                             ),

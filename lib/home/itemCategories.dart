@@ -36,9 +36,7 @@ class _itemCategoriesState extends State<itemCategories> {
           title: Text(
             productPro.cateType.toString(),
             style: TextStyle(
-                color: mainColorGrey,
-                fontFamily: mainFontMontserrat4,
-                fontSize: 24),
+                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -86,7 +84,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                   cateItem.nameEn!,
                                   style: TextStyle(
                                       color: mainColorWhite,
-                                      fontFamily: mainFontMontserrat6,
+                                      fontFamily: spedaBold,
                                       fontSize: 13),
                                 ),
                               ),
@@ -240,8 +238,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                                           .toString())),
                                                   style: TextStyle(
                                                       color: mainColorWhite,
-                                                      fontFamily:
-                                                          mainFontMontserrat4,
+                                                      fontFamily: Speda,
                                                       fontSize: 12),
                                                 ),
                                                 Icon(Icons.discount_rounded,
@@ -271,7 +268,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
-                                                fontFamily: mainFontMontserrat6,
+                                                fontFamily: spedaBold,
                                                 fontSize: 16),
                                           ),
                                           SizedBox(
@@ -289,7 +286,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                             style: TextStyle(
                                                 color: mainColorGrey
                                                     .withOpacity(0.5),
-                                                fontFamily: mainFontMontserrat6,
+                                                fontFamily: spedaBold,
                                                 fontSize: 9),
                                           ),
                                           SizedBox(
@@ -304,7 +301,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                                             .lineThrough
                                                         : TextDecoration.none,
                                                 color: mainColorGrey,
-                                                fontFamily: mainFontMontserrat4,
+                                                fontFamily: Speda,
                                                 fontSize: 11),
                                           ),
                                           product.offerPrice! > 0
@@ -314,8 +311,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                                       " IQD",
                                                   style: TextStyle(
                                                       color: mainColorRed,
-                                                      fontFamily:
-                                                          mainFontMontserrat6,
+                                                      fontFamily: spedaBold,
                                                       fontSize: 11),
                                                 )
                                               : SizedBox(),

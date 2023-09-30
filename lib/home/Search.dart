@@ -80,7 +80,7 @@ class _SearchState extends State<Search> {
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: mainColorGrey,
-                                        fontFamily: mainFontMontserrat6),
+                                        fontFamily: spedaBold),
                                     keyboardType: TextInputType.text,
                                     onChanged: (value) {
                                       productPro.setsearch(searchCon.text);
@@ -106,7 +106,7 @@ class _SearchState extends State<Search> {
                               "Clear".tr,
                               style: TextStyle(
                                   color: mainColorRed,
-                                  fontFamily: mainFontMontserrat6,
+                                  fontFamily: spedaBold,
                                   fontSize: 16),
                             ))
                       ],
@@ -270,8 +270,7 @@ class _SearchState extends State<Search> {
                                                         style: TextStyle(
                                                             color:
                                                                 mainColorWhite,
-                                                            fontFamily:
-                                                                mainFontMontserrat4,
+                                                            fontFamily: Speda,
                                                             fontSize: 12),
                                                       ),
                                                       Icon(
@@ -307,8 +306,7 @@ class _SearchState extends State<Search> {
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       color: mainColorGrey,
-                                                      fontFamily:
-                                                          mainFontMontserrat6,
+                                                      fontFamily: spedaBold,
                                                       fontSize: 16),
                                                 ),
                                                 SizedBox(
@@ -327,8 +325,7 @@ class _SearchState extends State<Search> {
                                                   style: TextStyle(
                                                       color: mainColorGrey
                                                           .withOpacity(0.5),
-                                                      fontFamily:
-                                                          mainFontMontserrat6,
+                                                      fontFamily: spedaBold,
                                                       fontSize: 9),
                                                 ),
                                                 SizedBox(
@@ -345,8 +342,7 @@ class _SearchState extends State<Search> {
                                                               .lineThrough
                                                           : TextDecoration.none,
                                                       color: mainColorGrey,
-                                                      fontFamily:
-                                                          mainFontMontserrat4,
+                                                      fontFamily: Speda,
                                                       fontSize: 11),
                                                 ),
                                                 product.offerPrice! > 0
@@ -357,7 +353,7 @@ class _SearchState extends State<Search> {
                                                         style: TextStyle(
                                                             color: mainColorRed,
                                                             fontFamily:
-                                                                mainFontMontserrat6,
+                                                                spedaBold,
                                                             fontSize: 11),
                                                       )
                                                     : SizedBox(),
@@ -486,7 +482,7 @@ class _SearchState extends State<Search> {
                           style: TextStyle(
                               color: mainColorGrey,
                               fontSize: 16,
-                              fontFamily: mainFontMontserrat6),
+                              fontFamily: spedaBold),
                         ),
                       ),
                       Padding(
@@ -508,7 +504,7 @@ class _SearchState extends State<Search> {
                                 style: TextStyle(
                                     color: mainColorRed,
                                     fontSize: 14,
-                                    fontFamily: mainFontMontserrat4),
+                                    fontFamily: Speda),
                               ),
                             ),
                             Icon(
@@ -638,7 +634,7 @@ class _SearchState extends State<Search> {
                                       maxLines: 2,
                                       style: TextStyle(
                                           color: mainColorGrey,
-                                          fontFamily: mainFontMontserrat6,
+                                          fontFamily: spedaBold,
                                           fontSize: 16),
                                     ),
                                     SizedBox(
@@ -653,7 +649,7 @@ class _SearchState extends State<Search> {
                                       maxLines: 1,
                                       style: TextStyle(
                                           color: mainColorGrey.withOpacity(0.5),
-                                          fontFamily: mainFontMontserrat6,
+                                          fontFamily: spedaBold,
                                           fontSize: 9),
                                     ),
                                     SizedBox(
@@ -664,7 +660,7 @@ class _SearchState extends State<Search> {
                                       maxLines: 1,
                                       style: TextStyle(
                                           color: mainColorGrey,
-                                          fontFamily: mainFontMontserrat6,
+                                          fontFamily: spedaBold,
                                           fontSize: 11),
                                     ),
                                   ],

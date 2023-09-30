@@ -19,10 +19,8 @@ class _AddressState extends State<Address> {
       appBar: AppBar(
         title: Text(
           "Saved Address".tr,
-          style: TextStyle(
-              color: mainColorGrey,
-              fontFamily: mainFontMontserrat4,
-              fontSize: 24),
+          style:
+              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -64,7 +62,7 @@ class _AddressState extends State<Address> {
                                         "Change",
                                         style: TextStyle(
                                             color: mainColorRed,
-                                            fontFamily: mainFontMontserrat4),
+                                            fontFamily: Speda),
                                       )),
                                   leading: CachedNetworkImage(
                                     imageUrl: "assets/images/402.png",
@@ -75,14 +73,14 @@ class _AddressState extends State<Address> {
                                     "Address 1",
                                     style: TextStyle(
                                         color: mainColorGrey,
-                                        fontFamily: mainFontMontserrat4,
+                                        fontFamily: Speda,
                                         fontSize: 18),
                                   ),
                                   subtitle: Text(
                                     "Erbil,italian city 1,house 646",
                                     style: TextStyle(
                                         color: mainColorGrey.withOpacity(0.5),
-                                        fontFamily: mainFontMontserrat4,
+                                        fontFamily: Speda,
                                         fontSize: 12),
                                   ),
                                 ),
@@ -113,7 +111,7 @@ class _AddressState extends State<Address> {
                       "Add your New address".tr,
                       style: TextStyle(
                           color: mainColorGrey,
-                          fontFamily: mainFontMontserrat4,
+                          fontFamily: Speda,
                           fontSize: 16),
                     ),
                     Icon(

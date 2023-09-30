@@ -26,9 +26,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
           title: Text(
             "Single Oroduct".tr,
             style: TextStyle(
-                color: mainColorGrey,
-                fontFamily: mainFontMontserrat4,
-                fontSize: 24),
+                color: mainColorGrey, fontFamily: Speda, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
@@ -112,7 +110,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                             "Melon Imported".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
-                                fontFamily: mainFontMontserrat6,
+                                fontFamily: spedaBold,
                                 fontSize: 24),
                           ),
                           SizedBox(
@@ -122,7 +120,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                             "info: 3Kg".tr,
                             style: TextStyle(
                                 color: mainColorGrey,
-                                fontFamily: mainFontMontserrat4,
+                                fontFamily: Speda,
                                 fontSize: 16),
                           ),
                           // Padding(
@@ -150,7 +148,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           //       "5Kg",
                           //       style: TextStyle(
                           //           color: mainColorWhite,
-                          //           fontFamily: mainFontMontserrat6,
+                          //           fontFamily: spedaBold,
                           //           fontSize: 13),
                           //     ),
                           //   ),
@@ -197,7 +195,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                   "1",
                                   style: TextStyle(
                                       color: mainColorGrey,
-                                      fontFamily: mainFontMontserrat4,
+                                      fontFamily: Speda,
                                       fontSize: 18),
                                 ),
                                 GestureDetector(
@@ -232,7 +230,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                               style: TextStyle(
                                   color: mainColorGrey,
                                   fontSize: 18,
-                                  fontFamily: mainFontMontserrat4),
+                                  fontFamily: Speda),
                             ),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xffF2F2F2),
@@ -255,7 +253,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                               style: TextStyle(
                                   color: mainColorWhite,
                                   fontSize: 18,
-                                  fontFamily: mainFontMontserrat4),
+                                  fontFamily: Speda),
                             ),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: mainColorRed,
@@ -302,7 +300,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                       style: TextStyle(
                           height: 1.5,
                           color: mainColorGrey,
-                          fontFamily: mainFontMontserrat4,
+                          fontFamily: Speda,
                           fontSize: 14),
                       textAlign: TextAlign.center,
                     ),

@@ -24,10 +24,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: Text(
           "Profile Information",
-          style: TextStyle(
-              color: mainColorGrey,
-              fontFamily: mainFontMontserrat4,
-              fontSize: 20),
+          style:
+              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 20),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,

@@ -68,7 +68,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
                   Text(
                     "Your Pocket's Friend",
                     style: TextStyle(
-                      fontFamily: mainFontMontserrat6,
+                      fontFamily: spedaBold,
                       fontSize: getHeight(context, 3),
                     ),
                   ),
@@ -79,7 +79,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
                     child: Text(
                       "Learn whatever you want, whenever or wherever you are.",
                       style: TextStyle(
-                        fontFamily: mainFontMontserrat4,
+                        fontFamily: Speda,
                         fontSize: getHeight(context, 2),
                       ),
                       textAlign: TextAlign.center,
@@ -106,7 +106,7 @@ class _WelcomeScreenThreeState extends State<WelcomeScreenThree> {
                   child: Text(
                     'Get Start',
                     style: TextStyle(
-                      fontFamily: mainFontMontserrat6,
+                      fontFamily: spedaBold,
                       fontSize: 16,
                       color: mainColorWhite,
                     ),

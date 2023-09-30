@@ -86,7 +86,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                     style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 30,
-                        fontFamily: mainFontMontserrat6),
+                        fontFamily: spedaBold),
                   ),
                 ),
                 SizedBox(
@@ -97,8 +97,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                   child: Text(
                     "Enter your account information to complete your account",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: mainColorGrey, fontFamily: mainFontMontserrat4),
+                    style: TextStyle(color: mainColorGrey, fontFamily: Speda),
                   ),
                 ),
                 SizedBox(
@@ -137,7 +136,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                       labelStyle: TextStyle(
                           color: mainColorGrey.withOpacity(0.8),
                           fontSize: 18,
-                          fontFamily: mainFontMontserrat6),
+                          fontFamily: spedaBold),
                       hintText: "Enter your Name",
 
                       floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -193,7 +192,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                               labelStyle: TextStyle(
                                   color: mainColorGrey,
                                   fontSize: 18,
-                                  fontFamily: mainFontMontserrat6),
+                                  fontFamily: spedaBold),
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: mainColorGrey.withOpacity(
@@ -244,7 +243,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                               labelStyle: TextStyle(
                                   color: mainColorGrey,
                                   fontSize: 18,
-                                  fontFamily: mainFontMontserrat6),
+                                  fontFamily: spedaBold),
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: mainColorGrey.withOpacity(
@@ -423,12 +422,10 @@ class _Singinup_pageState extends State<Singinup_page> {
             : gender == ""
                 ? null
                 : Gender.Female, //By Default
-        selectedGenderTextStyle: TextStyle(
-            color: mainColorRed, fontFamily: mainFontMontserrat6, fontSize: 20),
+        selectedGenderTextStyle:
+            TextStyle(color: mainColorRed, fontFamily: spedaBold, fontSize: 20),
         unSelectedGenderTextStyle: TextStyle(
-            color: mainColorGrey,
-            fontFamily: mainFontMontserrat6,
-            fontSize: 20),
+            color: mainColorGrey, fontFamily: spedaBold, fontSize: 20),
         equallyAligned: true,
         size: 70.0, // default size 40.0
         animationDuration: Duration(seconds: 1),

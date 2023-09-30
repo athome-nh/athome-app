@@ -17,10 +17,8 @@ class _NotficationScreenState extends State<NotficationScreen> {
       appBar: AppBar(
         title: Text(
           "Notfication",
-          style: TextStyle(
-              color: mainColorGrey,
-              fontFamily: mainFontMontserrat4,
-              fontSize: 24),
+          style:
+              TextStyle(color: mainColorGrey, fontFamily: Speda, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,
@@ -66,7 +64,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                       style: TextStyle(
                                           fontSize: 20,
                                           color: mainColorGrey,
-                                          fontFamily: mainFontMontserrat6),
+                                          fontFamily: spedaBold),
                                     ),
                                   ),
                                   SizedBox(
@@ -80,7 +78,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: mainColorGrey,
-                                          fontFamily: mainFontMontserrat4),
+                                          fontFamily: Speda),
                                     ),
                                   ),
                                 ],
@@ -105,14 +103,14 @@ class _NotficationScreenState extends State<NotficationScreen> {
                               "You orders has been picked up",
                               style: TextStyle(
                                   color: mainColorGrey,
-                                  fontFamily: mainFontMontserrat4,
+                                  fontFamily: Speda,
                                   fontSize: 14),
                             ),
                             subtitle: Text(
                               "Now",
                               style: TextStyle(
                                   color: mainColorGrey.withOpacity(0.5),
-                                  fontFamily: mainFontMontserrat4,
+                                  fontFamily: Speda,
                                   fontSize: 12),
                             ),
                           ),

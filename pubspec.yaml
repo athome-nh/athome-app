@@ -57,74 +57,14 @@ flutter:
 
 
   fonts:
-    - family: Montserrat1
+    - family: spedaBold
       fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Thin.ttf
-          weight: 100 # w100 Thin, the least thick
-        - asset: assets/fonts/Montserrat/Montserrat-ThinItalic.ttf
-          style: italic
-          weight: 100
+        - asset: assets/fonts/Montserrat/Speda-Bold.ttf
+         
 
-    - family: Montserrat2
+    - family: speda
       fonts:          
-        - asset: assets/fonts/Montserrat/Montserrat-ExtraLight.ttf
-          weight: 200 # w200 Extra-light
-        - asset: assets/fonts/Montserrat/Montserrat-ExtraLightItalic.ttf
-          style: italic
-          weight: 200
+        - asset: assets/fonts/Montserrat/Speda.ttf
+        
+      
 
-    - family: Montserrat3
-      fonts:                  
-        - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
-          weight: 300 # w300 Light
-        - asset: assets/fonts/Montserrat/Montserrat-LightItalic.ttf
-          style: italic
-          weight: 300
-
-    - family: Montserrat4
-      fonts:                 
-        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-          weight: 400 # w400 Normal / regular / plain
-        - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
-          style: italic
-          weight: 400
-
-    - family: Montserrat5
-      fonts:          
-        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
-          weight: 500 # w500 Medium
-        - asset: assets/fonts/Montserrat/Montserrat-MediumItalic.ttf
-          style: italic
-          weight: 500
-
-    - family: Montserrat6
-      fonts:          
-        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
-          weight: 600 # w600 Semi-bold
-        - asset: assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf
-          style: italic
-          weight: 600
-
-    - family: Montserrat7
-      fonts:          
-        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
-          weight: 700 # w700 Bold
-        - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
-          style: italic
-          weight: 700
-
-    - family: Montserrat8
-      fonts:          
-        - asset: assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
-          weight: 800 # w800 Extra-bold
-        - asset: assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf
-          style: italic
-          weight: 800
-
-    - family: Montserrat9
-      fonts:          
-        - asset: assets/fonts/Montserrat/Montserrat-Black.ttf
-          weight: 900 # w900 Black, the most thick
-        - asset: assets/fonts/Montserrat/Montserrat-BlackItalic.ttf
-          style: italic
-          weight: 900
