@@ -8,23 +8,12 @@ class SubCategory {
   final String? nameEn;
   final String? nameAr;
   final String? nameKu;
-  final int? categoryId;
-  final bool? isShow;
-  final String? img;
 
-  const SubCategory({
-    this.id,
-    this.nameEn,
-    this.nameAr,
-    this.nameKu,
-    this.categoryId,
-    this.isShow,
-    this.img,
-  });
+  const SubCategory({this.id, this.nameEn, this.nameAr, this.nameKu});
 
   @override
   String toString() {
-    return 'SubCategory(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, categoryId: $categoryId, isShow: $isShow, img: $img)';
+    return 'SubCategory(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu)';
   }
 
   factory SubCategory.fromMap(Map<String, dynamic> data) => SubCategory(
@@ -32,9 +21,6 @@ class SubCategory {
         nameEn: data['nameEN'] as String?,
         nameAr: data['nameAR'] as String?,
         nameKu: data['nameKU'] as String?,
-        categoryId: data['categoryId'] as int?,
-        isShow: data['isShow'] as bool?,
-        img: data['img'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
@@ -42,9 +28,6 @@ class SubCategory {
         'nameEN': nameEn,
         'nameAR': nameAr,
         'nameKU': nameKu,
-        'categoryId': categoryId,
-        'isShow': isShow,
-        'img': img,
       };
 
   /// `dart:convert`
@@ -64,18 +47,12 @@ class SubCategory {
     String? nameEn,
     String? nameAr,
     String? nameKu,
-    int? categoryId,
-    bool? isShow,
-    String? img,
   }) {
     return SubCategory(
       id: id ?? this.id,
       nameEn: nameEn ?? this.nameEn,
       nameAr: nameAr ?? this.nameAr,
       nameKu: nameKu ?? this.nameKu,
-      categoryId: categoryId ?? this.categoryId,
-      isShow: isShow ?? this.isShow,
-      img: img ?? this.img,
     );
   }
 
@@ -89,11 +66,5 @@ class SubCategory {
 
   @override
   int get hashCode =>
-      id.hashCode ^
-      nameEn.hashCode ^
-      nameAr.hashCode ^
-      nameKu.hashCode ^
-      categoryId.hashCode ^
-      isShow.hashCode ^
-      img.hashCode;
+      id.hashCode ^ nameEn.hashCode ^ nameAr.hashCode ^ nameKu.hashCode;
 }

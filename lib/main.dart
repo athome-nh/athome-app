@@ -2,7 +2,6 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Switchscreen.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/landing/splash_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

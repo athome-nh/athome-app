@@ -1,47 +1,23 @@
- [
+[
   {
-    "id": 1,
-    "nameEN": "Fruits",
-    "nameAR": "فواكه",
-    "nameKU": "میوە",
-    "categoryId": 1,
-    "isShow": true,
-    "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+      "id": 1,
+      "nameEN": "Kitchen",
+      "nameAR": "مطبخ",
+      "nameKU": "چێشتخانە",
+      "img": "http://192.168.0.124/storage/Category/6XrNlx5weN07dtCtM5WVlWR45LwUy0bZAgrRy18P.png"
   },
   {
-    "id": 2,
-    "nameEN": "Fruits",
-    "nameAR": "فواكه",
-    "nameKU": "میوە",
-    "categoryId": 2,
-    "isShow": true,
-    "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+      "id": 2,
+      "nameEN": "Dairy Product",
+      "nameAR": "منتج البان",
+      "nameKU": "بەرهەمی شیری",
+      "img": "http://192.168.0.124/storage/Category/HPChItZ3kAOu77WmJpjlJVWW2NrgJxa07T1u00gu.png"
   },
   {
-    "id": 3,
-    "nameEN": "Fruits",
-    "nameAR": "فواكه",
-    "nameKU": "میوە",
-    "categoryId": 2,
-    "isShow": true,
-    "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
-  },
-  {
-    "id": 4,
-    "nameEN": "Fruits",
-    "nameAR": "فواكه",
-    "nameKU": "میوە",
-    "categoryId": 2,
-    "isShow": true,
-    "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
-  },
-  {
-    "id": 5,
-    "nameEN": "Fruits",
-    "nameAR": "فواكه",
-    "nameKU": "میوە",
-    "categoryId": 1,
-    "isShow": true,
-    "img": "https://www.pngmart.com/files/7/Groceries-PNG-Transparent.png"
+      "id": 3,
+      "nameEN": "baby",
+      "nameAR": "الأطفال",
+      "nameKU": "منداڵان",
+      "img": "http://192.168.0.124/storage/Category/DYHqMUVN77mv0fgzl1y2kQ8AX3PIKzEEWE122V1b.png"
   }
 ]

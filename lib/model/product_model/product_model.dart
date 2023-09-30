@@ -2,31 +2,31 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
-class ProductModel {
-  int? id;
-  String? nameEn;
-  String? nameAr;
-  String? nameKu;
-  String? contentsEn;
-  String? contentsAr;
-  String? contentsKu;
-  String? descriptionEn;
-  String? descriptionAr;
-  String? descriptionKu;
-  int? categoryId;
-  int? subCategoryId;
-  int? purchasePrice;
-  int? price;
-  int? price2;
-  int? offerPrice;
-  int? stock;
-  int? orderLimit;
-  bool? highlight;
-  bool? bestSell;
-  bool? available;
-  String? coverImg;
 
-  ProductModel({
+class ProductModel {
+  final int? id;
+  final String? nameEn;
+  final String? nameAr;
+  final String? nameKu;
+  final String? contentsEn;
+  final String? contentsAr;
+  final String? contentsKu;
+  final String? descriptionEn;
+  final String? descriptionAr;
+  final String? descriptionKu;
+  final String? coverImg;
+  final int? categoryId;
+  final int? subCategoryId;
+  final int? purchasePrice;
+  final int? price;
+  final int? price2;
+  final int? offerPrice;
+  final int? orderLimit;
+  final int? stock;
+  final int? highlight;
+  final int? bestSell;
+
+  const ProductModel({
     this.id,
     this.nameEn,
     this.nameAr,
@@ -37,19 +37,23 @@ class ProductModel {
     this.descriptionEn,
     this.descriptionAr,
     this.descriptionKu,
+    this.coverImg,
     this.categoryId,
     this.subCategoryId,
     this.purchasePrice,
     this.price,
     this.price2,
     this.offerPrice,
-    this.stock,
     this.orderLimit,
+    this.stock,
     this.highlight,
     this.bestSell,
-    this.available,
-    this.coverImg,
   });
+
+  @override
+  String toString() {
+    return 'ProductModel(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, contentsEn: $contentsEn, contentsAr: $contentsAr, contentsKu: $contentsKu, descriptionEn: $descriptionEn, descriptionAr: $descriptionAr, descriptionKu: $descriptionKu, coverImg: $coverImg, categoryId: $categoryId, subCategoryId: $subCategoryId, purchasePrice: $purchasePrice, price: $price, price2: $price2, offerPrice: $offerPrice, orderLimit: $orderLimit, stock: $stock, highlight: $highlight, bestSell: $bestSell)';
+  }
 
   factory ProductModel.fromMap(Map<String, dynamic> data) => ProductModel(
         id: data['id'] as int?,
@@ -62,18 +66,17 @@ class ProductModel {
         descriptionEn: data['descriptionEN'] as String?,
         descriptionAr: data['descriptionAR'] as String?,
         descriptionKu: data['descriptionKU'] as String?,
+        coverImg: data['coverImg'] as String?,
         categoryId: data['categoryId'] as int?,
         subCategoryId: data['SubCategoryId'] as int?,
         purchasePrice: data['purchase_price'] as int?,
         price: data['price'] as int?,
         price2: data['price2'] as int?,
         offerPrice: data['offer_price'] as int?,
-        stock: data['stock'] as int?,
         orderLimit: data['order_limit'] as int?,
-        highlight: data['highlight'] as bool?,
-        bestSell: data['bestSell'] as bool?,
-        available: data['available'] as bool?,
-        coverImg: data['coverImg'] as String?,
+        stock: data['stock'] as int?,
+        highlight: data['highlight'] as int?,
+        bestSell: data['bestSell'] as int?,
       );
 
   Map<String, dynamic> toMap() => {
@@ -87,18 +90,17 @@ class ProductModel {
         'descriptionEN': descriptionEn,
         'descriptionAR': descriptionAr,
         'descriptionKU': descriptionKu,
+        'coverImg': coverImg,
         'categoryId': categoryId,
         'SubCategoryId': subCategoryId,
         'purchase_price': purchasePrice,
         'price': price,
         'price2': price2,
         'offer_price': offerPrice,
-        'stock': stock,
         'order_limit': orderLimit,
+        'stock': stock,
         'highlight': highlight,
         'bestSell': bestSell,
-        'available': available,
-        'coverImg': coverImg,
       };
 
   /// `dart:convert`
@@ -124,18 +126,17 @@ class ProductModel {
     String? descriptionEn,
     String? descriptionAr,
     String? descriptionKu,
+    String? coverImg,
     int? categoryId,
     int? subCategoryId,
     int? purchasePrice,
     int? price,
     int? price2,
     int? offerPrice,
-    int? stock,
     int? orderLimit,
-    bool? highlight,
-    bool? bestSell,
-    bool? available,
-    String? coverImg,
+    int? stock,
+    int? highlight,
+    int? bestSell,
   }) {
     return ProductModel(
       id: id ?? this.id,
@@ -148,18 +149,17 @@ class ProductModel {
       descriptionEn: descriptionEn ?? this.descriptionEn,
       descriptionAr: descriptionAr ?? this.descriptionAr,
       descriptionKu: descriptionKu ?? this.descriptionKu,
+      coverImg: coverImg ?? this.coverImg,
       categoryId: categoryId ?? this.categoryId,
       subCategoryId: subCategoryId ?? this.subCategoryId,
       purchasePrice: purchasePrice ?? this.purchasePrice,
       price: price ?? this.price,
       price2: price2 ?? this.price2,
       offerPrice: offerPrice ?? this.offerPrice,
-      stock: stock ?? this.stock,
       orderLimit: orderLimit ?? this.orderLimit,
+      stock: stock ?? this.stock,
       highlight: highlight ?? this.highlight,
       bestSell: bestSell ?? this.bestSell,
-      available: available ?? this.available,
-      coverImg: coverImg ?? this.coverImg,
     );
   }
 
@@ -183,16 +183,15 @@ class ProductModel {
       descriptionEn.hashCode ^
       descriptionAr.hashCode ^
       descriptionKu.hashCode ^
+      coverImg.hashCode ^
       categoryId.hashCode ^
       subCategoryId.hashCode ^
       purchasePrice.hashCode ^
       price.hashCode ^
       price2.hashCode ^
       offerPrice.hashCode ^
-      stock.hashCode ^
       orderLimit.hashCode ^
+      stock.hashCode ^
       highlight.hashCode ^
-      bestSell.hashCode ^
-      available.hashCode ^
-      coverImg.hashCode;
+      bestSell.hashCode;
 }

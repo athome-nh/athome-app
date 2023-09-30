@@ -41,7 +41,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                 Icons.arrow_back_ios,
                 color: mainColorRed,
               )),
-    
+
           // Change the color of the unselected tab labels
         ),
         body: SingleChildScrollView(
@@ -240,7 +240,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                   getWidth(context, 65), getHeight(context, 5)),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
-                                side: BorderSide(color: mainColorRed, width: 1.0),
+                                side:
+                                    BorderSide(color: mainColorRed, width: 1.0),
                               ),
                             ),
                           ),
@@ -262,7 +263,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                   getWidth(context, 65), getHeight(context, 5)),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
-                                side: BorderSide(color: mainColorRed, width: 1.0),
+                                side:
+                                    BorderSide(color: mainColorRed, width: 1.0),
                               ),
                             ),
                           ),
@@ -290,7 +292,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                     color: Color(0xffF2F2F2),
                     borderRadius: BorderRadius.circular(15)),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: getWidth(context, 7)),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: getWidth(context, 7)),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0),
                     child: Text(

@@ -54,7 +54,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:".tr,
+                  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:"
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -69,7 +70,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.".tr,
+                  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place."
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -84,7 +86,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.".tr,
+                  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks."
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -99,7 +102,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.".tr,
+                  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected."
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -114,7 +118,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.".tr,
+                  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop."
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -129,7 +134,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.".tr,
+                  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns."
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -144,7 +150,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.".tr,
+                  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience."
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,
@@ -159,7 +166,8 @@ class _AboutScreenState extends State<AboutScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                 child: Text(
-                  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!".tr,
+                  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!"
+                      .tr,
                   style: TextStyle(
                       // height: 1.5,
                       color: mainColorGrey,

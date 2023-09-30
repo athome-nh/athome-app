@@ -2,13 +2,12 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
+
 class CategoryModel {
   final int? id;
   final String? nameEn;
   final String? nameAr;
   final String? nameKu;
-  final int? branchId;
-  final bool? isShow;
   final String? img;
 
   const CategoryModel({
@@ -16,14 +15,12 @@ class CategoryModel {
     this.nameEn,
     this.nameAr,
     this.nameKu,
-    this.branchId,
-    this.isShow,
     this.img,
   });
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, branchId: $branchId, isShow: $isShow, img: $img)';
+    return 'CategoryModel(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, img: $img)';
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> data) => CategoryModel(
@@ -31,8 +28,6 @@ class CategoryModel {
         nameEn: data['nameEN'] as String?,
         nameAr: data['nameAR'] as String?,
         nameKu: data['nameKU'] as String?,
-        branchId: data['branch_id'] as int?,
-        isShow: data['isShow'] as bool?,
         img: data['img'] as String?,
       );
 
@@ -41,8 +36,6 @@ class CategoryModel {
         'nameEN': nameEn,
         'nameAR': nameAr,
         'nameKU': nameKu,
-        'branch_id': branchId,
-        'isShow': isShow,
         'img': img,
       };
 
@@ -63,8 +56,6 @@ class CategoryModel {
     String? nameEn,
     String? nameAr,
     String? nameKu,
-    int? branchId,
-    bool? isShow,
     String? img,
   }) {
     return CategoryModel(
@@ -72,8 +63,6 @@ class CategoryModel {
       nameEn: nameEn ?? this.nameEn,
       nameAr: nameAr ?? this.nameAr,
       nameKu: nameKu ?? this.nameKu,
-      branchId: branchId ?? this.branchId,
-      isShow: isShow ?? this.isShow,
       img: img ?? this.img,
     );
   }
@@ -92,7 +81,5 @@ class CategoryModel {
       nameEn.hashCode ^
       nameAr.hashCode ^
       nameKu.hashCode ^
-      branchId.hashCode ^
-      isShow.hashCode ^
       img.hashCode;
 }

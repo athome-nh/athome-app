@@ -327,7 +327,8 @@ class _CheckOutState extends State<CheckOut> {
                         padding: EdgeInsets.symmetric(
                             horizontal: getWidth(context, 4)),
                         child: Divider(
-                            color: mainColorGrey.withOpacity(0.2), thickness: 1),
+                            color: mainColorGrey.withOpacity(0.2),
+                            thickness: 1),
                       ),
                       SizedBox(
                         height: getHeight(context, 1),
@@ -395,7 +396,8 @@ class _CheckOutState extends State<CheckOut> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 4)),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Icon(
                                           Icons.shopping_cart_outlined,
@@ -438,7 +440,8 @@ class _CheckOutState extends State<CheckOut> {
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 color: mainColorGrey,
-                                                fontFamily: mainFontMontserrat4),
+                                                fontFamily:
+                                                    mainFontMontserrat4),
                                           ),
                                         ),
                                         SizedBox(

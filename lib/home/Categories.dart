@@ -93,7 +93,10 @@ class _CategoriesState extends State<Categories> {
                         child: GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4, // Number of columns
+                            childAspectRatio: getHeight(context, 0.09),
+                            crossAxisSpacing: getWidth(context, 0.5),
+                            mainAxisSpacing: getHeight(context, 2),
+                            crossAxisCount: 3, // Number of columns
                           ),
                           itemCount: productPro
                               .categores.length, // Number of items in the grid
@@ -101,7 +104,9 @@ class _CategoriesState extends State<Categories> {
                             final cateItem = productPro.categores[index];
                             // Build each grid item here
                             return Container(
+                              //decoration: BoxDecoration(border: Border.all()),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () {
@@ -120,8 +125,8 @@ class _CategoriesState extends State<Categories> {
                                             100), // Adjust the corner radius
                                       ),
                                       child: Container(
-                                        width: getHeight(context, 7),
-                                        height: getHeight(context, 7),
+                                        width: getHeight(context, 10),
+                                        height: getHeight(context, 10),
                                         decoration: BoxDecoration(
                                             color: Color(0xffF2F2F2),
                                             borderRadius:
@@ -136,23 +141,25 @@ class _CategoriesState extends State<Categories> {
                                                     error) =>
                                                 Image.asset(
                                                     "assets/images/002_logo_1.png"),
-                                            width: getHeight(context, 5),
-                                            height: getHeight(context, 5),
+                                            width: getHeight(context, 7),
+                                            height: getHeight(context, 7),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    lang == "en"
-                                        ? cateItem.nameEn!
-                                        : lang == "ar"
-                                            ? cateItem.nameAr!
-                                            : cateItem.nameKu!,
-                                    style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontFamily: mainFontMontserrat4,
-                                        fontSize: 14),
+                                  Container(
+                                    child: Text(
+                                      lang == "en"
+                                          ? cateItem.nameEn!
+                                          : lang == "ar"
+                                              ? cateItem.nameAr!
+                                              : cateItem.nameKu!,
+                                      style: TextStyle(
+                                          color: mainColorGrey,
+                                          fontFamily: mainFontMontserrat4,
+                                          fontSize: 14),
+                                    ),
                                   ),
                                 ],
                               ),

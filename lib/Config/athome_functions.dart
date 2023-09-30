@@ -155,6 +155,7 @@ String fontNormalChoose() {
   String font = lang == "en" ? "" : "";
   return font;
 }
+
 /// #Check this CODEs Latter
 
 // ignore_for_file: unrelated_type_equality_checks

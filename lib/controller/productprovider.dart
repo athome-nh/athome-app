@@ -31,7 +31,7 @@ class productProvider extends ChangeNotifier {
   }
 
   List<ProductModel> getProductsByBestsell() {
-    return _products.where((product) => product.bestSell == true).toList();
+    return _products.where((product) => product.bestSell == 1).toList();
   }
 
   List<ProductModel> getProductsBySearch(String value) {
@@ -48,7 +48,7 @@ class productProvider extends ChangeNotifier {
   }
 
   List<ProductModel> getProductsByHighlight() {
-    return _products.where((product) => product.highlight == true).toList();
+    return _products.where((product) => product.highlight == 1).toList();
   }
 
   List<ProductModel> getProductsByIds(List<int> idsToRetrieve) {
@@ -58,9 +58,7 @@ class productProvider extends ChangeNotifier {
   }
 
   List<SubCategory> getsubcateById(int idToRetrieve) {
-    return subCategores
-        .where((subcate) => subcate.categoryId == idToRetrieve)
-        .toList();
+    return subCategores.where((subcate) => subcate.id == idToRetrieve).toList();
   }
 
   // Add a product to the list

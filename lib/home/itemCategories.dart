@@ -1,3 +1,4 @@
+import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Switchscreen.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -117,6 +118,8 @@ class _itemCategoriesState extends State<itemCategories> {
                             .getProductsByCategory(productPro.cateType)[index];
                         final isItemInCart =
                             cartProvider.itemExistsInCart(product);
+                        final isFavInCart =
+                            cartProvider.FavExistsInCart(product);
                         return Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 2)),
@@ -161,12 +164,13 @@ class _itemCategoriesState extends State<itemCategories> {
                                           onTap: () {
                                             setState(() {
                                               if (!isLogin) {
-                                                //loginFirstModal(context);
+                                                loginFirstModal(context);
                                                 return;
                                               }
                                               final cartItem = CartItem(
                                                   product: product.id!);
-                                              cartProvider.addToCart(cartItem);
+                                              cartProvider
+                                                  .addFavToCart(cartItem);
                                             });
                                           },
                                           child: Padding(
@@ -177,12 +181,12 @@ class _itemCategoriesState extends State<itemCategories> {
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(50),
-                                                  color: isItemInCart
+                                                  color: isFavInCart
                                                       ? mainColorRed
                                                           .withOpacity(0.1)
                                                       : mainColorGrey
                                                           .withOpacity(0.2)),
-                                              child: isItemInCart
+                                              child: isFavInCart
                                                   ? Icon(
                                                       FontAwesomeIcons
                                                           .heartCircleCheck,
