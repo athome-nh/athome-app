@@ -68,8 +68,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                     children: [
                       Text(
                         "What is Your",
-                        style:
-                            TextStyle(fontSize: 30, fontFamily: mainFontbold),
+                        style:TextStyle(fontSize: 30, fontFamily: mainFontbold),
                       ),
                       Text(
                         "Name ?",
@@ -161,7 +160,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       (String item) {
                         return DropdownMenuItem<String>(
                           value: item,
-                          child: Text(item),
+                          child: Text(item,style: TextStyle(fontFamily: mainFontnormal),),
                           enabled: item == "Erbil" ? true : false,
                         );
                       },
@@ -433,7 +432,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                   child: Text(
                     "Confirm",
                     style: TextStyle(
-                      fontSize: getWidth(context, 5),
+                      fontSize: getWidth(context, 5),fontFamily: mainFontnormal,
                     ),
                   ),
                 ),

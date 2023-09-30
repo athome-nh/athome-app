@@ -164,7 +164,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                             Text(
                               "Enter your full name",
                               style: TextStyle(
-                                fontFamily: 'defaultf',
+                                fontFamily: mainFontbold,
                                 color: mainColorRed.withOpacity(0.8),
                               ),
                             ),
@@ -214,8 +214,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                               items: items.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
                                   enabled: value == "Erbil" ? true : false,
+                                  child: Text(value,style:TextStyle(fontSize: 30, fontFamily: mainFontbold),),
                                 );
                               }).toList(),
                             ),
@@ -265,7 +265,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                               items: agelist.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
+                                  child: Text(value,style:TextStyle(fontSize: 30, fontFamily: mainFontbold),),
                                 );
                               }).toList(),
                             ),
@@ -377,7 +377,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                           )
                         : Text(
                             "Confirm",
-                            style: TextStyle(color: mainColorWhite),
+                            style:TextStyle(fontSize: 30, fontFamily: mainFontbold,color: mainColorWhite),
                           ),
                   ),
                 ),

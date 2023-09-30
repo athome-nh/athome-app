@@ -81,13 +81,19 @@ class _SettingState extends State<Setting> {
                         style: TextStyle(fontFamily: mainFontnormal),
                       ),
                     ),
-                    const DropdownMenuItem(
+                    DropdownMenuItem(
                       value: 'Arabic',
-                      child: Text('AR'),
+                      child: Text(
+                        'AR',
+                        style: TextStyle(fontFamily: mainFontnormal),
+                      ),
                     ),
-                    const DropdownMenuItem(
+                    DropdownMenuItem(
                       value: 'Kurdish',
-                      child: Text('KU'),
+                      child: Text(
+                        'KU',
+                        style: TextStyle(fontFamily: mainFontnormal),
+                      ),
                     ),
                   ],
                 ),
@@ -452,6 +458,8 @@ class _SettingState extends State<Setting> {
                                                 child: Text(
                                                   value,
                                                   style: TextStyle(
+                                                      fontFamily:
+                                                          mainFontnormal,
                                                       color: mainColorWhite),
                                                 ),
                                               );
