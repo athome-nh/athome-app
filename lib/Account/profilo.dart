@@ -307,7 +307,7 @@ class _SettingState extends State<Setting> {
                         ),
                         child: Container(
                           width: getWidth(context, 93),
-                          height: getHeight(context, 20),
+                          height: getHeight(context, 24),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               color: mainColorGrey),

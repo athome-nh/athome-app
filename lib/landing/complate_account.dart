@@ -12,10 +12,9 @@ class CompleteAccount extends StatefulWidget {
   String phone_number = "";
   String uid = "";
 
-  CompleteAccount({required this.phone_number, required this.uid});
+  CompleteAccount({super.key, required this.phone_number, required this.uid});
 
   @override
-  // ignore: library_private_types_in_public_api
   _CompleteAccountState createState() => _CompleteAccountState();
 }
 
@@ -101,14 +100,14 @@ class _CompleteAccountState extends State<CompleteAccount> {
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextField(
                     controller: nameController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Enter your name ...',
                       border: InputBorder.none,
                     ),
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ),
@@ -421,7 +420,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NavSwitch()),
+                                builder: (context) => const NavSwitch()),
                           );
                         }
                       } else {

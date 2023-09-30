@@ -1,7 +1,5 @@
 // models/cart_item.dart
 
-import 'package:athome/model/product_model/product_model.dart';
-
 class CartItem {
   int product;
   int quantity;

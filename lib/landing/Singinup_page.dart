@@ -7,7 +7,6 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/Switchscreen.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -80,7 +79,7 @@ class _Singinup_pageState extends State<Singinup_page> {
             child: Column(
               children: [
                 FadeInDown(
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   child: Text(
                     "Complete Account",
                     style: TextStyle(
@@ -93,7 +92,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 1),
                 ),
                 FadeInDown(
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   child: Text(
                       "Enter your account information to complete your account",
                       textAlign: TextAlign.center,
@@ -106,8 +105,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 4),
                 ),
                 FadeInDown(
-                  delay: Duration(milliseconds: 500),
-                  duration: Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   child: TextFormField(
                     controller: nameController,
                     cursorColor: mainColorGrey,
@@ -117,7 +116,9 @@ class _Singinup_pageState extends State<Singinup_page> {
                         nameE = false;
                       });
                     },
-                    validator: (value) {},
+                    validator: (value) {
+                      return null;
+                    },
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -176,8 +177,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 3),
                 ),
                 FadeInDown(
-                    delay: Duration(milliseconds: 600),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 500),
                     child: FormField<String>(
                       builder: (FormFieldState<String> state) {
                         return InputDecorator(
@@ -227,8 +228,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 3),
                 ),
                 FadeInDown(
-                    delay: Duration(milliseconds: 700),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 700),
+                    duration: const Duration(milliseconds: 500),
                     child: FormField<String>(
                       builder: (FormFieldState<String> state) {
                         return InputDecorator(
@@ -277,16 +278,16 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 2),
                 ),
                 FadeInDown(
-                  delay: Duration(milliseconds: 800),
-                  duration: Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 800),
+                  duration: const Duration(milliseconds: 500),
                   child: _genderWidget(true, false),
                 ),
                 SizedBox(
                   height: getHeight(context, 15),
                 ),
                 FadeInDown(
-                  delay: Duration(milliseconds: 900),
-                  duration: Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 900),
+                  duration: const Duration(milliseconds: 500),
                   child: MaterialButton(
                     minWidth: getWidth(context, 100),
                     onPressed: () async {
@@ -334,7 +335,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Switchscreen()),
+                                        builder: (context) => const Switchscreen()),
                                   );
                                 } else {
                                   setState(() {
@@ -364,7 +365,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                     color: mainColorRed,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: _isLoading
                         ? Container(
                             width: 20,
@@ -430,10 +431,10 @@ class _Singinup_pageState extends State<Singinup_page> {
             color: mainColorGrey, fontFamily: mainFontbold, fontSize: 20),
         equallyAligned: true,
         size: 70.0, // default size 40.0
-        animationDuration: Duration(seconds: 1),
+        animationDuration: const Duration(seconds: 1),
         isCircular: true, // by default true
         opacityOfGradient: 0.5,
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
       ),
     );
   }
