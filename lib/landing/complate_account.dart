@@ -231,7 +231,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       decoration: BoxDecoration(
                         color: i == 1 ? mainColorGrey : mainColorLightGrey,
                         shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                         border: Border.all(
                           color: mainColorGrey,
                           width: 1,
@@ -279,7 +279,7 @@ class _CompleteAccountState extends State<CompleteAccount> {
                       decoration: BoxDecoration(
                         color: i == 2 ? mainColorGrey : mainColorLightGrey,
                         shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                         border: Border.all(
                           color: mainColorGrey,
                           width: 1,

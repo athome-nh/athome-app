@@ -1,11 +1,13 @@
+import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/controller/productprovider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
 class TrackOrder extends StatefulWidget {
-  const TrackOrder({super.key});
-
+  String ordercode = "";
+  TrackOrder(this.ordercode);
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
@@ -13,6 +15,7 @@ class TrackOrder extends StatefulWidget {
 class _TrackOrderState extends State<TrackOrder> {
   @override
   Widget build(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: true);
     return Scaffold(
       backgroundColor: mainColorWhite,
       appBar: AppBar(
@@ -43,7 +46,7 @@ class _TrackOrderState extends State<TrackOrder> {
             children: [
               Column(
                 children: [
-                  Text("Order #678678",
+                  Text("Order: " + widget.ordercode,
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 28,
@@ -59,8 +62,8 @@ class _TrackOrderState extends State<TrackOrder> {
               ),
               Column(
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: "assets/images/003_welcome_1.png",
+                  Image.asset(
+                    "assets/images/003_welcome_1.png",
                     width: getWidth(context, 60),
                     height: getHeight(context, 40),
                   ),
@@ -145,26 +148,13 @@ class _TrackOrderState extends State<TrackOrder> {
                             fontFamily: mainFontnormal,
                             color: mainColorGrey),
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            "3000",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: mainFontbold,
-                                color: mainColorRed),
-                          ),
-                          SizedBox(
-                            width: getWidth(context, 1),
-                          ),
-                          Text(
-                            "IQD",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: mainFontbold,
-                                color: mainColorGrey),
-                          ),
-                        ],
+                      Text(
+                        addCommasToPrice(productrovider
+                            .calculateTotalPriceOrder(widget.ordercode)),
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: mainFontbold,
+                            color: mainColorRed),
                       ),
                     ],
                   ),

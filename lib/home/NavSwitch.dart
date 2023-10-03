@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
@@ -13,6 +14,8 @@ import 'package:athome/Home/MyCart.dart';
 import 'package:athome/Home/Search.dart';
 import 'package:provider/provider.dart';
 
+import '../Config/athome_functions.dart';
+import '../Config/local_data.dart';
 import '../main.dart';
 
 class NavSwitch extends StatefulWidget {
@@ -32,7 +35,7 @@ Widget buildFAB(BuildContext context) {
       textColor: mainColorRed,
       child: FloatingActionButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(5),
         ),
         onPressed: () {
           Navigator.push(
@@ -50,6 +53,10 @@ Widget buildFAB(BuildContext context) {
   );
 }
 
+bool loadData = false;
+bool isLogin = false;
+var userData = {};
+
 class _NavSwitchState extends State<NavSwitch> {
   int _selectedIndex = 0;
 
@@ -64,6 +71,26 @@ class _NavSwitchState extends State<NavSwitch> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void initState() {
+    loadData = true;
+    getBoolPrefs("islogin").then((value) {
+      if (value) {
+        getStringPrefs("userData").then((data2) {
+          setState(() {
+            userData = json.decode(decryptAES(data2));
+            isLogin = true;
+          });
+        });
+      } else {
+        setState(() {
+          isLogin = false;
+        });
+      }
+    });
+
+    super.initState();
   }
 
   @override
@@ -156,7 +183,7 @@ class _NavSwitchState extends State<NavSwitch> {
               backgroundColor: mainColorGrey,
               contentPadding: const EdgeInsets.all(0),
               content: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(5),
                 child: ClipRect(
                   child: Container(
                     child: Container(
@@ -166,7 +193,7 @@ class _NavSwitchState extends State<NavSwitch> {
                           color: mainColorGrey.withOpacity(0.1),
                           border: Border.all(
                               color: mainColorWhite.withOpacity(0.1)),
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(5)),
                       padding: const EdgeInsets.all(10),
                       child: ConstrainedBox(
                         constraints: BoxConstraints(

@@ -81,8 +81,8 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           seconds: 1,
                         ),
                         curve: Curves.linear,
-                        child: CachedNetworkImage(
-                          imageUrl: "assets/images/008_track_1.png",
+                        child: Image.asset(
+                          "assets/images/Verify.png",
                         ),
                       ),
                     ),
@@ -95,8 +95,8 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         opacity: _currentIndex == 1 ? 1 : 0,
                         duration: Duration(seconds: 1),
                         curve: Curves.linear,
-                        child: CachedNetworkImage(
-                          imageUrl: "assets/images/008_track_2.png",
+                        child: Image.asset(
+                          "assets/images/Verify.png",
                         ),
                       ),
                     ),
@@ -109,8 +109,8 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         opacity: _currentIndex == 2 ? 1 : 0,
                         duration: Duration(seconds: 1),
                         curve: Curves.linear,
-                        child: CachedNetworkImage(
-                          imageUrl: "assets/images/008_track_3.png",
+                        child: Image.asset(
+                          "assets/images/Verify.png",
                         ),
                       ),
                     )
@@ -225,7 +225,10 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   delay: Duration(milliseconds: 600),
                   child: MaterialButton(
                     minWidth: getWidth(context, 100),
-                    onPressed: () {
+                    onPressed: () async {
+                      if (await noInternet(context)) {
+                        return;
+                      }
                       if (controller.text.isEmpty) {
                         toastLong('Please enter your phone number');
                         return;
@@ -238,6 +241,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         toastLong('Please enter your phone number');
                         return;
                       }
+
                       String ph = controller.text.trim();
                       ph = "+964" + ph;
 
@@ -248,7 +252,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     },
                     color: mainColorRed,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(5)),
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: Text(
                       "Request OTP",

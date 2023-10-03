@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'package:athome/Switchscreen.dart';
+
 import 'package:athome/home/NavSwitch.dart';
 import 'package:flutter/material.dart';
 import '../Config/property.dart';
-
-import 'package:cached_network_image/cached_network_image.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,11 +17,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 4),
+      Duration(seconds: 4),
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const Switchscreen(),
+            builder: (context) => const NavSwitch(),
           ),
         );
       },

@@ -5,6 +5,9 @@ import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 
+import '../Switchscreen.dart';
+import '../home/NavSwitch.dart';
+
 class CartProvider extends ChangeNotifier {
   CartProvider() {
     // When the CartProvider is created, load cart data from shared preferences.
@@ -28,7 +31,7 @@ class CartProvider extends ChangeNotifier {
       cartItems.add(cartItem);
     }
 
-    saveCartToPreferences(cartItems, "cartData");
+    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
     notifyListeners();
   }
 
@@ -46,7 +49,7 @@ class CartProvider extends ChangeNotifier {
       FavItems.add(cartItem);
     }
 
-    saveCartToPreferences(FavItems, "Fav");
+    saveCartToPreferences(FavItems, "Fav" + userData["id"].toString());
     notifyListeners();
   }
 
@@ -90,11 +93,12 @@ class CartProvider extends ChangeNotifier {
   }
 
   loadCartFromPreferences() {
-    getStringPrefs('cartData').then((value) {
+    getStringPrefs("cart" + userData["id"].toString()).then((value) {
       if (value != "") {
         var jsonList = jsonDecode(decryptAES(value));
         List<CartItem> cart =
             (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
+
         cartItems = cart;
         notifyListeners();
       }
@@ -102,7 +106,7 @@ class CartProvider extends ChangeNotifier {
   }
 
   loadFavCartFromPreferences() {
-    getStringPrefs('Fav').then((value) {
+    getStringPrefs("Fav" + userData["id"].toString()).then((value) {
       if (value != "") {
         var jsonList = jsonDecode(decryptAES(value));
 
@@ -127,11 +131,16 @@ class CartProvider extends ChangeNotifier {
     return totalQuantity;
   }
 
-  double calculateTotalPrice(List<ProductModel> product) {
-    double totalPrice = 0.0;
+  int calculateTotalPrice(List<ProductModel> product) {
+    int totalPrice = 0;
     int i = 0;
     for (var cartItem in cartItems) {
-      totalPrice += product[i].price! * cartItem.quantity;
+      if (product[i].offerPrice! > 0) {
+        totalPrice += product[i].offerPrice! * cartItem.quantity;
+      } else {
+        totalPrice += product[i].price! * cartItem.quantity;
+      }
+      i++;
     }
 
     return totalPrice;
@@ -140,7 +149,14 @@ class CartProvider extends ChangeNotifier {
   void clearCart() {
     cartItems.clear();
 
-    saveCartToPreferences(cartItems, "cartData");
+    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
+    notifyListeners(); // Notify listeners when the cart is cleared
+  }
+
+  void clearFav() {
+    FavItems.clear();
+
+    saveCartToPreferences(FavItems, "Fav" + userData["id"].toString());
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
@@ -149,7 +165,7 @@ class CartProvider extends ChangeNotifier {
       (item) => item.product == id,
     );
     cartItems.remove(cartItems[existingItemIndex]);
-    saveCartToPreferences(cartItems, "cartData");
+    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
@@ -170,7 +186,7 @@ class CartProvider extends ChangeNotifier {
       // If the item doesn't exist, add it to the cart
       cartItems.remove(cartItem);
     }
-    saveCartToPreferences(cartItems, "cartData");
+    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
     notifyListeners();
   }
 }
