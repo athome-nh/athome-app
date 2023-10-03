@@ -145,10 +145,10 @@ class _Home_SCState extends State<Home_SC> {
     if (loadData) {
       loadPostData().then((data) {
         loadData = false;
-
-        if (data.toString() != "[]") {
-          update(context, data);
-        }
+    
+        // if (data.toString() != "[]") {
+        //   update(context, data);
+        // }
 
         getPost();
       });

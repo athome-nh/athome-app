@@ -305,13 +305,16 @@ SnackBar noInternetSnackBar = SnackBar(
   duration: const Duration(seconds: 4),
   content: Text(
     'You\'re offline, connect to a network.'.tr,
+    style: TextStyle(fontFamily: mainFontnormal),
+    
   ),
   backgroundColor: mainColorGrey,
 );
 SnackBar internetBackSnackBar = SnackBar(
-  duration: Duration(seconds: 3),
+  duration: const Duration(seconds: 3),
   content: Text(
     'You\'re online ✅'.tr,
+    style: TextStyle(fontFamily: mainFontnormal),
   ),
   backgroundColor: Colors.green,
 );
@@ -447,7 +450,7 @@ Future<void> alert(BuildContext context, String title, String message) async {
                   child: Text(
                     title,
                     style: TextStyle(
-                        fontFamily: 'defaultf',
+                        fontFamily: mainFontnormal,
                         color: mainColorGrey,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
@@ -460,7 +463,7 @@ Future<void> alert(BuildContext context, String title, String message) async {
                 child: Text(
                   message,
                   style: TextStyle(
-                    fontFamily: 'defaultf',
+                    fontFamily: mainFontnormal,
                     color: mainColorWhite,
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
@@ -487,7 +490,7 @@ Future<void> alert(BuildContext context, String title, String message) async {
                     child: Text(
                       "OK".tr,
                       style: TextStyle(
-                          fontFamily: 'defaultf',
+                          fontFamily: mainFontnormal,
                           color: mainColorWhite,
                           fontSize: 18,
                           fontWeight: FontWeight.normal),
@@ -531,7 +534,7 @@ Future<void> yesNoOptrins(
                   child: Text(
                     title,
                     style: TextStyle(
-                        fontFamily: 'defaultf',
+                        fontFamily: mainFontnormal,
                         color: mainColorWhite,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
@@ -545,7 +548,7 @@ Future<void> yesNoOptrins(
                 child: Text(
                   message,
                   style: TextStyle(
-                    fontFamily: 'defaultf',
+                    fontFamily: mainFontnormal,
                     color: mainColorWhite,
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
@@ -577,7 +580,7 @@ Future<void> yesNoOptrins(
                           child: Text(
                             "Cancle".tr,
                             style: TextStyle(
-                                fontFamily: 'defaultf',
+                                fontFamily: mainFontnormal,
                                 color: mainColorRed,
                                 fontSize: getWidth(context, 4),
                                 fontWeight: FontWeight.normal),
@@ -603,7 +606,7 @@ Future<void> yesNoOptrins(
                           child: Text(
                             "OK".tr,
                             style: TextStyle(
-                                fontFamily: 'defaultf',
+                                fontFamily: mainFontnormal,
                                 color: mainColorGrey,
                                 fontSize: getWidth(context, 4),
                                 fontWeight: FontWeight.normal),
@@ -650,7 +653,7 @@ loginFirstContainer(BuildContext context) {
                   width: getWidth(context, 90),
                   height: 55,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15),
                     ),
@@ -660,7 +663,7 @@ loginFirstContainer(BuildContext context) {
                     child: Text(
                       "Warning".tr,
                       style: TextStyle(
-                        fontFamily: "RK",
+                        fontFamily: mainFontnormal,
                         color: mainColorWhite,
                         fontSize: 25,
                       ),
@@ -695,7 +698,7 @@ loginFirstContainer(BuildContext context) {
                 Text(
                   "You need to login first".tr,
                   style: TextStyle(
-                      fontFamily: 'defaultf',
+                      fontFamily: mainFontnormal,
                       color: mainColorWhite,
                       fontSize: 25,
                       fontWeight: FontWeight.normal),
@@ -716,13 +719,13 @@ loginFirstContainer(BuildContext context) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RegisterWithPhoneNumber()),
+                            builder: (context) => const RegisterWithPhoneNumber()),
                       );
                     },
                     child: Text(
                       'Log in'.tr,
                       style: TextStyle(
-                        fontFamily: 'defaultf',
+                        fontFamily: mainFontnormal,
                         fontSize: 18,
                         color: mainColorWhite,
                         fontWeight: FontWeight.w800,
@@ -774,7 +777,7 @@ loginFirstModal(BuildContext context) {
                         width: getWidth(context, 90),
                         height: 55,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(15),
                             topRight: Radius.circular(15),
                           ),
@@ -784,7 +787,7 @@ loginFirstModal(BuildContext context) {
                           child: Text(
                             "Warning".tr,
                             style: TextStyle(
-                              fontFamily: "RK",
+                              fontFamily: mainFontnormal,
                               color: mainColorWhite,
                               fontSize: 25,
                             ),
@@ -820,7 +823,7 @@ loginFirstModal(BuildContext context) {
                       Text(
                         "You need to login first".tr,
                         style: TextStyle(
-                            fontFamily: 'defaultf',
+                            fontFamily: mainFontnormal,
                             color: mainColorRed,
                             fontSize: 25,
                             fontWeight: FontWeight.normal),
@@ -842,13 +845,13 @@ loginFirstModal(BuildContext context) {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      RegisterWithPhoneNumber()),
+                                      const RegisterWithPhoneNumber()),
                             );
                           },
                           child: Text(
                             'Log in'.tr,
                             style: TextStyle(
-                              fontFamily: 'defaultf',
+                              fontFamily: mainFontnormal,
                               fontSize: 18,
                               color: mainColorWhite,
                               fontWeight: FontWeight.w800,

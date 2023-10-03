@@ -81,7 +81,7 @@ class _Singinup_pageState extends State<Singinup_page> {
             child: Column(
               children: [
                 FadeInDown(
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   child: Text(
                     "Complete Account",
                     style: TextStyle(
@@ -94,7 +94,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 1),
                 ),
                 FadeInDown(
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   child: Text(
                       "Enter your account information to complete your account",
                       textAlign: TextAlign.center,
@@ -107,8 +107,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 4),
                 ),
                 FadeInDown(
-                  delay: Duration(milliseconds: 500),
-                  duration: Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   child: TextFormField(
                     controller: nameController,
                     cursorColor: mainColorGrey,
@@ -118,7 +118,9 @@ class _Singinup_pageState extends State<Singinup_page> {
                         nameE = false;
                       });
                     },
-                    validator: (value) {},
+                    validator: (value) {
+                      return null;
+                    },
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
@@ -165,7 +167,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                             Text(
                               "Enter your full name",
                               style: TextStyle(
-                                fontFamily: 'defaultf',
+                                fontFamily: mainFontbold,
                                 color: mainColorRed.withOpacity(0.8),
                               ),
                             ),
@@ -177,8 +179,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 3),
                 ),
                 FadeInDown(
-                    delay: Duration(milliseconds: 600),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 500),
                     child: FormField<String>(
                       builder: (FormFieldState<String> state) {
                         return InputDecorator(
@@ -215,8 +217,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                               items: items.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
                                   enabled: value == "Erbil" ? true : false,
+                                  child: Text(value,style:TextStyle(fontSize: 30, fontFamily: mainFontbold),),
                                 );
                               }).toList(),
                             ),
@@ -228,8 +230,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 3),
                 ),
                 FadeInDown(
-                    delay: Duration(milliseconds: 700),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 700),
+                    duration: const Duration(milliseconds: 500),
                     child: FormField<String>(
                       builder: (FormFieldState<String> state) {
                         return InputDecorator(
@@ -266,7 +268,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                               items: agelist.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
+                                  child: Text(value,style:TextStyle(fontSize: 30, fontFamily: mainFontbold),),
                                 );
                               }).toList(),
                             ),
@@ -278,16 +280,16 @@ class _Singinup_pageState extends State<Singinup_page> {
                   height: getHeight(context, 2),
                 ),
                 FadeInDown(
-                  delay: Duration(milliseconds: 800),
-                  duration: Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 800),
+                  duration: const Duration(milliseconds: 500),
                   child: _genderWidget(true, false),
                 ),
                 SizedBox(
                   height: getHeight(context, 15),
                 ),
                 FadeInDown(
-                  delay: Duration(milliseconds: 900),
-                  duration: Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 900),
+                  duration: const Duration(milliseconds: 500),
                   child: MaterialButton(
                     minWidth: getWidth(context, 100),
                     onPressed: () async {
@@ -366,7 +368,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                           )
                         : Text(
                             "Confirm",
-                            style: TextStyle(color: mainColorWhite),
+                            style:TextStyle(fontSize: 30, fontFamily: mainFontbold,color: mainColorWhite),
                           ),
                   ),
                 ),
@@ -419,10 +421,10 @@ class _Singinup_pageState extends State<Singinup_page> {
             color: mainColorGrey, fontFamily: mainFontbold, fontSize: 20),
         equallyAligned: true,
         size: 70.0, // default size 40.0
-        animationDuration: Duration(seconds: 1),
+        animationDuration: const Duration(seconds: 1),
         isCircular: true, // by default true
         opacityOfGradient: 0.5,
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
       ),
     );
   }

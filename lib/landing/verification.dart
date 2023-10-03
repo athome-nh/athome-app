@@ -9,7 +9,6 @@ import 'package:athome/Network/Network.dart';
 import 'package:athome/Switchscreen.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/Singinup_page.dart';
-import 'package:athome/landing/complate_account.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class _VerificatoinState extends State<Verificatoin> {
 
   void initState() {
     verfyphone();
-    Timer.periodic(Duration(seconds: 5), (timer) {
+    Timer.periodic(const Duration(seconds: 5), (timer) {
       setState(() {
         _currentIndex++;
 
@@ -89,7 +88,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         bottom: 0,
                         child: AnimatedOpacity(
                           opacity: _currentIndex == 0 ? 1 : 0,
-                          duration: Duration(
+                          duration: const Duration(
                             seconds: 1,
                           ),
                           curve: Curves.linear,
@@ -105,7 +104,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         bottom: 0,
                         child: AnimatedOpacity(
                           opacity: _currentIndex == 1 ? 1 : 0,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           curve: Curves.linear,
                           child: Image.asset(
                             "assets/images/Verify.png",
@@ -119,7 +118,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         bottom: 0,
                         child: AnimatedOpacity(
                           opacity: _currentIndex == 2 ? 1 : 0,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           curve: Curves.linear,
                           child: Image.asset(
                             "assets/images/Verify.png",
@@ -132,7 +131,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     height: getHeight(context, 4),
                   ),
                   FadeInDown(
-                      duration: Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 500),
                       child: Text(
                         "Verification",
                         style: TextStyle(
@@ -144,15 +143,16 @@ class _VerificatoinState extends State<Verificatoin> {
                     height: getHeight(context, 4),
                   ),
                   FadeInDown(
-                    delay: Duration(milliseconds: 500),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 500),
                     child: Text(
                       "Please enter the 6 digit code sent to \n " +
-                          widget.phone_number,
+                          widget.phone_number ,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey.shade500,
+                          fontFamily: mainFontbold,
                           height: 1.5),
                     ),
                   ),
@@ -162,8 +162,8 @@ class _VerificatoinState extends State<Verificatoin> {
 
                   // Verification Code Input
                   FadeInDown(
-                    delay: Duration(milliseconds: 600),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 500),
                     child: VerificationCode(
                       length: 6,
                       textStyle: TextStyle(fontSize: 20, color: mainColorGrey),
@@ -183,8 +183,8 @@ class _VerificatoinState extends State<Verificatoin> {
                     height: getHeight(context, 2),
                   ),
                   FadeInDown(
-                    delay: Duration(milliseconds: 700),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 700),
+                    duration: const Duration(milliseconds: 500),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -208,7 +208,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                       formatedTime(timeInSecond: timecode)
                                           .toString()
                                   : "Resend",
-                              style: TextStyle(color: mainColorRed),
+                              style: TextStyle(color: mainColorRed,fontFamily: mainFontbold),
                             ))
                       ],
                     ),
@@ -217,8 +217,8 @@ class _VerificatoinState extends State<Verificatoin> {
                     height: getHeight(context, 6),
                   ),
                   FadeInDown(
-                    delay: Duration(milliseconds: 800),
-                    duration: Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 800),
+                    duration: const Duration(milliseconds: 500),
                     child: MaterialButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
@@ -237,7 +237,7 @@ class _VerificatoinState extends State<Verificatoin> {
                           ? Container(
                               width: 20,
                               height: 20,
-                              child: CircularProgressIndicator(
+                              child: const CircularProgressIndicator(
                                 backgroundColor: Colors.white,
                                 strokeWidth: 3,
                                 color: Colors.black,
@@ -246,7 +246,7 @@ class _VerificatoinState extends State<Verificatoin> {
                           : Text(
                               "Verify",
                               style: TextStyle(
-                                  color: mainColorWhite, fontSize: 14),
+                                  color: mainColorWhite, fontSize: 14,fontFamily: mainFontbold),
                             ),
                     ),
                   )

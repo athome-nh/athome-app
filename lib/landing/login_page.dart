@@ -138,7 +138,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       'Enter your phone number to Shop Smarter & Easier.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 14, color: mainColorGrey.withOpacity(0.7)),
+                          fontSize: 14, color: mainColorGrey.withOpacity(0.7),fontFamily: mainFontbold,),
                     ),
                   ),
                 ),
@@ -256,7 +256,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: Text(
                       "Request OTP",
-                      style: TextStyle(color: mainColorWhite),
+                      style: TextStyle(color: mainColorWhite,fontFamily: mainFontbold,),
                     ),
                   ),
                 ),
@@ -271,7 +271,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       "We will send you OTP code to verifiy your phone number.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 14, color: mainColorGrey.withOpacity(0.7)),
+                          fontSize: 14, color: mainColorGrey.withOpacity(0.7),fontFamily: mainFontbold,),
                     ),
                   ),
                 )
