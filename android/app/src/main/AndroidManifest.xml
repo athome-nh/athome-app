@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+   
+       <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+   
     <application
 
         android:label="athome"
@@ -34,5 +38,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+  <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyC7cpBvkGaCkIkXA4K4Py4-pIJEq0T21zo"/>
+
+
+
     </application>
 </manifest>
