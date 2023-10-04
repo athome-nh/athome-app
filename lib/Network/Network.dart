@@ -49,6 +49,29 @@ class Network {
     }
   }
 
+  Future getDataAll(String apiRout, BuildContext context) async {
+    try {
+      Response response = await dio.get(
+        serverUrl + apiRout,
+      );
+      return response.data;
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(
+            duration: const Duration(seconds: 4),
+            content: Text(
+              'An error occured, Please try again.',
+              style: TextStyle(color: mainColorWhite),
+            ),
+            backgroundColor: mainColorGrey,
+          ))
+          .closed
+          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+
+      return "";
+    }
+  }
+
   Future postData(String rout, Map data, BuildContext context) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.wifi ||
@@ -58,7 +81,7 @@ class Network {
           serverUrl + rout,
           data: data,
         );
-
+        print(response.statusCode);
         return response.data;
       } catch (e) {
         ScaffoldMessenger.of(context)

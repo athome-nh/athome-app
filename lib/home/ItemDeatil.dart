@@ -1,3 +1,7 @@
+import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/model/cart.dart';
+import 'package:athome/model/product_model/product_model.dart';
+import 'package:athome/model/products_image/products_image.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
+import '../Config/my_widget.dart';
+import '../controller/productprovider.dart';
 import '../main.dart';
+import 'MyCart.dart';
 
 class ItemDeatil extends StatefulWidget {
   const ItemDeatil({super.key});
@@ -18,13 +26,23 @@ class ItemDeatil extends StatefulWidget {
 class _ItemDeatilState extends State<ItemDeatil> {
   @override
   Widget build(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: true);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
+    ProductModel Item = productrovider.getoneProductById(productrovider.idItem);
+    final isItemInCart = cartProvider.itemExistsInCart(Item);
+    List<ProductsImage> images =
+        productrovider.getproductimages(productrovider.idItem);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
-            "Single Oroduct".tr,
+            lang == "en"
+                ? Item.nameEn!
+                : lang == "ar"
+                    ? Item.nameAr!
+                    : Item.nameKu!,
             style: TextStyle(
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
@@ -54,7 +72,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                       height: getHeight(context, 60),
                       decoration: BoxDecoration(
                           color: Color(0xffF2F2F2),
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(5)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,52 +80,68 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 2)),
-                            child: Container(
-                              width: getWidth(context, 100),
-                              height: getHeight(context, 30),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0),
-                                child: CarouselSlider(
-                                  items: [
-                                    ClipRRect(
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pbGt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                                        width: getWidth(context, 100),
-                                        height: getHeight(context, 20),
-                                        fit: BoxFit.fill,
+                            child: images.length > 0
+                                ? Container(
+                                    width: getWidth(context, 100),
+                                    height: getHeight(context, 30),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      child: CarouselSlider(
+                                        items: images.map((imageUrl) {
+                                          return Builder(
+                                            builder: (BuildContext context) {
+                                              return ClipRRect(
+                                                child: CachedNetworkImage(
+                                                  imageUrl: imageUrl.img!,
+                                                  width: getWidth(context, 100),
+                                                  height:
+                                                      getHeight(context, 30),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        }).toList(),
+                                        options: CarouselOptions(
+                                          autoPlay: true,
+                                          aspectRatio: 16 / 9,
+                                          viewportFraction: 1.0,
+                                          enlargeCenterPage: true,
+                                          autoPlayInterval:
+                                              Duration(seconds: 2),
+                                          autoPlayAnimationDuration:
+                                              Duration(milliseconds: 2000),
+                                        ),
                                       ),
                                     ),
-                                    CachedNetworkImage(
-                                      imageUrl:
-                                          "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pbGt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                                      width: getWidth(context, 100),
-                                      height: getHeight(context, 20),
-                                      fit: BoxFit.fill,
+                                  )
+                                : Container(
+                                    width: getWidth(context, 100),
+                                    height: getHeight(context, 30),
+                                    decoration: BoxDecoration(
+                                        color: Color(0xffF2F2F2),
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    child: Center(
+                                      child: CachedNetworkImage(
+                                        imageUrl: Item.coverImg!,
+                                        placeholder: (context, url) =>
+                                            Image.asset(
+                                                "assets/images/002_logo_1.png"),
+                                        errorWidget: (context, url, error) =>
+                                            Image.asset(
+                                                "assets/images/002_logo_1.png"),
+                                        width: getWidth(context, 100),
+                                        height: getHeight(context, 30),
+                                      ),
                                     ),
-                                    CachedNetworkImage(
-                                      imageUrl:
-                                          "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pbGt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                                      width: getWidth(context, 100),
-                                      height: getHeight(context, 20),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ],
-                                  options: CarouselOptions(
-                                    autoPlay: true,
-                                    aspectRatio: 16 / 9,
-                                    viewportFraction: 1.0,
-                                    enlargeCenterPage: true,
-                                    autoPlayInterval: Duration(seconds: 5),
-                                    autoPlayAnimationDuration:
-                                        Duration(milliseconds: 3000),
                                   ),
-                                ),
-                              ),
-                            ),
                           ),
                           Text(
-                            "Melon Imported".tr,
+                            lang == "en"
+                                ? Item.nameEn!
+                                : lang == "ar"
+                                    ? Item.nameAr!
+                                    : Item.nameKu!,
                             style: TextStyle(
                                 color: mainColorGrey,
                                 fontFamily: mainFontbold,
@@ -116,12 +150,28 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-                          Text(
-                            "info: 3Kg".tr,
-                            style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "info: ".tr,
+                                style: TextStyle(
+                                    color: mainColorGrey,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 16),
+                              ),
+                              Text(
+                                lang == "en"
+                                    ? Item.contentsEn!
+                                    : lang == "ar"
+                                        ? Item.contentsAr!
+                                        : Item.contentsKu!,
+                                style: TextStyle(
+                                    color: mainColorGrey,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 16),
+                              ),
+                            ],
                           ),
                           // Padding(
                           //   padding: const EdgeInsets.all(8.0),
@@ -142,7 +192,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           //   height: getHeight(context, 2),
                           //   decoration: BoxDecoration(
                           //       color: mainColorRed,
-                          //       borderRadius: BorderRadius.circular(15)),
+                          //       borderRadius: BorderRadius.circular(5)),
                           //   child: Center(
                           //     child: Text(
                           //       "5Kg",
@@ -162,69 +212,103 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-                          Container(
-                            width: getWidth(context, 30),
-                            height: getHeight(context, 4),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: mainColorWhite,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Container(
-                                        width: getHeight(context, 4),
-                                        height: getHeight(context, 4),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            border: Border.all(
-                                                color: mainColorGrey
-                                                    .withOpacity(0.5)),
-                                            color: mainColorGrey),
-                                        child: Icon(Icons.add,
-                                            color: mainColorWhite,
-                                            size: getHeight(context, 3))),
+                          isItemInCart
+                              ? Container(
+                                  width: getWidth(context, 30),
+                                  height: getHeight(context, 4),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: mainColorWhite,
                                   ),
-                                ),
-                                Text(
-                                  "1",
-                                  style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 18),
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Container(
-                                        width: getHeight(context, 4),
-                                        height: getHeight(context, 4),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            border: Border.all(
-                                                color: mainColorGrey
-                                                    .withOpacity(0.5)),
-                                            color: mainColorGrey),
-                                        child: Icon(Icons.delete,
-                                            color: mainColorWhite,
-                                            size: getHeight(context, 3))),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          if (Item.offerPrice! > 0 &&
+                                              Item.orderLimit ==
+                                                  cartProvider
+                                                      .calculateQuantityForProduct(
+                                                          int.parse(Item.id
+                                                              .toString()))) {
+                                            toastLong(
+                                                "you can not add more this item");
+                                            return;
+                                          }
+                                          final cartItem =
+                                              CartItem(product: Item.id!);
+                                          cartProvider.addToCart(cartItem);
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: Container(
+                                              width: getHeight(context, 4),
+                                              height: getHeight(context, 4),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  border: Border.all(
+                                                      color: mainColorGrey
+                                                          .withOpacity(0.5)),
+                                                  color: mainColorGrey),
+                                              child: Icon(Icons.add,
+                                                  color: mainColorWhite,
+                                                  size: getHeight(context, 3))),
+                                        ),
+                                      ),
+                                      Text(
+                                        cartProvider
+                                            .calculateQuantityForProduct(
+                                                int.parse(Item.id.toString()))
+                                            .toString(),
+                                        style: TextStyle(
+                                            color: mainColorGrey,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 18),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          final cartItem =
+                                              CartItem(product: Item.id!);
+                                          cartProvider.removeFromCart(cartItem);
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: Container(
+                                              width: getHeight(context, 4),
+                                              height: getHeight(context, 4),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  border: Border.all(
+                                                      color: mainColorGrey
+                                                          .withOpacity(0.5)),
+                                                  color: mainColorGrey),
+                                              child: Icon(Icons.delete,
+                                                  color: mainColorWhite,
+                                                  size: getHeight(context, 3))),
+                                        ),
+                                      ),
+                                    ],
                                   ),
+                                )
+                              : SizedBox(),
+                          isItemInCart
+                              ? SizedBox(
+                                  height: getHeight(context, 5),
+                                )
+                              : SizedBox(
+                                  height: getHeight(context, 2),
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: getHeight(context, 1),
-                          ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyCart()),
+                              );
+                            },
                             child: Text("Place Order",
                                 style: TextStyle(
                                   color: mainColorGrey,
@@ -245,36 +329,34 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text("Add To Cart".tr,
-                                style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 18,
-                                  fontFamily: mainFontnormal,
-                                )),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: mainColorRed,
-                              fixedSize: Size(
-                                  getWidth(context, 65), getHeight(context, 5)),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                side:
-                                    BorderSide(color: mainColorRed, width: 1.0),
-                              ),
-                            ),
-                          ),
+                          isItemInCart
+                              ? SizedBox()
+                              : TextButton(
+                                  onPressed: () {
+                                    final cartItem =
+                                        CartItem(product: Item.id!);
+                                    cartProvider.addToCart(cartItem);
+                                  },
+                                  child: Text("Add To Cart".tr,
+                                      style: TextStyle(
+                                        color: mainColorWhite,
+                                        fontSize: 18,
+                                        fontFamily: mainFontnormal,
+                                      )),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: mainColorRed,
+                                    fixedSize: Size(getWidth(context, 65),
+                                        getHeight(context, 5)),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      side: BorderSide(
+                                          color: mainColorRed, width: 1.0),
+                                    ),
+                                  ),
+                                ),
                         ],
                       ),
                     ),
-                    // GestureDetector(
-                    //   onTap: () {},
-                    //   child: Padding(
-                    //     padding: EdgeInsets.all(10.0),
-                    //     child: Icon(Icons.favorite,
-                    //         color: mainColorGrey, size: getWidth(context, 15)),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
@@ -286,15 +368,18 @@ class _ItemDeatilState extends State<ItemDeatil> {
                 height: getHeight(context, 25),
                 decoration: BoxDecoration(
                     color: Color(0xffF2F2F2),
-                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(5)),
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 7)),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0),
                     child: Text(
-                      "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:"
-                          .tr,
+                      lang == "en"
+                          ? Item.descriptionEn!
+                          : lang == "ar"
+                              ? Item.descriptionAr!
+                              : Item.descriptionKu!,
                       style: TextStyle(
                           height: 1.5,
                           color: mainColorGrey,

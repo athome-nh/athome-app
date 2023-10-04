@@ -2,18 +2,24 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
-
 class SubCategory {
   final int? id;
   final String? nameEn;
   final String? nameAr;
   final String? nameKu;
+  final int? categoryId;
 
-  const SubCategory({this.id, this.nameEn, this.nameAr, this.nameKu});
+  const SubCategory({
+    this.id,
+    this.nameEn,
+    this.nameAr,
+    this.nameKu,
+    this.categoryId,
+  });
 
   @override
   String toString() {
-    return 'SubCategory(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu)';
+    return 'SubCategory(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, categoryId: $categoryId)';
   }
 
   factory SubCategory.fromMap(Map<String, dynamic> data) => SubCategory(
@@ -21,6 +27,7 @@ class SubCategory {
         nameEn: data['nameEN'] as String?,
         nameAr: data['nameAR'] as String?,
         nameKu: data['nameKU'] as String?,
+        categoryId: data['categoryId'] as int?,
       );
 
   Map<String, dynamic> toMap() => {
@@ -28,6 +35,7 @@ class SubCategory {
         'nameEN': nameEn,
         'nameAR': nameAr,
         'nameKU': nameKu,
+        'categoryId': categoryId,
       };
 
   /// `dart:convert`
@@ -47,12 +55,14 @@ class SubCategory {
     String? nameEn,
     String? nameAr,
     String? nameKu,
+    int? categoryId,
   }) {
     return SubCategory(
       id: id ?? this.id,
       nameEn: nameEn ?? this.nameEn,
       nameAr: nameAr ?? this.nameAr,
       nameKu: nameKu ?? this.nameKu,
+      categoryId: categoryId ?? this.categoryId,
     );
   }
 
@@ -66,5 +76,9 @@ class SubCategory {
 
   @override
   int get hashCode =>
-      id.hashCode ^ nameEn.hashCode ^ nameAr.hashCode ^ nameKu.hashCode;
+      id.hashCode ^
+      nameEn.hashCode ^
+      nameAr.hashCode ^
+      nameKu.hashCode ^
+      categoryId.hashCode;
 }

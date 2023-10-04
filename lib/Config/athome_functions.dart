@@ -132,6 +132,32 @@ Future<Map> Load_data_josn(String filename) async {
   }
 }
 
+String addCommasToPrice(int price) {
+  // Convert the price to a string with two decimal places
+  String formattedPrice = price.toStringAsFixed(0);
+
+  // Split the formatted price into parts before and after the decimal point
+  List<String> parts = formattedPrice.split('.');
+
+  // Add commas to the integer part of the price
+  String integerPart = parts[0];
+  String integerWithCommas = '';
+  for (int i = 0; i < integerPart.length; i++) {
+    if (i > 0 && (integerPart.length - i) % 3 == 0) {
+      integerWithCommas += ',';
+    }
+    integerWithCommas += integerPart[i];
+  }
+
+  // Combine the integer part with the decimal part and return the result
+  if (parts.length == 1) {
+    // If there is no decimal part, return just the integer part
+    return integerWithCommas + " IQD";
+  } else {
+    return '$integerWithCommas.${parts[1]}';
+  }
+}
+
 String calculatePercentageDiscount(
     double originalPrice, double discountedPrice) {
   if (originalPrice <= 0 ||

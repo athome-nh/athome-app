@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
-
 class ProductModel {
   final int? id;
   final String? nameEn;

@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:quickalert/quickalert.dart';
 
+import '../Config/athome_functions.dart';
 import '../main.dart';
 
 class MyCart extends StatefulWidget {
@@ -29,7 +30,7 @@ class _MyCartState extends State<MyCart> {
 
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListId());
-    final total = cartProvider.calculateTotalPrice(CardItemshow);
+    int total = cartProvider.calculateTotalPrice(CardItemshow);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -69,11 +70,12 @@ class _MyCartState extends State<MyCart> {
             ? SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 8.0),
                       child: Container(
-                        height: getHeight(context, 50),
+                        height: getHeight(context, 65),
                         child: ListView.builder(
                             itemCount: cartProvider.cartItems.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -103,7 +105,7 @@ class _MyCartState extends State<MyCart> {
                                         height: getHeight(context, 12),
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(15)),
+                                                BorderRadius.circular(5)),
                                         child: Padding(
                                           padding: EdgeInsets.all(8),
                                           child: Row(
@@ -240,14 +242,23 @@ class _MyCartState extends State<MyCart> {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: () {
-                                                        setState(() {
-                                                          final cartItem = CartItem(
-                                                              product: cartitemQ
-                                                                  .product!);
-                                                          cartProvider
-                                                              .addToCart(
-                                                                  cartItem);
-                                                        });
+                                                        if (cartitem.offerPrice! >
+                                                                0 &&
+                                                            cartitem.orderLimit ==
+                                                                cartProvider.calculateQuantityForProduct(
+                                                                    int.parse(
+                                                                        cartitem
+                                                                            .id
+                                                                            .toString()))) {
+                                                          toastLong(
+                                                              "you can not add more this item");
+                                                          return;
+                                                        }
+                                                        final cartItem = CartItem(
+                                                            product: cartitemQ
+                                                                .product!);
+                                                        cartProvider.addToCart(
+                                                            cartItem);
                                                       },
                                                       child: Padding(
                                                         padding:
@@ -285,14 +296,12 @@ class _MyCartState extends State<MyCart> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
-                                                        setState(() {
-                                                          final cartItem = CartItem(
-                                                              product: cartitemQ
-                                                                  .product!);
-                                                          cartProvider
-                                                              .removeFromCart(
-                                                                  cartItem);
-                                                        });
+                                                        final cartItem = CartItem(
+                                                            product: cartitemQ
+                                                                .product!);
+                                                        cartProvider
+                                                            .removeFromCart(
+                                                                cartItem);
                                                       },
                                                       child: Padding(
                                                         padding:
@@ -333,170 +342,136 @@ class _MyCartState extends State<MyCart> {
                             }),
                       ),
                     ),
-                    Column(
-                      children: [
-                        Padding(
+                    Container(
+                      height: getHeight(context, 24.4),
+                      decoration: BoxDecoration(color: mainColorGrey),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: getHeight(context, 2),
+                          ),
+                          Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 4)),
-                            child: TextField(
-                              maxLines: 2,
-                              cursorColor: mainColorRed,
-                              decoration: InputDecoration(
-                                labelStyle: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 14),
-                                labelText: "Delivery Instrusctions".tr,
-                                hintText: "Type Notes here".tr,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: mainColorGrey,
-                                    strokeAlign:
-                                        2, // Change this to the color you want
-                                  ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Sub Total".tr,
+                                  style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 16),
                                 ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        mainColorGrey, // Change this to the color you want
-                                  ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  addCommasToPrice(total),
+                                  style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 16),
                                 ),
-                              ),
-                            )),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Divider(
-                              color: mainColorGrey.withOpacity(0.2),
-                              thickness: 1),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Sub Total".tr,
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 13),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                total.toStringAsFixed(2),
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 14),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Delivery Cost".tr,
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 13),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                "20,000 IQD",
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 14),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Divider(
-                              color: mainColorGrey.withOpacity(0.2),
-                              thickness: 1),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                textAlign: TextAlign.start,
-                                "Total".tr,
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 13),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                "60,000 IQD",
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 18),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 3),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CheckOut()),
-                              );
-                            },
-                            child: Text(
-                              "Checkout".tr,
-                              style: TextStyle(
-                                color: mainColorWhite,
-                                fontSize: 16,
-                              ),
+                              ],
                             ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: mainColorRed,
-                              fixedSize: Size(
-                                  getWidth(context, 85), getHeight(context, 6)),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Delivery Cost".tr,
+                                  style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  "Free Delivery",
+                                  style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Divider(
+                                color: mainColorWhite.withOpacity(0.2),
+                                thickness: 1),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  textAlign: TextAlign.start,
+                                  "Total".tr,
+                                  style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  addCommasToPrice(total),
+                                  style: TextStyle(
+                                      color: mainColorRed,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 20),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 3),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: TextButton(
+                              onPressed: () async {
+                                if (await noInternet(context)) {
+                                  return;
+                                }
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CheckOut()),
+                                );
+                              },
+                              child: Text(
+                                "Checkout".tr,
+                                style: TextStyle(
+                                  color: mainColorWhite,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: mainColorRed,
+                                fixedSize: Size(getWidth(context, 85),
+                                    getHeight(context, 6)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

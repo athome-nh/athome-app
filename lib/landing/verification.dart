@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
@@ -5,6 +7,7 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/Switchscreen.dart';
+import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/Singinup_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -89,8 +92,8 @@ class _VerificatoinState extends State<Verificatoin> {
                             seconds: 1,
                           ),
                           curve: Curves.linear,
-                          child: CachedNetworkImage(
-                            imageUrl: "assets/images/008_track_1.png",
+                          child: Image.asset(
+                            "assets/images/Verify.png",
                           ),
                         ),
                       ),
@@ -103,8 +106,8 @@ class _VerificatoinState extends State<Verificatoin> {
                           opacity: _currentIndex == 1 ? 1 : 0,
                           duration: const Duration(seconds: 1),
                           curve: Curves.linear,
-                          child: CachedNetworkImage(
-                            imageUrl: "assets/images/008_track_2.png",
+                          child: Image.asset(
+                            "assets/images/Verify.png",
                           ),
                         ),
                       ),
@@ -117,8 +120,8 @@ class _VerificatoinState extends State<Verificatoin> {
                           opacity: _currentIndex == 2 ? 1 : 0,
                           duration: const Duration(seconds: 1),
                           curve: Curves.linear,
-                          child: CachedNetworkImage(
-                            imageUrl: "assets/images/008_track_3.png",
+                          child: Image.asset(
+                            "assets/images/Verify.png",
                           ),
                         ),
                       )
@@ -292,7 +295,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       setBoolPrefs("islogin", true);
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const Switchscreen()),
+                        MaterialPageRoute(builder: (context) => NavSwitch()),
                       );
                     } else {
                       toastShort(
@@ -361,23 +364,14 @@ class _VerificatoinState extends State<Verificatoin> {
         if (value != "") {
           if (value["code"] == "200") {
             if (value["data"]["isActive"] == 1) {
-              Save_data_josn('user', value["data"]).then((save) {
-                if (save) {
-                  setState(() {
-                    _isLoading = false;
-                    _isVerified = true;
-                  });
-                  setBoolPrefs("islogin", true);
-                  setStringPrefs("token", value["token"]);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Switchscreen()),
-                  );
-                } else {
-                  toastShort("unknown occurred error please try again later");
-                  print("data not saved");
-                }
-              });
+              var jsonData = json.encode(value["data"]);
+              setStringPrefs("userData", encryptAES(jsonData).toString());
+              setBoolPrefs("islogin", true);
+              setStringPrefs("token", value["token"]);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => NavSwitch()),
+              );
             } else {
               alert(context, "Account Disabled",
                   "Account is disable please contact athome admin ");
@@ -394,7 +388,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         widget.phone_number, _auth.currentUser!.uid)));
           }
         } else {
-          toastShort("unknown occurred error please try again later");
+          // toastShort("unknown occurred error please try again later");
           setState(() {
             _isLoading = false;
           });

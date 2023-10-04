@@ -1,11 +1,20 @@
+import 'package:athome/Config/my_widget.dart';
+
+import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/controller/productprovider.dart';
+import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/NavSwitch.dart';
-import 'package:athome/Home/TrackOrder.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:get/get.dart';
 
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+
+import '../Config/athome_functions.dart';
+import '../Network/Network.dart';
 import '../main.dart';
+
+import 'TrackOrder.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
@@ -17,6 +26,14 @@ class CheckOut extends StatefulWidget {
 class _CheckOutState extends State<CheckOut> {
   @override
   Widget build(BuildContext context) {
+    String order_code = "";
+    TextEditingController NoteController = TextEditingController();
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
+    final productrovider = Provider.of<productProvider>(context, listen: true);
+
+    List<ProductModel> CardItemshow =
+        productrovider.getProductsByIds(cartProvider.ListId());
+    final total = cartProvider.calculateTotalPrice(CardItemshow);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -44,12 +61,15 @@ class _CheckOutState extends State<CheckOut> {
             children: [
               Container(
                 width: getWidth(context, 100),
-                height: getHeight(context, 15),
+                height: getHeight(context, 13),
                 decoration: BoxDecoration(
                   color: mainColorWhite,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(getWidth(context, 4)),
+                  padding: EdgeInsets.only(
+                      left: getWidth(context, 4),
+                      right: getWidth(context, 4),
+                      top: getHeight(context, 2)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -117,7 +137,10 @@ class _CheckOutState extends State<CheckOut> {
                   color: mainColorWhite,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(getWidth(context, 4)),
+                  padding: EdgeInsets.only(
+                      left: getWidth(context, 4),
+                      right: getWidth(context, 4),
+                      top: getHeight(context, 3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -166,7 +189,9 @@ class _CheckOutState extends State<CheckOut> {
                         height: getHeight(context, 2),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          toastShort("Coming soon");
+                        },
                         child: Container(
                           height: getHeight(context, 5),
                           width: getWidth(context, 90),
@@ -179,8 +204,7 @@ class _CheckOutState extends State<CheckOut> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CachedNetworkImage(
-                                    imageUrl: "assets/images/fib.png"),
+                                Image.asset("assets/images/fib.png"),
                                 Icon(
                                   Icons.circle_outlined,
                                   color: mainColorRed,
@@ -195,7 +219,9 @@ class _CheckOutState extends State<CheckOut> {
                         height: getHeight(context, 2),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          toastShort("Coming soon");
+                        },
                         child: Container(
                           height: getHeight(context, 5),
                           width: getWidth(context, 90),
@@ -208,8 +234,7 @@ class _CheckOutState extends State<CheckOut> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CachedNetworkImage(
-                                    imageUrl: "assets/images/fast.png"),
+                                Image.asset("assets/images/fast.png"),
                                 Icon(
                                   Icons.circle_outlined,
                                   color: mainColorRed,
@@ -237,100 +262,63 @@ class _CheckOutState extends State<CheckOut> {
                   color: mainColorWhite,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: EdgeInsets.only(
+                      left: getWidth(context, 4),
+                      right: getWidth(context, 4),
+                      top: getHeight(context, 4)),
                   child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 4)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Sub Total".tr,
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontnormal,
-                                  fontSize: 13),
+                      TextFormField(
+                        maxLines: 4,
+                        controller: NoteController,
+                        cursorColor: mainColorGrey,
+                        keyboardType: TextInputType.text,
+                        onChanged: (value) {},
+                        validator: (value) {},
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              color: mainColorGrey, // Customize border color
+                              width: 1.0, // Customize border width
                             ),
-                            Text(
-                              textAlign: TextAlign.end,
-                              "20,000 IQD",
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontbold,
-                                  fontSize: 14),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              color: mainColorGrey
+                                  .withOpacity(0.5), // Customize border color
+                              width: 1.0, // Customize border width
                             ),
-                          ],
+                          ),
+                          labelText: "Note",
+                          labelStyle: TextStyle(
+                              color: mainColorGrey.withOpacity(0.8),
+                              fontSize: 24,
+                              fontFamily: mainFontbold),
+                          hintText: "Add your note",
+
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                         ),
                       ),
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 4)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Delivery Cost".tr,
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontnormal,
-                                  fontSize: 13),
-                            ),
-                            Text(
-                              textAlign: TextAlign.end,
-                              "20,000 IQD",
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontbold,
-                                  fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 4)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Discount".tr,
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontnormal,
-                                  fontSize: 13),
-                            ),
-                            Text(
-                              textAlign: TextAlign.end,
-                              "20,000 IQD",
-                              style: TextStyle(
-                                  color: mainColorRed,
-                                  fontFamily: mainFontbold,
-                                  fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 4)),
-                        child: Divider(
-                            color: mainColorGrey.withOpacity(0.2),
-                            thickness: 1),
-                      ),
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: getWidth(context, 100),
+                height: getHeight(context, 24),
+                decoration: BoxDecoration(
+                  color: mainColorGrey,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      left: getWidth(context, 4),
+                      right: getWidth(context, 4),
+                      top: getHeight(context, 3)),
+                  child: Column(
+                    children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: getWidth(context, 4)),
@@ -341,161 +329,209 @@ class _CheckOutState extends State<CheckOut> {
                               textAlign: TextAlign.start,
                               "Total",
                               style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontnormal,
-                                  fontSize: 13),
+                                  color: mainColorWhite,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 22),
                             ),
                             Text(
                               textAlign: TextAlign.end,
-                              "40,000 IQD",
+                              addCommasToPrice(total),
                               style: TextStyle(
-                                  color: mainColorGrey,
+                                  color: mainColorRed,
                                   fontFamily: mainFontbold,
-                                  fontSize: 18),
+                                  fontSize: 22),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: getHeight(context, 2),
-                child: Container(
-                  color: Color(0xffF2F2F2),
-                ),
-              ),
-              Container(
-                width: getWidth(context, 100),
-                height: getHeight(context, 15),
-                decoration: BoxDecoration(
-                  color: mainColorWhite,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(getWidth(context, 4)),
-                  child: Column(
-                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(context, 4)),
+                        child: Divider(
+                            color: mainColorWhite.withOpacity(0.7),
+                            thickness: 3),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 4),
+                      ),
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: getWidth(context, 4)),
                         child: TextButton(
                           onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              isDismissible: false,
-                              enableDrag: false,
-                              builder: (BuildContext context) {
-                                return Container(
-                                  // Set the height of the bottom sheet as needed
-                                  height: getHeight(context, 90),
-                                  color: mainColorWhite,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.shopping_cart_outlined,
-                                          color: mainColorRed,
-                                          size: getHeight(context, 20),
-                                        ),
-                                        Text("Thank You!".tr,
-                                            style: TextStyle(
-                                              fontSize: 24,
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontnormal,
-                                            )),
-                                        Text("for yor order".tr,
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontnormal,
-                                            )),
-                                        SizedBox(
-                                          height: getHeight(context, 1),
-                                        ),
-                                        Text(
-                                          "Order Number: 5509".tr,
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontbold),
-                                        ),
-                                        SizedBox(
-                                          height: getHeight(context, 1),
-                                        ),
-                                        Padding(
+                            String data = "";
+                            cartProvider.cartItems.forEach((element) {
+                              ProductModel Item = productrovider
+                                  .getoneProductById(element.product);
+
+                              data += "!&" +
+                                  Item.id.toString() +
+                                  ",,," +
+                                  Item.purchasePrice.toString() +
+                                  ",,," +
+                                  Item.price.toString() +
+                                  ",,," +
+                                  Item.offerPrice.toString() +
+                                  ",,," +
+                                  element.quantity.toString();
+                            });
+
+                            var data2 = {
+                              "customerid": userData["id"],
+                              "location": "43.6545,23434",
+                              "order_data": data.substring(2),
+                            };
+                            Network(false)
+                                .postData("order", data2, context)
+                                .then((value) {
+                              if (value != "") {
+                                if (value["code"] == "201") {
+                                  cartProvider.clearCart();
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isDismissible: false,
+                                    enableDrag: false,
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        height: getHeight(context, 90),
+                                        color: mainColorWhite,
+                                        child: Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal: getWidth(context, 4)),
-                                          child: Text(
-                                              "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
-                                                  .tr,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: mainColorGrey,
-                                                fontFamily: mainFontnormal,
-                                              )),
-                                        ),
-                                        SizedBox(
-                                          height: getHeight(context, 2),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: getWidth(context, 4)),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        TrackOrder()),
-                                              );
-                                            },
-                                            child: Text(
-                                              "Track My Order".tr,
-                                              style: TextStyle(
-                                                color: mainColorWhite,
-                                                fontSize: 16,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.shopping_cart_outlined,
+                                                color: mainColorRed,
+                                                size: getHeight(context, 20),
                                               ),
-                                            ),
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: mainColorRed,
-                                              fixedSize: Size(
-                                                  getWidth(context, 85),
-                                                  getHeight(context, 6)),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
+                                              Text("Thank You!".tr,
+                                                  style: TextStyle(
+                                                    fontSize: 24,
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontnormal,
+                                                  )),
+                                              Text("for yor order".tr,
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontnormal,
+                                                  )),
+                                              SizedBox(
+                                                height: getHeight(context, 1),
                                               ),
-                                            ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "Order Number: ".tr,
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        color: mainColorRed,
+                                                        fontFamily:
+                                                            mainFontbold),
+                                                  ),
+                                                  Text(
+                                                    value["data"],
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        color: mainColorGrey,
+                                                        fontFamily:
+                                                            mainFontbold),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: getHeight(context, 1),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        getWidth(context, 4)),
+                                                child: Text(
+                                                    "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
+                                                        .tr,
+                                                    style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: mainColorGrey,
+                                                      fontFamily:
+                                                          mainFontnormal,
+                                                    )),
+                                              ),
+                                              SizedBox(
+                                                height: getHeight(context, 2),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        getWidth(context, 4)),
+                                                child: TextButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              TrackOrder(value[
+                                                                  "data"])),
+                                                    );
+                                                  },
+                                                  child: Text(
+                                                    "Track My Order".tr,
+                                                    style: TextStyle(
+                                                      color: mainColorWhite,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        mainColorRed,
+                                                    fixedSize: Size(
+                                                        getWidth(context, 85),
+                                                        getHeight(context, 6)),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            NavSwitch()),
+                                                  ); // Close the bottom sheet
+                                                },
+                                                child: Text(
+                                                  "Back to Home".tr,
+                                                  style: TextStyle(
+                                                      color: mainColorGrey,
+                                                      fontFamily:
+                                                          mainFontnormal,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      NavSwitch()),
-                                            ); // Close the bottom sheet
-                                          },
-                                          child: Text(
-                                            "Back to Home".tr,
-                                            style: TextStyle(
-                                                color: mainColorGrey,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
+                                      );
+                                    },
+                                  ).then((value) {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  });
+                                  ;
+                                }
+                              }
+                            });
                           },
                           child: Text(
                             "Send Order",

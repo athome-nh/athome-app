@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
@@ -7,6 +8,7 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/Switchscreen.dart';
+import 'package:athome/home/NavSwitch.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -121,14 +123,14 @@ class _Singinup_pageState extends State<Singinup_page> {
                     },
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
                           color: mainColorGrey, // Customize border color
                           width: 1.0, // Customize border width
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
                           color: mainColorGrey
                               .withOpacity(0.5), // Customize border color
@@ -189,7 +191,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                                       0.5), // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               labelText: "City",
                               labelStyle: TextStyle(
@@ -240,7 +242,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                                       0.5), // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               labelText: "Age",
                               labelStyle: TextStyle(
@@ -324,28 +326,16 @@ class _Singinup_pageState extends State<Singinup_page> {
                         if (value != "") {
                           if (value["code"] == "201") {
                             if (value["data"]["isActive"] == 1) {
-                              Save_data_josn('user', value["data"])
-                                  .then((save) {
-                                if (save) {
-                                  setState(() {
-                                    _isLoading = false;
-                                  });
-                                  setBoolPrefs("islogin", true);
-                                  setStringPrefs("token", value["token"]);
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Switchscreen()),
-                                  );
-                                } else {
-                                  setState(() {
-                                    _isLoading = false;
-                                  });
-                                  //data not saved
-                                  toastShort(
-                                      "unknown occurred error please try again later");
-                                }
-                              });
+                              var jsonData = json.encode(value["data"]);
+                              setStringPrefs(
+                                  "userData", encryptAES(jsonData).toString());
+                              setBoolPrefs("islogin", true);
+                              setStringPrefs("token", value["token"]);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NavSwitch()),
+                              );
                             } else {
                               setState(() {
                                 _isLoading = false;
@@ -364,8 +354,8 @@ class _Singinup_pageState extends State<Singinup_page> {
                     },
                     color: mainColorRed,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                        borderRadius: BorderRadius.circular(5)),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: _isLoading
                         ? Container(
                             width: 20,

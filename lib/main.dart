@@ -1,8 +1,11 @@
 import 'package:athome/Config/local_data.dart';
-import 'package:athome/Switchscreen.dart';
+
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/map/maps.dart';
+
+import 'package:athome/landing/splash_screen.dart';
+import 'package:athome/landing/welcome_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,8 +34,12 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
+  bool seen = false;
   @override
   void initState() {
+    getBoolPrefs("onbord").then((value2) {
+      seen = value2;
+    });
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
@@ -60,7 +67,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
-        home: Maps(),
+        home: seen ? SplashScreen() : WelcomeScreen(),
       ),
     );
   }
