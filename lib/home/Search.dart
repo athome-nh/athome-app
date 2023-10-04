@@ -16,9 +16,9 @@ import 'package:ionicons/ionicons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/AllItem.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
-import 'package:quickalert/models/quickalert_type.dart';
-import 'package:quickalert/widgets/quickalert_dialog.dart';
+
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../Config/athome_functions.dart';
@@ -425,10 +425,18 @@ class _SearchState extends State<Search> {
                                     onTap: () {
                                       setState(() {
                                         if (!isLogin) {
-                                          confirmAlertlogin(
-                                              context,
-                                              "Login Please".tr,
-                                              "You need to login first".tr);
+                                          PanaraInfoDialog.show(
+                                            context,
+                                            title: "Hello",
+                                            message:
+                                                "This is the Panara Info Dialog Success.",
+                                            buttonText: "Okay",
+                                            onTapDismiss: () {
+                                              Navigator.pop(context);
+                                            },
+                                            panaraDialogType:
+                                                PanaraDialogType.success,
+                                          );
                                           return;
                                         }
                                         if (product.offerPrice! > 0 &&
@@ -551,25 +559,6 @@ class _SearchState extends State<Search> {
           ),
         ),
       ),
-    );
-  }
-
-  // confirm Alert
-  Future<void> confirmAlertlogin(
-      BuildContext context, String title, String content) {
-    return QuickAlert.show(
-      context: context,
-      confirmBtnColor: mainColorRed,
-      type: QuickAlertType.info,
-      title: title,
-      text: content,
-      confirmBtnText: "Login",
-      onConfirmBtnTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => RegisterWithPhoneNumber()),
-        );
-      },
     );
   }
 }

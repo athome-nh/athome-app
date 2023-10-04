@@ -24,9 +24,10 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/Categories.dart';
 import 'package:athome/Home/Notfication.dart';
 import 'package:get/get.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:quickalert/quickalert.dart';
+
 import 'package:skeletonizer/skeletonizer.dart';
 
 import 'oneitem.dart';
@@ -61,7 +62,6 @@ class _Home_SCState extends State<Home_SC> {
   }
 
   getPost() async {
-    // print(collectionData["subCategory"]);
     if (await noInternet(context)) {
       return;
     }
@@ -145,10 +145,10 @@ class _Home_SCState extends State<Home_SC> {
     if (loadData) {
       loadPostData().then((data) {
         loadData = false;
-    
-        // if (data.toString() != "[]") {
-        //   update(context, data);
-        // }
+
+        if (data.toString() != "[]") {
+          update(context, data);
+        }
 
         getPost();
       });
@@ -1150,30 +1150,15 @@ class _Home_SCState extends State<Home_SC> {
                                                                       BorderRadius.circular(
                                                                           100),
                                                                   border: Border.all(
-                                                                      color: mainColorGrey
-                                                                          .withOpacity(
-                                                                              0.5)),
+                                                                      color: mainColorGrey.withOpacity(
+                                                                          0.5)),
                                                                   color:
                                                                       mainColorGrey),
-                                                              child: false
-                                                                  ? Center(
-                                                                      child:
-                                                                          Text(
-                                                                        "1",
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                                16,
-                                                                            color:
-                                                                                mainColorWhite),
-                                                                      ),
-                                                                    )
-                                                                  : Icon(
-                                                                      Icons.add,
-                                                                      color:
-                                                                          mainColorWhite,
-                                                                      size: getHeight(
-                                                                          context,
-                                                                          1.5))),
+                                                              child: Icon(
+                                                                  Icons.add,
+                                                                  color:
+                                                                      mainColorWhite,
+                                                                  size: getHeight(context, 1.5))),
                                                         ),
                                                       ),
                                                     ],
@@ -1387,12 +1372,35 @@ class _Home_SCState extends State<Home_SC> {
                                                       onTap: () {
                                                         setState(() {
                                                           if (!isLogin) {
-                                                            confirmAlertlogin(
-                                                                context,
-                                                                "Login Please"
-                                                                    .tr,
-                                                                "You need to login first"
-                                                                    .tr);
+                                                            PanaraInfoDialog
+                                                                .show(
+                                                              context,
+                                                              title: "Hello",
+                                                              message:
+                                                                  "This is the Panara Info Dialog Success.",
+                                                              buttonText:
+                                                                  "Login",
+                                                              onTapDismiss: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              RegisterWithPhoneNumber()),
+                                                                );
+                                                              },
+                                                              // color:
+                                                              //     PanaraColors
+                                                              //         .warning,
+                                                              panaraDialogType:
+                                                                  PanaraDialogType
+                                                                      .error,
+                                                              // imagePath:
+                                                              //     "assets/images/logoB.png",
+                                                              noImage: true,
+                                                            );
                                                             return;
                                                           }
                                                           if (product.offerPrice! >
@@ -1742,22 +1750,10 @@ class _Home_SCState extends State<Home_SC> {
                                                                 .withOpacity(
                                                                     0.5)),
                                                         color: mainColorGrey),
-                                                    child: false
-                                                        ? Center(
-                                                            child: Text(
-                                                              "1",
-                                                              style: TextStyle(
-                                                                  fontSize: 16,
-                                                                  color:
-                                                                      mainColorWhite),
-                                                            ),
-                                                          )
-                                                        : Icon(
-                                                            Icons.add,
-                                                            color:
-                                                                mainColorWhite,
-                                                            size: getHeight(
-                                                                context, 1.5))),
+                                                    child: Icon(Icons.add,
+                                                        color: mainColorWhite,
+                                                        size: getHeight(
+                                                            context, 1.5))),
                                               ),
                                             ),
                                           ],
@@ -1883,10 +1879,30 @@ class _Home_SCState extends State<Home_SC> {
                                         onTap: () {
                                           setState(() {
                                             if (!isLogin) {
-                                              confirmAlertlogin(
-                                                  context,
-                                                  "Login Please".tr,
-                                                  "You need to login first".tr);
+                                              PanaraInfoDialog.show(
+                                                context,
+                                                title: "Hello",
+                                                message:
+                                                    "This is the Panara Info Dialog Success.",
+                                                buttonText: "Login",
+                                                onTapDismiss: () {
+                                                  Navigator.pop(context);
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            RegisterWithPhoneNumber()),
+                                                  );
+                                                },
+                                                // color:
+                                                //     PanaraColors
+                                                //         .warning,
+                                                panaraDialogType:
+                                                    PanaraDialogType.error,
+                                                // imagePath:
+                                                //     "assets/images/logoB.png",
+                                                noImage: true,
+                                              );
                                               return;
                                             }
                                             if (product.offerPrice! > 0 &&
@@ -2200,22 +2216,10 @@ class _Home_SCState extends State<Home_SC> {
                                                                 .withOpacity(
                                                                     0.5)),
                                                         color: mainColorGrey),
-                                                    child: false
-                                                        ? Center(
-                                                            child: Text(
-                                                              "1",
-                                                              style: TextStyle(
-                                                                  fontSize: 16,
-                                                                  color:
-                                                                      mainColorWhite),
-                                                            ),
-                                                          )
-                                                        : Icon(
-                                                            Icons.add,
-                                                            color:
-                                                                mainColorWhite,
-                                                            size: getHeight(
-                                                                context, 1.5))),
+                                                    child: Icon(Icons.add,
+                                                        color: mainColorWhite,
+                                                        size: getHeight(
+                                                            context, 1.5))),
                                               ),
                                             ),
                                           ],
@@ -2341,10 +2345,30 @@ class _Home_SCState extends State<Home_SC> {
                                         onTap: () {
                                           setState(() {
                                             if (!isLogin) {
-                                              confirmAlertlogin(
-                                                  context,
-                                                  "Login Please".tr,
-                                                  "You need to login first".tr);
+                                              PanaraInfoDialog.show(
+                                                context,
+                                                title: "Hello",
+                                                message:
+                                                    "This is the Panara Info Dialog Success.",
+                                                buttonText: "Login",
+                                                onTapDismiss: () {
+                                                  Navigator.pop(context);
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            RegisterWithPhoneNumber()),
+                                                  );
+                                                },
+                                                // color:
+                                                //     PanaraColors
+                                                //         .warning,
+                                                panaraDialogType:
+                                                    PanaraDialogType.error,
+                                                // imagePath:
+                                                //     "assets/images/logoB.png",
+                                                noImage: true,
+                                              );
                                               return;
                                             }
                                             if (product.offerPrice! > 0 &&
@@ -2476,25 +2500,6 @@ class _Home_SCState extends State<Home_SC> {
           ]),
         ),
       ),
-    );
-  }
-
-  // confirm Alert
-  Future<void> confirmAlertlogin(
-      BuildContext context, String title, String content) {
-    return QuickAlert.show(
-      context: context,
-      confirmBtnColor: mainColorRed,
-      type: QuickAlertType.info,
-      title: title,
-      text: content,
-      confirmBtnText: "Login",
-      onConfirmBtnTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => RegisterWithPhoneNumber()),
-        );
-      },
     );
   }
 }

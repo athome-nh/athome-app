@@ -9,8 +9,8 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/CheckOut.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
-import 'package:quickalert/quickalert.dart';
 
 import '../Config/athome_functions.dart';
 import '../main.dart';
@@ -48,8 +48,22 @@ class _MyCartState extends State<MyCart> {
             IconButton(
                 onPressed: () {
                   if (cartProvider.cartItems.length > 0) {
-                    confirmAlertMycart(context, "Delete All Items".tr,
-                        "are you sure delete all items".tr, cartProvider);
+                    PanaraConfirmDialog.showAnimatedGrow(
+                      context,
+                      title: "Hello",
+                      message: "You want delete all items in cart",
+                      confirmButtonText: "Confirm",
+                      cancelButtonText: "Cancel",
+                      onTapCancel: () {
+                        Navigator.pop(context);
+                      },
+                      onTapConfirm: () {
+                        cartProvider.clearCart();
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                      panaraDialogType: PanaraDialogType.warning,
+                    );
                   }
                 },
                 icon: Icon(
@@ -478,27 +492,6 @@ class _MyCartState extends State<MyCart> {
               )
             : loginFirstContainer(context),
       ),
-    );
-  }
-
-  Future<void> confirmAlertMycart(BuildContext context, String title,
-      String content, CartProvider cartprovider) {
-    return QuickAlert.show(
-      context: context,
-      confirmBtnColor: mainColorRed,
-      type: QuickAlertType.error,
-      title: title,
-      text: content,
-      confirmBtnText: "Yes".tr,
-      cancelBtnText: "No".tr,
-      onConfirmBtnTap: () {
-        cartprovider.clearCart();
-        Navigator.pop(context);
-        Navigator.pop(context);
-      },
-      onCancelBtnTap: () {
-        Navigator.pop(context);
-      },
     );
   }
 }

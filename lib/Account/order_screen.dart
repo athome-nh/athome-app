@@ -37,107 +37,110 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Center(
         child: !isLogin
             ? loginFirstContainer(context)
-            : ListView.builder(
-                itemCount: productrovider.listOrderCode().length,
-                itemBuilder: (BuildContext context, int index) {
-                  final orderPakage = productrovider.listOrderCode()[index];
-                  OrderModel order =
-                      productrovider.getorderOnebyOrderCode(orderPakage);
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        if (order.status != 5) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    TrackOrder(orderPakage.toString())),
-                          ).then((value) {
-                            cartProvider.clearCart();
-                          });
-                        }
-                        // productrovider
-                        //     .getordersbyOrderCode(orderPakage)
-                        //     .forEach((element) {
-                        //   final cartItem = CartItem(
-                        //     product: element.productId!,
-                        //     quantity: element.qt!,
-                        //   );
-                        //   cartProvider.addToCart(cartItem);
-                        // });
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => oreder_items()),
-                        // ).then((value) {
-                        //   cartProvider.clearCart();
-                        // });
-                      },
-                      child: Container(
-                        width: getWidth(context, 90),
-                        height: getHeight(context, 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: Card(
-                          elevation: 5,
-                          color: mainColorWhite,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ListTile(
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: mainColorRed,
+            : productrovider.Ordersitems.length > 0
+                ? ListView.builder(
+                    itemCount: productrovider.listOrderCode().length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final orderPakage = productrovider.listOrderCode()[index];
+                      OrderModel order =
+                          productrovider.getorderOnebyOrderCode(orderPakage);
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            if (order.status != 5) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        TrackOrder(orderPakage.toString())),
+                              );
+                            }
+                            // productrovider
+                            //     .getordersbyOrderCode(orderPakage)
+                            //     .forEach((element) {
+                            //   final cartItem = CartItem(
+                            //     product: element.productId!,
+                            //     quantity: element.qt!,
+                            //   );
+                            //   cartProvider.addToCartPast(cartItem);
+                            // });
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => oreder_items()),
+                            // ).then((value) {
+                            //   cartProvider.clearCartPast();
+                            // });
+                          },
+                          child: Container(
+                            width: getWidth(context, 90),
+                            height: getHeight(context, 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
                             ),
-                            leading: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Container(
-                                  width: getWidth(context, 13),
-                                  height: getHeight(context, 18),
-                                  decoration: BoxDecoration(
-                                    color: mainColorLightGrey,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Icon(
-                                    Icons.shopping_cart,
-                                    color: mainColorRed,
-                                    size: 30,
-                                  )),
-                            ),
-                            title: Row(
-                              children: [
-                                Text(
-                                  "Order ID: ",
+                            child: Card(
+                              elevation: 5,
+                              color: mainColorWhite,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: ListTile(
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: mainColorRed,
+                                ),
+                                leading: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Container(
+                                      width: getWidth(context, 13),
+                                      height: getHeight(context, 18),
+                                      decoration: BoxDecoration(
+                                        color: mainColorLightGrey,
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Icon(
+                                        Icons.shopping_cart,
+                                        color: mainColorRed,
+                                        size: 30,
+                                      )),
+                                ),
+                                title: Row(
+                                  children: [
+                                    Text(
+                                      "Order ID: ",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: mainFontbold,
+                                          color: mainColorGrey),
+                                    ),
+                                    Text(
+                                      order.orderCode!,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: mainFontbold,
+                                          color: mainColorRed),
+                                    ),
+                                  ],
+                                ),
+                                subtitle: Text(
+                                  "Date: " +
+                                      order.createdAt
+                                          .toString()
+                                          .substring(0, 16)!,
                                   style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: mainFontbold,
+                                      fontSize: 12,
+                                      fontFamily: mainFontnormal,
                                       color: mainColorGrey),
                                 ),
-                                Text(
-                                  order.orderCode!,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: mainFontbold,
-                                      color: mainColorRed),
-                                ),
-                              ],
-                            ),
-                            subtitle: Text(
-                              "Date: " +
-                                  order.createdAt.toString().substring(0, 16)!,
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontFamily: mainFontnormal,
-                                  color: mainColorGrey),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  );
-                }),
+                      );
+                    })
+                : nullContainer(
+                    context, "title", "you do not have any order yet."),
       ),
     );
   }

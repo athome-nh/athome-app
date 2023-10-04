@@ -25,7 +25,7 @@ Color mainGoogleColor = const Color(0xffDD4B39);
 
 ///Define { Images } in AtHome
 String mainImagePattern = 'assets/images/001_pattern.jpg';
-String mainImageLogo1 = 'assets/images/002_logo_1.png';
+String mainImageLogo1 = 'assets/images/Splash.gif';
 
 /// Define { Width and Height } of the device screen
 double getWidth(BuildContext context, double percentage) {
