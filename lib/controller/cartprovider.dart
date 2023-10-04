@@ -16,6 +16,8 @@ class CartProvider extends ChangeNotifier {
   }
   List<CartItem> cartItems = [];
   List<CartItem> FavItems = [];
+  List<CartItem> _cartItemsPast = [];
+  List<CartItem> get cartItemsPast => _cartItemsPast;
 
   void addToCart(CartItem cartItem) {
     // Check if the item already exists in the cart
@@ -188,5 +190,100 @@ class CartProvider extends ChangeNotifier {
     }
     saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
     notifyListeners();
+  }
+
+//Past order funcyions
+  void addPastToCart(List<CartItem> cartItem) {
+    cartItems = cartItem;
+    notifyListeners();
+  }
+
+  void addToCartPast(CartItem cartItem) {
+    // Check if the item already exists in the cart
+    final existingItemIndex = _cartItemsPast.indexWhere(
+      (item) => item.product == cartItem.product,
+    );
+
+    if (existingItemIndex != -1) {
+      // If the item exists, update the quantity
+      _cartItemsPast[existingItemIndex].quantity += cartItem.quantity;
+    } else {
+      // If the item doesn't exist, add it to the cart
+      _cartItemsPast.add(cartItem);
+    }
+
+    notifyListeners();
+  }
+
+  void clearCartPast() {
+    cartItemsPast.clear();
+
+    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
+    notifyListeners(); // Notify listeners when the cart is cleared
+  }
+
+  void deleteitemPast(int id) {
+    final existingItemIndex = cartItemsPast.indexWhere(
+      (item) => item.product == id,
+    );
+    cartItemsPast.remove(cartItemsPast[existingItemIndex]);
+    notifyListeners(); // Notify listeners when the cart is cleared
+  }
+
+  void removeFromCartPast(CartItem cartItem) {
+    // Check if the item already exists in the cart
+    final existingItemIndex = cartItemsPast.indexWhere(
+      (item) => item.product == cartItem.product,
+    );
+
+    if (existingItemIndex != -1) {
+      if (cartItemsPast[existingItemIndex].quantity == 1) {
+        cartItemsPast.remove(cartItemsPast[existingItemIndex]);
+      } else {
+        // If the item exists, update the quantity
+        cartItemsPast[existingItemIndex].quantity -= 1;
+      }
+    } else {
+      // If the item doesn't exist, add it to the cart
+      cartItemsPast.remove(cartItem);
+    }
+
+    notifyListeners();
+  }
+
+  int calculateQuantityForProductPast(int productId) {
+    int totalQuantity = 0;
+
+    for (var cartItem in cartItemsPast) {
+      if (cartItem.product == productId) {
+        totalQuantity += cartItem.quantity;
+      }
+    }
+
+    return totalQuantity;
+  }
+
+  int calculateTotalPricePast(List<ProductModel> product) {
+    int totalPrice = 0;
+    int i = 0;
+    for (var cartItem in cartItemsPast) {
+      if (product[i].offerPrice! > 0) {
+        totalPrice += product[i].offerPrice! * cartItem.quantity;
+      } else {
+        totalPrice += product[i].price! * cartItem.quantity;
+      }
+      i++;
+    }
+
+    return totalPrice;
+  }
+
+  List<int> ListIdPast() {
+    List<int> cardIDs = [];
+
+    cartItemsPast.forEach((element) {
+      cardIDs.add(element.product);
+    });
+    return cardIDs;
   }
 }

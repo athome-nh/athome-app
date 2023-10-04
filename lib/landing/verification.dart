@@ -9,12 +9,14 @@ import 'package:athome/Network/Network.dart';
 import 'package:athome/Switchscreen.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/Singinup_page.dart';
+import 'package:athome/landing/login_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 
 class Verificatoin extends StatefulWidget {
   String phone_number;
@@ -80,53 +82,59 @@ class _VerificatoinState extends State<Verificatoin> {
                 children: [
                   Container(
                     height: getHeight(context, 27),
-                    child: Stack(children: [
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: AnimatedOpacity(
-                          opacity: _currentIndex == 0 ? 1 : 0,
-                          duration: const Duration(
-                            seconds: 1,
-                          ),
-                          curve: Curves.linear,
-                          child: Image.asset(
-                            "assets/images/Verify.png",
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: AnimatedOpacity(
-                          opacity: _currentIndex == 1 ? 1 : 0,
-                          duration: const Duration(seconds: 1),
-                          curve: Curves.linear,
-                          child: Image.asset(
-                            "assets/images/Verify.png",
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: AnimatedOpacity(
-                          opacity: _currentIndex == 2 ? 1 : 0,
-                          duration: const Duration(seconds: 1),
-                          curve: Curves.linear,
-                          child: Image.asset(
-                            "assets/images/Verify.png",
-                          ),
-                        ),
-                      )
-                    ]),
+                    child: Image.asset(
+                      "assets/images/verify.gif",
+                    ),
                   ),
+                  // Container(
+                  //   height: getHeight(context, 27),
+                  //   child: Stack(children: [
+                  //     Positioned(
+                  //       top: 0,
+                  //       left: 0,
+                  //       right: 0,
+                  //       bottom: 0,
+                  //       child: AnimatedOpacity(
+                  //         opacity: _currentIndex == 0 ? 1 : 0,
+                  //         duration: const Duration(
+                  //           seconds: 1,
+                  //         ),
+                  //         curve: Curves.linear,
+                  //         child: Image.asset(
+                  //           "assets/images/Verify.png",
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     // Positioned(
+                  //     //   top: 0,
+                  //     //   left: 0,
+                  //     //   right: 0,
+                  //     //   bottom: 0,
+                  //     //   child: AnimatedOpacity(
+                  //     //     opacity: _currentIndex == 1 ? 1 : 0,
+                  //     //     duration: const Duration(seconds: 1),
+                  //     //     curve: Curves.linear,
+                  //     //     child: Image.asset(
+                  //     //       "assets/images/Verify.png",
+                  //     //     ),
+                  //     //   ),
+                  //     // ),
+                  //     // Positioned(
+                  //     //   top: 0,
+                  //     //   left: 0,
+                  //     //   right: 0,
+                  //     //   bottom: 0,
+                  //     //   child: AnimatedOpacity(
+                  //     //     opacity: _currentIndex == 2 ? 1 : 0,
+                  //     //     duration: const Duration(seconds: 1),
+                  //     //     curve: Curves.linear,
+                  //     //     child: Image.asset(
+                  //     //       "assets/images/Verify.png",
+                  //     //     ),
+                  //     //   ),
+                  //     // )
+                  //   ]),
+                  // ),
                   SizedBox(
                     height: getHeight(context, 4),
                   ),
@@ -147,7 +155,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     duration: const Duration(milliseconds: 500),
                     child: Text(
                       "Please enter the 6 digit code sent to \n " +
-                          widget.phone_number ,
+                          widget.phone_number,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
@@ -171,8 +179,12 @@ class _VerificatoinState extends State<Verificatoin> {
                       keyboardType: TextInputType.number,
                       underlineUnfocusedColor: mainColorGrey,
                       onCompleted: (value) {
-                        setState(() {
+                        setState(() async {
                           _code = value;
+                          if (await noInternet(context)) {
+                            return;
+                          }
+                          verifySmsCode();
                         });
                       },
                       onEditing: (value) {},
@@ -208,7 +220,9 @@ class _VerificatoinState extends State<Verificatoin> {
                                       formatedTime(timeInSecond: timecode)
                                           .toString()
                                   : "Resend",
-                              style: TextStyle(color: mainColorRed,fontFamily: mainFontbold),
+                              style: TextStyle(
+                                  color: mainColorRed,
+                                  fontFamily: mainFontbold),
                             ))
                       ],
                     ),
@@ -227,7 +241,10 @@ class _VerificatoinState extends State<Verificatoin> {
                       elevation: 0,
                       onPressed: _code.length < 6
                           ? () => {toastLong("Please enter code")}
-                          : () {
+                          : () async {
+                              if (await noInternet(context)) {
+                                return;
+                              }
                               verifySmsCode();
                             },
                       color: mainColorRed,
@@ -246,7 +263,9 @@ class _VerificatoinState extends State<Verificatoin> {
                           : Text(
                               "Verify",
                               style: TextStyle(
-                                  color: mainColorWhite, fontSize: 14,fontFamily: mainFontbold),
+                                  color: mainColorWhite,
+                                  fontSize: 14,
+                                  fontFamily: mainFontbold),
                             ),
                     ),
                   )
@@ -303,8 +322,27 @@ class _VerificatoinState extends State<Verificatoin> {
                     }
                   });
                 } else {
-                  alert(context, "Account Disabled",
-                      "Account is disable please contact athome admin ");
+                  PanaraInfoDialog.show(
+                    context,
+                    title: "Account Disabled",
+                    message: "Account is disable please contact athome admin ",
+                    buttonText: "Login",
+                    onTapDismiss: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterWithPhoneNumber()),
+                      );
+                    },
+                    // color:
+                    //     PanaraColors
+                    //         .warning,
+                    panaraDialogType: PanaraDialogType.error,
+                    // imagePath:
+                    //     "assets/images/logoB.png",
+                    noImage: true,
+                  );
                 }
               } else if (value["code"] == "422") {
                 setState(() {
@@ -373,8 +411,27 @@ class _VerificatoinState extends State<Verificatoin> {
                 MaterialPageRoute(builder: (context) => NavSwitch()),
               );
             } else {
-              alert(context, "Account Disabled",
-                  "Account is disable please contact athome admin ");
+              PanaraInfoDialog.show(
+                context,
+                title: "Account Disabled",
+                message: "Account is disable please contact athome admin ",
+                buttonText: "Login",
+                onTapDismiss: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegisterWithPhoneNumber()),
+                  );
+                },
+                // color:
+                //     PanaraColors
+                //         .warning,
+                panaraDialogType: PanaraDialogType.error,
+                // imagePath:
+                //     "assets/images/logoB.png",
+                noImage: true,
+              );
             }
           } else if (value["code"] == "422") {
             setState(() {

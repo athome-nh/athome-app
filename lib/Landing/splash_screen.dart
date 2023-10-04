@@ -34,16 +34,19 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            Image.asset(
-              mainImagePattern,
-              width: getWidth(context, 100),
-              height: getHeight(context, 100),
-              fit: BoxFit.cover,
+            Opacity(
+              opacity: 0.25,
+              child: Image.asset(
+                mainImagePattern,
+                width: getWidth(context, 100),
+                height: getHeight(context, 100),
+                fit: BoxFit.cover,
+              ),
             ),
             Center(
               child: Image.asset(
                 mainImageLogo1,
-                width: getWidth(context, 75),
+                width: getWidth(context, 100),
               ),
             ),
           ],

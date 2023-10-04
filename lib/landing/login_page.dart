@@ -7,6 +7,7 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/landing/verification.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class RegisterWithPhoneNumber extends StatefulWidget {
@@ -69,52 +70,9 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
               children: [
                 Container(
                   height: getHeight(context, 27),
-                  child: Stack(children: [
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: AnimatedOpacity(
-                        opacity: _currentIndex == 0 ? 1 : 0,
-                        duration: Duration(
-                          seconds: 1,
-                        ),
-                        curve: Curves.linear,
-                        child: Image.asset(
-                          "assets/images/Verify.png",
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: AnimatedOpacity(
-                        opacity: _currentIndex == 1 ? 1 : 0,
-                        duration: Duration(seconds: 1),
-                        curve: Curves.linear,
-                        child: Image.asset(
-                          "assets/images/Verify.png",
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: AnimatedOpacity(
-                        opacity: _currentIndex == 2 ? 1 : 0,
-                        duration: Duration(seconds: 1),
-                        curve: Curves.linear,
-                        child: Image.asset(
-                          "assets/images/Verify.png",
-                        ),
-                      ),
-                    )
-                  ]),
+                  child: Image.asset(
+                    "assets/images/verify.gif",
+                  ),
                 ),
                 SizedBox(
                   height: getHeight(context, 6),
@@ -138,7 +96,10 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       'Enter your phone number to Shop Smarter & Easier.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 14, color: mainColorGrey.withOpacity(0.7),fontFamily: mainFontbold,),
+                        fontSize: 14,
+                        color: mainColorGrey.withOpacity(0.7),
+                        fontFamily: mainFontbold,
+                      ),
                     ),
                   ),
                 ),
@@ -256,7 +217,10 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: Text(
                       "Request OTP",
-                      style: TextStyle(color: mainColorWhite,fontFamily: mainFontbold,),
+                      style: TextStyle(
+                        color: mainColorWhite,
+                        fontFamily: mainFontbold,
+                      ),
                     ),
                   ),
                 ),
@@ -271,7 +235,10 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       "We will send you OTP code to verifiy your phone number.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 14, color: mainColorGrey.withOpacity(0.7),fontFamily: mainFontbold,),
+                        fontSize: 14,
+                        color: mainColorGrey.withOpacity(0.7),
+                        fontFamily: mainFontbold,
+                      ),
                     ),
                   ),
                 )
