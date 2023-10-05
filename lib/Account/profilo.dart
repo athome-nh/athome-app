@@ -1,12 +1,21 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Network/Network.dart';
+import 'package:athome/map/loction.dart';
+import 'package:athome/map/maps.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../Config/athome_functions.dart';
 import '../controller/cartprovider.dart';
 import '../home/NavSwitch.dart';
 import '../main.dart';
@@ -19,6 +28,16 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  final picker = ImagePicker();
+  XFile? _image;
+
+  Future<void> _getImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = pickedFile;
+    });
+  }
+
   String selectedLanguage = 'English';
   List<String> items = [
     'Male',
@@ -30,6 +49,7 @@ class _SettingState extends State<Setting> {
 
   String selectedItem = 'English';
   bool isEdit = false;
+  String image = "";
   @override
   void initState() {
     selectedItem = lang == "en"
@@ -41,6 +61,7 @@ class _SettingState extends State<Setting> {
       nameController.text = userData["name"];
       ageController.text = userData["age"].toString();
       gender = userData["gender"];
+      image = userData["img"];
     }
 
     super.initState();
@@ -147,12 +168,27 @@ class _SettingState extends State<Setting> {
                               children: [
                                 Row(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 35.0,
-                                      backgroundColor:
-                                          mainColorLightGrey, // Set a background color
-                                      child:
-                                          Image.asset("assets/images/408.png"),
+                                    GestureDetector(
+                                      onTap: isEdit
+                                          ? () {
+                                              _getImage();
+                                            }
+                                          : null,
+                                      child: _image != null
+                                          ? Image.file(
+                                              File(_image!.path),
+                                              height: 200,
+                                              width: 200,
+                                            )
+                                          : ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              child: CachedNetworkImage(
+                                                width: getWidth(context, 18),
+                                                imageUrl: image,
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(15),
@@ -187,8 +223,32 @@ class _SettingState extends State<Setting> {
                                         children: [
                                           GestureDetector(
                                             onTap: () {
-                                              setState(() {
-                                                isEdit = false;
+                                              var data = {
+                                                "id": userData["id"],
+                                                "name": nameController.text,
+                                                "age": ageController.text,
+                                                "gender": gender,
+                                              };
+                                              Network(false)
+                                                  .postData(
+                                                      "profile", data, context)
+                                                  .then((value) {
+                                                if (value != "") {
+                                                  if (value["code"] == "201") {
+                                                    userData = value["data"];
+                                                    var jsonData = json
+                                                        .encode(value["data"]);
+                                                    setStringPrefs(
+                                                        "userData",
+                                                        encryptAES(jsonData)
+                                                            .toString());
+                                                    setState(() {
+                                                      image =
+                                                          value["data"]["img"];
+                                                      isEdit = false;
+                                                    });
+                                                  }
+                                                }
                                               });
                                             },
                                             child: Container(
@@ -220,6 +280,8 @@ class _SettingState extends State<Setting> {
                                           GestureDetector(
                                             onTap: () {
                                               setState(() {
+                                                _image = null;
+                                                image = userData["img"];
                                                 isEdit = false;
                                                 nameController.text =
                                                     userData["name"];
@@ -262,7 +324,7 @@ class _SettingState extends State<Setting> {
                                               });
                                             },
                                             child: Container(
-                                              width: getWidth(context, 30),
+                                              width: getWidth(context, 32),
                                               height: getHeight(context, 4),
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -284,30 +346,30 @@ class _SettingState extends State<Setting> {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: getWidth(context, 2),
-                                          ),
-                                          Container(
-                                            width: getWidth(context, 30),
-                                            height: getHeight(context, 4),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                color: mainColorRed),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "Delete account",
-                                                  style: TextStyle(
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 12,
-                                                      color: mainColorWhite),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
+                                          // SizedBox(
+                                          //   width: getWidth(context, 2),
+                                          // ),
+                                          // Container(
+                                          //   width: getWidth(context, 30),
+                                          //   height: getHeight(context, 4),
+                                          //   decoration: BoxDecoration(
+                                          //       borderRadius:
+                                          //           BorderRadius.circular(5),
+                                          //       color: mainColorRed),
+                                          //   child: Row(
+                                          //     mainAxisAlignment:
+                                          //         MainAxisAlignment.center,
+                                          //     children: [
+                                          //       Text(
+                                          //         "Delete account",
+                                          //         style: TextStyle(
+                                          //             fontFamily: mainFontbold,
+                                          //             fontSize: 12,
+                                          //             color: mainColorWhite),
+                                          //       ),
+                                          //     ],
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                               ],
@@ -521,35 +583,45 @@ class _SettingState extends State<Setting> {
                       SizedBox(
                         height: getHeight(context, 1),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 3.5),
-                        ),
-                        child: Container(
-                          width: getWidth(context, 93),
-                          height: getHeight(context, 5),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: mainColorLightGrey),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Address",
-                                  style: TextStyle(
-                                      fontFamily: mainFontbold,
-                                      fontSize: 18,
-                                      color: mainColorGrey),
-                                ),
-                                Icon(
-                                  Icons.location_on_outlined,
-                                  size: getWidth(context, 8),
-                                  color: mainColorGrey,
-                                ),
-                              ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const location_screen()),
+                          );
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(context, 3.5),
+                          ),
+                          child: Container(
+                            width: getWidth(context, 93),
+                            height: getHeight(context, 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: mainColorLightGrey),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Address",
+                                    style: TextStyle(
+                                        fontFamily: mainFontbold,
+                                        fontSize: 18,
+                                        color: mainColorGrey),
+                                  ),
+                                  Icon(
+                                    Icons.location_on_outlined,
+                                    size: getWidth(context, 8),
+                                    color: mainColorGrey,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

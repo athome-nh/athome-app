@@ -216,7 +216,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         borderRadius: BorderRadius.circular(5)),
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: Text(
-                      "Request OTP",
+                      "Get Start",
                       style: TextStyle(
                         color: mainColorWhite,
                         fontFamily: mainFontbold,

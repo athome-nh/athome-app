@@ -218,7 +218,11 @@ class _Singinup_pageState extends State<Singinup_page> {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   enabled: value == "Erbil" ? true : false,
-                                  child: Text(value,style:TextStyle(fontSize: 30, fontFamily: mainFontbold),),
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                        fontSize: 30, fontFamily: mainFontbold),
+                                  ),
                                 );
                               }).toList(),
                             ),
@@ -268,7 +272,11 @@ class _Singinup_pageState extends State<Singinup_page> {
                               items: agelist.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value,style:TextStyle(fontSize: 30, fontFamily: mainFontbold),),
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                        fontSize: 30, fontFamily: mainFontbold),
+                                  ),
                                 );
                               }).toList(),
                             ),
@@ -309,7 +317,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                         "city": city == "Select City" ? "Erbil" : city,
                         "age": age.toString(),
                         "gender": gender,
-                        "img": "img",
+                        "img": gender == "MAle" ? "" : "img",
                         "fcmToken": token,
                         "device": Platform.isAndroid
                             ? _readAndroidBuildData(
@@ -368,7 +376,10 @@ class _Singinup_pageState extends State<Singinup_page> {
                           )
                         : Text(
                             "Confirm",
-                            style:TextStyle(fontSize: 30, fontFamily: mainFontbold,color: mainColorWhite),
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontFamily: mainFontbold,
+                                color: mainColorWhite),
                           ),
                   ),
                 ),

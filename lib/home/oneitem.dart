@@ -18,7 +18,6 @@ import '../Config/property.dart';
 import '../Switchscreen.dart';
 import '../main.dart';
 
-
 class Oneitem extends StatefulWidget {
   const Oneitem({super.key});
 
@@ -162,29 +161,29 @@ class _OneitemState extends State<Oneitem> {
                           child: IconButton(
                               onPressed: () {
                                 if (!isLogin) {
-                                   PanaraInfoDialog.show(
-                                  context,
-                                  title: "Hello",
-                                  message:
-                                      "This is the Panara Info Dialog Success.",
-                                  buttonText: "Login",
-                                  onTapDismiss: () {
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              RegisterWithPhoneNumber()),
-                                    );
-                                  },
-                                  // color:
-                                  //     PanaraColors
-                                  //         .warning,
-                                  panaraDialogType: PanaraDialogType.error,
-                                  // imagePath:
-                                  //     "assets/images/logoB.png",
-                                  noImage: true,
-                                );
+                                  PanaraInfoDialog.show(
+                                    context,
+                                    title: "Hello",
+                                    message:
+                                        "This is the Panara Info Dialog Success.",
+                                    buttonText: "Login",
+                                    onTapDismiss: () {
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegisterWithPhoneNumber()),
+                                      );
+                                    },
+                                    // color:
+                                    //     PanaraColors
+                                    //         .warning,
+                                    panaraDialogType: PanaraDialogType.warning,
+                                    // imagePath:
+                                    //     "assets/images/logoB.png",
+                                    noImage: false,
+                                  );
                                   return;
                                 }
                                 final cartItem = CartItem(product: Item.id!);
@@ -328,7 +327,7 @@ class _OneitemState extends State<Oneitem> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          if (Item.offerPrice! > 0 &&
+                                          if (Item.offerPrice! > -1 &&
                                               Item.orderLimit ==
                                                   cartProvider
                                                       .calculateQuantityForProduct(
@@ -338,7 +337,7 @@ class _OneitemState extends State<Oneitem> {
                                                 "you can not add more this item");
                                             return;
                                           }
-                                          if (Item.offerPrice! > 0 &&
+                                          if (Item.offerPrice! > -1 &&
                                               Item.orderLimit ==
                                                   cartProvider
                                                       .calculateQuantityForProduct(

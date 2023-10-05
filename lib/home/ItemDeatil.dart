@@ -226,7 +226,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          if (Item.offerPrice! > 0 &&
+                                          if (Item.offerPrice! > -1 &&
                                               Item.orderLimit ==
                                                   cartProvider
                                                       .calculateQuantityForProduct(

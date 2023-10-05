@@ -3,6 +3,7 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class TrackOrder extends StatefulWidget {
@@ -11,6 +12,26 @@ class TrackOrder extends StatefulWidget {
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
+
+List images = [
+  "assets/images/008_track_1.png",
+  "assets/images/008_track_2.png",
+  "assets/images/008_track_3.png",
+  "assets/images/008_track_4.png",
+];
+List titles = [
+  "Order Placed",
+  "Processing Order",
+  "Order Is On way",
+  "Order Ready For Pickup"
+];
+List content = [
+  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz ."
+];
+int status = 0;
 
 class _TrackOrderState extends State<TrackOrder> {
   @override
@@ -63,7 +84,7 @@ class _TrackOrderState extends State<TrackOrder> {
               Column(
                 children: [
                   Image.asset(
-                    "assets/images/003_welcome_1.png",
+                    images[status],
                     width: getWidth(context, 60),
                     height: getHeight(context, 40),
                   ),
@@ -73,10 +94,27 @@ class _TrackOrderState extends State<TrackOrder> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Icon(
-                          Icons.circle,
-                          color: mainColorRed,
-                          size: 30,
+                        Container(
+                          alignment: Alignment.center,
+                          width: getWidth(context, 8),
+                          height: getWidth(context, 8),
+                          decoration: BoxDecoration(
+                            color: mainColorGrey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: status == 0
+                              ? LoadingIndicator(
+                                  indicatorType: Indicator.ballScale,
+                                  colors: [mainColorRed],
+                                  strokeWidth: 5,
+                                )
+                              : status > 0
+                                  ? Icon(
+                                      Icons.check_circle,
+                                      color: mainColorWhite,
+                                      size: getWidth(context, 5),
+                                    )
+                                  : SizedBox(),
                         ),
                         Container(
                             width: getWidth(context, 18),
@@ -84,10 +122,27 @@ class _TrackOrderState extends State<TrackOrder> {
                               color: mainColorGrey,
                               thickness: 3,
                             )),
-                        Icon(
-                          Icons.circle_outlined,
-                          color: mainColorRed,
-                          size: 30,
+                        Container(
+                          alignment: Alignment.center,
+                          width: getWidth(context, 8),
+                          height: getWidth(context, 8),
+                          decoration: BoxDecoration(
+                            color: mainColorGrey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: status == 1
+                              ? LoadingIndicator(
+                                  indicatorType: Indicator.ballScale,
+                                  colors: [mainColorRed],
+                                  strokeWidth: 5,
+                                )
+                              : status > 1
+                                  ? Icon(
+                                      Icons.check_circle,
+                                      color: mainColorWhite,
+                                      size: getWidth(context, 5),
+                                    )
+                                  : SizedBox(),
                         ),
                         Container(
                             width: getWidth(context, 18),
@@ -95,10 +150,27 @@ class _TrackOrderState extends State<TrackOrder> {
                               color: mainColorGrey,
                               thickness: 3,
                             )),
-                        Icon(
-                          Icons.circle_outlined,
-                          color: mainColorRed,
-                          size: 30,
+                        Container(
+                          alignment: Alignment.center,
+                          width: getWidth(context, 8),
+                          height: getWidth(context, 8),
+                          decoration: BoxDecoration(
+                            color: mainColorGrey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: status == 2
+                              ? LoadingIndicator(
+                                  indicatorType: Indicator.ballScale,
+                                  colors: [mainColorRed],
+                                  strokeWidth: 5,
+                                )
+                              : status > 2
+                                  ? Icon(
+                                      Icons.check_circle,
+                                      color: mainColorWhite,
+                                      size: getWidth(context, 5),
+                                    )
+                                  : SizedBox(),
                         ),
                         Container(
                             width: getWidth(context, 18),
@@ -106,10 +178,21 @@ class _TrackOrderState extends State<TrackOrder> {
                               color: mainColorGrey,
                               thickness: 3,
                             )),
-                        Icon(
-                          Icons.circle_outlined,
-                          color: mainColorRed,
-                          size: 30,
+                        Container(
+                          alignment: Alignment.center,
+                          width: getWidth(context, 8),
+                          height: getWidth(context, 8),
+                          decoration: BoxDecoration(
+                            color: mainColorGrey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: status == 3
+                              ? Icon(
+                                  Icons.check_circle,
+                                  color: mainColorWhite,
+                                  size: getWidth(context, 5),
+                                )
+                              : SizedBox(),
                         ),
                       ],
                     ),
@@ -118,7 +201,7 @@ class _TrackOrderState extends State<TrackOrder> {
               ),
               Column(
                 children: [
-                  Text("Order Placed",
+                  Text(titles[status],
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 28,
@@ -126,8 +209,7 @@ class _TrackOrderState extends State<TrackOrder> {
                       )),
                   Container(
                     width: getWidth(context, 70),
-                    child: Text(
-                        "Your order is on way to delvier you jdsncjndscjkndkcnkdsjnc",
+                    child: Text(content[status],
                         style: TextStyle(
                           color: mainColorGrey,
                           fontSize: 16,
@@ -159,7 +241,15 @@ class _TrackOrderState extends State<TrackOrder> {
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        if (status == 3) {
+                          status = 0;
+                        } else {
+                          status++;
+                        }
+                      });
+                    },
                     child: Text('Cancle order',
                         style: TextStyle(
                           color: mainColorGrey,

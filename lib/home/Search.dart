@@ -435,11 +435,11 @@ class _SearchState extends State<Search> {
                                               Navigator.pop(context);
                                             },
                                             panaraDialogType:
-                                                PanaraDialogType.success,
+                                                PanaraDialogType.warning,
                                           );
                                           return;
                                         }
-                                        if (product.offerPrice! > 0 &&
+                                        if (product.offerPrice! > -1 &&
                                             product.orderLimit ==
                                                 cartProvider
                                                     .calculateQuantityForProduct(
@@ -536,7 +536,9 @@ class _SearchState extends State<Search> {
                                         height: 3,
                                       ),
                                       Text(
-                                        addCommasToPrice(product.price!),
+                                        addCommasToPrice(product.price2! > -1
+                                            ? product.price2!
+                                            : product.price!),
                                         maxLines: 1,
                                         style: TextStyle(
                                             color: mainColorGrey,

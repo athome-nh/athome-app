@@ -103,10 +103,10 @@ Widget listItemsShow(BuildContext context, var data) {
                                   // color:
                                   //     PanaraColors
                                   //         .warning,
-                                  panaraDialogType: PanaraDialogType.error,
+                                  panaraDialogType: PanaraDialogType.warning,
                                   // imagePath:
                                   //     "assets/images/logoB.png",
-                                  noImage: true,
+                                  noImage: false,
                                 );
                                 return;
                               }
@@ -135,7 +135,7 @@ Widget listItemsShow(BuildContext context, var data) {
                           ),
                         ],
                       ),
-                      product.offerPrice! > 0
+                      product.offerPrice! > -1
                           ? Container(
                               width: getHeight(context, 8),
                               height: getHeight(context, 3),
@@ -159,7 +159,9 @@ Widget listItemsShow(BuildContext context, var data) {
                                 children: [
                                   Text(
                                     calculatePercentageDiscount(
-                                        double.parse(product.price!.toString()),
+                                        double.parse(product.price2 > -1
+                                            ? product.price2!.toString()
+                                            : product.price!.toString()),
                                         double.parse(
                                             product.offerPrice!.toString())),
                                     style: TextStyle(
@@ -218,16 +220,18 @@ Widget listItemsShow(BuildContext context, var data) {
                               height: 3,
                             ),
                             Text(
-                              addCommasToPrice(product.price!),
+                              addCommasToPrice(product.price2 > -1
+                                  ? product.price2!
+                                  : product.price!),
                               style: TextStyle(
-                                  decoration: product.offerPrice! > 0
+                                  decoration: product.offerPrice! > -1
                                       ? TextDecoration.lineThrough
                                       : TextDecoration.none,
                                   color: mainColorGrey,
                                   fontFamily: mainFontnormal,
                                   fontSize: 14),
                             ),
-                            product.offerPrice! > 0
+                            product.offerPrice! > -1
                                 ? Text(
                                     addCommasToPrice(product.offerPrice!),
                                     style: TextStyle(
@@ -260,14 +264,14 @@ Widget listItemsShow(BuildContext context, var data) {
                               // color:
                               //     PanaraColors
                               //         .warning,
-                              panaraDialogType: PanaraDialogType.error,
+                              panaraDialogType: PanaraDialogType.warning,
                               // imagePath:
                               //     "assets/images/logoB.png",
-                              noImage: true,
+                              noImage: false,
                             );
                             return;
                           }
-                          if (product.offerPrice! > 0 &&
+                          if (product.offerPrice! > -1 &&
                               product.orderLimit ==
                                   cartProvider.calculateQuantityForProduct(
                                       int.parse(product.id.toString()))) {
@@ -398,9 +402,9 @@ loginFirstContainer(BuildContext context) {
           width: getWidth(context, 80),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: mainColorRed,
+            color: mainColorGrey,
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
           child: Icon(
             Icons.warning_amber_outlined,
@@ -415,8 +419,8 @@ loginFirstContainer(BuildContext context) {
           decoration: BoxDecoration(
             color: mainColorLightGrey,
             borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

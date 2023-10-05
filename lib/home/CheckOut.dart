@@ -34,6 +34,7 @@ class _CheckOutState extends State<CheckOut> {
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListId());
     final total = cartProvider.calculateTotalPrice(CardItemshow);
+    String location = "";
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -363,13 +364,15 @@ class _CheckOutState extends State<CheckOut> {
                             cartProvider.cartItems.forEach((element) {
                               ProductModel Item = productrovider
                                   .getoneProductById(element.product);
-
+                              String price = Item.price2! > -1
+                                  ? Item.price2!.toString()
+                                  : Item.price.toString();
                               data += "!&" +
                                   Item.id.toString() +
                                   ",,," +
                                   Item.purchasePrice.toString() +
                                   ",,," +
-                                  Item.price.toString() +
+                                  price +
                                   ",,," +
                                   Item.offerPrice.toString() +
                                   ",,," +
@@ -380,6 +383,7 @@ class _CheckOutState extends State<CheckOut> {
                               "customerid": userData["id"],
                               "location": "43.6545,23434",
                               "order_data": data.substring(2),
+                              "note": NoteController.text,
                             };
                             Network(false)
                                 .postData("order", data2, context)

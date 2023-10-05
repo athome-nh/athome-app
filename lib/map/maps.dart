@@ -2,22 +2,26 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:athome/Config/property.dart';
-import 'package:athome/map/LatLngUtils.dart';
+import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/map/locationdeatil.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math';
 
-class Maps extends StatefulWidget {
-  const Maps({super.key});
+import 'package:panara_dialogs/panara_dialogs.dart';
+
+class Maps_screen extends StatefulWidget {
+  const Maps_screen({super.key});
 
   @override
-  State<Maps> createState() => _MapsState();
+  State<Maps_screen> createState() => _Maps_screenState();
 }
 
-class _MapsState extends State<Maps> {
-  static  LatLng _googleLngLat =
-      LatLng(36.19132291385898, 44.00944021193411);
+class _Maps_screenState extends State<Maps_screen> {
+  static LatLng _googleLngLat = LatLng(36.19132291385898, 44.00944021193411);
   late LatLng _selectedLocation;
 
   Set<Marker> _markers = {};
@@ -68,123 +72,197 @@ class _MapsState extends State<Maps> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            myLocationButtonEnabled: false,
-            myLocationEnabled: true,
-            zoomControlsEnabled: false,
-
-            circles: _circle,
-            polygons: _polygon,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-              _controller2=controller;
+      appBar: AppBar(
+        title: Text(
+          "Map",
+          style: TextStyle(
+              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
+        ),
+        centerTitle: true,
+        backgroundColor: mainColorWhite,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
             },
-            initialCameraPosition:  CameraPosition(
-              target:
-                  _googleLngLat, // Set the initial camera position to the first coordinate
-              zoom: 15.0, // You can adjust the initial zoom level as needed
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: mainColorRed,
+            )),
+      ),
+      body: Container(
+        height: getHeight(context, 100),
+        width: getWidth(context, 100),
+        child: Stack(
+          children: [
+            GoogleMap(
+              mapType: MapType.normal,
+              myLocationButtonEnabled: false,
+              myLocationEnabled: true,
+              zoomControlsEnabled: false,
+              circles: _circle,
+              polygons: _polygon,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+                _controller2 = controller;
+              },
+              initialCameraPosition: CameraPosition(
+                target:
+                    _googleLngLat, // Set the initial camera position to the first coordinate
+                zoom: 15.0, // You can adjust the initial zoom level as needed
+              ),
+              markers: _markers,
+              onTap: (LatLng location) {
+                setState(() {
+                  _selectedLocation = location;
+                  _markers.clear();
+                  _markers.add(
+                    Marker(
+                      markerId: const MarkerId('Selected Location'),
+                      position: location,
+                    ),
+                  );
+                  // LatLng point1 = LatLng(36.188372277087595, 43.97223721537533);
+                  // LatLng point2 = LatLng(36.19089314288302, 44.00893646913687);
+
+                  // double distance1 = LatLngUtils.calculateDistance(point1, point2);
+
+                  //     print('Distance between point1 and point2: $distance1 km');
+
+                  double distance = calculateDistance(
+                      location.latitude, location.longitude, _googleLngLat);
+                  double circleRadius =
+                      10000.0; // Radius of the circle in meters
+
+                  if (distance <= circleRadius) {
+                    LatLng locationToCheck = _selectedLocation;
+
+                    bool isInsidePolygon =
+                        _isLocationInsidePolygon(locationToCheck);
+                    print('Is Inside Polygon: $isInsidePolygon');
+                  } else {
+                    _markers.clear();
+                    PanaraInfoDialog.show(
+                      context,
+                      title: "Hello",
+                      message: "Sorry unavailable now from your location",
+                      buttonText: "Okay",
+                      onTapDismiss: () {
+                        Navigator.pop(context);
+                      },
+                      // color:
+                      //     PanaraColors
+                      //         .warning,
+                      panaraDialogType: PanaraDialogType.warning,
+                      // imagePath:
+                      //     "assets/images/logoB.png",
+                      noImage: false,
+                    );
+                    // The location is outside the circle
+                    // You can add your logic here
+                    print('Location is outside the circle');
+                  }
+                });
+              },
             ),
-            markers: _markers,
-            onTap: (LatLng location) {
-              setState(() {
-                _selectedLocation = location;
-                _markers.clear();
-                _markers.add(
-                  Marker(
-                    markerId: const MarkerId('Selected Location'),
-                    position: location,
-                  ),
-                );
-                // LatLng point1 = LatLng(36.188372277087595, 43.97223721537533);
-                // LatLng point2 = LatLng(36.19089314288302, 44.00893646913687);
-
-               // double distance1 = LatLngUtils.calculateDistance(point1, point2);
-
-           //     print('Distance between point1 and point2: $distance1 km');
-               
-               
-               
-               
-                double distance = calculateDistance(
-                    location.latitude, location.longitude, _googleLngLat);
-                double circleRadius = 10000.0; // Radius of the circle in meters
-
-                if (distance <= circleRadius) {
-                  LatLng locationToCheck = _selectedLocation;
-
-                  bool isInsidePolygon =
-                      _isLocationInsidePolygon(locationToCheck);
-                  print('Is Inside Polygon: $isInsidePolygon');
-                } else {
-                  // The location is outside the circle
-                  // You can add your logic here
-                  print('Location is outside the circle');
-                }
-              });
-            },
-          ),
-          Container(
-            margin: EdgeInsets.only(
-                top: getHeight(context, 40),
-               left: getWidth(context, 85)),
-            child: Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    getCurrentLocation();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white),
-                    height: 50,
-                    width: 50,
-                    child: const Icon(Icons.my_location, color: Colors.amber),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                GestureDetector(
-                  onTap: () {
-                   
-            _controller2.animateCamera(CameraUpdate.zoomIn());
-
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white),
-                    height: 50,
-                    width: 50,
-                    child: const Icon(Icons.zoom_in_map, color: Colors.amber),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                GestureDetector(
-
-                  onTap: () {
+            Positioned(
+              bottom: getHeight(context,
+                  40), // Adjust the position of the button from the bottom
+              right: 16.0, // Adjust the position of the button from the left
+              child: Container(
+                // margin: EdgeInsets.only(
+                //     top: getHeight(context, 40), left: getWidth(context, 85)),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        getCurrentLocation();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.white),
+                        height: 50,
+                        width: 50,
+                        child: Icon(Icons.my_location, color: mainColorGrey),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _controller2.animateCamera(CameraUpdate.zoomIn());
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.white),
+                        height: 50,
+                        width: 50,
+                        child: Icon(Icons.add, color: mainColorGrey),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    GestureDetector(
+                      onTap: () {
                         _controller2.animateCamera(CameraUpdate.zoomOut());
-
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white),
-                    height: 50,
-                    width: 50,
-                    child: const Icon(Icons.zoom_out_map, color: Colors.amber),
-                  ),
-                )
-              ],
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.white),
+                        height: 50,
+                        width: 50,
+                        child: Icon(Icons.remove, color: mainColorGrey),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          )
-        ],
+            _markers.isEmpty
+                ? SizedBox()
+                : Positioned(
+                    bottom: 16,
+                    right: getWidth(context, 10),
+                    child: SizedBox(
+                      height: getHeight(context, 5),
+                      width: getWidth(context, 80),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => location_Deatil(
+                                    _selectedLocation.longitude.toString(),
+                                    _selectedLocation.latitude.toString())),
+                          );
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(mainColorRed),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          'Select Location',
+                          style: TextStyle(
+                              color: mainColorWhite,
+                              fontSize: 20,
+                              fontFamily: mainFontnormal),
+                        ),
+                      ),
+                    ),
+                  ),
+          ],
+        ),
       ),
     );
   }
@@ -235,56 +313,78 @@ class _MapsState extends State<Maps> {
     return degrees * pi / 180;
   }
 
+  Future<void> getCurrentLocation() async {
+    try {
+      // Request permission to access the device's location
+      LocationPermission permission = await Geolocator.requestPermission();
 
-Future<void> getCurrentLocation() async {
-  try {
-    // Request permission to access the device's location
-    LocationPermission permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Handle case where the user denied access to their location
+        return;
+      }
 
-    if (permission == LocationPermission.denied) {
-      // Handle case where the user denied access to their location
-      return;
-    }
+      // Get the current position (latitude and longitude)
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy
+            .bestForNavigation, // You can adjust the desired accuracy
+      );
 
-    // Get the current position (latitude and longitude)
-    Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high, // You can adjust the desired accuracy
-    );
+      // Access the latitude and longitude from the position
 
-    // Access the latitude and longitude from the position
-   
- setState(() {   
-  
-  _selectedLocation=LatLng(position.latitude,  position.longitude);
-  _controller2.animateCamera(
-            CameraUpdate.newCameraPosition(
-              CameraPosition(
-                target: _selectedLocation,
-                zoom: 14.0,
-              ),
+      setState(() {
+        _selectedLocation = LatLng(position.latitude, position.longitude);
+        _controller2.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: _selectedLocation,
+              zoom: 190.0,
             ),
-          );
+          ),
+        );
 
-    
-    _googleLngLat=_selectedLocation;
-  _markers.clear();
-                _markers.add(
-                  Marker(
-                    markerId: const MarkerId('Selected Location'),
-                    position: _selectedLocation,
-                  ),
-                );
- });
+        _googleLngLat = _selectedLocation;
+        _markers.clear();
+        _markers.add(
+          Marker(
+            markerId: const MarkerId('Selected Location'),
+            position: _selectedLocation,
+          ),
+        );
+        // double distance = calculateDistance(_selectedLocation.latitude,
+        //     _selectedLocation.longitude, _googleLngLat);
+        // double circleRadius = 10000.0; // Radius of the circle in meters
 
- 
-   
+        // if (distance <= circleRadius) {
+        //   LatLng locationToCheck = _selectedLocation;
 
- 
-  } catch (e) {
-    // Handle any errors that occur during the process
-    print("Error: $e");
+        //   bool isInsidePolygon = _isLocationInsidePolygon(locationToCheck);
+        //   print('Is Inside Polygon: $isInsidePolygon');
+        // } else {
+        //   _markers.clear();
+        //   PanaraInfoDialog.show(
+        //     context,
+        //     title: "Hello",
+        //     message: "Sorry unavailable now from your location",
+        //     buttonText: "Okay",
+        //     onTapDismiss: () {
+        //       Navigator.pop(context);
+        //     },
+        //     // color:
+        //     //     PanaraColors
+        //     //         .warning,
+        //     panaraDialogType: PanaraDialogType.warning,
+        //     // imagePath:
+        //     //     "assets/images/logoB.png",
+        //     noImage: false,
+        //   );
+        //   // The location is outside the circle
+        //   // You can add your logic here
+        //   print('Location is outside the circle');
+        // }
+      });
+    } catch (e) {
+      // Handle any errors that occur during the process
+      print("Error: $e");
+    }
   }
-}
-
-
 }

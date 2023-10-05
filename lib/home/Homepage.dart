@@ -433,7 +433,7 @@ class _Home_SCState extends State<Home_SC> {
                         ),
                       ),
                     ),
-                    // productrovider.Ordersitems.length < 0
+                    // productrovider.Ordersitems.length < -1
                     //     ? Column(
                     //         children: [
                     //           Row(
@@ -836,7 +836,7 @@ class _Home_SCState extends State<Home_SC> {
                     //                                 ),
                     //                               ],
                     //                             ),
-                    //                             product.offerPrice! > 0
+                    //                             product.offerPrice! > -1
                     //                                 ? Container(
                     //                                     width: getHeight(
                     //                                         context, 8),
@@ -968,7 +968,7 @@ class _Home_SCState extends State<Home_SC> {
                     //                                   style: TextStyle(
                     //                                       decoration: product
                     //                                                   .offerPrice! >
-                    //                                               0
+                    //                                               -1
                     //                                           ? TextDecoration
                     //                                               .lineThrough
                     //                                           : TextDecoration
@@ -978,7 +978,7 @@ class _Home_SCState extends State<Home_SC> {
                     //                                           mainFontnormal,
                     //                                       fontSize: 14),
                     //                                 ),
-                    //                                 product.offerPrice! > 0
+                    //                                 product.offerPrice! > -1
                     //                                     ? Text(
                     //                                         addCommasToPrice(
                     //                                             product
@@ -1373,7 +1373,7 @@ class _Home_SCState extends State<Home_SC> {
                                                         setState(() {
                                                           if (!isLogin) {
                                                             PanaraInfoDialog
-                                                                .show(
+                                                                .showAnimatedGrow(
                                                               context,
                                                               title: "Hello",
                                                               message:
@@ -1396,15 +1396,15 @@ class _Home_SCState extends State<Home_SC> {
                                                               //         .warning,
                                                               panaraDialogType:
                                                                   PanaraDialogType
-                                                                      .error,
+                                                                      .warning,
                                                               // imagePath:
                                                               //     "assets/images/logoB.png",
-                                                              noImage: true,
+                                                              noImage: false,
                                                             );
                                                             return;
                                                           }
                                                           if (product.offerPrice! >
-                                                                  0 &&
+                                                                  -1 &&
                                                               product.orderLimit ==
                                                                   cartProvider.calculateQuantityForProduct(
                                                                       int.parse(
@@ -1592,7 +1592,9 @@ class _Home_SCState extends State<Home_SC> {
                                                     ),
                                                     Text(
                                                       addCommasToPrice(
-                                                          product.price!),
+                                                          product.price2! > -1
+                                                              ? product.price2!
+                                                              : product.price!),
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           decoration:
@@ -1898,14 +1900,14 @@ class _Home_SCState extends State<Home_SC> {
                                                 //     PanaraColors
                                                 //         .warning,
                                                 panaraDialogType:
-                                                    PanaraDialogType.error,
+                                                    PanaraDialogType.warning,
                                                 // imagePath:
                                                 //     "assets/images/logoB.png",
-                                                noImage: true,
+                                                noImage: false,
                                               );
                                               return;
                                             }
-                                            if (product.offerPrice! > 0 &&
+                                            if (product.offerPrice! > -1 &&
                                                 product.orderLimit ==
                                                     cartProvider
                                                         .calculateQuantityForProduct(
@@ -2009,7 +2011,10 @@ class _Home_SCState extends State<Home_SC> {
                                             height: 3,
                                           ),
                                           Text(
-                                            addCommasToPrice(product.price!),
+                                            addCommasToPrice(
+                                                product.price2! > -1
+                                                    ? product.price2!
+                                                    : product.price!),
                                             maxLines: 1,
                                             style: TextStyle(
                                                 color: mainColorGrey,
@@ -2364,14 +2369,14 @@ class _Home_SCState extends State<Home_SC> {
                                                 //     PanaraColors
                                                 //         .warning,
                                                 panaraDialogType:
-                                                    PanaraDialogType.error,
+                                                    PanaraDialogType.warning,
                                                 // imagePath:
                                                 //     "assets/images/logoB.png",
-                                                noImage: true,
+                                                noImage: false,
                                               );
                                               return;
                                             }
-                                            if (product.offerPrice! > 0 &&
+                                            if (product.offerPrice! > -1 &&
                                                 product.orderLimit ==
                                                     cartProvider
                                                         .calculateQuantityForProduct(
@@ -2475,7 +2480,10 @@ class _Home_SCState extends State<Home_SC> {
                                             height: 3,
                                           ),
                                           Text(
-                                            addCommasToPrice(product.price!),
+                                            addCommasToPrice(
+                                                product.price2! > -1
+                                                    ? product.price2!
+                                                    : product.price!),
                                             maxLines: 1,
                                             style: TextStyle(
                                                 color: mainColorGrey,

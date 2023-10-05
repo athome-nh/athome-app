@@ -137,8 +137,10 @@ class CartProvider extends ChangeNotifier {
     int totalPrice = 0;
     int i = 0;
     for (var cartItem in cartItems) {
-      if (product[i].offerPrice! > 0) {
+      if (product[i].offerPrice! > -1) {
         totalPrice += product[i].offerPrice! * cartItem.quantity;
+      } else if (product[i].price2! > -1) {
+        totalPrice += product[i].price2! * cartItem.quantity;
       } else {
         totalPrice += product[i].price! * cartItem.quantity;
       }
@@ -267,8 +269,10 @@ class CartProvider extends ChangeNotifier {
     int totalPrice = 0;
     int i = 0;
     for (var cartItem in cartItemsPast) {
-      if (product[i].offerPrice! > 0) {
+      if (product[i].offerPrice! > -1) {
         totalPrice += product[i].offerPrice! * cartItem.quantity;
+      } else if (product[i].price2! > -1) {
+        totalPrice += product[i].price2! * cartItem.quantity;
       } else {
         totalPrice += product[i].price! * cartItem.quantity;
       }

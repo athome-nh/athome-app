@@ -43,7 +43,7 @@ class productProvider extends ChangeNotifier {
   }
 
   List<ProductModel> getProductsByDiscount() {
-    return _products.where((product) => product.offerPrice! > 0).toList();
+    return _products.where((product) => product.offerPrice! > -1).toList();
   }
 
   List<ProductsImage> getproductimages(int id) {

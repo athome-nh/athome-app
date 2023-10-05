@@ -338,10 +338,10 @@ class _VerificatoinState extends State<Verificatoin> {
                     // color:
                     //     PanaraColors
                     //         .warning,
-                    panaraDialogType: PanaraDialogType.error,
+                    panaraDialogType: PanaraDialogType.warning,
                     // imagePath:
                     //     "assets/images/logoB.png",
-                    noImage: true,
+                    noImage: false,
                   );
                 }
               } else if (value["code"] == "422") {
@@ -427,10 +427,10 @@ class _VerificatoinState extends State<Verificatoin> {
                 // color:
                 //     PanaraColors
                 //         .warning,
-                panaraDialogType: PanaraDialogType.error,
+                panaraDialogType: PanaraDialogType.warning,
                 // imagePath:
                 //     "assets/images/logoB.png",
-                noImage: true,
+                noImage: false,
               );
             }
           } else if (value["code"] == "422") {

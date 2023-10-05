@@ -168,7 +168,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                         style: TextStyle(
                                                             decoration: cartitem
                                                                         .offerPrice! >
-                                                                    0
+                                                                    -1
                                                                 ? TextDecoration
                                                                     .lineThrough
                                                                 : TextDecoration
@@ -179,7 +179,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                                 mainFontbold,
                                                             fontSize: 10),
                                                       ),
-                                                      cartitem.offerPrice! > 0
+                                                      cartitem.offerPrice! > -1
                                                           ? Text(
                                                               cartitem.offerPrice!
                                                                       .toString() +
@@ -244,7 +244,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                     GestureDetector(
                                                       onTap: () {
                                                         if (cartitem.offerPrice! >
-                                                                0 &&
+                                                                -1 &&
                                                             cartitem.orderLimit ==
                                                                 cartProvider.calculateQuantityForProductPast(
                                                                     int.parse(
