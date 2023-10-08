@@ -111,7 +111,7 @@ class _CategoriesState extends State<Categories> {
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () {
-                                      /// productPro.setcatetype(cateItem.id!);
+                                      productPro.setcatetype(cateItem.id!);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
