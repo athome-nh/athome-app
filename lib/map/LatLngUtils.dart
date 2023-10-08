@@ -28,11 +28,4 @@ class LatLngUtils {
   static double degreesToRadians(double degrees) {
     return degrees * (pi / 180.0);
   }
-
-
-
-
-
-
-  
 }

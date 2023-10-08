@@ -1,22 +1,13 @@
-import 'dart:convert';
-import 'dart:io';
-import 'dart:isolate';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Home/AllItem.dart';
 import 'package:athome/Home/itemCategories.dart';
-import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
-import 'package:athome/model/category_model/category_model.dart';
-import 'package:athome/model/order_model/order_model.dart';
-import 'package:athome/model/product_model/product_model.dart';
-import 'package:athome/model/products_image/products_image.dart';
-import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +16,6 @@ import 'package:athome/Home/Categories.dart';
 import 'package:athome/Home/Notfication.dart';
 import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'package:skeletonizer/skeletonizer.dart';
@@ -44,133 +34,35 @@ bool showitems = false;
 
 // ignore: camel_case_types
 class _Home_SCState extends State<Home_SC> {
-  // late List<ProductModel> products = [];
-  loadPostData() async {
-    final directory = await getTemporaryDirectory();
-    String path = "${directory.path}/dict.json";
-    File f = File(path);
-
-    if (f.existsSync()) {
-      final jsonData = f.readAsStringSync();
-      var data = json.decode(decryptAES(jsonData));
-
-      return data;
-    } else {
-      var d = [];
-      return d;
-    }
+  update(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: false);
+    productrovider.getPost();
   }
 
-  getPost() async {
+  Future<void> checkinternet() async {
     if (await noInternet(context)) {
       return;
     }
-
-    String ordeid = userData["id"].toString();
-
-    Network(false).getData("showData/" + ordeid, context).then((value) async {
-      if (value != "") {
-        if (value["code"] != 200) {
-          var jsonString = json.encode(value);
-
-          final directory = await getTemporaryDirectory();
-          String path = "${directory.path}/dict.json";
-
-          computeInBackground(jsonString, path);
-        } else {}
-      } else {}
-    });
   }
 
-  late Isolate isolate;
-  Future computeInBackground(String jsonString, String path) async {
-    final ReceivePort receivePort = ReceivePort();
-    final isolate = await Isolate.spawn(isolateFunction, {
-      'sendPort': receivePort.sendPort,
-      'jsonString': jsonString,
-      'path': path,
-    });
-
-    receivePort.listen((data) {
-      isolate.kill();
-
-      if (!go) {
-        update(context, data);
-      }
-    });
-
-    // Terminate the isolate when done.
-  }
-
-  static Future isolateFunction(Map<String, dynamic> message) async {
-    final SendPort sendPort = message['sendPort'];
-    final String jsonString = message['jsonString'];
-    final String path = message['path'];
-    var jsonList = json.decode(jsonString);
-    File f = File(path);
-    f.writeAsStringSync(encryptAES(jsonString),
-        flush: true, mode: FileMode.write);
-
-    sendPort.send(jsonList);
-  }
-
-  update(BuildContext context, var data) {
-    final productrovider = Provider.of<productProvider>(context, listen: false);
-
-    productrovider.setProducts((data['products'] as List)
-        .map((x) => ProductModel.fromMap(x))
-        .toList());
-
-    productrovider.setCategorys((data['category'] as List)
-        .map((x) => CategoryModel.fromMap(x))
-        .toList());
-
-    productrovider.setsubCategorys((data['subCategory'] as List)
-        .map((x) => SubCategory.fromMap(x))
-        .toList());
-    productrovider.setproductimages((data['productsImage'] as List)
-        .map((x) => ProductsImage.fromMap(x))
-        .toList());
-    productrovider.setOrdersitems(
-        (data['orders'] as List).map((x) => OrderModel.fromMap(x)).toList());
-
-    setState(() {
-      showitems = true;
-    });
-  }
-
-  bool go = false;
   @override
   void initState() {
-    if (loadData) {
-      loadPostData().then((data) {
-        loadData = false;
+    checkinternet();
 
-        if (data.toString() != "[]") {
-          update(context, data);
-        }
-
-        getPost();
-      });
-    } else {
-      getPost();
-    }
-    if (loadData) {}
     super.initState();
   }
 
   @override
   void dispose() {
-    go = true;
     super.dispose();
   }
 
-  bool scroll = false;
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
     showitems = productrovider.products.length > 0 ? true : false;
+    print(productrovider.products.length);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -433,7 +325,7 @@ class _Home_SCState extends State<Home_SC> {
                         ),
                       ),
                     ),
-                    // productrovider.Ordersitems.length < -1
+                    // productrovider.Orderitems.length < -1
                     //     ? Column(
                     //         children: [
                     //           Row(
@@ -761,12 +653,12 @@ class _Home_SCState extends State<Home_SC> {
                     //                                   onTap: () {
                     //                                     setState(() {
                     //                                       if (!isLogin) {
-                    //                                         confirmAlertlogin(
-                    //                                             context,
-                    //                                             "Login Please"
-                    //                                                 .tr,
-                    //                                             "You need to login first"
-                    //                                                 .tr);
+                    //                                         // confirmAlertlogin(
+                    //                                         //     context,
+                    //                                         //     "Login Please"
+                    //                                         //         .tr,
+                    //                                         //     "You need to login first"
+                    //                                         //         .tr);
                     //                                         return;
                     //                                       }
                     //                                       if (product.offerPrice! >

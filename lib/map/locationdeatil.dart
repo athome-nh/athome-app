@@ -1,12 +1,18 @@
 import 'package:athome/Config/property.dart';
+import 'package:athome/Network/Network.dart';
+import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/main.dart';
+import 'package:athome/model/location/location.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:provider/provider.dart';
 
 class location_Deatil extends StatefulWidget {
-  String longitude = "";
-  String latitude = "";
+  double longitude = 0.0;
+  double latitude = 0.0;
   location_Deatil(this.longitude, this.latitude);
 
   @override
@@ -15,22 +21,41 @@ class location_Deatil extends StatefulWidget {
 
 class _location_DeatilState extends State<location_Deatil> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController typeController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
   TextEditingController floorController = TextEditingController();
-
+  TextEditingController number2Controller = TextEditingController();
   TextEditingController numberController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   bool nameE = false;
   bool typeE = false;
   bool floorE = false;
   bool numberE = false;
-
+  bool number2E = false;
   List<String> items = [
     'Home',
     'Office',
     'Apartment',
   ];
   String type = 'Home';
+  @override
+  void initState() {
+    if (isLogin) {
+      phoneController.text = userData["phone"].toString().substring(4);
+    }
+    getstreet();
+    super.initState();
+  }
+
+  getstreet() async {
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(widget.latitude, widget.longitude);
+    print(placemarks);
+    if (placemarks != null && placemarks.isNotEmpty) {
+      // Use subLocality if available, otherwise use locality
+      streetController.text = placemarks[2].street.toString();
+    } else {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -40,10 +65,20 @@ class _location_DeatilState extends State<location_Deatil> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: mainColorWhite,
-          title: Image.asset(
-            "assets/images/logoB.png",
-            width: getWidth(context, 30),
+          centerTitle: true,
+          title: Text(
+            "Locations",
+            style: TextStyle(
+                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: mainColorRed,
+              )),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -51,6 +86,35 @@ class _location_DeatilState extends State<location_Deatil> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Container(
+                    height: getHeight(context, 15),
+                    width: getWidth(context, 100),
+                    child: GoogleMap(
+                      scrollGesturesEnabled: false,
+                      initialCameraPosition: CameraPosition(
+                        target: LatLng(widget.latitude, widget.longitude),
+                        zoom: 19.0, // Adjust the zoom level as needed
+                      ),
+                      onMapCreated: (GoogleMapController controller) {
+                        //mapController = controller;
+                      },
+                      markers: {
+                        Marker(
+                          markerId: MarkerId('location_marker'),
+                          position: LatLng(widget.latitude, widget.longitude),
+                          infoWindow: InfoWindow(
+                            title: 'Location',
+                          ),
+                        ),
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: getHeight(context, 2),
+                ),
                 TextFormField(
                   maxLines: 1,
                   controller: nameController,
@@ -83,7 +147,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         color: mainColorGrey.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: "Add name location",
+                    hintText: "Add name ",
                     hintStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.5),
                         fontSize: 14,
@@ -107,6 +171,49 @@ class _location_DeatilState extends State<location_Deatil> {
                         ),
                       )
                     : const SizedBox(),
+                SizedBox(
+                  height: getHeight(context, 2),
+                ),
+                TextFormField(
+                  maxLines: 1,
+                  controller: streetController,
+                  cursorColor: mainColorGrey,
+                  keyboardType: TextInputType.text,
+                  onChanged: (value) {},
+                  validator: (value) {},
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(
+                        color: mainColorGrey, // Customize border color
+                        width: 1.0, // Customize border width
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(
+                        color: mainColorGrey
+                            .withOpacity(0.5), // Customize border color
+                        width: 1.0, // Customize border width
+                      ),
+                    ),
+                    labelText: "Area",
+                    labelStyle: TextStyle(
+                        color: mainColorGrey.withOpacity(0.8),
+                        fontSize: 16,
+                        fontFamily: mainFontnormal),
+                    hintText: "Add Area",
+                    hintStyle: TextStyle(
+                        color: mainColorGrey.withOpacity(0.5),
+                        fontSize: 14,
+                        fontFamily: mainFontnormal),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                  ),
+                ),
+                SizedBox(
+                  height: getHeight(context, 2),
+                ),
                 SizedBox(
                   height: getHeight(context, 2),
                 ),
@@ -193,12 +300,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                   width: 1.0, // Customize border width
                                 ),
                               ),
-                              labelText: type + " floor",
+                              labelText: "Floor number",
                               labelStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.8),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
-                              hintText: type + " floor",
+                              hintText: "Floor number",
                               hintStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.5),
                                   fontSize: 16,
@@ -208,6 +315,82 @@ class _location_DeatilState extends State<location_Deatil> {
                               //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                             ),
                           ),
+                          floorE
+                              ? Padding(
+                                  padding: EdgeInsets.only(
+                                    top: getHeight(context, 0.5),
+                                  ),
+                                  child: Text(
+                                    "Enter floor number",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorRed.withOpacity(0.8),
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
+                          SizedBox(
+                            height: getHeight(context, 2),
+                          ),
+                          TextFormField(
+                            maxLines: 1,
+                            controller: number2Controller,
+                            cursorColor: mainColorGrey,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                number2E = false;
+                              });
+                            },
+                            validator: (value) {},
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide(
+                                  color:
+                                      mainColorGrey, // Customize border color
+                                  width: 1.0, // Customize border width
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide(
+                                  color: mainColorGrey.withOpacity(
+                                      0.5), // Customize border color
+                                  width: 1.0, // Customize border width
+                                ),
+                              ),
+                              labelText: "building name/number",
+                              labelStyle: TextStyle(
+                                  color: mainColorGrey.withOpacity(0.8),
+                                  fontSize: 16,
+                                  fontFamily: mainFontnormal),
+                              hintText: "building name/number",
+                              hintStyle: TextStyle(
+                                  color: mainColorGrey.withOpacity(0.5),
+                                  fontSize: 16,
+                                  fontFamily: mainFontnormal),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                            ),
+                          ),
+                          number2E
+                              ? Padding(
+                                  padding: EdgeInsets.only(
+                                    top: getHeight(context, 0.5),
+                                  ),
+                                  child: Text(
+                                    "Enter building name/number",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorRed.withOpacity(0.8),
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
                         ],
                       )
                     : type == "Office"
@@ -244,12 +427,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
-                                  labelText: type + " floor",
+                                  labelText: "Floor number",
                                   labelStyle: TextStyle(
                                       color: mainColorGrey.withOpacity(0.8),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
-                                  hintText: type + " floor",
+                                  hintText: "Floor number",
                                   hintStyle: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
                                       fontSize: 16,
@@ -259,24 +442,85 @@ class _location_DeatilState extends State<location_Deatil> {
                                   //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                                 ),
                               ),
+                              floorE
+                                  ? Padding(
+                                      padding: EdgeInsets.only(
+                                        top: getHeight(context, 0.5),
+                                      ),
+                                      child: Text(
+                                        "Enter floor number",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: mainFontnormal,
+                                          color: mainColorRed.withOpacity(0.8),
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox(),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              TextFormField(
+                                maxLines: 1,
+                                controller: number2Controller,
+                                cursorColor: mainColorGrey,
+                                keyboardType: TextInputType.text,
+                                onChanged: (value) {
+                                  setState(() {
+                                    number2E = false;
+                                  });
+                                },
+                                validator: (value) {},
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide(
+                                      color:
+                                          mainColorGrey, // Customize border color
+                                      width: 1.0, // Customize border width
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    borderSide: BorderSide(
+                                      color: mainColorGrey.withOpacity(
+                                          0.5), // Customize border color
+                                      width: 1.0, // Customize border width
+                                    ),
+                                  ),
+                                  labelText: "building name/number",
+                                  labelStyle: TextStyle(
+                                      color: mainColorGrey.withOpacity(0.8),
+                                      fontSize: 16,
+                                      fontFamily: mainFontnormal),
+                                  hintText: "building name/number",
+                                  hintStyle: TextStyle(
+                                      color: mainColorGrey.withOpacity(0.5),
+                                      fontSize: 16,
+                                      fontFamily: mainFontnormal),
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+                                  //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                                ),
+                              ),
+                              number2E
+                                  ? Padding(
+                                      padding: EdgeInsets.only(
+                                        top: getHeight(context, 0.5),
+                                      ),
+                                      child: Text(
+                                        "Enter building name/number",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: mainFontnormal,
+                                          color: mainColorRed.withOpacity(0.8),
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox(),
                             ],
                           )
                         : SizedBox(),
-                floorE
-                    ? Padding(
-                        padding: EdgeInsets.only(
-                          top: getHeight(context, 0.5),
-                        ),
-                        child: Text(
-                          "Enter floor number",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: mainFontnormal,
-                            color: mainColorRed.withOpacity(0.8),
-                          ),
-                        ),
-                      )
-                    : const SizedBox(),
                 SizedBox(
                   height: getHeight(context, 2),
                 ),
@@ -365,8 +609,9 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: 1.0, // Customize border width
                       ),
                     ),
-                    labelText: "Phone",
+                    labelText: "Phone number",
                     prefixText: "+964 | ",
+
                     prefixStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.8),
                         fontFamily: mainFontnormal),
@@ -374,7 +619,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         color: mainColorGrey.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: "Add number phone ",
+                    hintText: "Add phone number ",
                     hintStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.5),
                         fontSize: 14,
@@ -413,33 +658,64 @@ class _location_DeatilState extends State<location_Deatil> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {
-                          if (nameController.text.isEmpty) {
-                            setState(() {
-                              nameE = true;
-                            });
-                            return;
-                          }
+                        onPressed: () async {
+                          // if (nameController.text.isEmpty) {
+                          //   setState(() {
+                          //     nameE = true;
+                          //   });
+                          //   return;
+                          // }
 
-                          if (floorController.text.isEmpty &&
-                              (type == 'Office' || type == 'Apartment')) {
-                            setState(() {
-                              floorE = true;
-                            });
-                            return;
-                          }
-                          if (numberController.text.isEmpty) {
-                            setState(() {
-                              numberE = true;
-                            });
-                            return;
-                          }
+                          // if (floorController.text.isEmpty &&
+                          //     (type == 'Office' || type == 'Apartment')) {
+                          //   setState(() {
+                          //     floorE = true;
+                          //   });
+                          //   return;
+                          // }
+                          // if (numberController.text.isEmpty) {
+                          //   setState(() {
+                          //     numberE = true;
+                          //   });
+                          //   return;
+                          // }
+                          // if (number2Controller.text.isEmpty &&
+                          //     (type == 'Office' || type == 'Apartment')) {
+                          //   setState(() {
+                          //     number2E = true;
+                          //   });
+                          //   return;
+                          // }
+
                           var data = {
                             "id": userData["id"],
-                            "location": widget.longitude.toString() +
-                                "," +
-                                widget.latitude.toString()
+                            "longitude": widget.longitude,
+                            "latitude": widget.latitude,
+                            "area": streetController.text,
+                            "name": nameController.text,
+                            "floor": floorController.text,
+                            "number": numberController.text,
+                            "phone": phoneController.text,
+                            "building_name": number2Controller.text,
+                            "type": type,
+                            "in_range": 1,
                           };
+                          Network(false)
+                              .postData("location", data, context)
+                              .then((value) {
+                            if (value != "") {
+                              if (value["code"] == "201") {
+                                Locationuser loc =
+                                    Locationuser.fromMap(value["data"]);
+
+                                Provider.of<productProvider>(context,
+                                        listen: false)
+                                    .addlocation(loc);
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              }
+                            }
+                          });
                         },
                         child: Text(
                           "Save",

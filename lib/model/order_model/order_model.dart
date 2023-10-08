@@ -3,56 +3,52 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 
 class OrderModel {
+  final int? id;
   final String? orderCode;
-  final int? customerId;
-  final int? productId;
-  final int? sellPrice;
-  final int? offerPrice;
-  final int? qt;
-  final String? location;
+  final int? locationId;
+  final int? totalPrice;
+  final dynamic note;
   final int? status;
+  final String? userAcceptTime;
   final DateTime? createdAt;
 
   const OrderModel({
+    this.id,
     this.orderCode,
-    this.customerId,
-    this.productId,
-    this.sellPrice,
-    this.offerPrice,
-    this.qt,
-    this.location,
+    this.locationId,
+    this.totalPrice,
+    this.note,
     this.status,
+    this.userAcceptTime,
     this.createdAt,
   });
 
   @override
   String toString() {
-    return 'OrderModel(orderCode: $orderCode, customerId: $customerId, productId: $productId, sellPrice: $sellPrice, offerPrice: $offerPrice, qt: $qt, location: $location, status: $status, createdAt: $createdAt)';
+    return 'OrderModel(id: $id, orderCode: $orderCode, locationId: $locationId, totalPrice: $totalPrice, note: $note, status: $status, userAcceptTime: $userAcceptTime, createdAt: $createdAt)';
   }
 
   factory OrderModel.fromMap(Map<String, dynamic> data) => OrderModel(
+        id: data['id'] as int?,
         orderCode: data['order_code'] as String?,
-        customerId: data['customerId'] as int?,
-        productId: data['productId'] as int?,
-        sellPrice: data['sell_price'] as int?,
-        offerPrice: data['offer_price'] as int?,
-        qt: data['qt'] as int?,
-        location: data['location'] as String?,
+        locationId: data['location_id'] as int?,
+        totalPrice: data['total_price'] as int?,
+        note: data['note'] as dynamic,
         status: data['status'] as int?,
+        userAcceptTime: data['userAcceptTime'] as String?,
         createdAt: data['created_at'] == null
             ? null
             : DateTime.parse(data['created_at'] as String),
       );
 
   Map<String, dynamic> toMap() => {
+        'id': id,
         'order_code': orderCode,
-        'customerId': customerId,
-        'productId': productId,
-        'sell_price': sellPrice,
-        'offer_price': offerPrice,
-        'qt': qt,
-        'location': location,
+        'location_id': locationId,
+        'total_price': totalPrice,
+        'note': note,
         'status': status,
+        'userAcceptTime': userAcceptTime,
         'created_at': createdAt?.toIso8601String(),
       };
 
@@ -69,25 +65,23 @@ class OrderModel {
   String toJson() => json.encode(toMap());
 
   OrderModel copyWith({
+    int? id,
     String? orderCode,
-    int? customerId,
-    int? productId,
-    int? sellPrice,
-    int? offerPrice,
-    int? qt,
-    String? location,
+    int? locationId,
+    int? totalPrice,
+    dynamic note,
     int? status,
+    String? userAcceptTime,
     DateTime? createdAt,
   }) {
     return OrderModel(
+      id: id ?? this.id,
       orderCode: orderCode ?? this.orderCode,
-      customerId: customerId ?? this.customerId,
-      productId: productId ?? this.productId,
-      sellPrice: sellPrice ?? this.sellPrice,
-      offerPrice: offerPrice ?? this.offerPrice,
-      qt: qt ?? this.qt,
-      location: location ?? this.location,
+      locationId: locationId ?? this.locationId,
+      totalPrice: totalPrice ?? this.totalPrice,
+      note: note ?? this.note,
       status: status ?? this.status,
+      userAcceptTime: userAcceptTime ?? this.userAcceptTime,
       createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -102,13 +96,12 @@ class OrderModel {
 
   @override
   int get hashCode =>
+      id.hashCode ^
       orderCode.hashCode ^
-      customerId.hashCode ^
-      productId.hashCode ^
-      sellPrice.hashCode ^
-      offerPrice.hashCode ^
-      qt.hashCode ^
-      location.hashCode ^
+      locationId.hashCode ^
+      totalPrice.hashCode ^
+      note.hashCode ^
       status.hashCode ^
+      userAcceptTime.hashCode ^
       createdAt.hashCode;
 }

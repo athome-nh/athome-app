@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -5,6 +8,7 @@ import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/landing/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'Language/Translation.dart';
@@ -12,6 +16,7 @@ import 'firebase_options.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
+  GeocodingPlatform.instance;
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -29,13 +34,28 @@ class AtHomeApp extends StatefulWidget {
   State<AtHomeApp> createState() => _AtHomeAppState();
 }
 
+bool isLogin = false;
+var userData = {};
+bool loaddata = false;
+
 class _AtHomeAppState extends State<AtHomeApp> {
-  bool seen = false;
+  bool seen = true;
   @override
   void initState() {
     getBoolPrefs("onbord").then((value2) {
       seen = value2;
+      getBoolPrefs("islogin").then((value) {
+        if (value) {
+          getStringPrefs("userData").then((data2) {
+            userData = json.decode(decryptAES(data2));
+            isLogin = true;
+          });
+        } else {
+          isLogin = false;
+        }
+      });
     });
+
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {

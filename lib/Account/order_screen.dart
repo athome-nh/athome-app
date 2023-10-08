@@ -1,16 +1,14 @@
-import 'package:athome/Account/order_items.dart';
+
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/TrackOrder.dart';
-import 'package:athome/model/cart.dart';
+import 'package:athome/main.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
-
 import '../controller/productprovider.dart';
-import '../home/NavSwitch.dart';
+
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -37,7 +35,7 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Center(
         child: !isLogin
             ? loginFirstContainer(context)
-            : productrovider.Ordersitems.length > 0
+            : productrovider.Orders.length > 0
                 ? ListView.builder(
                     itemCount: productrovider.listOrderCode().length,
                     itemBuilder: (BuildContext context, int index) {
@@ -48,7 +46,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
                           onTap: () {
-                            if (order.status != 5) {
+                            if (order.status! < 5) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

@@ -53,10 +53,6 @@ Widget buildFAB(BuildContext context) {
   );
 }
 
-bool loadData = false;
-bool isLogin = false;
-var userData = {};
-
 class _NavSwitchState extends State<NavSwitch> {
   int _selectedIndex = 0;
 
@@ -74,19 +70,14 @@ class _NavSwitchState extends State<NavSwitch> {
   }
 
   void initState() {
-    loadData = true;
     getBoolPrefs("islogin").then((value) {
       if (value) {
         getStringPrefs("userData").then((data2) {
-          setState(() {
-            userData = json.decode(decryptAES(data2));
-            isLogin = true;
-          });
+          userData = json.decode(decryptAES(data2));
+          isLogin = true;
         });
       } else {
-        setState(() {
-          isLogin = false;
-        });
+        isLogin = false;
       }
     });
 

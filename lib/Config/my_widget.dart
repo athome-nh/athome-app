@@ -402,7 +402,7 @@ loginFirstContainer(BuildContext context) {
           width: getWidth(context, 80),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: mainColorGrey,
+            color: mainColorRed,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
@@ -417,7 +417,7 @@ loginFirstContainer(BuildContext context) {
           width: getWidth(context, 80),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: mainColorLightGrey,
+            color: mainColorGrey,
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20)),
@@ -430,7 +430,7 @@ loginFirstContainer(BuildContext context) {
                 style: TextStyle(
                     fontSize: 30,
                     fontFamily: mainFontbold,
-                    color: mainColorGrey),
+                    color: mainColorWhite),
               ),
               const SizedBox(height: 20),
               Text(
@@ -438,7 +438,7 @@ loginFirstContainer(BuildContext context) {
                 style: TextStyle(
                     fontSize: 20,
                     fontFamily: mainFontnormal,
-                    color: mainColorGrey),
+                    color: mainColorWhite),
               ),
               const SizedBox(height: 20),
               SizedBox(

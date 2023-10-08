@@ -1,18 +1,19 @@
 import 'dart:convert';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
+import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 
-import '../Switchscreen.dart';
 import '../home/NavSwitch.dart';
 
 class CartProvider extends ChangeNotifier {
   CartProvider() {
-    // When the CartProvider is created, load cart data from shared preferences.
     loadCartFromPreferences();
     loadFavCartFromPreferences();
+
+    // When the CartProvider is created, load cart data from shared preferences.
   }
   List<CartItem> cartItems = [];
   List<CartItem> FavItems = [];

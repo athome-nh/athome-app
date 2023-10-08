@@ -28,23 +28,11 @@ class Network {
         DioConnectivityRequestRetrier(dio: dio, connectivity: Connectivity());
   }
 
-  Future getData(String apiRout, BuildContext context) async {
+  Future getData(String apiRout) async {
     try {
       Response response = await dio.get(serverUrl + apiRout);
       return response.data;
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(
-            duration: const Duration(seconds: 4),
-            content: Text(
-              'An error occured, Please try again.',
-              style: TextStyle(color: mainColorWhite),
-            ),
-            backgroundColor: mainColorGrey,
-          ))
-          .closed
-          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
-
       return "";
     }
   }

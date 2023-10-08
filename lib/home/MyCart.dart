@@ -1,10 +1,10 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/CheckOut.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -23,6 +23,18 @@ class MyCart extends StatefulWidget {
 }
 
 class _MyCartState extends State<MyCart> {
+  update(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: false);
+    productrovider.updatePost();
+  }
+
+  @override
+  void initState() {
+    update(context);
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
@@ -461,10 +473,124 @@ class _MyCartState extends State<MyCart> {
                                 if (await noInternet(context)) {
                                   return;
                                 }
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CheckOut()),
+
+                                showModalBottomSheet(
+                                  context: context,
+                                  isDismissible: true,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      color: mainColorWhite,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Container(
+                                            height: getHeight(context, 40),
+                                            // width: getWidth(context, 100),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: ListView.builder(
+                                                  itemCount: productrovider
+                                                      .location.length,
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index) {
+                                                    final location =
+                                                        productrovider
+                                                            .location[index];
+                                                    return Padding(
+                                                      padding: EdgeInsets.only(
+                                                          bottom: getHeight(
+                                                              context, 1)),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    CheckOut(
+                                                                        id: location
+                                                                            .id!)),
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                              color:
+                                                                  mainColorLightGrey,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5)),
+                                                          child: ListTile(
+                                                            title: Text(
+                                                              location.name!,
+                                                              style: TextStyle(
+                                                                  color:
+                                                                      mainColorGrey,
+                                                                  fontSize: 14,
+                                                                  fontFamily:
+                                                                      mainFontbold),
+                                                            ),
+                                                            subtitle: Text(
+                                                              location.area!,
+                                                              style: TextStyle(
+                                                                  color:
+                                                                      mainColorGrey,
+                                                                  fontSize: 14,
+                                                                  fontFamily:
+                                                                      mainFontnormal),
+                                                            ),
+                                                            trailing: Text(
+                                                              "Select",
+                                                              style: TextStyle(
+                                                                  color:
+                                                                      mainColorRed,
+                                                                  fontFamily:
+                                                                      mainFontnormal),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    getWidth(context, 4)),
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Maps_screen()),
+                                                );
+                                              },
+                                              child: Text(
+                                                "Add another location".tr,
+                                                style: TextStyle(
+                                                  color: mainColorWhite,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: mainColorRed,
+                                                fixedSize: Size(
+                                                    getWidth(context, 85),
+                                                    getHeight(context, 6)),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
                                 );
                               },
                               child: Text(

@@ -216,8 +216,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
           height: getHeight(context, 3),
         ),
         Expanded(
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/002_logo_1.png",
+          child: Image.asset(
+            "assets/images/002_logo_1.png",
             width: getWidth(context, 80),
             height: getHeight(context, 100),
             fit: BoxFit.cover,
@@ -228,8 +228,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         ),
         Expanded(
           flex: 2,
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/003_welcome_1.png",
+          child: Image.asset(
+            "assets/images/003_welcome_1.png",
           ),
         ),
         SizedBox(
@@ -282,8 +282,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
           height: getHeight(context, 3),
         ),
         Expanded(
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/002_logo_1.png",
+          child: Image.asset(
+            "assets/images/002_logo_1.png",
             width: getWidth(context, 80),
             height: getHeight(context, 100),
             fit: BoxFit.cover,
@@ -346,8 +346,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
           height: getHeight(context, 3),
         ),
         Expanded(
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/002_logo_1.png",
+          child: Image.asset(
+            "assets/images/002_logo_1.png",
             width: getWidth(context, 80),
             height: getHeight(context, 100),
             fit: BoxFit.cover,

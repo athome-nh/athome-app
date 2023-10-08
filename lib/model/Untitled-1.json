@@ -1,60 +1,47 @@
 [
   {
-    "order_code": "Y2SEN5",
-    "customerId": 25,
-    "productId": 6161,
+    "id": 4,
+    "productId": 6172,
+    "order_code": "9w1MJ",
+    "cost": 2167,
+    "sell_price": 2500,
+    "offer_price": -1,
+    "qt": 2
+},
+{
+    "id": 5,
+    "productId": 6163,
+    "order_code": "9w1MJ",
+    "cost": 7500,
     "sell_price": 8000,
-    "offer_price": 7750,
-    "qt": 1,
-    "location": "43.6545,23434",
-    "status": 0,
-    "created_at": "2023-10-01T16:00:07.000000Z"
-  },
-  {
-    "order_code": "Y2SEN5",
-    "customerId": 25,
-    "productId": 6161,
+    "offer_price": -1,
+    "qt": 1
+},
+{
+    "id": 6,
+    "productId": 6163,
+    "order_code": "Ij9xl",
+    "cost": 7500,
     "sell_price": 8000,
-    "offer_price": 7750,
-    "qt": 1,
-    "location": "43.6545,23434",
-    "status": 0,
-    "created_at": "2023-10-01T16:00:07.000000Z"
-  },
-  
-  {
-    "order_code": "Y2SEN5",
-    "customerId": 25,
-    "productId": 6161,
-    "sell_price": 8000,
-    "offer_price": 7750,
-    "qt": 1,
-    "location": "43.6545,23434",
-    "status": 0,
-    "created_at": "2023-10-01T16:00:07.000000Z"
-  },
-  
-  {
-    "order_code": "Y2SEN5",
-    "customerId": 25,
-    "productId": 6161,
-    "sell_price": 8000,
-    "offer_price": 7750,
-    "qt": 1,
-    "location": "43.6545,23434",
-    "status": 0,
-    "created_at": "2023-10-01T16:00:07.000000Z"
-  },
-  
-  {
-    "order_code": "Y2SEN5",
-    "customerId": 25,
-    "productId": 6161,
-    "sell_price": 8000,
-    "offer_price": 7750,
-    "qt": 1,
-    "location": "43.6545,23434",
-    "status": 0,
-    "created_at": "2023-10-01T16:00:07.000000Z"
-  }
+    "offer_price": -1,
+    "qt": 1
+},
+{
+    "id": 7,
+    "productId": 6172,
+    "order_code": "Ij9xl",
+    "cost": 2167,
+    "sell_price": 2500,
+    "offer_price": -1,
+    "qt": 1
+},
+{
+    "id": 8,
+    "productId": 6178,
+    "order_code": "Ij9xl",
+    "cost": 458,
+    "sell_price": 500,
+    "offer_price": -1,
+    "qt": 1
+}
 ]

@@ -1,23 +1,22 @@
 import 'package:athome/Config/my_widget.dart';
-
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/home/TrackOrder.dart';
+import 'package:athome/model/location/location.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
-
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/athome_functions.dart';
 import '../Network/Network.dart';
 import '../main.dart';
 
-import 'TrackOrder.dart';
-
+// ignore: must_be_immutable
 class CheckOut extends StatefulWidget {
-  const CheckOut({super.key});
+  int id = 0;
+  CheckOut({required this.id});
 
   @override
   State<CheckOut> createState() => _CheckOutState();
@@ -25,16 +24,22 @@ class CheckOut extends StatefulWidget {
 
 class _CheckOutState extends State<CheckOut> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  TextEditingController NoteController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     String order_code = "";
-    TextEditingController NoteController = TextEditingController();
+
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
-
+    Locationuser location = productrovider.getonelocationById(widget.id);
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListId());
     final total = cartProvider.calculateTotalPrice(CardItemshow);
-    String location = "";
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -70,7 +75,7 @@ class _CheckOutState extends State<CheckOut> {
                   padding: EdgeInsets.only(
                       left: getWidth(context, 4),
                       right: getWidth(context, 4),
-                      top: getHeight(context, 2)),
+                      top: getWidth(context, 1)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -92,7 +97,7 @@ class _CheckOutState extends State<CheckOut> {
                             children: [
                               Text(
                                 textAlign: TextAlign.end,
-                                "Erbil ,Italian City 1",
+                                location.type! + " Number " + location.number!,
                                 style: TextStyle(
                                     color: mainColorGrey,
                                     fontFamily: mainFontbold,
@@ -101,7 +106,7 @@ class _CheckOutState extends State<CheckOut> {
                               SizedBox(height: 5),
                               Text(
                                 textAlign: TextAlign.end,
-                                "House Number 646",
+                                location.area!,
                                 style: TextStyle(
                                     color: mainColorGrey,
                                     fontFamily: mainFontbold,
@@ -109,16 +114,16 @@ class _CheckOutState extends State<CheckOut> {
                               ),
                             ],
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Change".tr,
-                              style: TextStyle(
-                                  color: mainColorRed,
-                                  fontFamily: mainFontbold,
-                                  fontSize: 14),
-                            ),
-                          ),
+                          // TextButton(
+                          //   onPressed: () {},
+                          //   child: Text(
+                          //     "Change".tr,
+                          //     style: TextStyle(
+                          //         color: mainColorRed,
+                          //         fontFamily: mainFontbold,
+                          //         fontSize: 14),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ],
@@ -381,7 +386,8 @@ class _CheckOutState extends State<CheckOut> {
 
                             var data2 = {
                               "customerid": userData["id"],
-                              "location": "43.6545,23434",
+                              "total": total,
+                              "location": location.id!,
                               "order_data": data.substring(2),
                               "note": NoteController.text,
                             };

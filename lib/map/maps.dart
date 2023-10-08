@@ -70,6 +70,12 @@ class _Maps_screenState extends State<Maps_screen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -224,7 +230,23 @@ class _Maps_screenState extends State<Maps_screen> {
               ),
             ),
             _markers.isEmpty
-                ? SizedBox()
+                ? Positioned(
+                    bottom: 16,
+                    right: getWidth(context, 10),
+                    child: Container(
+                      height: getHeight(context, 5),
+                      width: getWidth(context, 80),
+                      decoration: BoxDecoration(color: mainColorGrey),
+                      child: Center(
+                          child: Text(
+                        "Tap to select location",
+                        style: TextStyle(
+                            color: mainColorWhite,
+                            fontSize: 18,
+                            fontFamily: mainFontnormal),
+                      )),
+                    ),
+                  )
                 : Positioned(
                     bottom: 16,
                     right: getWidth(context, 10),
@@ -237,8 +259,8 @@ class _Maps_screenState extends State<Maps_screen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => location_Deatil(
-                                    _selectedLocation.longitude.toString(),
-                                    _selectedLocation.latitude.toString())),
+                                    _selectedLocation.longitude,
+                                    _selectedLocation.latitude)),
                           );
                         },
                         style: ButtonStyle(
