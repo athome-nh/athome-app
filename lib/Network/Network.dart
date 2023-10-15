@@ -1,6 +1,6 @@
 // ignore_for_file: empty_catches, file_names
 
-import 'package:athome/Config/Values.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/main.dart';

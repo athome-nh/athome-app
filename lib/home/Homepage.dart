@@ -4,7 +4,6 @@ import 'package:athome/Home/AllItem.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
@@ -111,17 +110,17 @@ class _Home_SCState extends State<Home_SC> {
                         fit: BoxFit.fill,
                       ),
                       Padding(
-                        padding: EdgeInsets.all(getHeight(context, 2)),
+                        padding: EdgeInsets.all(getHeight(context, 1.5)),
                         child: Align(
                           alignment: lang == "en"
                               ? Alignment.bottomLeft
                               : Alignment.bottomRight,
                           child: Container(
                             width: getWidth(context, 25),
-                            height: getHeight(context, 4),
+                            height: getWidth(context, 9),
                             decoration: BoxDecoration(
                                 color: mainColorRed,
-                                borderRadius: BorderRadius.circular(15)),
+                                borderRadius: BorderRadius.circular(10)),
                             child: TextButton(
                                 onPressed: () {},
                                 child: Text(

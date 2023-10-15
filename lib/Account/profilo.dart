@@ -1,19 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/map/loction.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/athome_functions.dart';
 import '../controller/cartprovider.dart';
 import '../home/NavSwitch.dart';
@@ -38,6 +34,7 @@ class _SettingState extends State<Setting> {
   }
 
   String selectedLanguage = 'English';
+  // Todo: (Jegr) Male and Female translate for other language not worked.
   List<String> items = [
     'Male',
     'Female',
@@ -62,7 +59,6 @@ class _SettingState extends State<Setting> {
       gender = userData["gender"];
       image = userData["img"];
     }
-
     super.initState();
   }
 
@@ -80,7 +76,7 @@ class _SettingState extends State<Setting> {
             ),
             actions: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: DropdownButton<String>(
                   underline: Container(),
                   value: selectedItem,
@@ -99,15 +95,15 @@ class _SettingState extends State<Setting> {
                       selectedItem = newValue!;
                       if (newValue == 'English') {
                         lang = "en";
-                        Get.updateLocale(Locale("en"));
+                        Get.updateLocale(const Locale("en"));
                         setStringPrefs("lang", "en");
                       } else if (newValue == 'Arabic') {
                         lang = "ar";
-                        Get.updateLocale(Locale("ar"));
+                        Get.updateLocale(const Locale("ar"));
                         setStringPrefs("lang", "ar");
                       } else {
                         lang = "kur";
-                        Get.updateLocale(Locale("kur"));
+                        Get.updateLocale(const Locale("kur"));
                         setStringPrefs("lang", "kur");
                       }
                     });
@@ -116,21 +112,21 @@ class _SettingState extends State<Setting> {
                     DropdownMenuItem(
                       value: 'English',
                       child: Text(
-                        'English',
+                        'English'.tr,
                         style: TextStyle(fontFamily: mainFontnormal),
                       ),
                     ),
                     DropdownMenuItem(
                       value: 'Arabic',
                       child: Text(
-                        'Arabic',
+                        'Arabic'.tr,
                         style: TextStyle(fontFamily: mainFontnormal),
                       ),
                     ),
                     DropdownMenuItem(
                       value: 'Kurdish',
                       child: Text(
-                        'Kurdish',
+                        'Kurdish'.tr,
                         style: TextStyle(fontFamily: mainFontnormal),
                       ),
                     ),
@@ -158,7 +154,7 @@ class _SettingState extends State<Setting> {
                           ),
                           elevation: 3,
                           child: Container(
-                            padding: EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(15),
                             decoration: BoxDecoration(
                               color: mainColorLightGrey,
                               borderRadius: BorderRadius.circular(5),
@@ -195,6 +191,7 @@ class _SettingState extends State<Setting> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
+                                          // user name
                                           Text(
                                             userData["name"],
                                             style: TextStyle(
@@ -205,6 +202,7 @@ class _SettingState extends State<Setting> {
                                           SizedBox(
                                             height: getHeight(context, 1),
                                           ),
+                                          // phone
                                           Text(
                                             userData["phone"],
                                             style: TextStyle(
@@ -252,7 +250,7 @@ class _SettingState extends State<Setting> {
                                             },
                                             child: Container(
                                               width: getWidth(context, 16),
-                                              height: getHeight(context, 4),
+                                              height: getWidth(context, 8),
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(5),
@@ -262,7 +260,7 @@ class _SettingState extends State<Setting> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    "Save",
+                                                    "Save".tr ,
                                                     style: TextStyle(
                                                         fontFamily:
                                                             mainFontbold,
@@ -291,7 +289,7 @@ class _SettingState extends State<Setting> {
                                             },
                                             child: Container(
                                               width: getWidth(context, 16),
-                                              height: getHeight(context, 4),
+                                              height: getWidth(context, 8),
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(5),
@@ -301,7 +299,7 @@ class _SettingState extends State<Setting> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    "Cancel",
+                                                    "Cancel".tr,
                                                     style: TextStyle(
                                                         fontFamily:
                                                             mainFontbold,
@@ -324,7 +322,7 @@ class _SettingState extends State<Setting> {
                                             },
                                             child: Container(
                                               width: getWidth(context, 32),
-                                              height: getHeight(context, 4),
+                                              height: getWidth(context, 8),
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(5),
@@ -334,7 +332,7 @@ class _SettingState extends State<Setting> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    "Edit account",
+                                                    "Edit account".tr,
                                                     style: TextStyle(
                                                         fontFamily:
                                                             mainFontbold,
@@ -419,9 +417,10 @@ class _SettingState extends State<Setting> {
                                           width: 2.0,
                                         ),
                                       ),
-                                      prefixText: "Name: ",
+                                      //prefixText: "Name: ",
+                                      
                                       suffixIconColor: mainColorGrey,
-                                      hintText: 'Enter Name',
+                                      hintText: 'Enter Name'.tr,
                                       hintStyle: TextStyle(
                                           color: mainColorGrey,
                                           fontFamily: mainFontnormal),
@@ -458,8 +457,8 @@ class _SettingState extends State<Setting> {
                                           width: 2.0,
                                         ),
                                       ),
-                                      prefixText: "Age: ",
-                                      hintText: 'Enter Age',
+                                      //prefixText: "Age: ",
+                                      hintText: 'Enter Age'.tr,
                                       hintStyle:
                                           TextStyle(color: mainColorGrey),
                                       suffixIconColor: mainColorGrey,
@@ -494,7 +493,7 @@ class _SettingState extends State<Setting> {
                                               width: 2.0,
                                             ),
                                           ),
-                                          prefixText: "Gender: ",
+                                          //prefixText: "Gender: ",
                                           suffixIconColor: mainColorGrey,
                                           suffixIcon: Icon(
                                             isEdit
@@ -508,12 +507,12 @@ class _SettingState extends State<Setting> {
                                         ),
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton<String>(
-                                            icon: SizedBox(),
+                                            icon: const SizedBox(),
                                             style: TextStyle(
                                                 color: mainColorBlack),
                                             value: gender,
                                             isDense: true,
-                                            dropdownColor: mainColorGrey,
+                                            dropdownColor: mainColorWhite,
                                             onChanged: !isEdit
                                                 ? null
                                                 : (value) {
@@ -521,6 +520,7 @@ class _SettingState extends State<Setting> {
                                                       gender = value.toString();
                                                     });
                                                   },
+                                                  isExpanded: true,
                                             items: items.map((String value) {
                                               return DropdownMenuItem<String>(
                                                 enabled: isEdit,
@@ -557,13 +557,13 @@ class _SettingState extends State<Setting> {
                               borderRadius: BorderRadius.circular(5),
                               color: mainColorLightGrey),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Loyalty point",
+                                  "Loyalty point".tr,
                                   style: TextStyle(
                                       fontFamily: mainFontbold,
                                       fontSize: 18,
@@ -587,7 +587,7 @@ class _SettingState extends State<Setting> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const location_screen()),
+                                builder: (context) => const LocationScreen()),
                           );
                         },
                         child: Padding(
@@ -601,7 +601,7 @@ class _SettingState extends State<Setting> {
                                 borderRadius: BorderRadius.circular(5),
                                 color: mainColorLightGrey),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -639,7 +639,7 @@ class _SettingState extends State<Setting> {
                               borderRadius: BorderRadius.circular(5),
                               color: mainColorLightGrey),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -689,7 +689,7 @@ class _SettingState extends State<Setting> {
                                 borderRadius: BorderRadius.circular(5),
                                 color: mainColorLightGrey),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

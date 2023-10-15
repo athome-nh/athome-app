@@ -78,7 +78,7 @@ class _itemCategoriesState extends State<itemCategories> {
                 children: [
                   Container(
                     width: getWidth(context, 95),
-                    height: getHeight(context, 4),
+                    height: getHeight(context, 5),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount:
@@ -108,7 +108,7 @@ class _itemCategoriesState extends State<itemCategories> {
                             },
                             child: Container(
                               width: getWidth(context, 30),
-                              height: getHeight(context, 4),
+                              height: getHeight(context, 5),
                               decoration: BoxDecoration(
                                   color: productPro.subcateSelect ==
                                           catesubitems.id!
@@ -125,8 +125,8 @@ class _itemCategoriesState extends State<itemCategories> {
                                   maxLines: 2,
                                   style: TextStyle(
                                       color: mainColorWhite,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 12),
+                                      fontFamily: mainFontbold,
+                                      fontSize: 14),
                                 ),
                               ),
                             ),

@@ -11,7 +11,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/athome_functions.dart';
 import '../main.dart';
 
@@ -31,7 +30,6 @@ class _MyCartState extends State<MyCart> {
   @override
   void initState() {
     update(context);
-    // TODO: implement initState
     super.initState();
   }
 
@@ -60,7 +58,7 @@ class _MyCartState extends State<MyCart> {
             IconButton(
                 onPressed: () {
                   if (cartProvider.cartItems.length > 0) {
-                    PanaraConfirmDialog.showAnimatedGrow(
+                    PanaraConfirmDialog.show(
                       context,
                       title: "Hello",
                       message: "You want delete all items in cart",
@@ -74,6 +72,8 @@ class _MyCartState extends State<MyCart> {
                         Navigator.pop(context);
                         Navigator.pop(context);
                       },
+                      color:
+                          PanaraColors.warning,
                       panaraDialogType: PanaraDialogType.warning,
                     );
                   }
@@ -93,15 +93,16 @@ class _MyCartState extends State<MyCart> {
               )),
         ),
         body: cartProvider.cartItems.length > 0
-            ? SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.0),
+            ? Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 6,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 5),
                       child: Container(
-                        height: getHeight(context, 65),
+                        //height: getHeight(context, 65),
                         child: ListView.builder(
                             itemCount: cartProvider.cartItems.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -142,10 +143,10 @@ class _MyCartState extends State<MyCart> {
                                                 width: getWidth(context, 20),
                                                 height: getHeight(context, 10),
                                                 decoration: BoxDecoration(
-                                                    color: Color(0xffF2F2F2),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15)),
+                                                  color: Color(0xffF2F2F2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                ),
                                                 child: Center(
                                                   child: CachedNetworkImage(
                                                     imageUrl: cartitem.coverImg
@@ -368,13 +369,20 @@ class _MyCartState extends State<MyCart> {
                             }),
                       ),
                     ),
-                    Container(
-                      height: getHeight(context, 24.4),
-                      decoration: BoxDecoration(color: mainColorGrey),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: mainColorGrey,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                          )),
                       child: Column(
                         children: [
                           SizedBox(
-                            height: getHeight(context, 2),
+                            height: getHeight(context, 3),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -477,6 +485,12 @@ class _MyCartState extends State<MyCart> {
                                 showModalBottomSheet(
                                   context: context,
                                   isDismissible: true,
+                                  shape: const RoundedRectangleBorder(
+                                    // <-- SEE HERE
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(25.0),
+                                    ),
+                                  ),
                                   builder: (BuildContext context) {
                                     return Container(
                                       color: mainColorWhite,
@@ -484,74 +498,88 @@ class _MyCartState extends State<MyCart> {
                                         children: <Widget>[
                                           Container(
                                             height: getHeight(context, 40),
-                                            // width: getWidth(context, 100),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: ListView.builder(
-                                                  itemCount: productrovider
-                                                      .location.length,
-                                                  itemBuilder:
-                                                      (BuildContext context,
-                                                          int index) {
-                                                    final location =
-                                                        productrovider
-                                                            .location[index];
-                                                    return Padding(
-                                                      padding: EdgeInsets.only(
-                                                          bottom: getHeight(
-                                                              context, 1)),
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    CheckOut(
-                                                                        id: location
-                                                                            .id!)),
-                                                          );
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                                  mainColorLightGrey,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5)),
-                                                          child: ListTile(
-                                                            title: Text(
-                                                              location.name!,
-                                                              style: TextStyle(
+                                              child: productrovider
+                                                          .location.length >
+                                                      0
+                                                  ? ListView.builder(
+                                                      itemCount: productrovider
+                                                          .location.length,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                              int index) {
+                                                        final location =
+                                                            productrovider
+                                                                    .location[
+                                                                index];
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  bottom:
+                                                                      getHeight(
+                                                                          context,
+                                                                          1)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        CheckOut(
+                                                                            id: location.id!)),
+                                                              );
+                                                            },
+                                                            child: Container(
+                                                              decoration: BoxDecoration(
                                                                   color:
-                                                                      mainColorGrey,
-                                                                  fontSize: 14,
-                                                                  fontFamily:
-                                                                      mainFontbold),
-                                                            ),
-                                                            subtitle: Text(
-                                                              location.area!,
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      mainColorGrey,
-                                                                  fontSize: 14,
-                                                                  fontFamily:
-                                                                      mainFontnormal),
-                                                            ),
-                                                            trailing: Text(
-                                                              "Select",
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      mainColorRed,
-                                                                  fontFamily:
-                                                                      mainFontnormal),
+                                                                      mainColorLightGrey,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5)),
+                                                              child: ListTile(
+                                                                title: Text(
+                                                                  location
+                                                                      .name!,
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          mainColorGrey,
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontFamily:
+                                                                          mainFontbold),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  location
+                                                                      .area!,
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          mainColorGrey,
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontFamily:
+                                                                          mainFontnormal),
+                                                                ),
+                                                                trailing: Text(
+                                                                  "Select",
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          mainColorRed,
+                                                                      fontFamily:
+                                                                          mainFontnormal),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }),
+                                                        );
+                                                      })
+                                                  : Center(child: Text("Not have any location",style: TextStyle(
+                                                  color: mainColorGrey,
+                                                  fontSize: 20,
+                                                ),)),
                                             ),
                                           ),
                                           Padding(
@@ -610,11 +638,14 @@ class _MyCartState extends State<MyCart> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: getWidth(context, 2),
+                          )
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             : loginFirstContainer(context),
       ),

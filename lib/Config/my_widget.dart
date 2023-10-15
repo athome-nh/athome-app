@@ -1,6 +1,7 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/property.dart';
-
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
@@ -14,10 +15,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
-
-import 'package:skeletonizer/skeletonizer.dart';
-
-import '../home/NavSwitch.dart';
 import '../home/oneitem.dart';
 
 Widget listItemsShow(BuildContext context, var data) {
@@ -29,9 +26,8 @@ Widget listItemsShow(BuildContext context, var data) {
     child: GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 0,
-        mainAxisSpacing: 0,
-        childAspectRatio: getHeight(context, 0.073),
+       
+        childAspectRatio: getWidth(context, 0.15),
       ),
 
       itemCount: data.length, // Number of items in the grid
@@ -46,10 +42,11 @@ Widget listItemsShow(BuildContext context, var data) {
               productPro.setidItem(product.id!);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Oneitem()),
+                MaterialPageRoute(builder: (context) => const Oneitem()),
               );
             },
             child: Container(
+            
               // decoration: BoxDecoration(border: Border.all()),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +65,7 @@ Widget listItemsShow(BuildContext context, var data) {
                             width: getHeight(context, 20),
                             height: getHeight(context, 20),
                             decoration: BoxDecoration(
-                                color: Color(0xffF2F2F2),
+                                color: const Color(0xffF2F2F2),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                               child: CachedNetworkImage(
@@ -97,7 +94,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              RegisterWithPhoneNumber()),
+                                              const RegisterWithPhoneNumber()),
                                     );
                                   },
                                   // color:
@@ -141,13 +138,13 @@ Widget listItemsShow(BuildContext context, var data) {
                               height: getHeight(context, 3),
                               decoration: BoxDecoration(
                                 borderRadius: lang == "en"
-                                    ? BorderRadius.only(
+                                    ? const BorderRadius.only(
                                         //  topLeft: Radius.circular(20.0),
                                         topRight: Radius.circular(20.0),
                                         // bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(20.0),
                                       )
-                                    : BorderRadius.only(
+                                    : const BorderRadius.only(
                                         topLeft: Radius.circular(20.0),
                                         bottomLeft: Radius.circular(20.0),
                                       ),
@@ -173,7 +170,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       color: mainColorWhite, size: 12),
                                 ],
                               ))
-                          : SizedBox(),
+                          : const SizedBox(),
                     ],
                   ),
                   Stack(
@@ -183,7 +180,7 @@ Widget listItemsShow(BuildContext context, var data) {
                     children: [
                       Container(
                         width: getWidth(context, 100),
-                        height: getHeight(context, 13),
+                        height: getHeight(context, 12),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -201,7 +198,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                     fontSize: 14),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Text(
@@ -216,7 +213,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   fontFamily: mainFontnormal,
                                   fontSize: 14),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Text(
@@ -239,7 +236,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                         fontFamily: mainFontbold,
                                         fontSize: 14),
                                   )
-                                : SizedBox(),
+                                : const SizedBox(),
                           ],
                         ),
                       ),
@@ -258,7 +255,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          RegisterWithPhoneNumber()),
+                                          const RegisterWithPhoneNumber()),
                                 );
                               },
                               // color:
@@ -403,7 +400,7 @@ loginFirstContainer(BuildContext context) {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: mainColorRed,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
           child: Icon(
@@ -449,7 +446,7 @@ loginFirstContainer(BuildContext context) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterWithPhoneNumber()),
+                          builder: (context) => const RegisterWithPhoneNumber()),
                     );
                   },
                   style: ButtonStyle(
@@ -489,7 +486,7 @@ nullContainer(BuildContext context, String title, String content) {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: mainColorRed,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           ),
           child: Icon(
@@ -536,7 +533,7 @@ nullContainer(BuildContext context, String title, String content) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterWithPhoneNumber()),
+                          builder: (context) => const RegisterWithPhoneNumber()),
                     );
                   },
                   style: ButtonStyle(

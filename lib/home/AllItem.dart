@@ -1,22 +1,13 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Switchscreen.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-
 import 'package:athome/home/NavSwitch.dart';
-import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
-import '../Config/athome_functions.dart';
 import '../main.dart';
-import 'ItemDeatil.dart';
 
 class AllItem extends StatefulWidget {
   const AllItem({super.key});
@@ -28,7 +19,6 @@ class AllItem extends StatefulWidget {
 class _AllItemState extends State<AllItem> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

@@ -1,16 +1,15 @@
 import 'dart:convert';
-
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/landing/splash_screen.dart';
-import 'package:athome/landing/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'Landing/splash_screen.dart';
+import 'Landing/welcome_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 
@@ -83,7 +82,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
-        home: seen ? SplashScreen() : WelcomeScreen(),
+        home: seen ? const SplashScreen() : const WelcomeScreen(),
+        //const Setting(), 
       ),
     );
   }

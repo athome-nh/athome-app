@@ -8,14 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-class location_screen extends StatefulWidget {
-  const location_screen({super.key});
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
 
   @override
-  State<location_screen> createState() => _location_screenState();
+  State<LocationScreen> createState() => _LocationScreenState();
 }
 
-class _location_screenState extends State<location_screen> {
+class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -82,10 +82,10 @@ class _location_screenState extends State<location_screen> {
                                       ),
                                       markers: {
                                         Marker(
-                                          markerId: MarkerId('location_marker'),
+                                          markerId: const MarkerId('location_marker'),
                                           position: LatLng(location.latitude!,
                                               location.longitude!),
-                                          infoWindow: InfoWindow(
+                                          infoWindow: const InfoWindow(
                                             title: 'Location',
                                           ),
                                         ),
@@ -146,9 +146,16 @@ class _location_screenState extends State<location_screen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Maps_screen()),
+                    MaterialPageRoute(builder: (context) => const Maps_screen()),
                   );
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: mainColorRed,
+                  fixedSize: Size(getWidth(context, 85), getHeight(context, 6)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -165,13 +172,6 @@ class _location_screenState extends State<location_screen> {
                           fontFamily: mainFontbold),
                     ),
                   ],
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: mainColorRed,
-                  fixedSize: Size(getWidth(context, 85), getHeight(context, 6)),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
                 ),
               ),
             ],

@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/Switchscreen.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

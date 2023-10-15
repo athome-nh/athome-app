@@ -1,20 +1,16 @@
 import 'dart:convert';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/Switchscreen.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/Singinup_page.dart';
 import 'package:athome/landing/login_page.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 
@@ -42,7 +38,6 @@ class _VerificatoinState extends State<Verificatoin> {
     Timer.periodic(const Duration(seconds: 5), (timer) {
       setState(() {
         _currentIndex++;
-
         if (_currentIndex == 3) _currentIndex = 0;
       });
     });
@@ -77,7 +72,6 @@ class _VerificatoinState extends State<Verificatoin> {
               height: getHeight(context, 88),
               width: getWidth(context, 100),
               child: Column(
-                //   mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(

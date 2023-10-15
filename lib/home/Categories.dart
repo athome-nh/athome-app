@@ -1,22 +1,15 @@
 import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Switchscreen.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/main.dart';
-import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:provider/provider.dart';
-
-import '../Config/athome_functions.dart';
-import 'ItemDeatil.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -93,10 +86,8 @@ class _CategoriesState extends State<Categories> {
                         child: GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: getHeight(context, 0.09),
-                            crossAxisSpacing: getWidth(context, 0.5),
-                            mainAxisSpacing: getHeight(context, 0),
-
+                            childAspectRatio: getWidth(context, 0.25),
+                          
                             crossAxisCount: 3, // Number of columns
                           ),
                           itemCount: productPro
