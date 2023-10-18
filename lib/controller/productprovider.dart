@@ -2,26 +2,26 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Config/local_data.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/main.dart';
+import 'package:athome/model/brandmodel/brandmodel.dart';
 import 'package:athome/model/category_model/category_model.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:athome/model/order_items/order_items.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:athome/model/products_image/products_image.dart';
+import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
+import 'package:athome/model/topmodel/topmodel.dart';
 import 'package:flutter/material.dart';
-
 import 'package:path_provider/path_provider.dart';
-
-import '../main.dart';
 
 class productProvider extends ChangeNotifier {
   productProvider() {
-    loadPostData();
-    getPost();
+    // loadPostData();
+    //  updatePost();
   }
 
   loadPostData() async {
@@ -86,6 +86,16 @@ class productProvider extends ChangeNotifier {
           setlocation((value['locations'] as List)
               .map((x) => Locationuser.fromMap(x))
               .toList());
+          setslides((value['slide'] as List)
+              .map((x) => Slidemodel.fromMap(x))
+              .toList());
+          settops((value['top_image'] as List)
+              .map((x) => Topmodel.fromMap(x))
+              .toList());
+          setbrands((value['brands'] as List)
+              .map((x) => Brandmodel.fromMap(x))
+              .toList());
+          setshow(true);
           print("end");
         } else {}
       } else {}
@@ -133,6 +143,9 @@ class productProvider extends ChangeNotifier {
   }
 
   // List to store your products
+  List<Topmodel> _tops = [];
+  List<Slidemodel> _slides = [];
+  List<Brandmodel> _brands = [];
   List<ProductModel> _products = [];
   List<CategoryModel> _categores = [];
   List<SubCategory> _subCategores = [];
@@ -146,7 +159,11 @@ class productProvider extends ChangeNotifier {
   int _cateType = 0;
   int _idItem = 0;
   int _subcateSelect = 0;
+  bool show = false;
   // Getter to access the list of products
+  List<Topmodel> get tops => _tops;
+  List<Slidemodel> get slides => _slides;
+  List<Brandmodel> get brands => _brands;
   List<OrderItems> get Orderitems => _Orderitems;
   List<Locationuser> get location => _location;
   List<OrderModel> get Orders => _Orders;
@@ -155,10 +172,12 @@ class productProvider extends ChangeNotifier {
   List<SubCategory> get subCategores => _subCategores;
   List<ProductsImage> get productimages => _productimages;
   String get searchproduct => _searchproduct;
+
   String get allitemType => _allitemType;
   int get cateType => _cateType;
   int get idItem => _idItem;
   int get subcateSelect => _subcateSelect;
+
   List<ProductModel> getProductsBySubCategory(int subcategory) {
     return _products
         .where((product) => product.subCategoryId == subcategory)
@@ -175,12 +194,18 @@ class productProvider extends ChangeNotifier {
     return _products.where((product) => product.offerPrice! > -1).toList();
   }
 
+  List<ProductModel> getProductsByBrand(int brand) {
+    return _products.where((product) => product.brandIid! == brand).toList();
+  }
+
   List<ProductsImage> getproductimages(int id) {
     return _productimages.where((product) => product.productId! == id).toList();
   }
 
   List<ProductModel> getProductsByBestsell() {
-    return _products.where((product) => product.bestSell == 1).toList();
+    return _products
+        .where((product) => product.bestSell == 1 && product.offerPrice == -1)
+        .toList();
   }
 
   List<ProductModel> getProductsBySearch(String value) {
@@ -206,7 +231,9 @@ class productProvider extends ChangeNotifier {
   }
 
   List<ProductModel> getProductsByHighlight() {
-    return _products.where((product) => product.highlight == 1).toList();
+    return _products
+        .where((product) => product.highlight == 1 && product.offerPrice == -1)
+        .toList();
   }
 
   List<ProductModel> getProductsByIds(List<int> idsToRetrieve) {
@@ -245,9 +272,44 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
+  Brandmodel getonebrandById(int itemId) {
+    final Brandmodel? item = _brands.firstWhere(
+      (element) => element.id == itemId,
+    );
+
+    if (item == null) {
+      throw Exception('Item with ID $itemId not found');
+    }
+
+    return item;
+  }
+
   List<OrderItems> getordersbyOrderCode(String order_code) {
     return _Orderitems.where(
         (product) => order_code.contains(product.orderCode!)).toList();
+  }
+
+  void updateOrder(int oid, int status) {
+    final index = Orders.indexWhere((product) => product.id == oid);
+    if (index != -1) {
+      Orders[index].status = status;
+      notifyListeners();
+    } else {
+      // Handle the case where the product with the specified ID is not found.
+      print('Product with ID ${oid} not found.');
+    }
+  }
+
+  OrderItems getorderitemsOnebyId(int id) {
+    final OrderItems? item = _Orderitems.firstWhere(
+      (element) => element.productId == id,
+    );
+
+    if (item == null) {
+      throw Exception('Item with ID $_Orders not found');
+    }
+
+    return item;
   }
 
   OrderModel getorderOnebyOrderCode(String order_code) {
@@ -312,6 +374,24 @@ class productProvider extends ChangeNotifier {
 
   void setOrders(List<OrderModel> orders) {
     _Orders = orders;
+
+    notifyListeners();
+  }
+
+  void setslides(List<Slidemodel> slide) {
+    _slides = slide;
+
+    notifyListeners();
+  }
+
+  void settops(List<Topmodel> top) {
+    _tops = top;
+
+    notifyListeners();
+  }
+
+  void setbrands(List<Brandmodel> brand) {
+    _brands = brand;
 
     notifyListeners();
   }
@@ -392,6 +472,11 @@ class productProvider extends ChangeNotifier {
 
   void setsubcateSelect(int subcateSelect) {
     _subcateSelect = subcateSelect;
+    notifyListeners();
+  }
+
+  void setshow(bool value) {
+    show = value;
     notifyListeners();
   }
 }

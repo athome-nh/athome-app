@@ -27,6 +27,13 @@ class _AllItemState extends State<AllItem> {
     final productPro = Provider.of<productProvider>(context, listen: true);
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     String type = productPro.allitemType;
+    String name = type == "brand"
+        ? lang == "en"
+            ? productPro.getonebrandById(productPro.idItem).nameEn!
+            : lang == "ar"
+                ? productPro.getonebrandById(productPro.idItem).nameAr!
+                : productPro.getonebrandById(productPro.idItem).nameKu!
+        : "";
 
     late List<ProductModel> products = type == "discount"
         ? productPro.getProductsByDiscount()
@@ -34,7 +41,9 @@ class _AllItemState extends State<AllItem> {
             ? productPro.getProductsByHighlight()
             : type == "orders"
                 ? productPro.getProductsByIds(productPro.listOrderProductIds())
-                : productPro.getProductsByBestsell();
+                : type == "brand"
+                    ? productPro.getProductsByBrand(productPro.idItem)
+                    : productPro.getProductsByBestsell();
 
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
@@ -48,7 +57,9 @@ class _AllItemState extends State<AllItem> {
                     ? "Highlight".tr
                     : type == "orders"
                         ? "Recent Order".tr
-                        : "Best Sell".tr,
+                        : type == "brand"
+                            ? name
+                            : "Best Sell".tr,
             style: TextStyle(
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),

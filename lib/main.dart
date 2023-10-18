@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -46,7 +45,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
       getBoolPrefs("islogin").then((value) {
         if (value) {
           getStringPrefs("userData").then((data2) {
-            userData = json.decode(decryptAES(data2));
+            userData = json.decode(data2);
             isLogin = true;
           });
         } else {
@@ -83,7 +82,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
         home: seen ? const SplashScreen() : const WelcomeScreen(),
-        //const Setting(), 
+        //const Setting(),
       ),
     );
   }

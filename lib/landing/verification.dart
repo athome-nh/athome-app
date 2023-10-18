@@ -8,11 +8,11 @@ import 'package:athome/Network/Network.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/Singinup_page.dart';
 import 'package:athome/landing/login_page.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
-import 'package:panara_dialogs/panara_dialogs.dart';
 
 class Verificatoin extends StatefulWidget {
   String phone_number;
@@ -35,12 +35,7 @@ class _VerificatoinState extends State<Verificatoin> {
 
   void initState() {
     verfyphone();
-    Timer.periodic(const Duration(seconds: 5), (timer) {
-      setState(() {
-        _currentIndex++;
-        if (_currentIndex == 3) _currentIndex = 0;
-      });
-    });
+
     super.initState();
   }
 
@@ -172,14 +167,12 @@ class _VerificatoinState extends State<Verificatoin> {
                       underlineColor: mainColorRed,
                       keyboardType: TextInputType.number,
                       underlineUnfocusedColor: mainColorGrey,
-                      onCompleted: (value) {
-                        setState(() async {
-                          _code = value;
-                          if (await noInternet(context)) {
-                            return;
-                          }
-                          verifySmsCode();
-                        });
+                      onCompleted: (value) async {
+                        _code = value;
+                        if (await noInternet(context)) {
+                          return;
+                        }
+                        verifySmsCode();
                       },
                       onEditing: (value) {},
                     ),
@@ -299,44 +292,39 @@ class _VerificatoinState extends State<Verificatoin> {
             if (value != "") {
               if (value["code"] == "200") {
                 if (value["data"]["isActive"] == 1) {
-                  Save_data_josn('user', value["data"]).then((save) {
-                    if (save) {
-                      setState(() {
-                        _isLoading = false;
-                        _isVerified = true;
-                      });
-                      setBoolPrefs("islogin", true);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => NavSwitch()),
-                      );
-                    } else {
-                      toastShort(
-                          "unknown occurred error please try again later");
-                    }
+                  setState(() {
+                    _isLoading = false;
+                    _isVerified = true;
                   });
-                } else {
-                  PanaraInfoDialog.show(
+                  var jsonData = json.encode(value["data"]);
+                  setStringPrefs("userData", jsonData.toString());
+                  setBoolPrefs("islogin", true);
+                  setStringPrefs("token", value["token"]);
+                  Navigator.pushReplacement(
                     context,
-                    title: "Account Disabled",
-                    message: "Account is disable please contact athome admin ",
-                    buttonText: "Login",
-                    onTapDismiss: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegisterWithPhoneNumber()),
-                      );
-                    },
-                    // color:
-                    //     PanaraColors
-                    //         .warning,
-                    panaraDialogType: PanaraDialogType.warning,
-                    // imagePath:
-                    //     "assets/images/logoB.png",
-                    noImage: false,
+                    MaterialPageRoute(builder: (context) => NavSwitch()),
                   );
+                } else {
+                  AwesomeDialog(
+                          context: context,
+                          animType: AnimType.scale,
+                          dialogType: DialogType.warning,
+                          showCloseIcon: true,
+                          title: "Account Disabled",
+                          desc:
+                              "Account is disable please contact athome admin ",
+                          btnOkColor: mainColorRed,
+                          btnOkText: "Ok",
+                          btnOkOnPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegisterWithPhoneNumber()),
+                            );
+                          },
+                          btnCancelColor: mainColorGrey)
+                      .show();
                 }
               } else if (value["code"] == "422") {
                 setState(() {
@@ -397,7 +385,7 @@ class _VerificatoinState extends State<Verificatoin> {
           if (value["code"] == "200") {
             if (value["data"]["isActive"] == 1) {
               var jsonData = json.encode(value["data"]);
-              setStringPrefs("userData", encryptAES(jsonData).toString());
+              setStringPrefs("userData", jsonData.toString());
               setBoolPrefs("islogin", true);
               setStringPrefs("token", value["token"]);
               Navigator.pushReplacement(
@@ -405,27 +393,25 @@ class _VerificatoinState extends State<Verificatoin> {
                 MaterialPageRoute(builder: (context) => NavSwitch()),
               );
             } else {
-              PanaraInfoDialog.show(
-                context,
-                title: "Account Disabled",
-                message: "Account is disable please contact athome admin ",
-                buttonText: "Login",
-                onTapDismiss: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RegisterWithPhoneNumber()),
-                  );
-                },
-                // color:
-                //     PanaraColors
-                //         .warning,
-                panaraDialogType: PanaraDialogType.warning,
-                // imagePath:
-                //     "assets/images/logoB.png",
-                noImage: false,
-              );
+              AwesomeDialog(
+                      context: context,
+                      animType: AnimType.scale,
+                      dialogType: DialogType.warning,
+                      showCloseIcon: true,
+                      title: "Account Disabled",
+                      desc: "Account is disable please contact athome admin ",
+                      btnOkColor: mainColorRed,
+                      btnOkText: "Ok",
+                      btnOkOnPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const RegisterWithPhoneNumber()),
+                        );
+                      },
+                      btnCancelColor: mainColorGrey)
+                  .show();
             }
           } else if (value["code"] == "422") {
             setState(() {

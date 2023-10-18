@@ -7,7 +7,7 @@ import 'package:athome/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 import 'dio_connectivity_request_retrier.dart';
 
 // import 'package:http/http.dart' as http;
@@ -37,11 +37,29 @@ class Network {
     }
   }
 
+  Future<bool> addImage(Map<String, String> body, String filepath) async {
+    String addimageUrl = serverUrl + "profileImg";
+    Map<String, String> headers = {
+      'Content-Type': 'multipart/form-data',
+    };
+    var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
+      ..fields.addAll(body)
+      ..headers.addAll(headers)
+      ..files.add(await http.MultipartFile.fromPath('img', filepath));
+    var response = await request.send();
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future getDataAll(String apiRout, BuildContext context) async {
     try {
       Response response = await dio.get(
         serverUrl + apiRout,
       );
+
       return response.data;
     } catch (e) {
       ScaffoldMessenger.of(context)

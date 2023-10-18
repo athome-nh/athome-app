@@ -8,11 +8,11 @@ class OrderModel {
   final int? locationId;
   final int? totalPrice;
   final dynamic note;
-  final int? status;
+  int? status;
   final String? userAcceptTime;
   final DateTime? createdAt;
 
-  const OrderModel({
+  OrderModel({
     this.id,
     this.orderCode,
     this.locationId,

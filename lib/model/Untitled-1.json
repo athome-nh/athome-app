@@ -1,47 +1,8 @@
 [
-  {
-    "id": 4,
-    "productId": 6172,
-    "order_code": "9w1MJ",
-    "cost": 2167,
-    "sell_price": 2500,
-    "offer_price": -1,
-    "qt": 2
-},
-{
-    "id": 5,
-    "productId": 6163,
-    "order_code": "9w1MJ",
-    "cost": 7500,
-    "sell_price": 8000,
-    "offer_price": -1,
-    "qt": 1
-},
-{
-    "id": 6,
-    "productId": 6163,
-    "order_code": "Ij9xl",
-    "cost": 7500,
-    "sell_price": 8000,
-    "offer_price": -1,
-    "qt": 1
-},
-{
-    "id": 7,
-    "productId": 6172,
-    "order_code": "Ij9xl",
-    "cost": 2167,
-    "sell_price": 2500,
-    "offer_price": -1,
-    "qt": 1
-},
-{
-    "id": 8,
-    "productId": 6178,
-    "order_code": "Ij9xl",
-    "cost": 458,
-    "sell_price": 500,
-    "offer_price": -1,
-    "qt": 1
-}
+    {
+        "brand_id": 1,
+        "imgEN": "http://localhost/storage/topImg/CiZyTqDGNfcyC8kaJXsEzk0RWns20xITmde0JDie.jpg",
+        "imgAR": "http://localhost/storage/topImg/yG5vVjmogj7PKdVaUQ7lq9seIl4bxMIQLD0m6nkW.jpg",
+        "imgKUR": "http://localhost/storage/topImg/TGweJTfwosIhlMwTKBYin4KQw9k4QlSNuKRrOjkK.jpg"
+    }
 ]

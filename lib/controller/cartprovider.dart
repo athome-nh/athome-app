@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
+import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-
-import '../home/NavSwitch.dart';
 
 class CartProvider extends ChangeNotifier {
   CartProvider() {
@@ -16,9 +14,10 @@ class CartProvider extends ChangeNotifier {
     // When the CartProvider is created, load cart data from shared preferences.
   }
   List<CartItem> cartItems = [];
+  // ignore: non_constant_identifier_names
   List<CartItem> FavItems = [];
-  List<CartItem> _cartItemsPast = [];
-  List<CartItem> get cartItemsPast => _cartItemsPast;
+  List<CartItemPast> _cartItemsPast = [];
+  List<CartItemPast> get cartItemsPast => _cartItemsPast;
 
   void addToCart(CartItem cartItem) {
     // Check if the item already exists in the cart
@@ -74,7 +73,7 @@ class CartProvider extends ChangeNotifier {
       };
     }).toList();
     var jsonData = json.encode(cartData);
-    setStringPrefs(name, encryptAES(jsonData));
+    setStringPrefs(name, jsonData);
   }
 
   List<int> ListId() {
@@ -98,7 +97,7 @@ class CartProvider extends ChangeNotifier {
   loadCartFromPreferences() {
     getStringPrefs("cart" + userData["id"].toString()).then((value) {
       if (value != "") {
-        var jsonList = jsonDecode(decryptAES(value));
+        var jsonList = jsonDecode(value);
         List<CartItem> cart =
             (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
 
@@ -111,7 +110,7 @@ class CartProvider extends ChangeNotifier {
   loadFavCartFromPreferences() {
     getStringPrefs("Fav" + userData["id"].toString()).then((value) {
       if (value != "") {
-        var jsonList = jsonDecode(decryptAES(value));
+        var jsonList = jsonDecode(value);
 
         List<CartItem> cart =
             (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
@@ -196,12 +195,19 @@ class CartProvider extends ChangeNotifier {
   }
 
 //Past order funcyions
-  void addPastToCart(List<CartItem> cartItem) {
-    cartItems = cartItem;
+  void addPastToCart(List<CartItemPast> cartItem) {
+    cartItem.forEach((element) {
+      final cartItem = CartItem(
+        product: element.product,
+        quantity: element.quantity,
+      );
+      addToCart(cartItem);
+    });
+
     notifyListeners();
   }
 
-  void addToCartPast(CartItem cartItem) {
+  void addToCartPast(CartItemPast cartItem) {
     // Check if the item already exists in the cart
     final existingItemIndex = _cartItemsPast.indexWhere(
       (item) => item.product == cartItem.product,

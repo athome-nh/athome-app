@@ -78,20 +78,14 @@ const Map<String, String> en = {
   "About us": "About us",
   "Signout": "Signout",
   "Wellcome back": "Wellcome back",
-  "Enter your phone number to Shop Smarter & Easier.": "Enter your phone number to Shop Smarter & Easier.",
-  "About Us":"About Us",
-  "English":"English",
-  "Arabic":"Arabic",
-  "Kurdish":"Kurdish",
-  "Cancel":"Cancel",
-  "Edit account":"Edit account",
-  "Male":"Male",
-  "Female":"Female",
-  
-
-  
-
-
-  
-
+  "Enter your phone number to Shop Smarter & Easier.":
+      "Enter your phone number to Shop Smarter & Easier.",
+  "About Us": "About Us",
+  "English": "English",
+  "Arabic": "Arabic",
+  "Kurdish": "Kurdish",
+  "Cancel": "Cancel",
+  "Edit account": "Edit account",
+  "Male": "Male",
+  "Female": "Female",
 };

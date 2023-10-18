@@ -1,89 +1,67 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/map/maps.dart';
+import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/model/cart.dart';
+import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/product_model/product_model.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/CheckOut.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../main.dart';
 
-class MyCart extends StatefulWidget {
-  const MyCart({super.key});
+// ignore: must_be_immutable
+class Reorder extends StatefulWidget {
+  // ignore: non_constant_identifier_names
+  String order_code = "";
+  String total = "";
+  String type = "";
+  Reorder(this.order_code, this.total, this.type, {super.key});
 
   @override
-  State<MyCart> createState() => _MyCartState();
+  State<Reorder> createState() => _ReorderState();
 }
 
-class _MyCartState extends State<MyCart> {
-  update(BuildContext context) {
-    final productrovider = Provider.of<productProvider>(context, listen: false);
-    productrovider.updatePost();
-  }
-
-  @override
-  void initState() {
-    //update(context);
-    super.initState();
-  }
-
+class _ReorderState extends State<Reorder> {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
+    // ignore: non_constant_identifier_names
     List<ProductModel> CardItemshow =
-        productrovider.getProductsByIds(cartProvider.ListId());
-    int total = cartProvider.calculateTotalPrice(CardItemshow);
+        productrovider.getProductsByIds(cartProvider.ListIdPast());
+    int total = cartProvider.calculateTotalPricePast(CardItemshow);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
-            "My Cart".tr,
+            "Past Order".tr,
             style: TextStyle(
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
           centerTitle: true,
           backgroundColor: mainColorWhite,
           elevation: 0,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  if (cartProvider.cartItems.isNotEmpty) {
-                    AwesomeDialog(
-                            context: context,
-                            animType: AnimType.scale,
-                            dialogType: DialogType.question,
-                            showCloseIcon: true,
-                            title: 'Clear My cart',
-                            desc: "You want delete all items in cart",
-                            btnOkColor: mainColorRed,
-                            btnCancelOnPress: () {},
-                            btnOkText: "Delete",
-                            btnOkOnPress: () {
-                              cartProvider.clearCart();
-
-                              Navigator.pop(context);
-                            },
-                            btnCancelColor: mainColorGrey)
-                        .show();
-                  }
-                },
-                icon: Icon(
-                  Icons.delete_outline,
-                  color: mainColorRed,
-                )),
-          ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {
+          //         if (cartProvider.cartItems.length > 0) {
+          //           confirmAlertMycart(context, "Delete All Items".tr,
+          //               "are you sure delete all items".tr, cartProvider);
+          //         }
+          //       },
+          //       icon: Icon(
+          //         Icons.add,
+          //         color: mainColorRed,
+          //       )),
+          // ],
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -93,28 +71,30 @@ class _MyCartState extends State<MyCart> {
                 color: mainColorRed,
               )),
         ),
-        body: cartProvider.cartItems.length > 0
-            ? Column(
-                //crossAxisAlignment: CrossAxisAlignment.start,
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 6,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Container(
-                        //height: getHeight(context, 65),
+        body: cartProvider.cartItemsPast.isNotEmpty
+            ? SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: SizedBox(
+                        height: getHeight(context, 65),
                         child: ListView.builder(
-                            itemCount: cartProvider.cartItems.length,
+                            itemCount: cartProvider.cartItemsPast.length,
                             itemBuilder: (BuildContext context, int index) {
                               final cartitem = CardItemshow[index];
-                              final cartitemQ = cartProvider.cartItems[index];
+                              final cartitemQ =
+                                  cartProvider.cartItemsPast[index];
+                              final priceOld = productrovider
+                                  .getorderitemsOnebyId(cartitemQ.product);
                               return Row(
                                 children: [
                                   IconButton(
                                     onPressed: () {
                                       cartProvider
-                                          .deleteitem(cartitemQ.product!);
+                                          .deleteitemPast(cartitemQ.product);
                                     },
                                     icon: Icon(
                                       Icons.delete_outline,
@@ -135,7 +115,7 @@ class _MyCartState extends State<MyCart> {
                                             borderRadius:
                                                 BorderRadius.circular(5)),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8),
+                                          padding: const EdgeInsets.all(8),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
@@ -144,10 +124,10 @@ class _MyCartState extends State<MyCart> {
                                                 width: getWidth(context, 20),
                                                 height: getHeight(context, 10),
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xffF2F2F2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                ),
+                                                    color: const Color(0xffF2F2F2),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15)),
                                                 child: Center(
                                                   child: CachedNetworkImage(
                                                     imageUrl: cartitem.coverImg
@@ -166,7 +146,7 @@ class _MyCartState extends State<MyCart> {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width:
                                                         getWidth(context, 30),
                                                     child: Text(
@@ -189,11 +169,9 @@ class _MyCartState extends State<MyCart> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        cartitem.price!
-                                                                .toString() +
-                                                            " IQD",
+                                                        "${priceOld.sellPrice} IQD",
                                                         style: TextStyle(
-                                                            decoration: cartitem
+                                                            decoration: priceOld
                                                                         .offerPrice! >
                                                                     -1
                                                                 ? TextDecoration
@@ -206,11 +184,9 @@ class _MyCartState extends State<MyCart> {
                                                                 mainFontbold,
                                                             fontSize: 10),
                                                       ),
-                                                      cartitem.offerPrice! > -1
+                                                      priceOld.offerPrice! > -1
                                                           ? Text(
-                                                              cartitem.offerPrice!
-                                                                      .toString() +
-                                                                  " IQD",
+                                                              "${priceOld.offerPrice!} IQD",
                                                               style: TextStyle(
                                                                   color:
                                                                       mainColorRed,
@@ -218,7 +194,7 @@ class _MyCartState extends State<MyCart> {
                                                                       mainFontbold,
                                                                   fontSize: 10),
                                                             )
-                                                          : SizedBox(),
+                                                          : const SizedBox(),
                                                     ],
                                                   ),
                                                   Row(
@@ -273,7 +249,7 @@ class _MyCartState extends State<MyCart> {
                                                         if (cartitem.offerPrice! >
                                                                 -1 &&
                                                             cartitem.orderLimit ==
-                                                                cartProvider.calculateQuantityForProduct(
+                                                                cartProvider.calculateQuantityForProductPast(
                                                                     int.parse(
                                                                         cartitem
                                                                             .id
@@ -282,11 +258,13 @@ class _MyCartState extends State<MyCart> {
                                                               "you can not add more this item");
                                                           return;
                                                         }
-                                                        final cartItem = CartItem(
-                                                            product: cartitemQ
-                                                                .product!);
-                                                        cartProvider.addToCart(
-                                                            cartItem);
+                                                        final cartItem =
+                                                            CartItemPast(
+                                                                product: cartitemQ
+                                                                    .product);
+                                                        cartProvider
+                                                            .addToCartPast(
+                                                                cartItem);
                                                       },
                                                       child: Padding(
                                                         padding:
@@ -326,9 +304,9 @@ class _MyCartState extends State<MyCart> {
                                                       onTap: () {
                                                         final cartItem = CartItem(
                                                             product: cartitemQ
-                                                                .product!);
+                                                                .product);
                                                         cartProvider
-                                                            .removeFromCart(
+                                                            .removeFromCartPast(
                                                                 cartItem);
                                                       },
                                                       child: Padding(
@@ -370,20 +348,13 @@ class _MyCartState extends State<MyCart> {
                             }),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: mainColorGrey,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25),
-                            topRight: Radius.circular(25),
-                          )),
+                    Container(
+                      height: getHeight(context, 24.4),
+                      decoration: BoxDecoration(color: mainColorGrey),
                       child: Column(
                         children: [
                           SizedBox(
-                            height: getHeight(context, 3),
+                            height: getHeight(context, 2),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -477,180 +448,214 @@ class _MyCartState extends State<MyCart> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 4)),
-                            child: TextButton(
-                              onPressed: () async {
-                                if (await noInternet(context)) {
-                                  return;
-                                }
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // TextButton(
+                                //   onPressed: () async {
+                                //     if (await noInternet(context)) {
+                                //       return;
+                                //     }
+                                //     cartProvider.addPastToCart(
+                                //         cartProvider.cartItemsPast);
+                                //     cartProvider.clearCartPast();
+                                //     Navigator.push(
+                                //       context,
+                                //       MaterialPageRoute(
+                                //           builder: (context) => MyCart()),
+                                //     );
+                                //     // showModalBottomSheet(
+                                //     //   context: context,
+                                //     //   isDismissible: true,
+                                //     //   builder: (BuildContext context) {
+                                //     //     return Container(
+                                //     //       color: mainColorWhite,
+                                //     //       child: Column(
+                                //     //         children: <Widget>[
+                                //     //           Container(
+                                //     //             height: getHeight(context, 40),
+                                //     //             // width: getWidth(context, 100),
+                                //     //             child: Padding(
+                                //     //               padding:
+                                //     //                   const EdgeInsets.all(8.0),
+                                //     //               child: ListView.builder(
+                                //     //                   itemCount: productrovider
+                                //     //                       .location.length,
+                                //     //                   itemBuilder:
+                                //     //                       (BuildContext context,
+                                //     //                           int index) {
+                                //     //                     final location =
+                                //     //                         productrovider
+                                //     //                                 .location[
+                                //     //                             index];
+                                //     //                     return Padding(
+                                //     //                       padding:
+                                //     //                           EdgeInsets.only(
+                                //     //                               bottom:
+                                //     //                                   getHeight(
+                                //     //                                       context,
+                                //     //                                       1)),
+                                //     //                       child:
+                                //     //                           GestureDetector(
+                                //     //                         onTap: () {
+                                //     //                           Navigator.push(
+                                //     //                             context,
+                                //     //                             MaterialPageRoute(
+                                //     //                                 builder: (context) =>
+                                //     //                                     CheckOut(
+                                //     //                                         id: location.id!)),
+                                //     //                           );
+                                //     //                         },
+                                //     //                         child: Container(
+                                //     //                           decoration: BoxDecoration(
+                                //     //                               color:
+                                //     //                                   mainColorLightGrey,
+                                //     //                               borderRadius:
+                                //     //                                   BorderRadius
+                                //     //                                       .circular(
+                                //     //                                           5)),
+                                //     //                           child: ListTile(
+                                //     //                             title: Text(
+                                //     //                               location
+                                //     //                                   .name!,
+                                //     //                               style: TextStyle(
+                                //     //                                   color:
+                                //     //                                       mainColorGrey,
+                                //     //                                   fontSize:
+                                //     //                                       14,
+                                //     //                                   fontFamily:
+                                //     //                                       mainFontbold),
+                                //     //                             ),
+                                //     //                             subtitle: Text(
+                                //     //                               location
+                                //     //                                   .area!,
+                                //     //                               style: TextStyle(
+                                //     //                                   color:
+                                //     //                                       mainColorGrey,
+                                //     //                                   fontSize:
+                                //     //                                       14,
+                                //     //                                   fontFamily:
+                                //     //                                       mainFontnormal),
+                                //     //                             ),
+                                //     //                             trailing: Text(
+                                //     //                               "Select",
+                                //     //                               style: TextStyle(
+                                //     //                                   color:
+                                //     //                                       mainColorRed,
+                                //     //                                   fontFamily:
+                                //     //                                       mainFontnormal),
+                                //     //                             ),
+                                //     //                           ),
+                                //     //                         ),
+                                //     //                       ),
+                                //     //                     );
+                                //     //                   }),
+                                //     //             ),
+                                //     //           ),
+                                //     //           Padding(
+                                //     //             padding: EdgeInsets.symmetric(
+                                //     //                 horizontal:
+                                //     //                     getWidth(context, 4)),
+                                //     //             child: TextButton(
+                                //     //               onPressed: () {
+                                //     //                 Navigator.push(
+                                //     //                   context,
+                                //     //                   MaterialPageRoute(
+                                //     //                       builder: (context) =>
+                                //     //                           Maps_screen()),
+                                //     //                 );
+                                //     //               },
+                                //     //               child: Text(
+                                //     //                 "Add another location".tr,
+                                //     //                 style: TextStyle(
+                                //     //                   color: mainColorWhite,
+                                //     //                   fontSize: 16,
+                                //     //                 ),
+                                //     //               ),
+                                //     //               style:
+                                //     //                   ElevatedButton.styleFrom(
+                                //     //                 backgroundColor:
+                                //     //                     mainColorRed,
+                                //     //                 fixedSize: Size(
+                                //     //                     getWidth(context, 85),
+                                //     //                     getHeight(context, 6)),
+                                //     //                 shape:
+                                //     //                     RoundedRectangleBorder(
+                                //     //                   borderRadius:
+                                //     //                       BorderRadius.circular(
+                                //     //                           50),
+                                //     //                 ),
+                                //     //               ),
+                                //     //             ),
+                                //     //           ),
+                                //     //         ],
+                                //     //       ),
+                                //     //     );
+                                //     //   },
+                                //     // );
+                                //   },
+                                //   child: Text(
+                                //     "Re Order".tr,
+                                //     style: TextStyle(
+                                //       color: mainColorWhite,
+                                //       fontSize: 16,
+                                //     ),
+                                //   ),
+                                //   style: ElevatedButton.styleFrom(
+                                //     backgroundColor: mainColorRed,
+                                //     fixedSize: Size(getWidth(context, 40),
+                                //         getHeight(context, 6)),
+                                //     shape: RoundedRectangleBorder(
+                                //       borderRadius: BorderRadius.circular(50),
+                                //     ),
+                                //   ),
+                                // ),
 
-                                showModalBottomSheet(
-                                  context: context,
-                                  isDismissible: true,
-                                  shape: const RoundedRectangleBorder(
-                                    // <-- SEE HERE
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(25.0),
-                                    ),
-                                  ),
-                                  builder: (BuildContext context) {
-                                    return Container(
-                                      color: mainColorWhite,
-                                      child: Column(
-                                        children: <Widget>[
-                                          Container(
-                                            height: getHeight(context, 40),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: productrovider
-                                                          .location.length >
-                                                      0
-                                                  ? ListView.builder(
-                                                      itemCount: productrovider
-                                                          .location.length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        final location =
-                                                            productrovider
-                                                                    .location[
-                                                                index];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  bottom:
-                                                                      getHeight(
-                                                                          context,
-                                                                          1)),
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        CheckOut(
-                                                                            id: location.id!)),
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              decoration: BoxDecoration(
-                                                                  color:
-                                                                      mainColorLightGrey,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
-                                                              child: ListTile(
-                                                                title: Text(
-                                                                  location
-                                                                      .name!,
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorGrey,
-                                                                      fontSize:
-                                                                          14,
-                                                                      fontFamily:
-                                                                          mainFontbold),
-                                                                ),
-                                                                subtitle: Text(
-                                                                  location
-                                                                      .area!,
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorGrey,
-                                                                      fontSize:
-                                                                          14,
-                                                                      fontFamily:
-                                                                          mainFontnormal),
-                                                                ),
-                                                                trailing: Text(
-                                                                  "Select",
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorRed,
-                                                                      fontFamily:
-                                                                          mainFontnormal),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      })
-                                                  : Center(
-                                                      child: Text(
-                                                      "Not have any location",
-                                                      style: TextStyle(
-                                                        color: mainColorGrey,
-                                                        fontSize: 20,
-                                                      ),
-                                                    )),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal:
-                                                    getWidth(context, 4)),
-                                            child: TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Maps_screen()),
-                                                );
-                                              },
-                                              child: Text(
-                                                "Add another location".tr,
-                                                style: TextStyle(
-                                                  color: mainColorWhite,
-                                                  fontSize: 16,
-                                                ),
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor: mainColorRed,
-                                                fixedSize: Size(
-                                                    getWidth(context, 85),
-                                                    getHeight(context, 6)),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(50),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                TextButton(
+                                  onPressed: () async {
+                                    if (await noInternet(context)) {
+                                      return;
+                                    }
+                                    // if (cartProvider.cartItems ==
+                                    //     cartProvider.cartItemsPast) {
+                                    //   toastShort(
+                                    //       "this items already have in Mycart");
+                                    //   return;
+                                    // }
+                                    cartProvider.addPastToCart(
+                                        cartProvider.cartItemsPast);
+                                    cartProvider.clearCartPast();
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const NavSwitch()),
                                     );
                                   },
-                                );
-                              },
-                              child: Text(
-                                "Checkout".tr,
-                                style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 16,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: mainColorRed,
+                                    fixedSize: Size(getWidth(context, 85),
+                                        getHeight(context, 6)),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "Add to Card".tr,
+                                    style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontSize: 16,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: mainColorRed,
-                                fixedSize: Size(getWidth(context, 85),
-                                    getHeight(context, 6)),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                              ),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: getWidth(context, 2),
-                          )
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
             : Center(
                 child: Column(

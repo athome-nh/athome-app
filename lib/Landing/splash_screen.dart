@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/NavSwitch.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../Config/property.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,10 +14,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  int x = 500;
   @override
   void initState() {
     super.initState();
+    final productrovider = Provider.of<productProvider>(context, listen: false);
+    productrovider.updatePost();
+
     Timer(
       Duration(seconds: 5),
       () {

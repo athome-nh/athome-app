@@ -112,7 +112,7 @@ class _itemCategoriesState extends State<itemCategories> {
                               decoration: BoxDecoration(
                                   color: productPro.subcateSelect ==
                                           catesubitems.id!
-                                      ? mainColorRed.withOpacity(0.5)
+                                      ? mainColorGrey
                                       : mainColorRed,
                                   borderRadius: BorderRadius.circular(5)),
                               child: Center(

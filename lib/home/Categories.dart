@@ -87,7 +87,7 @@ class _CategoriesState extends State<Categories> {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio: getWidth(context, 0.25),
-                          
+
                             crossAxisCount: 3, // Number of columns
                           ),
                           itemCount: productPro

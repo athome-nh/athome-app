@@ -1,4 +1,3 @@
-
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/TrackOrder.dart';
 import 'package:athome/main.dart';
@@ -8,7 +7,6 @@ import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
 import '../controller/productprovider.dart';
-
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -35,13 +33,12 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Center(
         child: !isLogin
             ? loginFirstContainer(context)
-            : productrovider.Orders.length > 0
+            : productrovider.Orders.isNotEmpty
                 ? ListView.builder(
-                    itemCount: productrovider.listOrderCode().length,
+                    itemCount: productrovider.Orders.length,
                     itemBuilder: (BuildContext context, int index) {
-                      final orderPakage = productrovider.listOrderCode()[index];
                       OrderModel order =
-                          productrovider.getorderOnebyOrderCode(orderPakage);
+                          productrovider.Orders.reversed.toList()[index];
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
@@ -50,26 +47,13 @@ class _OrderScreenState extends State<OrderScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        TrackOrder(orderPakage.toString())),
+                                    builder: (context) => TrackOrder(
+                                        order.orderCode.toString(),
+                                        order.id.toString(),
+                                        order.totalPrice.toString(),
+                                        order.createdAt.toString())),
                               );
                             }
-                            // productrovider
-                            //     .getordersbyOrderCode(orderPakage)
-                            //     .forEach((element) {
-                            //   final cartItem = CartItem(
-                            //     product: element.productId!,
-                            //     quantity: element.qt!,
-                            //   );
-                            //   cartProvider.addToCartPast(cartItem);
-                            // });
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => oreder_items()),
-                            // ).then((value) {
-                            //   cartProvider.clearCartPast();
-                            // });
                           },
                           child: Container(
                             width: getWidth(context, 90),
@@ -98,8 +82,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                         borderRadius: BorderRadius.circular(5),
                                       ),
                                       child: Icon(
-                                        Icons.shopping_cart,
-                                        color: mainColorRed,
+                                        order.status! < 5
+                                            ? Icons.shopping_cart
+                                            : order.status! == 6
+                                                ? Icons.close
+                                                : Icons.check,
+                                        color: order.status! == 5
+                                            ? Colors.green
+                                            : mainColorRed,
                                         size: 30,
                                       )),
                                 ),
@@ -122,10 +112,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ],
                                 ),
                                 subtitle: Text(
-                                  "Date: " +
-                                      order.createdAt
-                                          .toString()
-                                          .substring(0, 16)!,
+                                  "Date: ${order.createdAt.toString().substring(0, 16)}",
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontFamily: mainFontnormal,
