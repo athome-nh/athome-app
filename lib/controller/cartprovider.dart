@@ -6,8 +6,6 @@ import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 
-import '../home/NavSwitch.dart';
-
 class CartProvider extends ChangeNotifier {
   CartProvider() {
     loadCartFromPreferences();

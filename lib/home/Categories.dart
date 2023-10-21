@@ -1,7 +1,6 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:provider/provider.dart';
+
+import 'nav_switch.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -87,7 +88,7 @@ class _CategoriesState extends State<Categories> {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio: getWidth(context, 0.25),
-                          
+
                             crossAxisCount: 3, // Number of columns
                           ),
                           itemCount: productPro
@@ -122,7 +123,7 @@ class _CategoriesState extends State<Categories> {
                                         width: getHeight(context, 10),
                                         height: getHeight(context, 10),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffF2F2F2),
+                                            color: const Color(0xffF2F2F2),
                                             borderRadius:
                                                 BorderRadius.circular(100)),
                                         child: Center(
@@ -165,12 +166,34 @@ class _CategoriesState extends State<Categories> {
                   ),
                 ),
                 SingleChildScrollView(
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: listItemsShow(
-                          context,
-                          productPro
-                              .getProductsByIds(cartProvider.ListFavId()))),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      if (cartProvider.ListFavId().isEmpty) {
+                        // list is empty
+                        return Container(
+                          width: getWidth(context, 100),
+                          height: getHeight(context, 75),
+                          child: Center(
+                            child: Text(
+                              "You have no favorite yet",
+                              style: TextStyle(
+                                  fontFamily: mainFontbold, fontSize: 16),
+                            ),
+                          ),
+                        );
+                      } else {
+                        // list is not empty
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: listItemsShow(
+                            context,
+                            productPro
+                                .getProductsByIds(cartProvider.ListFavId()),
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ),
               ],
             ),

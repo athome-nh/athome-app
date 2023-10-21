@@ -1,10 +1,8 @@
 import 'package:athome/Config/local_data.dart';
-
-import 'package:athome/home/NavSwitch.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../Config/property.dart';
+import '../home/nav_switch.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -294,8 +292,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         ),
         Expanded(
           flex: 2,
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/003_welcome_2.png",
+          child: Image.asset(
+            "assets/images/003_welcome_2.png",
           ),
         ),
         SizedBox(
@@ -358,8 +356,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         ),
         Expanded(
           flex: 2,
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/003_welcome_3.png",
+          child: Image.asset(
+            "assets/images/003_welcome_3.png",
           ),
         ),
         SizedBox(

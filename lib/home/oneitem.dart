@@ -1,7 +1,6 @@
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/MyCart.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
@@ -12,10 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
-import '../Switchscreen.dart';
 import '../main.dart';
 
 class Oneitem extends StatefulWidget {

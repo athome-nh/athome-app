@@ -5,7 +5,6 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/landing/Singinup_page.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
+
+import '../home/nav_switch.dart';
 
 class Verificatoin extends StatefulWidget {
   String phone_number;

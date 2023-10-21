@@ -1,7 +1,6 @@
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:flutter/material.dart';

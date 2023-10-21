@@ -3,8 +3,6 @@ import 'dart:io';
 
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/model/category_model/category_model.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:athome/model/order_items/order_items.dart';

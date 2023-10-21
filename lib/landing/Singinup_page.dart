@@ -6,13 +6,14 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gender_picker/gender_picker.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:gender_picker/source/enums.dart';
+
+import '../home/nav_switch.dart';
 
 class Singinup_page extends StatefulWidget {
   String phone_number;

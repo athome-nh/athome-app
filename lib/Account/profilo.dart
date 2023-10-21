@@ -12,7 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../controller/cartprovider.dart';
-import '../home/NavSwitch.dart';
+import '../home/nav_switch.dart';
 import '../main.dart';
 
 class Setting extends StatefulWidget {
@@ -62,14 +62,16 @@ class _SettingState extends State<Setting> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
           backgroundColor: mainColorWhite,
           appBar: AppBar(
-            elevation: 0,
             backgroundColor: mainColorWhite,
+            automaticallyImplyLeading: false,
+            elevation: 0,
             title: Image.asset(
               "assets/images/logoB.png",
               width: getWidth(context, 30),
@@ -149,74 +151,72 @@ class _SettingState extends State<Setting> {
                           top: getWidth(context, 3.5),
                         ),
                         child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          elevation: 3,
+                          elevation: 0,
                           child: Container(
-                            padding: const EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              color: mainColorLightGrey,
-                              borderRadius: BorderRadius.circular(5),
+                              color: mainColorWhite,
                             ),
                             child: Column(
                               children: [
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: isEdit
-                                          ? () {
-                                              _getImage();
-                                            }
-                                          : null,
-                                      child: _image != null
-                                          ? Image.file(
-                                              File(_image!.path),
-                                              height: 200,
-                                              width: 200,
-                                            )
-                                          : ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                              child: CachedNetworkImage(
-                                                width: getWidth(context, 18),
-                                                imageUrl: image,
-                                                fit: BoxFit.fill,
-                                              ),
+                                // circle image
+                                GestureDetector(
+                                  onTap: isEdit
+                                      ? () {
+                                          _getImage();
+                                        }
+                                      : null,
+                                  child: _image != null
+                                      ? Image.file(
+                                          File(_image!.path),
+                                          height: 200,
+                                          width: 200,
+                                        )
+                                      : Container(
+                                          height: 100,
+                                          width: 100,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            child: CachedNetworkImage(
+                                              width: getWidth(context, 18),
+                                              imageUrl: image,
+                                              fit: BoxFit.fill,
                                             ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          // user name
-                                          Text(
-                                            userData["name"],
-                                            style: TextStyle(
-                                                fontFamily: mainFontbold,
-                                                fontSize: 18,
-                                                color: mainColorGrey),
                                           ),
-                                          SizedBox(
-                                            height: getHeight(context, 1),
-                                          ),
-                                          // phone
-                                          Text(
-                                            userData["phone"],
-                                            style: TextStyle(
-                                                fontFamily: mainFontbold,
-                                                fontSize: 16,
-                                                color: mainColorGrey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                        ),
                                 ),
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+                                // user name
+                                Text(
+                                  userData["name"],
+                                  style: TextStyle(
+                                      fontFamily: mainFontbold,
+                                      fontSize: 18,
+                                      color: mainColorGrey),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
+                                // phone
+                                Text(
+                                  userData["phone"],
+                                  style: TextStyle(
+                                      fontFamily: mainFontbold,
+                                      fontSize: 16,
+                                      color: mainColorGrey),
+                                ),
+
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+
                                 isEdit
                                     ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           GestureDetector(
                                             onTap: () {
@@ -260,7 +260,7 @@ class _SettingState extends State<Setting> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    "Save".tr ,
+                                                    "Save".tr,
                                                     style: TextStyle(
                                                         fontFamily:
                                                             mainFontbold,
@@ -313,6 +313,8 @@ class _SettingState extends State<Setting> {
                                         ],
                                       )
                                     : Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           GestureDetector(
                                             onTap: () {
@@ -321,8 +323,8 @@ class _SettingState extends State<Setting> {
                                               });
                                             },
                                             child: Container(
-                                              width: getWidth(context, 32),
-                                              height: getWidth(context, 8),
+                                              width: getWidth(context, 16),
+                                              height: getWidth(context, 7),
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(5),
@@ -331,13 +333,21 @@ class _SettingState extends State<Setting> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  Text(
-                                                    "Edit account".tr,
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            mainFontbold,
-                                                        fontSize: 12,
-                                                        color: mainColorWhite),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                top: getWidth(context, 1.8),
+                                left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                              ),
+                                                    child: Text(
+                                                      "Edit".tr,
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 12,
+                                                          color: mainColorWhite),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -374,9 +384,10 @@ class _SettingState extends State<Setting> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: getHeight(context, 2),
-                      ),
+                      // SizedBox(
+                      //   height: getHeight(context, 1),
+                      // ),
+
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: getWidth(context, 3.5),
@@ -418,7 +429,7 @@ class _SettingState extends State<Setting> {
                                         ),
                                       ),
                                       //prefixText: "Name: ",
-                                      
+
                                       suffixIconColor: mainColorGrey,
                                       hintText: 'Enter Name'.tr,
                                       hintStyle: TextStyle(
@@ -520,7 +531,7 @@ class _SettingState extends State<Setting> {
                                                       gender = value.toString();
                                                     });
                                                   },
-                                                  isExpanded: true,
+                                            isExpanded: true,
                                             items: items.map((String value) {
                                               return DropdownMenuItem<String>(
                                                 enabled: isEdit,
@@ -601,7 +612,8 @@ class _SettingState extends State<Setting> {
                                 borderRadius: BorderRadius.circular(5),
                                 color: mainColorLightGrey),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -689,7 +701,8 @@ class _SettingState extends State<Setting> {
                                 borderRadius: BorderRadius.circular(5),
                                 color: mainColorLightGrey),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

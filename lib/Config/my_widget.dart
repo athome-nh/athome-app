@@ -439,7 +439,7 @@ loginFirstContainer(BuildContext context) {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                height: getHeight(context, 5),
+                height: getWidth(context, 12),
                 width: getWidth(context, 60),
                 child: TextButton(
                   onPressed: () {
@@ -529,7 +529,6 @@ nullContainer(BuildContext context, String title, String content) {
                 width: getWidth(context, 60),
                 child: TextButton(
                   onPressed: () {
-                    print("jegr");
                     Navigator.push(
                       context,
                       MaterialPageRoute(

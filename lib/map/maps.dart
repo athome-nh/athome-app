@@ -1,16 +1,11 @@
 import 'dart:async';
 import 'dart:collection';
-
 import 'package:athome/Config/property.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/map/locationdeatil.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math';
-
 import 'package:panara_dialogs/panara_dialogs.dart';
 
 class Maps_screen extends StatefulWidget {

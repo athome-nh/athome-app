@@ -1,14 +1,9 @@
 import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Home/ItemDeatil.dart';
-import 'package:athome/Switchscreen.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/home/oneitem.dart';
-import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,11 +13,10 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/AllItem.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
-
 import 'package:skeletonizer/skeletonizer.dart';
-
 import '../Config/athome_functions.dart';
 import 'Homepage.dart';
+import 'Notfication.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -49,79 +43,83 @@ class _SearchState extends State<Search> {
       child: Scaffold(
         backgroundColor: mainColorWhite,
         appBar: AppBar(
+          backgroundColor: mainColorWhite,
+          automaticallyImplyLeading: false,
+          elevation: 0,
           title: Image.asset(
             "assets/images/logoB.png",
             width: getWidth(context, 30),
           ),
-          backgroundColor: mainColorWhite,
-          elevation: 0,
         ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: getWidth(context, 80),
-                          height: getHeight(context, 5),
-                          decoration: BoxDecoration(
-                              color: Color(0xffF2F2F2),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Row(
-                            //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: searchCon,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontbold),
-                                  keyboardType: TextInputType.text,
-                                  onChanged: (value) {
-                                    productPro.setsearch(searchCon.text);
-                                  },
-                                  decoration: InputDecoration(
-                                      prefixIcon: Icon(
-                                        Ionicons.search_outline,
-                                        color: mainColorGrey.withOpacity(0.45),
-                                        size: 25,
-                                      ),
-                                      border: InputBorder.none,
-                                      hintText: "Search".tr,
-                                      hintStyle: TextStyle(
-                                          fontFamily: mainFontnormal,
-                                          color:
-                                              mainColorGrey.withOpacity(0.45))),
+                SizedBox(
+                  height: getHeight(context, 1),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: getWidth(context,
+                            productPro.searchproduct.isNotEmpty ? 80 : 90),
+                        height: getHeight(context, 5),
+                        decoration: BoxDecoration(
+                            color: const Color(0xffF2F2F2),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Row(
+                          //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                controller: searchCon,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: mainColorGrey,
+                                    fontFamily: mainFontbold),
+                                keyboardType: TextInputType.text,
+                                onChanged: (value) {
+                                  productPro.setsearch(searchCon.text);
+                                },
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Ionicons.search_outline,
+                                    color: mainColorGrey.withOpacity(0.45),
+                                    size: 25,
+                                  ),
+                                  border: InputBorder.none,
+                                  hintText: "Search".tr,
+                                  hintStyle: TextStyle(
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorGrey.withOpacity(0.45),
+                                      fontSize: 14),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        productPro.searchproduct.isNotEmpty
-                            ? TextButton(
-                                onPressed: () {
-                                  searchCon.text = "";
-                                  productPro.setsearch("");
-                                },
-                                child: Text(
-                                  "Clear".tr,
-                                  style: TextStyle(
-                                      color: mainColorRed,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 16),
-                                ))
-                            : SizedBox(),
-                      ],
-                    ),
+                      ),
+                      productPro.searchproduct.isNotEmpty
+                          ? TextButton(
+                              onPressed: () {
+                                searchCon.text = "";
+                                productPro.setsearch("");
+                              },
+                              child: Text(
+                                "Clear".tr,
+                                style: TextStyle(
+                                    color: mainColorRed,
+                                    fontFamily: mainFontbold,
+                                    fontSize: 16),
+                              ))
+                          : const SizedBox(),
+                    ],
                   ),
                 ),
                 SizedBox(
-                  height: getHeight(context, 2),
+                  height: getHeight(context, 1),
                 ),
                 true
                     ? listItemsShow(
@@ -167,9 +165,9 @@ class _SearchState extends State<Search> {
                                 aspectRatio: 16 / 9,
                                 viewportFraction: 1.0,
                                 enlargeCenterPage: true,
-                                autoPlayInterval: Duration(seconds: 5),
+                                autoPlayInterval: const Duration(seconds: 5),
                                 autoPlayAnimationDuration:
-                                    Duration(milliseconds: 3000),
+                                    const Duration(milliseconds: 3000),
                               ),
                             ),
                           ),
@@ -203,7 +201,7 @@ class _SearchState extends State<Search> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AllItem()),
+                                    builder: (context) => const AllItem()),
                               );
                             },
                             child: Text("View All".tr,
@@ -257,7 +255,7 @@ class _SearchState extends State<Search> {
                                             height: getHeight(context, 14),
                                             decoration: BoxDecoration(
                                                 //  border: Border.all(color: mainColorRed),
-                                                color: Color(0xffF2F2F2),
+                                                color: const Color(0xffF2F2F2),
                                                 borderRadius:
                                                     BorderRadius.circular(15)),
                                             child: Center(
@@ -332,7 +330,7 @@ class _SearchState extends State<Search> {
                                             fontFamily: mainFontbold,
                                             fontSize: 16),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       Text(
@@ -348,7 +346,7 @@ class _SearchState extends State<Search> {
                                             fontFamily: mainFontbold,
                                             fontSize: 9),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       Text(
@@ -395,7 +393,8 @@ class _SearchState extends State<Search> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Oneitem()),
+                                            builder: (context) =>
+                                                const Oneitem()),
                                       );
                                     },
                                     child: Container(
@@ -403,7 +402,7 @@ class _SearchState extends State<Search> {
                                       height: getHeight(context, 14),
                                       decoration: BoxDecoration(
                                           //  border: Border.all(color: mainColorRed),
-                                          color: Color(0xffF2F2F2),
+                                          color: const Color(0xffF2F2F2),
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       child: Center(
@@ -492,7 +491,7 @@ class _SearchState extends State<Search> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Oneitem()),
+                                        builder: (context) => const Oneitem()),
                                   );
                                 },
                                 child: Container(
@@ -516,7 +515,7 @@ class _SearchState extends State<Search> {
                                             fontFamily: mainFontbold,
                                             fontSize: 16),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       Text(
@@ -532,7 +531,7 @@ class _SearchState extends State<Search> {
                                             fontFamily: mainFontbold,
                                             fontSize: 9),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       Text(

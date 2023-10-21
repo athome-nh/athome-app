@@ -72,6 +72,7 @@ class _Home_SCState extends State<Home_SC> {
                 "assets/images/logoB.png",
                 width: getWidth(context, 30),
               ),
+              
               actions: [
                 IconButton(
                   icon: Icon(

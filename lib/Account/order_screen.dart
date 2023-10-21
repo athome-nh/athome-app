@@ -1,4 +1,3 @@
-
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/TrackOrder.dart';
 import 'package:athome/main.dart';
@@ -8,7 +7,6 @@ import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
 import '../controller/productprovider.dart';
-
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -25,12 +23,13 @@ class _OrderScreenState extends State<OrderScreen> {
     return Scaffold(
       backgroundColor: mainColorWhite,
       appBar: AppBar(
+        backgroundColor: mainColorWhite,
+        automaticallyImplyLeading: false,
+        elevation: 0.5,
         title: Image.asset(
           "assets/images/logoB.png",
           width: getWidth(context, 30),
         ),
-        backgroundColor: mainColorWhite,
-        elevation: 0,
       ),
       body: Center(
         child: !isLogin

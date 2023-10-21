@@ -1,14 +1,10 @@
 import 'package:athome/Config/my_widget.dart';
-
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:athome/Config/property.dart';
 import 'package:provider/provider.dart';
-
 import '../main.dart';
+import 'nav_switch.dart';
 
 class itemCategories extends StatefulWidget {
   itemCategories();
@@ -57,7 +53,7 @@ class _itemCategoriesState extends State<itemCategories> {
               )),
           actions: [
             productPro.subcateSelect == 0
-                ? SizedBox()
+                ? const SizedBox()
                 : IconButton(
                     onPressed: () {
                       productPro.setsubcateSelect(0);
@@ -78,7 +74,7 @@ class _itemCategoriesState extends State<itemCategories> {
                 children: [
                   Container(
                     width: getWidth(context, 95),
-                    height: getHeight(context, 5),
+                    height: getWidth(context, 9),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount:
@@ -107,12 +103,16 @@ class _itemCategoriesState extends State<itemCategories> {
                               }
                             },
                             child: Container(
-                              width: getWidth(context, 30),
-                              height: getHeight(context, 5),
+                              padding: EdgeInsets.only(
+                                top: getWidth(context, 1.5),
+                                left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                              ),
                               decoration: BoxDecoration(
                                   color: productPro.subcateSelect ==
                                           catesubitems.id!
-                                      ? mainColorRed.withOpacity(0.5)
+                                      ? mainColorGrey
                                       : mainColorRed,
                                   borderRadius: BorderRadius.circular(5)),
                               child: Center(
@@ -141,14 +141,44 @@ class _itemCategoriesState extends State<itemCategories> {
                   Container(
                     height: getHeight(context, 85),
                     width: getWidth(context, 95),
-                    child: listItemsShow(
-                        context,
-                        productPro.subcateSelect == 0
-                            ? productPro
-                                .getProductsByCategory(productPro.cateType)
-                            : productPro.getProductsBySubCategory(
-                                productPro.subcateSelect)),
-                  )
+                    child: productPro.subcateSelect == 0
+                        ? (productPro.getProductsByCategory(
+                          productPro.cateType).isEmpty
+                            ? Container(
+                                width: getWidth(context, 100),
+                                height: getWidth(context, 50),
+                                child: Center(
+                                  child: Text(
+                                    "This list is empty",
+                                    style: TextStyle(
+                                        fontFamily: mainFontbold, fontSize: 16),
+                                  ),
+                                ),
+                              )
+                            : listItemsShow(context,
+                                productPro.getProductsByCategory(
+                                    productPro.cateType)))
+                        : (productPro
+                                .getProductsBySubCategory(
+                                    productPro.subcateSelect)
+                                .isEmpty
+                            ? Container(
+                                width: getWidth(context, 100),
+                                height: getWidth(context, 50),
+                                child: Center(
+                                  child: Text(
+                                    "This list is empty",
+                                    style: TextStyle(
+                                        fontFamily: mainFontbold, fontSize: 16),
+                                  ),
+                                ),
+                              )
+                            : listItemsShow(
+                                context,
+                                productPro.getProductsBySubCategory(
+                                    productPro.subcateSelect),
+                              )),
+                  ),
                 ],
               ),
             ),

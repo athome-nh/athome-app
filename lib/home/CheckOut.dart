@@ -1,7 +1,6 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/home/TrackOrder.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:athome/model/product_model/product_model.dart';
@@ -12,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../Network/Network.dart';
 import '../main.dart';
+import 'nav_switch.dart';
 
 // ignore: must_be_immutable
 class CheckOut extends StatefulWidget {
