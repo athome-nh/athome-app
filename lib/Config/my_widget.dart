@@ -715,7 +715,7 @@ nullContainer(BuildContext context, String title, String content) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Confirm',
+                title,
                 style: TextStyle(
                     fontSize: 30,
                     fontFamily: mainFontbold,
@@ -723,7 +723,7 @@ nullContainer(BuildContext context, String title, String content) {
               ),
               const SizedBox(height: 20),
               Text(
-                'You must login first',
+                content,
                 style: TextStyle(
                     fontSize: 20,
                     fontFamily: mainFontnormal,

@@ -3,6 +3,7 @@ import 'package:athome/home/TrackOrder.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
@@ -34,7 +35,7 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Center(
         child: !isLogin
             ? loginFirstContainer(context)
-            : productrovider.Orders.isNotEmpty
+            : productrovider.Orders.length > 100
                 ? ListView.builder(
                     itemCount: productrovider.Orders.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -125,8 +126,26 @@ class _OrderScreenState extends State<OrderScreen> {
                         ),
                       );
                     })
-                : nullContainer(
-                    context, "title", "you do not have any order yet."),
+                : Center(
+                    child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "You not have any order",
+                        style:
+                            TextStyle(fontSize: 32, fontFamily: mainFontnormal),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 2),
+                      ),
+                      Icon(
+                        Ionicons.cart_outline,
+                        size: getHeight(context, 20),
+                        color: mainColorRed,
+                      ),
+                    ],
+                  )),
       ),
     );
   }

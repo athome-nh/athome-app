@@ -667,6 +667,7 @@ class _MyCartState extends State<MyCart> {
                   Icon(
                     Ionicons.cart_outline,
                     size: getHeight(context, 20),
+                    color: mainColorRed,
                   ),
                 ],
               )),
