@@ -82,7 +82,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                       ),
                                       markers: {
                                         Marker(
-                                          markerId: const MarkerId('location_marker'),
+                                          markerId:
+                                              const MarkerId('location_marker'),
                                           position: LatLng(location.latitude!,
                                               location.longitude!),
                                           infoWindow: const InfoWindow(
@@ -146,7 +147,8 @@ class _LocationScreenState extends State<LocationScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Maps_screen()),
+                    MaterialPageRoute(
+                        builder: (context) => const Maps_screen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

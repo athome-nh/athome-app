@@ -5,11 +5,12 @@ import 'package:athome/landing/login_page.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:athome/model/products_image/products_image.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:panara_dialogs/panara_dialogs.dart';
+
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
@@ -158,29 +159,27 @@ class _OneitemState extends State<Oneitem> {
                           child: IconButton(
                               onPressed: () {
                                 if (!isLogin) {
-                                  PanaraInfoDialog.show(
-                                    context,
-                                    title: "Hello",
-                                    message:
-                                        "This is the Panara Info Dialog Success.",
-                                    buttonText: "Login",
-                                    onTapDismiss: () {
-                                      Navigator.pop(context);
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                RegisterWithPhoneNumber()),
-                                      );
-                                    },
-                                    // color:
-                                    //     PanaraColors
-                                    //         .warning,
-                                    panaraDialogType: PanaraDialogType.warning,
-                                    // imagePath:
-                                    //     "assets/images/logoB.png",
-                                    noImage: false,
-                                  );
+                                  AwesomeDialog(
+                                          context: context,
+                                          animType: AnimType.scale,
+                                          dialogType: DialogType.info,
+                                          showCloseIcon: true,
+                                          title: 'Login Please',
+                                          desc:
+                                              "You need login to add item in cart",
+                                          btnOkColor: mainColorRed,
+                                          btnCancelOnPress: () {},
+                                          btnOkText: "Login",
+                                          btnOkOnPress: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const RegisterWithPhoneNumber()),
+                                            );
+                                          },
+                                          btnCancelColor: mainColorGrey)
+                                      .show();
                                   return;
                                 }
                                 final cartItem = CartItem(product: Item.id!);

@@ -16,6 +16,7 @@ class ProductModel {
   final String? coverImg;
   final int? categoryId;
   final int? subCategoryId;
+  final int? brandIid;
   final int? purchasePrice;
   final int? price;
   final int? price2;
@@ -39,6 +40,7 @@ class ProductModel {
     this.coverImg,
     this.categoryId,
     this.subCategoryId,
+    this.brandIid,
     this.purchasePrice,
     this.price,
     this.price2,
@@ -68,6 +70,7 @@ class ProductModel {
         coverImg: data['coverImg'] as String?,
         categoryId: data['categoryId'] as int?,
         subCategoryId: data['SubCategoryId'] as int?,
+        brandIid: data['brand_id'] as int?,
         purchasePrice: data['purchase_price'] as int?,
         price: data['price'] as int?,
         price2: data['price2'] as int?,
@@ -92,6 +95,7 @@ class ProductModel {
         'coverImg': coverImg,
         'categoryId': categoryId,
         'SubCategoryId': subCategoryId,
+        'brand_id': brandIid,
         'purchase_price': purchasePrice,
         'price': price,
         'price2': price2,
@@ -128,6 +132,7 @@ class ProductModel {
     String? coverImg,
     int? categoryId,
     int? subCategoryId,
+    int? brandId,
     int? purchasePrice,
     int? price,
     int? price2,
@@ -151,6 +156,7 @@ class ProductModel {
       coverImg: coverImg ?? this.coverImg,
       categoryId: categoryId ?? this.categoryId,
       subCategoryId: subCategoryId ?? this.subCategoryId,
+      brandIid: brandIid ?? this.brandIid,
       purchasePrice: purchasePrice ?? this.purchasePrice,
       price: price ?? this.price,
       price2: price2 ?? this.price2,
@@ -185,6 +191,7 @@ class ProductModel {
       coverImg.hashCode ^
       categoryId.hashCode ^
       subCategoryId.hashCode ^
+      brandIid.hashCode ^
       purchasePrice.hashCode ^
       price.hashCode ^
       price2.hashCode ^

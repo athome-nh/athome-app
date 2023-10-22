@@ -71,7 +71,7 @@ class _NavSwitchState extends State<NavSwitch> {
     getBoolPrefs("islogin").then((value) {
       if (value) {
         getStringPrefs("userData").then((data2) {
-          userData = json.decode(decryptAES(data2));
+          userData = json.decode(data2);
           isLogin = true;
         });
       } else {

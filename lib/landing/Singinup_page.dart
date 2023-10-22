@@ -334,8 +334,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                           if (value["code"] == "201") {
                             if (value["data"]["isActive"] == 1) {
                               var jsonData = json.encode(value["data"]);
-                              setStringPrefs(
-                                  "userData", encryptAES(jsonData).toString());
+                              setStringPrefs("userData", jsonData.toString());
                               setBoolPrefs("islogin", true);
                               setStringPrefs("token", value["token"]);
                               Navigator.pushReplacement(

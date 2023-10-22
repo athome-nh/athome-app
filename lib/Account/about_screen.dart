@@ -15,14 +15,13 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                
         title: Text(
           "About Us".tr,
           style: TextStyle(
-              fontFamily: mainFontnormal,
-              color: mainColorGrey,
-              fontSize: 20,
-              ),
+            fontFamily: mainFontnormal,
+            color: mainColorGrey,
+            fontSize: 20,
+          ),
         ),
         centerTitle: true,
         backgroundColor: mainColorWhite,

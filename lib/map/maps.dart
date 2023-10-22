@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:collection';
 import 'package:athome/Config/property.dart';
+import 'package:athome/landing/login_page.dart';
 import 'package:athome/map/locationdeatil.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math';
-import 'package:panara_dialogs/panara_dialogs.dart';
 
 class Maps_screen extends StatefulWidget {
   const Maps_screen({super.key});
@@ -143,22 +145,18 @@ class _Maps_screenState extends State<Maps_screen> {
                     print('Is Inside Polygon: $isInsidePolygon');
                   } else {
                     _markers.clear();
-                    PanaraInfoDialog.show(
-                      context,
-                      title: "Hello",
-                      message: "Sorry unavailable now from your location",
-                      buttonText: "Okay",
-                      onTapDismiss: () {
-                        Navigator.pop(context);
-                      },
-                      // color:
-                      //     PanaraColors
-                      //         .warning,
-                      panaraDialogType: PanaraDialogType.warning,
-                      // imagePath:
-                      //     "assets/images/logoB.png",
-                      noImage: false,
-                    );
+                    AwesomeDialog(
+                            context: context,
+                            animType: AnimType.scale,
+                            dialogType: DialogType.info,
+                            showCloseIcon: true,
+                            title: "Unavailable location",
+                            desc: "Sorry unavailable now from your location",
+                            btnOkColor: mainColorRed,
+                            btnOkText: "Ok",
+                            btnOkOnPress: () {},
+                            btnCancelColor: mainColorGrey)
+                        .show();
                     // The location is outside the circle
                     // You can add your logic here
                     print('Location is outside the circle');
@@ -367,37 +365,6 @@ class _Maps_screenState extends State<Maps_screen> {
             position: _selectedLocation,
           ),
         );
-        // double distance = calculateDistance(_selectedLocation.latitude,
-        //     _selectedLocation.longitude, _googleLngLat);
-        // double circleRadius = 10000.0; // Radius of the circle in meters
-
-        // if (distance <= circleRadius) {
-        //   LatLng locationToCheck = _selectedLocation;
-
-        //   bool isInsidePolygon = _isLocationInsidePolygon(locationToCheck);
-        //   print('Is Inside Polygon: $isInsidePolygon');
-        // } else {
-        //   _markers.clear();
-        //   PanaraInfoDialog.show(
-        //     context,
-        //     title: "Hello",
-        //     message: "Sorry unavailable now from your location",
-        //     buttonText: "Okay",
-        //     onTapDismiss: () {
-        //       Navigator.pop(context);
-        //     },
-        //     // color:
-        //     //     PanaraColors
-        //     //         .warning,
-        //     panaraDialogType: PanaraDialogType.warning,
-        //     // imagePath:
-        //     //     "assets/images/logoB.png",
-        //     noImage: false,
-        //   );
-        //   // The location is outside the circle
-        //   // You can add your logic here
-        //   print('Location is outside the circle');
-        // }
       });
     } catch (e) {
       // Handle any errors that occur during the process

@@ -3,6 +3,7 @@ import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
+import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
@@ -14,6 +15,7 @@ import '../Config/athome_functions.dart';
 import '../home/nav_switch.dart';
 import '../main.dart';
 
+// ignore: camel_case_types
 class oreder_items extends StatefulWidget {
   const oreder_items({super.key});
 
@@ -21,12 +23,14 @@ class oreder_items extends StatefulWidget {
   State<oreder_items> createState() => _oreder_itemsState();
 }
 
+// ignore: camel_case_types
 class _oreder_itemsState extends State<oreder_items> {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
+    // ignore: non_constant_identifier_names
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListIdPast());
     int total = cartProvider.calculateTotalPricePast(CardItemshow);
@@ -65,15 +69,15 @@ class _oreder_itemsState extends State<oreder_items> {
                 color: mainColorRed,
               )),
         ),
-        body: cartProvider.cartItemsPast.length > 0
+        body: cartProvider.cartItemsPast.isNotEmpty
             ? SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Container(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: SizedBox(
                         height: getHeight(context, 65),
                         child: ListView.builder(
                             itemCount: cartProvider.cartItemsPast.length,
@@ -86,7 +90,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                   IconButton(
                                     onPressed: () {
                                       cartProvider
-                                          .deleteitemPast(cartitemQ.product!);
+                                          .deleteitemPast(cartitemQ.product);
                                     },
                                     icon: Icon(
                                       Icons.delete_outline,
@@ -107,7 +111,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                             borderRadius:
                                                 BorderRadius.circular(5)),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8),
+                                          padding: const EdgeInsets.all(8),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
@@ -116,7 +120,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                 width: getWidth(context, 20),
                                                 height: getHeight(context, 10),
                                                 decoration: BoxDecoration(
-                                                    color: Color(0xffF2F2F2),
+                                                    color: const Color(0xffF2F2F2),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             15)),
@@ -138,7 +142,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width:
                                                         getWidth(context, 30),
                                                     child: Text(
@@ -254,9 +258,10 @@ class _oreder_itemsState extends State<oreder_items> {
                                                               "you can not add more this item");
                                                           return;
                                                         }
-                                                        final cartItem = CartItem(
-                                                            product: cartitemQ
-                                                                .product!);
+                                                        final cartItem =
+                                                            CartItemPast(
+                                                                product: cartitemQ
+                                                                    .product);
                                                         cartProvider
                                                             .addToCartPast(
                                                                 cartItem);
@@ -299,7 +304,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                       onTap: () {
                                                         final cartItem = CartItem(
                                                             product: cartitemQ
-                                                                .product!);
+                                                                .product);
                                                         cartProvider
                                                             .removeFromCartPast(
                                                                 cartItem);
