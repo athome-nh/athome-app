@@ -83,11 +83,7 @@ class _SettingState extends State<Setting> {
                 child: DropdownButton<String>(
                   underline: Container(),
                   value: selectedItem,
-                  icon: Icon(
-                    Icons.language,
-                    size: 25,
-                    color: mainColorGrey,
-                  ),
+                  icon:SizedBox(),
                   style: TextStyle(
                     color: mainColorGrey,
                     fontFamily: mainFontbold,
@@ -114,23 +110,65 @@ class _SettingState extends State<Setting> {
                   items: [
                     DropdownMenuItem(
                       value: 'English',
-                      child: Text(
-                        'English'.tr,
-                        style: TextStyle(fontFamily: mainFontnormal),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset("assets/images/flag_english.png"),
+                          Container(
+                            padding: EdgeInsets.only(
+                               top: getWidth(context, 2),
+                               left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                            ),
+                            child: Text(
+                              'English'.tr,
+                              style: TextStyle(fontFamily: mainFontnormal),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     DropdownMenuItem(
                       value: 'Arabic',
-                      child: Text(
-                        'Arabic'.tr,
-                        style: TextStyle(fontFamily: mainFontnormal),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset("assets/images/flag_iraq.png"),
+                          Container(
+                            padding: EdgeInsets.only(
+                               top: getWidth(context, 2),
+                               left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                            ),
+                            child: Text(
+                              'Arabic'.tr,
+                              style: TextStyle(fontFamily: mainFontnormal),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     DropdownMenuItem(
                       value: 'Kurdish',
-                      child: Text(
-                        'Kurdish'.tr,
-                        style: TextStyle(fontFamily: mainFontnormal),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset("assets/images/flag_kurdish.png"),
+                          Container(
+                            padding: EdgeInsets.only(
+                               top: getWidth(context, 2),
+                               left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                            ),
+                            child: Text(
+                              'Kurdish'.tr,
+                              style: TextStyle(fontFamily: mainFontnormal),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

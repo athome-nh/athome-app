@@ -412,6 +412,9 @@ class _HomeSreenState extends State<HomeSreen> {
                                           );
                                         }
                                       },
+                                      style: TextButton.styleFrom(
+                              foregroundColor: mainColorRed
+                            ),
                                       child: Row(
                                         children: [
                                           Text("View All".tr,
@@ -1567,6 +1570,9 @@ class _HomeSreenState extends State<HomeSreen> {
                                     );
                                   }
                                 },
+                                style: TextButton.styleFrom(
+                              foregroundColor: mainColorRed
+                            ),
                                 child: Row(
                                   children: [
                                     Text("View All",

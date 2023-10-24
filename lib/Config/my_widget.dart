@@ -604,10 +604,10 @@ loginFirstContainer(BuildContext context) {
           "Please login first",
           style: TextStyle(fontSize: 32, fontFamily: mainFontnormal),
         ),
-        Image.asset("assets/images/gif_process.gif"),
+        Image.asset("assets/images/png_login.png"),
         SizedBox(
           height: getWidth(context, 12),
-          width: getWidth(context, 60),
+          width: getWidth(context, 75),
           child: TextButton(
             onPressed: () {
               Navigator.push(

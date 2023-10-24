@@ -138,11 +138,10 @@ class _TrackOrderState extends State<TrackOrder> {
                   ? Column(
                    
                       children: [
-                     
+                        // gif image place and size                  
                         Image.asset(
                           images[status],
-                          width: getWidth(context, 60),
-                          height: getHeight(context, 40),
+                          width: getWidth(context, 100),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
