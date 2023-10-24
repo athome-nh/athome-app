@@ -59,7 +59,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                         height: getHeight(context, 6),
                         decoration: BoxDecoration(
                             color: mainColorRed,
-                            borderRadius: BorderRadius.circular(50)),
+                            borderRadius: BorderRadius.circular(5)),
                         child: TextButton(
                           onPressed: () {
                             setBoolPrefs("onbord", true);
@@ -69,6 +69,10 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   builder: (context) => const NavSwitch()),
                             );
                           },
+                          style: TextButton.styleFrom(
+                                foregroundColor: mainColorRed
+                                ),
+                          
                           child: Text(
                             "Get Start",
                             style: TextStyle(
@@ -97,6 +101,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColorWhite,
+                                foregroundColor: mainColorWhite,
                               ),
                               child: Text(
                                 'SKIP',
@@ -104,6 +109,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   fontFamily: mainFontbold,
                                   fontSize: getHeight(context, 2),
                                   color: mainColorBlack,
+                                  
                                 ),
                                 textAlign: TextAlign.left,
                               ),
@@ -165,7 +171,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
                                   color: mainColorRed,
-                                  borderRadius: BorderRadius.circular(50)),
+                                  borderRadius: BorderRadius.circular(5)),
                               child: TextButton(
                                 onPressed: () {
                                   if (currentIndex == 2) {
@@ -173,6 +179,9 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                     buttonCarouselController.nextPage();
                                   }
                                 },
+                                style: TextButton.styleFrom(
+                                foregroundColor: mainColorRed
+                                ),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: getWidth(context, 5),

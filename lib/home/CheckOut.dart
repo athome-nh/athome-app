@@ -285,6 +285,7 @@ class _CheckOutState extends State<CheckOut> {
                           top: getHeight(context, 4)),
                       child: Column(
                         children: [
+// Todo: (jegr) / aw textfielda pash nosini text w done dagrtn la keyboard textaka nayetaa now textfieldaka
                           TextFormField(
                             maxLines: 4,
                             controller: NoteController,

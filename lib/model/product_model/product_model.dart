@@ -7,7 +7,7 @@ class ProductModel {
   final String? nameEn;
   final String? nameAr;
   final String? nameKu;
-  final String? contentsEn;
+  final String?contentsEn;
   final String? contentsAr;
   final String? contentsKu;
   final String? descriptionEn;

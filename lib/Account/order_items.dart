@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -451,6 +453,7 @@ class _oreder_itemsState extends State<oreder_items> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
+                                
                                 TextButton(
                                   onPressed: () async {
                                     if (await noInternet(context)) {
@@ -468,6 +471,20 @@ class _oreder_itemsState extends State<oreder_items> {
                                             children: <Widget>[
                                               Container(
                                                 height: getHeight(context, 40),
+                                                decoration: BoxDecoration(
+                                                  color:mainColorLightGrey,
+                                                  borderRadius:BorderRadius.circular(5),
+                                                  ),
+                                                  child: Text(
+                                                    "Select Location",
+                                                  style: TextStyle(
+                                                    color: mainColorRed,
+                                                    fontFamily: mainFontnormal),
+                                                    ), 
+                                              ),
+                                              
+                                              SizedBox(
+                                                height: getHeight(context, 40),
                                                 // width: getWidth(context, 100),
                                                 child: Padding(
                                                   padding:
@@ -476,19 +493,11 @@ class _oreder_itemsState extends State<oreder_items> {
                                                       itemCount: productrovider
                                                           .location.length,
                                                       itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        final location =
-                                                            productrovider
-                                                                    .location[
-                                                                index];
+                                                          (BuildContext context,int index) {
+                                                        final location =productrovider.location[index];
                                                         return Padding(
                                                           padding:
-                                                              EdgeInsets.only(
-                                                                  bottom:
-                                                                      getHeight(
-                                                                          context,
-                                                                          1)),
+                                                              EdgeInsets.only(bottom:getHeight(context,1)),
                                                           child:
                                                               GestureDetector(
                                                             onTap: () {
@@ -502,12 +511,8 @@ class _oreder_itemsState extends State<oreder_items> {
                                                             },
                                                             child: Container(
                                                               decoration: BoxDecoration(
-                                                                  color:
-                                                                      mainColorLightGrey,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
+                                                                  color:mainColorLightGrey,
+                                                                  borderRadius:BorderRadius.circular(5)),
                                                               child: ListTile(
                                                                 title: Text(
                                                                   location
@@ -576,8 +581,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              50),
+                                                          BorderRadius.circular(5),
                                                     ),
                                                   ),
                                                 ),

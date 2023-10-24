@@ -4,6 +4,7 @@ import 'package:athome/main.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
@@ -35,7 +36,7 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Center(
         child: !isLogin
             ? loginFirstContainer(context)
-            : productrovider.Orders.length > 100
+            : productrovider.Orders.isNotEmpty
                 ? ListView.builder(
                     itemCount: productrovider.Orders.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -83,17 +84,17 @@ class _OrderScreenState extends State<OrderScreen> {
                                         color: mainColorLightGrey,
                                         borderRadius: BorderRadius.circular(5),
                                       ),
-                                      child: Icon(
-                                        order.status! < 5
-                                            ? Icons.shopping_cart
-                                            : order.status! == 6
-                                                ? Icons.close
-                                                : Icons.check,
-                                        color: order.status! == 5
-                                            ? Colors.green
-                                            : mainColorRed,
-                                        size: 30,
-                                      )),
+                                      child: order.status! < 5
+                                          ? Image.asset("assets/images/gif_way.gif")
+                                          : Icon(
+                                              order.status! == 6
+                                                  ? Icons.close
+                                                  : Icons.check,
+                                              color: order.status! == 5
+                                                  ? Colors.green
+                                                  : mainColorRed,
+                                              size: 30,
+                                            )),
                                 ),
                                 title: Row(
                                   children: [

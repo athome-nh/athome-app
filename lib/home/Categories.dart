@@ -81,7 +81,7 @@ class _CategoriesState extends State<Categories> {
                 SingleChildScrollView(
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         height: getHeight(context, 90),
                         width: getWidth(context, 95),
                         child: GridView.builder(
@@ -170,15 +170,22 @@ class _CategoriesState extends State<Categories> {
                     builder: (context, constraints) {
                       if (cartProvider.ListFavId().isEmpty) {
                         // list is empty
-                        return Container(
+                        return SizedBox(
                           width: getWidth(context, 100),
-                          height: getHeight(context, 75),
-                          child: Center(
-                            child: Text(
-                              "You have no favorite yet",
+                          height: getHeight(context, 60),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: getWidth(context, 50),
+                                height: getWidth(context, 70),
+                                child: Image.asset("assets/images/gif_favorite.gif"),
+                                ),
+                                Text("No have any favorite",
                               style: TextStyle(
-                                  fontFamily: mainFontbold, fontSize: 16),
-                            ),
+                                fontFamily: mainFontnormal,fontSize: 16),
+                                ),
+                            ],
                           ),
                         );
                       } else {

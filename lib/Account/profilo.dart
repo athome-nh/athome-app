@@ -9,7 +9,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../controller/cartprovider.dart';
@@ -155,351 +154,318 @@ class _SettingState extends State<Setting> {
                               right: getWidth(context, 3.5),
                               top: getWidth(context, 3.5),
                             ),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              elevation: 3,
-                              child: Container(
-                                padding: const EdgeInsets.all(15),
-                                decoration: BoxDecoration(
-                                  color: mainColorLightGrey,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Column(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: isEdit
-                                          ? () {
-                                              _getImage();
-                                            }
-                                          : null,
-                                      child: Row(
-                                        children: [
-                                          _image != null
-                                              ? Container(
-                                                  width: getWidth(context, 18),
-                                                  height: getWidth(context, 18),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                    child: Image.file(
-                                                      File(_image!.path),
-                                                      height: 200,
-                                                      width: 200,
-                                                    ),
-                                                  ),
-                                                )
-                                              : Container(
-                                                  width: getWidth(context, 18),
-                                                  height: getWidth(context, 18),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                    child: CachedNetworkImage(
-                                                      width:
-                                                          getWidth(context, 18),
-                                                      imageUrl: image,
-                                                      fit: BoxFit.fill,
-                                                    ),
-                                                  ),
-                                                ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(15),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                // user name
-                                                Text(
-                                                  userData["name"],
-                                                  style: TextStyle(
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 18,
-                                                      color: mainColorGrey),
-                                                ),
-                                                SizedBox(
-                                                  height: getHeight(context, 1),
-                                                ),
-                                                // phone
-                                                Text(
-                                                  userData["phone"],
-                                                  style: TextStyle(
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 16,
-                                                      color: mainColorGrey),
-                                                ),
-                                              ],
+                            child: Container(
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // image
+                                  GestureDetector(
+                                    onTap: isEdit
+                                        ? () {
+                                            _getImage();
+                                          }
+                                        : null,
+                                    child: _image != null
+                                        ? Container(
+                                            width: getWidth(context, 20),
+                                            height: getWidth(context, 20),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              child: Image.file(
+                                                File(_image!.path),
+                                                height: 200,
+                                                width: 200,
+                                              ),
+                                            ),
+                                          )
+                                        : Container(
+                                            width: getWidth(context, 20),
+                                            height: getWidth(context, 20),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              child: CachedNetworkImage(
+                                                width: getWidth(context, 18),
+                                                imageUrl: image,
+                                                fit: BoxFit.fill,
+                                              ),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                  ),
+
+                                  // name and phone
+                                  Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        // user name
+                                        Text(
+                                          userData["name"],
+                                          style: TextStyle(
+                                              fontFamily: mainFontbold,
+                                              fontSize: 18,
+                                              color: mainColorGrey),
+                                        ),
+                                        SizedBox(
+                                          height: getHeight(context, 1),
+                                        ),
+                                        // phone
+                                        Text(
+                                          userData["phone"],
+                                          style: TextStyle(
+                                              fontFamily: mainFontbold,
+                                              fontSize: 16,
+                                              color: mainColorGrey),
+                                        ),
+                                      ],
                                     ),
-                                    isEdit
-                                        ? Row(
-                                            children: [
-                                              GestureDetector(
-                                                onTap: waiting
-                                                    ? null
-                                                    : () async {
-                                                        setState(() {
-                                                          waiting = true;
-                                                        });
+                                  ),
 
-                                                        var data = {};
-                                                        // print(_image!.path);
-                                                        if (_image == null) {
-                                                          data = {
-                                                            "id":
-                                                                userData["id"],
-                                                            "name":
-                                                                nameController
-                                                                    .text,
-                                                            "age": ageController
-                                                                .text,
-                                                            "gender": gender,
-                                                          };
-                                                          Network(false)
-                                                              .postData(
-                                                                  "profile",
-                                                                  data,
-                                                                  context)
-                                                              .then((value) {
-                                                            if (value != "") {
-                                                              if (value[
-                                                                      "code"] ==
-                                                                  "201") {
-                                                                userData =
-                                                                    value[
-                                                                        "data"];
-                                                                var jsonData =
-                                                                    json.encode(
-                                                                        value[
-                                                                            "data"]);
-                                                                setStringPrefs(
-                                                                    "userData",
-                                                                    encryptAES(
-                                                                            jsonData)
-                                                                        .toString());
-                                                                setState(() {
-                                                                  waiting =
-                                                                      false;
-                                                                  isEdit =
-                                                                      false;
-                                                                });
-                                                              }
-                                                            }
-                                                          });
-                                                        } else {
-                                                          Map<String, String>
-                                                              body = {
-                                                            "id": userData["id"]
-                                                                .toString(),
-                                                          };
+                                  // edit button
+                                  isEdit
+                                      ? Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: waiting
+                                                  ? null
+                                                  : () async {
+                                                      setState(() {
+                                                        waiting = true;
+                                                      });
 
-                                                          Network(false)
-                                                              .addImage(body,
-                                                                  _image!.path)
-                                                              .then((value) {
-                                                            if (value) {
-                                                              data = {
-                                                                "id": userData[
-                                                                    "id"],
-                                                                "name":
-                                                                    nameController
-                                                                        .text,
-                                                                "age":
-                                                                    ageController
-                                                                        .text,
-                                                                "gender":
-                                                                    gender,
-                                                              };
-                                                              Network(false)
-                                                                  .postData(
-                                                                      "profile",
-                                                                      data,
-                                                                      context)
-                                                                  .then(
-                                                                      (value2) {
-                                                                if (value2 !=
-                                                                    "") {
-                                                                  if (value2[
-                                                                          "code"] ==
-                                                                      "201") {
-                                                                    userData =
-                                                                        value2[
-                                                                            "data"];
-                                                                    var jsonData =
-                                                                        json.encode(
-                                                                            value2["data"]);
-                                                                    setStringPrefs(
-                                                                        "userData",
-                                                                        jsonData
-                                                                            .toString());
-                                                                    setState(
-                                                                        () {
-                                                                      userData[
-                                                                          "img"] = value2[
-                                                                              "data"]
-                                                                          [
-                                                                          "img"];
-                                                                      waiting =
-                                                                          false;
-                                                                      isEdit =
-                                                                          false;
-                                                                    });
-                                                                  }
-                                                                }
+                                                      var data = {};
+                                                      // print(_image!.path);
+                                                      if (_image == null) {
+                                                        data = {
+                                                          "id": userData["id"],
+                                                          "name": nameController
+                                                              .text,
+                                                          "age": ageController
+                                                              .text,
+                                                          "gender": gender,
+                                                        };
+                                                        Network(false)
+                                                            .postData("profile",
+                                                                data, context)
+                                                            .then((value) {
+                                                          if (value != "") {
+                                                            if (value["code"] ==
+                                                                "201") {
+                                                              userData =
+                                                                  value["data"];
+                                                              var jsonData = json
+                                                                  .encode(value[
+                                                                      "data"]);
+                                                              setStringPrefs(
+                                                                  "userData",
+                                                                  encryptAES(
+                                                                          jsonData)
+                                                                      .toString());
+                                                              setState(() {
+                                                                waiting = false;
+                                                                isEdit = false;
                                                               });
                                                             }
-                                                          });
-                                                        }
-                                                      },
-                                                child: Container(
-                                                  width: getWidth(context, 16),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      color: mainColorRed),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        "Save".tr,
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                mainFontbold,
-                                                            fontSize: 12,
-                                                            color:
-                                                                mainColorWhite),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                          }
+                                                        });
+                                                      } else {
+                                                        Map<String, String>
+                                                            body = {
+                                                          "id": userData["id"]
+                                                              .toString(),
+                                                        };
+
+                                                        Network(false)
+                                                            .addImage(body,
+                                                                _image!.path)
+                                                            .then((value) {
+                                                          if (value) {
+                                                            data = {
+                                                              "id": userData[
+                                                                  "id"],
+                                                              "name":
+                                                                  nameController
+                                                                      .text,
+                                                              "age":
+                                                                  ageController
+                                                                      .text,
+                                                              "gender": gender,
+                                                            };
+                                                            Network(false)
+                                                                .postData(
+                                                                    "profile",
+                                                                    data,
+                                                                    context)
+                                                                .then((value2) {
+                                                              if (value2 !=
+                                                                  "") {
+                                                                if (value2[
+                                                                        "code"] ==
+                                                                    "201") {
+                                                                  userData =
+                                                                      value2[
+                                                                          "data"];
+                                                                  var jsonData =
+                                                                      json.encode(
+                                                                          value2[
+                                                                              "data"]);
+                                                                  setStringPrefs(
+                                                                      "userData",
+                                                                      jsonData
+                                                                          .toString());
+                                                                  setState(() {
+                                                                    userData[
+                                                                        "img"] = value2[
+                                                                            "data"]
+                                                                        ["img"];
+                                                                    waiting =
+                                                                        false;
+                                                                    isEdit =
+                                                                        false;
+                                                                  });
+                                                                }
+                                                              }
+                                                            });
+                                                          }
+                                                        });
+                                                      }
+                                                    },
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                  top: getWidth(context, 2),
+                                                  left: getWidth(context, 2),
+                                                  right: getWidth(context, 2),
+                                                  bottom: getWidth(context, 1),
+                                                ),
+                                                width: getWidth(context, 16),
+                                                height: getWidth(context, 8),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: mainColorRed),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      "Save".tr,
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 14,
+                                                          color:
+                                                              mainColorWhite),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: getWidth(context, 2),
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    _image = null;
-                                                    image = userData["img"];
-                                                    isEdit = false;
-                                                    nameController.text =
-                                                        userData["name"];
-                                                    ageController.text =
-                                                        userData["age"]
-                                                            .toString();
-                                                    gender = userData["gender"];
-                                                  });
-                                                },
-                                                child: Container(
-                                                  width: getWidth(context, 16),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      color: mainColorRed),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        "Cancel".tr,
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                mainFontbold,
-                                                            fontSize: 12,
-                                                            color:
-                                                                mainColorWhite),
-                                                      ),
-                                                    ],
-                                                  ),
+                                            ),
+                                            SizedBox(
+                                              width: getWidth(context, 2),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _image = null;
+                                                  image = userData["img"];
+                                                  isEdit = false;
+                                                  nameController.text =
+                                                      userData["name"];
+                                                  ageController.text =
+                                                      userData["age"]
+                                                          .toString();
+                                                  gender = userData["gender"];
+                                                });
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                  top: getWidth(context, 2),
+                                                  left: getWidth(context, 2),
+                                                  right: getWidth(context, 2),
+                                                  bottom: getWidth(context, 1),
+                                                ),
+                                                width: getWidth(context, 16),
+                                                height: getWidth(context, 8),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: mainColorRed),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      "Cancel".tr,
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 14,
+                                                          color:
+                                                              mainColorWhite),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          )
-                                        : Row(
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    isEdit = true;
-                                                  });
-                                                },
-                                                child: Container(
-                                                  width: getWidth(context, 32),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      color: mainColorRed),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        "Edit account".tr,
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                mainFontbold,
-                                                            fontSize: 12,
-                                                            color:
-                                                                mainColorWhite),
-                                                      ),
-                                                    ],
-                                                  ),
+                                            ),
+                                          ],
+                                        )
+                                      : Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  isEdit = true;
+                                                });
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                  top: getWidth(context, 2),
+                                                  left: getWidth(context, 2),
+                                                  right: getWidth(context, 2),
+                                                  bottom: getWidth(context, 1),
+                                                ),
+                                                width: getWidth(context, 16),
+                                                height: getWidth(context, 8),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:BorderRadius.circular(5),
+                                                    color: mainColorRed,
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      "Edit".tr,
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 14,
+                                                          color:
+                                                              mainColorWhite),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                              // SizedBox(
-                                              //   width: getWidth(context, 2),
-                                              // ),
-                                              // Container(
-                                              //   width: getWidth(context, 30),
-                                              //   height: getHeight(context, 4),
-                                              //   decoration: BoxDecoration(
-                                              //       borderRadius:
-                                              //           BorderRadius.circular(5),
-                                              //       color: mainColorRed),
-                                              //   child: Row(
-                                              //     mainAxisAlignment:
-                                              //         MainAxisAlignment.center,
-                                              //     children: [
-                                              //       Text(
-                                              //         "Delete account",
-                                              //         style: TextStyle(
-                                              //             fontFamily: mainFontbold,
-                                              //             fontSize: 12,
-                                              //             color: mainColorWhite),
-                                              //       ),
-                                              //     ],
-                                              //   ),
-                                              // ),
-                                            ],
-                                          ),
-                                  ],
-                                ),
+                                            ),
+                                          ],
+                                        ),
+                                ],
                               ),
                             ),
                           ),
@@ -862,7 +828,8 @@ class _SettingState extends State<Setting> {
                       waiting ? WaitingWiget(context) : const SizedBox(),
                     ],
                   ),
-                )),
+                ),
+              ),
     );
   }
 }

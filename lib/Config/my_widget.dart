@@ -155,7 +155,7 @@ Widget listItemsShow(BuildContext context, var data) {
       ),
     ),
     child: Container(
-      height: getHeight(context, 90),
+      height: getHeight(context, 80),
       width: getWidth(context, 95),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -333,12 +333,13 @@ Widget listItemsShow(BuildContext context, var data) {
                               const SizedBox(
                                 height: 3,
                               ),
+                              // limit letter of info in search items
                               Text(
                                 lang == "en"
-                                    ? product.contentsEn.toString()
+                                    ? textCount(product.contentsEn.toString(), 15)
                                     : lang == "ar"
-                                        ? product.contentsAr.toString()
-                                        : product.contentsKu.toString(),
+                                        ? textCount(product.contentsAr.toString(), 15)
+                                        : textCount(product.contentsKu.toString(), 15),
                                 maxLines: 1,
                                 style: TextStyle(
                                     color: mainColorGrey.withOpacity(0.5),
@@ -599,83 +600,39 @@ loginFirstContainer(BuildContext context) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: getHeight(context, 12),
-          width: getWidth(context, 80),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: mainColorRed,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          ),
-          child: Icon(
-            Icons.warning_amber_outlined,
-            size: 70,
-            color: mainColorWhite,
-          ),
+        Text(
+          "Please login first",
+          style: TextStyle(fontSize: 32, fontFamily: mainFontnormal),
         ),
-        Container(
-          height: getHeight(context, 30),
-          width: getWidth(context, 80),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: mainColorGrey,
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Confirm',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: mainFontbold,
-                    color: mainColorWhite),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'You must login first',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: mainFontnormal,
-                    color: mainColorWhite),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                height: getWidth(context, 12),
-                width: getWidth(context, 60),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const RegisterWithPhoneNumber()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(mainColorRed),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                        color: mainColorWhite,
-                        fontSize: 22,
-                        fontFamily: mainFontnormal),
-                  ),
+        Image.asset("assets/images/gif_process.gif"),
+        SizedBox(
+          height: getWidth(context, 12),
+          width: getWidth(context, 60),
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const RegisterWithPhoneNumber()),
+              );
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(mainColorRed),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
                 ),
-              )
-            ],
+              ),
+            ),
+            child: Text(
+              'Login',
+              style: TextStyle(
+                  color: mainColorWhite,
+                  fontSize: 22,
+                  fontFamily: mainFontnormal),
+            ),
           ),
-        ),
+        )
       ],
     ),
   );

@@ -7,13 +7,12 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:athome/Account/order_screen.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/Homepage.dart';
 import 'package:athome/Home/MyCart.dart';
 import 'package:athome/Home/Search.dart';
 import 'package:provider/provider.dart';
-import '../Config/athome_functions.dart';
 import '../Config/local_data.dart';
 import '../main.dart';
+import 'home_page.dart';
 
 class NavSwitch extends StatefulWidget {
   const NavSwitch({super.key});
@@ -54,7 +53,7 @@ class _NavSwitchState extends State<NavSwitch> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    const Home_SC(),
+    const HomeSreen(),
     const Search(),
     const OrderScreen(),
     const Setting(),
@@ -96,63 +95,53 @@ class _NavSwitchState extends State<NavSwitch> {
           body: Center(
             child: _widgetOptions.elementAt(_selectedIndex),
           ),
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  color: mainColorGrey.withOpacity(0.1), // Border color
-                  width: 1.0, // Border width
+          bottomNavigationBar: BottomNavigationBar(
+            showUnselectedLabels: false,
+            selectedFontSize: 12,
+            unselectedFontSize: 12,
+            selectedItemColor: mainColorWhite,
+            unselectedItemColor: mainColorWhite,
+            backgroundColor: mainColorRed,
+            type: BottomNavigationBarType.fixed,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  activeIcon: const Icon(
+                    Ionicons.home,
+                  ),
+                  icon: const Icon(
+                    Ionicons.home_outline,
+                  ),
+                  label: "Home".tr),
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Ionicons.search_outline,
                 ),
+                activeIcon: const Icon(
+                  Ionicons.search,
+                ),
+                label: 'Search'.tr,
               ),
-            ),
-            child: BottomNavigationBar(
-              showUnselectedLabels: false,
-              selectedFontSize: 12,
-              unselectedFontSize: 12,
-              selectedItemColor: mainColorRed,
-              unselectedItemColor: mainColorWhite,
-              backgroundColor: mainColorGrey,
-              type: BottomNavigationBarType.fixed,
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                    activeIcon: const Icon(
-                      Ionicons.home,
-                    ),
-                    icon: const Icon(
-                      Ionicons.home_outline,
-                    ),
-                    label: "Home".tr),
-                BottomNavigationBarItem(
-                  icon: const Icon(
-                    Ionicons.search_outline,
-                  ),
-                  activeIcon: const Icon(
-                    Ionicons.search,
-                  ),
-                  label: 'Search'.tr,
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.shopping_bag_outlined,
                 ),
-                BottomNavigationBarItem(
-                  icon: const Icon(
-                    Icons.shopping_bag_outlined,
-                  ),
-                  activeIcon: const Icon(
-                    Icons.shopping_bag,
-                  ),
-                  label: 'My Orders'.tr,
+                activeIcon: const Icon(
+                  Icons.shopping_bag,
                 ),
-                BottomNavigationBarItem(
-                  icon: const Icon(
-                    Ionicons.person_outline,
-                  ),
-                  activeIcon: const Icon(
-                    Ionicons.person,
-                  ),
-                  label: 'Account'.tr,
+                label: 'My Orders'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Ionicons.person_outline,
                 ),
-              ],
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,              
-            ),
+                activeIcon: const Icon(
+                  Ionicons.person,
+                ),
+                label: 'Account'.tr,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,              
           ),
           floatingActionButton: buildFAB(context),
         ),

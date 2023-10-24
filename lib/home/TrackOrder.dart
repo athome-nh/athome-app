@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -15,17 +13,17 @@ class TrackOrder extends StatefulWidget {
   String id = "";
   String total = "";
   String time = "";
-  TrackOrder(this.ordercode, this.id, this.total, this.time);
+  TrackOrder(this.ordercode, this.id, this.total, this.time, {super.key});
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
 
 List images = [
   "assets/images/008_track_1.png",
-  "assets/images/008_track_2.png",
-  "assets/images/008_track_2.png",
-  "assets/images/008_track_3.png",
-  "assets/images/008_track_4.png",
+  "assets/images/gif_process.gif",
+  "assets/images/gif_process.gif",
+  "assets/images/gif_onTheWay.gif",
+  "assets/images/gif_delivered.gif",
 ];
 List titles = [
   "Order Placed",
@@ -45,7 +43,7 @@ int status = 0;
 
 class _TrackOrderState extends State<TrackOrder> {
   int updateStatus() {
-    Network(false).getData("orderTrack/" + widget.id).then((value) {
+    Network(false).getData("orderTrack/${widget.id}").then((value) {
       if (value != "") {
         if (value["code"] == "200") {
           setState(() {
@@ -78,7 +76,7 @@ class _TrackOrderState extends State<TrackOrder> {
   }
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       updateStatus();
     });
   }
@@ -112,7 +110,7 @@ class _TrackOrderState extends State<TrackOrder> {
             )),
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: getHeight(context, 85),
           width: getWidth(context, 100),
           child: Column(
@@ -121,13 +119,13 @@ class _TrackOrderState extends State<TrackOrder> {
             children: [
               Column(
                 children: [
-                  Text("Order: " + widget.ordercode,
+                  Text("Order: ${widget.ordercode}",
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 28,
                         fontFamily: mainFontnormal,
                       )),
-                  Text(widget.time,
+                  Text(widget.time.substring(0,19),
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 20,
@@ -135,9 +133,12 @@ class _TrackOrderState extends State<TrackOrder> {
                       )),
                 ],
               ),
+              
               loading
                   ? Column(
+                   
                       children: [
+                     
                         Image.asset(
                           images[status],
                           width: getWidth(context, 60),
@@ -159,7 +160,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                                 child: status == 0
                                     ? LoadingIndicator(
-                                        indicatorType: Indicator.ballScale,
+                                        indicatorType: Indicator.orbit,
                                         colors: [mainColorRed],
                                         strokeWidth: 5,
                                       )
@@ -169,9 +170,9 @@ class _TrackOrderState extends State<TrackOrder> {
                                             color: mainColorWhite,
                                             size: getWidth(context, 5),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                               ),
-                              Container(
+                              SizedBox(
                                   width: getWidth(context, 18),
                                   child: Divider(
                                     color: mainColorGrey,
@@ -187,7 +188,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                                 child: status == 1 || status == 2
                                     ? LoadingIndicator(
-                                        indicatorType: Indicator.ballScale,
+                                        indicatorType: Indicator.ballSpinFadeLoader,
                                         colors: [mainColorRed],
                                         strokeWidth: 5,
                                       )
@@ -197,9 +198,9 @@ class _TrackOrderState extends State<TrackOrder> {
                                             color: mainColorWhite,
                                             size: getWidth(context, 5),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                               ),
-                              Container(
+                              SizedBox(
                                   width: getWidth(context, 18),
                                   child: Divider(
                                     color: mainColorGrey,
@@ -215,7 +216,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                                 child: status == 3
                                     ? LoadingIndicator(
-                                        indicatorType: Indicator.ballScale,
+                                        indicatorType: Indicator.orbit,
                                         colors: [mainColorRed],
                                         strokeWidth: 5,
                                       )
@@ -225,9 +226,9 @@ class _TrackOrderState extends State<TrackOrder> {
                                             color: mainColorWhite,
                                             size: getWidth(context, 5),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                               ),
-                              Container(
+                              SizedBox(
                                   width: getWidth(context, 18),
                                   child: Divider(
                                     color: mainColorGrey,
@@ -247,7 +248,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                         color: mainColorWhite,
                                         size: getWidth(context, 5),
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ),
                             ],
                           ),
@@ -261,14 +262,16 @@ class _TrackOrderState extends State<TrackOrder> {
                               fontSize: 28,
                               fontFamily: mainFontnormal,
                             )),
-                        Container(
-                          width: getWidth(context, 70),
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: getWidth(context, 10)),
                           child: Text(content[status],
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: mainColorGrey,
                                 fontSize: 16,
-                                fontFamily: mainFontnormal,
-                              )),
+                                fontFamily: mainFontnormal,                                
+                              ),
+                            ),
                         ),
                       ],
                     )
@@ -278,27 +281,27 @@ class _TrackOrderState extends State<TrackOrder> {
                     ? MainAxisAlignment.center
                     : MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        "Total",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontFamily: mainFontnormal,
-                            color: mainColorGrey),
-                      ),
-                      Text(
-                        addCommasToPrice(int.parse(widget.total)),
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontFamily: mainFontbold,
-                            color: mainColorRed),
-                      ),
-                    ],
-                  ),
+                  // Column(
+                  //   children: [
+                  //     Text(
+                  //       "Total",
+                  //       style: TextStyle(
+                  //           fontSize: 18,
+                  //           fontFamily: mainFontnormal,
+                  //           color: mainColorGrey),
+                  //     ),
+                  //     Text(
+                  //       addCommasToPrice(int.parse(widget.total)),
+                  //       style: TextStyle(
+                  //           fontSize: 18,
+                  //           fontFamily: mainFontbold,
+                  //           color: mainColorRed),
+                  //     ),
+                  //   ],
+                  // ),
                   loading
                       ? status > 0
-                          ? SizedBox()
+                          ? const SizedBox()
                           : TextButton(
                               onPressed: () {
                                 Network(false)
@@ -332,7 +335,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                               ),
                             )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ],
               )
             ],
