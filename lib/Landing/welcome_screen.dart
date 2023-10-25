@@ -70,9 +70,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                             );
                           },
                           style: TextButton.styleFrom(
-                                foregroundColor: mainColorRed
-                                ),
-                          
+                              foregroundColor: mainColorRed),
                           child: Text(
                             "Get Start",
                             style: TextStyle(
@@ -109,7 +107,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   fontFamily: mainFontbold,
                                   fontSize: getHeight(context, 2),
                                   color: mainColorBlack,
-                                  
                                 ),
                                 textAlign: TextAlign.left,
                               ),
@@ -180,8 +177,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   }
                                 },
                                 style: TextButton.styleFrom(
-                                foregroundColor: mainColorRed
-                                ),
+                                    foregroundColor: mainColorRed),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: getWidth(context, 5),

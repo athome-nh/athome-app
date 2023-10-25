@@ -19,11 +19,11 @@ class TrackOrder extends StatefulWidget {
 }
 
 List images = [
-  "assets/images/008_track_1.png",
-  "assets/images/gif_process.gif",
-  "assets/images/gif_process.gif",
-  "assets/images/gif_onTheWay.gif",
-  "assets/images/gif_delivered.gif",
+  "assets/images/new_pick.gif",
+  "assets/images/new_process.gif",
+  "assets/images/new_process.gif",
+  "assets/images/new_way.gif",
+  "assets/images/new_delivered.gif",
 ];
 List titles = [
   "Order Placed",
@@ -51,7 +51,6 @@ class _TrackOrderState extends State<TrackOrder> {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
               productrovider.updateOrder(int.parse(widget.id), 5);
-              Navigator.pop(context);
             }
             final productrovider =
                 Provider.of<productProvider>(context, listen: false);
@@ -77,7 +76,9 @@ class _TrackOrderState extends State<TrackOrder> {
 
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      updateStatus();
+      if (status <= 5) {
+        updateStatus();
+      }
     });
   }
 
@@ -125,7 +126,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         fontSize: 28,
                         fontFamily: mainFontnormal,
                       )),
-                  Text(widget.time.substring(0,19),
+                  Text(widget.time.substring(0, 19),
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 20,
@@ -133,12 +134,10 @@ class _TrackOrderState extends State<TrackOrder> {
                       )),
                 ],
               ),
-              
               loading
                   ? Column(
-                   
                       children: [
-                        // gif image place and size                  
+                        // gif image place and size
                         Image.asset(
                           images[status],
                           width: getWidth(context, 100),
@@ -187,7 +186,8 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                                 child: status == 1 || status == 2
                                     ? LoadingIndicator(
-                                        indicatorType: Indicator.ballSpinFadeLoader,
+                                        indicatorType:
+                                            Indicator.ballSpinFadeLoader,
                                         colors: [mainColorRed],
                                         strokeWidth: 5,
                                       )
@@ -262,15 +262,17 @@ class _TrackOrderState extends State<TrackOrder> {
                               fontFamily: mainFontnormal,
                             )),
                         Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: getWidth(context, 10)),
-                          child: Text(content[status],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontSize: 16,
-                                fontFamily: mainFontnormal,                                
-                              ),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 10)),
+                          child: Text(
+                            content[status],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: mainColorGrey,
+                              fontSize: 16,
+                              fontFamily: mainFontnormal,
                             ),
+                          ),
                         ),
                       ],
                     )
