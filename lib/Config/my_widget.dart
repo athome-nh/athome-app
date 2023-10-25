@@ -336,10 +336,13 @@ Widget listItemsShow(BuildContext context, var data) {
                               // limit letter of info in search items
                               Text(
                                 lang == "en"
-                                    ? textCount(product.contentsEn.toString(), 15)
+                                    ? textCount(
+                                        product.contentsEn.toString(), 15)
                                     : lang == "ar"
-                                        ? textCount(product.contentsAr.toString(), 15)
-                                        : textCount(product.contentsKu.toString(), 15),
+                                        ? textCount(
+                                            product.contentsAr.toString(), 15)
+                                        : textCount(
+                                            product.contentsKu.toString(), 15),
                                 maxLines: 1,
                                 style: TextStyle(
                                     color: mainColorGrey.withOpacity(0.5),
@@ -530,8 +533,8 @@ Widget WaitingWiget(BuildContext context) {
       indicatorType: Indicator.ballRotateChase,
       colors: [
         mainColorGrey,
-        mainColorRed,
-        mainColorSuger,
+        // mainColorRed,
+        // mainColorSuger,
       ],
 
       // strokeWidth: 5,

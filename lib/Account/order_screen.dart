@@ -1,6 +1,8 @@
+import 'package:athome/Account/order_items.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/TrackOrder.dart';
 import 'package:athome/main.dart';
+import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
@@ -56,6 +58,23 @@ class _OrderScreenState extends State<OrderScreen> {
                                         order.totalPrice.toString(),
                                         order.createdAt.toString())),
                               );
+                            } else {
+                              productrovider
+                                  .getordersbyOrderCode(order.orderCode!)
+                                  .forEach((element) {
+                                final cartItem = CartItemPast(
+                                  product: element.productId!,
+                                  quantity: element.qt!,
+                                );
+                                cartProvider.addToCartPast(cartItem);
+                              });
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => oreder_items()),
+                              ).then((value) {
+                                cartProvider.clearCartPast();
+                              });
                             }
                           },
                           child: Container(
@@ -85,7 +104,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                         borderRadius: BorderRadius.circular(5),
                                       ),
                                       child: order.status! < 5
-                                          ? Image.asset("assets/images/gif_way.gif")
+                                          ? Image.asset(
+                                              "assets/images/gif_way.gif")
                                           : Icon(
                                               order.status! == 6
                                                   ? Icons.close

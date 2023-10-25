@@ -66,13 +66,12 @@ class _HomeSreenState extends State<HomeSreen> {
         body: SafeArea(
           child: CustomScrollView(slivers: <Widget>[
             SliverAppBar(
-
               title: Image.asset(
                 "assets/images/logoB.png",
                 width: getWidth(context, 30),
               ),
-              
-              //  
+
+              //
               automaticallyImplyLeading: false,
               backgroundColor: mainColorLightGrey,
               expandedHeight:
@@ -225,25 +224,25 @@ class _HomeSreenState extends State<HomeSreen> {
                                     );
                             },
                             style: TextButton.styleFrom(
-                              foregroundColor: mainColorRed
-                            ),
+                                foregroundColor: mainColorRed),
                             child: Row(
                               children: [
-                                Text("View All".tr,
-                                    style: TextStyle(
-                                      color: mainColorRed,
-                                      fontSize: 14,
-                                      fontFamily: mainFontnormal,
-                                      
-                                    ),
-                                  ),
-                                  SizedBox(width: getWidth(context, 2),),
-                                  Icon(
-                                    Icons.arrow_forward_ios_outlined,
+                                Text(
+                                  "View All".tr,
+                                  style: TextStyle(
                                     color: mainColorRed,
-                                    size: 14,
+                                    fontSize: 14,
+                                    fontFamily: mainFontnormal,
                                   ),
-
+                                ),
+                                SizedBox(
+                                  width: getWidth(context, 2),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_outlined,
+                                  color: mainColorRed,
+                                  size: 14,
+                                ),
                               ],
                             ),
                           ),
@@ -282,8 +281,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   BorderRadius.circular(100)),
                                           child: Center(
                                               child: CircleAvatar(
-                                            backgroundColor: mainColorGrey
-                                                .withOpacity(0.05),
+                                            backgroundColor:
+                                                mainColorGrey.withOpacity(0.05),
                                           )),
                                         ),
                                       ),
@@ -316,8 +315,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () {
-                                      productrovider
-                                          .setcatetype(cateItem.id!);
+                                      productrovider.setcatetype(cateItem.id!);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -378,6 +376,578 @@ class _HomeSreenState extends State<HomeSreen> {
                         ),
                       ),
                     ),
+                    productrovider.Orderitems.length > 0
+                        ? Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 2)),
+                                    child: Text(
+                                      "Recent Order".tr,
+                                      style: TextStyle(
+                                          color: mainColorGrey,
+                                          fontSize: 16,
+                                          fontFamily: mainFontbold),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 2)),
+                                    child: Row(
+                                      children: [
+                                        TextButton(
+                                          onPressed: () {
+                                            if (productrovider.show) {
+                                              productrovider.settype("orders");
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AllItem()),
+                                              );
+                                            }
+                                          },
+                                          child: Text("View All".tr,
+                                              style: TextStyle(
+                                                color: mainColorRed,
+                                                fontSize: 14,
+                                                fontFamily: mainFontnormal,
+                                              )),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios_outlined,
+                                          color: mainColorRed,
+                                          size: 13,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                height: getHeight(context, 28),
+                                //  decoration: BoxDecoration(border: Border.all()),
+                                child: Visibility(
+                                  visible: productrovider.show,
+                                  replacement: Skeletonizer(
+                                    enabled: true,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: 10,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: getWidth(context, 2)),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Stack(
+                                                alignment: lang == "en"
+                                                    ? Alignment.bottomLeft
+                                                    : Alignment.bottomRight,
+                                                children: [
+                                                  Stack(
+                                                    alignment: lang == "en"
+                                                        ? Alignment.topRight
+                                                        : Alignment.topLeft,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        Oneitem()),
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: getWidth(
+                                                              context, 32),
+                                                          height: getHeight(
+                                                              context, 14),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  //  border: Border.all(color: mainColorRed),
+                                                                  color:
+                                                                      mainColorLightGrey,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              15)),
+                                                          child: Center(
+                                                            child:
+                                                                CachedNetworkImage(
+                                                              imageUrl:
+                                                                  "assets/images/002_logo_1.png",
+                                                              placeholder: (context,
+                                                                      url) =>
+                                                                  Image.asset(
+                                                                      "assets/images/002_logo_1.png"),
+                                                              errorWidget: (context,
+                                                                      url,
+                                                                      error) =>
+                                                                  Image.asset(
+                                                                      "assets/images/002_logo_1.png"),
+                                                              width: getHeight(
+                                                                  context, 13),
+                                                              height: getHeight(
+                                                                  context, 13),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {},
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(6.0),
+                                                          child: Container(
+                                                              width: getWidth(
+                                                                  context, 8),
+                                                              height: getWidth(
+                                                                  context, 8),
+                                                              decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          100),
+                                                                  border: Border.all(
+                                                                      color: mainColorGrey
+                                                                          .withOpacity(
+                                                                              0.5)),
+                                                                  color:
+                                                                      mainColorGrey),
+                                                              child: false
+                                                                  ? Center(
+                                                                      child:
+                                                                          Text(
+                                                                        "1",
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                16,
+                                                                            color:
+                                                                                mainColorWhite),
+                                                                      ),
+                                                                    )
+                                                                  : Icon(
+                                                                      Icons.add,
+                                                                      color:
+                                                                          mainColorWhite,
+                                                                      size: getHeight(
+                                                                          context,
+                                                                          1.5))),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              Container(
+                                                //decoration: BoxDecoration(border: Border.all()),
+                                                width: getWidth(context, 32),
+                                                height: getHeight(context, 13),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      lang == "en"
+                                                          ? "product"
+                                                          : lang == "ar"
+                                                              ? "product"
+                                                              : "product",
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 16),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      lang == "en"
+                                                          ? "product"
+                                                          : lang == "ar"
+                                                              ? "product"
+                                                              : "product",
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                          color: mainColorGrey
+                                                              .withOpacity(0.5),
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 9),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      "product" + " IQD",
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .lineThrough,
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          fontSize: 11),
+                                                    ),
+                                                    Text(
+                                                      "product" + " IQD",
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                          color: mainColorRed,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 11),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: productrovider
+                                        .getProductsByIds(productrovider
+                                            .listOrderProductIds())
+                                        .length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      final product = productrovider
+                                          .getProductsByIds(productrovider
+                                              .listOrderProductIds())[index];
+                                      final isItemInCart = cartProvider
+                                          .itemExistsInCart(product);
+                                      return Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 2)),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Stack(
+                                              alignment: lang == "en"
+                                                  ? Alignment.bottomLeft
+                                                  : Alignment.bottomRight,
+                                              children: [
+                                                Stack(
+                                                  alignment: lang == "en"
+                                                      ? Alignment.topRight
+                                                      : Alignment.topLeft,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        productrovider
+                                                            .setidItem(
+                                                                product.id!);
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      Oneitem()),
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: getWidth(
+                                                            context, 32),
+                                                        height: getHeight(
+                                                            context, 14),
+                                                        decoration: BoxDecoration(
+                                                            color:
+                                                                mainColorLightGrey,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5)),
+                                                        child: Center(
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            imageUrl: product
+                                                                .coverImg
+                                                                .toString(),
+                                                            placeholder: (context,
+                                                                    url) =>
+                                                                Image.asset(
+                                                                    "assets/images/002_logo_1.png"),
+                                                            errorWidget: (context,
+                                                                    url,
+                                                                    error) =>
+                                                                Image.asset(
+                                                                    "assets/images/002_logo_1.png"),
+                                                            width: getHeight(
+                                                                context, 13),
+                                                            height: getHeight(
+                                                                context, 13),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          if (!isLogin) {
+                                                            // confirmAlertlogin(
+                                                            //     context,
+                                                            //     "Login Please"
+                                                            //         .tr,
+                                                            //     "You need to login first"
+                                                            //         .tr);
+                                                            return;
+                                                          }
+                                                          if (product.offerPrice! >
+                                                                  0 &&
+                                                              product.orderLimit ==
+                                                                  cartProvider.calculateQuantityForProduct(
+                                                                      int.parse(
+                                                                          product
+                                                                              .id
+                                                                              .toString()))) {
+                                                            toastLong(
+                                                                "you can not add more this item");
+                                                            return;
+                                                          }
+                                                          final cartItem =
+                                                              CartItem(
+                                                                  product:
+                                                                      product
+                                                                          .id!);
+                                                          cartProvider
+                                                              .addToCart(
+                                                                  cartItem);
+                                                        });
+                                                      },
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(6.0),
+                                                        child: Container(
+                                                            width: getWidth(
+                                                                context, 8),
+                                                            height: getWidth(
+                                                                context, 8),
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                        100),
+                                                                border: Border.all(
+                                                                    color: mainColorGrey
+                                                                        .withOpacity(
+                                                                            0.5)),
+                                                                color:
+                                                                    mainColorGrey),
+                                                            child: isItemInCart
+                                                                ? Center(
+                                                                    child: Text(
+                                                                      cartProvider
+                                                                          .calculateQuantityForProduct(int.parse(product
+                                                                              .id
+                                                                              .toString()))
+                                                                          .toString(),
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              16,
+                                                                          color:
+                                                                              mainColorWhite),
+                                                                    ),
+                                                                  )
+                                                                : Icon(
+                                                                    Icons.add,
+                                                                    color:
+                                                                        mainColorWhite,
+                                                                    size: getHeight(
+                                                                        context,
+                                                                        3))),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                product.offerPrice! > -1
+                                                    ? Container(
+                                                        width: getHeight(
+                                                            context, 8),
+                                                        height: getHeight(
+                                                            context, 3),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              lang == "en"
+                                                                  ? BorderRadius
+                                                                      .only(
+                                                                      //  topLeft: Radius.circular(20.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              20.0),
+                                                                      // bottomLeft: Radius.circular(0.0),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              20.0),
+                                                                    )
+                                                                  : BorderRadius
+                                                                      .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              20.0),
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              20.0),
+                                                                    ),
+                                                          color: mainColorRed,
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            Text(
+                                                              calculatePercentageDiscount(
+                                                                  double.parse(
+                                                                      product
+                                                                          .price!
+                                                                          .toString()),
+                                                                  double.parse(product
+                                                                      .offerPrice!
+                                                                      .toString())),
+                                                              style: TextStyle(
+                                                                  color:
+                                                                      mainColorWhite,
+                                                                  fontFamily:
+                                                                      mainFontnormal,
+                                                                  fontSize: 12),
+                                                            ),
+                                                            Icon(
+                                                                Icons
+                                                                    .discount_rounded,
+                                                                color:
+                                                                    mainColorWhite,
+                                                                size: 12),
+                                                          ],
+                                                        ))
+                                                    : SizedBox(),
+                                              ],
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                productrovider
+                                                    .setidItem(product.id!);
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Oneitem()),
+                                                );
+                                              },
+                                              child: Container(
+                                                //decoration: BoxDecoration(border: Border.all()),
+                                                width: getWidth(context, 32),
+                                                height: getHeight(context, 13),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      lang == "en"
+                                                          ? product.nameEn
+                                                              .toString()
+                                                          : lang == "ar"
+                                                              ? product.nameAr
+                                                                  .toString()
+                                                              : product.nameKu
+                                                                  .toString(),
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 14),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      lang == "en"
+                                                          ? product.contentsEn
+                                                              .toString()
+                                                          : lang == "ar"
+                                                              ? product
+                                                                  .contentsAr
+                                                                  .toString()
+                                                              : product
+                                                                  .contentsKu
+                                                                  .toString(),
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                          color: mainColorGrey
+                                                              .withOpacity(0.5),
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 12),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      addCommasToPrice(
+                                                          product.price!),
+                                                      style: TextStyle(
+                                                          decoration: product
+                                                                      .offerPrice! >
+                                                                  -1
+                                                              ? TextDecoration
+                                                                  .lineThrough
+                                                              : TextDecoration
+                                                                  .none,
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          fontSize: 14),
+                                                    ),
+                                                    product.offerPrice! > -1
+                                                        ? Text(
+                                                            addCommasToPrice(
+                                                                product
+                                                                    .offerPrice!),
+                                                            style: TextStyle(
+                                                                color:
+                                                                    mainColorRed,
+                                                                fontFamily:
+                                                                    mainFontbold,
+                                                                fontSize: 14),
+                                                          )
+                                                        : SizedBox(),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : SizedBox(),
                     productrovider.getProductsByDiscount().isNotEmpty
                         ? Column(
                             children: [
@@ -402,8 +972,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     child: TextButton(
                                       onPressed: () {
                                         if (productrovider.show) {
-                                          productrovider
-                                              .settype("discount");
+                                          productrovider.settype("discount");
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -413,23 +982,25 @@ class _HomeSreenState extends State<HomeSreen> {
                                         }
                                       },
                                       style: TextButton.styleFrom(
-                              foregroundColor: mainColorRed
-                            ),
+                                          foregroundColor: mainColorRed),
                                       child: Row(
                                         children: [
-                                          Text("View All".tr,
-                                              style: TextStyle(
-                                                color: mainColorRed,
-                                                fontSize: 14,
-                                                fontFamily: mainFontnormal,
-                                              ),
+                                          Text(
+                                            "View All".tr,
+                                            style: TextStyle(
+                                              color: mainColorRed,
+                                              fontSize: 14,
+                                              fontFamily: mainFontnormal,
                                             ),
-                                            SizedBox(width: getWidth(context, 2),),
-                                            Icon(
-                                      Icons.arrow_forward_ios_outlined,
-                                      color: mainColorRed,
-                                      size: 14,
-                                    )
+                                          ),
+                                          SizedBox(
+                                            width: getWidth(context, 2),
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: mainColorRed,
+                                            size: 14,
+                                          )
                                         ],
                                       ),
                                     ),
@@ -450,8 +1021,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           (BuildContext context, int index) {
                                         return Padding(
                                           padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  getWidth(context, 2)),
+                                              horizontal: getWidth(context, 2)),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -487,8 +1057,9 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                   color:
                                                                       mainColorLightGrey,
                                                                   borderRadius:
-                                                                      BorderRadius.circular(
-                                                                          15)),
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              15)),
                                                           child: Center(
                                                             child:
                                                                 CachedNetworkImage(
@@ -503,14 +1074,10 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                       error) =>
                                                                   Image.asset(
                                                                       "assets/images/002_logo_1.png"),
-                                                              width:
-                                                                  getHeight(
-                                                                      context,
-                                                                      13),
-                                                              height:
-                                                                  getHeight(
-                                                                      context,
-                                                                      13),
+                                                              width: getHeight(
+                                                                  context, 13),
+                                                              height: getHeight(
+                                                                  context, 13),
                                                             ),
                                                           ),
                                                         ),
@@ -539,19 +1106,17 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                   Icons.add,
                                                                   color:
                                                                       mainColorWhite,
-                                                                  size:
-                                                                      getHeight(context, 1.5))),
+                                                                  size: getHeight(context, 1.5))),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                   Container(
-                                                      width: getHeight(
-                                                          context, 6),
-                                                      height: getHeight(
-                                                          context, 3),
-                                                      decoration:
-                                                          BoxDecoration(
+                                                      width:
+                                                          getHeight(context, 6),
+                                                      height:
+                                                          getHeight(context, 3),
+                                                      decoration: BoxDecoration(
                                                         borderRadius: lang ==
                                                                 "en"
                                                             ? const BorderRadius
@@ -607,14 +1172,12 @@ class _HomeSreenState extends State<HomeSreen> {
                                               SizedBox(
                                                 //decoration: BoxDecoration(border: Border.all()),
                                                 width: getWidth(context, 32),
-                                                height:
-                                                    getHeight(context, 13),
+                                                height: getHeight(context, 13),
                                                 child: Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       lang == "en"
@@ -624,8 +1187,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                               : "product",
                                                       maxLines: 2,
                                                       style: TextStyle(
-                                                          color:
-                                                              mainColorGrey,
+                                                          color: mainColorGrey,
                                                           fontFamily:
                                                               mainFontbold,
                                                           fontSize: 16),
@@ -642,8 +1204,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           color: mainColorGrey
-                                                              .withOpacity(
-                                                                  0.5),
+                                                              .withOpacity(0.5),
                                                           fontFamily:
                                                               mainFontbold,
                                                           fontSize: 9),
@@ -658,8 +1219,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                           decoration:
                                                               TextDecoration
                                                                   .lineThrough,
-                                                          color:
-                                                              mainColorGrey,
+                                                          color: mainColorGrey,
                                                           fontFamily:
                                                               mainFontnormal,
                                                           fontSize: 11),
@@ -718,9 +1278,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder:
-                                                                  (context) =>
-                                                                      const Oneitem()),
+                                                              builder: (context) =>
+                                                                  const Oneitem()),
                                                         );
                                                       },
                                                       child: Container(
@@ -788,7 +1347,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                           .push(
                                                                         context,
                                                                         MaterialPageRoute(
-                                                                            builder: (context) => const RegisterWithPhoneNumber()),
+                                                                            builder: (context) =>
+                                                                                const RegisterWithPhoneNumber()),
                                                                       );
                                                                     },
                                                                     btnCancelColor:
@@ -800,9 +1360,10 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                   -1 &&
                                                               product.orderLimit ==
                                                                   cartProvider.calculateQuantityForProduct(
-                                                                      int.parse(product
-                                                                          .id
-                                                                          .toString()))) {
+                                                                      int.parse(
+                                                                          product
+                                                                              .id
+                                                                              .toString()))) {
                                                             toastLong(
                                                                 "you can not add more this item");
                                                             return;
@@ -836,23 +1397,28 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                             0.5)),
                                                                 color:
                                                                     mainColorGrey),
-                                                            child:
-                                                                isItemInCart
-                                                                    ? Center(
-                                                                        child:
-                                                                            Text(
-                                                                          cartProvider.calculateQuantityForProduct(int.parse(product.id.toString())).toString(),
-                                                                          style:
-                                                                              TextStyle(fontSize: 16, color: mainColorWhite),
-                                                                        ),
-                                                                      )
-                                                                    : Icon(
-                                                                        Icons
-                                                                            .add,
-                                                                        color:
-                                                                            mainColorWhite,
-                                                                        size:
-                                                                            getHeight(context, 3))),
+                                                            child: isItemInCart
+                                                                ? Center(
+                                                                    child: Text(
+                                                                      cartProvider
+                                                                          .calculateQuantityForProduct(int.parse(product
+                                                                              .id
+                                                                              .toString()))
+                                                                          .toString(),
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              16,
+                                                                          color:
+                                                                              mainColorWhite),
+                                                                    ),
+                                                                  )
+                                                                : Icon(
+                                                                    Icons.add,
+                                                                    color:
+                                                                        mainColorWhite,
+                                                                    size: getHeight(
+                                                                        context,
+                                                                        3))),
                                                       ),
                                                     ),
                                                   ],
@@ -863,8 +1429,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     height:
                                                         getHeight(context, 3),
                                                     decoration: BoxDecoration(
-                                                      borderRadius: lang ==
-                                                              "en"
+                                                      borderRadius: lang == "en"
                                                           ? const BorderRadius
                                                               .only(
                                                               //  topLeft: Radius.circular(20.0),
@@ -872,9 +1437,10 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                   .circular(
                                                                       20.0),
                                                               // bottomLeft: Radius.circular(0.0),
-                                                              bottomRight: Radius
-                                                                  .circular(
-                                                                      20.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          20.0),
                                                             )
                                                           : const BorderRadius
                                                               .only(
@@ -931,14 +1497,12 @@ class _HomeSreenState extends State<HomeSreen> {
                                               child: SizedBox(
                                                 //decoration: BoxDecoration(border: Border.all()),
                                                 width: getWidth(context, 32),
-                                                height:
-                                                    getHeight(context, 13),
+                                                height: getHeight(context, 13),
                                                 child: Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       lang == "en"
@@ -951,8 +1515,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                   .toString(),
                                                       maxLines: 2,
                                                       style: TextStyle(
-                                                          color:
-                                                              mainColorGrey,
+                                                          color: mainColorGrey,
                                                           fontFamily:
                                                               mainFontbold,
                                                           fontSize: 14),
@@ -974,8 +1537,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           color: mainColorGrey
-                                                              .withOpacity(
-                                                                  0.5),
+                                                              .withOpacity(0.5),
                                                           fontFamily:
                                                               mainFontbold,
                                                           fontSize: 12),
@@ -984,25 +1546,23 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       height: 3,
                                                     ),
                                                     Text(
-                                                      addCommasToPrice(product
-                                                                  .price2! >
-                                                              -1
-                                                          ? product.price2!
-                                                          : product.price!),
+                                                      addCommasToPrice(
+                                                          product.price2! > -1
+                                                              ? product.price2!
+                                                              : product.price!),
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           decoration:
                                                               TextDecoration
                                                                   .lineThrough,
-                                                          color:
-                                                              mainColorGrey,
+                                                          color: mainColorGrey,
                                                           fontFamily:
                                                               mainFontnormal,
                                                           fontSize: 12),
                                                     ),
                                                     Text(
-                                                      addCommasToPrice(product
-                                                          .offerPrice!),
+                                                      addCommasToPrice(
+                                                          product.offerPrice!),
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           color: mainColorRed,
@@ -1048,24 +1608,25 @@ class _HomeSreenState extends State<HomeSreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AllItem()),
+                                      builder: (context) => const AllItem()),
                                 );
                               }
                             },
                             style: TextButton.styleFrom(
-                          foregroundColor: mainColorRed
-                            ),
+                                foregroundColor: mainColorRed),
                             child: Row(
                               children: [
-                                Text("View All".tr,
-                                    style: TextStyle(
-                                      color: mainColorRed,
-                                      fontSize: 14,
-                                      fontFamily: mainFontnormal,
+                                Text(
+                                  "View All".tr,
+                                  style: TextStyle(
+                                    color: mainColorRed,
+                                    fontSize: 14,
+                                    fontFamily: mainFontnormal,
                                   ),
                                 ),
-                                SizedBox(width: getWidth(context, 2),),
+                                SizedBox(
+                                  width: getWidth(context, 2),
+                                ),
                                 Icon(
                                   Icons.arrow_forward_ios_outlined,
                                   color: mainColorRed,
@@ -1092,8 +1653,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: getWidth(context, 2)),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Stack(
                                       alignment: lang == "en"
@@ -1109,8 +1669,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                               onTap: () {},
                                               child: Container(
                                                 width: getWidth(context, 32),
-                                                height:
-                                                    getHeight(context, 14),
+                                                height: getHeight(context, 14),
                                                 decoration: BoxDecoration(
                                                     //  border: Border.all(color: mainColorRed),
                                                     color: mainColorLightGrey,
@@ -1125,14 +1684,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             url) =>
                                                         Image.asset(
                                                             "assets/images/002_logo_1.png"),
-                                                    errorWidget: (context,
-                                                            url, error) =>
+                                                    errorWidget: (context, url,
+                                                            error) =>
                                                         Image.asset(
                                                             "assets/images/002_logo_1.png"),
-                                                    width: getHeight(
-                                                        context, 13),
-                                                    height: getHeight(
-                                                        context, 13),
+                                                    width:
+                                                        getHeight(context, 13),
+                                                    height:
+                                                        getHeight(context, 13),
                                                   ),
                                                 ),
                                               ),
@@ -1143,15 +1702,13 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 padding:
                                                     const EdgeInsets.all(6.0),
                                                 child: Container(
-                                                    width:
-                                                        getWidth(context, 8),
+                                                    width: getWidth(context, 8),
                                                     height:
                                                         getWidth(context, 8),
                                                     decoration: BoxDecoration(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(
-                                                                    100),
+                                                                .circular(100),
                                                         border: Border.all(
                                                             color: mainColorGrey
                                                                 .withOpacity(
@@ -1212,8 +1769,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                             "product" " IQD",
                                             maxLines: 1,
                                             style: TextStyle(
-                                                decoration: TextDecoration
-                                                    .lineThrough,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
                                                 color: mainColorGrey,
                                                 fontFamily: mainFontnormal,
                                                 fontSize: 11),
@@ -1232,8 +1789,8 @@ class _HomeSreenState extends State<HomeSreen> {
                           itemCount:
                               productrovider.getProductsByHighlight().length,
                           itemBuilder: (BuildContext context, int index) {
-                            final product = productrovider
-                                .getProductsByHighlight()[index];
+                            final product =
+                                productrovider.getProductsByHighlight()[index];
                             final isItemInCart =
                                 cartProvider.itemExistsInCart(product);
                             return Padding(
@@ -1249,8 +1806,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          productrovider
-                                              .setidItem(product.id!);
+                                          productrovider.setidItem(product.id!);
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -1289,25 +1845,22 @@ class _HomeSreenState extends State<HomeSreen> {
                                             if (!isLogin) {
                                               AwesomeDialog(
                                                       context: context,
-                                                      animType:
-                                                          AnimType.scale,
+                                                      animType: AnimType.scale,
                                                       dialogType:
                                                           DialogType.info,
                                                       showCloseIcon: true,
                                                       title: 'Login Please',
                                                       desc:
                                                           "You need login to add item in cart",
-                                                      btnOkColor:
-                                                          mainColorRed,
+                                                      btnOkColor: mainColorRed,
                                                       btnCancelOnPress: () {},
                                                       btnOkText: "Login",
                                                       btnOkOnPress: () {
                                                         Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder:
-                                                                  (context) =>
-                                                                      const RegisterWithPhoneNumber()),
+                                                              builder: (context) =>
+                                                                  const RegisterWithPhoneNumber()),
                                                         );
                                                       },
                                                       btnCancelColor:
@@ -1319,15 +1872,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 product.orderLimit ==
                                                     cartProvider
                                                         .calculateQuantityForProduct(
-                                                            int.parse(product
-                                                                .id
+                                                            int.parse(product.id
                                                                 .toString()))) {
                                               toastLong(
                                                   "you can not add more this item");
                                               return;
                                             }
-                                            final cartItem = CartItem(
-                                                product: product.id!);
+                                            final cartItem =
+                                                CartItem(product: product.id!);
                                             cartProvider.addToCart(cartItem);
                                           });
                                         },
@@ -1373,7 +1925,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Oneitem()),
+                                            builder: (context) =>
+                                                const Oneitem()),
                                       );
                                     },
                                     child: SizedBox(
@@ -1390,10 +1943,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                             lang == "en"
                                                 ? product.nameEn.toString()
                                                 : lang == "ar"
-                                                    ? product.nameAr
-                                                        .toString()
-                                                    : product.nameKu
-                                                        .toString(),
+                                                    ? product.nameAr.toString()
+                                                    : product.nameKu.toString(),
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
@@ -1405,8 +1956,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           ),
                                           Text(
                                             lang == "en"
-                                                ? product.contentsEn
-                                                    .toString()
+                                                ? product.contentsEn.toString()
                                                 : lang == "ar"
                                                     ? product.contentsAr
                                                         .toString()
@@ -1495,8 +2045,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     return GestureDetector(
                                       onTap: () {
                                         productrovider.settype("brand");
-                                        productrovider
-                                            .setidItem(item.brandId!);
+                                        productrovider.setidItem(item.brandId!);
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -1510,8 +2059,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           placeholder: (context, url) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
-                                          errorWidget: (context, url,
-                                                  error) =>
+                                          errorWidget: (context, url, error) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
                                           width: getWidth(context, 100),
@@ -1566,28 +2114,31 @@ class _HomeSreenState extends State<HomeSreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const AllItem()),
+                                          builder: (context) =>
+                                              const AllItem()),
                                     );
                                   }
                                 },
                                 style: TextButton.styleFrom(
-                              foregroundColor: mainColorRed
-                            ),
+                                    foregroundColor: mainColorRed),
                                 child: Row(
                                   children: [
-                                    Text("View All",
-                                        style: TextStyle(
-                                          color: mainColorRed,
-                                          fontSize: 14,
-                                          fontFamily: mainFontnormal,
-                                        ),
+                                    Text(
+                                      "View All",
+                                      style: TextStyle(
+                                        color: mainColorRed,
+                                        fontSize: 14,
+                                        fontFamily: mainFontnormal,
                                       ),
-                                      SizedBox(width: getWidth(context, 2),),
-                                      Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                color: mainColorRed,
-                                size: 14,
-                              )
+                                    ),
+                                    SizedBox(
+                                      width: getWidth(context, 2),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: mainColorRed,
+                                      size: 14,
+                                    )
                                   ],
                                 ),
                               ),
@@ -1611,8 +2162,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: getWidth(context, 2)),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Stack(
                                       alignment: lang == "en"
@@ -1628,8 +2178,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                               onTap: () {},
                                               child: Container(
                                                 width: getWidth(context, 32),
-                                                height:
-                                                    getHeight(context, 14),
+                                                height: getHeight(context, 14),
                                                 decoration: BoxDecoration(
                                                     //  border: Border.all(color: mainColorRed),
                                                     color: mainColorLightGrey,
@@ -1644,14 +2193,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             url) =>
                                                         Image.asset(
                                                             "assets/images/002_logo_1.png"),
-                                                    errorWidget: (context,
-                                                            url, error) =>
+                                                    errorWidget: (context, url,
+                                                            error) =>
                                                         Image.asset(
                                                             "assets/images/002_logo_1.png"),
-                                                    width: getHeight(
-                                                        context, 13),
-                                                    height: getHeight(
-                                                        context, 13),
+                                                    width:
+                                                        getHeight(context, 13),
+                                                    height:
+                                                        getHeight(context, 13),
                                                   ),
                                                 ),
                                               ),
@@ -1662,15 +2211,13 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 padding:
                                                     const EdgeInsets.all(6.0),
                                                 child: Container(
-                                                    width:
-                                                        getWidth(context, 8),
+                                                    width: getWidth(context, 8),
                                                     height:
                                                         getWidth(context, 8),
                                                     decoration: BoxDecoration(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(
-                                                                    100),
+                                                                .circular(100),
                                                         border: Border.all(
                                                             color: mainColorGrey
                                                                 .withOpacity(
@@ -1731,8 +2278,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                             "product" " IQD",
                                             maxLines: 1,
                                             style: TextStyle(
-                                                decoration: TextDecoration
-                                                    .lineThrough,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
                                                 color: mainColorGrey,
                                                 fontFamily: mainFontnormal,
                                                 fontSize: 11),
@@ -1768,8 +2315,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          productrovider
-                                              .setidItem(product.id!);
+                                          productrovider.setidItem(product.id!);
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -1808,25 +2354,22 @@ class _HomeSreenState extends State<HomeSreen> {
                                             if (!isLogin) {
                                               AwesomeDialog(
                                                       context: context,
-                                                      animType:
-                                                          AnimType.scale,
+                                                      animType: AnimType.scale,
                                                       dialogType:
                                                           DialogType.info,
                                                       showCloseIcon: true,
                                                       title: 'Login Please',
                                                       desc:
                                                           "You need login to add item in cart",
-                                                      btnOkColor:
-                                                          mainColorRed,
+                                                      btnOkColor: mainColorRed,
                                                       btnCancelOnPress: () {},
                                                       btnOkText: "Login",
                                                       btnOkOnPress: () {
                                                         Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder:
-                                                                  (context) =>
-                                                                      const RegisterWithPhoneNumber()),
+                                                              builder: (context) =>
+                                                                  const RegisterWithPhoneNumber()),
                                                         );
                                                       },
                                                       btnCancelColor:
@@ -1838,15 +2381,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 product.orderLimit ==
                                                     cartProvider
                                                         .calculateQuantityForProduct(
-                                                            int.parse(product
-                                                                .id
+                                                            int.parse(product.id
                                                                 .toString()))) {
                                               toastLong(
                                                   "you can not add more this item");
                                               return;
                                             }
-                                            final cartItem = CartItem(
-                                                product: product.id!);
+                                            final cartItem =
+                                                CartItem(product: product.id!);
                                             cartProvider.addToCart(cartItem);
                                           });
                                         },
@@ -1892,7 +2434,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Oneitem()),
+                                            builder: (context) =>
+                                                const Oneitem()),
                                       );
                                     },
                                     child: SizedBox(
@@ -1909,10 +2452,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                             lang == "en"
                                                 ? product.nameEn.toString()
                                                 : lang == "ar"
-                                                    ? product.nameAr
-                                                        .toString()
-                                                    : product.nameKu
-                                                        .toString(),
+                                                    ? product.nameAr.toString()
+                                                    : product.nameKu.toString(),
                                             maxLines: 2,
                                             style: TextStyle(
                                                 color: mainColorGrey,
@@ -1924,8 +2465,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           ),
                                           Text(
                                             lang == "en"
-                                                ? product.contentsEn
-                                                    .toString()
+                                                ? product.contentsEn.toString()
                                                 : lang == "ar"
                                                     ? product.contentsAr
                                                         .toString()

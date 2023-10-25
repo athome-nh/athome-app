@@ -30,10 +30,10 @@ class _CheckOutState extends State<CheckOut> {
     super.initState();
   }
 
+  TextEditingController NoteController = TextEditingController();
   bool waitingcheckout = false;
   @override
   Widget build(BuildContext context) {
-    TextEditingController NoteController = TextEditingController();
     String order_code = "";
 
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
@@ -105,7 +105,7 @@ class _CheckOutState extends State<CheckOut> {
                                     textAlign: TextAlign.end,
                                     location.type! +
                                         " Number " +
-                                        location.number!,
+                                        location.number.toString(),
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontbold,
@@ -676,7 +676,7 @@ class _CheckOutState extends State<CheckOut> {
                                 fixedSize: Size(getWidth(context, 85),
                                     getHeight(context, 6)),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
                               ),
                             ),
