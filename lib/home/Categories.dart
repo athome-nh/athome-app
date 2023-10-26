@@ -179,12 +179,14 @@ class _CategoriesState extends State<Categories> {
                               SizedBox(
                                 width: getWidth(context, 50),
                                 height: getWidth(context, 70),
-                                child: Image.asset("assets/images/gif_favorite.gif"),
-                                ),
-                                Text("No have any favorite",
-                              style: TextStyle(
-                                fontFamily: mainFontnormal,fontSize: 16),
-                                ),
+                                child: Image.asset(
+                                    "assets/images/gif_favorite.gif"),
+                              ),
+                              Text(
+                                "No have any favorite",
+                                style: TextStyle(
+                                    fontFamily: mainFontnormal, fontSize: 16),
+                              ),
                             ],
                           ),
                         );

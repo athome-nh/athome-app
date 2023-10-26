@@ -28,6 +28,16 @@ class Network {
         DioConnectivityRequestRetrier(dio: dio, connectivity: Connectivity());
   }
 
+  Future getDatauser(String apiRout, String token) async {
+    try {
+      dio.options.headers["Authorization"] = "Bearer " + token;
+      Response response = await dio.get(serverUrl + apiRout);
+      return response.data;
+    } catch (e) {
+      return "";
+    }
+  }
+
   Future getData(String apiRout) async {
     try {
       Response response = await dio.get(serverUrl + apiRout);

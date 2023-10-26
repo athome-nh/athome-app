@@ -4,6 +4,9 @@ import 'dart:io';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Network/Network.dart';
+import 'package:athome/controller/cartprovider.dart';
+
+import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/brandmodel/brandmodel.dart';
 import 'package:athome/model/category_model/category_model.dart';
@@ -15,6 +18,7 @@ import 'package:athome/model/products_image/products_image.dart';
 import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:athome/model/topmodel/topmodel.dart';
+
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -61,88 +65,102 @@ class productProvider extends ChangeNotifier {
 
   updatePost() async {
     print("start");
-    String ordeid = userData["id"].toString();
-    Network(false).getData("showData/" + ordeid).then((value) async {
-      if (value != "") {
-        if (value["code"] != 200) {
-          setProducts((value['products'] as List)
-              .map((x) => ProductModel.fromMap(x))
-              .toList());
-          setCategorys((value['category'] as List)
-              .map((x) => CategoryModel.fromMap(x))
-              .toList());
-          setsubCategorys((value['subCategory'] as List)
-              .map((x) => SubCategory.fromMap(x))
-              .toList());
-          setproductimages((value['productsImage'] as List)
-              .map((x) => ProductsImage.fromMap(x))
-              .toList());
-          setOrders((value['orders'] as List)
-              .map((x) => OrderModel.fromMap(x))
-              .toList());
-          setOrderItems((value['orders_item'] as List)
-              .map((x) => OrderItems.fromMap(x))
-              .toList());
-          setlocation((value['locations'] as List)
-              .map((x) => Locationuser.fromMap(x))
-              .toList());
-          setslides((value['slide'] as List)
-              .map((x) => Slidemodel.fromMap(x))
-              .toList());
-          settops((value['top_image'] as List)
-              .map((x) => Topmodel.fromMap(x))
-              .toList());
-          setbrands((value['brands'] as List)
-              .map((x) => Brandmodel.fromMap(x))
-              .toList());
-          setshow(true);
-          print("end");
-        } else {}
-      } else {}
+    String ordeid = "0";
+    getStringPrefs("token").then((valuet) {
+      Network(false).getDatauser("userInfo", valuet).then((valueuser) {
+        if (valueuser != "") {
+          if (valueuser["code"] == "201") {
+            ordeid = valueuser["data"][0]["id"].toString();
+            userdata = valueuser["data"][0];
+          }
+        }
+
+        Network(false).getData("showData/" + ordeid).then((value) async {
+          print(value);
+          if (value != "") {
+            if (value["code"] != 200) {
+              setProducts((value['products'] as List)
+                  .map((x) => ProductModel.fromMap(x))
+                  .toList());
+              setCategorys((value['category'] as List)
+                  .map((x) => CategoryModel.fromMap(x))
+                  .toList());
+              setsubCategorys((value['subCategory'] as List)
+                  .map((x) => SubCategory.fromMap(x))
+                  .toList());
+              setproductimages((value['productsImage'] as List)
+                  .map((x) => ProductsImage.fromMap(x))
+                  .toList());
+              setOrders((value['orders'] as List)
+                  .map((x) => OrderModel.fromMap(x))
+                  .toList());
+              setOrderItems((value['orders_item'] as List)
+                  .map((x) => OrderItems.fromMap(x))
+                  .toList());
+              setlocation((value['locations'] as List)
+                  .map((x) => Locationuser.fromMap(x))
+                  .toList());
+              setslides((value['slide'] as List)
+                  .map((x) => Slidemodel.fromMap(x))
+                  .toList());
+              settops((value['top_image'] as List)
+                  .map((x) => Topmodel.fromMap(x))
+                  .toList());
+              setbrands((value['brands'] as List)
+                  .map((x) => Brandmodel.fromMap(x))
+                  .toList());
+
+              setshow(true);
+              print("end");
+            } else {}
+          } else {}
+        });
+      });
     });
   }
 
-  getPost() async {
-    print("object");
-    String ordeid = userData["id"].toString();
-    Network(false).getData("showData/" + ordeid).then((value) async {
-      if (value != "") {
-        if (value["code"] != 200) {
-          var jsonString = json.encode(value);
-          final directory = await getTemporaryDirectory();
-          String path = "${directory.path}/dict.json";
-          var jsonList = json.decode(jsonString);
-          setProducts((jsonList['products'] as List)
-              .map((x) => ProductModel.fromMap(x))
-              .toList());
-          setCategorys((jsonList['category'] as List)
-              .map((x) => CategoryModel.fromMap(x))
-              .toList());
-          setsubCategorys((jsonList['subCategory'] as List)
-              .map((x) => SubCategory.fromMap(x))
-              .toList());
-          setproductimages((jsonList['productsImage'] as List)
-              .map((x) => ProductsImage.fromMap(x))
-              .toList());
-          setOrders((jsonList['orders'] as List)
-              .map((x) => OrderModel.fromMap(x))
-              .toList());
-          setOrderItems((jsonList['orders_item'] as List)
-              .map((x) => OrderItems.fromMap(x))
-              .toList());
-          setlocation((jsonList['locations'] as List)
-              .map((x) => Locationuser.fromMap(x))
-              .toList());
-          print("retrive data");
-          File f = File(path);
-          f.writeAsStringSync(encryptAES(jsonString),
-              flush: true, mode: FileMode.write);
-        } else {}
-      } else {}
-    });
-  }
+  // getPost() async {
+  //   print("object");
+  //   String ordeid = userData["id"].toString();
+  //   Network(false).getData("showData/" + ordeid).then((value) async {
+  //     if (value != "") {
+  //       if (value["code"] != 200) {
+  //         var jsonString = json.encode(value);
+  //         final directory = await getTemporaryDirectory();
+  //         String path = "${directory.path}/dict.json";
+  //         var jsonList = json.decode(jsonString);
+  //         setProducts((jsonList['products'] as List)
+  //             .map((x) => ProductModel.fromMap(x))
+  //             .toList());
+  //         setCategorys((jsonList['category'] as List)
+  //             .map((x) => CategoryModel.fromMap(x))
+  //             .toList());
+  //         setsubCategorys((jsonList['subCategory'] as List)
+  //             .map((x) => SubCategory.fromMap(x))
+  //             .toList());
+  //         setproductimages((jsonList['productsImage'] as List)
+  //             .map((x) => ProductsImage.fromMap(x))
+  //             .toList());
+  //         setOrders((jsonList['orders'] as List)
+  //             .map((x) => OrderModel.fromMap(x))
+  //             .toList());
+  //         setOrderItems((jsonList['orders_item'] as List)
+  //             .map((x) => OrderItems.fromMap(x))
+  //             .toList());
+  //         setlocation((jsonList['locations'] as List)
+  //             .map((x) => Locationuser.fromMap(x))
+  //             .toList());
+  //         print("retrive data");
+  //         File f = File(path);
+  //         f.writeAsStringSync(encryptAES(jsonString),
+  //             flush: true, mode: FileMode.write);
+  //       } else {}
+  //     } else {}
+  //   });
+  // }
 
   // List to store your products
+  // var userdata = {};
   List<Topmodel> _tops = [];
   List<Slidemodel> _slides = [];
   List<Brandmodel> _brands = [];
@@ -162,6 +180,7 @@ class productProvider extends ChangeNotifier {
   bool show = false;
   // Getter to access the list of products
   List<Topmodel> get tops => _tops;
+
   List<Slidemodel> get slides => _slides;
   List<Brandmodel> get brands => _brands;
   List<OrderItems> get Orderitems => _Orderitems;
@@ -359,6 +378,7 @@ class productProvider extends ChangeNotifier {
   // Add a product to the list
   void setProducts(List<ProductModel> products) {
     _products = products;
+
     notifyListeners();
   }
 
@@ -477,6 +497,7 @@ class productProvider extends ChangeNotifier {
 
   void setshow(bool value) {
     show = value;
+
     notifyListeners();
   }
 }

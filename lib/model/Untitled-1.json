@@ -1,8 +1,17 @@
 [
     {
-        "brand_id": 1,
-        "imgEN": "http://localhost/storage/topImg/CiZyTqDGNfcyC8kaJXsEzk0RWns20xITmde0JDie.jpg",
-        "imgAR": "http://localhost/storage/topImg/yG5vVjmogj7PKdVaUQ7lq9seIl4bxMIQLD0m6nkW.jpg",
-        "imgKUR": "http://localhost/storage/topImg/TGweJTfwosIhlMwTKBYin4KQw9k4QlSNuKRrOjkK.jpg"
+        "id": 9,
+        "name": "Athome App",
+        "phone": "+9647500000000",
+        "city": "Erbil",
+        "age": 4,
+        "gender": "Male",
+        "img": "http://192.168.0.125/storage/profile/LSaacsdezaQQ7MP5t4W1zb29nNzi2A3dhpHYZupP.jpg",
+        "isActive": 1,
+        "isApprove": 1,
+        "isDeleted": 0,
+        "password": "$2y$10$gOmXjXXBpOUzIjtiqMnlJegvAf4Iq8/H0xJL78mIMDrz8/jojPnLq",
+        "created_at": "2023-10-02T13:40:51.000000Z",
+        "updated_at": "2023-10-25T12:42:20.000000Z"
     }
 ]

@@ -142,8 +142,9 @@ class _itemCategoriesState extends State<itemCategories> {
                     height: getHeight(context, 85),
                     width: getWidth(context, 95),
                     child: productPro.subcateSelect == 0
-                        ? (productPro.getProductsByCategory(
-                          productPro.cateType).isEmpty
+                        ? (productPro
+                                .getProductsByCategory(productPro.cateType)
+                                .isEmpty
                             ? Container(
                                 width: getWidth(context, 100),
                                 height: getWidth(context, 50),
@@ -155,7 +156,8 @@ class _itemCategoriesState extends State<itemCategories> {
                                   ),
                                 ),
                               )
-                            : listItemsShow(context,
+                            : listItemsShow(
+                                context,
                                 productPro.getProductsByCategory(
                                     productPro.cateType)))
                         : (productPro

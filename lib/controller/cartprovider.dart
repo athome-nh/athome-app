@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:athome/Config/local_data.dart';
+import 'package:athome/controller/productprovider.dart';
+import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/cartpast.dart';
@@ -8,9 +10,8 @@ import 'package:flutter/material.dart';
 
 class CartProvider extends ChangeNotifier {
   CartProvider() {
-    loadCartFromPreferences();
-    loadFavCartFromPreferences();
-
+    loadCartFromPreferences(userdata["id"].toString());
+    loadFavCartFromPreferences(userdata["id"].toString());
     // When the CartProvider is created, load cart data from shared preferences.
   }
   List<CartItem> cartItems = [];
@@ -32,8 +33,8 @@ class CartProvider extends ChangeNotifier {
       // If the item doesn't exist, add it to the cart
       cartItems.add(cartItem);
     }
-
-    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
+    String id = userdata["id"].toString();
+    saveCartToPreferences(cartItems, "Cart" + id);
     notifyListeners();
   }
 
@@ -50,8 +51,8 @@ class CartProvider extends ChangeNotifier {
       // If the item doesn't exist, add it to the cart
       FavItems.add(cartItem);
     }
-
-    saveCartToPreferences(FavItems, "Fav" + userData["id"].toString());
+    String id = userdata["id"].toString();
+    saveCartToPreferences(FavItems, "Fav" + id);
     notifyListeners();
   }
 
@@ -94,21 +95,23 @@ class CartProvider extends ChangeNotifier {
     return cardIDs;
   }
 
-  loadCartFromPreferences() {
-    getStringPrefs("cart" + userData["id"].toString()).then((value) {
+  loadCartFromPreferences(String id) {
+    getStringPrefs("Cart" + id).then((value) {
       if (value != "") {
         var jsonList = jsonDecode(value);
         List<CartItem> cart =
             (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
 
         cartItems = cart;
+
         notifyListeners();
       }
     });
   }
 
-  loadFavCartFromPreferences() {
-    getStringPrefs("Fav" + userData["id"].toString()).then((value) {
+  loadFavCartFromPreferences(String id) {
+    print("Fav" + id);
+    getStringPrefs("Fav" + id).then((value) {
       if (value != "") {
         var jsonList = jsonDecode(value);
 
@@ -152,15 +155,15 @@ class CartProvider extends ChangeNotifier {
 
   void clearCart() {
     cartItems.clear();
-
-    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
+    String id = userdata["id"].toString();
+    saveCartToPreferences(cartItems, "Cart" + id);
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
   void clearFav() {
     FavItems.clear();
-
-    saveCartToPreferences(FavItems, "Fav" + userData["id"].toString());
+    String id = userdata["id"].toString();
+    saveCartToPreferences(FavItems, "Fav" + id);
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
@@ -169,7 +172,8 @@ class CartProvider extends ChangeNotifier {
       (item) => item.product == id,
     );
     cartItems.remove(cartItems[existingItemIndex]);
-    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
+    String id2 = userdata["id"].toString();
+    saveCartToPreferences(cartItems, "Cart" + id2);
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
@@ -190,7 +194,8 @@ class CartProvider extends ChangeNotifier {
       // If the item doesn't exist, add it to the cart
       cartItems.remove(cartItem);
     }
-    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
+    String id = userdata["id"].toString();
+    saveCartToPreferences(cartItems, "Cart" + id);
     notifyListeners();
   }
 
@@ -227,7 +232,6 @@ class CartProvider extends ChangeNotifier {
   void clearCartPast() {
     cartItemsPast.clear();
 
-    saveCartToPreferences(cartItems, "cart" + userData["id"].toString());
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 

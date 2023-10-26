@@ -24,6 +24,7 @@ Future<void> main() async {
 }
 
 String lang = "";
+bool isLogin = false;
 
 class AtHomeApp extends StatefulWidget {
   const AtHomeApp({super.key});
@@ -32,28 +33,16 @@ class AtHomeApp extends StatefulWidget {
   State<AtHomeApp> createState() => _AtHomeAppState();
 }
 
-bool isLogin = false;
-var userData = {};
-bool loaddata = false;
-
 class _AtHomeAppState extends State<AtHomeApp> {
-  bool seen = true;
   @override
   void initState() {
-    getBoolPrefs("onbord").then((value2) {
-      seen = value2;
-      getBoolPrefs("islogin").then((value) {
-        if (value) {
-          getStringPrefs("userData").then((data2) {
-            userData = json.decode(data2);
-            isLogin = true;
-          });
-        } else {
-          isLogin = false;
-        }
-      });
+    getBoolPrefs("islogin").then((value) {
+      if (value) {
+        isLogin = true;
+      } else {
+        isLogin = false;
+      }
     });
-
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
@@ -81,7 +70,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
-        home: seen ? const SplashScreen() : const WelcomeScreen(),
+        home: const SplashScreen(),
         //const Setting(),
       ),
     );

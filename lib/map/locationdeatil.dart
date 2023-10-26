@@ -1,6 +1,7 @@
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _location_DeatilState extends State<location_Deatil> {
   @override
   void initState() {
     if (isLogin) {
-      phoneController.text = userData["phone"].toString().substring(4);
+      phoneController.text = userdata["phone"].toString().substring(4);
     }
     getstreet();
     super.initState();
@@ -687,7 +688,7 @@ class _location_DeatilState extends State<location_Deatil> {
                           // }
 
                           var data = {
-                            "id": userData["id"],
+                            "id": userdata["id"],
                             "longitude": widget.longitude,
                             "latitude": widget.latitude,
                             "area": streetController.text,

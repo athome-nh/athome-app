@@ -24,20 +24,23 @@ List images = [
   "assets/images/new_process.gif",
   "assets/images/new_way.gif",
   "assets/images/new_delivered.gif",
+  "assets/images/Order-Success.gif",
 ];
 List titles = [
   "Order Placed",
   "Processing Order",
   "Processing Order",
   "Order Is On way",
-  "Order Ready For Pickup"
+  "Order Ready For Pickup",
+  "Order is delivered"
 ];
 List content = [
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz ."
+  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+  "Your order is  delivered thank you for ordering jassk xcnc kz  ."
 ];
 int status = 0;
 
@@ -241,7 +244,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                   color: mainColorGrey,
                                   shape: BoxShape.circle,
                                 ),
-                                child: status == 4
+                                child: status == 4 || status == 5
                                     ? Icon(
                                         Icons.check_circle,
                                         color: mainColorWhite,

@@ -1,4 +1,5 @@
 import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Home/AllItem.dart';
 import 'package:athome/Home/itemCategories.dart';
@@ -6,6 +7,7 @@ import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/Notfication.dart';
 import 'package:athome/landing/login_page.dart';
+import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/Config/property.dart';
@@ -163,16 +165,24 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 BorderRadius.circular(10)),
                                         child: TextButton(
                                             onPressed: () {
-                                              productrovider.settype("brand");
-                                              productrovider.setidItem(
-                                                  productrovider
-                                                      .tops[0].brandId!);
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AllItem()),
-                                              );
+                                              String a = "Cart" +
+                                                  userdata["id"].toString();
+                                              print(CartProvider()
+                                                  .cartItems
+                                                  .length);
+                                              getStringPrefs(a).then((value) {
+                                                print(value);
+                                              });
+                                              // productrovider.settype("brand");
+                                              // productrovider.setidItem(
+                                              //     productrovider
+                                              //         .tops[0].brandId!);
+                                              // Navigator.push(
+                                              //   context,
+                                              //   MaterialPageRoute(
+                                              //       builder: (context) =>
+                                              //           const AllItem()),
+                                              // );
                                             },
                                             child: Text(
                                               "Order now".tr,
@@ -2035,7 +2045,7 @@ class _HomeSreenState extends State<HomeSreen> {
                         ),
                         child: SizedBox(
                           width: getWidth(context, 100),
-                          height: getHeight(context, 20),
+                          height: getHeight(context, 25),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20.0),
                             child: CarouselSlider(

@@ -6,12 +6,15 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
+import 'package:athome/controller/productprovider.dart';
+import 'package:athome/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gender_picker/gender_picker.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:gender_picker/source/enums.dart';
+import 'package:provider/provider.dart';
 
 import '../home/nav_switch.dart';
 
@@ -333,10 +336,16 @@ class _Singinup_pageState extends State<Singinup_page> {
                         if (value != "") {
                           if (value["code"] == "201") {
                             if (value["data"]["isActive"] == 1) {
-                              var jsonData = json.encode(value["data"]);
-                              setStringPrefs("userData", jsonData.toString());
+                              setState(() {
+                                isLogin = true;
+                              });
+
                               setBoolPrefs("islogin", true);
                               setStringPrefs("token", value["token"]);
+                              final productrovider =
+                                  Provider.of<productProvider>(context,
+                                      listen: false);
+                              productrovider.updatePost();
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

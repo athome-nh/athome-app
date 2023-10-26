@@ -67,17 +67,6 @@ class _NavSwitchState extends State<NavSwitch> {
 
   @override
   void initState() {
-    getBoolPrefs("islogin").then((value) {
-      if (value) {
-        getStringPrefs("userData").then((data2) {
-          userData = json.decode(data2);
-          isLogin = true;
-        });
-      } else {
-        isLogin = false;
-      }
-    });
-
     super.initState();
   }
 
@@ -141,7 +130,7 @@ class _NavSwitchState extends State<NavSwitch> {
               ),
             ],
             currentIndex: _selectedIndex,
-            onTap: _onItemTapped,              
+            onTap: _onItemTapped,
           ),
           floatingActionButton: buildFAB(context),
         ),

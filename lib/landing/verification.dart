@@ -5,13 +5,16 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
+import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/Singinup_page.dart';
 import 'package:athome/landing/login_page.dart';
+import 'package:athome/main.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:provider/provider.dart';
 
 import '../home/nav_switch.dart';
 
@@ -296,11 +299,14 @@ class _VerificatoinState extends State<Verificatoin> {
                   setState(() {
                     _isLoading = false;
                     _isVerified = true;
+                    isLogin = true;
                   });
-                  var jsonData = json.encode(value["data"]);
-                  setStringPrefs("userData", jsonData.toString());
+
                   setBoolPrefs("islogin", true);
                   setStringPrefs("token", value["token"]);
+                  final productrovider =
+                      Provider.of<productProvider>(context, listen: false);
+                  productrovider.updatePost();
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => NavSwitch()),
@@ -385,10 +391,17 @@ class _VerificatoinState extends State<Verificatoin> {
         if (value != "") {
           if (value["code"] == "200") {
             if (value["data"]["isActive"] == 1) {
-              var jsonData = json.encode(value["data"]);
-              setStringPrefs("userData", jsonData.toString());
+              setState(() {
+                _isLoading = false;
+                _isVerified = true;
+                isLogin = true;
+              });
+
               setBoolPrefs("islogin", true);
               setStringPrefs("token", value["token"]);
+              final productrovider =
+                  Provider.of<productProvider>(context, listen: false);
+              productrovider.updatePost();
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => NavSwitch()),

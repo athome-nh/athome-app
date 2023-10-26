@@ -111,8 +111,7 @@ class _MyCartState extends State<MyCart> {
                               children: [
                                 IconButton(
                                   onPressed: () {
-                                    cartProvider
-                                        .deleteitem(cartitemQ.product);
+                                    cartProvider.deleteitem(cartitemQ.product);
                                   },
                                   icon: Icon(
                                     Icons.delete_outline,
@@ -123,8 +122,7 @@ class _MyCartState extends State<MyCart> {
                                   child: Card(
                                     elevation: 4,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(15.0),
+                                      borderRadius: BorderRadius.circular(15.0),
                                     ),
                                     child: Container(
                                       width: getWidth(context, 80),
@@ -150,8 +148,7 @@ class _MyCartState extends State<MyCart> {
                                                 child: CachedNetworkImage(
                                                   imageUrl: cartitem.coverImg
                                                       .toString(),
-                                                  width:
-                                                      getWidth(context, 20),
+                                                  width: getWidth(context, 20),
                                                   height:
                                                       getHeight(context, 10),
                                                 ),
@@ -161,12 +158,10 @@ class _MyCartState extends State<MyCart> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
+                                                  MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 SizedBox(
-                                                  width:
-                                                      getWidth(context, 30),
+                                                  width: getWidth(context, 30),
                                                   child: Text(
                                                     lang == "en"
                                                         ? cartitem.nameEn
@@ -196,8 +191,7 @@ class _MyCartState extends State<MyCart> {
                                                                   .lineThrough
                                                               : TextDecoration
                                                                   .none,
-                                                          color:
-                                                              mainColorGrey,
+                                                          color: mainColorGrey,
                                                           fontFamily:
                                                               mainFontbold,
                                                           fontSize: 10),
@@ -228,16 +222,29 @@ class _MyCartState extends State<MyCart> {
 
                                                     // limit letter of info in cart items
                                                     Text(
-                                                      lang == "en" 
-                                                      ? textCount(cartitem.contentsEn.toString(), 20)
-                                                        : lang == "ar"
-                                                          ? textCount(cartitem.contentsAr.toString(), 20)
-                                                            : textCount(cartitem.contentsKu.toString(), 20),
+                                                      lang == "en"
+                                                          ? textCount(
+                                                              cartitem
+                                                                  .contentsEn
+                                                                  .toString(),
+                                                              20)
+                                                          : lang == "ar"
+                                                              ? textCount(
+                                                                  cartitem
+                                                                      .contentsAr
+                                                                      .toString(),
+                                                                  20)
+                                                              : textCount(
+                                                                  cartitem
+                                                                      .contentsKu
+                                                                      .toString(),
+                                                                  20),
                                                       style: TextStyle(
-                                                          color: mainColorGrey,
-                                                          fontFamily: mainFontnormal,
-                                                          fontSize: 12,
-                                                          ),
+                                                        color: mainColorGrey,
+                                                        fontFamily:
+                                                            mainFontnormal,
+                                                        fontSize: 12,
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
@@ -261,11 +268,12 @@ class _MyCartState extends State<MyCart> {
                                                       if (cartitem.offerPrice! >
                                                               -1 &&
                                                           cartitem.orderLimit ==
-                                                              cartProvider.calculateQuantityForProduct(
-                                                                  int.parse(
-                                                                      cartitem
-                                                                          .id
-                                                                          .toString()))) {
+                                                              cartProvider
+                                                                  .calculateQuantityForProduct(
+                                                                      int.parse(
+                                                                          cartitem
+                                                                              .id
+                                                                              .toString()))) {
                                                         toastLong(
                                                             "you can not add more this item");
                                                         return;
@@ -273,13 +281,13 @@ class _MyCartState extends State<MyCart> {
                                                       final cartItem = CartItem(
                                                           product: cartitemQ
                                                               .product);
-                                                      cartProvider.addToCart(
-                                                          cartItem);
+                                                      cartProvider
+                                                          .addToCart(cartItem);
                                                     },
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets
-                                                              .all(2.0),
+                                                          const EdgeInsets.all(
+                                                              2.0),
                                                       child: Container(
                                                           width: getWidth(
                                                               context, 6),
@@ -321,8 +329,8 @@ class _MyCartState extends State<MyCart> {
                                                     },
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets
-                                                              .all(2.0),
+                                                          const EdgeInsets.all(
+                                                              2.0),
                                                       child: Container(
                                                           width: getWidth(
                                                               context, 6),
@@ -340,7 +348,8 @@ class _MyCartState extends State<MyCart> {
                                                                   mainColorGrey),
                                                           child: Icon(
                                                               Icons.remove,
-                                                              color: mainColorWhite,
+                                                              color:
+                                                                  mainColorWhite,
                                                               size: getHeight(context, 2))),
                                                     ),
                                                   ),
@@ -487,39 +496,48 @@ class _MyCartState extends State<MyCart> {
                                         children: <Widget>[
                                           Container(
                                             padding: EdgeInsets.only(
-                                                  top: getWidth(context, 2),
-                                                  left: getWidth(context, 2),
-                                                  right: getWidth(context, 2),
-                                                  bottom: getWidth(context, 1),
-                                                ),
-                                            margin:const EdgeInsets.all(8.0),
+                                              top: getWidth(context, 2),
+                                              left: getWidth(context, 2),
+                                              right: getWidth(context, 2),
+                                              bottom: getWidth(context, 1),
+                                            ),
+                                            margin: const EdgeInsets.all(8.0),
                                             height: getWidth(context, 10),
                                             width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color:mainColorGrey.withOpacity(0.5),
-                                                  borderRadius:BorderRadius.circular(5),
-                                                  ),
-                                                  child: Center(
-                                                    child: Text(
-                                                      "Select Location",
-                                                    style: TextStyle(
-                                                      color: mainColorWhite,
-                                                      fontSize: 20,
-                                                      fontFamily: mainFontnormal,
-                                                      ),
-                                                      ),
-                                                  ), 
+                                            decoration: BoxDecoration(
+                                              color: mainColorGrey
+                                                  .withOpacity(0.5),
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                "Select Location",
+                                                style: TextStyle(
+                                                  color: mainColorWhite,
+                                                  fontSize: 20,
+                                                  fontFamily: mainFontnormal,
+                                                ),
                                               ),
+                                            ),
+                                          ),
                                           SizedBox(
                                             height: getHeight(context, 40),
                                             child: Padding(
-                                              padding:const EdgeInsets.all(8.0),
-                                              child: productrovider.location.isNotEmpty
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: productrovider
+                                                      .location.isNotEmpty
                                                   ? ListView.builder(
-                                                      itemCount: productrovider.location.length,
+                                                      itemCount: productrovider
+                                                          .location.length,
                                                       itemBuilder:
-                                                          (BuildContext context, int index) {
-                                                        final location = productrovider.location[index];
+                                                          (BuildContext context,
+                                                              int index) {
+                                                        final location =
+                                                            productrovider
+                                                                    .location[
+                                                                index];
                                                         return Padding(
                                                           padding:
                                                               EdgeInsets.only(
@@ -630,7 +648,6 @@ class _MyCartState extends State<MyCart> {
                                     );
                                   },
                                 );
-                              
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColorRed,

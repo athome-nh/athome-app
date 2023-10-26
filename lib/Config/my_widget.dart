@@ -5,6 +5,7 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
+import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';

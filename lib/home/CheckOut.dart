@@ -3,6 +3,7 @@ import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/TrackOrder.dart';
+import 'package:athome/landing/splash_screen.dart';
 
 import 'package:athome/model/location/location.dart';
 import 'package:athome/model/product_model/product_model.dart';
@@ -406,7 +407,8 @@ class _CheckOutState extends State<CheckOut> {
                                       });
 
                                       var data2 = {
-                                        "customerid": userData["id"],
+                                        "customerid":
+                                           userdata["id"],
                                         "total": total,
                                         "location": location.id!,
                                         "order_data": data.substring(2),
