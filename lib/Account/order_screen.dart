@@ -74,24 +74,15 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   order.createdAt.toString())),
                                         );
                                       } else {
-                                        productrovider
-                                            .getordersbyOrderCode(
-                                                order.orderCode!)
-                                            .forEach((element) {
-                                          final cartItem = CartItemPast(
-                                            product: element.productId!,
-                                            quantity: element.qt!,
-                                          );
-                                          cartProvider.addToCartPast(cartItem);
-                                        });
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const oreder_items()),
-                                        ).then((value) {
-                                          cartProvider.clearCartPast();
-                                        });
+                                              builder: (context) => Old_Order(
+                                                  order.orderCode.toString(),
+                                                  order.id.toString(),
+                                                  order.returnTotalPrice!,
+                                                  order.createdAt.toString())),
+                                        );
                                       }
                                     },
                                     icon: Icon(Icons.arrow_forward_ios,
@@ -148,15 +139,23 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
+                                    productrovider
+                                        .getordersbyOrderCode(order.orderCode!)
+                                        .forEach((element) {
+                                      final cartItem = CartItemPast(
+                                        product: element.productId!,
+                                        quantity: element.qt!,
+                                      );
+                                      cartProvider.addToCartPast(cartItem);
+                                    });
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Old_Order(
-                                              order.orderCode.toString(),
-                                              order.id.toString(),
-                                              order.totalPrice.toString(),
-                                              order.createdAt.toString())),
-                                    );
+                                          builder: (context) =>
+                                              const oreder_items()),
+                                    ).then((value) {
+                                      cartProvider.clearCartPast();
+                                    });
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(

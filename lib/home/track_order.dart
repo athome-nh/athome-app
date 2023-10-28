@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:athome/Account/old_order.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -25,6 +26,7 @@ List images = [
   "assets/images/new_way.gif",
   "assets/images/new_delivered.gif",
   "assets/images/Order-Success.gif",
+  "assets/images/Order-Failed.gif",
 ];
 List titles = [
   "Order Placed",
@@ -32,6 +34,7 @@ List titles = [
   "Processing Order",
   "Order Is On way",
   "Order Ready For Pickup",
+  "Order is delivered",
   "Order is delivered"
 ];
 List content = [
@@ -40,7 +43,8 @@ List content = [
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
   "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+  "Your order is  delivered thank you for ordering jassk xcnc kz  .",
+  "Your order is  delivered thank you for ordering jassk xcnc kz  .",
 ];
 int status = 0;
 
@@ -328,12 +332,12 @@ class _TrackOrderState extends State<TrackOrder> {
                               },
                               child: Text('Cancle order',
                                   style: TextStyle(
-                                    color: mainColorGrey,
+                                    color: mainColorWhite,
                                     fontSize: 16,
                                     fontFamily: mainFontnormal,
                                   )),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: mainColorLightGrey,
+                                backgroundColor: mainColorRed,
                                 fixedSize: Size(getWidth(context, 35),
                                     getHeight(context, 3)),
                                 shape: RoundedRectangleBorder(
@@ -342,6 +346,33 @@ class _TrackOrderState extends State<TrackOrder> {
                               ),
                             )
                       : const SizedBox(),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Old_Order(
+                                widget.ordercode,
+                                widget.id,
+                                int.parse(widget.total),
+                                widget.time)),
+                      );
+                    },
+                    child: Text('View order',
+                        style: TextStyle(
+                          color: mainColorWhite,
+                          fontSize: 16,
+                          fontFamily: mainFontnormal,
+                        )),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: mainColorGrey,
+                      fixedSize:
+                          Size(getWidth(context, 35), getHeight(context, 3)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
+                  )
                 ],
               )
             ],
