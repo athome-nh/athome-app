@@ -7,7 +7,6 @@ import 'package:athome/model/product_model/product_model.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/CheckOut.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -15,6 +14,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../main.dart';
+import 'check_out.dart';
 
 class MyCart extends StatefulWidget {
   const MyCart({super.key});
@@ -677,23 +677,22 @@ class _MyCartState extends State<MyCart> {
               )
             : Center(
                 child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Your cart is empty",
-                    style: TextStyle(fontSize: 40, fontFamily: mainFontnormal),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
-                  Icon(
-                    Ionicons.cart_outline,
-                    size: getHeight(context, 20),
-                    color: mainColorRed,
-                  ),
-                ],
-              )),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: getWidth(context, 60),
+                                height: getWidth(context, 50),
+                                child: Image.asset(
+                                    "assets/images/gif_favorite.gif"),
+                              ),
+                              Text(
+                                "Your cart is empty",
+                                style: TextStyle(
+                                    fontFamily: mainFontnormal, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          ),
       ),
     );
   }

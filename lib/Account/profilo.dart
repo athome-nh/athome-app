@@ -394,19 +394,15 @@ class _SettingState extends State<Setting> {
                                                   borderRadius:
                                                       BorderRadius.circular(5),
                                                   color: mainColorRed),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "Save".tr,
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            mainFontbold,
-                                                        fontSize: 14,
-                                                        color: mainColorWhite),
-                                                  ),
-                                                ],
+                                              child: Center(
+                                                child: Text(
+                                                  "Save".tr,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          mainFontbold,
+                                                      fontSize: 14,
+                                                      color: mainColorWhite),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -439,19 +435,15 @@ class _SettingState extends State<Setting> {
                                                   borderRadius:
                                                       BorderRadius.circular(5),
                                                   color: mainColorRed),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "Cancel".tr,
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            mainFontbold,
-                                                        fontSize: 14,
-                                                        color: mainColorWhite),
-                                                  ),
-                                                ],
+                                              child: Center(
+                                                child: Text(
+                                                  "Cancel".tr,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          mainFontbold,
+                                                      fontSize: 14,
+                                                      color: mainColorWhite),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -481,19 +473,15 @@ class _SettingState extends State<Setting> {
                                                     BorderRadius.circular(5),
                                                 color: mainColorRed,
                                               ),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "Edit".tr,
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            mainFontbold,
-                                                        fontSize: 14,
-                                                        color: mainColorWhite),
-                                                  ),
-                                                ],
+                                              child: Center(
+                                                child: Text(
+                                                  "Edit".tr,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          mainFontbold,
+                                                      fontSize: 14,
+                                                      color: mainColorWhite),
+                                                ),
                                               ),
                                             ),
                                           ),

@@ -2,9 +2,7 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/TrackOrder.dart';
 import 'package:athome/landing/splash_screen.dart';
-
 import 'package:athome/model/location/location.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +10,14 @@ import 'package:athome/Config/property.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
-
 import '../main.dart';
 import 'nav_switch.dart';
+import 'track_order.dart';
 
 // ignore: must_be_immutable
 class CheckOut extends StatefulWidget {
   int id = 0;
-  CheckOut({required this.id});
+  CheckOut({super.key, required this.id});
 
   @override
   State<CheckOut> createState() => _CheckOutState();
@@ -35,7 +33,7 @@ class _CheckOutState extends State<CheckOut> {
   bool waitingcheckout = false;
   @override
   Widget build(BuildContext context) {
-    String order_code = "";
+    String orderCode = "";
 
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final productrovider = Provider.of<productProvider>(context, listen: false);
@@ -104,15 +102,13 @@ class _CheckOutState extends State<CheckOut> {
                                 children: [
                                   Text(
                                     textAlign: TextAlign.end,
-                                    location.type! +
-                                        " Number " +
-                                        location.number.toString(),
+                                    "${location.type!} Number ${location.number}",
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontbold,
                                         fontSize: 14),
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   Text(
                                     textAlign: TextAlign.end,
                                     location.area!,
@@ -142,7 +138,7 @@ class _CheckOutState extends State<CheckOut> {
                   SizedBox(
                     height: getHeight(context, 2),
                     child: Container(
-                      color: Color(0xffF2F2F2),
+                      color: const Color(0xffF2F2F2),
                     ),
                   ),
                   Container(
@@ -176,7 +172,7 @@ class _CheckOutState extends State<CheckOut> {
                               width: getWidth(context, 90),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color(0xffF2F2F2),
+                                color: const Color(0xffF2F2F2),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -213,7 +209,7 @@ class _CheckOutState extends State<CheckOut> {
                               width: getWidth(context, 90),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color(0xffF2F2F2),
+                                color: const Color(0xffF2F2F2),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -244,7 +240,7 @@ class _CheckOutState extends State<CheckOut> {
                               width: getWidth(context, 90),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color(0xffF2F2F2),
+                                color: const Color(0xffF2F2F2),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -270,7 +266,7 @@ class _CheckOutState extends State<CheckOut> {
                   SizedBox(
                     height: getHeight(context, 2),
                     child: Container(
-                      color: Color(0xffF2F2F2),
+                      color: const Color(0xffF2F2F2),
                     ),
                   ),
                   Container(
@@ -293,7 +289,9 @@ class _CheckOutState extends State<CheckOut> {
                             cursorColor: mainColorGrey,
                             keyboardType: TextInputType.text,
                             onChanged: (value) {},
-                            validator: (value) {},
+                            validator: (value) {
+                              return null;
+                            },
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
@@ -388,27 +386,17 @@ class _CheckOutState extends State<CheckOut> {
 
                                       // productrovider.notifyListeners();
                                       String data = "";
-                                      cartProvider.cartItems.forEach((element) {
+                                      for (var element in cartProvider.cartItems) {
                                         ProductModel Item = productrovider
                                             .getoneProductById(element.product);
                                         String price = Item.price2! > -1
                                             ? Item.price2!.toString()
                                             : Item.price.toString();
-                                        data += "!&" +
-                                            Item.id.toString() +
-                                            ",,," +
-                                            Item.purchasePrice.toString() +
-                                            ",,," +
-                                            price +
-                                            ",,," +
-                                            Item.offerPrice.toString() +
-                                            ",,," +
-                                            element.quantity.toString();
-                                      });
+                                        data += "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
+                                      }
 
                                       var data2 = {
-                                        "customerid":
-                                           userdata["id"],
+                                        "customerid": userdata["id"],
                                         "total": total,
                                         "location": location.id!,
                                         "order_data": data.substring(2),
@@ -520,17 +508,17 @@ class _CheckOutState extends State<CheckOut> {
                                                                               context,
                                                                               4)),
                                                               child: Text(
-                                                                  "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
-                                                                      .tr,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        14,
-                                                                    color:
-                                                                        mainColorGrey,
-                                                                    fontFamily:
-                                                                        mainFontnormal,
-                                                                  )),
+                                                                "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
+                                                                    .tr,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 14,
+                                                                  color:
+                                                                      mainColorGrey,
+                                                                  fontFamily:
+                                                                      mainFontnormal,
+                                                                ),
+                                                              ),
                                                             ),
                                                             SizedBox(
                                                               height: getHeight(
@@ -539,10 +527,11 @@ class _CheckOutState extends State<CheckOut> {
                                                             Padding(
                                                               padding: EdgeInsets
                                                                   .symmetric(
-                                                                      horizontal:
-                                                                          getWidth(
-                                                                              context,
-                                                                              4)),
+                                                                horizontal:
+                                                                    getWidth(
+                                                                        context,
+                                                                        4),
+                                                              ),
                                                               child: TextButton(
                                                                 onPressed: () {
                                                                   cartProvider
@@ -565,21 +554,10 @@ class _CheckOutState extends State<CheckOut> {
                                                                       context,
                                                                       MaterialPageRoute(
                                                                           builder: (context) =>
-                                                                              NavSwitch()),
+                                                                              const NavSwitch()),
                                                                     );
                                                                   });
                                                                 },
-                                                                child: Text(
-                                                                  "Track My Order"
-                                                                      .tr,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color:
-                                                                        mainColorWhite,
-                                                                    fontSize:
-                                                                        16,
-                                                                  ),
-                                                                ),
                                                                 style: ElevatedButton
                                                                     .styleFrom(
                                                                   backgroundColor:
@@ -595,7 +573,18 @@ class _CheckOutState extends State<CheckOut> {
                                                                       RoundedRectangleBorder(
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            50),
+                                                                            5),
+                                                                  ),
+                                                                ),
+                                                                child: Text(
+                                                                  "Track My Order"
+                                                                      .tr,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color:
+                                                                        mainColorWhite,
+                                                                    fontSize:
+                                                                        16,
                                                                   ),
                                                                 ),
                                                               ),
@@ -611,7 +600,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                   MaterialPageRoute(
                                                                       builder:
                                                                           (context) =>
-                                                                              NavSwitch()),
+                                                                              const NavSwitch()),
                                                                 ); // Close the bottom sheet
                                                               },
                                                               child: Text(
@@ -637,7 +626,7 @@ class _CheckOutState extends State<CheckOut> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            NavSwitch()),
+                                                            const NavSwitch()),
                                                   );
                                                 });
                                               } else {
@@ -647,13 +636,12 @@ class _CheckOutState extends State<CheckOut> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            NavSwitch()),
+                                                            const NavSwitch()),
                                                   );
                                                 });
                                               }
                                             });
 
-                                            ;
                                           } else {
                                             setState(() {
                                               waitingcheckout = false;
@@ -666,19 +654,19 @@ class _CheckOutState extends State<CheckOut> {
                                         }
                                       });
                                     },
-                              child: Text(
-                                "Send Order",
-                                style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 18,
-                                ),
-                              ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColorRed,
                                 fixedSize: Size(getWidth(context, 85),
                                     getHeight(context, 6)),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                              child: Text(
+                                "Send Order",
+                                style: TextStyle(
+                                  color: mainColorWhite,
+                                  fontSize: 18,
                                 ),
                               ),
                             ),
@@ -689,7 +677,7 @@ class _CheckOutState extends State<CheckOut> {
                   )
                 ],
               ),
-              waitingcheckout ? WaitingWiget(context) : SizedBox()
+              waitingcheckout ? WaitingWiget(context) : const SizedBox()
             ],
           ),
         ),
@@ -712,59 +700,57 @@ class _CheckOutState extends State<CheckOut> {
                 borderRadius: BorderRadius.circular(5),
                 child: ClipRect(
                   child: Container(
-                    child: Container(
-                      width: getWidth(context, 90),
-                      height: getHeight(context, 30),
-                      decoration: BoxDecoration(
-                          color: mainColorGrey.withOpacity(0.1),
-                          border: Border.all(
-                              color: mainColorWhite.withOpacity(0.1)),
-                          borderRadius: BorderRadius.circular(5)),
-                      padding: const EdgeInsets.all(10),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: getHeight(context, 30),
-                        ),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const SizedBox(),
-                              Text(
-                                "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin ",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  color: mainColorWhite.withOpacity(0.7),
-                                  fontFamily: mainFontnormal,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              const SizedBox(),
-                              const SizedBox(),
-                              const SizedBox(),
-                              const SizedBox(),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  Navigator.pop(context);
-                                  Navigator.pop(context);
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  "Ok".tr,
-                                  style: TextStyle(
-                                      fontSize: 18, fontFamily: mainFontnormal),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainColorRed,
-                                  fixedSize: const Size(70, 35),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                              ),
-                            ]),
+                    width: getWidth(context, 90),
+                    height: getHeight(context, 30),
+                    decoration: BoxDecoration(
+                        color: mainColorGrey.withOpacity(0.1),
+                        border: Border.all(
+                            color: mainColorWhite.withOpacity(0.1)),
+                        borderRadius: BorderRadius.circular(5)),
+                    padding: const EdgeInsets.all(10),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: getHeight(context, 30),
                       ),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const SizedBox(),
+                            Text(
+                              "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin ",
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                color: mainColorWhite.withOpacity(0.7),
+                                fontFamily: mainFontnormal,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(),
+                            const SizedBox(),
+                            const SizedBox(),
+                            const SizedBox(),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: mainColorRed,
+                                fixedSize: const Size(70, 35),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: Text(
+                                "Ok".tr,
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: mainFontnormal),
+                              ),
+                            ),
+                          ]),
                     ),
                   ),
                 ),

@@ -161,7 +161,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                                 child: status == 0
                                     ? LoadingIndicator(
-                                        indicatorType: Indicator.orbit,
+                                        indicatorType: Indicator.ballSpinFadeLoader,
                                         colors: [mainColorRed],
                                         strokeWidth: 5,
                                       )
@@ -218,7 +218,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                                 child: status == 3
                                     ? LoadingIndicator(
-                                        indicatorType: Indicator.orbit,
+                                        indicatorType: Indicator.ballSpinFadeLoader,
                                         colors: [mainColorRed],
                                         strokeWidth: 5,
                                       )

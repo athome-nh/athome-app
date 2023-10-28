@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -8,7 +7,6 @@ import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'Landing/splash_screen.dart';
-import 'Landing/welcome_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 

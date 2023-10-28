@@ -1,12 +1,9 @@
-import 'dart:convert';
 import 'package:animate_do/animate_do.dart';
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/landing/Singinup_page.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -15,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:provider/provider.dart';
-
 import '../home/nav_switch.dart';
+import 'singin_up.dart';
 
 class Verificatoin extends StatefulWidget {
   String phone_number;
@@ -73,7 +70,7 @@ class _VerificatoinState extends State<Verificatoin> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     height: getHeight(context, 27),
                     child: Image.asset(
                       "assets/images/verify.gif",
@@ -147,8 +144,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     delay: const Duration(milliseconds: 500),
                     duration: const Duration(milliseconds: 500),
                     child: Text(
-                      "Please enter the 6 digit code sent to \n " +
-                          widget.phone_number,
+                      "Please enter the 6 digit code sent to \n ${widget.phone_number}",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
@@ -207,9 +203,7 @@ class _VerificatoinState extends State<Verificatoin> {
                             },
                             child: Text(
                               timecode != 0
-                                  ? "Try again in " +
-                                      formatedTime(timeInSecond: timecode)
-                                          .toString()
+                                  ? "Try again in ${formatedTime(timeInSecond: timecode)}"
                                   : "Resend",
                               style: TextStyle(
                                   color: mainColorRed,
@@ -242,10 +236,10 @@ class _VerificatoinState extends State<Verificatoin> {
                       minWidth: getWidth(context, 100),
                       height: getHeight(context, 5.5),
                       child: _isLoading
-                          ? Container(
+                          ? const SizedBox(
                               width: 20,
                               height: 20,
-                              child: const CircularProgressIndicator(
+                              child: CircularProgressIndicator(
                                 backgroundColor: Colors.white,
                                 strokeWidth: 3,
                                 color: Colors.black,
@@ -309,7 +303,7 @@ class _VerificatoinState extends State<Verificatoin> {
                   productrovider.updatePost();
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => NavSwitch()),
+                    MaterialPageRoute(builder: (context) => const NavSwitch()),
                   );
                 } else {
                   AwesomeDialog(
@@ -341,7 +335,7 @@ class _VerificatoinState extends State<Verificatoin> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Singinup_page(
+                        builder: (context) => SingInUp(
                             widget.phone_number, _auth.currentUser!.uid)));
               }
             } else {
@@ -358,7 +352,6 @@ class _VerificatoinState extends State<Verificatoin> {
             _isLoading = false;
             _isVerified = false;
           });
-          print(e);
         }
       },
       verificationFailed: (FirebaseAuthException e) {},
@@ -404,7 +397,7 @@ class _VerificatoinState extends State<Verificatoin> {
               productrovider.updatePost();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => NavSwitch()),
+                MaterialPageRoute(builder: (context) => const NavSwitch()),
               );
             } else {
               AwesomeDialog(
@@ -435,7 +428,7 @@ class _VerificatoinState extends State<Verificatoin> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Singinup_page(
+                    builder: (context) => SingInUp(
                         widget.phone_number, _auth.currentUser!.uid)));
           }
         } else {
@@ -450,8 +443,6 @@ class _VerificatoinState extends State<Verificatoin> {
       setState(() {
         _isLoading = false;
         _isVerified = false;
-
-        print(e);
       });
     }
   }

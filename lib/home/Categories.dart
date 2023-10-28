@@ -10,6 +10,7 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:provider/provider.dart';
 
+import '../Config/athome_functions.dart';
 import 'nav_switch.dart';
 
 class Categories extends StatefulWidget {
@@ -82,7 +83,7 @@ class _CategoriesState extends State<Categories> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: getHeight(context, 90),
+                        height: getHeight(context, 80),
                         width: getWidth(context, 95),
                         child: GridView.builder(
                           gridDelegate:
@@ -96,68 +97,65 @@ class _CategoriesState extends State<Categories> {
                           itemBuilder: (BuildContext context, int index) {
                             final cateItem = productPro.categores[index];
                             // Build each grid item here
-                            return Container(
-                              //decoration: BoxDecoration(border: Border.all()),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      productPro.setcatetype(cateItem.id!);
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                itemCategories()),
-                                      ).then((value) {
-                                        productPro.setsubcateSelect(0);
-                                      });
-                                    },
-                                    child: Card(
-                                      elevation: 3,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(
-                                            100), // Adjust the corner radius
-                                      ),
-                                      child: Container(
-                                        width: getHeight(context, 10),
-                                        height: getHeight(context, 10),
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xffF2F2F2),
-                                            borderRadius:
-                                                BorderRadius.circular(100)),
-                                        child: Center(
-                                          child: CachedNetworkImage(
-                                            imageUrl: cateItem.img!,
-                                            placeholder: (context, url) =>
-                                                Image.asset(
-                                                    "assets/images/002_logo_1.png"),
-                                            errorWidget: (context, url,
-                                                    error) =>
-                                                Image.asset(
-                                                    "assets/images/002_logo_1.png"),
-                                            width: getHeight(context, 7),
-                                            height: getHeight(context, 7),
-                                          ),
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                GestureDetector(
+                                  onTap: () {
+                                    productPro.setcatetype(cateItem.id!);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              itemCategories()),
+                                    ).then((value) {
+                                      productPro.setsubcateSelect(0);
+                                    });
+                                  },
+                                  child: Card(
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          100), // Adjust the corner radius
+                                    ),
+                                    child: Container(
+                                      width: getHeight(context, 10),
+                                      height: getHeight(context, 10),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xffF2F2F2),
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      child: Center(
+                                        child: CachedNetworkImage(
+                                          imageUrl: cateItem.img!,
+                                          placeholder: (context, url) =>
+                                              Image.asset(
+                                                  "assets/images/002_logo_1.png"),
+                                          errorWidget: (context, url,
+                                                  error) =>
+                                              Image.asset(
+                                                  "assets/images/002_logo_1.png"),
+                                          width: getHeight(context, 7),
+                                          height: getHeight(context, 7),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    child: Text(
-                                      lang == "en"
-                                          ? cateItem.nameEn!
-                                          : lang == "ar"
-                                              ? cateItem.nameAr!
-                                              : cateItem.nameKu!,
-                                      style: TextStyle(
-                                          color: mainColorGrey,
-                                          fontFamily: mainFontnormal,
-                                          fontSize: 14),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  lang == "en"
+                                  // Todo: (Bawar) text count by getwidth
+                                      ?  textCount(cateItem.nameEn!, getWidth(context, 4.3).toInt() )
+                                      //cateItem.nameEn!
+                                      : lang == "ar"
+                                          ? cateItem.nameAr!
+                                          : cateItem.nameKu!,
+                                  style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 14),
+                                ),
+                              ],
                             );
                           },
                         ),

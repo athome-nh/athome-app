@@ -1,11 +1,10 @@
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Home/AllItem.dart';
+import 'package:athome/Home/all_item.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/Notfication.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
@@ -110,7 +109,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 height: getWidth(context, 9),
                                 decoration: BoxDecoration(
                                     color: mainColorRed,
-                                    borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(5)),
                                 child: TextButton(
                                     onPressed: () {},
                                     child: Text(
@@ -162,11 +161,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                         decoration: BoxDecoration(
                                             color: mainColorRed,
                                             borderRadius:
-                                                BorderRadius.circular(10)),
+                                                BorderRadius.circular(5)),
                                         child: TextButton(
                                             onPressed: () {
-                                              String a = "Cart" +
-                                                  userdata["id"].toString();
+                                              String a = "Cart${userdata["id"]}";
+
                                               print(CartProvider()
                                                   .cartItems
                                                   .length);
@@ -260,7 +259,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       ],
                     ),
                     SizedBox(
-                      height: getHeight(context, 13),
+                      height: getHeight(context, 14),
                       child: Visibility(
                         visible: productrovider.show,
                         replacement: Skeletonizer(
@@ -386,7 +385,7 @@ class _HomeSreenState extends State<HomeSreen> {
                         ),
                       ),
                     ),
-                    productrovider.Orderitems.length > 0
+                    productrovider.Orderitems.isNotEmpty
                         ? Column(
                             children: [
                               Row(
@@ -417,7 +416,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        AllItem()),
+                                                        const AllItem()),
                                               );
                                             }
                                           },
@@ -438,7 +437,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   ),
                                 ],
                               ),
-                              Container(
+                              SizedBox(
                                 height: getHeight(context, 28),
                                 //  decoration: BoxDecoration(border: Border.all()),
                                 child: Visibility(
@@ -474,7 +473,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        Oneitem()),
+                                                                        const Oneitem()),
                                                           );
                                                         },
                                                         child: Container(
@@ -534,19 +533,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                               0.5)),
                                                                   color:
                                                                       mainColorGrey),
-                                                              child: false
-                                                                  ? Center(
-                                                                      child:
-                                                                          Text(
-                                                                        "1",
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                                16,
-                                                                            color:
-                                                                                mainColorWhite),
-                                                                      ),
-                                                                    )
-                                                                  : Icon(
+                                                              child:  Icon(
                                                                       Icons.add,
                                                                       color:
                                                                           mainColorWhite,
@@ -559,7 +546,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   ),
                                                 ],
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 //decoration: BoxDecoration(border: Border.all()),
                                                 width: getWidth(context, 32),
                                                 height: getHeight(context, 13),
@@ -582,7 +569,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                               mainFontbold,
                                                           fontSize: 16),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     Text(
@@ -599,11 +586,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                                               mainFontbold,
                                                           fontSize: 9),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     Text(
-                                                      "product" + " IQD",
+                                                      "product" " IQD",
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           decoration:
@@ -615,7 +602,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                           fontSize: 11),
                                                     ),
                                                     Text(
-                                                      "product" + " IQD",
+                                                      "product" " IQD",
                                                       maxLines: 1,
                                                       style: TextStyle(
                                                           color: mainColorRed,
@@ -672,7 +659,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                           MaterialPageRoute(
                                                               builder:
                                                                   (context) =>
-                                                                      Oneitem()),
+                                                                      const Oneitem()),
                                                         );
                                                       },
                                                       child: Container(
@@ -799,7 +786,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             BoxDecoration(
                                                           borderRadius:
                                                               lang == "en"
-                                                                  ? BorderRadius
+                                                                  ? const BorderRadius
                                                                       .only(
                                                                       //  topLeft: Radius.circular(20.0),
                                                                       topRight:
@@ -810,7 +797,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                           Radius.circular(
                                                                               20.0),
                                                                     )
-                                                                  : BorderRadius
+                                                                  : const BorderRadius
                                                                       .only(
                                                                       topLeft: Radius
                                                                           .circular(
@@ -850,7 +837,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                 size: 12),
                                                           ],
                                                         ))
-                                                    : SizedBox(),
+                                                    : const SizedBox(),
                                               ],
                                             ),
                                             GestureDetector(
@@ -861,10 +848,10 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Oneitem()),
+                                                          const Oneitem()),
                                                 );
                                               },
-                                              child: Container(
+                                              child: SizedBox(
                                                 //decoration: BoxDecoration(border: Border.all()),
                                                 width: getWidth(context, 32),
                                                 height: getHeight(context, 13),
@@ -890,7 +877,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                               mainFontbold,
                                                           fontSize: 14),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     Text(
@@ -912,7 +899,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                               mainFontbold,
                                                           fontSize: 12),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     Text(
@@ -943,7 +930,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                     mainFontbold,
                                                                 fontSize: 14),
                                                           )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                                   ],
                                                 ),
                                               ),
@@ -957,7 +944,7 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                     productrovider.getProductsByDiscount().isNotEmpty
                         ? Column(
                             children: [

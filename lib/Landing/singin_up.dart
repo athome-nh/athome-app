@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:animate_do/animate_do.dart';
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
@@ -18,16 +16,16 @@ import 'package:provider/provider.dart';
 
 import '../home/nav_switch.dart';
 
-class Singinup_page extends StatefulWidget {
+class SingInUp extends StatefulWidget {
   String phone_number;
   String uid;
-  Singinup_page(this.phone_number, this.uid, {super.key});
+  SingInUp(this.phone_number, this.uid, {super.key});
 
   @override
-  State<Singinup_page> createState() => _Singinup_pageState();
+  State<SingInUp> createState() => _SingInUpState();
 }
 
-class _Singinup_pageState extends State<Singinup_page> {
+class _SingInUpState extends State<SingInUp> {
   bool _isLoading = false;
 
   String age = '18';
@@ -349,7 +347,7 @@ class _Singinup_pageState extends State<Singinup_page> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => NavSwitch()),
+                                    builder: (context) => const NavSwitch()),
                               );
                             } else {
                               setState(() {
@@ -370,9 +368,9 @@ class _Singinup_pageState extends State<Singinup_page> {
                     color: mainColorRed,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     child: _isLoading
-                        ? Container(
+                        ? SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
@@ -416,15 +414,14 @@ class _Singinup_pageState extends State<Singinup_page> {
     // 'utsname.machine:': data.utsname.machine,
   }
 
-  Widget _genderWidget(bool _showOther, bool _alignment) {
+  Widget _genderWidget(bool showOther, bool alignment) {
     return Container(
       //margin: EdgeInsets.all(16.0),
       alignment: Alignment.center,
       child: GenderPickerWithImage(
-        verticalAlignedText: _alignment,
+        verticalAlignedText: alignment,
         onChanged: (value) {
           final split = value.toString().split('.');
-          print(split[1]);
           gender = split[1];
         },
 

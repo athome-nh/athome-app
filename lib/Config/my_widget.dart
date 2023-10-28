@@ -24,7 +24,7 @@ import '../home/oneitem.dart';
 Widget listItemsShow(BuildContext context, var data) {
   final productPro = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
-  return Visibility(
+  return    Visibility(
     visible: productPro.show,
     replacement: Skeletonizer(
       enabled: true,

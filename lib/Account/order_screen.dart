@@ -1,17 +1,15 @@
 import 'package:athome/Account/order_items.dart';
 import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/home/TrackOrder.dart';
-import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
 import '../controller/productprovider.dart';
+import '../home/track_order.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -72,7 +70,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => oreder_items()),
+                                    builder: (context) => const oreder_items()),
                               ).then((value) {
                                 cartProvider.clearCartPast();
                               });
@@ -106,11 +104,11 @@ class _OrderScreenState extends State<OrderScreen> {
                                       ),
                                       child: order.status! < 5
                                           ? Image.asset(
-                                              "assets/images/gif_way.gif")
+                                              "assets/images/123.gif")
                                           : Icon(
-                                              order.status! == 6
-                                                  ? Icons.close
-                                                  : Icons.check,
+                                              order.status! == 5
+                                                  ? Icons.check
+                                                  : Icons.close,
                                               color: order.status! == 5
                                                   ? Colors.green
                                                   : mainColorRed,
@@ -161,11 +159,8 @@ class _OrderScreenState extends State<OrderScreen> {
                       SizedBox(
                         height: getHeight(context, 2),
                       ),
-                      Icon(
-                        Ionicons.cart_outline,
-                        size: getHeight(context, 20),
-                        color: mainColorRed,
-                      ),
+                      Image.asset(
+                        "assets/images/gif_favorite.gif"),
                     ],
                   )),
       ),
