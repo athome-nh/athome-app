@@ -50,9 +50,9 @@ class _SearchState extends State<Search> {
                 ),
                 Center(
                   child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
                     child: Row(
-                     
                       children: [
                         Container(
                           width: getWidth(context,
@@ -88,24 +88,25 @@ class _SearchState extends State<Search> {
                             ),
                           ),
                         ),
-                         productPro.searchproduct.isNotEmpty
-                            ?SizedBox( width: getWidth(context, 4)):SizedBox(),
+                        productPro.searchproduct.isNotEmpty
+                            ? SizedBox(width: getWidth(context, 4))
+                            : SizedBox(),
                         productPro.searchproduct.isNotEmpty
                             ? SizedBox(
-                              width: getWidth(context, 12),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    searchCon.text = "";
-                                    productPro.setsearch("");
-                                  },
-                                  child: Text(
-                                    "Clear".tr,
-                                    style: TextStyle(
-                                        color: mainColorRed,
-                                        fontFamily: mainFontbold,
-                                        fontSize: 14),
-                                  )),
-                            )
+                                width: getWidth(context, 12),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      searchCon.text = "";
+                                      productPro.setsearch("");
+                                    },
+                                    child: Text(
+                                      "Clear".tr,
+                                      style: TextStyle(
+                                          color: mainColorRed,
+                                          fontFamily: mainFontbold,
+                                          fontSize: 14),
+                                    )),
+                              )
                             : const SizedBox(),
                       ],
                     ),

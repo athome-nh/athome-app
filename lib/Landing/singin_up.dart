@@ -368,7 +368,8 @@ class _SingInUpState extends State<SingInUp> {
                     color: mainColorRed,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 30),
                     child: _isLoading
                         ? SizedBox(
                             width: 20,

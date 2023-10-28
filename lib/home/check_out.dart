@@ -386,13 +386,15 @@ class _CheckOutState extends State<CheckOut> {
 
                                       // productrovider.notifyListeners();
                                       String data = "";
-                                      for (var element in cartProvider.cartItems) {
+                                      for (var element
+                                          in cartProvider.cartItems) {
                                         ProductModel Item = productrovider
                                             .getoneProductById(element.product);
                                         String price = Item.price2! > -1
                                             ? Item.price2!.toString()
                                             : Item.price.toString();
-                                        data += "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
+                                        data +=
+                                            "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
                                       }
 
                                       var data2 = {
@@ -572,8 +574,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                   shape:
                                                                       RoundedRectangleBorder(
                                                                     borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            5),
+                                                                        BorderRadius
+                                                                            .circular(5),
                                                                   ),
                                                                 ),
                                                                 child: Text(
@@ -641,7 +643,6 @@ class _CheckOutState extends State<CheckOut> {
                                                 });
                                               }
                                             });
-
                                           } else {
                                             setState(() {
                                               waitingcheckout = false;
@@ -704,8 +705,8 @@ class _CheckOutState extends State<CheckOut> {
                     height: getHeight(context, 30),
                     decoration: BoxDecoration(
                         color: mainColorGrey.withOpacity(0.1),
-                        border: Border.all(
-                            color: mainColorWhite.withOpacity(0.1)),
+                        border:
+                            Border.all(color: mainColorWhite.withOpacity(0.1)),
                         borderRadius: BorderRadius.circular(5)),
                     padding: const EdgeInsets.all(10),
                     child: ConstrainedBox(

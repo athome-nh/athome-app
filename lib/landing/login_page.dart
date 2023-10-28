@@ -50,9 +50,9 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
               )),
         ),
         body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-                                        },
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
           child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
@@ -69,7 +69,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   SizedBox(
                     height: getHeight(context, 6),
                   ),
-        
+
                   FadeInDown(
                     child: Text(
                       'Wellcome back'.tr,
@@ -102,12 +102,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   FadeInDown(
                     delay: const Duration(milliseconds: 400),
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 15),
                       decoration: BoxDecoration(
                         color: mainColorWhite,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: mainColorGrey.withOpacity(0.5)),
+                        border:
+                            Border.all(color: mainColorGrey.withOpacity(0.5)),
                         boxShadow: const [
                           BoxShadow(
                             color: Color(0xffeeeeee),
@@ -121,13 +122,15 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           InternationalPhoneNumberInput(
                             countries: const ["IQ"],
                             initialValue: initialPhoneNumber,
+                            focusNode: null,
                             onInputChanged: (PhoneNumber number) {},
                             onInputValidated: (bool value) {},
                             selectorConfig: const SelectorConfig(
                               selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                             ),
                             ignoreBlank: false,
-                            autoValidateMode: AutovalidateMode.onUserInteraction,
+                            autoValidateMode:
+                                AutovalidateMode.onUserInteraction,
                             selectorTextStyle: TextStyle(color: mainColorGrey),
                             textFieldController: controller,
                             formatInput: false,
@@ -141,6 +144,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               if (userInput.toString().startsWith("0")) {
                                 return 'Please remove 0 form start';
                               }
+                              if (userInput.length == 10) {}
                               return null; // Return null when the input is valid
                             },
                             maxLength: 10,
@@ -155,8 +159,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               hintStyle:
                                   TextStyle(color: mainColorGrey, fontSize: 16),
                             ),
-                            onSaved: (PhoneNumber number) {
-                            },
+                            onSaved: (PhoneNumber number) {},
                           ),
                           Positioned(
                             left: 90,
@@ -195,10 +198,10 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           toastLong('Please enter your phone number');
                           return;
                         }
-        
+
                         String ph = controller.text.trim();
                         ph = "+964$ph";
-        
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

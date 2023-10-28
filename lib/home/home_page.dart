@@ -164,7 +164,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 BorderRadius.circular(5)),
                                         child: TextButton(
                                             onPressed: () {
-                                              String a = "Cart${userdata["id"]}";
+                                              String a =
+                                                  "Cart${userdata["id"]}";
 
                                               print(CartProvider()
                                                   .cartItems
@@ -528,18 +529,15 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                       BorderRadius.circular(
                                                                           100),
                                                                   border: Border.all(
-                                                                      color: mainColorGrey
-                                                                          .withOpacity(
-                                                                              0.5)),
+                                                                      color: mainColorGrey.withOpacity(
+                                                                          0.5)),
                                                                   color:
                                                                       mainColorGrey),
-                                                              child:  Icon(
-                                                                      Icons.add,
-                                                                      color:
-                                                                          mainColorWhite,
-                                                                      size: getHeight(
-                                                                          context,
-                                                                          1.5))),
+                                                              child: Icon(
+                                                                  Icons.add,
+                                                                  color:
+                                                                      mainColorWhite,
+                                                                  size: getHeight(context, 1.5))),
                                                         ),
                                                       ),
                                                     ],
@@ -657,9 +655,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder:
-                                                                  (context) =>
-                                                                      const Oneitem()),
+                                                              builder: (context) =>
+                                                                  const Oneitem()),
                                                         );
                                                       },
                                                       child: Container(
@@ -784,28 +781,28 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             context, 3),
                                                         decoration:
                                                             BoxDecoration(
-                                                          borderRadius:
-                                                              lang == "en"
-                                                                  ? const BorderRadius
-                                                                      .only(
-                                                                      //  topLeft: Radius.circular(20.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              20.0),
-                                                                      // bottomLeft: Radius.circular(0.0),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              20.0),
-                                                                    )
-                                                                  : const BorderRadius
-                                                                      .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              20.0),
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              20.0),
-                                                                    ),
+                                                          borderRadius: lang ==
+                                                                  "en"
+                                                              ? const BorderRadius
+                                                                  .only(
+                                                                  //  topLeft: Radius.circular(20.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          20.0),
+                                                                  // bottomLeft: Radius.circular(0.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          20.0),
+                                                                )
+                                                              : const BorderRadius
+                                                                  .only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          20.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          20.0),
+                                                                ),
                                                           color: mainColorRed,
                                                         ),
                                                         child: Row(

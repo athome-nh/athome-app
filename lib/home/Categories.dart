@@ -131,8 +131,7 @@ class _CategoriesState extends State<Categories> {
                                           placeholder: (context, url) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
-                                          errorWidget: (context, url,
-                                                  error) =>
+                                          errorWidget: (context, url, error) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
                                           width: getHeight(context, 7),
@@ -144,8 +143,9 @@ class _CategoriesState extends State<Categories> {
                                 ),
                                 Text(
                                   lang == "en"
-                                  // Todo: (Bawar) text count by getwidth
-                                      ?  textCount(cateItem.nameEn!, getWidth(context, 4.3).toInt() )
+                                      // Todo: (Bawar) text count by getwidth
+                                      ? textCount(cateItem.nameEn!,
+                                          getWidth(context, 4.3).toInt())
                                       //cateItem.nameEn!
                                       : lang == "ar"
                                           ? cateItem.nameAr!

@@ -362,6 +362,7 @@ class _MyCartState extends State<MyCart> {
                                     ),
                                   ),
                                 ),
+                             
                               ],
                             );
                           }),
@@ -677,22 +678,21 @@ class _MyCartState extends State<MyCart> {
               )
             : Center(
                 child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: getWidth(context, 60),
-                                height: getWidth(context, 50),
-                                child: Image.asset(
-                                    "assets/images/gif_favorite.gif"),
-                              ),
-                              Text(
-                                "Your cart is empty",
-                                style: TextStyle(
-                                    fontFamily: mainFontnormal, fontSize: 16),
-                              ),
-                            ],
-                          ),
-                          ),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: getWidth(context, 60),
+                      height: getWidth(context, 50),
+                      child: Image.asset("assets/images/gif_favorite.gif"),
+                    ),
+                    Text(
+                      "Your cart is empty",
+                      style:
+                          TextStyle(fontFamily: mainFontnormal, fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
       ),
     );
   }

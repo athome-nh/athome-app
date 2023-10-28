@@ -398,8 +398,7 @@ class _SettingState extends State<Setting> {
                                                 child: Text(
                                                   "Save".tr,
                                                   style: TextStyle(
-                                                      fontFamily:
-                                                          mainFontbold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 14,
                                                       color: mainColorWhite),
                                                 ),
@@ -439,8 +438,7 @@ class _SettingState extends State<Setting> {
                                                 child: Text(
                                                   "Cancel".tr,
                                                   style: TextStyle(
-                                                      fontFamily:
-                                                          mainFontbold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 14,
                                                       color: mainColorWhite),
                                                 ),
@@ -477,8 +475,7 @@ class _SettingState extends State<Setting> {
                                                 child: Text(
                                                   "Edit".tr,
                                                   style: TextStyle(
-                                                      fontFamily:
-                                                          mainFontbold,
+                                                      fontFamily: mainFontbold,
                                                       fontSize: 14,
                                                       color: mainColorWhite),
                                                 ),
@@ -795,7 +792,6 @@ class _SettingState extends State<Setting> {
                             final cartProvider = Provider.of<CartProvider>(
                                 context,
                                 listen: false);
-
                             setState(() {
                               userdata = {};
                               isLogin = false;

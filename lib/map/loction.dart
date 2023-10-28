@@ -45,7 +45,7 @@ class _LocationScreenState extends State<LocationScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 height: getHeight(context, 80),
                 width: getWidth(context, 100),
                 child: Padding(
@@ -155,7 +155,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   backgroundColor: mainColorRed,
                   fixedSize: Size(getWidth(context, 85), getHeight(context, 6)),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
                 child: Row(

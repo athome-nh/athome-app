@@ -62,200 +62,208 @@ class _VerificatoinState extends State<Verificatoin> {
                 color: mainColorRed,
               )),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-              padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
-              height: getHeight(context, 88),
-              width: getWidth(context, 100),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: getHeight(context, 27),
-                    child: Image.asset(
-                      "assets/images/verify.gif",
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: SingleChildScrollView(
+            child: Container(
+                padding:
+                    EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
+                height: getHeight(context, 88),
+                width: getWidth(context, 100),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: getHeight(context, 27),
+                      child: Image.asset(
+                        "assets/images/verify.gif",
+                      ),
                     ),
-                  ),
-                  // Container(
-                  //   height: getHeight(context, 27),
-                  //   child: Stack(children: [
-                  //     Positioned(
-                  //       top: 0,
-                  //       left: 0,
-                  //       right: 0,
-                  //       bottom: 0,
-                  //       child: AnimatedOpacity(
-                  //         opacity: _currentIndex == 0 ? 1 : 0,
-                  //         duration: const Duration(
-                  //           seconds: 1,
-                  //         ),
-                  //         curve: Curves.linear,
-                  //         child: Image.asset(
-                  //           "assets/images/Verify.png",
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     // Positioned(
-                  //     //   top: 0,
-                  //     //   left: 0,
-                  //     //   right: 0,
-                  //     //   bottom: 0,
-                  //     //   child: AnimatedOpacity(
-                  //     //     opacity: _currentIndex == 1 ? 1 : 0,
-                  //     //     duration: const Duration(seconds: 1),
-                  //     //     curve: Curves.linear,
-                  //     //     child: Image.asset(
-                  //     //       "assets/images/Verify.png",
-                  //     //     ),
-                  //     //   ),
-                  //     // ),
-                  //     // Positioned(
-                  //     //   top: 0,
-                  //     //   left: 0,
-                  //     //   right: 0,
-                  //     //   bottom: 0,
-                  //     //   child: AnimatedOpacity(
-                  //     //     opacity: _currentIndex == 2 ? 1 : 0,
-                  //     //     duration: const Duration(seconds: 1),
-                  //     //     curve: Curves.linear,
-                  //     //     child: Image.asset(
-                  //     //       "assets/images/Verify.png",
-                  //     //     ),
-                  //     //   ),
-                  //     // )
-                  //   ]),
-                  // ),
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
-                  FadeInDown(
+                    // Container(
+                    //   height: getHeight(context, 27),
+                    //   child: Stack(children: [
+                    //     Positioned(
+                    //       top: 0,
+                    //       left: 0,
+                    //       right: 0,
+                    //       bottom: 0,
+                    //       child: AnimatedOpacity(
+                    //         opacity: _currentIndex == 0 ? 1 : 0,
+                    //         duration: const Duration(
+                    //           seconds: 1,
+                    //         ),
+                    //         curve: Curves.linear,
+                    //         child: Image.asset(
+                    //           "assets/images/Verify.png",
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     // Positioned(
+                    //     //   top: 0,
+                    //     //   left: 0,
+                    //     //   right: 0,
+                    //     //   bottom: 0,
+                    //     //   child: AnimatedOpacity(
+                    //     //     opacity: _currentIndex == 1 ? 1 : 0,
+                    //     //     duration: const Duration(seconds: 1),
+                    //     //     curve: Curves.linear,
+                    //     //     child: Image.asset(
+                    //     //       "assets/images/Verify.png",
+                    //     //     ),
+                    //     //   ),
+                    //     // ),
+                    //     // Positioned(
+                    //     //   top: 0,
+                    //     //   left: 0,
+                    //     //   right: 0,
+                    //     //   bottom: 0,
+                    //     //   child: AnimatedOpacity(
+                    //     //     opacity: _currentIndex == 2 ? 1 : 0,
+                    //     //     duration: const Duration(seconds: 1),
+                    //     //     curve: Curves.linear,
+                    //     //     child: Image.asset(
+                    //     //       "assets/images/Verify.png",
+                    //     //     ),
+                    //     //   ),
+                    //     // )
+                    //   ]),
+                    // ),
+                    SizedBox(
+                      height: getHeight(context, 4),
+                    ),
+                    FadeInDown(
+                        duration: const Duration(milliseconds: 500),
+                        child: Text(
+                          "Verification",
+                          style: TextStyle(
+                              color: mainColorGrey,
+                              fontSize: 30,
+                              fontFamily: mainFontbold),
+                        )),
+                    SizedBox(
+                      height: getHeight(context, 4),
+                    ),
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 500),
                       duration: const Duration(milliseconds: 500),
                       child: Text(
-                        "Verification",
+                        "Please enter the 6 digit code sent to \n ${widget.phone_number}",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: mainColorGrey,
-                            fontSize: 30,
-                            fontFamily: mainFontbold),
-                      )),
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 500),
-                    duration: const Duration(milliseconds: 500),
-                    child: Text(
-                      "Please enter the 6 digit code sent to \n ${widget.phone_number}",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey.shade500,
-                          fontFamily: mainFontbold,
-                          height: 1.5),
-                    ),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
-
-                  // Verification Code Input
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 600),
-                    duration: const Duration(milliseconds: 500),
-                    child: VerificationCode(
-                      length: 6,
-                      textStyle: TextStyle(fontSize: 20, color: mainColorGrey),
-                      underlineColor: mainColorRed,
-                      keyboardType: TextInputType.number,
-                      underlineUnfocusedColor: mainColorGrey,
-                      onCompleted: (value) async {
-                        _code = value;
-                        if (await noInternet(context)) {
-                          return;
-                        }
-                        verifySmsCode();
-                      },
-                      onEditing: (value) {},
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 700),
-                    duration: const Duration(milliseconds: 500),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't resive the OTP?",
-                          style: TextStyle(
-                              fontSize: 14, color: Colors.grey.shade500),
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              if (timecode == 0) {
-                                _codeTimer.cancel();
-                                verfyphone();
-                              } else {
-                                toastShort("Hold till the waiting time ends");
-                              }
-                            },
-                            child: Text(
-                              timecode != 0
-                                  ? "Try again in ${formatedTime(timeInSecond: timecode)}"
-                                  : "Resend",
-                              style: TextStyle(
-                                  color: mainColorRed,
-                                  fontFamily: mainFontbold),
-                            ))
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 6),
-                  ),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 800),
-                    duration: const Duration(milliseconds: 500),
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            15.0), // Customize the border radius
+                            fontSize: 16,
+                            color: Colors.grey.shade500,
+                            fontFamily: mainFontbold,
+                            height: 1.5),
                       ),
-                      elevation: 0,
-                      onPressed: _code.length < 6
-                          ? () => {toastLong("Please enter code")}
-                          : () async {
-                              if (await noInternet(context)) {
-                                return;
-                              }
-                              verifySmsCode();
-                            },
-                      color: mainColorRed,
-                      minWidth: getWidth(context, 100),
-                      height: getHeight(context, 5.5),
-                      child: _isLoading
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                backgroundColor: Colors.white,
-                                strokeWidth: 3,
-                                color: Colors.black,
-                              ),
-                            )
-                          : Text(
-                              "Verify",
-                              style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 14,
-                                  fontFamily: mainFontbold),
-                            ),
                     ),
-                  )
-                ],
-              )),
+                    SizedBox(
+                      height: getHeight(context, 4),
+                    ),
+
+                    // Verification Code Input
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 600),
+                      duration: const Duration(milliseconds: 500),
+                      child: VerificationCode(
+                        length: 6,
+                        textStyle:
+                            TextStyle(fontSize: 20, color: mainColorGrey),
+                        underlineColor: mainColorRed,
+                        keyboardType: TextInputType.number,
+                        underlineUnfocusedColor: mainColorGrey,
+                        onCompleted: (value) async {
+                          _code = value;
+                          FocusScope.of(context).requestFocus(FocusNode());
+                          if (await noInternet(context)) {
+                            return;
+                          }
+                          verifySmsCode();
+                        },
+                        onEditing: (value) {},
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: getHeight(context, 2),
+                    ),
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 700),
+                      duration: const Duration(milliseconds: 500),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't resive the OTP?",
+                            style: TextStyle(
+                                fontSize: 14, color: Colors.grey.shade500),
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                if (timecode == 0) {
+                                  _codeTimer.cancel();
+                                  verfyphone();
+                                } else {
+                                  toastShort("Hold till the waiting time ends");
+                                }
+                              },
+                              child: Text(
+                                timecode != 0
+                                    ? "Try again in ${formatedTime(timeInSecond: timecode)}"
+                                    : "Resend",
+                                style: TextStyle(
+                                    color: mainColorRed,
+                                    fontFamily: mainFontbold),
+                              ))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: getHeight(context, 6),
+                    ),
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 800),
+                      duration: const Duration(milliseconds: 500),
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              15.0), // Customize the border radius
+                        ),
+                        elevation: 0,
+                        onPressed: _code.length < 6
+                            ? () => {toastLong("Please enter code")}
+                            : () async {
+                                if (await noInternet(context)) {
+                                  return;
+                                }
+                                verifySmsCode();
+                              },
+                        color: mainColorRed,
+                        minWidth: getWidth(context, 100),
+                        height: getHeight(context, 5.5),
+                        child: _isLoading
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                  strokeWidth: 3,
+                                  color: Colors.black,
+                                ),
+                              )
+                            : Text(
+                                "Verify",
+                                style: TextStyle(
+                                    color: mainColorWhite,
+                                    fontSize: 14,
+                                    fontFamily: mainFontbold),
+                              ),
+                      ),
+                    )
+                  ],
+                )),
+          ),
         ));
   }
 
@@ -428,8 +436,8 @@ class _VerificatoinState extends State<Verificatoin> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SingInUp(
-                        widget.phone_number, _auth.currentUser!.uid)));
+                    builder: (context) =>
+                        SingInUp(widget.phone_number, _auth.currentUser!.uid)));
           }
         } else {
           // toastShort("unknown occurred error please try again later");
