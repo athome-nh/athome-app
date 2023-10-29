@@ -18,6 +18,7 @@ void toOff(BuildContext context, Widget screen) {
     MaterialPageRoute(builder: (context) => screen),
     (Route<dynamic> route) => false,
   );
+  
 }
 
 //// check allowed image extentions
@@ -181,6 +182,18 @@ String fontNormalChoose() {
   String font = lang == "en" ? "" : "";
   return font;
 }
+String getOflineTimestamp() {
+  return DateTime.now().millisecondsSinceEpoch.toString();
+}
+
+Future<String> getOnlineTimestamp() async {
+  DateTime startDate = await NTP.now();
+  return startDate.millisecondsSinceEpoch.toString();
+}
+
+
+
+
 
 /// #Check this CODEs Latter
 
@@ -365,14 +378,7 @@ String fontNormalChoose() {
 //   return formattedDate;
 // }
 
-// Future<String> getOnlineTimestamp() async {
-//   DateTime startDate = await NTP.now();
-//   return startDate.millisecondsSinceEpoch.toString();
-// }
 
-// String getOflineTimestamp() {
-//   return DateTime.now().millisecondsSinceEpoch.toString();
-// }
 
 // DateTime timestampToDateTime(String timestamps) {
 //   return DateTime.parse(timestamps);
