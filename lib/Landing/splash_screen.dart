@@ -1,8 +1,12 @@
 import 'dart:async';
 
-import 'package:athome/home/NavSwitch.dart';
+import 'package:athome/Config/local_data.dart';
+import 'package:athome/controller/productprovider.dart';
+import 'package:athome/landing/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../Config/property.dart';
+import '../home/nav_switch.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,17 +15,27 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+var userdata = {};
+
+bool loaddata = false;
+
 class _SplashScreenState extends State<SplashScreen> {
-  int x = 500;
+  bool seen = true;
   @override
   void initState() {
     super.initState();
+
+    final productrovider = Provider.of<productProvider>(context, listen: false);
+    productrovider.updatePost();
+    getBoolPrefs("onbord").then((value2) {
+      seen = value2;
+    });
     Timer(
-      Duration(seconds: 5),
+      const Duration(seconds: 5),
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const NavSwitch(),
+            builder: (context) => seen ? NavSwitch() : WelcomeScreen(),
           ),
         );
       },

@@ -11,18 +11,16 @@ class RegisterWithPhoneNumber extends StatefulWidget {
   const RegisterWithPhoneNumber({Key? key}) : super(key: key);
 
   @override
-  RegisterWithPhoneNumberState createState() =>
-      RegisterWithPhoneNumberState();
+  RegisterWithPhoneNumberState createState() => RegisterWithPhoneNumberState();
 }
 
 class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
   final TextEditingController controller = TextEditingController();
 
-  
   PhoneNumber initialPhoneNumber = PhoneNumber(
     isoCode: 'IQ',
   );
-  
+
   @override
   void initState() {
     super.initState();
@@ -36,22 +34,26 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: lang=='en'?TextDirection.ltr:TextDirection.rtl,
+      textDirection: lang == 'en' ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: mainColorWhite,
+        appBar: AppBar(
+          elevation: 0,
           backgroundColor: mainColorWhite,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: mainColorWhite,
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: mainColorRed,
-                )),
-          ),
-          body: SingleChildScrollView(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: mainColorRed,
+              )),
+        ),
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
               child: Column(
@@ -67,7 +69,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   SizedBox(
                     height: getHeight(context, 6),
                   ),
-            
+
                   FadeInDown(
                     child: Text(
                       'Wellcome back'.tr,
@@ -100,11 +102,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   FadeInDown(
                     delay: const Duration(milliseconds: 400),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 15),
                       decoration: BoxDecoration(
                         color: mainColorWhite,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: mainColorGrey.withOpacity(0.5)),
+                        border:
+                            Border.all(color: mainColorGrey.withOpacity(0.5)),
                         boxShadow: const [
                           BoxShadow(
                             color: Color(0xffeeeeee),
@@ -118,13 +122,15 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           InternationalPhoneNumberInput(
                             countries: const ["IQ"],
                             initialValue: initialPhoneNumber,
+                            focusNode: null,
                             onInputChanged: (PhoneNumber number) {},
                             onInputValidated: (bool value) {},
                             selectorConfig: const SelectorConfig(
                               selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                             ),
                             ignoreBlank: false,
-                            autoValidateMode: AutovalidateMode.onUserInteraction,
+                            autoValidateMode:
+                                AutovalidateMode.onUserInteraction,
                             selectorTextStyle: TextStyle(color: mainColorGrey),
                             textFieldController: controller,
                             formatInput: false,
@@ -138,6 +144,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               if (userInput.toString().startsWith("0")) {
                                 return 'Please remove 0 form start';
                               }
+                              if (userInput.length == 10) {}
                               return null; // Return null when the input is valid
                             },
                             maxLength: 10,
@@ -152,9 +159,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               hintStyle:
                                   TextStyle(color: mainColorGrey, fontSize: 16),
                             ),
-                            onSaved: (PhoneNumber number) {
-                              print('On Saved: $number');
-                            },
+                            onSaved: (PhoneNumber number) {},
                           ),
                           Positioned(
                             left: 90,
@@ -193,10 +198,10 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           toastLong('Please enter your phone number');
                           return;
                         }
-            
+
                         String ph = controller.text.trim();
-                        ph = "+964" + ph;
-            
+                        ph = "+964$ph";
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -205,7 +210,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       color: mainColorRed,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
-                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 30),
                       child: Text(
                         "Get Start",
                         style: TextStyle(
@@ -238,6 +244,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
             ),
           ),
         ),
+      ),
     );
   }
 }

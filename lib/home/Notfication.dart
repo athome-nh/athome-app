@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:athome/Config/property.dart';
 
 class NotficationScreen extends StatefulWidget {
@@ -35,7 +34,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
         // Change the color of the unselected tab labels
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
             height: getHeight(context, 100),
             width: getWidth(context, 100),
             child: ListView.builder(
@@ -88,7 +87,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
                         },
                       );
                     },
-                    child: Container(
+                    child: SizedBox(
                         width: getWidth(context, 100),
                         height: getHeight(context, 10),
                         child: Padding(

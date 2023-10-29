@@ -1,18 +1,19 @@
-import 'dart:convert';
 import 'package:animate_do/animate_do.dart';
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/home/NavSwitch.dart';
-import 'package:athome/landing/Singinup_page.dart';
+import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
+import 'package:athome/main.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
-import 'package:panara_dialogs/panara_dialogs.dart';
+import 'package:provider/provider.dart';
+import '../home/nav_switch.dart';
+import 'singin_up.dart';
 
 class Verificatoin extends StatefulWidget {
   String phone_number;
@@ -35,12 +36,7 @@ class _VerificatoinState extends State<Verificatoin> {
 
   void initState() {
     verfyphone();
-    Timer.periodic(const Duration(seconds: 5), (timer) {
-      setState(() {
-        _currentIndex++;
-        if (_currentIndex == 3) _currentIndex = 0;
-      });
-    });
+
     super.initState();
   }
 
@@ -66,205 +62,208 @@ class _VerificatoinState extends State<Verificatoin> {
                 color: mainColorRed,
               )),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-              padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
-              height: getHeight(context, 88),
-              width: getWidth(context, 100),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    height: getHeight(context, 27),
-                    child: Image.asset(
-                      "assets/images/verify.gif",
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: SingleChildScrollView(
+            child: Container(
+                padding:
+                    EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
+                height: getHeight(context, 88),
+                width: getWidth(context, 100),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: getHeight(context, 27),
+                      child: Image.asset(
+                        "assets/images/verify.gif",
+                      ),
                     ),
-                  ),
-                  // Container(
-                  //   height: getHeight(context, 27),
-                  //   child: Stack(children: [
-                  //     Positioned(
-                  //       top: 0,
-                  //       left: 0,
-                  //       right: 0,
-                  //       bottom: 0,
-                  //       child: AnimatedOpacity(
-                  //         opacity: _currentIndex == 0 ? 1 : 0,
-                  //         duration: const Duration(
-                  //           seconds: 1,
-                  //         ),
-                  //         curve: Curves.linear,
-                  //         child: Image.asset(
-                  //           "assets/images/Verify.png",
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     // Positioned(
-                  //     //   top: 0,
-                  //     //   left: 0,
-                  //     //   right: 0,
-                  //     //   bottom: 0,
-                  //     //   child: AnimatedOpacity(
-                  //     //     opacity: _currentIndex == 1 ? 1 : 0,
-                  //     //     duration: const Duration(seconds: 1),
-                  //     //     curve: Curves.linear,
-                  //     //     child: Image.asset(
-                  //     //       "assets/images/Verify.png",
-                  //     //     ),
-                  //     //   ),
-                  //     // ),
-                  //     // Positioned(
-                  //     //   top: 0,
-                  //     //   left: 0,
-                  //     //   right: 0,
-                  //     //   bottom: 0,
-                  //     //   child: AnimatedOpacity(
-                  //     //     opacity: _currentIndex == 2 ? 1 : 0,
-                  //     //     duration: const Duration(seconds: 1),
-                  //     //     curve: Curves.linear,
-                  //     //     child: Image.asset(
-                  //     //       "assets/images/Verify.png",
-                  //     //     ),
-                  //     //   ),
-                  //     // )
-                  //   ]),
-                  // ),
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
-                  FadeInDown(
+                    // Container(
+                    //   height: getHeight(context, 27),
+                    //   child: Stack(children: [
+                    //     Positioned(
+                    //       top: 0,
+                    //       left: 0,
+                    //       right: 0,
+                    //       bottom: 0,
+                    //       child: AnimatedOpacity(
+                    //         opacity: _currentIndex == 0 ? 1 : 0,
+                    //         duration: const Duration(
+                    //           seconds: 1,
+                    //         ),
+                    //         curve: Curves.linear,
+                    //         child: Image.asset(
+                    //           "assets/images/Verify.png",
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     // Positioned(
+                    //     //   top: 0,
+                    //     //   left: 0,
+                    //     //   right: 0,
+                    //     //   bottom: 0,
+                    //     //   child: AnimatedOpacity(
+                    //     //     opacity: _currentIndex == 1 ? 1 : 0,
+                    //     //     duration: const Duration(seconds: 1),
+                    //     //     curve: Curves.linear,
+                    //     //     child: Image.asset(
+                    //     //       "assets/images/Verify.png",
+                    //     //     ),
+                    //     //   ),
+                    //     // ),
+                    //     // Positioned(
+                    //     //   top: 0,
+                    //     //   left: 0,
+                    //     //   right: 0,
+                    //     //   bottom: 0,
+                    //     //   child: AnimatedOpacity(
+                    //     //     opacity: _currentIndex == 2 ? 1 : 0,
+                    //     //     duration: const Duration(seconds: 1),
+                    //     //     curve: Curves.linear,
+                    //     //     child: Image.asset(
+                    //     //       "assets/images/Verify.png",
+                    //     //     ),
+                    //     //   ),
+                    //     // )
+                    //   ]),
+                    // ),
+                    SizedBox(
+                      height: getHeight(context, 4),
+                    ),
+                    FadeInDown(
+                        duration: const Duration(milliseconds: 500),
+                        child: Text(
+                          "Verification",
+                          style: TextStyle(
+                              color: mainColorGrey,
+                              fontSize: 30,
+                              fontFamily: mainFontbold),
+                        )),
+                    SizedBox(
+                      height: getHeight(context, 4),
+                    ),
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 500),
                       duration: const Duration(milliseconds: 500),
                       child: Text(
-                        "Verification",
+                        "Please enter the 6 digit code sent to \n ${widget.phone_number}",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: mainColorGrey,
-                            fontSize: 30,
-                            fontFamily: mainFontbold),
-                      )),
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 500),
-                    duration: const Duration(milliseconds: 500),
-                    child: Text(
-                      "Please enter the 6 digit code sent to \n " +
-                          widget.phone_number,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey.shade500,
-                          fontFamily: mainFontbold,
-                          height: 1.5),
+                            fontSize: 16,
+                            color: Colors.grey.shade500,
+                            fontFamily: mainFontbold,
+                            height: 1.5),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
+                    SizedBox(
+                      height: getHeight(context, 4),
+                    ),
 
-                  // Verification Code Input
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 600),
-                    duration: const Duration(milliseconds: 500),
-                    child: VerificationCode(
-                      length: 6,
-                      textStyle: TextStyle(fontSize: 20, color: mainColorGrey),
-                      underlineColor: mainColorRed,
-                      keyboardType: TextInputType.number,
-                      underlineUnfocusedColor: mainColorGrey,
-                      onCompleted: (value) {
-                        setState(() async {
+                    // Verification Code Input
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 600),
+                      duration: const Duration(milliseconds: 500),
+                      child: VerificationCode(
+                        length: 6,
+                        textStyle:
+                            TextStyle(fontSize: 20, color: mainColorGrey),
+                        underlineColor: mainColorRed,
+                        keyboardType: TextInputType.number,
+                        underlineUnfocusedColor: mainColorGrey,
+                        onCompleted: (value) async {
                           _code = value;
+                          FocusScope.of(context).requestFocus(FocusNode());
                           if (await noInternet(context)) {
                             return;
                           }
                           verifySmsCode();
-                        });
-                      },
-                      onEditing: (value) {},
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 700),
-                    duration: const Duration(milliseconds: 500),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't resive the OTP?",
-                          style: TextStyle(
-                              fontSize: 14, color: Colors.grey.shade500),
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              if (timecode == 0) {
-                                _codeTimer.cancel();
-                                verfyphone();
-                              } else {
-                                toastShort("Hold till the waiting time ends");
-                              }
-                            },
-                            child: Text(
-                              timecode != 0
-                                  ? "Try again in " +
-                                      formatedTime(timeInSecond: timecode)
-                                          .toString()
-                                  : "Resend",
-                              style: TextStyle(
-                                  color: mainColorRed,
-                                  fontFamily: mainFontbold),
-                            ))
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 6),
-                  ),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 800),
-                    duration: const Duration(milliseconds: 500),
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            15.0), // Customize the border radius
+                        },
+                        onEditing: (value) {},
                       ),
-                      elevation: 0,
-                      onPressed: _code.length < 6
-                          ? () => {toastLong("Please enter code")}
-                          : () async {
-                              if (await noInternet(context)) {
-                                return;
-                              }
-                              verifySmsCode();
-                            },
-                      color: mainColorRed,
-                      minWidth: getWidth(context, 100),
-                      height: getHeight(context, 5.5),
-                      child: _isLoading
-                          ? Container(
-                              width: 20,
-                              height: 20,
-                              child: const CircularProgressIndicator(
-                                backgroundColor: Colors.white,
-                                strokeWidth: 3,
-                                color: Colors.black,
-                              ),
-                            )
-                          : Text(
-                              "Verify",
-                              style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 14,
-                                  fontFamily: mainFontbold),
-                            ),
                     ),
-                  )
-                ],
-              )),
+
+                    SizedBox(
+                      height: getHeight(context, 2),
+                    ),
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 700),
+                      duration: const Duration(milliseconds: 500),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't resive the OTP?",
+                            style: TextStyle(
+                                fontSize: 14, color: Colors.grey.shade500),
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                if (timecode == 0) {
+                                  _codeTimer.cancel();
+                                  verfyphone();
+                                } else {
+                                  toastShort("Hold till the waiting time ends");
+                                }
+                              },
+                              child: Text(
+                                timecode != 0
+                                    ? "Try again in ${formatedTime(timeInSecond: timecode)}"
+                                    : "Resend",
+                                style: TextStyle(
+                                    color: mainColorRed,
+                                    fontFamily: mainFontbold),
+                              ))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: getHeight(context, 6),
+                    ),
+                    FadeInDown(
+                      delay: const Duration(milliseconds: 800),
+                      duration: const Duration(milliseconds: 500),
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              15.0), // Customize the border radius
+                        ),
+                        elevation: 0,
+                        onPressed: _code.length < 6
+                            ? () => {toastLong("Please enter code")}
+                            : () async {
+                                if (await noInternet(context)) {
+                                  return;
+                                }
+                                verifySmsCode();
+                              },
+                        color: mainColorRed,
+                        minWidth: getWidth(context, 100),
+                        height: getHeight(context, 5.5),
+                        child: _isLoading
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                  strokeWidth: 3,
+                                  color: Colors.black,
+                                ),
+                              )
+                            : Text(
+                                "Verify",
+                                style: TextStyle(
+                                    color: mainColorWhite,
+                                    fontSize: 14,
+                                    fontFamily: mainFontbold),
+                              ),
+                      ),
+                    )
+                  ],
+                )),
+          ),
         ));
   }
 
@@ -299,44 +298,42 @@ class _VerificatoinState extends State<Verificatoin> {
             if (value != "") {
               if (value["code"] == "200") {
                 if (value["data"]["isActive"] == 1) {
-                  Save_data_josn('user', value["data"]).then((save) {
-                    if (save) {
-                      setState(() {
-                        _isLoading = false;
-                        _isVerified = true;
-                      });
-                      setBoolPrefs("islogin", true);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => NavSwitch()),
-                      );
-                    } else {
-                      toastShort(
-                          "unknown occurred error please try again later");
-                    }
+                  setState(() {
+                    _isLoading = false;
+                    _isVerified = true;
+                    isLogin = true;
                   });
-                } else {
-                  PanaraInfoDialog.show(
+
+                  setBoolPrefs("islogin", true);
+                  setStringPrefs("token", value["token"]);
+                  final productrovider =
+                      Provider.of<productProvider>(context, listen: false);
+                  productrovider.updatePost();
+                  Navigator.pushReplacement(
                     context,
-                    title: "Account Disabled",
-                    message: "Account is disable please contact athome admin ",
-                    buttonText: "Login",
-                    onTapDismiss: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegisterWithPhoneNumber()),
-                      );
-                    },
-                    // color:
-                    //     PanaraColors
-                    //         .warning,
-                    panaraDialogType: PanaraDialogType.warning,
-                    // imagePath:
-                    //     "assets/images/logoB.png",
-                    noImage: false,
+                    MaterialPageRoute(builder: (context) => const NavSwitch()),
                   );
+                } else {
+                  AwesomeDialog(
+                          context: context,
+                          animType: AnimType.scale,
+                          dialogType: DialogType.warning,
+                          showCloseIcon: true,
+                          title: "Account Disabled",
+                          desc:
+                              "Account is disable please contact athome admin ",
+                          btnOkColor: mainColorRed,
+                          btnOkText: "Ok",
+                          btnOkOnPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegisterWithPhoneNumber()),
+                            );
+                          },
+                          btnCancelColor: mainColorGrey)
+                      .show();
                 }
               } else if (value["code"] == "422") {
                 setState(() {
@@ -346,7 +343,7 @@ class _VerificatoinState extends State<Verificatoin> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Singinup_page(
+                        builder: (context) => SingInUp(
                             widget.phone_number, _auth.currentUser!.uid)));
               }
             } else {
@@ -363,7 +360,6 @@ class _VerificatoinState extends State<Verificatoin> {
             _isLoading = false;
             _isVerified = false;
           });
-          print(e);
         }
       },
       verificationFailed: (FirebaseAuthException e) {},
@@ -396,36 +392,41 @@ class _VerificatoinState extends State<Verificatoin> {
         if (value != "") {
           if (value["code"] == "200") {
             if (value["data"]["isActive"] == 1) {
-              var jsonData = json.encode(value["data"]);
-              setStringPrefs("userData", encryptAES(jsonData).toString());
+              setState(() {
+                _isLoading = false;
+                _isVerified = true;
+                isLogin = true;
+              });
+
               setBoolPrefs("islogin", true);
               setStringPrefs("token", value["token"]);
+              final productrovider =
+                  Provider.of<productProvider>(context, listen: false);
+              productrovider.updatePost();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => NavSwitch()),
+                MaterialPageRoute(builder: (context) => const NavSwitch()),
               );
             } else {
-              PanaraInfoDialog.show(
-                context,
-                title: "Account Disabled",
-                message: "Account is disable please contact athome admin ",
-                buttonText: "Login",
-                onTapDismiss: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RegisterWithPhoneNumber()),
-                  );
-                },
-                // color:
-                //     PanaraColors
-                //         .warning,
-                panaraDialogType: PanaraDialogType.warning,
-                // imagePath:
-                //     "assets/images/logoB.png",
-                noImage: false,
-              );
+              AwesomeDialog(
+                      context: context,
+                      animType: AnimType.scale,
+                      dialogType: DialogType.warning,
+                      showCloseIcon: true,
+                      title: "Account Disabled",
+                      desc: "Account is disable please contact athome admin ",
+                      btnOkColor: mainColorRed,
+                      btnOkText: "Ok",
+                      btnOkOnPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const RegisterWithPhoneNumber()),
+                        );
+                      },
+                      btnCancelColor: mainColorGrey)
+                  .show();
             }
           } else if (value["code"] == "422") {
             setState(() {
@@ -435,8 +436,8 @@ class _VerificatoinState extends State<Verificatoin> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Singinup_page(
-                        widget.phone_number, _auth.currentUser!.uid)));
+                    builder: (context) =>
+                        SingInUp(widget.phone_number, _auth.currentUser!.uid)));
           }
         } else {
           // toastShort("unknown occurred error please try again later");
@@ -450,8 +451,6 @@ class _VerificatoinState extends State<Verificatoin> {
       setState(() {
         _isLoading = false;
         _isVerified = false;
-
-        print(e);
       });
     }
   }

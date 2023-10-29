@@ -45,7 +45,7 @@ class _LocationScreenState extends State<LocationScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 height: getHeight(context, 80),
                 width: getWidth(context, 100),
                 child: Padding(
@@ -82,7 +82,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                       ),
                                       markers: {
                                         Marker(
-                                          markerId: const MarkerId('location_marker'),
+                                          markerId:
+                                              const MarkerId('location_marker'),
                                           position: LatLng(location.latitude!,
                                               location.longitude!),
                                           infoWindow: const InfoWindow(
@@ -146,14 +147,15 @@ class _LocationScreenState extends State<LocationScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Maps_screen()),
+                    MaterialPageRoute(
+                        builder: (context) => const Maps_screen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: mainColorRed,
                   fixedSize: Size(getWidth(context, 85), getHeight(context, 6)),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
                 child: Row(

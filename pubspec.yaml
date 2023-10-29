@@ -28,7 +28,7 @@ dependencies:
   flutter_verification_code: ^1.1.7
   gender_picker: ^1.1.0
   path_provider: ^2.0.11
-  encrypt: ^5.0.1
+  encrypt: ^5.0.3
   shared_preferences: ^2.2.1
   fluttertoast: ^8.1.1
   firebase_messaging: ^14.6.8
@@ -43,6 +43,11 @@ dependencies:
   geocoding: ^2.1.1
   mapbox_gl: ^0.16.0
 
+  ntp: ^2.0.0
+  http: ^1.1.0
+  awesome_dialog: ^3.1.0
+  
+  
   
  
 

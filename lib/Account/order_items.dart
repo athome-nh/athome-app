@@ -1,21 +1,23 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/NavSwitch.dart';
 import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
+import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/CheckOut.dart';
+import 'package:athome/Home/check_out.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/athome_functions.dart';
+import '../home/nav_switch.dart';
 import '../main.dart';
 
+// ignore: camel_case_types
 class oreder_items extends StatefulWidget {
   const oreder_items({super.key});
 
@@ -23,12 +25,14 @@ class oreder_items extends StatefulWidget {
   State<oreder_items> createState() => _oreder_itemsState();
 }
 
+// ignore: camel_case_types
 class _oreder_itemsState extends State<oreder_items> {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
+    // ignore: non_constant_identifier_names
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListIdPast());
     int total = cartProvider.calculateTotalPricePast(CardItemshow);
@@ -67,15 +71,17 @@ class _oreder_itemsState extends State<oreder_items> {
                 color: mainColorRed,
               )),
         ),
-        body: cartProvider.cartItemsPast.length > 0
-            ? SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Container(
+        body: cartProvider.cartItemsPast.isNotEmpty
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // List of Item
+                  Expanded(
+                    flex: 7,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: SizedBox(
                         height: getHeight(context, 65),
                         child: ListView.builder(
                             itemCount: cartProvider.cartItemsPast.length,
@@ -88,7 +94,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                   IconButton(
                                     onPressed: () {
                                       cartProvider
-                                          .deleteitemPast(cartitemQ.product!);
+                                          .deleteitemPast(cartitemQ.product);
                                     },
                                     icon: Icon(
                                       Icons.delete_outline,
@@ -100,7 +106,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                       elevation: 4,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                            BorderRadius.circular(5.0),
                                       ),
                                       child: Container(
                                         width: getWidth(context, 80),
@@ -109,7 +115,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                             borderRadius:
                                                 BorderRadius.circular(5)),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8),
+                                          padding: const EdgeInsets.all(8),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
@@ -118,10 +124,11 @@ class _oreder_itemsState extends State<oreder_items> {
                                                 width: getWidth(context, 20),
                                                 height: getHeight(context, 10),
                                                 decoration: BoxDecoration(
-                                                    color: Color(0xffF2F2F2),
+                                                    color:
+                                                        const Color(0xffF2F2F2),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            15)),
+                                                            5)),
                                                 child: Center(
                                                   child: CachedNetworkImage(
                                                     imageUrl: cartitem.coverImg
@@ -140,18 +147,27 @@ class _oreder_itemsState extends State<oreder_items> {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
-                                                  Container(
+                                                  // Item Name --> length of text 15
+                                                  SizedBox(
                                                     width:
                                                         getWidth(context, 30),
                                                     child: Text(
                                                       lang == "en"
-                                                          ? cartitem.nameEn
-                                                              .toString()
-                                                          : lang == "ar"
-                                                              ? cartitem.nameAr
-                                                                  .toString()
-                                                              : cartitem.nameKu
+                                                          ? textCount(
+                                                              cartitem.nameEn
                                                                   .toString(),
+                                                              15)
+                                                          : lang == "ar"
+                                                              ? textCount(
+                                                                  cartitem
+                                                                      .nameAr
+                                                                      .toString(),
+                                                                  15)
+                                                              : textCount(
+                                                                  cartitem
+                                                                      .nameKu
+                                                                      .toString(),
+                                                                  15),
                                                       maxLines: 2,
                                                       style: TextStyle(
                                                           color: mainColorGrey,
@@ -163,9 +179,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        cartitem.price!
-                                                                .toString() +
-                                                            " IQD",
+                                                        "${cartitem.price!} IQD",
                                                         style: TextStyle(
                                                             decoration: cartitem
                                                                         .offerPrice! >
@@ -182,9 +196,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                       ),
                                                       cartitem.offerPrice! > -1
                                                           ? Text(
-                                                              cartitem.offerPrice!
-                                                                      .toString() +
-                                                                  " IQD",
+                                                              "${cartitem.offerPrice!} IQD",
                                                               style: TextStyle(
                                                                   color:
                                                                       mainColorRed,
@@ -192,32 +204,30 @@ class _oreder_itemsState extends State<oreder_items> {
                                                                       mainFontbold,
                                                                   fontSize: 10),
                                                             )
-                                                          : SizedBox(),
+                                                          : const SizedBox(),
                                                     ],
                                                   ),
+                                                  // Item Info --> length of text 15
                                                   Row(
                                                     children: [
                                                       Text(
-                                                        "info: ".tr,
-                                                        style: TextStyle(
-                                                            color:
-                                                                mainColorGrey,
-                                                            fontFamily:
-                                                                mainFontnormal,
-                                                            fontSize: 12),
-                                                      ),
-                                                      Text(
                                                         lang == "en"
-                                                            ? cartitem
-                                                                .contentsEn
-                                                                .toString()
-                                                            : lang == "ar"
-                                                                ? cartitem
-                                                                    .contentsAr
-                                                                    .toString()
-                                                                : cartitem
-                                                                    .contentsKu
+                                                            ? textCount(
+                                                                cartitem
+                                                                    .contentsEn
                                                                     .toString(),
+                                                                15)
+                                                            : lang == "ar"
+                                                                ? textCount(
+                                                                    cartitem
+                                                                        .contentsAr
+                                                                        .toString(),
+                                                                    15)
+                                                                : textCount(
+                                                                    cartitem
+                                                                        .contentsKu
+                                                                        .toString(),
+                                                                    15),
                                                         style: TextStyle(
                                                             color:
                                                                 mainColorGrey,
@@ -256,9 +266,10 @@ class _oreder_itemsState extends State<oreder_items> {
                                                               "you can not add more this item");
                                                           return;
                                                         }
-                                                        final cartItem = CartItem(
-                                                            product: cartitemQ
-                                                                .product!);
+                                                        final cartItem =
+                                                            CartItemPast(
+                                                                product: cartitemQ
+                                                                    .product);
                                                         cartProvider
                                                             .addToCartPast(
                                                                 cartItem);
@@ -301,7 +312,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                       onTap: () {
                                                         final cartItem = CartItem(
                                                             product: cartitemQ
-                                                                .product!);
+                                                                .product);
                                                         cartProvider
                                                             .removeFromCartPast(
                                                                 cartItem);
@@ -345,9 +356,18 @@ class _oreder_itemsState extends State<oreder_items> {
                             }),
                       ),
                     ),
-                    Container(
-                      height: getHeight(context, 24.4),
-                      decoration: BoxDecoration(color: mainColorGrey),
+                  ),
+                  // Down Part
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      height: getWidth(context, 60),
+                      decoration: BoxDecoration(
+                        color: mainColorGrey,
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25)),
+                      ),
                       child: Column(
                         children: [
                           SizedBox(
@@ -453,94 +473,152 @@ class _oreder_itemsState extends State<oreder_items> {
                                     if (await noInternet(context)) {
                                       return;
                                     }
-                                    cartProvider.addPastToCart(
-                                        cartProvider.cartItemsPast);
+
                                     showModalBottomSheet(
                                       context: context,
                                       isDismissible: true,
+                                      shape: const RoundedRectangleBorder(
+                                        // <-- SEE HERE
+                                        borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(25.0),
+                                        ),
+                                      ),
                                       builder: (BuildContext context) {
                                         return Container(
                                           color: mainColorWhite,
                                           child: Column(
                                             children: <Widget>[
                                               Container(
+                                                padding: EdgeInsets.only(
+                                                  top: getWidth(context, 2),
+                                                  left: getWidth(context, 2),
+                                                  right: getWidth(context, 2),
+                                                  bottom: getWidth(context, 1),
+                                                ),
+                                                margin:
+                                                    const EdgeInsets.all(8.0),
+                                                height: getWidth(context, 10),
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: mainColorGrey
+                                                      .withOpacity(0.5),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    "Select Location",
+                                                    style: TextStyle(
+                                                      color: mainColorWhite,
+                                                      fontSize: 20,
+                                                      fontFamily:
+                                                          mainFontnormal,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
                                                 height: getHeight(context, 40),
-                                                // width: getWidth(context, 100),
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: ListView.builder(
-                                                      itemCount: productrovider
-                                                          .location.length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        final location =
-                                                            productrovider
-                                                                    .location[
-                                                                index];
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
+                                                  child: productrovider
+                                                          .location.isNotEmpty
+                                                      ? ListView.builder(
+                                                          itemCount:
+                                                              productrovider
+                                                                  .location
+                                                                  .length,
+                                                          itemBuilder:
+                                                              (BuildContext
+                                                                      context,
+                                                                  int index) {
+                                                            final location =
+                                                                productrovider
+                                                                        .location[
+                                                                    index];
+                                                            return Padding(
+                                                              padding: EdgeInsets.only(
                                                                   bottom:
                                                                       getHeight(
                                                                           context,
                                                                           1)),
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        CheckOut(
-                                                                            id: location.id!)),
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              decoration: BoxDecoration(
-                                                                  color:
-                                                                      mainColorLightGrey,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () {
+                                                                  cartProvider.addPastToCart(
+                                                                      cartProvider
+                                                                          .cartItemsPast);
+
+                                                                  Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                CheckOut(id: location.id!)),
+                                                                  ).then(
+                                                                      (value) {
+                                                                    cartProvider
+                                                                        .clearCart();
+                                                                  });
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  decoration: BoxDecoration(
+                                                                      color:
+                                                                          mainColorLightGrey,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               5)),
-                                                              child: ListTile(
-                                                                title: Text(
-                                                                  location
-                                                                      .name!,
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorGrey,
-                                                                      fontSize:
-                                                                          14,
-                                                                      fontFamily:
-                                                                          mainFontbold),
-                                                                ),
-                                                                subtitle: Text(
-                                                                  location
-                                                                      .area!,
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorGrey,
-                                                                      fontSize:
-                                                                          14,
-                                                                      fontFamily:
-                                                                          mainFontnormal),
-                                                                ),
-                                                                trailing: Text(
-                                                                  "Select",
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorRed,
-                                                                      fontFamily:
-                                                                          mainFontnormal),
+                                                                  child:
+                                                                      ListTile(
+                                                                    title: Text(
+                                                                      location
+                                                                          .name!,
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              mainColorGrey,
+                                                                          fontSize:
+                                                                              14,
+                                                                          fontFamily:
+                                                                              mainFontbold),
+                                                                    ),
+                                                                    subtitle:
+                                                                        Text(
+                                                                      location
+                                                                          .area!,
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              mainColorGrey,
+                                                                          fontSize:
+                                                                              14,
+                                                                          fontFamily:
+                                                                              mainFontnormal),
+                                                                    ),
+                                                                    trailing:
+                                                                        Text(
+                                                                      "Select",
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              mainColorRed,
+                                                                          fontFamily:
+                                                                              mainFontnormal),
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
+                                                            );
+                                                          })
+                                                      : Center(
+                                                          child: Text(
+                                                          "Not have any location",
+                                                          style: TextStyle(
+                                                            color:
+                                                                mainColorGrey,
+                                                            fontSize: 20,
                                                           ),
-                                                        );
-                                                      }),
+                                                        )),
                                                 ),
                                               ),
                                               Padding(
@@ -549,20 +627,14 @@ class _oreder_itemsState extends State<oreder_items> {
                                                         getWidth(context, 4)),
                                                 child: TextButton(
                                                   onPressed: () {
+                                                    Navigator.pop(context);
                                                     Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              Maps_screen()),
+                                                              const Maps_screen()),
                                                     );
                                                   },
-                                                  child: Text(
-                                                    "Add another location".tr,
-                                                    style: TextStyle(
-                                                      color: mainColorWhite,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                     backgroundColor:
@@ -574,7 +646,14 @@ class _oreder_itemsState extends State<oreder_items> {
                                                         RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              50),
+                                                              5),
+                                                    ),
+                                                  ),
+                                                  child: Text(
+                                                    "Add another location".tr,
+                                                    style: TextStyle(
+                                                      color: mainColorWhite,
+                                                      fontSize: 16,
                                                     ),
                                                   ),
                                                 ),
@@ -585,19 +664,19 @@ class _oreder_itemsState extends State<oreder_items> {
                                       },
                                     );
                                   },
-                                  child: Text(
-                                    "Re Order".tr,
-                                    style: TextStyle(
-                                      color: mainColorWhite,
-                                      fontSize: 16,
-                                    ),
-                                  ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: mainColorRed,
                                     fixedSize: Size(getWidth(context, 40),
                                         getHeight(context, 6)),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "Re Order".tr,
+                                    style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -606,33 +685,30 @@ class _oreder_itemsState extends State<oreder_items> {
                                     if (await noInternet(context)) {
                                       return;
                                     }
-                                    // if (cartProvider.cartItems ==
-                                    //     cartProvider.cartItemsPast) {
-                                    //   toastShort(
-                                    //       "this items already have in Mycart");
-                                    //   return;
-                                    // }
+
                                     cartProvider.addPastToCart(
                                         cartProvider.cartItemsPast);
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => NavSwitch()),
+                                          builder: (context) =>
+                                              const NavSwitch()),
                                     );
+                                    cartProvider.clearCartPast();
                                   },
-                                  child: Text(
-                                    "Add More Items".tr,
-                                    style: TextStyle(
-                                      color: mainColorWhite,
-                                      fontSize: 16,
-                                    ),
-                                  ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: mainColorRed,
                                     fixedSize: Size(getWidth(context, 40),
                                         getHeight(context, 6)),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "Add More Items".tr,
+                                    style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -642,8 +718,8 @@ class _oreder_itemsState extends State<oreder_items> {
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             : loginFirstContainer(context),
       ),

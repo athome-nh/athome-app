@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
+import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
 //// a fast way to push to a new screen
@@ -57,6 +58,11 @@ String encryptAES(String plainText) {
   final encrypted = encrypter.encrypt(plainText, iv: iv);
 
   return encrypted.base64;
+}
+
+Future<int> getOnlineTimestamp() async {
+  DateTime startDate = await NTP.now();
+  return startDate.hour;
 }
 
 String decryptAES(String ciphertext) {
