@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
+import 'package:latlng/latlng.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -19,7 +21,6 @@ void toOff(BuildContext context, Widget screen) {
     MaterialPageRoute(builder: (context) => screen),
     (Route<dynamic> route) => false,
   );
-  
 }
 
 //// check allowed image extentions
@@ -188,18 +189,6 @@ String fontNormalChoose() {
   String font = lang == "en" ? "" : "";
   return font;
 }
-String getOflineTimestamp() {
-  return DateTime.now().millisecondsSinceEpoch.toString();
-}
-
-Future<String> getOnlineTimestamp() async {
-  DateTime startDate = await NTP.now();
-  return startDate.millisecondsSinceEpoch.toString();
-}
-
-
-
-
 
 /// #Check this CODEs Latter
 
@@ -384,7 +373,14 @@ Future<String> getOnlineTimestamp() async {
 //   return formattedDate;
 // }
 
+// Future<String> getOnlineTimestamp() async {
+//   DateTime startDate = await NTP.now();
+//   return startDate.millisecondsSinceEpoch.toString();
+// }
 
+// String getOflineTimestamp() {
+//   return DateTime.now().millisecondsSinceEpoch.toString();
+// }
 
 // DateTime timestampToDateTime(String timestamps) {
 //   return DateTime.parse(timestamps);
