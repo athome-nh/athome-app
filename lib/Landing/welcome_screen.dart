@@ -1,12 +1,11 @@
-import 'package:athome/Config/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../Config/property.dart';
 import '../home/nav_switch.dart';
+import '../Config/local_data.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
-
   @override
   State<StatefulWidget> createState() => WelcomeScreenState();
 }
@@ -23,10 +22,10 @@ class WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: mainColorWhite,
-        body: Column(
+    return Scaffold(
+      backgroundColor: mainColorWhite,
+      body: SafeArea(
+        child: Column(
           children: [
             CarouselSlider(
               carouselController: buttonCarouselController,
@@ -88,6 +87,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            // skip button
                             TextButton(
                               onPressed: () {
                                 setBoolPrefs("onbord", true);
@@ -111,6 +111,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 textAlign: TextAlign.left,
                               ),
                             ),
+
+                            // 3 dote
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -164,6 +166,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 ),
                               ],
                             ),
+
+                            // finish and next button
                             Container(
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
@@ -218,6 +222,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
+
+        // logo
         Expanded(
           child: Image.asset(
             "assets/images/002_logo_1.png",
@@ -229,6 +235,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
+
+        // image
         Expanded(
           flex: 2,
           child: Image.asset(
@@ -238,7 +246,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-        //texts
+
+        // text
         Expanded(
           child: Column(
             children: [
@@ -284,6 +293,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
+
+        // logo
         Expanded(
           child: Image.asset(
             "assets/images/002_logo_1.png",
@@ -295,6 +306,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
+
+        // image
         Expanded(
           flex: 2,
           child: Image.asset(
@@ -304,7 +317,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-        //texts
+
+        // text
         Expanded(
           child: Column(
             children: [
@@ -348,6 +362,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
+
+        // logo
         Expanded(
           child: Image.asset(
             "assets/images/002_logo_1.png",
@@ -359,6 +375,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
+
+        // image
         Expanded(
           flex: 2,
           child: Image.asset(
@@ -368,7 +386,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-        //texts
+
+        // text
         Expanded(
           child: Column(
             children: [

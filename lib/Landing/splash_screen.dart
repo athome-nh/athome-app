@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/welcome_screen.dart';
@@ -16,7 +15,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 var userdata = {};
-
 bool loaddata = false;
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -35,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => seen ? NavSwitch() : WelcomeScreen(),
+            builder: (context) => seen ? const NavSwitch() : const WelcomeScreen(),
           ),
         );
       },
