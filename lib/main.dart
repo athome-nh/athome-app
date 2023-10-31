@@ -1,6 +1,7 @@
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/map/mapScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -70,7 +71,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home: const Map_screen(),
         //const Setting(),
       ),
     );
