@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/welcome_screen.dart';
+import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../Config/property.dart';
@@ -20,16 +22,24 @@ var userdata = {};
 bool loaddata = false;
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool seen = true;
+  bool seen = false;
   @override
   void initState() {
     super.initState();
-
-    final productrovider = Provider.of<productProvider>(context, listen: false);
-    productrovider.updatePost();
-    getBoolPrefs("onbord").then((value2) {
-      seen = value2;
+    getStringPrefs("data").then((map) {
+      if (map.isNotEmpty) {
+        Map<String, dynamic> myMap = json.decode(map);
+        print(myMap);
+        seen = myMap["onbord"];
+        isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
+        token = myMap.containsKey("token") ? myMap["token"] : "";
+        print(token);
+      }
+      final productrovider =
+          Provider.of<productProvider>(context, listen: false);
+      productrovider.updatePost();
     });
+
     Timer(
       const Duration(seconds: 5),
       () {

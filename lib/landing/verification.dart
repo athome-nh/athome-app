@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
@@ -81,55 +83,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         "assets/images/verify.gif",
                       ),
                     ),
-                    // Container(
-                    //   height: getHeight(context, 27),
-                    //   child: Stack(children: [
-                    //     Positioned(
-                    //       top: 0,
-                    //       left: 0,
-                    //       right: 0,
-                    //       bottom: 0,
-                    //       child: AnimatedOpacity(
-                    //         opacity: _currentIndex == 0 ? 1 : 0,
-                    //         duration: const Duration(
-                    //           seconds: 1,
-                    //         ),
-                    //         curve: Curves.linear,
-                    //         child: Image.asset(
-                    //           "assets/images/Verify.png",
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     // Positioned(
-                    //     //   top: 0,
-                    //     //   left: 0,
-                    //     //   right: 0,
-                    //     //   bottom: 0,
-                    //     //   child: AnimatedOpacity(
-                    //     //     opacity: _currentIndex == 1 ? 1 : 0,
-                    //     //     duration: const Duration(seconds: 1),
-                    //     //     curve: Curves.linear,
-                    //     //     child: Image.asset(
-                    //     //       "assets/images/Verify.png",
-                    //     //     ),
-                    //     //   ),
-                    //     // ),
-                    //     // Positioned(
-                    //     //   top: 0,
-                    //     //   left: 0,
-                    //     //   right: 0,
-                    //     //   bottom: 0,
-                    //     //   child: AnimatedOpacity(
-                    //     //     opacity: _currentIndex == 2 ? 1 : 0,
-                    //     //     duration: const Duration(seconds: 1),
-                    //     //     curve: Curves.linear,
-                    //     //     child: Image.asset(
-                    //     //       "assets/images/Verify.png",
-                    //     //     ),
-                    //     //   ),
-                    //     // )
-                    //   ]),
-                    // ),
+
                     SizedBox(
                       height: getHeight(context, 4),
                     ),
@@ -302,10 +256,15 @@ class _VerificatoinState extends State<Verificatoin> {
                     _isLoading = false;
                     _isVerified = true;
                     isLogin = true;
+                    token = value["token"];
                   });
 
-                  setBoolPrefs("islogin", true);
-                  setStringPrefs("token", value["token"]);
+                  getStringPrefs("data").then((map) {
+                    Map<String, dynamic> myMap = json.decode(map);
+                    myMap["islogin"] = true;
+                    myMap["token"] = value["token"];
+                    setStringPrefs("data", json.encode(myMap));
+                  });
                   final productrovider =
                       Provider.of<productProvider>(context, listen: false);
                   productrovider.updatePost();
@@ -396,10 +355,15 @@ class _VerificatoinState extends State<Verificatoin> {
                 _isLoading = false;
                 _isVerified = true;
                 isLogin = true;
+                token = value["token"];
+              });
+              getStringPrefs("data").then((map) {
+                Map<String, dynamic> myMap = json.decode(map);
+                myMap["islogin"] = true;
+                myMap["token"] = value["token"];
+                setStringPrefs("data", json.encode(myMap));
               });
 
-              setBoolPrefs("islogin", true);
-              setStringPrefs("token", value["token"]);
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
               productrovider.updatePost();

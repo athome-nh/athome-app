@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:athome/Config/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -62,7 +64,9 @@ class WelcomeScreenState extends State<WelcomeScreen>
                             borderRadius: BorderRadius.circular(5)),
                         child: TextButton(
                           onPressed: () {
-                            setBoolPrefs("onbord", true);
+                            Map<String, dynamic> myMap = {};
+                            myMap["onbord"] = true;
+                            setStringPrefs("data", json.encode(myMap));
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/local_data.dart';
@@ -336,10 +337,16 @@ class _SingInUpState extends State<SingInUp> {
                             if (value["data"]["isActive"] == 1) {
                               setState(() {
                                 isLogin = true;
+
+                                token = value["token"];
                               });
 
-                              setBoolPrefs("islogin", true);
-                              setStringPrefs("token", value["token"]);
+                              getStringPrefs("data").then((map) {
+                                Map<String, dynamic> myMap = json.decode(map);
+                                myMap["islogin"] = true;
+                                myMap["token"] = value["token"];
+                                setStringPrefs("data", json.encode(myMap));
+                              });
                               final productrovider =
                                   Provider.of<productProvider>(context,
                                       listen: false);

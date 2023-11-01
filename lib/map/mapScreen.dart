@@ -1,13 +1,19 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+
 import 'dart:math';
-import 'package:http/http.dart' as http;
+
+import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/main.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/map/geolocator.dart';
 import 'package:athome/map/marker.dart';
 import 'package:athome/map/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 
@@ -21,9 +27,15 @@ class Map_screen extends StatefulWidget {
 class _Map_screenState extends State<Map_screen> {
   @override
   void initState() {
-    addMarker();
-
+    getCureentlocation();
+    scrollTimer = Timer(Duration(milliseconds: 0), () {});
     super.initState();
+  }
+
+  late Timer? scrollTimer;
+
+  _onMove(ScreenCoordinate coordinate) {
+    print("OnMove ${coordinate.x} - ${coordinate.y}");
   }
 
   List<Position> zone = [
@@ -111,19 +123,22 @@ class _Map_screenState extends State<Map_screen> {
     Position(44.145719643549455, 36.17595294132525),
     Position(44.15639726467779, 36.21423817661292),
   ];
-  MapboxMap? mapboxMap;
+
   PolygonAnnotation? polygonAnnotation;
   PolygonAnnotationManager? polygonAnnotationManager;
   int styleIndex = 1;
   late MapboxMap _mapController;
+  String nameloc = "";
   final markerList = <Marker>{};
-  // String MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiYXRob21lYXBwIiwiYSI6ImNsbnVhaWhuczBlZXEycW5zcTlvMm9qcGgifQ.7hy4D3JXCWvFQXVTg33bHA';
+  bool wait = false;
+  bool zoom = false;
   _onMapCreated(MapboxMap mapboxMap) {
-    this.mapboxMap = mapboxMap;
     _mapController = mapboxMap;
+
     // We tell the controller to show the user location on the map
     _mapController.location.updateSettings(
         LocationComponentSettings(enabled: true, pulsingEnabled: true));
+
     mapboxMap.annotations.createPolygonAnnotationManager().then((value) {
       polygonAnnotationManager = value;
 
@@ -145,42 +160,127 @@ class _Map_screenState extends State<Map_screen> {
         child: Stack(
           children: [
             MapWidget(
-                onTapListener: (coordinate) {
-                  if (isPointInsidePolygon(
-                      Position(coordinate.y, coordinate.x), zone)) {
-                    // getLocationName(coordinate.y, coordinate.x);
-                    print("jegr");
-                  } else {
-                    print("hunar");
-                  }
-                },
                 key: ValueKey("mapWidget"),
-                onScrollListener: (coordinate) {
-                  //  print("objectscrool");
+                onCameraChangeListener: (cameraChangedEventData) {
+                  setState(() {
+                    wait = true;
+                  });
+                  if (scrollTimer != null) {
+                    scrollTimer!.cancel();
+                  }
+                  scrollTimer = Timer(Duration(milliseconds: 500), () {
+                    _mapController.getCameraState().then((value) {
+                      final split = value.center["coordinates"]
+                          .toString()
+                          .substring(1)
+                          .replaceAll("]", '')
+                          .split(",");
+
+                      if (isPointInsidePolygon(
+                          Position(
+                              double.parse(split[0]), double.parse(split[1])),
+                          zone)) {
+                        if (value.zoom < 10) {
+                          setState(() {
+                            zoom = true;
+                            nameloc = "Zoom in Please";
+                            wait = false;
+                          });
+                        } else {
+                          getLocationName(
+                              double.parse(split[0]), double.parse(split[1]));
+                        }
+                      } else {
+                        setState(() {
+                          zoom = true;
+                          nameloc = "Sorry, we don't deliver here";
+                          wait = false;
+                        });
+                      }
+                    });
+                  });
                 },
                 resourceOptions:
                     ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
                 onMapCreated: _onMapCreated),
-          ],
-        ),
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-                child: Icon(Icons.swap_horiz),
-                onPressed: () {
-                  mapboxMap?.style.setStyleURI(
-                      annotationStyles[++styleIndex % annotationStyles.length]);
-                }),
-            SizedBox(height: 10),
-            FloatingActionButton(
-              onPressed: () async {
-                await addMarker(); // Our guy 😄
-              },
-              child: const Icon(FontAwesomeIcons.locationCrosshairs),
+            Padding(
+              padding: EdgeInsets.only(bottom: 40),
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  width: getWidth(context, 100),
+                  height: getHeight(context, 7),
+                  child: Image.asset("assets/images/location.png"),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 120, right: 10),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: mainColorLightGrey),
+                  child: IconButton(
+                    onPressed: () async {
+                      await getCureentlocation(); // Our guy 😄
+                    },
+                    icon: Icon(FontAwesomeIcons.locationCrosshairs,
+                        size: 25, color: mainColorRed),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                    width: getWidth(context, 100),
+                    height: getHeight(context, 6),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        shape: BoxShape.rectangle,
+                        color: zoom ? mainColorRed : Colors.green),
+                    child: Center(
+                        child: wait
+                            ? Container(
+                                height: getWidth(context, 10),
+                                child: LoadingIndicator(
+                                  indicatorType: Indicator.ballRotateChase,
+                                  colors: [
+                                    mainColorWhite,
+                                    // mainColorRed,
+                                    // mainColorSuger,
+                                  ],
+
+                                  // strokeWidth: 5,
+                                ),
+                              )
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  zoom
+                                      ? SizedBox()
+                                      : Text(
+                                          "Delivery To: ",
+                                          style: TextStyle(
+                                              color: mainColorWhite,
+                                              fontSize: 16),
+                                        ),
+                                  zoom
+                                      ? SizedBox()
+                                      : SizedBox(
+                                          width: 3,
+                                        ),
+                                  Text(
+                                    nameloc,
+                                    style: TextStyle(
+                                        color: mainColorWhite, fontSize: 16),
+                                  ),
+                                ],
+                              ))),
+              ),
             ),
           ],
         ),
@@ -212,54 +312,46 @@ class _Map_screenState extends State<Map_screen> {
 
   Future<void> getLocationName(double lng, double lat) async {
     final url =
-        'https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=$MAPBOX_ACCESS_TOKEN';
-
-    try {
-      var response = await http.get(Uri.parse(url));
-      if (response.statusCode == 200) {
-        var data = json.decode(response.body);
-        setState(() {
-          //  print(data['features']);
-          print(data['features'][0]['place_name']);
-          print(data['features'][0]['address']);
-          print(data['features'][0]['text']);
-        });
-      } else {
-        throw Exception('Failed to load data');
-      }
-    } catch (e) {
-      print('Error: $e');
+        'https://nominatim.openstreetmap.org/reverse?format=json&lat=$lat&lon=$lng&accept-language=$lang';
+    print(url);
+    var httpClient = HttpClient();
+    var request = await httpClient.getUrl(Uri.parse(url));
+    var response = await request.close();
+    var responseBody = await response.transform(utf8.decoder).join();
+    httpClient.close();
+    if (response.statusCode == 200) {
+      var data = json.decode(responseBody);
+      setState(() {
+        String check = data.toString();
+        nameloc = check.contains('neighbourhood')
+            ? data["address"]["neighbourhood"]
+            : check.contains('village')
+                ? data["address"]["village"]
+                : textCount(data["display_name"], 25);
+        wait = false;
+        zoom = false;
+      });
+    } else {
+      setState(() {
+        nameloc = "try again";
+        wait = false;
+      });
+      throw Exception('Failed to load data');
     }
   }
 
-  getstreet(double lat, double lng) async {
-    await placemarkFromCoordinates(lng, lat).then((List<Placemark> placemarks) {
-      placemarks.forEach((element) {
-        if (element.thoroughfare!.isNotEmpty) {
-          print(element);
-        } else {}
-      });
-      Placemark place = placemarks[0];
-      // setState(() {
-      //   print('${place.street}, ${place.subLocality}'
-      //       '${place.subAdministrativeArea}'
-      //       ' ${place.postalCode}');
-      // });
-    }).catchError((e) {
-      debugPrint(e);
-    });
-  }
-
-  Future<void> addMarker() async {
+  Future<void> getCureentlocation() async {
     // We get our current location data
     final myLocationData = await getCurrentLatLng();
-    _mapController?.easeTo(
+
+    getLocationName(myLocationData.longitude, myLocationData.latitude);
+    _mapController?.flyTo(
         CameraOptions(
             center: Point(
                     coordinates: Position(
                         myLocationData.longitude, myLocationData.latitude))
                 .toJson(),
-            zoom: 19,
+            zoom: 18,
             bearing: 0,
             pitch: 15),
         MapAnimationOptions(duration: 2000, startDelay: 0));
