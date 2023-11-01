@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/controller/cartprovider.dart';
 
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
@@ -63,60 +62,77 @@ class productProvider extends ChangeNotifier {
     }
   }
 
+  getDataAll() {
+    Network(false).getData("showData").then((value) async {
+      if (value != "") {
+        if (value["code"] != 200) {
+          setProducts((value['products'] as List)
+              .map((x) => ProductModel.fromMap(x))
+              .toList());
+          setCategorys((value['category'] as List)
+              .map((x) => CategoryModel.fromMap(x))
+              .toList());
+          setsubCategorys((value['subCategory'] as List)
+              .map((x) => SubCategory.fromMap(x))
+              .toList());
+          setproductimages((value['productsImage'] as List)
+              .map((x) => ProductsImage.fromMap(x))
+              .toList());
+          setslides((value['slide'] as List)
+              .map((x) => Slidemodel.fromMap(x))
+              .toList());
+          settops((value['top_image'] as List)
+              .map((x) => Topmodel.fromMap(x))
+              .toList());
+          setbrands((value['brands'] as List)
+              .map((x) => Brandmodel.fromMap(x))
+              .toList());
+          if (isLogin) {
+            getDataUser(userdata["id"].toString());
+          }
+          setshow(true);
+          print("end");
+        } else {}
+      } else {}
+    });
+  }
+
+  getDataUser(String id) {
+    Network(false).getData("showDataUser/" + id).then((value) async {
+      print(value);
+      print("user");
+      if (value != "") {
+        if (value["code"] != 200) {
+          setlocation((value['locations'] as List)
+              .map((x) => Locationuser.fromMap(x))
+              .toList());
+          setOrders((value['orders'] as List)
+              .map((x) => OrderModel.fromMap(x))
+              .toList());
+          setOrderItems((value['orders_item'] as List)
+              .map((x) => OrderItems.fromMap(x))
+              .toList());
+          setshow(true);
+          print("end");
+        } else {}
+      } else {}
+    });
+  }
+
   updatePost() async {
-    print("start");
-    String ordeid = "0";
-    getStringPrefs("token").then((valuet) {
-      Network(false).getDatauser("userInfo", valuet).then((valueuser) {
+    if (isLogin) {
+      Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
-            ordeid = valueuser["data"][0]["id"].toString();
             userdata = valueuser["data"][0];
+
+            getDataAll();
           }
         }
-
-        Network(false).getData("showData/" + ordeid).then((value) async {
-          print(value);
-          if (value != "") {
-            if (value["code"] != 200) {
-              setProducts((value['products'] as List)
-                  .map((x) => ProductModel.fromMap(x))
-                  .toList());
-              setCategorys((value['category'] as List)
-                  .map((x) => CategoryModel.fromMap(x))
-                  .toList());
-              setsubCategorys((value['subCategory'] as List)
-                  .map((x) => SubCategory.fromMap(x))
-                  .toList());
-              setproductimages((value['productsImage'] as List)
-                  .map((x) => ProductsImage.fromMap(x))
-                  .toList());
-              setOrders((value['orders'] as List)
-                  .map((x) => OrderModel.fromMap(x))
-                  .toList());
-              setOrderItems((value['orders_item'] as List)
-                  .map((x) => OrderItems.fromMap(x))
-                  .toList());
-              setlocation((value['locations'] as List)
-                  .map((x) => Locationuser.fromMap(x))
-                  .toList());
-              setslides((value['slide'] as List)
-                  .map((x) => Slidemodel.fromMap(x))
-                  .toList());
-              settops((value['top_image'] as List)
-                  .map((x) => Topmodel.fromMap(x))
-                  .toList());
-              setbrands((value['brands'] as List)
-                  .map((x) => Brandmodel.fromMap(x))
-                  .toList());
-
-              setshow(true);
-              print("end");
-            } else {}
-          } else {}
-        });
       });
-    });
+    } else {
+      getDataAll();
+    }
   }
 
   // getPost() async {

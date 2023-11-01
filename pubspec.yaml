@@ -41,12 +41,13 @@ dependencies:
   image_picker: ^0.8.4
   loading_indicator: ^3.1.1
   geocoding: ^2.1.1
-  mapbox_gl: ^0.16.0
-
   ntp: ^2.0.0
   http: ^1.1.0
   awesome_dialog: ^3.1.0
-  
+  mapbox_maps_flutter: ^0.5.0
+  latlng: ^1.0.0
+  turf: ^0.0.8
+
   
   
  
@@ -66,6 +67,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/location.png
 
 
   fonts:

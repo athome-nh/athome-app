@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:athome/Account/profilo.dart';
 import 'package:athome/controller/cartprovider.dart';
@@ -10,7 +9,6 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Home/MyCart.dart';
 import 'package:athome/Home/Search.dart';
 import 'package:provider/provider.dart';
-import '../Config/local_data.dart';
 import '../main.dart';
 import 'home_page.dart';
 
@@ -52,7 +50,7 @@ Widget buildFAB(BuildContext context) {
 class _NavSwitchState extends State<NavSwitch> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     const HomeSreen(),
     const Search(),
     const OrderScreen(),
@@ -72,7 +70,6 @@ class _NavSwitchState extends State<NavSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    //final cartProvider = Provider.of<CartProvider>(context, listen: true);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: WillPopScope(

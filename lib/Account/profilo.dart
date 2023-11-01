@@ -4,6 +4,7 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
+import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -332,6 +333,7 @@ class _SettingState extends State<Setting> {
                                                           .addImage(body,
                                                               _image!.path)
                                                           .then((value) {
+                                                        print(value);
                                                         if (value) {
                                                           data = {
                                                             "id":
@@ -787,17 +789,25 @@ class _SettingState extends State<Setting> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            setBoolPrefs("islogin", false);
-                            setStringPrefs("token", "");
+                            getStringPrefs("data").then((map) {
+                              Map<String, dynamic> myMap = json.decode(map);
+                              myMap["islogin"] = false;
+                              myMap["token"] = "";
+                              setStringPrefs("data", json.encode(myMap));
+                            });
+
                             final cartProvider = Provider.of<CartProvider>(
                                 context,
                                 listen: false);
+
                             setState(() {
                               userdata = {};
+                              token = "";
                               isLogin = false;
                             });
                             cartProvider.cartItems.clear();
                             cartProvider.FavItems.clear();
+
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

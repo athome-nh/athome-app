@@ -1,13 +1,15 @@
 import 'package:athome/Config/local_data.dart';
-import 'package:athome/abc.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/map/mapScreen.dart';
+import 'package:athome/map/maps.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 
@@ -24,6 +26,7 @@ Future<void> main() async {
 }
 
 String lang = "";
+String token = "";
 bool isLogin = false;
 
 class AtHomeApp extends StatefulWidget {
@@ -36,13 +39,6 @@ class AtHomeApp extends StatefulWidget {
 class _AtHomeAppState extends State<AtHomeApp> {
   @override
   void initState() {
-    getBoolPrefs("islogin").then((value) {
-      if (value) {
-        isLogin = true;
-      } else {
-        isLogin = false;
-      }
-    });
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
@@ -70,7 +66,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home: const Map_screen(),
         //const Setting(),
       ),
     );

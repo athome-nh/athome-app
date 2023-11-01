@@ -1,15 +1,55 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
+import 'package:latlng/latlng.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
 //// a fast way to push to a new screen
 void to(BuildContext context, Widget screen) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+}
+
+String generateRandomText(String time) {
+  DateTime d = DateTime.parse(time);
+
+  String code_2 = (d.millisecondsSinceEpoch).toString();
+  final _random = Random();
+
+  final RegExp regex = RegExp(r'^[a-zA-Z0-9!@#\$%^&*,.?":]{64}$');
+  const characters =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#\$%^&*(),.?:';
+  final length = 64; // Adjust the length to match your regex pattern
+
+  String randomText;
+  do {
+    randomText = String.fromCharCodes(Iterable.generate(
+      length,
+      (_) => characters.codeUnitAt(_random.nextInt(characters.length)),
+    ));
+  } while (!regex.hasMatch(randomText));
+  //String code_2 = DateTime.now().millisecondsSinceEpoch.toString();
+
+  return code_3(code_2, randomText);
+}
+
+String code_3(String code_2, String randomText) {
+  List<String> charactersArray = randomText.split('');
+  List<String> charactersArray2 = code_2.split('');
+
+  List<int> listOfNum = [13, 21, 44, 18, 28, 55, 5, 11, 25, 32, 23, 16, 7];
+
+  for (int i = 0; i < 13; i++) {
+    charactersArray[listOfNum[i]] = charactersArray2[i];
+  }
+
+  String result = charactersArray.join('');
+
+  return result;
 }
 
 //// a fast way to push to a new screen and cut the previous route
@@ -19,7 +59,6 @@ void toOff(BuildContext context, Widget screen) {
     MaterialPageRoute(builder: (context) => screen),
     (Route<dynamic> route) => false,
   );
-  
 }
 
 //// check allowed image extentions
@@ -188,18 +227,6 @@ String fontNormalChoose() {
   String font = lang == "en" ? "" : "";
   return font;
 }
-String getOflineTimestamp() {
-  return DateTime.now().millisecondsSinceEpoch.toString();
-}
-
-Future<String> getOnlineTimestamp() async {
-  DateTime startDate = await NTP.now();
-  return startDate.millisecondsSinceEpoch.toString();
-}
-
-
-
-
 
 /// #Check this CODEs Latter
 
@@ -384,7 +411,14 @@ Future<String> getOnlineTimestamp() async {
 //   return formattedDate;
 // }
 
+// Future<String> getOnlineTimestamp() async {
+//   DateTime startDate = await NTP.now();
+//   return startDate.millisecondsSinceEpoch.toString();
+// }
 
+// String getOflineTimestamp() {
+//   return DateTime.now().millisecondsSinceEpoch.toString();
+// }
 
 // DateTime timestampToDateTime(String timestamps) {
 //   return DateTime.parse(timestamps);

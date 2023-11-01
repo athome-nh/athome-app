@@ -1,5 +1,6 @@
 // ignore_for_file: empty_catches, file_names
 
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
@@ -14,7 +15,6 @@ import 'dio_connectivity_request_retrier.dart';
 bool noInertnetShowed = false;
 
 class Network {
-  String token = "";
   bool onbaord;
   var dio = Dio();
   late DioConnectivityRequestRetrier retrier;
@@ -29,48 +29,108 @@ class Network {
   }
 
   Future getDatauser(String apiRout, String token) async {
+    Map<String, dynamic> data = {};
     try {
-      dio.options.headers["Authorization"] = "Bearer " + token;
-      Response response = await dio.get(serverUrl + apiRout);
-      return response.data;
+      if (token.isNotEmpty) {
+        await dio.get(serverUrl + "time").then((time) async {
+          dio.options.headers["Authorization"] = "Bearer " + token;
+          dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+          Response response = await dio.get(serverUrl + apiRout);
+          data = response.data;
+        });
+      } else {
+        print("object");
+        toastLong('An error occured, Please try again.');
+      }
     } catch (e) {
       return "";
     }
+    return data;
   }
 
   Future getData(String apiRout) async {
+    print(apiRout);
+    Map<String, dynamic> data = {};
     try {
-      Response response = await dio.get(serverUrl + apiRout);
+      print(111);
+      await dio.get(serverUrl + "time").then((time) async {
+        print(time);
+
+        dio.options.headers["Authorization"] = "Bearer " + token;
+        dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+        Response response = await dio.get(serverUrl + apiRout);
+
+        data = response.data;
+        print(data);
+      });
+    } catch (e) {
+      print(e);
+      return "";
+    }
+    return data;
+  }
+
+  Future locationname(String url) async {
+    try {
+      Response response = await dio.get(url);
+
       return response.data;
     } catch (e) {
       return "";
     }
   }
 
-  Future<bool> addImage(Map<String, String> body, String filepath) async {
+  Future addImage(Map<String, String> body, String filepath) async {
     String addimageUrl = serverUrl + "profileImg";
-    Map<String, String> headers = {
-      'Content-Type': 'multipart/form-data',
-    };
-    var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
-      ..fields.addAll(body)
-      ..headers.addAll(headers)
-      ..files.add(await http.MultipartFile.fromPath('img', filepath));
-    var response = await request.send();
-    if (response.statusCode == 201) {
-      return true;
-    } else {
+    try {
+      await dio.get(serverUrl + "time").then((time) async {
+        Map<String, String> headers = {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': "Bearer " + token,
+          'aToken': generateRandomText(time.data["data"]),
+        };
+        var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
+          ..fields.addAll(body)
+          ..headers.addAll(headers)
+          ..files.add(await http.MultipartFile.fromPath('img', filepath));
+
+        var response = await request.send();
+
+        if (response.statusCode == 201) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      
+    } catch (e) {
       return false;
     }
   }
 
-  Future getDataAll(String apiRout, BuildContext context) async {
+  Future postData(String rout, Map data, BuildContext context) async {
+    Map<String, dynamic> data2 = {};
     try {
-      Response response = await dio.get(
-        serverUrl + apiRout,
-      );
-
-      return response.data;
+      if (isLogin) {
+        await dio.get(serverUrl + "time").then((time) async {
+          dio.options.headers["Authorization"] = "Bearer " + token;
+          dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+          Response response = await dio.post(
+            serverUrl + rout,
+            data: data,
+          );
+          data2 = response.data;
+        });
+      } else {
+        await dio.get(serverUrl + "time").then((time) async {
+          dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+          Response response = await dio.post(
+            serverUrl + rout,
+            data: data,
+          );
+          data2 = response.data;
+        });
+      }
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
@@ -86,49 +146,6 @@ class Network {
 
       return "";
     }
-  }
-
-  Future postData(String rout, Map data, BuildContext context) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.wifi ||
-        connectivityResult == ConnectivityResult.mobile) {
-      try {
-        Response response = await dio.post(
-          serverUrl + rout,
-          data: data,
-        );
-        print(response.statusCode);
-        return response.data;
-      } catch (e) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(
-              duration: const Duration(seconds: 4),
-              content: Text(
-                'An error occured, Please try again.',
-                style: TextStyle(color: mainColorWhite),
-              ),
-              backgroundColor: mainColorGrey,
-            ))
-            .closed
-            .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
-
-        return "";
-      }
-    } else {
-      if (!onbaord && !noInertnetShowed) {
-        noInertnetShowed = true;
-        ScaffoldMessenger.of(navigatorKey.currentContext!)
-            .showSnackBar(noInternetSnackBar)
-            .closed
-            .then((value) => ScaffoldMessenger.of(navigatorKey.currentContext!)
-                .clearSnackBars());
-      }
-
-      Response response = await retrier.scheduleRequestRetry(RequestOptions(
-        path: serverUrl + rout,
-        data: data,
-      ));
-      return response.data;
-    }
+    return data2;
   }
 }
