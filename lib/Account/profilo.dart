@@ -500,7 +500,7 @@ class _SettingState extends State<Setting> {
                             height: getHeight(context, 24),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: mainColorSuger.withOpacity(0.5),
+                                color: mainColorSuger.withOpacity(0.7),
                                 ),
                             child: Column(
                               children: [
@@ -718,7 +718,7 @@ class _SettingState extends State<Setting> {
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: mainColorSuger.withOpacity(0.5),
+                                  color: mainColorSuger.withOpacity(0.7),
                                   ),
                               child: Padding(
                                 padding:
@@ -758,7 +758,7 @@ class _SettingState extends State<Setting> {
                             height: getHeight(context, 5),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: mainColorSuger.withOpacity(0.5),
+                                color: mainColorSuger.withOpacity(0.7),
                                 ),
                             child: Padding(
                               padding:
@@ -824,7 +824,7 @@ class _SettingState extends State<Setting> {
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: mainColorSuger.withOpacity(0.5),
+                                  color: mainColorSuger.withOpacity(0.7),
                                   ),
                               child: Padding(
                                 padding:

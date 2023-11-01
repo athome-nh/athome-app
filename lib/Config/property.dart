@@ -15,8 +15,8 @@ String mainFontnormal = 'nrtN';
 
 /// Define { Colors } in AtHome
 Color mainColorRed = const Color(0xFFe73339);
-Color mainColorSuger2 = const Color(0xFFe0d5bb);
-Color mainColorSuger = const Color(0xFFe0d4ba);
+Color mainColorSuger = const Color(0xFFF8EACF);
+Color mainColorSuger1 = const Color(0xFFe0d4ba);
 Color mainColorGrey = const Color(0xFF3a393b);
 Color mainColorLightGrey = const Color(0xFFf2f2f2);
 Color mainColorWhite = const Color(0XFFffffff);
