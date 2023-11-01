@@ -18,7 +18,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 var userdata = {};
-
 bool loaddata = false;
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -45,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => seen ? NavSwitch() : WelcomeScreen(),
+            builder: (context) => seen ? const NavSwitch() : const WelcomeScreen(),
           ),
         );
       },
