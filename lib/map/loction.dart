@@ -3,6 +3,7 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
+import 'package:athome/map/mapScreen.dart';
 import 'package:athome/map/maps.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -67,32 +68,33 @@ class _LocationScreenState extends State<LocationScreen> {
                                   borderRadius: BorderRadius.circular(5)),
                               child: Column(
                                 children: [
-                                  Container(
-                                    height: getHeight(context, 12),
-                                    width: getWidth(context, 100),
-                                    child: GoogleMap(
-                                      zoomGesturesEnabled: false,
-                                      zoomControlsEnabled: false,
-                                      scrollGesturesEnabled: false,
-                                      initialCameraPosition: CameraPosition(
-                                        target: LatLng(location.latitude!,
-                                            location.longitude!),
-                                        zoom:
-                                            19.0, // Adjust the zoom level as needed
-                                      ),
-                                      markers: {
-                                        Marker(
-                                          markerId:
-                                              const MarkerId('location_marker'),
-                                          position: LatLng(location.latitude!,
-                                              location.longitude!),
-                                          infoWindow: const InfoWindow(
-                                            title: 'Location',
-                                          ),
-                                        ),
-                                      },
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   height: getHeight(context, 12),
+                                  //   width: getWidth(context, 100),
+                                  //   child: GoogleMap(
+                                  //     zoomGesturesEnabled: false,
+                                  //     zoomControlsEnabled: false,
+                                  //     scrollGesturesEnabled: false,
+                                  //     initialCameraPosition: CameraPosition(
+                                  //       target: LatLng(location.latitude!,
+                                  //           location.longitude!),
+                                  //       zoom:
+                                  //           19.0, // Adjust the zoom level as needed
+                                  //     ),
+                                  //     markers: {
+                                  //       Marker(
+                                  //         markerId:
+                                  //             const MarkerId('location_marker'),
+                                  //         position: LatLng(location.latitude!,
+                                  //             location.longitude!),
+                                  //         infoWindow: const InfoWindow(
+                                  //           title: 'Location',
+                                  //         ),
+                                  //       ),
+                                  //     },
+                                  //   ),
+                                  // ),
+
                                   ListTile(
                                     title: Text(
                                       location.name!,
@@ -147,8 +149,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const Maps_screen()),
+                    MaterialPageRoute(builder: (context) => const Map_screen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

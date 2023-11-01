@@ -9,13 +9,14 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/main.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/map/geolocator.dart';
+import 'package:athome/map/locationdeatil.dart';
 import 'package:athome/map/marker.dart';
-import 'package:athome/map/utils.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
-import 'package:geocoding/geocoding.dart';
 
 class Map_screen extends StatefulWidget {
   const Map_screen({super.key});
@@ -33,10 +34,6 @@ class _Map_screenState extends State<Map_screen> {
   }
 
   late Timer? scrollTimer;
-
-  _onMove(ScreenCoordinate coordinate) {
-    print("OnMove ${coordinate.x} - ${coordinate.y}");
-  }
 
   List<Position> zone = [
     Position(44.15648043186607, 36.214125941590865),
@@ -129,6 +126,9 @@ class _Map_screenState extends State<Map_screen> {
   int styleIndex = 1;
   late MapboxMap _mapController;
   String nameloc = "";
+  String housenumber = "";
+  double selectLat = 0.0;
+  double selectLon = 0.0;
   final markerList = <Marker>{};
   bool wait = false;
   bool zoom = false;
@@ -180,7 +180,7 @@ class _Map_screenState extends State<Map_screen> {
                           Position(
                               double.parse(split[0]), double.parse(split[1])),
                           zone)) {
-                        if (value.zoom < 10) {
+                        if (value.zoom < 12) {
                           setState(() {
                             zoom = true;
                             nameloc = "Zoom in Please";
@@ -207,10 +207,10 @@ class _Map_screenState extends State<Map_screen> {
               padding: EdgeInsets.only(bottom: 40),
               child: Align(
                 alignment: Alignment.center,
-                child: Container(
-                  width: getWidth(context, 100),
-                  height: getHeight(context, 7),
-                  child: Image.asset("assets/images/location.png"),
+                child: Image.asset(
+                  "assets/images/PIN@2x.png",
+                  width: 65,
+                  height: 65,
                 ),
               ),
             ),
@@ -257,28 +257,44 @@ class _Map_screenState extends State<Map_screen> {
                                   // strokeWidth: 5,
                                 ),
                               )
-                            : Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  zoom
-                                      ? SizedBox()
-                                      : Text(
-                                          "Delivery To: ",
-                                          style: TextStyle(
-                                              color: mainColorWhite,
-                                              fontSize: 16),
-                                        ),
-                                  zoom
-                                      ? SizedBox()
-                                      : SizedBox(
-                                          width: 3,
-                                        ),
-                                  Text(
-                                    nameloc,
-                                    style: TextStyle(
-                                        color: mainColorWhite, fontSize: 16),
-                                  ),
-                                ],
+                            : GestureDetector(
+                                onTap: zoom
+                                    ? null
+                                    : () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                location_Deatil(
+                                                    selectLon,
+                                                    selectLat,
+                                                    nameloc,
+                                                    housenumber),
+                                          ),
+                                        );
+                                      },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    zoom
+                                        ? SizedBox()
+                                        : Text(
+                                            "Delivery To: ",
+                                            style: TextStyle(
+                                                color: mainColorWhite,
+                                                fontSize: 16),
+                                          ),
+                                    zoom
+                                        ? SizedBox()
+                                        : SizedBox(
+                                            width: 3,
+                                          ),
+                                    Text(
+                                      nameloc,
+                                      style: TextStyle(
+                                          color: mainColorWhite, fontSize: 16),
+                                    ),
+                                  ],
+                                ),
                               ))),
               ),
             ),
@@ -313,7 +329,7 @@ class _Map_screenState extends State<Map_screen> {
   Future<void> getLocationName(double lng, double lat) async {
     final url =
         'https://nominatim.openstreetmap.org/reverse?format=json&lat=$lat&lon=$lng&accept-language=$lang';
-    print(url);
+
     var httpClient = HttpClient();
     var request = await httpClient.getUrl(Uri.parse(url));
     var response = await request.close();
@@ -328,6 +344,12 @@ class _Map_screenState extends State<Map_screen> {
             : check.contains('village')
                 ? data["address"]["village"]
                 : textCount(data["display_name"], 25);
+
+        housenumber = check.contains('house_number')
+            ? data["address"]["house_number"]
+            : "";
+        selectLat = lat;
+        selectLon = lng;
         wait = false;
         zoom = false;
       });
