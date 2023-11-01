@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:athome/Account/old_order.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -333,7 +334,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                   builder: (context) => Old_Order(
                                       widget.ordercode,
                                       widget.id,
-                                      int.parse(widget.total),
+                                      widget.total,
                                       widget.time)),
                             );
                           },
