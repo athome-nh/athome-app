@@ -1,6 +1,7 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/map/mapScreen.dart';
 import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/cartpast.dart';
@@ -630,7 +631,7 @@ class _OrederItemsState extends State<OrederItems> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              const Maps_screen()),
+                                                              const Map_screen()),
                                                     );
                                                   },
                                                   style:

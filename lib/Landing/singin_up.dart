@@ -351,7 +351,7 @@ class _SingInUpState extends State<SingInUp> {
                               final productrovider =
                                   Provider.of<productProvider>(context,
                                       listen: false);
-                              productrovider.updatePost();
+                              productrovider.updatePost(true);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

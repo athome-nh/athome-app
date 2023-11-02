@@ -30,7 +30,7 @@ class HomeSreen extends StatefulWidget {
 class _HomeSreenState extends State<HomeSreen> {
   update(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: false);
-    productrovider.updatePost();
+    productrovider.updatePost(false);
   }
 
   Future<void> checkinternet() async {
@@ -164,25 +164,16 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 BorderRadius.circular(5)),
                                         child: TextButton(
                                             onPressed: () {
-                                              String a =
-                                                  "Cart${userdata["id"]}";
-
-                                              print(CartProvider()
-                                                  .cartItems
-                                                  .length);
-                                              getStringPrefs(a).then((value) {
-                                                print(value);
-                                              });
-                                              // productrovider.settype("brand");
-                                              // productrovider.setidItem(
-                                              //     productrovider
-                                              //         .tops[0].brandId!);
-                                              // Navigator.push(
-                                              //   context,
-                                              //   MaterialPageRoute(
-                                              //       builder: (context) =>
-                                              //           const AllItem()),
-                                              // );
+                                              productrovider.settype("brand");
+                                              productrovider.setidItem(
+                                                  productrovider
+                                                      .tops[0].brandId!);
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const AllItem()),
+                                              );
                                             },
                                             child: Text(
                                               "Order now".tr,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:athome/Account/old_order.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -288,24 +289,6 @@ class _TrackOrderState extends State<TrackOrder> {
                     ? MainAxisAlignment.center
                     : MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Column(
-                  //   children: [
-                  //     Text(
-                  //       "Total",
-                  //       style: TextStyle(
-                  //           fontSize: 18,
-                  //           fontFamily: mainFontnormal,
-                  //           color: mainColorGrey),
-                  //     ),
-                  //     Text(
-                  //       addCommasToPrice(int.parse(widget.total)),
-                  //       style: TextStyle(
-                  //           fontSize: 18,
-                  //           fontFamily: mainFontbold,
-                  //           color: mainColorRed),
-                  //     ),
-                  //   ],
-                  // ),
                   loading
                       ? status > 0
                           ? const SizedBox()
@@ -343,6 +326,35 @@ class _TrackOrderState extends State<TrackOrder> {
                                   )),
                             )
                       : const SizedBox(),
+                  loading
+                      ? TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Old_Order(
+                                      widget.ordercode,
+                                      widget.id,
+                                      widget.total,
+                                      widget.time)),
+                            );
+                          },
+                          child: Text('View order',
+                              style: TextStyle(
+                                color: mainColorWhite,
+                                fontSize: 16,
+                                fontFamily: mainFontnormal,
+                              )),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: mainColorGrey,
+                            fixedSize: Size(
+                                getWidth(context, 35), getHeight(context, 3)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
                 ],
               )
             ],

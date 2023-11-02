@@ -285,7 +285,7 @@ class _SettingState extends State<Setting> {
                                                     });
 
                                                     var data = {};
-                                                    // print(_image!.path);
+
                                                     if (_image == null) {
                                                       data = {
                                                         "id": userdata["id"],
@@ -330,7 +330,6 @@ class _SettingState extends State<Setting> {
                                                           .addImage(body,
                                                               _image!.path)
                                                           .then((value) {
-                                                        print(value);
                                                         if (value) {
                                                           data = {
                                                             "id":

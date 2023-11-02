@@ -110,7 +110,6 @@ class CartProvider extends ChangeNotifier {
   }
 
   loadFavCartFromPreferences(String id) {
-    print("Fav" + id);
     getStringPrefs("Fav" + id).then((value) {
       if (value != "") {
         var jsonList = jsonDecode(value);

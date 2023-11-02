@@ -268,7 +268,7 @@ class _VerificatoinState extends State<Verificatoin> {
                   });
                   final productrovider =
                       Provider.of<productProvider>(context, listen: false);
-                  productrovider.updatePost();
+                  productrovider.updatePost(true);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const NavSwitch()),
@@ -367,7 +367,7 @@ class _VerificatoinState extends State<Verificatoin> {
 
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
-              productrovider.updatePost();
+              productrovider.updatePost(true);
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const NavSwitch()),

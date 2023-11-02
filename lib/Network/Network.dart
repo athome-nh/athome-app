@@ -39,7 +39,6 @@ class Network {
           data = response.data;
         });
       } else {
-        print("object");
         toastLong('An error occured, Please try again.');
       }
     } catch (e) {
@@ -49,22 +48,16 @@ class Network {
   }
 
   Future getData(String apiRout) async {
-    print(apiRout);
     Map<String, dynamic> data = {};
     try {
-      print(111);
       await dio.get(serverUrl + "time").then((time) async {
-        print(time);
-
         dio.options.headers["Authorization"] = "Bearer " + token;
         dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
         Response response = await dio.get(serverUrl + apiRout);
 
         data = response.data;
-        print(data);
       });
     } catch (e) {
-      print(e);
       return "";
     }
     return data;
@@ -102,7 +95,6 @@ class Network {
           return false;
         }
       });
-      
     } catch (e) {
       return false;
     }
@@ -119,6 +111,7 @@ class Network {
             serverUrl + rout,
             data: data,
           );
+
           data2 = response.data;
         });
       } else {

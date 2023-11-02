@@ -168,7 +168,7 @@ Future<Map> Load_data_josn(String filename) async {
   if (f.existsSync()) {
     final jsonData = f.readAsStringSync();
     var data = json.decode(decryptAES(jsonData));
-    print(data);
+
     return data;
     //  return (data as List).map((x) => DictData.fromJson(x)).toList();
   } else {

@@ -28,15 +28,15 @@ class _SplashScreenState extends State<SplashScreen> {
     getStringPrefs("data").then((map) {
       if (map.isNotEmpty) {
         Map<String, dynamic> myMap = json.decode(map);
-        print(myMap);
+     
         seen = myMap["onbord"];
         isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
         token = myMap.containsKey("token") ? myMap["token"] : "";
-        print(token);
+     
       }
       final productrovider =
           Provider.of<productProvider>(context, listen: false);
-      productrovider.updatePost();
+      productrovider.updatePost(isLogin);
     });
 
     Timer(
@@ -44,7 +44,8 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => seen ? const NavSwitch() : const WelcomeScreen(),
+            builder: (context) =>
+                seen ? const NavSwitch() : const WelcomeScreen(),
           ),
         );
       },

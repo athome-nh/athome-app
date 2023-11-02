@@ -1,4 +1,5 @@
 import 'package:athome/Config/property.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/splash_screen.dart';
@@ -6,14 +7,15 @@ import 'package:athome/main.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:flutter/material.dart';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geocoding/geocoding.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class location_Deatil extends StatefulWidget {
   double longitude = 0.0;
   double latitude = 0.0;
-  location_Deatil(this.longitude, this.latitude);
+  String name = "";
+  String housenumber = "";
+  location_Deatil(this.longitude, this.latitude, this.name, this.housenumber);
 
   @override
   State<location_Deatil> createState() => _location_DeatilState();
@@ -42,18 +44,9 @@ class _location_DeatilState extends State<location_Deatil> {
     if (isLogin) {
       phoneController.text = userdata["phone"].toString().substring(4);
     }
-    getstreet();
+    numberController.text = widget.housenumber;
+    streetController.text = widget.name;
     super.initState();
-  }
-
-  getstreet() async {
-    List<Placemark> placemarks =
-        await placemarkFromCoordinates(widget.latitude, widget.longitude);
-    print(placemarks);
-    if (placemarks != null && placemarks.isNotEmpty) {
-      // Use subLocality if available, otherwise use locality
-      streetController.text = placemarks[2].street.toString();
-    } else {}
   }
 
   @override
@@ -91,23 +84,32 @@ class _location_DeatilState extends State<location_Deatil> {
                   child: Container(
                     height: getHeight(context, 15),
                     width: getWidth(context, 100),
-                    child: GoogleMap(
-                      scrollGesturesEnabled: false,
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(widget.latitude, widget.longitude),
-                        zoom: 19.0, // Adjust the zoom level as needed
-                      ),
-                      onMapCreated: (GoogleMapController controller) {
-                        //mapController = controller;
-                      },
-                      markers: {
-                        Marker(
-                          markerId: MarkerId('location_marker'),
-                          position: LatLng(widget.latitude, widget.longitude),
-                          infoWindow: InfoWindow(
-                            title: 'Location',
-                          ),
-                        ),
+                    child: MapWidget(
+                      key: ValueKey("mapWidget"),
+                      resourceOptions:
+                          ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
+                      onMapCreated: (controller) {
+                        controller.gestures.updateSettings(GesturesSettings(
+                            rotateEnabled: false,
+                            quickZoomEnabled: false,
+                            doubleTapToZoomInEnabled: false,
+                            doubleTouchToZoomOutEnabled: false,
+                            pinchToZoomEnabled: true,
+                            focalPoint: ScreenCoordinate(
+                                x: widget.latitude, y: widget.longitude)));
+                        controller.location.updateSettings(
+                            LocationComponentSettings(
+                                enabled: true, pulsingEnabled: true));
+                        controller?.flyTo(
+                            CameraOptions(
+                                center: Point(
+                                        coordinates: Position(
+                                            widget.longitude, widget.latitude))
+                                    .toJson(),
+                                zoom: 18,
+                                bearing: 0,
+                                pitch: 15),
+                            MapAnimationOptions(duration: 1000, startDelay: 0));
                       },
                     ),
                   ),
@@ -650,8 +652,8 @@ class _location_DeatilState extends State<location_Deatil> {
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: mainColorRed,
-                          fixedSize: Size(
-                              getWidth(context, 35), getHeight(context, 6)),
+                          // fixedSize: Size(
+                          //     getWidth(context, 35), getHeight(context, 6)),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
@@ -708,9 +710,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                 Locationuser loc =
                                     Locationuser.fromMap(value["data"]);
 
-                                Provider.of<productProvider>(context,
-                                        listen: false)
-                                    .addlocation(loc);
+                                final productrovider =
+                                    Provider.of<productProvider>(context,
+                                        listen: false);
+                                productrovider
+                                    .getDataUser(userdata["id"].toString());
+                                productrovider.addlocation(loc);
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               }
@@ -726,8 +731,8 @@ class _location_DeatilState extends State<location_Deatil> {
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: mainColorRed,
-                          fixedSize: Size(
-                              getWidth(context, 35), getHeight(context, 6)),
+                          // fixedSize: Size(
+                          //     getWidth(context, 35), getHeight(context, 6)),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
