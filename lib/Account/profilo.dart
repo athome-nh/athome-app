@@ -4,7 +4,6 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -14,7 +13,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../controller/cartprovider.dart';
-import '../home/nav_switch.dart';
 import '../main.dart';
 
 class Setting extends StatefulWidget {
@@ -288,7 +286,7 @@ class _SettingState extends State<Setting> {
                                                     });
 
                                                     var data = {};
-                                                    // print(_image!.path);
+
                                                     if (_image == null) {
                                                       data = {
                                                         "id": userdata["id"],
@@ -333,7 +331,6 @@ class _SettingState extends State<Setting> {
                                                           .addImage(body,
                                                               _image!.path)
                                                           .then((value) {
-                                                        print(value);
                                                         if (value) {
                                                           data = {
                                                             "id":
@@ -502,7 +499,8 @@ class _SettingState extends State<Setting> {
                             height: getHeight(context, 24),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: mainColorLightGrey),
+                                color: mainColorSuger.withOpacity(0.7),
+                                ),
                             child: Column(
                               children: [
                                 SizedBox(
@@ -719,7 +717,8 @@ class _SettingState extends State<Setting> {
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: mainColorLightGrey),
+                                  color: mainColorSuger.withOpacity(0.7),
+                                  ),
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 15),
@@ -758,7 +757,8 @@ class _SettingState extends State<Setting> {
                             height: getHeight(context, 5),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: mainColorLightGrey),
+                                color: mainColorSuger.withOpacity(0.7),
+                                ),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
@@ -823,7 +823,8 @@ class _SettingState extends State<Setting> {
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: mainColorLightGrey),
+                                  color: mainColorSuger.withOpacity(0.7),
+                                  ),
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 15),

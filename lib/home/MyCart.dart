@@ -1,6 +1,7 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/map/mapScreen.dart';
 import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
@@ -26,7 +27,7 @@ class MyCart extends StatefulWidget {
 class _MyCartState extends State<MyCart> {
   update(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: false);
-    productrovider.updatePost();
+    productrovider.updatePost(false);
   }
 
   @override
@@ -362,7 +363,6 @@ class _MyCartState extends State<MyCart> {
                                     ),
                                   ),
                                 ),
-                             
                               ],
                             );
                           }),
@@ -622,7 +622,7 @@ class _MyCartState extends State<MyCart> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          const Maps_screen()),
+                                                          const Map_screen()),
                                                 );
                                               },
                                               style: ElevatedButton.styleFrom(

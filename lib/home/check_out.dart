@@ -412,7 +412,12 @@ class _CheckOutState extends State<CheckOut> {
                                             setState(() {
                                               waitingcheckout = false;
                                             });
-
+                                            final productrovider =
+                                                Provider.of<productProvider>(
+                                                    context,
+                                                    listen: false);
+                                            productrovider.getDataUser(
+                                                userdata["id"].toString());
                                             getOnlineTimestamp().then((hour) {
                                               if (hour > 7 && hour < 23) {
                                                 showModalBottomSheet(

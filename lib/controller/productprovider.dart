@@ -62,7 +62,8 @@ class productProvider extends ChangeNotifier {
     }
   }
 
-  getDataAll() {
+  getDataAll(bool user) {
+    print("Start");
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
@@ -87,7 +88,7 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
-          if (isLogin) {
+          if (user) {
             getDataUser(userdata["id"].toString());
           }
           setshow(true);
@@ -98,9 +99,8 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataUser(String id) {
+    print("Start");
     Network(false).getData("showDataUser/" + id).then((value) async {
-      print(value);
-      print("user");
       if (value != "") {
         if (value["code"] != 200) {
           setlocation((value['locations'] as List)
@@ -119,19 +119,19 @@ class productProvider extends ChangeNotifier {
     });
   }
 
-  updatePost() async {
+  updatePost(bool user) async {
     if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
             userdata = valueuser["data"][0];
 
-            getDataAll();
+            getDataAll(user);
           }
         }
       });
     } else {
-      getDataAll();
+      getDataAll(user);
     }
   }
 
