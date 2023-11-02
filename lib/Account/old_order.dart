@@ -7,20 +7,19 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/my_widget.dart';
 
-class Old_Order extends StatefulWidget {
+class OldOrder extends StatefulWidget {
   String ordercode = "";
   String id = "";
   String total = "";
   String time = "";
-  Old_Order(this.ordercode, this.id, this.total, this.time, {super.key});
+  OldOrder(this.ordercode, this.id, this.total, this.time, {super.key});
   @override
-  State<Old_Order> createState() => _Old_OrderState();
+  State<OldOrder> createState() => _OldOrderState();
 }
 
-class _Old_OrderState extends State<Old_Order> {
+class _OldOrderState extends State<OldOrder> {
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -137,7 +136,7 @@ class _Old_OrderState extends State<Old_Order> {
                                                 ? SizedBox(
                                                     width: getWidth(context, 2),
                                                   )
-                                                : SizedBox(),
+                                                : const SizedBox(),
                                             item.offerPrice! > -1
                                                 ? Text(
                                                     "${item.offerPrice!} IQD",
@@ -153,7 +152,7 @@ class _Old_OrderState extends State<Old_Order> {
                                         Row(
                                           children: [
                                             Text(
-                                              "Ordered: ",
+                                              "Ordered:".tr,
                                               style: TextStyle(
                                                 fontFamily: mainFontnormal,
                                                 color: mainColorGrey,
@@ -172,7 +171,7 @@ class _Old_OrderState extends State<Old_Order> {
                                               width: getWidth(context, 2),
                                             ),
                                             Text(
-                                              "Delivered:",
+                                              "Delivered:".tr,
                                               style: TextStyle(
                                                 fontFamily: mainFontnormal,
                                                 color: mainColorGrey,
@@ -260,7 +259,7 @@ class _Old_OrderState extends State<Old_Order> {
                               ),
                               Text(
                                 textAlign: TextAlign.end,
-                                "Free Delivery",
+                                "Free Delivery".tr,
                                 style: TextStyle(
                                     color: mainColorWhite,
                                     fontFamily: mainFontbold,
@@ -353,7 +352,7 @@ class _Old_OrderState extends State<Old_Order> {
                                               ),
                                               child: Center(
                                                 child: Text(
-                                                  "Select Location",
+                                                  "Select Location".tr,
                                                   style: TextStyle(
                                                     color: mainColorWhite,
                                                     fontSize: 20,
@@ -453,7 +452,7 @@ class _Old_OrderState extends State<Old_Order> {
                                                         })
                                                     : Center(
                                                         child: Text(
-                                                        "Not have any location",
+                                                        "Not have any location".tr,
                                                         style: TextStyle(
                                                           color:
                                                               mainColorGrey,
@@ -560,7 +559,6 @@ class _Old_OrderState extends State<Old_Order> {
                     ),
                   ),
                 ),
-
         ],
       ),
     );

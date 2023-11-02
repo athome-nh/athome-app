@@ -9,7 +9,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/itemCategories.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/athome_functions.dart';
 import 'nav_switch.dart';
 
@@ -143,7 +142,6 @@ class _CategoriesState extends State<Categories> {
                                 ),
                                 Text(
                                   lang == "en"
-                                      // Todo: (Bawar) text count by getwidth
                                       ? textCount(cateItem.nameEn!,
                                           getWidth(context, 4.3).toInt())
                                       //cateItem.nameEn!
@@ -181,7 +179,7 @@ class _CategoriesState extends State<Categories> {
                                     "assets/images/gif_favorite.gif"),
                               ),
                               Text(
-                                "No have any favorite",
+                                "No have any favorite".tr,
                                 style: TextStyle(
                                     fontFamily: mainFontnormal, fontSize: 16),
                               ),

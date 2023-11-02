@@ -34,7 +34,6 @@ class _SettingState extends State<Setting> {
   }
 
   String selectedLanguage = 'English';
-  // Todo: (Jegr) Male and Female translate for other language not worked.
   List<String> items = [
     'Male',
     'Female',
@@ -83,7 +82,7 @@ class _SettingState extends State<Setting> {
               child: DropdownButton<String>(
                 underline: Container(),
                 value: selectedItem,
-                icon: SizedBox(),
+                icon: const SizedBox(),
                 style: TextStyle(
                   color: mainColorGrey,
                   fontFamily: mainFontbold,
@@ -122,7 +121,7 @@ class _SettingState extends State<Setting> {
                             bottom: getWidth(context, 1),
                           ),
                           child: Text(
-                            'English'.tr,
+                            "English".tr,
                             style: TextStyle(fontFamily: mainFontnormal),
                           ),
                         ),
@@ -130,7 +129,7 @@ class _SettingState extends State<Setting> {
                     ),
                   ),
                   DropdownMenuItem(
-                    value: 'Arabic',
+                    value: "Arabic",
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -143,7 +142,7 @@ class _SettingState extends State<Setting> {
                             bottom: getWidth(context, 1),
                           ),
                           child: Text(
-                            'Arabic'.tr,
+                            "Arabic".tr,
                             style: TextStyle(fontFamily: mainFontnormal),
                           ),
                         ),
@@ -164,7 +163,7 @@ class _SettingState extends State<Setting> {
                             bottom: getWidth(context, 1),
                           ),
                           child: Text(
-                            'Kurdish'.tr,
+                            "Kurdish".tr,
                             style: TextStyle(fontFamily: mainFontnormal),
                           ),
                         ),
@@ -835,7 +834,7 @@ class _SettingState extends State<Setting> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Sign out",
+                                      "Sign out".tr,
                                       style: TextStyle(
                                           fontFamily: mainFontbold,
                                           fontSize: 18,

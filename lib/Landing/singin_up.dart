@@ -13,6 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gender_picker/gender_picker.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:gender_picker/source/enums.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../home/nav_switch.dart';
@@ -84,7 +85,7 @@ class _SingInUpState extends State<SingInUp> {
                 FadeInDown(
                   duration: const Duration(milliseconds: 500),
                   child: Text(
-                    "Complete Account",
+                    "Complete Account".tr,
                     style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 30,
@@ -97,7 +98,7 @@ class _SingInUpState extends State<SingInUp> {
                 FadeInDown(
                   duration: const Duration(milliseconds: 500),
                   child: Text(
-                      "Enter your account information to complete your account",
+                      "Enter your account information to complete your account".tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: mainColorGrey,
@@ -138,12 +139,12 @@ class _SingInUpState extends State<SingInUp> {
                           width: 1.0, // Customize border width
                         ),
                       ),
-                      labelText: "Name",
+                      labelText: "Name".tr,
                       labelStyle: TextStyle(
                           color: mainColorGrey.withOpacity(0.8),
                           fontSize: 18,
                           fontFamily: mainFontbold),
-                      hintText: "Enter your Name",
+                      hintText: "Enter your Name".tr,
 
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
@@ -166,7 +167,7 @@ class _SingInUpState extends State<SingInUp> {
                               width: getWidth(context, 1),
                             ),
                             Text(
-                              "Enter your full name",
+                              "Enter your full name".tr,
                               style: TextStyle(
                                 fontFamily: mainFontbold,
                                 color: mainColorRed.withOpacity(0.8),
@@ -194,7 +195,7 @@ class _SingInUpState extends State<SingInUp> {
                                 ),
                                 borderRadius: BorderRadius.circular(5),
                               ),
-                              labelText: "City",
+                              labelText: "City".tr,
                               labelStyle: TextStyle(
                                   color: mainColorGrey,
                                   fontSize: 18,
@@ -249,7 +250,7 @@ class _SingInUpState extends State<SingInUp> {
                                 ),
                                 borderRadius: BorderRadius.circular(5),
                               ),
-                              labelText: "Age",
+                              labelText: "Age".tr,
                               labelStyle: TextStyle(
                                   color: mainColorGrey,
                                   fontSize: 18,
@@ -365,7 +366,7 @@ class _SingInUpState extends State<SingInUp> {
                           }
                         } else {
                           toastShort(
-                              "unknown occurred error please try again later");
+                              "unknown occurred error please try again later".tr);
                           setState(() {
                             _isLoading = false;
                           });
@@ -388,7 +389,7 @@ class _SingInUpState extends State<SingInUp> {
                             ),
                           )
                         : Text(
-                            "Confirm",
+                            "Confirm".tr,
                             style: TextStyle(
                                 fontSize: 30,
                                 fontFamily: mainFontbold,

@@ -2,6 +2,7 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import 'nav_switch.dart';
@@ -72,7 +73,7 @@ class _itemCategoriesState extends State<itemCategories> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: getWidth(context, 95),
                     height: getWidth(context, 9),
                     child: ListView.builder(
@@ -138,19 +139,19 @@ class _itemCategoriesState extends State<itemCategories> {
                   SizedBox(
                     height: getHeight(context, 2),
                   ),
-                  Container(
+                  SizedBox(
                     height: getHeight(context, 85),
                     width: getWidth(context, 95),
                     child: productPro.subcateSelect == 0
                         ? (productPro
                                 .getProductsByCategory(productPro.cateType)
                                 .isEmpty
-                            ? Container(
+                            ? SizedBox(
                                 width: getWidth(context, 100),
                                 height: getWidth(context, 50),
                                 child: Center(
                                   child: Text(
-                                    "This list is empty",
+                                    "This list is empty".tr,
                                     style: TextStyle(
                                         fontFamily: mainFontbold, fontSize: 16),
                                   ),
@@ -164,12 +165,12 @@ class _itemCategoriesState extends State<itemCategories> {
                                 .getProductsBySubCategory(
                                     productPro.subcateSelect)
                                 .isEmpty
-                            ? Container(
+                            ? SizedBox(
                                 width: getWidth(context, 100),
                                 height: getWidth(context, 50),
                                 child: Center(
                                   child: Text(
-                                    "This list is empty",
+                                    "This list is empty".tr,
                                     style: TextStyle(
                                         fontFamily: mainFontbold, fontSize: 16),
                                   ),

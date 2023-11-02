@@ -90,7 +90,7 @@ class _SearchState extends State<Search> {
                         ),
                         productPro.searchproduct.isNotEmpty
                             ? SizedBox(width: getWidth(context, 4))
-                            : SizedBox(),
+                            : const SizedBox(),
                         productPro.searchproduct.isNotEmpty
                             ? SizedBox(
                                 width: getWidth(context, 12),
@@ -128,7 +128,7 @@ class _SearchState extends State<Search> {
                                   Image.asset("assets/images/gif_favorite.gif"),
                             ),
                             Text(
-                              "Not found any item",
+                              "Not found any item".tr,
                               style: TextStyle(
                                   fontFamily: mainFontnormal, fontSize: 16),
                             ),

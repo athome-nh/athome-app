@@ -5,7 +5,7 @@ import 'package:athome/main.dart';
 import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
@@ -88,7 +88,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const oreder_items()),
+                                                  const OrederItems()),
                                         ).then((value) {
                                           cartProvider.clearCartPast();
                                         });
@@ -123,7 +123,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   title: Row(
                                     children: [
                                       Text(
-                                        "Order ID: ",
+                                        "Order ID:".tr,
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontFamily: mainFontbold,
@@ -139,7 +139,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                     ],
                                   ),
                                   subtitle: Text(
-                                    "Date: ${order.createdAt.toString().substring(0, 16)}",
+                                    "Date:".tr + order.createdAt.toString().substring(0, 16),
                                     style: TextStyle(
                                         fontSize: 12,
                                         fontFamily: mainFontnormal,
@@ -151,7 +151,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Old_Order(
+                                          builder: (context) => OldOrder(
                                               order.orderCode.toString(),
                                               order.id.toString(),
                                               order.totalPrice.toString(),
@@ -170,7 +170,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                           color: mainColorGrey,
                                         ),
                                         Text(
-                                          "Re Order",
+                                          "Re Order".tr,
                                           style: TextStyle(
                                               color: mainColorRed,
                                               fontFamily: mainFontnormal),
@@ -191,7 +191,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "You not have any order",
+                        "You not have any order".tr,
                         style:
                             TextStyle(fontSize: 32, fontFamily: mainFontnormal),
                       ),

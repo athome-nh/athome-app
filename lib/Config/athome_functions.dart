@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-
 import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
-import 'package:latlng/latlng.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 

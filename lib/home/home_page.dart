@@ -301,7 +301,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       height: getHeight(context, 1),
                                     ),
                                     Text(
-                                      "cateItem",
+                                      "cateItem".tr,
                                       style: TextStyle(
                                           color: mainColorGrey,
                                           fontFamily: mainFontnormal,
@@ -715,7 +715,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                               .id
                                                                               .toString()))) {
                                                             toastLong(
-                                                                "you can not add more this item");
+                                                                "you can not add more this item".tr);
                                                             return;
                                                           }
                                                           final cartItem =
@@ -1325,16 +1325,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                             .warning,
                                                                     showCloseIcon:
                                                                         true,
-                                                                    title:
-                                                                        'Login Please',
-                                                                    desc:
-                                                                        "You need login to add item in cart",
+                                                                    title: "Login Please".tr,
+                                                                    desc: "You need login to add item in cart".tr,
                                                                     btnOkColor:
                                                                         mainColorRed,
                                                                     btnCancelOnPress:
                                                                         () {},
                                                                     btnOkText:
-                                                                        "Login",
+                                                                        "Login".tr,
                                                                     btnOkOnPress:
                                                                         () {
                                                                       Navigator
@@ -1359,7 +1357,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                               .id
                                                                               .toString()))) {
                                                             toastLong(
-                                                                "you can not add more this item");
+                                                                "you can not add more this item".tr);
                                                             return;
                                                           }
                                                           final cartItem =
@@ -1843,9 +1841,9 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       dialogType:
                                                           DialogType.info,
                                                       showCloseIcon: true,
-                                                      title: 'Login Please',
+                                                      title: "Login Please".tr,
                                                       desc:
-                                                          "You need login to add item in cart",
+                                                          "You need login to add item in cart".tr,
                                                       btnOkColor: mainColorRed,
                                                       btnCancelOnPress: () {},
                                                       btnOkText: "Login",
@@ -1869,7 +1867,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             int.parse(product.id
                                                                 .toString()))) {
                                               toastLong(
-                                                  "you can not add more this item");
+                                                  "you can not add more this item".tr);
                                               return;
                                             }
                                             final cartItem =
@@ -2118,7 +2116,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      "View All",
+                                      "View All".tr,
                                       style: TextStyle(
                                         color: mainColorRed,
                                         fontSize: 14,
@@ -2352,12 +2350,12 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       dialogType:
                                                           DialogType.info,
                                                       showCloseIcon: true,
-                                                      title: 'Login Please',
+                                                      title: 'Login Please'.tr,
                                                       desc:
-                                                          "You need login to add item in cart",
+                                                          "You need login to add item in cart".tr,
                                                       btnOkColor: mainColorRed,
                                                       btnCancelOnPress: () {},
-                                                      btnOkText: "Login",
+                                                      btnOkText: "Login".tr,
                                                       btnOkOnPress: () {
                                                         Navigator.push(
                                                           context,
@@ -2378,7 +2376,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             int.parse(product.id
                                                                 .toString()))) {
                                               toastLong(
-                                                  "you can not add more this item");
+                                                  "you can not add more this item".tr);
                                               return;
                                             }
                                             final cartItem =

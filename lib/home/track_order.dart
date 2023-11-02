@@ -5,6 +5,7 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
+import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -97,7 +98,7 @@ class _TrackOrderState extends State<TrackOrder> {
       backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
-          "Track Order",
+          "Track Order".tr,
           style: TextStyle(
               color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
         ),
@@ -123,7 +124,7 @@ class _TrackOrderState extends State<TrackOrder> {
             children: [
               Column(
                 children: [
-                  Text("Order: ${widget.ordercode}",
+                  Text("Order:".tr + widget.ordercode,
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 28,
@@ -326,12 +327,6 @@ class _TrackOrderState extends State<TrackOrder> {
                                   }
                                 });
                               },
-                              child: Text('Cancle order',
-                                  style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontSize: 16,
-                                    fontFamily: mainFontnormal,
-                                  )),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColorLightGrey,
                                 fixedSize: Size(getWidth(context, 35),
@@ -340,6 +335,12 @@ class _TrackOrderState extends State<TrackOrder> {
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                               ),
+                              child: Text("Cancle order".tr,
+                                  style: TextStyle(
+                                    color: mainColorGrey,
+                                    fontSize: 16,
+                                    fontFamily: mainFontnormal,
+                                  )),
                             )
                       : const SizedBox(),
                 ],

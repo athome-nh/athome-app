@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
+import 'package:get/get.dart';
 
 class NotficationScreen extends StatefulWidget {
   const NotficationScreen({super.key});
@@ -15,7 +16,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
       backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
-          "Notfication",
+          "Notfication".tr,
           style: TextStyle(
               color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
         ),
@@ -59,7 +60,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 2)),
                                     child: Text(
-                                      'New Discount',
+                                      "New Discount".tr,
                                       style: TextStyle(
                                           fontSize: 20,
                                           color: mainColorGrey,
@@ -73,7 +74,7 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 2)),
                                     child: Text(
-                                        'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order',
+                                        'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order'.tr,
                                         style: TextStyle(
                                           fontSize: 16,
                                           color: mainColorGrey,
@@ -99,14 +100,14 @@ class _NotficationScreenState extends State<NotficationScreen> {
                               size: 14,
                             ),
                             title: Text(
-                              "You orders has been picked up",
+                              "You orders has been picked up".tr,
                               style: TextStyle(
                                   color: mainColorGrey,
                                   fontFamily: mainFontnormal,
                                   fontSize: 14),
                             ),
                             subtitle: Text(
-                              "Now",
+                              "Now".tr,
                               style: TextStyle(
                                   color: mainColorGrey.withOpacity(0.5),
                                   fontFamily: mainFontnormal,

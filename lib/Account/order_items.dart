@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -17,16 +15,16 @@ import '../Config/athome_functions.dart';
 import '../home/nav_switch.dart';
 import '../main.dart';
 
-// ignore: camel_case_types
-class oreder_items extends StatefulWidget {
-  const oreder_items({super.key});
+
+class OrederItems extends StatefulWidget {
+  const OrederItems({super.key});
 
   @override
-  State<oreder_items> createState() => _oreder_itemsState();
+  State<OrederItems> createState() => _OrederItemsState();
 }
 
 // ignore: camel_case_types
-class _oreder_itemsState extends State<oreder_items> {
+class _OrederItemsState extends State<OrederItems> {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
@@ -415,7 +413,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  "Free Delivery",
+                                  "Free Delivery".tr,
                                   style: TextStyle(
                                       color: mainColorWhite,
                                       fontFamily: mainFontbold,
@@ -474,11 +472,11 @@ class _oreder_itemsState extends State<oreder_items> {
                                       return;
                                     }
 
+                                    // ignore: use_build_context_synchronously
                                     showModalBottomSheet(
                                       context: context,
                                       isDismissible: true,
                                       shape: const RoundedRectangleBorder(
-                                        // <-- SEE HERE
                                         borderRadius: BorderRadius.vertical(
                                           top: Radius.circular(25.0),
                                         ),
@@ -507,7 +505,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                 ),
                                                 child: Center(
                                                   child: Text(
-                                                    "Select Location",
+                                                    "Select Location".tr,
                                                     style: TextStyle(
                                                       color: mainColorWhite,
                                                       fontSize: 20,
@@ -598,7 +596,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                                     ),
                                                                     trailing:
                                                                         Text(
-                                                                      "Select",
+                                                                      "Select".tr,
                                                                       style: TextStyle(
                                                                           color:
                                                                               mainColorRed,
@@ -612,7 +610,7 @@ class _oreder_itemsState extends State<oreder_items> {
                                                           })
                                                       : Center(
                                                           child: Text(
-                                                          "Not have any location",
+                                                          "Not have any location".tr,
                                                           style: TextStyle(
                                                             color:
                                                                 mainColorGrey,

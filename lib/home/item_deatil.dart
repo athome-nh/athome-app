@@ -1,20 +1,17 @@
 import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/home/my_cart.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:athome/model/products_image/products_image.dart';
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
 import 'package:athome/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/my_widget.dart';
 import '../controller/productprovider.dart';
 import '../main.dart';
-import 'MyCart.dart';
 
 class ItemDeatil extends StatefulWidget {
   const ItemDeatil({super.key});
@@ -71,7 +68,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                       width: getWidth(context, 90),
                       height: getHeight(context, 60),
                       decoration: BoxDecoration(
-                          color: Color(0xffF2F2F2),
+                          color: const Color(0xffF2F2F2),
                           borderRadius: BorderRadius.circular(5)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -80,8 +77,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 2)),
-                            child: images.length > 0
-                                ? Container(
+                            child: images.isNotEmpty
+                                ? SizedBox(
                                     width: getWidth(context, 100),
                                     height: getHeight(context, 30),
                                     child: ClipRRect(
@@ -107,9 +104,9 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                           viewportFraction: 1.0,
                                           enlargeCenterPage: true,
                                           autoPlayInterval:
-                                              Duration(seconds: 2),
+                                              const Duration(seconds: 2),
                                           autoPlayAnimationDuration:
-                                              Duration(milliseconds: 2000),
+                                              const Duration(milliseconds: 2000),
                                         ),
                                       ),
                                     ),
@@ -118,7 +115,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                     width: getWidth(context, 100),
                                     height: getHeight(context, 30),
                                     decoration: BoxDecoration(
-                                        color: Color(0xffF2F2F2),
+                                        color: const Color(0xffF2F2F2),
                                         borderRadius:
                                             BorderRadius.circular(100)),
                                     child: Center(
@@ -154,7 +151,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "info: ".tr,
+                                "info:".tr,
                                 style: TextStyle(
                                     color: mainColorGrey,
                                     fontFamily: mainFontnormal,
@@ -233,7 +230,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                                           int.parse(Item.id
                                                               .toString()))) {
                                             toastLong(
-                                                "you can not add more this item");
+                                                "you can not add more this item".tr);
                                             return;
                                           }
                                           final cartItem =
@@ -293,7 +290,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                     ],
                                   ),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
                           isItemInCart
                               ? SizedBox(
                                   height: getHeight(context, 5),
@@ -306,17 +303,11 @@ class _ItemDeatilState extends State<ItemDeatil> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MyCart()),
+                                    builder: (context) => const MyCart()),
                               );
                             },
-                            child: Text("Place Order",
-                                style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontSize: 18,
-                                  fontFamily: mainFontnormal,
-                                )),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xffF2F2F2),
+                              backgroundColor: const Color(0xffF2F2F2),
                               fixedSize: Size(
                                   getWidth(context, 65), getHeight(context, 5)),
                               shape: RoundedRectangleBorder(
@@ -325,24 +316,24 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                     BorderSide(color: mainColorRed, width: 1.0),
                               ),
                             ),
+                            child: Text("Place Order".tr,
+                                style: TextStyle(
+                                  color: mainColorGrey,
+                                  fontSize: 18,
+                                  fontFamily: mainFontnormal,
+                                )),
                           ),
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
                           isItemInCart
-                              ? SizedBox()
+                              ? const SizedBox()
                               : TextButton(
                                   onPressed: () {
                                     final cartItem =
                                         CartItem(product: Item.id!);
                                     cartProvider.addToCart(cartItem);
                                   },
-                                  child: Text("Add To Cart".tr,
-                                      style: TextStyle(
-                                        color: mainColorWhite,
-                                        fontSize: 18,
-                                        fontFamily: mainFontnormal,
-                                      )),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: mainColorRed,
                                     fixedSize: Size(getWidth(context, 65),
@@ -353,6 +344,12 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                           color: mainColorRed, width: 1.0),
                                     ),
                                   ),
+                                  child: Text("Add To Cart".tr,
+                                      style: TextStyle(
+                                        color: mainColorWhite,
+                                        fontSize: 18,
+                                        fontFamily: mainFontnormal,
+                                      )),
                                 ),
                         ],
                       ),
@@ -367,7 +364,7 @@ class _ItemDeatilState extends State<ItemDeatil> {
                 width: getWidth(context, 90),
                 height: getHeight(context, 25),
                 decoration: BoxDecoration(
-                    color: Color(0xffF2F2F2),
+                    color: const Color(0xffF2F2F2),
                     borderRadius: BorderRadius.circular(5)),
                 child: Padding(
                   padding:
