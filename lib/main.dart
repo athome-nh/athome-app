@@ -66,7 +66,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
-        home: const Map_screen(),
+        home: const SplashScreen(),
         //const Setting(),
       ),
     );
