@@ -1,7 +1,7 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/map/mapScreen.dart';
+import 'package:athome/map/map_screen.dart';
 import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';

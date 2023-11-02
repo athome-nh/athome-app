@@ -6,6 +6,7 @@ import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/location/location.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +61,7 @@ class _location_DeatilState extends State<location_Deatil> {
           backgroundColor: mainColorWhite,
           centerTitle: true,
           title: Text(
-            "Locations",
+            "Locations".tr,
             style: TextStyle(
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
@@ -144,12 +145,12 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: 1.0, // Customize border width
                       ),
                     ),
-                    labelText: "Name",
+                    labelText: "Name".tr,
                     labelStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: "Add name ",
+                    hintText: "Add name".tr,
                     hintStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.5),
                         fontSize: 14,
@@ -164,7 +165,7 @@ class _location_DeatilState extends State<location_Deatil> {
                           top: getHeight(context, 0.5),
                         ),
                         child: Text(
-                          "Add name location",
+                          "Add name location".tr,
                           style: TextStyle(
                             fontSize: 12,
                             fontFamily: mainFontnormal,
@@ -199,12 +200,12 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: 1.0, // Customize border width
                       ),
                     ),
-                    labelText: "Area",
+                    labelText: "Area".tr,
                     labelStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: "Add Area",
+                    hintText: "Add Area".tr,
                     hintStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.5),
                         fontSize: 14,
@@ -231,7 +232,7 @@ class _location_DeatilState extends State<location_Deatil> {
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          labelText: "Type Building",
+                          labelText: "Type Building".tr,
                           labelStyle: TextStyle(
                               color: mainColorGrey,
                               fontSize: 16,
@@ -302,12 +303,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                   width: 1.0, // Customize border width
                                 ),
                               ),
-                              labelText: "Floor number",
+                              labelText: "Floor number".tr,
                               labelStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.8),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
-                              hintText: "Floor number",
+                              hintText: "Floor number".tr,
                               hintStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.5),
                                   fontSize: 16,
@@ -323,7 +324,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                     top: getHeight(context, 0.5),
                                   ),
                                   child: Text(
-                                    "Enter floor number",
+                                    "Enter floor number".tr,
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontFamily: mainFontnormal,
@@ -363,12 +364,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                   width: 1.0, // Customize border width
                                 ),
                               ),
-                              labelText: "building name/number",
+                              labelText: "building name/number".tr,
                               labelStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.8),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
-                              hintText: "building name/number",
+                              hintText: "building name/number".tr,
                               hintStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.5),
                                   fontSize: 16,
@@ -384,7 +385,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                     top: getHeight(context, 0.5),
                                   ),
                                   child: Text(
-                                    "Enter building name/number",
+                                    "Enter building name/number".tr,
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontFamily: mainFontnormal,
@@ -429,12 +430,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
-                                  labelText: "Floor number",
+                                  labelText: "Floor number".tr,
                                   labelStyle: TextStyle(
                                       color: mainColorGrey.withOpacity(0.8),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
-                                  hintText: "Floor number",
+                                  hintText: "Floor number".tr,
                                   hintStyle: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
                                       fontSize: 16,
@@ -450,7 +451,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                         top: getHeight(context, 0.5),
                                       ),
                                       child: Text(
-                                        "Enter floor number",
+                                        "Enter floor number".tr,
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontFamily: mainFontnormal,
@@ -490,12 +491,12 @@ class _location_DeatilState extends State<location_Deatil> {
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
-                                  labelText: "building name/number",
+                                  labelText: "building name/number".tr,
                                   labelStyle: TextStyle(
                                       color: mainColorGrey.withOpacity(0.8),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
-                                  hintText: "building name/number",
+                                  hintText: "building name/number".tr,
                                   hintStyle: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
                                       fontSize: 16,
@@ -511,7 +512,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                         top: getHeight(context, 0.5),
                                       ),
                                       child: Text(
-                                        "Enter building name/number",
+                                        "Enter building name/number".tr,
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontFamily: mainFontnormal,
@@ -553,12 +554,12 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: 1.0, // Customize border width
                       ),
                     ),
-                    labelText: type + " number",
+                    labelText: type + "number".tr,
                     labelStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: type + " number",
+                    hintText: type + "number".tr,
                     hintStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.5),
                         fontSize: 14,
@@ -573,7 +574,7 @@ class _location_DeatilState extends State<location_Deatil> {
                           top: getHeight(context, 0.5),
                         ),
                         child: Text(
-                          "Enter number",
+                          "Enter number".tr,
                           style: TextStyle(
                             fontSize: 12,
                             fontFamily: mainFontnormal,
@@ -611,7 +612,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: 1.0, // Customize border width
                       ),
                     ),
-                    labelText: "Phone number",
+                    labelText: "Phone number".tr,
                     prefixText: "+964 | ",
 
                     prefixStyle: TextStyle(
@@ -621,7 +622,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         color: mainColorGrey.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: "Add phone number ",
+                    hintText: "Add phone number".tr,
                     hintStyle: TextStyle(
                         color: mainColorGrey.withOpacity(0.5),
                         fontSize: 14,
@@ -643,19 +644,19 @@ class _location_DeatilState extends State<location_Deatil> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text(
-                          "Cancel",
-                          style: TextStyle(
-                            color: mainColorWhite,
-                            fontSize: 16,
-                          ),
-                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: mainColorRed,
                           // fixedSize: Size(
                           //     getWidth(context, 35), getHeight(context, 6)),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        child: Text(
+                          "Cancel".tr,
+                          style: TextStyle(
+                            color: mainColorWhite,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -722,19 +723,19 @@ class _location_DeatilState extends State<location_Deatil> {
                             }
                           });
                         },
-                        child: Text(
-                          "Save",
-                          style: TextStyle(
-                            color: mainColorWhite,
-                            fontSize: 16,
-                          ),
-                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: mainColorRed,
                           // fixedSize: Size(
                           //     getWidth(context, 35), getHeight(context, 6)),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        child: Text(
+                          "Save".tr,
+                          style: TextStyle(
+                            color: mainColorWhite,
+                            fontSize: 16,
                           ),
                         ),
                       ),

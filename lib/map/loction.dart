@@ -3,10 +3,9 @@ import 'package:athome/Config/property.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
-import 'package:athome/map/mapScreen.dart';
-import 'package:athome/map/maps.dart';
+import 'package:athome/map/map_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -37,7 +36,7 @@ class _LocationScreenState extends State<LocationScreen> {
               )),
           centerTitle: true,
           title: Text(
-            "Locations",
+            "Locations".tr,
             style: TextStyle(
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
@@ -125,13 +124,13 @@ class _LocationScreenState extends State<LocationScreen> {
                                                     .deletelocation(
                                                         location.id!);
                                                 toastShort(
-                                                    "Delete location success");
+                                                    "Delete location success".tr);
                                               }
                                             }
                                           });
                                         },
                                         child: Text(
-                                          "Delete",
+                                          "Delete".tr,
                                           style: TextStyle(
                                               color: mainColorRed,
                                               fontFamily: mainFontnormal),
@@ -168,7 +167,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       size: 25,
                     ),
                     Text(
-                      "Add location",
+                      "Add location".tr,
                       style: TextStyle(
                           color: mainColorWhite,
                           fontSize: 18,

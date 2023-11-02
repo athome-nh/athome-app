@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'dart:math';
-
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/main.dart';
@@ -15,6 +13,7 @@ import 'package:athome/map/marker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
@@ -29,7 +28,7 @@ class _Map_screenState extends State<Map_screen> {
   @override
   void initState() {
     getCureentlocation();
-    scrollTimer = Timer(Duration(milliseconds: 0), () {});
+    scrollTimer = Timer(const Duration(milliseconds: 0), () {});
     super.initState();
   }
 
@@ -160,7 +159,7 @@ class _Map_screenState extends State<Map_screen> {
         child: Stack(
           children: [
             MapWidget(
-                key: ValueKey("mapWidget"),
+                key: const ValueKey("mapWidget"),
                 onCameraChangeListener: (cameraChangedEventData) {
                   setState(() {
                     wait = true;
@@ -168,7 +167,7 @@ class _Map_screenState extends State<Map_screen> {
                   if (scrollTimer != null) {
                     scrollTimer!.cancel();
                   }
-                  scrollTimer = Timer(Duration(milliseconds: 500), () {
+                  scrollTimer = Timer(const Duration(milliseconds: 500), () {
                     _mapController.getCameraState().then((value) {
                       final split = value.center["coordinates"]
                           .toString()
@@ -183,7 +182,7 @@ class _Map_screenState extends State<Map_screen> {
                         if (value.zoom < 12) {
                           setState(() {
                             zoom = true;
-                            nameloc = "Zoom in Please";
+                            nameloc = "Zoom in Please".tr;
                             wait = false;
                           });
                         } else {
@@ -193,7 +192,7 @@ class _Map_screenState extends State<Map_screen> {
                       } else {
                         setState(() {
                           zoom = true;
-                          nameloc = "Sorry, we don't deliver here";
+                          nameloc = "Sorry, we don't deliver here".tr;
                           wait = false;
                         });
                       }
@@ -204,7 +203,7 @@ class _Map_screenState extends State<Map_screen> {
                     ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
                 onMapCreated: _onMapCreated),
             Padding(
-              padding: EdgeInsets.only(bottom: 40),
+              padding: const EdgeInsets.only(bottom: 40),
               child: Align(
                 alignment: Alignment.center,
                 child: Image.asset(
@@ -215,7 +214,7 @@ class _Map_screenState extends State<Map_screen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 120, right: 10),
+              padding: const EdgeInsets.only(top: 120, right: 10),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Container(
@@ -232,7 +231,7 @@ class _Map_screenState extends State<Map_screen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -276,16 +275,16 @@ class _Map_screenState extends State<Map_screen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     zoom
-                                        ? SizedBox()
+                                        ? const SizedBox()
                                         : Text(
-                                            "Delivery To: ",
+                                            "Delivery To:".tr,
                                             style: TextStyle(
                                                 color: mainColorWhite,
                                                 fontSize: 16),
                                           ),
                                     zoom
-                                        ? SizedBox()
-                                        : SizedBox(
+                                        ? const SizedBox()
+                                        : const SizedBox(
                                             width: 3,
                                           ),
                                     Text(
@@ -355,10 +354,10 @@ class _Map_screenState extends State<Map_screen> {
       });
     } else {
       setState(() {
-        nameloc = "try again";
+        nameloc = "try again".tr;
         wait = false;
       });
-      throw Exception('Failed to load data');
+      throw Exception('Failed to load data'.tr);
     }
   }
 
@@ -367,7 +366,7 @@ class _Map_screenState extends State<Map_screen> {
     final myLocationData = await getCurrentLatLng();
 
     getLocationName(myLocationData.longitude, myLocationData.latitude);
-    _mapController?.flyTo(
+    _mapController.flyTo(
         CameraOptions(
             center: Point(
                     coordinates: Position(

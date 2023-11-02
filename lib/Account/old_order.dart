@@ -271,7 +271,7 @@ class _OldOrderState extends State<OldOrder> {
                         ),
                         Text(
                           textAlign: TextAlign.end,
-                          "Free Delivery",
+                          "Free Delivery".tr,
                           style: TextStyle(
                               color: mainColorWhite,
                               fontFamily: mainFontbold,
@@ -361,7 +361,7 @@ class _OldOrderState extends State<OldOrder> {
                                         ),
                                         child: Center(
                                           child: Text(
-                                            "Select Location",
+                                            "Select Location".tr,
                                             style: TextStyle(
                                               color: mainColorWhite,
                                               fontSize: 20,
@@ -436,7 +436,7 @@ class _OldOrderState extends State<OldOrder> {
                                                                       mainFontnormal),
                                                             ),
                                                             trailing: Text(
-                                                              "Select",
+                                                              "Select".tr,
                                                               style: TextStyle(
                                                                   color:
                                                                       mainColorRed,
@@ -450,7 +450,7 @@ class _OldOrderState extends State<OldOrder> {
                                                   })
                                               : Center(
                                                   child: Text(
-                                                  "Not have any location",
+                                                  "Not have any location".tr,
                                                   style: TextStyle(
                                                     color: mainColorGrey,
                                                     fontSize: 20,
