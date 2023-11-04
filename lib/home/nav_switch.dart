@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:athome/Account/profilo.dart';
 import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/my_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,11 @@ class NavSwitch extends StatefulWidget {
 Widget buildFAB(BuildContext context) {
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
   return Visibility(
-    visible: cartProvider.cartItems.isNotEmpty ? true : false,
+    visible: Provider.of<productProvider>(context, listen: true).nointernetCheck
+        ? false
+        : cartProvider.cartItems.isNotEmpty
+            ? true
+            : false,
     child: Badge(
       label: Text(cartProvider.cartItems.length.toString()),
       backgroundColor: mainColorWhite,

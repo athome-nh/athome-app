@@ -584,6 +584,37 @@ cartEmptyContainer(BuildContext context) {
   );
 }
 
+noInternetWidget(BuildContext context) {
+  return Scaffold(
+    backgroundColor: mainColorWhite,
+    appBar: AppBar(
+      backgroundColor: mainColorWhite,
+      automaticallyImplyLeading: false,
+      elevation: 0.5,
+      title: Image.asset(
+        "assets/images/logoB.png",
+        width: getWidth(context, 30),
+      ),
+    ),
+    body: SafeArea(
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            "assets/images/wifi.png",
+            width: getWidth(context, 30),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Text('You\'re offline, connect to a network.'.tr),
+        ],
+      )),
+    ),
+  );
+}
+
 loginFirstContainer(BuildContext context) {
   return Center(
     child: Column(

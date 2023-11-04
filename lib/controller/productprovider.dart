@@ -15,6 +15,7 @@ import 'package:athome/model/products_image/products_image.dart';
 import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:athome/model/topmodel/topmodel.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -111,6 +112,7 @@ class productProvider extends ChangeNotifier {
           setOrderItems((value['orders_item'] as List)
               .map((x) => OrderItems.fromMap(x))
               .toList());
+
           setshow(true);
           print("end");
         } else {}
@@ -193,6 +195,7 @@ class productProvider extends ChangeNotifier {
   int _idItem = 0;
   int _subcateSelect = 0;
   bool show = false;
+  bool nointernetCheck = false;
   // Getter to access the list of products
   List<Topmodel> get tops => _tops;
 
@@ -275,8 +278,6 @@ class productProvider extends ChangeNotifier {
         .where((product) => idsToRetrieve.contains(product.id))
         .toList();
   }
-
-  
 
   List<SubCategory> getsubcateById(int idToRetrieve) {
     return _subCategores
@@ -515,6 +516,11 @@ class productProvider extends ChangeNotifier {
   void setshow(bool value) {
     show = value;
 
+    notifyListeners();
+  }
+
+  void setnointernetcheck(bool value) {
+    nointernetCheck = value;
     notifyListeners();
   }
 }
