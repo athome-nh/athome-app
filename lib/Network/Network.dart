@@ -51,7 +51,6 @@ class Network {
     Map<String, dynamic> data = {};
     try {
       await dio.get(serverUrl + "time").then((time) async {
-        print(generateRandomText(time.data["data"]));
         dio.options.headers["Authorization"] = "Bearer " + token;
         dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
         Response response = await dio.get(serverUrl + apiRout);

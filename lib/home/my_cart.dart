@@ -43,7 +43,7 @@ class _MyCartState extends State<MyCart> {
 
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListId());
-    int total = cartProvider.calculateTotalPrice(CardItemshow);
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -399,7 +399,8 @@ class _MyCartState extends State<MyCart> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  addCommasToPrice(total),
+                                  addCommasToPrice(cartProvider
+                                      .calculateTotalPrice(CardItemshow)),
                                   style: TextStyle(
                                       color: mainColorWhite,
                                       fontFamily: mainFontbold,
@@ -461,7 +462,8 @@ class _MyCartState extends State<MyCart> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  addCommasToPrice(total),
+                                  addCommasToPrice(cartProvider
+                                      .calculateTotalPrice(CardItemshow)),
                                   style: TextStyle(
                                       color: mainColorRed,
                                       fontFamily: mainFontbold,

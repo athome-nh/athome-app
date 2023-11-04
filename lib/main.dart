@@ -11,7 +11,7 @@ import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   GeocodingPlatform.instance;
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +26,7 @@ Future<void> main() async {
 String lang = "";
 String token = "";
 bool isLogin = false;
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class AtHomeApp extends StatefulWidget {
   const AtHomeApp({super.key});

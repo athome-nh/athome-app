@@ -276,6 +276,8 @@ class productProvider extends ChangeNotifier {
         .toList();
   }
 
+  
+
   List<SubCategory> getsubcateById(int idToRetrieve) {
     return _subCategores
         .where((subcate) => subcate.categoryId == idToRetrieve)

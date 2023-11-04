@@ -705,7 +705,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             return;
                                                           }
                                                           if (product.offerPrice! >
-                                                                  0 &&
+                                                                  -1 &&
                                                               product.orderLimit ==
                                                                   cartProvider.calculateQuantityForProduct(
                                                                       int.parse(
