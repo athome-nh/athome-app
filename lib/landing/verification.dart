@@ -45,7 +45,7 @@ class _VerificatoinState extends State<Verificatoin> {
 
   @override
   void dispose() {
-    //_codeTimer.cancel();
+    _codeTimer.cancel();
     super.dispose();
   }
 
@@ -165,7 +165,8 @@ class _VerificatoinState extends State<Verificatoin> {
                               },
                               child: Text(
                                 timecode != 0
-                                    ? "Try again in".tr + formatedTime(timeInSecond: timecode)
+                                    ? "Try again in".tr +
+                                        formatedTime(timeInSecond: timecode)
                                     : "Resend".tr,
                                 style: TextStyle(
                                     color: mainColorRed,
@@ -253,6 +254,7 @@ class _VerificatoinState extends State<Verificatoin> {
             if (value != "") {
               if (value["code"] == "200") {
                 if (value["data"]["isActive"] == 1) {
+                  _codeTimer.cancel();
                   setState(() {
                     _isLoading = false;
                     _isVerified = true;
@@ -280,8 +282,8 @@ class _VerificatoinState extends State<Verificatoin> {
                           dialogType: DialogType.warning,
                           showCloseIcon: true,
                           title: "Account Disabled".tr,
-                          desc:
-                              "Account is disable please contact athome admin".tr,
+                          desc: "Account is disable please contact athome admin"
+                              .tr,
                           btnOkColor: mainColorRed,
                           btnOkText: "Ok".tr,
                           btnOkOnPress: () {
@@ -352,6 +354,7 @@ class _VerificatoinState extends State<Verificatoin> {
         if (value != "") {
           if (value["code"] == "200") {
             if (value["data"]["isActive"] == 1) {
+              _codeTimer.cancel();
               setState(() {
                 _isLoading = false;
                 _isVerified = true;

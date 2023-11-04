@@ -1,5 +1,6 @@
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
@@ -59,11 +60,10 @@ Widget listItemsShow(BuildContext context, var data) {
                             child: Center(
                               child: CachedNetworkImage(
                                 imageUrl: "",
-                                placeholder: (context, url) => Image.asset(
-                                    "assets/images/002_logo_1.png"),
+                                placeholder: (context, url) =>
+                                    Image.asset("assets/images/002_logo_1.png"),
                                 errorWidget: (context, url, error) =>
-                                    Image.asset(
-                                        "assets/images/002_logo_1.png"),
+                                    Image.asset("assets/images/002_logo_1.png"),
                                 width: getHeight(context, 18),
                                 height: getHeight(context, 18),
                               ),
@@ -193,12 +193,11 @@ Widget listItemsShow(BuildContext context, var data) {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                               child: CachedNetworkImage(
-                                imageUrl: product.coverImg!,
-                                placeholder: (context, url) => Image.asset(
-                                    "assets/images/002_logo_1.png"),
+                                imageUrl: imageUrlServer + product.coverImg!,
+                                placeholder: (context, url) =>
+                                    Image.asset("assets/images/002_logo_1.png"),
                                 errorWidget: (context, url, error) =>
-                                    Image.asset(
-                                        "assets/images/002_logo_1.png"),
+                                    Image.asset("assets/images/002_logo_1.png"),
                                 width: getHeight(context, 18),
                                 height: getHeight(context, 18),
                               ),
@@ -328,8 +327,7 @@ Widget listItemsShow(BuildContext context, var data) {
                             // limit letter of info in search items
                             Text(
                               lang == "en"
-                                  ? textCount(
-                                      product.contentsEn.toString(), 15)
+                                  ? textCount(product.contentsEn.toString(), 15)
                                   : lang == "ar"
                                       ? textCount(
                                           product.contentsAr.toString(), 15)
@@ -377,8 +375,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                     dialogType: DialogType.info,
                                     showCloseIcon: true,
                                     title: 'Login Please',
-                                    desc:
-                                        "You need login to add item in cart",
+                                    desc: "You need login to add item in cart",
                                     btnOkColor: mainColorRed,
                                     btnCancelOnPress: () {},
                                     btnOkText: "Login",
@@ -417,12 +414,10 @@ Widget listItemsShow(BuildContext context, var data) {
                                     child: Text(
                                       cartProvider
                                           .calculateQuantityForProduct(
-                                              int.parse(
-                                                  product.id.toString()))
+                                              int.parse(product.id.toString()))
                                           .toString(),
                                       style: TextStyle(
-                                          fontSize: 16,
-                                          color: mainColorWhite),
+                                          fontSize: 16, color: mainColorWhite),
                                     ),
                                   )
                                 : Icon(FontAwesomeIcons.cartShopping,

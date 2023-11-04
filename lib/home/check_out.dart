@@ -14,7 +14,6 @@ import '../main.dart';
 import 'nav_switch.dart';
 import 'track_order.dart';
 
-
 class CheckOut extends StatefulWidget {
   int id = 0;
   CheckOut({super.key, required this.id});
@@ -102,7 +101,9 @@ class _CheckOutState extends State<CheckOut> {
                                 children: [
                                   Text(
                                     textAlign: TextAlign.end,
-                                    location.type! + "Number".tr + location.number! ,
+                                    location.type.toString() +
+                                        "Number".tr +
+                                        location.number.toString(),
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontbold,
@@ -111,7 +112,7 @@ class _CheckOutState extends State<CheckOut> {
                                   const SizedBox(height: 5),
                                   Text(
                                     textAlign: TextAlign.end,
-                                    location.area!,
+                                    location.area.toString(),
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontbold,
@@ -119,16 +120,6 @@ class _CheckOutState extends State<CheckOut> {
                                   ),
                                 ],
                               ),
-                              // TextButton(
-                              //   onPressed: () {},
-                              //   child: Text(
-                              //     "Change".tr,
-                              //     style: TextStyle(
-                              //         color: mainColorRed,
-                              //         fontFamily: mainFontbold,
-                              //         fontSize: 14),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ],
@@ -723,7 +714,8 @@ class _CheckOutState extends State<CheckOut> {
                           children: [
                             const SizedBox(),
                             Text(
-                              "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin".tr,
+                              "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin"
+                                  .tr,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 color: mainColorWhite.withOpacity(0.7),

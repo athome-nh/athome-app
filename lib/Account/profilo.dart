@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/map/loction.dart';
@@ -233,7 +234,7 @@ class _SettingState extends State<Setting> {
                                                 BorderRadius.circular(50),
                                             child: CachedNetworkImage(
                                               width: getWidth(context, 18),
-                                              imageUrl: image,
+                                              imageUrl: imageUrlServer + image,
                                               fit: BoxFit.fill,
                                             ),
                                           ),
@@ -497,9 +498,9 @@ class _SettingState extends State<Setting> {
                             width: getWidth(context, 93),
                             height: getHeight(context, 24),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: mainColorSuger.withOpacity(0.7),
-                                ),
+                              borderRadius: BorderRadius.circular(5),
+                              color: mainColorSuger.withOpacity(0.7),
+                            ),
                             child: Column(
                               children: [
                                 SizedBox(
@@ -715,9 +716,9 @@ class _SettingState extends State<Setting> {
                               width: getWidth(context, 93),
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: mainColorSuger.withOpacity(0.7),
-                                  ),
+                                borderRadius: BorderRadius.circular(5),
+                                color: mainColorSuger.withOpacity(0.7),
+                              ),
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 15),
@@ -755,9 +756,9 @@ class _SettingState extends State<Setting> {
                             width: getWidth(context, 93),
                             height: getHeight(context, 5),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: mainColorSuger.withOpacity(0.7),
-                                ),
+                              borderRadius: BorderRadius.circular(5),
+                              color: mainColorSuger.withOpacity(0.7),
+                            ),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
@@ -821,9 +822,9 @@ class _SettingState extends State<Setting> {
                               width: getWidth(context, 93),
                               height: getHeight(context, 5),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: mainColorSuger.withOpacity(0.7),
-                                  ),
+                                borderRadius: BorderRadius.circular(5),
+                                color: mainColorSuger.withOpacity(0.7),
+                              ),
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 15),

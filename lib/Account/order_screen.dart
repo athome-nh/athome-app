@@ -44,6 +44,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       OrderModel order =
                           productrovider.Orders.reversed.toList()[index];
+                      print(order);
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -74,24 +75,16 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   order.createdAt.toString())),
                                         );
                                       } else {
-                                        productrovider
-                                            .getordersbyOrderCode(
-                                                order.orderCode!)
-                                            .forEach((element) {
-                                          final cartItem = CartItemPast(
-                                            product: element.productId!,
-                                            quantity: element.qt!,
-                                          );
-                                          cartProvider.addToCartPast(cartItem);
-                                        });
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const OrederItems()),
-                                        ).then((value) {
-                                          cartProvider.clearCartPast();
-                                        });
+                                              builder: (context) => OldOrder(
+                                                  order.orderCode.toString(),
+                                                  order.id.toString(),
+                                                  order.returnTotalPrice
+                                                      .toString(),
+                                                  order.createdAt.toString())),
+                                        );
                                       }
                                     },
                                     icon: Icon(Icons.arrow_forward_ios,
@@ -139,7 +132,10 @@ class _OrderScreenState extends State<OrderScreen> {
                                     ],
                                   ),
                                   subtitle: Text(
-                                    "Date:".tr + order.createdAt.toString().substring(0, 16),
+                                    "Date:".tr +
+                                        order.createdAt
+                                            .toString()
+                                            .substring(0, 16),
                                     style: TextStyle(
                                         fontSize: 12,
                                         fontFamily: mainFontnormal,
@@ -148,15 +144,23 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
+                                    productrovider
+                                        .getordersbyOrderCode(order.orderCode!)
+                                        .forEach((element) {
+                                      final cartItem = CartItemPast(
+                                        product: element.productId!,
+                                        quantity: element.qt!,
+                                      );
+                                      cartProvider.addToCartPast(cartItem);
+                                    });
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => OldOrder(
-                                              order.orderCode.toString(),
-                                              order.id.toString(),
-                                              order.totalPrice.toString(),
-                                              order.createdAt.toString())),
-                                    );
+                                          builder: (context) =>
+                                              const OrederItems()),
+                                    ).then((value) {
+                                      cartProvider.clearCartPast();
+                                    });
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(

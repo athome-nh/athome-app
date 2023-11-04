@@ -1,10 +1,11 @@
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/Home/all_item.dart';
-import 'package:athome/Home/itemCategories.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/home/item_categories.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
@@ -133,10 +134,13 @@ class _HomeSreenState extends State<HomeSreen> {
                         CachedNetworkImage(
                           imageUrl: productrovider.show
                               ? lang == "en"
-                                  ? productrovider.tops[0].imgEn!
+                                  ? imageUrlServer +
+                                      productrovider.tops[0].imgEn!
                                   : lang == "ar"
-                                      ? productrovider.tops[0].imgAr!
-                                      : productrovider.tops[0].imgKur!
+                                      ? imageUrlServer +
+                                          productrovider.tops[0].imgAr!
+                                      : imageUrlServer +
+                                          productrovider.tops[0].imgKur!
                               : "",
                           placeholder: (context, url) =>
                               Image.asset("assets/images/002_logo_1.png"),
@@ -341,7 +345,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 BorderRadius.circular(100)),
                                         child: Center(
                                           child: CachedNetworkImage(
-                                            imageUrl: cateItem.img!,
+                                            imageUrl:
+                                                imageUrlServer + cateItem.img!,
                                             placeholder: (context, url) =>
                                                 Image.asset(
                                                     "assets/images/002_logo_1.png"),
@@ -665,9 +670,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         child: Center(
                                                           child:
                                                               CachedNetworkImage(
-                                                            imageUrl: product
-                                                                .coverImg
-                                                                .toString(),
+                                                            imageUrl:
+                                                                imageUrlServer +
+                                                                    product
+                                                                        .coverImg
+                                                                        .toString(),
                                                             placeholder: (context,
                                                                     url) =>
                                                                 Image.asset(
@@ -706,7 +713,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                               .id
                                                                               .toString()))) {
                                                             toastLong(
-                                                                "you can not add more this item".tr);
+                                                                "you can not add more this item"
+                                                                    .tr);
                                                             return;
                                                           }
                                                           final cartItem =
@@ -1282,9 +1290,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         child: Center(
                                                           child:
                                                               CachedNetworkImage(
-                                                            imageUrl: product
-                                                                .coverImg
-                                                                .toString(),
+                                                            imageUrl:
+                                                                imageUrlServer +
+                                                                    product
+                                                                        .coverImg
+                                                                        .toString(),
                                                             placeholder: (context,
                                                                     url) =>
                                                                 Image.asset(
@@ -1316,14 +1326,18 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                             .warning,
                                                                     showCloseIcon:
                                                                         true,
-                                                                    title: "Login Please".tr,
-                                                                    desc: "You need login to add item in cart".tr,
+                                                                    title: "Login Please"
+                                                                        .tr,
+                                                                    desc:
+                                                                        "You need login to add item in cart"
+                                                                            .tr,
                                                                     btnOkColor:
                                                                         mainColorRed,
                                                                     btnCancelOnPress:
                                                                         () {},
                                                                     btnOkText:
-                                                                        "Login".tr,
+                                                                        "Login"
+                                                                            .tr,
                                                                     btnOkOnPress:
                                                                         () {
                                                                       Navigator
@@ -1348,7 +1362,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                                               .id
                                                                               .toString()))) {
                                                             toastLong(
-                                                                "you can not add more this item".tr);
+                                                                "you can not add more this item"
+                                                                    .tr);
                                                             return;
                                                           }
                                                           final cartItem =
@@ -1807,7 +1822,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   BorderRadius.circular(5)),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl:
+                                              imageUrl: imageUrlServer +
                                                   product.coverImg.toString(),
                                               placeholder: (context, url) =>
                                                   Image.asset(
@@ -1834,7 +1849,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       showCloseIcon: true,
                                                       title: "Login Please".tr,
                                                       desc:
-                                                          "You need login to add item in cart".tr,
+                                                          "You need login to add item in cart"
+                                                              .tr,
                                                       btnOkColor: mainColorRed,
                                                       btnCancelOnPress: () {},
                                                       btnOkText: "Login",
@@ -1858,7 +1874,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             int.parse(product.id
                                                                 .toString()))) {
                                               toastLong(
-                                                  "you can not add more this item".tr);
+                                                  "you can not add more this item"
+                                                      .tr);
                                               return;
                                             }
                                             final cartItem =
@@ -2038,7 +2055,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       },
                                       child: ClipRRect(
                                         child: CachedNetworkImage(
-                                          imageUrl: item.img!,
+                                          imageUrl: imageUrlServer + item.img!,
                                           placeholder: (context, url) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
@@ -2316,7 +2333,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   BorderRadius.circular(5)),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl:
+                                              imageUrl: imageUrlServer +
                                                   product.coverImg.toString(),
                                               placeholder: (context, url) =>
                                                   Image.asset(
@@ -2343,7 +2360,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       showCloseIcon: true,
                                                       title: 'Login Please'.tr,
                                                       desc:
-                                                          "You need login to add item in cart".tr,
+                                                          "You need login to add item in cart"
+                                                              .tr,
                                                       btnOkColor: mainColorRed,
                                                       btnCancelOnPress: () {},
                                                       btnOkText: "Login".tr,
@@ -2367,7 +2385,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             int.parse(product.id
                                                                 .toString()))) {
                                               toastLong(
-                                                  "you can not add more this item".tr);
+                                                  "you can not add more this item"
+                                                      .tr);
                                               return;
                                             }
                                             final cartItem =

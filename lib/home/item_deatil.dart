@@ -1,3 +1,4 @@
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/my_cart.dart';
 import 'package:athome/model/cart.dart';
@@ -89,7 +90,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                             builder: (BuildContext context) {
                                               return ClipRRect(
                                                 child: CachedNetworkImage(
-                                                  imageUrl: imageUrl.img!,
+                                                  imageUrl: imageUrlServer +
+                                                      imageUrl.img!,
                                                   width: getWidth(context, 100),
                                                   height:
                                                       getHeight(context, 30),
@@ -106,7 +108,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                           autoPlayInterval:
                                               const Duration(seconds: 2),
                                           autoPlayAnimationDuration:
-                                              const Duration(milliseconds: 2000),
+                                              const Duration(
+                                                  milliseconds: 2000),
                                         ),
                                       ),
                                     ),
@@ -120,7 +123,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                             BorderRadius.circular(100)),
                                     child: Center(
                                       child: CachedNetworkImage(
-                                        imageUrl: Item.coverImg!,
+                                        imageUrl:
+                                            imageUrlServer + Item.coverImg!,
                                         placeholder: (context, url) =>
                                             Image.asset(
                                                 "assets/images/002_logo_1.png"),
@@ -230,7 +234,8 @@ class _ItemDeatilState extends State<ItemDeatil> {
                                                           int.parse(Item.id
                                                               .toString()))) {
                                             toastLong(
-                                                "you can not add more this item".tr);
+                                                "you can not add more this item"
+                                                    .tr);
                                             return;
                                           }
                                           final cartItem =

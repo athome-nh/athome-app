@@ -124,7 +124,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                                     .deletelocation(
                                                         location.id!);
                                                 toastShort(
-                                                    "Delete location success".tr);
+                                                    "Delete location success"
+                                                        .tr);
                                               }
                                             }
                                           });

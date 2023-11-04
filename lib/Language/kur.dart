@@ -1,4 +1,4 @@
-const Map<String, String> kur = {  
+const Map<String, String> kur = {
   "currency": "USD",
   "Order now": "Order now",
   "Categories": "Categories",
@@ -20,7 +20,8 @@ const Map<String, String> kur = {
   "Thank You!": "Thank You!",
   "for yor order": "for yor order",
   "Order Number: 5509": "Order Number: 5509",
-  "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order": "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order",
+  "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order":
+      "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order",
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
   "Send Order": "Send Order",
@@ -29,7 +30,8 @@ const Map<String, String> kur = {
   "info: ": "info: ",
   "Place Order": "Place Order",
   "Add To Cart": "Add To Cart",
-  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:": "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
+  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
+      "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
   "My Cart": "My Cart",
   "Delete All Items": "Delete All Items",
   "are you sure delete all items": "are you sure delete all items",
@@ -44,17 +46,25 @@ const Map<String, String> kur = {
   'Account': 'Account',
   "Are you sure exiting the app": "Are you sure exiting the app",
   "Clear": "Clear",
-  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
-  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
-  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
-  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
+      "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
+      "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
+  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.":
+      "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
+  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.":
+      "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
+  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.":
+      "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
+  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.":
+      "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
+  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!":
+      "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
   "Saved Address": "Saved Address",
   "Add your New address": "Add your New address",
   'You\'re online ✅': 'You\'re online ✅',
-  'You\'re offline, connect to a network.': 'You\'re offline, connect to a network.',
+  'You\'re offline, connect to a network.':
+      'You\'re offline, connect to a network.',
   "OK": "OK",
   "Cancle": "Cancle",
   "Warning": "Warning",
@@ -68,7 +78,8 @@ const Map<String, String> kur = {
   "About us": "About us",
   "Signout": "Signout",
   "Wellcome back": "Wellcome back",
-  "Enter your phone number to Shop Smarter & Easier.":"Enter your phone number to Shop Smarter & Easier.",
+  "Enter your phone number to Shop Smarter & Easier.":
+      "Enter your phone number to Shop Smarter & Easier.",
   "About Us": "About Us",
   "English": "English",
   "Arabic": "Arabic",
@@ -97,7 +108,8 @@ const Map<String, String> kur = {
   "Note": "Note",
   "Add your note": "Add your note",
   "Order Number:": "Order Number:",
-  "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin": "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
+  "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin":
+      "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
   "Ok": "Ok",
   "cateItem": "cateItem",
   "Recent Order": "Recent Order",
@@ -118,39 +130,48 @@ const Map<String, String> kur = {
   "Track Order": "Track Order",
   "Order:": "Order:",
   "Cancle order": "Cancle order",
-  "We will send you OTP code to verifiy your phone number.": "We will send you OTP code to verifiy your phone number.",
+  "We will send you OTP code to verifiy your phone number.":
+      "We will send you OTP code to verifiy your phone number.",
   "Get Start": "Get Start",
   "Please enter your phone number": "Please enter your phone number",
   "Please remove 0 form start": "Please remove 0 form start",
   "Phone Number": "Phone Number",
-  "Please enter your phone number correct": "Please enter your phone number correct",
+  "Please enter your phone number correct":
+      "Please enter your phone number correct",
   "Complete Account": "Complete Account",
-  "Enter your account information to complete your account": "Enter your account information to complete your account",
+  "Enter your account information to complete your account":
+      "Enter your account information to complete your account",
   "Name": "Name",
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
   "City": "City",
   "Age": "Age",
-  "unknown occurred error please try again later": "unknown occurred error please try again later",
+  "unknown occurred error please try again later":
+      "unknown occurred error please try again later",
   "Confirm": "Confirm",
   "Verification": "Verification",
-  "Please enter the 6 digit code sent to": "Please enter the 6 digit code sent to",
+  "Please enter the 6 digit code sent to":
+      "Please enter the 6 digit code sent to",
   "Don't resive the OTP ?": "Don't resive the OTP ?",
   "Try again in": "Try again in",
   "Resend": "Resend",
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
-  "Account is disable please contact athome admin": "Account is disable please contact athome admin",
+  "Account is disable please contact athome admin":
+      "Account is disable please contact athome admin",
   "the code is un correct": "the code is un correct",
   "SKIP": "SKIP",
   "FINISH": "FINISH",
   "Next": "Next",
   "Shop Smarter & Easier": "Shop Smarter & Easier",
-  "is an innovative platform designed to enhance your online shopping experience.": "is an innovative platform designed to enhance your online shopping experience.",
+  "is an innovative platform designed to enhance your online shopping experience.":
+      "is an innovative platform designed to enhance your online shopping experience.",
   "Learn From the Best": "Learn From the Best",
-  "We will guide you with the best tutors and experts in Kurdistan/Iraq": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "We will guide you with the best tutors and experts in Kurdistan/Iraq":
+      "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "Your Pocket's Friend": "Your Pocket's Friend",
-  "Learn whatever you want, whenever or wherever you are.": "Learn whatever you want, whenever or wherever you are.",
+  "Learn whatever you want, whenever or wherever you are.":
+      "Learn whatever you want, whenever or wherever you are.",
   "Locations": "Locations",
   "Add name": "Add name",
   "Add name location": "Add name location",
@@ -172,5 +193,4 @@ const Map<String, String> kur = {
   "Delivery To:": "Delivery To:",
   "try again": "try again",
   "Failed to load data": "Failed to load data",
-  
 };

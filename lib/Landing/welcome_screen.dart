@@ -94,7 +94,9 @@ class WelcomeScreenState extends State<WelcomeScreen>
                             // skip button
                             TextButton(
                               onPressed: () {
-                                setBoolPrefs("onbord", true);
+                                Map<String, dynamic> myMap = {};
+                                myMap["onbord"] = true;
+                                setStringPrefs("data", json.encode(myMap));
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -193,7 +195,9 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   child: Row(
                                     children: [
                                       Text(
-                                        currentIndex == 2 ? 'FINISH'.tr : 'Next'.tr,
+                                        currentIndex == 2
+                                            ? 'FINISH'.tr
+                                            : 'Next'.tr,
                                         style: TextStyle(
                                           fontFamily: mainFontbold,
                                           fontSize: getHeight(context, 2),
@@ -272,7 +276,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "is an innovative platform designed to enhance your online shopping experience.".tr,
+                  "is an innovative platform designed to enhance your online shopping experience."
+                      .tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
@@ -343,7 +348,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "We will guide you with the best tutors and experts in Kurdistan/Iraq".tr,
+                  "We will guide you with the best tutors and experts in Kurdistan/Iraq"
+                      .tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),

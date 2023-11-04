@@ -139,7 +139,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 return 'Please enter your phone number'.tr;
                               }
                               if (userInput.length < 10) {
-                                return 'Please enter your phone number correct'.tr;
+                                return 'Please enter your phone number correct'
+                                    .tr;
                               }
                               if (userInput.toString().startsWith("0")) {
                                 return 'Please remove 0 form start'.tr;
@@ -229,7 +230,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        "We will send you OTP code to verifiy your phone number.".tr,
+                        "We will send you OTP code to verifiy your phone number."
+                            .tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,

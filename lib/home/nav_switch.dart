@@ -1,12 +1,13 @@
 import 'dart:io';
 import 'package:athome/Account/profilo.dart';
 import 'package:athome/controller/cartprovider.dart';
+import 'package:athome/home/my_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:athome/Account/order_screen.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/MyCart.dart';
+
 import 'package:athome/Home/Search.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';

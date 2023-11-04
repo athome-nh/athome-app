@@ -1,4 +1,5 @@
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/map/map_screen.dart';
@@ -15,7 +16,6 @@ import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../home/nav_switch.dart';
 import '../main.dart';
-
 
 class OrederItems extends StatefulWidget {
   const OrederItems({super.key});
@@ -130,8 +130,9 @@ class _OrederItemsState extends State<OrederItems> {
                                                             5)),
                                                 child: Center(
                                                   child: CachedNetworkImage(
-                                                    imageUrl: cartitem.coverImg
-                                                        .toString(),
+                                                    imageUrl: imageUrlServer +
+                                                        cartitem.coverImg
+                                                            .toString(),
                                                     width:
                                                         getWidth(context, 20),
                                                     height:
@@ -597,7 +598,8 @@ class _OrederItemsState extends State<OrederItems> {
                                                                     ),
                                                                     trailing:
                                                                         Text(
-                                                                      "Select".tr,
+                                                                      "Select"
+                                                                          .tr,
                                                                       style: TextStyle(
                                                                           color:
                                                                               mainColorRed,
@@ -611,7 +613,8 @@ class _OrederItemsState extends State<OrederItems> {
                                                           })
                                                       : Center(
                                                           child: Text(
-                                                          "Not have any location".tr,
+                                                          "Not have any location"
+                                                              .tr,
                                                           style: TextStyle(
                                                             color:
                                                                 mainColorGrey,

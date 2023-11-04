@@ -74,7 +74,8 @@ class _NotficationScreenState extends State<NotficationScreen> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 2)),
                                     child: Text(
-                                        'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order'.tr,
+                                        'Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order'
+                                            .tr,
                                         style: TextStyle(
                                           fontSize: 16,
                                           color: mainColorGrey,

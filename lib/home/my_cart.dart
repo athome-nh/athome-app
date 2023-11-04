@@ -1,4 +1,5 @@
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/map/map_screen.dart';
@@ -146,8 +147,9 @@ class _MyCartState extends State<MyCart> {
                                               ),
                                               child: Center(
                                                 child: CachedNetworkImage(
-                                                  imageUrl: cartitem.coverImg
-                                                      .toString(),
+                                                  imageUrl: imageUrlServer +
+                                                      cartitem.coverImg
+                                                          .toString(),
                                                   width: getWidth(context, 20),
                                                   height:
                                                       getHeight(context, 10),
@@ -275,7 +277,8 @@ class _MyCartState extends State<MyCart> {
                                                                               .id
                                                                               .toString()))) {
                                                         toastLong(
-                                                            "you can not add more this item".tr);
+                                                            "you can not add more this item"
+                                                                .tr);
                                                         return;
                                                       }
                                                       final cartItem = CartItem(
@@ -602,7 +605,8 @@ class _MyCartState extends State<MyCart> {
                                                       })
                                                   : Center(
                                                       child: Text(
-                                                      "Not have any location".tr,
+                                                      "Not have any location"
+                                                          .tr,
                                                       style: TextStyle(
                                                         color: mainColorGrey,
                                                         fontSize: 20,

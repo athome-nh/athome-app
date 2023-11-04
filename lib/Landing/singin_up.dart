@@ -98,7 +98,8 @@ class _SingInUpState extends State<SingInUp> {
                 FadeInDown(
                   duration: const Duration(milliseconds: 500),
                   child: Text(
-                      "Enter your account information to complete your account".tr,
+                      "Enter your account information to complete your account"
+                          .tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: mainColorGrey,
@@ -366,7 +367,8 @@ class _SingInUpState extends State<SingInUp> {
                           }
                         } else {
                           toastShort(
-                              "unknown occurred error please try again later".tr);
+                              "unknown occurred error please try again later"
+                                  .tr);
                           setState(() {
                             _isLoading = false;
                           });

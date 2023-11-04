@@ -1,7 +1,9 @@
 import 'package:athome/Config/athome_functions.dart';
-import 'package:athome/Home/MyCart.dart';
+import 'package:athome/Config/value.dart';
+
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/home/my_cart.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
@@ -107,7 +109,9 @@ class _OneitemState extends State<Oneitem> {
                                                       (BuildContext context) {
                                                     return ClipRRect(
                                                       child: CachedNetworkImage(
-                                                        imageUrl: imageUrl.img!,
+                                                        imageUrl:
+                                                            imageUrlServer +
+                                                                imageUrl.img!,
                                                         width: getWidth(
                                                             context, 100),
                                                         height: getHeight(
@@ -140,7 +144,8 @@ class _OneitemState extends State<Oneitem> {
                                                   BorderRadius.circular(100)),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl: Item.coverImg!,
+                                              imageUrl: imageUrlServer +
+                                                  Item.coverImg!,
                                               placeholder: (context, url) =>
                                                   Image.asset(
                                                       "assets/images/002_logo_1.png"),
@@ -169,7 +174,8 @@ class _OneitemState extends State<Oneitem> {
                                             showCloseIcon: true,
                                             title: 'Login Please'.tr,
                                             desc:
-                                                "You need login to add item in cart".tr,
+                                                "You need login to add item in cart"
+                                                    .tr,
                                             btnOkColor: mainColorRed,
                                             btnCancelOnPress: () {},
                                             btnOkText: "Login".tr,
@@ -366,7 +372,8 @@ class _OneitemState extends State<Oneitem> {
                                                       int.parse(Item.id
                                                           .toString()))) {
                                         toastLong(
-                                            "you can not add more this item".tr);
+                                            "you can not add more this item"
+                                                .tr);
                                         return;
                                       }
                                       if (Item.offerPrice! > -1 &&
@@ -376,7 +383,8 @@ class _OneitemState extends State<Oneitem> {
                                                       int.parse(Item.id
                                                           .toString()))) {
                                         toastLong(
-                                            "you can not add more this item".tr);
+                                            "you can not add more this item"
+                                                .tr);
                                         return;
                                       }
                                       final cartItem =

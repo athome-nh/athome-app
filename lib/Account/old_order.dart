@@ -1,5 +1,6 @@
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/order_items/order_items.dart';
@@ -7,7 +8,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../Config/my_widget.dart';
 
 class OldOrder extends StatefulWidget {
   String ordercode = "";
@@ -54,6 +54,7 @@ class _OldOrderState extends State<OldOrder> {
                     final product = productrovider
                         .getoneProductById(items[index].productId!);
                     final item = items[index];
+                    print(item);
                     return Center(
                       child: Card(
                         elevation: 4,
@@ -80,7 +81,8 @@ class _OldOrderState extends State<OldOrder> {
                                       ),
                                       child: Center(
                                         child: CachedNetworkImage(
-                                          imageUrl: product.coverImg.toString(),
+                                          imageUrl: imageUrlServer +
+                                              product.coverImg.toString(),
                                           width: getWidth(context, 17),
                                           height: getWidth(context, 17),
                                         ),
@@ -192,7 +194,11 @@ class _OldOrderState extends State<OldOrder> {
                                               ),
                                             ),
                                             Text(
-                                              item.pickedQt.toString(),
+                                              item.pickedQt.toString() == "null"
+                                                  ? "0"
+                                                  : (item.pickedQt! -
+                                                          item.returnedQt!)
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontFamily: mainFontbold,
                                                 color: mainColorGrey,
@@ -215,9 +221,8 @@ class _OldOrderState extends State<OldOrder> {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 2,
             child: Container(
-              height: getWidth(context, 60),
               decoration: BoxDecoration(
                 color: mainColorGrey,
                 borderRadius: const BorderRadius.only(
@@ -244,7 +249,7 @@ class _OldOrderState extends State<OldOrder> {
                         ),
                         Text(
                           textAlign: TextAlign.end,
-                          addCommasToPrice(0),
+                          addCommasToPrice(int.parse(widget.total)),
                           style: TextStyle(
                               color: mainColorWhite,
                               fontFamily: mainFontbold,
@@ -305,244 +310,11 @@ class _OldOrderState extends State<OldOrder> {
                         ),
                         Text(
                           textAlign: TextAlign.end,
-                          addCommasToPrice(0),
+                          addCommasToPrice(int.parse(widget.total)),
                           style: TextStyle(
                               color: mainColorRed,
                               fontFamily: mainFontbold,
                               fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 3),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                          onPressed: () async {
-                            if (await noInternet(context)) {
-                              return;
-                            }
-
-                            // ignore: use_build_context_synchronously
-                            showModalBottomSheet(
-                              context: context,
-                              isDismissible: true,
-                              shape: const RoundedRectangleBorder(
-                                // <-- SEE HERE
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(25.0),
-                                ),
-                              ),
-                              builder: (BuildContext context) {
-                                return Container(
-                                  color: mainColorWhite,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        padding: EdgeInsets.only(
-                                          top: getWidth(context, 2),
-                                          left: getWidth(context, 2),
-                                          right: getWidth(context, 2),
-                                          bottom: getWidth(context, 1),
-                                        ),
-                                        margin: const EdgeInsets.all(8.0),
-                                        height: getWidth(context, 10),
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: mainColorGrey.withOpacity(0.5),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "Select Location".tr,
-                                            style: TextStyle(
-                                              color: mainColorWhite,
-                                              fontSize: 20,
-                                              fontFamily: mainFontnormal,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: getHeight(context, 40),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: productrovider
-                                                  .location.isNotEmpty
-                                              ? ListView.builder(
-                                                  itemCount: productrovider
-                                                      .location.length,
-                                                  itemBuilder:
-                                                      (BuildContext context,
-                                                          int index) {
-                                                    final location =
-                                                        productrovider
-                                                            .location[index];
-                                                    return Padding(
-                                                      padding: EdgeInsets.only(
-                                                          bottom: getHeight(
-                                                              context, 1)),
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          // cartProvider.addPastToCart(
-                                                          //     cartProvider
-                                                          //         .cartItemsPast);
-
-                                                          // Navigator
-                                                          //     .push(
-                                                          //   context,
-                                                          //   MaterialPageRoute(
-                                                          //       builder:
-                                                          //           (context) =>
-                                                          //               CheckOut(id: location.id!)),
-                                                          // ).then(
-                                                          //     (value) {
-                                                          //   cartProvider
-                                                          //       .clearCart();
-                                                          // });
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                                  mainColorLightGrey,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5)),
-                                                          child: ListTile(
-                                                            title: Text(
-                                                              location.name!,
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      mainColorGrey,
-                                                                  fontSize: 14,
-                                                                  fontFamily:
-                                                                      mainFontbold),
-                                                            ),
-                                                            subtitle: Text(
-                                                              location.area!,
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      mainColorGrey,
-                                                                  fontSize: 14,
-                                                                  fontFamily:
-                                                                      mainFontnormal),
-                                                            ),
-                                                            trailing: Text(
-                                                              "Select".tr,
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      mainColorRed,
-                                                                  fontFamily:
-                                                                      mainFontnormal),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  })
-                                              : Center(
-                                                  child: Text(
-                                                  "Not have any location".tr,
-                                                  style: TextStyle(
-                                                    color: mainColorGrey,
-                                                    fontSize: 20,
-                                                  ),
-                                                )),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(context, 4)),
-                                        child: TextButton(
-                                          onPressed: () {
-                                            // Navigator.pop(context);
-                                            // Navigator.push(
-                                            //   context,
-                                            //   MaterialPageRoute(
-                                            //       builder: (context) =>
-                                            //           const Maps_screen()),
-                                            // );
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: mainColorRed,
-                                            fixedSize: Size(
-                                                getWidth(context, 85),
-                                                getHeight(context, 6)),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                            ),
-                                          ),
-                                          child: Text(
-                                            "Add another location".tr,
-                                            style: TextStyle(
-                                              color: mainColorWhite,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: mainColorRed,
-                            fixedSize: Size(
-                                getWidth(context, 40), getHeight(context, 6)),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Text(
-                            "Re Order".tr,
-                            style: TextStyle(
-                              color: mainColorWhite,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () async {
-                            if (await noInternet(context)) {
-                              return;
-                            }
-
-                            // cartProvider.addPastToCart(
-                            //     cartProvider.cartItemsPast);
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) =>
-                            //           const NavSwitch()),
-                            // );
-                            // cartProvider.clearCartPast();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: mainColorRed,
-                            fixedSize: Size(
-                                getWidth(context, 40), getHeight(context, 6)),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Text(
-                            "Add More Items".tr,
-                            style: TextStyle(
-                              color: mainColorWhite,
-                              fontSize: 16,
-                            ),
-                          ),
                         ),
                       ],
                     ),
