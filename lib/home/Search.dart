@@ -45,51 +45,47 @@ class _SearchState extends State<Search> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
-                  height: getHeight(context, 1),
-                ),
+
+                SizedBox( height: getHeight(context, 1),),
+
                 Center(
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
+                    padding:EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
                     child: Row(
                       children: [
                         Container(
-                          width: getWidth(context,
-                              productPro.searchproduct.isNotEmpty ? 74 : 90),
+                          width: getWidth(context, productPro.searchproduct.isNotEmpty ? 70 : 92),
                           height: getHeight(context, 5),
                           decoration: BoxDecoration(
                               color: const Color(0xffF2F2F2),
                               borderRadius: BorderRadius.circular(5)),
-                          child: Expanded(
-                            child: TextField(
-                              controller: searchCon,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: mainColorGrey,
-                                  fontFamily: mainFontbold),
-                              keyboardType: TextInputType.text,
-                              onChanged: (value) {
-                                productPro.setsearch(searchCon.text);
-                              },
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Ionicons.search_outline,
-                                  color: mainColorGrey.withOpacity(0.45),
-                                  size: 25,
-                                ),
-                                border: InputBorder.none,
-                                hintText: "Search".tr,
-                                hintStyle: TextStyle(
-                                    fontFamily: mainFontnormal,
-                                    color: mainColorGrey.withOpacity(0.45),
-                                    fontSize: 14),
+                          child: TextField(
+                            controller: searchCon,
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: mainColorGrey,
+                                fontFamily: mainFontbold),
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              productPro.setsearch(searchCon.text);
+                            },
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Ionicons.search_outline,
+                                color: mainColorGrey.withOpacity(0.45),
+                                size: 25,
                               ),
+                              border: InputBorder.none,
+                              hintText: "Search".tr,
+                              hintStyle: TextStyle(
+                                  fontFamily: mainFontnormal,
+                                  color: mainColorGrey.withOpacity(0.45),
+                                  fontSize: 14),
                             ),
                           ),
                         ),
                         productPro.searchproduct.isNotEmpty
-                            ? SizedBox(width: getWidth(context, 4))
+                            ? SizedBox(width: getWidth(context, 8))
                             : const SizedBox(),
                         productPro.searchproduct.isNotEmpty
                             ? SizedBox(
