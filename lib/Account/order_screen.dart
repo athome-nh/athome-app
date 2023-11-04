@@ -79,7 +79,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 width: getWidth(context, 90),
-                                height: getHeight(context, 13),
+                                height: getHeight(context, 15),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(7),
                                 ),
@@ -104,7 +104,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                               ),
                                               child: order.status! < 5
                                                   ? Image.asset(
-                                                      "assets/images/123.gif")
+                                                      "assets/images/123.png")
                                                   : Icon(
                                                       order.status! == 5
                                                           ? Icons.check
@@ -144,37 +144,28 @@ class _OrderScreenState extends State<OrderScreen> {
                                               color: mainColorGrey),
                                         ),
                                       ),
+
+
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
+
+                                          
                                           order.status! <= 4
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : GestureDetector(
                                                   onTap: () {
-                                                    productrovider
-                                                        .getordersbyOrderCode(
-                                                            order.orderCode!)
+                                                    productrovider.getordersbyOrderCode(order.orderCode!)
                                                         .forEach((element) {
-                                                      final existingItemIndex =
-                                                          productrovider
-                                                              .products
-                                                              .indexWhere(
-                                                        (pro) =>
-                                                            pro.id ==
-                                                            element.productId,
-                                                      );
-                                                      if (existingItemIndex !=
-                                                          -1) {
-                                                        final cartItem =
-                                                            CartItemPast(
-                                                          product: element
-                                                              .productId!,
+                                                      final existingItemIndex = productrovider.products.indexWhere(
+                                                        (pro) => pro.id == element.productId,);
+                                                      if (existingItemIndex != -1) {
+                                                        final cartItem =CartItemPast(
+                                                          product: element.productId!,
                                                           quantity: element.qt!,
                                                         );
-                                                        cartProvider
-                                                            .addToCartPast(
-                                                                cartItem);
+                                                        cartProvider.addToCartPast(cartItem);
                                                       } else {}
                                                     });
                                                     Navigator.push(
@@ -187,23 +178,34 @@ class _OrderScreenState extends State<OrderScreen> {
                                                           .clearCartPast();
                                                     });
                                                   },
-                                                  child: Padding(
+
+                                                  child: Container(
                                                     padding: EdgeInsets.only(
-                                                        left: getWidth(
-                                                            context, 5),
-                                                        right: getWidth(
-                                                            context, 5),
-                                                        top: getWidth(
-                                                            context, 1)),
-                                                    child: Text(
-                                                      "Re Order".tr,
-                                                      style: TextStyle(
-                                                          color: mainColorRed,
-                                                          fontFamily:
-                                                              mainFontnormal),
+                                                      top: getWidth(context, 2),
+                                                      left: getWidth(context, 2),
+                                                      right: getWidth(context, 2),
+                                                      bottom: getWidth(context, 1),
+                                                    ),
+                                                    width:getWidth(context, 24),
+                                                    height:getWidth(context, 8),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:BorderRadius.circular(5),
+                                                        color: mainColorRed,
+                                                      ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Re Order".tr,
+                                                        style: TextStyle(
+                                                            fontFamily:mainFontbold,
+                                                            fontSize: 14,
+                                                            color:mainColorWhite,
+                                                            ),
+                                                      ),
                                                     ),
                                                   ),
+
                                                 ),
+
                                           GestureDetector(
                                             onTap: () {
                                               if (order.status! < 5) {
@@ -239,18 +241,34 @@ class _OrderScreenState extends State<OrderScreen> {
                                                 );
                                               }
                                             },
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: getWidth(context, 5),
-                                                  right: getWidth(context, 5),
-                                                  top: getWidth(context, 1)),
-                                              child: Text(
+
+
+                                            child: Container(
+                                                    padding: EdgeInsets.only(
+                                                      top: getWidth(context, 2),
+                                                      left: getWidth(context, 2),
+                                                      right: getWidth(context, 2),
+                                                      bottom: getWidth(context, 1),
+                                                    ),
+                                                    width:getWidth(context, 24),
+                                                    height:getWidth(context, 8),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:BorderRadius.circular(5),
+                                                        color: mainColorRed,
+                                                      ),
+                                                    child: Center(
+                                                      child: Text(
                                                 "View Order".tr,
                                                 style: TextStyle(
-                                                    color: mainColorRed,
-                                                    fontFamily: mainFontnormal),
+                                                            fontFamily:mainFontbold,
+                                                            fontSize: 14,
+                                                            color:mainColorWhite,
+                                                            ),
                                               ),
                                             ),
+                                           ),
+
+                                            
                                           )
                                         ],
                                       ),
