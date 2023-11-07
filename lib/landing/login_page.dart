@@ -136,13 +136,14 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             formatInput: false,
                             validator: (userInput) {
                               if (userInput!.isEmpty) {
-                                return 'Please enter your phone number';
+                                return 'Please enter your phone number'.tr;
                               }
                               if (userInput.length < 10) {
-                                return 'Please enter your phone number correct';
+                                return 'Please enter your phone number correct'
+                                    .tr;
                               }
                               if (userInput.toString().startsWith("0")) {
-                                return 'Please remove 0 form start';
+                                return 'Please remove 0 form start'.tr;
                               }
                               if (userInput.length == 10) {}
                               return null; // Return null when the input is valid
@@ -155,7 +156,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               contentPadding:
                                   const EdgeInsets.only(bottom: 15, left: 0),
                               border: InputBorder.none,
-                              hintText: 'Phone Number',
+                              hintText: 'Phone Number'.tr,
                               hintStyle:
                                   TextStyle(color: mainColorGrey, fontSize: 16),
                             ),
@@ -187,15 +188,15 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           return;
                         }
                         if (controller.text.isEmpty) {
-                          toastLong('Please enter your phone number');
+                          toastLong('Please enter your phone number'.tr);
                           return;
                         }
                         if (controller.text.startsWith("0")) {
-                          toastLong('Please remove 0 form start');
+                          toastLong('Please remove 0 form start'.tr);
                           return;
                         }
                         if (controller.text.length < 10) {
-                          toastLong('Please enter your phone number');
+                          toastLong('Please enter your phone number'.tr);
                           return;
                         }
 
@@ -213,7 +214,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 30),
                       child: Text(
-                        "Get Start",
+                        "Get Start".tr,
                         style: TextStyle(
                           color: mainColorWhite,
                           fontFamily: mainFontbold,
@@ -229,7 +230,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        "We will send you OTP code to verifiy your phone number.",
+                        "We will send you OTP code to verifiy your phone number."
+                            .tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,

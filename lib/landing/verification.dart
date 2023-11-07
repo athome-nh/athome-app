@@ -13,6 +13,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../home/nav_switch.dart';
 import 'singin_up.dart';
@@ -44,7 +45,7 @@ class _VerificatoinState extends State<Verificatoin> {
 
   @override
   void dispose() {
-    //_codeTimer.cancel();
+    _codeTimer.cancel();
     super.dispose();
   }
 
@@ -103,7 +104,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       delay: const Duration(milliseconds: 500),
                       duration: const Duration(milliseconds: 500),
                       child: Text(
-                        "Please enter the 6 digit code sent to \n ${widget.phone_number}",
+                        "${"Please enter the 6 digit code sent to".tr}\n${widget.phone_number}",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 16,
@@ -149,7 +150,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Don't resive the OTP?",
+                            "Don't resive the OTP ?".tr,
                             style: TextStyle(
                                 fontSize: 14, color: Colors.grey.shade500),
                           ),
@@ -164,8 +165,9 @@ class _VerificatoinState extends State<Verificatoin> {
                               },
                               child: Text(
                                 timecode != 0
-                                    ? "Try again in ${formatedTime(timeInSecond: timecode)}"
-                                    : "Resend",
+                                    ? "Try again in".tr +
+                                        formatedTime(timeInSecond: timecode)
+                                    : "Resend".tr,
                                 style: TextStyle(
                                     color: mainColorRed,
                                     fontFamily: mainFontbold),
@@ -207,7 +209,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                 ),
                               )
                             : Text(
-                                "Verify",
+                                "Verify".tr,
                                 style: TextStyle(
                                     color: mainColorWhite,
                                     fontSize: 14,
@@ -252,6 +254,7 @@ class _VerificatoinState extends State<Verificatoin> {
             if (value != "") {
               if (value["code"] == "200") {
                 if (value["data"]["isActive"] == 1) {
+                  _codeTimer.cancel();
                   setState(() {
                     _isLoading = false;
                     _isVerified = true;
@@ -278,11 +281,11 @@ class _VerificatoinState extends State<Verificatoin> {
                           animType: AnimType.scale,
                           dialogType: DialogType.warning,
                           showCloseIcon: true,
-                          title: "Account Disabled",
-                          desc:
-                              "Account is disable please contact athome admin ",
+                          title: "Account Disabled".tr,
+                          desc: "Account is disable please contact athome admin"
+                              .tr,
                           btnOkColor: mainColorRed,
-                          btnOkText: "Ok",
+                          btnOkText: "Ok".tr,
                           btnOkOnPress: () {
                             Navigator.push(
                               context,
@@ -306,14 +309,14 @@ class _VerificatoinState extends State<Verificatoin> {
                             widget.phone_number, _auth.currentUser!.uid)));
               }
             } else {
-              toastShort("unknown occurred error please try again later");
+              toastShort("unknown occurred error please try again later".tr);
               setState(() {
                 _isLoading = false;
               });
             }
           });
         } catch (e) {
-          toastLong("the code is un correct");
+          toastLong("the code is un correct".tr);
 
           setState(() {
             _isLoading = false;
@@ -351,6 +354,7 @@ class _VerificatoinState extends State<Verificatoin> {
         if (value != "") {
           if (value["code"] == "200") {
             if (value["data"]["isActive"] == 1) {
+              _codeTimer.cancel();
               setState(() {
                 _isLoading = false;
                 _isVerified = true;
@@ -377,10 +381,10 @@ class _VerificatoinState extends State<Verificatoin> {
                       animType: AnimType.scale,
                       dialogType: DialogType.warning,
                       showCloseIcon: true,
-                      title: "Account Disabled",
-                      desc: "Account is disable please contact athome admin ",
+                      title: "Account Disabled".tr,
+                      desc: "Account is disable please contact athome admin".tr,
                       btnOkColor: mainColorRed,
-                      btnOkText: "Ok",
+                      btnOkText: "Ok".tr,
                       btnOkOnPress: () {
                         Navigator.push(
                           context,
@@ -411,7 +415,7 @@ class _VerificatoinState extends State<Verificatoin> {
         }
       });
     } catch (e) {
-      toastLong("the code is un correct");
+      toastLong("the code is un correct".tr);
       setState(() {
         _isLoading = false;
         _isVerified = false;

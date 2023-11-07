@@ -1,7 +1,8 @@
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/map/mapScreen.dart';
+import 'package:athome/map/map_screen.dart';
 import 'package:athome/map/maps.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
@@ -43,7 +43,7 @@ class _MyCartState extends State<MyCart> {
 
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListId());
-    int total = cartProvider.calculateTotalPrice(CardItemshow);
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -66,11 +66,11 @@ class _MyCartState extends State<MyCart> {
                             animType: AnimType.scale,
                             dialogType: DialogType.question,
                             showCloseIcon: true,
-                            title: 'Clear My cart',
-                            desc: "You want delete all items in cart",
+                            title: "Clear My cart".tr,
+                            desc: "You want delete all items in cart".tr,
                             btnOkColor: mainColorRed,
                             btnCancelOnPress: () {},
-                            btnOkText: "Delete",
+                            btnOkText: "Delete".tr,
                             btnOkOnPress: () {
                               cartProvider.clearCart();
 
@@ -147,8 +147,9 @@ class _MyCartState extends State<MyCart> {
                                               ),
                                               child: Center(
                                                 child: CachedNetworkImage(
-                                                  imageUrl: cartitem.coverImg
-                                                      .toString(),
+                                                  imageUrl: imageUrlServer +
+                                                      cartitem.coverImg
+                                                          .toString(),
                                                   width: getWidth(context, 20),
                                                   height:
                                                       getHeight(context, 10),
@@ -276,7 +277,8 @@ class _MyCartState extends State<MyCart> {
                                                                               .id
                                                                               .toString()))) {
                                                         toastLong(
-                                                            "you can not add more this item");
+                                                            "you can not add more this item"
+                                                                .tr);
                                                         return;
                                                       }
                                                       final cartItem = CartItem(
@@ -397,7 +399,8 @@ class _MyCartState extends State<MyCart> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  addCommasToPrice(total),
+                                  addCommasToPrice(cartProvider
+                                      .calculateTotalPrice(CardItemshow)),
                                   style: TextStyle(
                                       color: mainColorWhite,
                                       fontFamily: mainFontbold,
@@ -424,7 +427,7 @@ class _MyCartState extends State<MyCart> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  "Free Delivery",
+                                  "Free Delivery".tr,
                                   style: TextStyle(
                                       color: mainColorWhite,
                                       fontFamily: mainFontbold,
@@ -459,7 +462,8 @@ class _MyCartState extends State<MyCart> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  addCommasToPrice(total),
+                                  addCommasToPrice(cartProvider
+                                      .calculateTotalPrice(CardItemshow)),
                                   style: TextStyle(
                                       color: mainColorRed,
                                       fontFamily: mainFontbold,
@@ -513,7 +517,7 @@ class _MyCartState extends State<MyCart> {
                                             ),
                                             child: Center(
                                               child: Text(
-                                                "Select Location",
+                                                "Select Location".tr,
                                                 style: TextStyle(
                                                   color: mainColorWhite,
                                                   fontSize: 20,
@@ -589,7 +593,7 @@ class _MyCartState extends State<MyCart> {
                                                                           mainFontnormal),
                                                                 ),
                                                                 trailing: Text(
-                                                                  "Select",
+                                                                  "Select".tr,
                                                                   style: TextStyle(
                                                                       color:
                                                                           mainColorRed,
@@ -603,7 +607,8 @@ class _MyCartState extends State<MyCart> {
                                                       })
                                                   : Center(
                                                       child: Text(
-                                                      "Not have any location",
+                                                      "Not have any location"
+                                                          .tr,
                                                       style: TextStyle(
                                                         color: mainColorGrey,
                                                         fontSize: 20,
@@ -686,7 +691,7 @@ class _MyCartState extends State<MyCart> {
                       child: Image.asset("assets/images/gif_favorite.gif"),
                     ),
                     Text(
-                      "Your cart is empty",
+                      "Your cart is empty".tr,
                       style:
                           TextStyle(fontFamily: mainFontnormal, fontSize: 16),
                     ),

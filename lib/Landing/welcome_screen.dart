@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:athome/Config/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import '../Config/property.dart';
 import '../home/nav_switch.dart';
-import '../Config/local_data.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -76,7 +75,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                           style: TextButton.styleFrom(
                               foregroundColor: mainColorRed),
                           child: Text(
-                            "Get Start",
+                            "Get Start".tr,
                             style: TextStyle(
                               fontFamily: mainFontbold,
                               fontSize: getWidth(context, 4),
@@ -95,7 +94,9 @@ class WelcomeScreenState extends State<WelcomeScreen>
                             // skip button
                             TextButton(
                               onPressed: () {
-                                setBoolPrefs("onbord", true);
+                                Map<String, dynamic> myMap = {};
+                                myMap["onbord"] = true;
+                                setStringPrefs("data", json.encode(myMap));
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -107,7 +108,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 foregroundColor: mainColorWhite,
                               ),
                               child: Text(
-                                'SKIP',
+                                'SKIP'.tr,
                                 style: TextStyle(
                                   fontFamily: mainFontbold,
                                   fontSize: getHeight(context, 2),
@@ -194,7 +195,9 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   child: Row(
                                     children: [
                                       Text(
-                                        currentIndex == 2 ? 'FINISH' : 'Next',
+                                        currentIndex == 2
+                                            ? 'FINISH'.tr
+                                            : 'Next'.tr,
                                         style: TextStyle(
                                           fontFamily: mainFontbold,
                                           fontSize: getHeight(context, 2),
@@ -257,7 +260,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               Text(
-                "Shop Smarter & Easier",
+                "Shop Smarter & Easier".tr,
                 style: TextStyle(
                   fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
@@ -273,7 +276,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "is an innovative platform designed to enhance your online shopping experience.",
+                  "is an innovative platform designed to enhance your online shopping experience."
+                      .tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
@@ -328,7 +332,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               Text(
-                "Learn From the Best",
+                "Learn From the Best".tr,
                 style: TextStyle(
                   fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
@@ -344,7 +348,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+                  "We will guide you with the best tutors and experts in Kurdistan/Iraq"
+                      .tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
@@ -397,7 +402,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               Text(
-                "Your Pocket's Friend",
+                "Your Pocket's Friend".tr,
                 style: TextStyle(
                   fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
@@ -413,7 +418,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "Learn whatever you want, whenever or wherever you are.",
+                  "Learn whatever you want, whenever or wherever you are.".tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),

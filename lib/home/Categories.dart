@@ -1,15 +1,16 @@
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/home/item_categories.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Home/itemCategories.dart';
-import 'package:provider/provider.dart';
 
+import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import 'nav_switch.dart';
 
@@ -127,7 +128,8 @@ class _CategoriesState extends State<Categories> {
                                               BorderRadius.circular(100)),
                                       child: Center(
                                         child: CachedNetworkImage(
-                                          imageUrl: cateItem.img!,
+                                          imageUrl:
+                                              imageUrlServer + cateItem.img!,
                                           placeholder: (context, url) =>
                                               Image.asset(
                                                   "assets/images/002_logo_1.png"),
@@ -143,7 +145,6 @@ class _CategoriesState extends State<Categories> {
                                 ),
                                 Text(
                                   lang == "en"
-                                      // Todo: (Bawar) text count by getwidth
                                       ? textCount(cateItem.nameEn!,
                                           getWidth(context, 4.3).toInt())
                                       //cateItem.nameEn!
@@ -181,7 +182,7 @@ class _CategoriesState extends State<Categories> {
                                     "assets/images/gif_favorite.gif"),
                               ),
                               Text(
-                                "No have any favorite",
+                                "No have any favorite".tr,
                                 style: TextStyle(
                                     fontFamily: mainFontnormal, fontSize: 16),
                               ),

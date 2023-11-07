@@ -1,9 +1,10 @@
 import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Config/value.dart';
+
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/MyCart.dart';
+import 'package:athome/home/my_cart.dart';
 import 'package:athome/landing/login_page.dart';
-import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:athome/model/products_image/products_image.dart';
@@ -12,7 +13,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
@@ -71,7 +71,7 @@ class _OneitemState extends State<Oneitem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Card(
                       elevation: 2,
                       shape: RoundedRectangleBorder(
@@ -95,8 +95,8 @@ class _OneitemState extends State<Oneitem> {
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: getWidth(context, 2)),
-                                  child: images.length > 0
-                                      ? Container(
+                                  child: images.isNotEmpty
+                                      ? SizedBox(
                                           width: getWidth(context, 100),
                                           height: getHeight(context, 25),
                                           child: ClipRRect(
@@ -109,7 +109,9 @@ class _OneitemState extends State<Oneitem> {
                                                       (BuildContext context) {
                                                     return ClipRRect(
                                                       child: CachedNetworkImage(
-                                                        imageUrl: imageUrl.img!,
+                                                        imageUrl:
+                                                            imageUrlServer +
+                                                                imageUrl.img!,
                                                         width: getWidth(
                                                             context, 100),
                                                         height: getHeight(
@@ -125,9 +127,9 @@ class _OneitemState extends State<Oneitem> {
                                                 viewportFraction: 1.0,
                                                 enlargeCenterPage: true,
                                                 autoPlayInterval:
-                                                    Duration(seconds: 2),
+                                                    const Duration(seconds: 2),
                                                 autoPlayAnimationDuration:
-                                                    Duration(
+                                                    const Duration(
                                                         milliseconds: 2000),
                                               ),
                                             ),
@@ -142,7 +144,8 @@ class _OneitemState extends State<Oneitem> {
                                                   BorderRadius.circular(100)),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl: Item.coverImg!,
+                                              imageUrl: imageUrlServer +
+                                                  Item.coverImg!,
                                               placeholder: (context, url) =>
                                                   Image.asset(
                                                       "assets/images/002_logo_1.png"),
@@ -169,12 +172,13 @@ class _OneitemState extends State<Oneitem> {
                                             animType: AnimType.scale,
                                             dialogType: DialogType.info,
                                             showCloseIcon: true,
-                                            title: 'Login Please',
+                                            title: 'Login Please'.tr,
                                             desc:
-                                                "You need login to add item in cart",
+                                                "You need login to add item in cart"
+                                                    .tr,
                                             btnOkColor: mainColorRed,
                                             btnCancelOnPress: () {},
-                                            btnOkText: "Login",
+                                            btnOkText: "Login".tr,
                                             btnOkOnPress: () {
                                               Navigator.push(
                                                 context,
@@ -254,7 +258,7 @@ class _OneitemState extends State<Oneitem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Description",
+                          "Description".tr,
                           style: TextStyle(
                               color: mainColorGrey,
                               fontFamily: mainFontbold,
@@ -286,7 +290,7 @@ class _OneitemState extends State<Oneitem> {
               child: Container(
                 width: getWidth(context, 100),
                 decoration: BoxDecoration(
-                    color: Color(0xffF2F2F2),
+                    color: const Color(0xffF2F2F2),
                     borderRadius: BorderRadius.circular(10)),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -296,18 +300,12 @@ class _OneitemState extends State<Oneitem> {
                         : MainAxisAlignment.center,
                     children: [
                       isItemInCart
-                          ? SizedBox()
+                          ? const SizedBox()
                           : TextButton(
                               onPressed: () {
                                 final cartItem = CartItem(product: Item.id!);
                                 cartProvider.addToCart(cartItem);
                               },
-                              child: Text("Add To Cart".tr,
-                                  style: TextStyle(
-                                    color: mainColorWhite,
-                                    fontSize: 16,
-                                    fontFamily: mainFontnormal,
-                                  )),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColorRed,
                                 fixedSize: Size(getWidth(context, 40),
@@ -318,6 +316,12 @@ class _OneitemState extends State<Oneitem> {
                                       color: mainColorRed, width: 1.0),
                                 ),
                               ),
+                              child: Text("Add To Cart".tr,
+                                  style: TextStyle(
+                                    color: mainColorWhite,
+                                    fontSize: 16,
+                                    fontFamily: mainFontnormal,
+                                  )),
                             ),
                       isItemInCart
                           ? TextButton(
@@ -325,15 +329,9 @@ class _OneitemState extends State<Oneitem> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MyCart()),
+                                      builder: (context) => const MyCart()),
                                 );
                               },
-                              child: Text("My Cart".tr,
-                                  style: TextStyle(
-                                    color: mainColorWhite,
-                                    fontSize: 16,
-                                    fontFamily: mainFontnormal,
-                                  )),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColorRed,
                                 fixedSize: Size(getWidth(context, 30),
@@ -344,9 +342,15 @@ class _OneitemState extends State<Oneitem> {
                                       color: mainColorRed, width: 1.0),
                                 ),
                               ),
+                              child: Text("My Cart".tr,
+                                  style: TextStyle(
+                                    color: mainColorWhite,
+                                    fontSize: 16,
+                                    fontFamily: mainFontnormal,
+                                  )),
                             )
-                          : SizedBox(),
-                      isItemInCart ? Spacer() : SizedBox(),
+                          : const SizedBox(),
+                      isItemInCart ? const Spacer() : const SizedBox(),
                       isItemInCart
                           ? Container(
                               width: getWidth(context, 30),
@@ -368,7 +372,8 @@ class _OneitemState extends State<Oneitem> {
                                                       int.parse(Item.id
                                                           .toString()))) {
                                         toastLong(
-                                            "you can not add more this item");
+                                            "you can not add more this item"
+                                                .tr);
                                         return;
                                       }
                                       if (Item.offerPrice! > -1 &&
@@ -378,7 +383,8 @@ class _OneitemState extends State<Oneitem> {
                                                       int.parse(Item.id
                                                           .toString()))) {
                                         toastLong(
-                                            "you can not add more this item");
+                                            "you can not add more this item"
+                                                .tr);
                                         return;
                                       }
                                       final cartItem =
@@ -438,7 +444,7 @@ class _OneitemState extends State<Oneitem> {
                                 ],
                               ),
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                     ],
                   ),
                 ),

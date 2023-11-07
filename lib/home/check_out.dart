@@ -14,7 +14,6 @@ import '../main.dart';
 import 'nav_switch.dart';
 import 'track_order.dart';
 
-// ignore: must_be_immutable
 class CheckOut extends StatefulWidget {
   int id = 0;
   CheckOut({super.key, required this.id});
@@ -48,7 +47,7 @@ class _CheckOutState extends State<CheckOut> {
         backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
-            "Checkout",
+            "Checkout".tr,
             style: TextStyle(
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
@@ -102,7 +101,9 @@ class _CheckOutState extends State<CheckOut> {
                                 children: [
                                   Text(
                                     textAlign: TextAlign.end,
-                                    "${location.type!} Number ${location.number}",
+                                    location.type.toString() +
+                                        "Number".tr +
+                                        location.number.toString(),
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontbold,
@@ -111,7 +112,7 @@ class _CheckOutState extends State<CheckOut> {
                                   const SizedBox(height: 5),
                                   Text(
                                     textAlign: TextAlign.end,
-                                    location.area!,
+                                    location.area.toString(),
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontFamily: mainFontbold,
@@ -119,16 +120,6 @@ class _CheckOutState extends State<CheckOut> {
                                   ),
                                 ],
                               ),
-                              // TextButton(
-                              //   onPressed: () {},
-                              //   child: Text(
-                              //     "Change".tr,
-                              //     style: TextStyle(
-                              //         color: mainColorRed,
-                              //         fontFamily: mainFontbold,
-                              //         fontSize: 14),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ],
@@ -202,7 +193,7 @@ class _CheckOutState extends State<CheckOut> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              toastShort("Coming soon");
+                              toastShort("Coming soon".tr);
                             },
                             child: Container(
                               height: getHeight(context, 5),
@@ -233,7 +224,7 @@ class _CheckOutState extends State<CheckOut> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              toastShort("Coming soon");
+                              toastShort("Coming soon".tr);
                             },
                             child: Container(
                               height: getHeight(context, 5),
@@ -282,7 +273,6 @@ class _CheckOutState extends State<CheckOut> {
                           top: getHeight(context, 4)),
                       child: Column(
                         children: [
-// Todo: (jegr) / aw textfielda pash nosini text w done dagrtn la keyboard textaka nayetaa now textfieldaka
                           TextFormField(
                             maxLines: 4,
                             controller: NoteController,
@@ -309,12 +299,12 @@ class _CheckOutState extends State<CheckOut> {
                                   width: 1.0, // Customize border width
                                 ),
                               ),
-                              labelText: "Note",
+                              labelText: "Note".tr,
                               labelStyle: TextStyle(
                                   color: mainColorGrey.withOpacity(0.8),
                                   fontSize: 24,
                                   fontFamily: mainFontbold),
-                              hintText: "Add your note",
+                              hintText: "Add your note".tr,
 
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
@@ -346,7 +336,7 @@ class _CheckOutState extends State<CheckOut> {
                               children: [
                                 Text(
                                   textAlign: TextAlign.start,
-                                  "Total",
+                                  "Total".tr,
                                   style: TextStyle(
                                       color: mainColorWhite,
                                       fontFamily: mainFontbold,
@@ -481,7 +471,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                       .center,
                                                               children: [
                                                                 Text(
-                                                                  "Order Number: "
+                                                                  "Order Number:"
                                                                       .tr,
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -669,7 +659,7 @@ class _CheckOutState extends State<CheckOut> {
                                 ),
                               ),
                               child: Text(
-                                "Send Order",
+                                "Send Order".tr,
                                 style: TextStyle(
                                   color: mainColorWhite,
                                   fontSize: 18,
@@ -724,7 +714,8 @@ class _CheckOutState extends State<CheckOut> {
                           children: [
                             const SizedBox(),
                             Text(
-                              "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin ",
+                              "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin"
+                                  .tr,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 color: mainColorWhite.withOpacity(0.7),

@@ -4,16 +4,14 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:geocoding/geocoding.dart';
+
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
-  GeocodingPlatform.instance;
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -26,6 +24,7 @@ Future<void> main() async {
 String lang = "";
 String token = "";
 bool isLogin = false;
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class AtHomeApp extends StatefulWidget {
   const AtHomeApp({super.key});
@@ -65,6 +64,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
+        navigatorKey: navigatorKey,
         //const Setting(),
       ),
     );

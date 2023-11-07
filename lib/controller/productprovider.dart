@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:athome/Config/athome_functions.dart';
-import 'package:athome/Config/local_data.dart';
 import 'package:athome/Network/Network.dart';
-
+import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/brandmodel/brandmodel.dart';
@@ -17,6 +15,7 @@ import 'package:athome/model/products_image/products_image.dart';
 import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:athome/model/topmodel/topmodel.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -27,40 +26,40 @@ class productProvider extends ChangeNotifier {
     //  updatePost();
   }
 
-  loadPostData() async {
-    final directory = await getTemporaryDirectory();
-    String path = "${directory.path}/dict.json";
-    File f = File(path);
+  // loadPostData() async {
+  //   final directory = await getTemporaryDirectory();
+  //   String path = "${directory.path}/dict.json";
+  //   File f = File(path);
 
-    if (f.existsSync()) {
-      final jsonData = f.readAsStringSync();
-      var data = json.decode(decryptAES(jsonData));
-      setProducts((data['products'] as List)
-          .map((x) => ProductModel.fromMap(x))
-          .toList());
-      setCategorys((data['category'] as List)
-          .map((x) => CategoryModel.fromMap(x))
-          .toList());
-      setsubCategorys((data['subCategory'] as List)
-          .map((x) => SubCategory.fromMap(x))
-          .toList());
-      setproductimages((data['productsImage'] as List)
-          .map((x) => ProductsImage.fromMap(x))
-          .toList());
-      setOrders(
-          (data['orders'] as List).map((x) => OrderModel.fromMap(x)).toList());
-      setOrderItems((data['orders_item'] as List)
-          .map((x) => OrderItems.fromMap(x))
-          .toList());
-      setlocation((data['locations'] as List)
-          .map((x) => Locationuser.fromMap(x))
-          .toList());
-      return data;
-    } else {
-      var d = [];
-      return d;
-    }
-  }
+  //   if (f.existsSync()) {
+  //     final jsonData = f.readAsStringSync();
+  //     var data = json.decode(decryptAES(jsonData));
+  //     setProducts((data['products'] as List)
+  //         .map((x) => ProductModel.fromMap(x))
+  //         .toList());
+  //     setCategorys((data['category'] as List)
+  //         .map((x) => CategoryModel.fromMap(x))
+  //         .toList());
+  //     setsubCategorys((data['subCategory'] as List)
+  //         .map((x) => SubCategory.fromMap(x))
+  //         .toList());
+  //     setproductimages((data['productsImage'] as List)
+  //         .map((x) => ProductsImage.fromMap(x))
+  //         .toList());
+  //     setOrders(
+  //         (data['orders'] as List).map((x) => OrderModel.fromMap(x)).toList());
+  //     setOrderItems((data['orders_item'] as List)
+  //         .map((x) => OrderItems.fromMap(x))
+  //         .toList());
+  //     setlocation((data['locations'] as List)
+  //         .map((x) => Locationuser.fromMap(x))
+  //         .toList());
+  //     return data;
+  //   } else {
+  //     var d = [];
+  //     return d;
+  //   }
+  // }
 
   getDataAll(bool user) {
     print("Start");
@@ -91,6 +90,7 @@ class productProvider extends ChangeNotifier {
           if (user) {
             getDataUser(userdata["id"].toString());
           }
+
           setshow(true);
           print("end");
         } else {}
@@ -112,6 +112,7 @@ class productProvider extends ChangeNotifier {
           setOrderItems((value['orders_item'] as List)
               .map((x) => OrderItems.fromMap(x))
               .toList());
+
           setshow(true);
           print("end");
         } else {}
@@ -176,7 +177,7 @@ class productProvider extends ChangeNotifier {
   // }
 
   // List to store your products
-  // var userdata = {};
+
   List<Topmodel> _tops = [];
   List<Slidemodel> _slides = [];
   List<Brandmodel> _brands = [];
@@ -194,6 +195,7 @@ class productProvider extends ChangeNotifier {
   int _idItem = 0;
   int _subcateSelect = 0;
   bool show = false;
+  bool nointernetCheck = false;
   // Getter to access the list of products
   List<Topmodel> get tops => _tops;
 
@@ -514,6 +516,11 @@ class productProvider extends ChangeNotifier {
   void setshow(bool value) {
     show = value;
 
+    notifyListeners();
+  }
+
+  void setnointernetcheck(bool value) {
+    nointernetCheck = value;
     notifyListeners();
   }
 }

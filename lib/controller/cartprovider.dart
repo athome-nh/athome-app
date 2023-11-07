@@ -3,10 +3,12 @@ import 'package:athome/Config/local_data.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
+
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartProvider extends ChangeNotifier {
   CartProvider() {
