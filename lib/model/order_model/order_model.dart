@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 
 class OrderModel {
   final int? id;
-  final String? orderCode;
+  //final String? orderCode;
   final int? customerId;
   final int? locationId;
   final int? pickerId;
@@ -23,7 +23,7 @@ class OrderModel {
 
   OrderModel({
     this.id,
-    this.orderCode,
+    //this.orderCode,
     this.customerId,
     this.locationId,
     this.pickerId,
@@ -43,12 +43,12 @@ class OrderModel {
 
   @override
   String toString() {
-    return 'OrderModel(id: $id, orderCode: $orderCode, customerId: $customerId, locationId: $locationId, pickerId: $pickerId, supervisorId: $supervisorId, supervisorPriceId: $supervisorPriceId, driverId: $driverId, adminPriceId: $adminPriceId, adminId: $adminId, totalPrice: $totalPrice, returnTotalPrice: $returnTotalPrice, isCorrect: $isCorrect, returnNote: $returnNote, note: $note, status: $status)';
+    return 'OrderModel(id: $id, orderCode: orderCode, customerId: $customerId, locationId: $locationId, pickerId: $pickerId, supervisorId: $supervisorId, supervisorPriceId: $supervisorPriceId, driverId: $driverId, adminPriceId: $adminPriceId, adminId: $adminId, totalPrice: $totalPrice, returnTotalPrice: $returnTotalPrice, isCorrect: $isCorrect, returnNote: $returnNote, note: $note, status: $status)';
   }
 
   factory OrderModel.fromMap(Map<String, dynamic> data) => OrderModel(
         id: data['id'] as int?,
-        orderCode: data['order_code'] as String?,
+        //orderCode: data['order_code'] as String?,
         customerId: data['customerId'] as int?,
         locationId: data['location_id'] as int?,
         pickerId: data['picker_id'] as int?,
@@ -70,7 +70,7 @@ class OrderModel {
 
   Map<String, dynamic> toMap() => {
         'id': id,
-        'order_code': orderCode,
+        //   'order_code': orderCode,
         'customerId': customerId,
         'location_id': locationId,
         'picker_id': pickerId,
@@ -121,7 +121,7 @@ class OrderModel {
   }) {
     return OrderModel(
       id: id ?? this.id,
-      orderCode: orderCode ?? this.orderCode,
+      //orderCode: orderCode ?? this.orderCode,
       customerId: customerId ?? this.customerId,
       locationId: locationId ?? this.locationId,
       pickerId: pickerId ?? this.pickerId,
@@ -151,7 +151,7 @@ class OrderModel {
   @override
   int get hashCode =>
       id.hashCode ^
-      orderCode.hashCode ^
+      //  orderCode.hashCode ^
       customerId.hashCode ^
       locationId.hashCode ^
       pickerId.hashCode ^

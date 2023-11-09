@@ -1,8 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Network/Network.dart';
-import 'package:athome/controller/cartprovider.dart';
+
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/brandmodel/brandmodel.dart';
@@ -15,10 +12,8 @@ import 'package:athome/model/products_image/products_image.dart';
 import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:athome/model/topmodel/topmodel.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 class productProvider extends ChangeNotifier {
   productProvider() {
@@ -136,6 +131,17 @@ class productProvider extends ChangeNotifier {
     }
   }
 
+  updateUser() async {
+    if (isLogin) {
+      Network(false).getDatauser("userInfo", token).then((valueuser) {
+        if (valueuser != "") {
+          if (valueuser["code"] == "201") {
+            userdata = valueuser["data"][0];
+          }
+        }
+      });
+    }
+  }
   // getPost() async {
   //   print("object");
   //   String ordeid = userData["id"].toString();
@@ -188,7 +194,7 @@ class productProvider extends ChangeNotifier {
   List<OrderModel> _Orders = [];
   List<OrderItems> _Orderitems = [];
   List<Locationuser> _location = [];
-  late Locationuser _defultlocation;
+  int _defultlocation = 0;
   String _searchproduct = "";
   String _allitemType = "";
   int _cateType = 0;
@@ -214,10 +220,18 @@ class productProvider extends ChangeNotifier {
   int get cateType => _cateType;
   int get idItem => _idItem;
   int get subcateSelect => _subcateSelect;
+  int get defultlocation => _defultlocation;
 
   List<ProductModel> getProductsBySubCategory(int subcategory) {
     return _products
         .where((product) => product.subCategoryId == subcategory)
+        .toList();
+  }
+
+  List<ProductModel> getProductsBySubCategory2(int subcategory, int Pid) {
+    return _products
+        .where((product) =>
+            product.subCategoryId == subcategory && product.id != Pid)
         .toList();
   }
 
@@ -243,6 +257,10 @@ class productProvider extends ChangeNotifier {
     return _products
         .where((product) => product.bestSell == 1 && product.offerPrice == -1)
         .toList();
+  }
+
+  List<ProductModel> getProductsByBestsell2() {
+    return _products.where((product) => product.bestSell == 1).toList();
   }
 
   List<ProductModel> getProductsBySearch(String value) {
@@ -273,6 +291,10 @@ class productProvider extends ChangeNotifier {
         .toList();
   }
 
+  List<ProductModel> getProductsByHighlight2() {
+    return _products.where((product) => product.highlight == 1).toList();
+  }
+
   List<ProductModel> getProductsByIds(List<int> idsToRetrieve) {
     return _products
         .where((product) => idsToRetrieve.contains(product.id))
@@ -283,6 +305,14 @@ class productProvider extends ChangeNotifier {
     return _subCategores
         .where((subcate) => subcate.categoryId == idToRetrieve)
         .toList();
+  }
+
+  List<OrderModel> getOrderOngoing() {
+    return _Orders.where((subcate) => subcate.status! < 5).toList();
+  }
+
+  List<OrderModel> getOrderHistory() {
+    return _Orders.where((subcate) => subcate.status! >= 5).toList();
   }
 
   String getCategoryNameById(int categoryId) {
@@ -321,9 +351,9 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
-  List<OrderItems> getordersbyOrderCode(String order_code) {
+  List<OrderItems> getordersbyOrderId(String order_id) {
     return _Orderitems.where(
-        (product) => order_code.contains(product.orderCode!)).toList();
+        (product) => order_id.contains(product.orderId.toString())).toList();
   }
 
   void updateOrder(int oid, int status) {
@@ -349,23 +379,11 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
-  OrderModel getorderOnebyOrderCode(String order_code) {
-    final OrderModel? item = _Orders.firstWhere(
-      (element) => element.orderCode == order_code,
-    );
-
-    if (item == null) {
-      throw Exception('Item with ID $_Orders not found');
-    }
-
-    return item;
-  }
-
-  int calculateTotalPriceOrder(String code) {
+  int calculateTotalPriceOrder(int id) {
     int totalPrice = 0;
     int i = 0;
     for (var order in _Orderitems) {
-      if (order.orderCode == code) {
+      if (order.id == id) {
         totalPrice += order.sellPrice! * order.qt!;
       }
       i++;
@@ -374,14 +392,14 @@ class productProvider extends ChangeNotifier {
     return totalPrice;
   }
 
-  List<String> listOrderCode() {
-    List<String> orderPakageCode = [];
+  List<int> listOrderId() {
+    List<int> orderPakageId = [];
 
     _Orders.forEach((element) {
-      orderPakageCode.add(element.orderCode!);
+      orderPakageId.add(element.id!);
     });
 
-    return orderPakageCode.toSet().toList();
+    return orderPakageId.toSet().toList();
   }
 
   List<int> listOrderProductIds() {
@@ -497,12 +515,8 @@ class productProvider extends ChangeNotifier {
   }
 
   void setdefultlocation(int id) {
-    if (id == -1) {
-      _defultlocation = _location[_location.length - 1];
-    } else {
-      _defultlocation = _location.firstWhere(
-        (element) => element.id == id,
-      );
+    if (id >= 0) {
+      _defultlocation = id;
     }
 
     notifyListeners();

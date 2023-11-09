@@ -81,7 +81,6 @@ class CartProvider extends ChangeNotifier {
 
   List<int> ListId() {
     List<int> cardIDs = [];
-
     cartItems.forEach((element) {
       cardIDs.add(element.product);
     });
@@ -244,7 +243,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
-  void removeFromCartPast(CartItem cartItem) {
+  void removeFromCartPast(CartItemPast cartItem) {
     // Check if the item already exists in the cart
     final existingItemIndex = cartItemsPast.indexWhere(
       (item) => item.product == cartItem.product,

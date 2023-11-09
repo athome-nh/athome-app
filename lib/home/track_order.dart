@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:athome/Account/old_order.dart';
+import 'package:athome/Order/old_order.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -11,11 +11,10 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class TrackOrder extends StatefulWidget {
-  String ordercode = "";
   String id = "";
   String total = "";
   String time = "";
-  TrackOrder(this.ordercode, this.id, this.total, this.time, {super.key});
+  TrackOrder(this.id, this.total, this.time, {super.key});
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
@@ -125,7 +124,7 @@ class _TrackOrderState extends State<TrackOrder> {
             children: [
               Column(
                 children: [
-                  Text("Order:".tr + widget.ordercode,
+                  Text("Order:".tr + widget.id,
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 28,
@@ -333,10 +332,11 @@ class _TrackOrderState extends State<TrackOrder> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => OldOrder(
-                                      widget.ordercode,
+                                   
                                       widget.id,
                                       widget.total,
-                                      widget.time)),
+                                      widget.time,
+                                      status)),
                             );
                           },
                           child: Text('View order',

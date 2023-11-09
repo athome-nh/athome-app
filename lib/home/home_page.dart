@@ -1,17 +1,14 @@
-import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/Home/all_item.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/item_categories.dart';
-import 'package:athome/landing/login_page.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Home/Categories.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -19,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'oneitem.dart';
 
 class HomeSreen extends StatefulWidget {
   const HomeSreen({super.key});
@@ -31,7 +27,6 @@ class HomeSreen extends StatefulWidget {
 class _HomeSreenState extends State<HomeSreen> {
   update(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: false);
-    print("object");
     productrovider.updatePost(false);
   }
 
@@ -105,19 +100,22 @@ class _HomeSreenState extends State<HomeSreen> {
       child: productrovider.nointernetCheck
           ? noInternetWidget(context)
           : Scaffold(
+              backgroundColor: mainColorWhite,
               body: SafeArea(
                 child: CustomScrollView(slivers: <Widget>[
                   SliverAppBar(
-                    title: Image.asset(
-                      "assets/images/logoB.png",
-                      width: getWidth(context, 30),
+                    title: Skeleton.keep(
+                      child: Image.asset(
+                        "assets/images/logoB.png",
+                        width: getWidth(context, 30),
+                      ),
                     ),
 
                     //
                     automaticallyImplyLeading: false,
                     backgroundColor: mainColorLightGrey,
                     expandedHeight: getHeight(
-                        context, 30), // Height of the app bar when expanded
+                        context, 25), // Height of the app bar when expanded
                     floating: false, // The app bar won't disappear on scroll
                     pinned: true, // The app bar remains pinned at the top
                     flexibleSpace: Visibility(
@@ -153,14 +151,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                           color: mainColorRed,
                                           borderRadius:
                                               BorderRadius.circular(5)),
-                                      child: TextButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            "Order now".tr,
-                                            style: TextStyle(
-                                                color: mainColorWhite,
-                                                fontSize: 14),
-                                          )),
+                                      child: Text(
+                                        "",
+                                        style: TextStyle(
+                                            color: mainColorRed, fontSize: 14),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -284,14 +279,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                           fontFamily: mainFontnormal,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: getWidth(context, 2),
-                                      ),
-                                      Icon(
-                                        Icons.arrow_forward_ios_outlined,
-                                        color: mainColorRed,
-                                        size: 14,
-                                      ),
+                                      // SizedBox(
+                                      //   width: getWidth(context, 2),
+                                      // ),
+                                      // Icon(
+                                      //   Icons.arrow_forward_ios_outlined,
+                                      //   color: mainColorRed,
+                                      //   size: 14,
+                                      // ),
                                     ],
                                   ),
                                 ),
@@ -303,6 +298,11 @@ class _HomeSreenState extends State<HomeSreen> {
                             child: Visibility(
                               visible: productrovider.show,
                               replacement: Skeletonizer(
+                                effect: ShimmerEffect.raw(colors: [
+                                  mainColorRed.withOpacity(0.1),
+                                  mainColorWhite,
+                                  mainColorGrey.withOpacity(0.1),
+                                ]),
                                 enabled: true,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
@@ -314,35 +314,41 @@ class _HomeSreenState extends State<HomeSreen> {
                                           horizontal: getWidth(context, 2)),
                                       child: Column(
                                         children: <Widget>[
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Card(
-                                              elevation: 3,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(
-                                                    100), // Adjust the corner radius
+                                          Container(
+                                            width: getHeight(context, 8),
+                                            height: getHeight(context, 8),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: mainColorBlack
+                                                        .withOpacity(0.1)),
+                                                // color: mainColorLightGrey,
+                                                borderRadius:
+                                                    BorderRadius.circular(100)),
+                                            child: Center(
+                                                child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              child: CachedNetworkImage(
+                                                imageUrl:
+                                                    "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                                placeholder: (context, url) =>
+                                                    Image.asset(
+                                                        "assets/images/002_logo_1.png"),
+                                                errorWidget: (context, url,
+                                                        error) =>
+                                                    Image.asset(
+                                                        "assets/images/002_logo_1.png"),
+                                                fit: BoxFit.fill,
+                                                width: getHeight(context, 5),
+                                                height: getHeight(context, 5),
                                               ),
-                                              child: Container(
-                                                width: getHeight(context, 8),
-                                                height: getHeight(context, 8),
-                                                decoration: BoxDecoration(
-                                                    color: mainColorLightGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100)),
-                                                child: Center(
-                                                    child: CircleAvatar(
-                                                  backgroundColor: mainColorGrey
-                                                      .withOpacity(0.05),
-                                                )),
-                                              ),
-                                            ),
+                                            )),
                                           ),
                                           SizedBox(
                                             height: getHeight(context, 1),
                                           ),
                                           Text(
-                                            "cateItem".tr,
+                                            "cateItem",
                                             style: TextStyle(
                                                 color: mainColorGrey,
                                                 fontFamily: mainFontnormal,
@@ -379,34 +385,29 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   .setsubcateSelect(0);
                                             });
                                           },
-                                          child: Card(
-                                            elevation: 3,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(
-                                                  100), // Adjust the corner radius
-                                            ),
-                                            child: Container(
-                                              width: getHeight(context, 8),
-                                              height: getHeight(context, 8),
-                                              decoration: BoxDecoration(
-                                                  color: mainColorLightGrey,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100)),
-                                              child: Center(
-                                                child: CachedNetworkImage(
-                                                  imageUrl: imageUrlServer +
-                                                      cateItem.img!,
-                                                  placeholder: (context, url) =>
-                                                      Image.asset(
-                                                          "assets/images/002_logo_1.png"),
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      Image.asset(
-                                                          "assets/images/002_logo_1.png"),
-                                                  width: getHeight(context, 5),
-                                                  height: getHeight(context, 5),
-                                                ),
+                                          child: Container(
+                                            width: getHeight(context, 8),
+                                            height: getHeight(context, 8),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: mainColorBlack
+                                                        .withOpacity(0.1)),
+                                                // color: mainColorLightGrey,
+                                                borderRadius:
+                                                    BorderRadius.circular(50)),
+                                            child: Center(
+                                              child: CachedNetworkImage(
+                                                imageUrl: imageUrlServer +
+                                                    cateItem.img!,
+                                                placeholder: (context, url) =>
+                                                    Image.asset(
+                                                        "assets/images/002_logo_1.png"),
+                                                errorWidget: (context, url,
+                                                        error) =>
+                                                    Image.asset(
+                                                        "assets/images/002_logo_1.png"),
+                                                width: getHeight(context, 5),
+                                                height: getHeight(context, 5),
                                               ),
                                             ),
                                           ),
@@ -420,10 +421,12 @@ class _HomeSreenState extends State<HomeSreen> {
                                               : lang == "ar"
                                                   ? cateItem.nameAr!
                                                   : cateItem.nameKu!,
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: mainColorGrey,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 14),
+                                              fontFamily: mainFontbold,
+                                              fontSize: 12),
                                         ),
                                       ],
                                     ),
@@ -476,543 +479,22 @@ class _HomeSreenState extends State<HomeSreen> {
                                                           mainFontnormal,
                                                     )),
                                               ),
-                                              Icon(
-                                                Icons
-                                                    .arrow_forward_ios_outlined,
-                                                color: mainColorRed,
-                                                size: 13,
-                                              )
+                                              // Icon(
+                                              //   Icons
+                                              //       .arrow_forward_ios_outlined,
+                                              //   color: mainColorRed,
+                                              //   size: 13,
+                                              // )
                                             ],
                                           ),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: getHeight(context, 28),
-                                      //  decoration: BoxDecoration(border: Border.all()),
-                                      child: Visibility(
-                                        visible: productrovider.show,
-                                        replacement: Skeletonizer(
-                                          enabled: true,
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount: 10,
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal:
-                                                        getWidth(context, 2)),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Stack(
-                                                      alignment: lang == "en"
-                                                          ? Alignment.bottomLeft
-                                                          : Alignment
-                                                              .bottomRight,
-                                                      children: [
-                                                        Stack(
-                                                          alignment:
-                                                              lang == "en"
-                                                                  ? Alignment
-                                                                      .topRight
-                                                                  : Alignment
-                                                                      .topLeft,
-                                                          children: [
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              const Oneitem()),
-                                                                );
-                                                              },
-                                                              child: Container(
-                                                                width: getWidth(
-                                                                    context,
-                                                                    32),
-                                                                height:
-                                                                    getHeight(
-                                                                        context,
-                                                                        14),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                        //  border: Border.all(color: mainColorRed),
-                                                                        color:
-                                                                            mainColorLightGrey,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(15)),
-                                                                child: Center(
-                                                                  child:
-                                                                      CachedNetworkImage(
-                                                                    imageUrl:
-                                                                        "assets/images/002_logo_1.png",
-                                                                    placeholder: (context,
-                                                                            url) =>
-                                                                        Image.asset(
-                                                                            "assets/images/002_logo_1.png"),
-                                                                    errorWidget: (context,
-                                                                            url,
-                                                                            error) =>
-                                                                        Image.asset(
-                                                                            "assets/images/002_logo_1.png"),
-                                                                    width: getHeight(
-                                                                        context,
-                                                                        13),
-                                                                    height: getHeight(
-                                                                        context,
-                                                                        13),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            GestureDetector(
-                                                              onTap: () {},
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        6.0),
-                                                                child: Container(
-                                                                    width: getWidth(
-                                                                        context,
-                                                                        8),
-                                                                    height: getWidth(
-                                                                        context,
-                                                                        8),
-                                                                    decoration: BoxDecoration(
-                                                                        borderRadius: BorderRadius.circular(
-                                                                            100),
-                                                                        border: Border.all(
-                                                                            color: mainColorGrey.withOpacity(
-                                                                                0.5)),
-                                                                        color:
-                                                                            mainColorGrey),
-                                                                    child: Icon(
-                                                                        Icons.add,
-                                                                        color: mainColorWhite,
-                                                                        size: getHeight(context, 1.5))),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      //decoration: BoxDecoration(border: Border.all()),
-                                                      width:
-                                                          getWidth(context, 32),
-                                                      height: getHeight(
-                                                          context, 13),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            lang == "en"
-                                                                ? "product"
-                                                                : lang == "ar"
-                                                                    ? "product"
-                                                                    : "product",
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 16),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            lang == "en"
-                                                                ? "product"
-                                                                : lang == "ar"
-                                                                    ? "product"
-                                                                    : "product",
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color: mainColorGrey
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 9),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            "product" " IQD",
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                decoration:
-                                                                    TextDecoration
-                                                                        .lineThrough,
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontnormal,
-                                                                fontSize: 11),
-                                                          ),
-                                                          Text(
-                                                            "product" " IQD",
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorRed,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 11),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        child: ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: productrovider
-                                              .getProductsByIds(productrovider
-                                                  .listOrderProductIds())
-                                              .length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            final product = productrovider
-                                                .getProductsByIds(productrovider
-                                                    .listOrderProductIds())[index];
-                                            final isItemInCart = cartProvider
-                                                .itemExistsInCart(product);
-                                            return Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      getWidth(context, 2)),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Stack(
-                                                    alignment: lang == "en"
-                                                        ? Alignment.bottomLeft
-                                                        : Alignment.bottomRight,
-                                                    children: [
-                                                      Stack(
-                                                        alignment: lang == "en"
-                                                            ? Alignment.topRight
-                                                            : Alignment.topLeft,
-                                                        children: [
-                                                          GestureDetector(
-                                                            onTap: () {
-                                                              productrovider
-                                                                  .setidItem(
-                                                                      product
-                                                                          .id!);
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            const Oneitem()),
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: getWidth(
-                                                                  context, 32),
-                                                              height: getHeight(
-                                                                  context, 14),
-                                                              decoration: BoxDecoration(
-                                                                  color:
-                                                                      mainColorLightGrey,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
-                                                              child: Center(
-                                                                child:
-                                                                    CachedNetworkImage(
-                                                                  imageUrl: imageUrlServer +
-                                                                      product
-                                                                          .coverImg
-                                                                          .toString(),
-                                                                  placeholder: (context,
-                                                                          url) =>
-                                                                      Image.asset(
-                                                                          "assets/images/002_logo_1.png"),
-                                                                  errorWidget: (context,
-                                                                          url,
-                                                                          error) =>
-                                                                      Image.asset(
-                                                                          "assets/images/002_logo_1.png"),
-                                                                  width:
-                                                                      getHeight(
-                                                                          context,
-                                                                          13),
-                                                                  height:
-                                                                      getHeight(
-                                                                          context,
-                                                                          13),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          GestureDetector(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                if (!isLogin) {
-                                                                  // confirmAlertlogin(
-                                                                  //     context,
-                                                                  //     "Login Please"
-                                                                  //         .tr,
-                                                                  //     "You need to login first"
-                                                                  //         .tr);
-                                                                  return;
-                                                                }
-                                                                if (product.offerPrice! >
-                                                                        -1 &&
-                                                                    product.orderLimit ==
-                                                                        cartProvider.calculateQuantityForProduct(int.parse(product
-                                                                            .id
-                                                                            .toString()))) {
-                                                                  toastLong(
-                                                                      "you can not add more this item"
-                                                                          .tr);
-                                                                  return;
-                                                                }
-                                                                final cartItem =
-                                                                    CartItem(
-                                                                        product:
-                                                                            product.id!);
-                                                                cartProvider
-                                                                    .addToCart(
-                                                                        cartItem);
-                                                              });
-                                                            },
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(6.0),
-                                                              child: Container(
-                                                                  width:
-                                                                      getWidth(
-                                                                          context,
-                                                                          8),
-                                                                  height:
-                                                                      getWidth(
-                                                                          context,
-                                                                          8),
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              100),
-                                                                      border: Border.all(
-                                                                          color: mainColorGrey.withOpacity(
-                                                                              0.5)),
-                                                                      color:
-                                                                          mainColorGrey),
-                                                                  child:
-                                                                      isItemInCart
-                                                                          ? Center(
-                                                                              child: Text(
-                                                                                cartProvider.calculateQuantityForProduct(int.parse(product.id.toString())).toString(),
-                                                                                style: TextStyle(fontSize: 16, color: mainColorWhite),
-                                                                              ),
-                                                                            )
-                                                                          : Icon(
-                                                                              Icons.add,
-                                                                              color: mainColorWhite,
-                                                                              size: getHeight(context, 3))),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      product.offerPrice! > -1
-                                                          ? Container(
-                                                              width: getHeight(
-                                                                  context, 8),
-                                                              height: getHeight(
-                                                                  context, 3),
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius: lang ==
-                                                                        "en"
-                                                                    ? const BorderRadius
-                                                                        .only(
-                                                                        //  topLeft: Radius.circular(20.0),
-                                                                        topRight:
-                                                                            Radius.circular(20.0),
-                                                                        // bottomLeft: Radius.circular(0.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(20.0),
-                                                                      )
-                                                                    : const BorderRadius
-                                                                        .only(
-                                                                        topLeft:
-                                                                            Radius.circular(20.0),
-                                                                        bottomLeft:
-                                                                            Radius.circular(20.0),
-                                                                      ),
-                                                                color:
-                                                                    mainColorRed,
-                                                              ),
-                                                              child: Row(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceEvenly,
-                                                                children: [
-                                                                  Text(
-                                                                    calculatePercentageDiscount(
-                                                                        double.parse(product
-                                                                            .price!
-                                                                            .toString()),
-                                                                        double.parse(product
-                                                                            .offerPrice!
-                                                                            .toString())),
-                                                                    style: TextStyle(
-                                                                        color:
-                                                                            mainColorWhite,
-                                                                        fontFamily:
-                                                                            mainFontnormal,
-                                                                        fontSize:
-                                                                            12),
-                                                                  ),
-                                                                  Icon(
-                                                                      Icons
-                                                                          .discount_rounded,
-                                                                      color:
-                                                                          mainColorWhite,
-                                                                      size: 12),
-                                                                ],
-                                                              ))
-                                                          : const SizedBox(),
-                                                    ],
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      productrovider.setidItem(
-                                                          product.id!);
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const Oneitem()),
-                                                      );
-                                                    },
-                                                    child: SizedBox(
-                                                      //decoration: BoxDecoration(border: Border.all()),
-                                                      width:
-                                                          getWidth(context, 32),
-                                                      height: getHeight(
-                                                          context, 13),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            lang == "en"
-                                                                ? product.nameEn
-                                                                    .toString()
-                                                                : lang == "ar"
-                                                                    ? product
-                                                                        .nameAr
-                                                                        .toString()
-                                                                    : product
-                                                                        .nameKu
-                                                                        .toString(),
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 14),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            lang == "en"
-                                                                ? product
-                                                                    .contentsEn
-                                                                    .toString()
-                                                                : lang == "ar"
-                                                                    ? product
-                                                                        .contentsAr
-                                                                        .toString()
-                                                                    : product
-                                                                        .contentsKu
-                                                                        .toString(),
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color: mainColorGrey
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 12),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            addCommasToPrice(
-                                                                product.price!),
-                                                            style: TextStyle(
-                                                                decoration: product
-                                                                            .offerPrice! >
-                                                                        -1
-                                                                    ? TextDecoration
-                                                                        .lineThrough
-                                                                    : TextDecoration
-                                                                        .none,
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontnormal,
-                                                                fontSize: 14),
-                                                          ),
-                                                          product.offerPrice! >
-                                                                  -1
-                                                              ? Text(
-                                                                  addCommasToPrice(
-                                                                      product
-                                                                          .offerPrice!),
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorRed,
-                                                                      fontFamily:
-                                                                          mainFontbold,
-                                                                      fontSize:
-                                                                          14),
-                                                                )
-                                                              : const SizedBox(),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ),
+                                    listItemsSmall(
+                                        context,
+                                        productrovider.getProductsByIds(
+                                            productrovider
+                                                .listOrderProductIds())),
                                   ],
                                 )
                               : const SizedBox(),
@@ -1062,627 +544,23 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     fontFamily: mainFontnormal,
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: getWidth(context, 2),
-                                                ),
-                                                Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_outlined,
-                                                  color: mainColorRed,
-                                                  size: 14,
-                                                )
+                                                // SizedBox(
+                                                //   width: getWidth(context, 2),
+                                                // ),
+                                                // Icon(
+                                                //   Icons
+                                                //       .arrow_forward_ios_outlined,
+                                                //   color: mainColorRed,
+                                                //   size: 14,
+                                                // )
                                               ],
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: getHeight(context, 28),
-                                      //  decoration: BoxDecoration(border: Border.all()),
-                                      child: Visibility(
-                                        visible: productrovider.show,
-                                        replacement: Skeletonizer(
-                                          enabled: true,
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount: 10,
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal:
-                                                        getWidth(context, 2)),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Stack(
-                                                      alignment: lang == "en"
-                                                          ? Alignment.bottomLeft
-                                                          : Alignment
-                                                              .bottomRight,
-                                                      children: [
-                                                        Stack(
-                                                          alignment:
-                                                              lang == "en"
-                                                                  ? Alignment
-                                                                      .topRight
-                                                                  : Alignment
-                                                                      .topLeft,
-                                                          children: [
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              const Oneitem()),
-                                                                );
-                                                              },
-                                                              child: Container(
-                                                                width: getWidth(
-                                                                    context,
-                                                                    32),
-                                                                height:
-                                                                    getHeight(
-                                                                        context,
-                                                                        14),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                        //  border: Border.all(color: mainColorRed),
-                                                                        color:
-                                                                            mainColorLightGrey,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(15)),
-                                                                child: Center(
-                                                                  child:
-                                                                      CachedNetworkImage(
-                                                                    imageUrl:
-                                                                        "assets/images/002_logo_1.png",
-                                                                    placeholder: (context,
-                                                                            url) =>
-                                                                        Image.asset(
-                                                                            "assets/images/002_logo_1.png"),
-                                                                    errorWidget: (context,
-                                                                            url,
-                                                                            error) =>
-                                                                        Image.asset(
-                                                                            "assets/images/002_logo_1.png"),
-                                                                    width: getHeight(
-                                                                        context,
-                                                                        13),
-                                                                    height: getHeight(
-                                                                        context,
-                                                                        13),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            GestureDetector(
-                                                              onTap: () {},
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        6.0),
-                                                                child: Container(
-                                                                    width: getWidth(
-                                                                        context,
-                                                                        8),
-                                                                    height: getWidth(
-                                                                        context,
-                                                                        8),
-                                                                    decoration: BoxDecoration(
-                                                                        borderRadius: BorderRadius.circular(
-                                                                            100),
-                                                                        border: Border.all(
-                                                                            color: mainColorGrey.withOpacity(
-                                                                                0.5)),
-                                                                        color:
-                                                                            mainColorGrey),
-                                                                    child: Icon(
-                                                                        Icons.add,
-                                                                        color: mainColorWhite,
-                                                                        size: getHeight(context, 1.5))),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Container(
-                                                            width: getHeight(
-                                                                context, 6),
-                                                            height: getHeight(
-                                                                context, 3),
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius: lang ==
-                                                                      "en"
-                                                                  ? const BorderRadius
-                                                                      .only(
-                                                                      //  topLeft: Radius.circular(20.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              20.0),
-                                                                      // bottomLeft: Radius.circular(0.0),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              20.0),
-                                                                    )
-                                                                  : const BorderRadius
-                                                                      .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              20.0),
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              20.0),
-                                                                    ),
-                                                              color:
-                                                                  mainColorRed,
-                                                            ),
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              children: [
-                                                                Text(
-                                                                  calculatePercentageDiscount(
-                                                                      double.parse(5
-                                                                          .toString()),
-                                                                      double.parse(
-                                                                          6.toString())),
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          mainColorWhite,
-                                                                      fontFamily:
-                                                                          mainFontnormal,
-                                                                      fontSize:
-                                                                          12),
-                                                                ),
-                                                                Icon(
-                                                                    Icons
-                                                                        .discount_rounded,
-                                                                    color:
-                                                                        mainColorWhite,
-                                                                    size: 12),
-                                                              ],
-                                                            )),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      //decoration: BoxDecoration(border: Border.all()),
-                                                      width:
-                                                          getWidth(context, 32),
-                                                      height: getHeight(
-                                                          context, 13),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            lang == "en"
-                                                                ? "product"
-                                                                : lang == "ar"
-                                                                    ? "product"
-                                                                    : "product",
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 16),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            lang == "en"
-                                                                ? "product"
-                                                                : lang == "ar"
-                                                                    ? "product"
-                                                                    : "product",
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color: mainColorGrey
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 9),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            "product" " IQD",
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                decoration:
-                                                                    TextDecoration
-                                                                        .lineThrough,
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontnormal,
-                                                                fontSize: 11),
-                                                          ),
-                                                          Text(
-                                                            "product" " IQD",
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorRed,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 11),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        child: ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: productrovider
-                                              .getProductsByDiscount()
-                                              .length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            final product = productrovider
-                                                .getProductsByDiscount()[index];
-                                            final isItemInCart = cartProvider
-                                                .itemExistsInCart(product);
-                                            return Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      getWidth(context, 2)),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Stack(
-                                                    alignment: lang == "en"
-                                                        ? Alignment.bottomLeft
-                                                        : Alignment.bottomRight,
-                                                    children: [
-                                                      Stack(
-                                                        alignment: lang == "en"
-                                                            ? Alignment.topRight
-                                                            : Alignment.topLeft,
-                                                        children: [
-                                                          GestureDetector(
-                                                            onTap: () {
-                                                              productrovider
-                                                                  .setidItem(
-                                                                      product
-                                                                          .id!);
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            const Oneitem()),
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: getWidth(
-                                                                  context, 32),
-                                                              height: getHeight(
-                                                                  context, 14),
-                                                              decoration: BoxDecoration(
-                                                                  color:
-                                                                      mainColorLightGrey,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
-                                                              child: Center(
-                                                                child:
-                                                                    CachedNetworkImage(
-                                                                  imageUrl: imageUrlServer +
-                                                                      product
-                                                                          .coverImg
-                                                                          .toString(),
-                                                                  placeholder: (context,
-                                                                          url) =>
-                                                                      Image.asset(
-                                                                          "assets/images/002_logo_1.png"),
-                                                                  errorWidget: (context,
-                                                                          url,
-                                                                          error) =>
-                                                                      Image.asset(
-                                                                          "assets/images/002_logo_1.png"),
-                                                                  width:
-                                                                      getHeight(
-                                                                          context,
-                                                                          13),
-                                                                  height:
-                                                                      getHeight(
-                                                                          context,
-                                                                          13),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          GestureDetector(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                if (!isLogin) {
-                                                                  AwesomeDialog(
-                                                                          context:
-                                                                              context,
-                                                                          animType: AnimType
-                                                                              .scale,
-                                                                          dialogType: DialogType
-                                                                              .warning,
-                                                                          showCloseIcon:
-                                                                              true,
-                                                                          title: "Login Please"
-                                                                              .tr,
-                                                                          desc: "You need login to add item in cart"
-                                                                              .tr,
-                                                                          btnOkColor:
-                                                                              mainColorRed,
-                                                                          btnCancelOnPress:
-                                                                              () {},
-                                                                          btnOkText: "Login"
-                                                                              .tr,
-                                                                          btnOkOnPress:
-                                                                              () {
-                                                                            Navigator.push(
-                                                                              context,
-                                                                              MaterialPageRoute(builder: (context) => const RegisterWithPhoneNumber()),
-                                                                            );
-                                                                          },
-                                                                          btnCancelColor:
-                                                                              mainColorGrey)
-                                                                      .show();
-                                                                  return;
-                                                                }
-                                                                if (product.offerPrice! >
-                                                                        -1 &&
-                                                                    product.orderLimit ==
-                                                                        cartProvider.calculateQuantityForProduct(int.parse(product
-                                                                            .id
-                                                                            .toString()))) {
-                                                                  toastLong(
-                                                                      "you can not add more this item"
-                                                                          .tr);
-                                                                  return;
-                                                                }
-                                                                final cartItem =
-                                                                    CartItem(
-                                                                        product:
-                                                                            product.id!);
-                                                                cartProvider
-                                                                    .addToCart(
-                                                                        cartItem);
-                                                              });
-                                                            },
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(6.0),
-                                                              child: Container(
-                                                                  width:
-                                                                      getWidth(
-                                                                          context,
-                                                                          8),
-                                                                  height:
-                                                                      getWidth(
-                                                                          context,
-                                                                          8),
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              100),
-                                                                      border: Border.all(
-                                                                          color: mainColorGrey.withOpacity(
-                                                                              0.5)),
-                                                                      color:
-                                                                          mainColorGrey),
-                                                                  child:
-                                                                      isItemInCart
-                                                                          ? Center(
-                                                                              child: Text(
-                                                                                cartProvider.calculateQuantityForProduct(int.parse(product.id.toString())).toString(),
-                                                                                style: TextStyle(fontSize: 16, color: mainColorWhite),
-                                                                              ),
-                                                                            )
-                                                                          : Icon(
-                                                                              Icons.add,
-                                                                              color: mainColorWhite,
-                                                                              size: getHeight(context, 3))),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Container(
-                                                          width: getHeight(
-                                                              context, 6),
-                                                          height: getHeight(
-                                                              context, 3),
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius: lang ==
-                                                                    "en"
-                                                                ? const BorderRadius
-                                                                    .only(
-                                                                    //  topLeft: Radius.circular(20.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            20.0),
-                                                                    // bottomLeft: Radius.circular(0.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            20.0),
-                                                                  )
-                                                                : const BorderRadius
-                                                                    .only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            20.0),
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            20.0),
-                                                                  ),
-                                                            color: mainColorRed,
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              Text(
-                                                                calculatePercentageDiscount(
-                                                                    double.parse(product
-                                                                        .price!
-                                                                        .toString()),
-                                                                    double.parse(product
-                                                                        .offerPrice!
-                                                                        .toString())),
-                                                                style: TextStyle(
-                                                                    color:
-                                                                        mainColorWhite,
-                                                                    fontFamily:
-                                                                        mainFontnormal,
-                                                                    fontSize:
-                                                                        12),
-                                                              ),
-                                                              Icon(
-                                                                  Icons
-                                                                      .discount_rounded,
-                                                                  color:
-                                                                      mainColorWhite,
-                                                                  size: 12),
-                                                            ],
-                                                          )),
-                                                    ],
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      productrovider.setidItem(
-                                                          product.id!);
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const Oneitem()),
-                                                      );
-                                                    },
-                                                    child: SizedBox(
-                                                      //decoration: BoxDecoration(border: Border.all()),
-                                                      width:
-                                                          getWidth(context, 32),
-                                                      height: getHeight(
-                                                          context, 13),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            lang == "en"
-                                                                ? product.nameEn
-                                                                    .toString()
-                                                                : lang == "ar"
-                                                                    ? product
-                                                                        .nameAr
-                                                                        .toString()
-                                                                    : product
-                                                                        .nameKu
-                                                                        .toString(),
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 14),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            lang == "en"
-                                                                ? product
-                                                                    .contentsEn
-                                                                    .toString()
-                                                                : lang == "ar"
-                                                                    ? product
-                                                                        .contentsAr
-                                                                        .toString()
-                                                                    : product
-                                                                        .contentsKu
-                                                                        .toString(),
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color: mainColorGrey
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 12),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 3,
-                                                          ),
-                                                          Text(
-                                                            addCommasToPrice(
-                                                                product.price2! >
-                                                                        -1
-                                                                    ? product
-                                                                        .price2!
-                                                                    : product
-                                                                        .price!),
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                decoration:
-                                                                    TextDecoration
-                                                                        .lineThrough,
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontFamily:
-                                                                    mainFontnormal,
-                                                                fontSize: 12),
-                                                          ),
-                                                          Text(
-                                                            addCommasToPrice(
-                                                                product
-                                                                    .offerPrice!),
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColorRed,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 12),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ),
+                                    listItemsSmall(context,
+                                        productrovider.getProductsByDiscount()),
                                   ],
                                 )
                               : const SizedBox(),
@@ -1727,417 +605,22 @@ class _HomeSreenState extends State<HomeSreen> {
                                           fontFamily: mainFontnormal,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: getWidth(context, 2),
-                                      ),
-                                      Icon(
-                                        Icons.arrow_forward_ios_outlined,
-                                        color: mainColorRed,
-                                        size: 14,
-                                      ),
+                                      // SizedBox(
+                                      //   width: getWidth(context, 2),
+                                      // ),
+                                      // Icon(
+                                      //   Icons.arrow_forward_ios_outlined,
+                                      //   color: mainColorRed,
+                                      //   size: 14,
+                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: getHeight(context, 28),
-                            //  decoration: BoxDecoration(border: Border.all()),
-                            child: Visibility(
-                              visible: productrovider.show,
-                              replacement: Skeletonizer(
-                                enabled: true,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 10,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: getWidth(context, 2)),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Stack(
-                                            alignment: lang == "en"
-                                                ? Alignment.bottomLeft
-                                                : Alignment.bottomRight,
-                                            children: [
-                                              Stack(
-                                                alignment: lang == "en"
-                                                    ? Alignment.topRight
-                                                    : Alignment.topLeft,
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {},
-                                                    child: Container(
-                                                      width:
-                                                          getWidth(context, 32),
-                                                      height: getHeight(
-                                                          context, 14),
-                                                      decoration: BoxDecoration(
-                                                          //  border: Border.all(color: mainColorRed),
-                                                          color:
-                                                              mainColorLightGrey,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15)),
-                                                      child: Center(
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          imageUrl:
-                                                              "assets/images/002_logo_1.png",
-                                                          placeholder: (context,
-                                                                  url) =>
-                                                              Image.asset(
-                                                                  "assets/images/002_logo_1.png"),
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              Image.asset(
-                                                                  "assets/images/002_logo_1.png"),
-                                                          width: getHeight(
-                                                              context, 13),
-                                                          height: getHeight(
-                                                              context, 13),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {},
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              6.0),
-                                                      child: Container(
-                                                          width: getWidth(
-                                                              context, 8),
-                                                          height: getWidth(
-                                                              context, 8),
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      100),
-                                                              border: Border.all(
-                                                                  color: mainColorGrey
-                                                                      .withOpacity(
-                                                                          0.5)),
-                                                              color:
-                                                                  mainColorGrey),
-                                                          child: Icon(Icons.add,
-                                                              color:
-                                                                  mainColorWhite,
-                                                              size: getHeight(context, 1.5))),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            //decoration: BoxDecoration(border: Border.all()),
-                                            width: getWidth(context, 32),
-                                            height: getHeight(context, 13),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  lang == "en"
-                                                      ? "product"
-                                                      : lang == "ar"
-                                                          ? "product"
-                                                          : "product",
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 16),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  lang == "en"
-                                                      ? "product"
-                                                      : lang == "ar"
-                                                          ? "product"
-                                                          : "product",
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey
-                                                          .withOpacity(0.5),
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 9),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  "product" " IQD",
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      decoration: TextDecoration
-                                                          .lineThrough,
-                                                      color: mainColorGrey,
-                                                      fontFamily:
-                                                          mainFontnormal,
-                                                      fontSize: 11),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: productrovider
-                                    .getProductsByHighlight()
-                                    .length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final product = productrovider
-                                      .getProductsByHighlight()[index];
-                                  final isItemInCart =
-                                      cartProvider.itemExistsInCart(product);
-                                  return Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 2)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Stack(
-                                          alignment: lang == "en"
-                                              ? Alignment.topRight
-                                              : Alignment.topLeft,
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                productrovider
-                                                    .setidItem(product.id!);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const Oneitem()),
-                                                );
-                                              },
-                                              child: Container(
-                                                width: getWidth(context, 32),
-                                                height: getHeight(context, 14),
-                                                decoration: BoxDecoration(
-                                                    //  border: Border.all(color: mainColorRed),
-                                                    color: mainColorLightGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                child: Center(
-                                                  child: CachedNetworkImage(
-                                                    imageUrl: imageUrlServer +
-                                                        product.coverImg
-                                                            .toString(),
-                                                    placeholder: (context,
-                                                            url) =>
-                                                        Image.asset(
-                                                            "assets/images/002_logo_1.png"),
-                                                    errorWidget: (context, url,
-                                                            error) =>
-                                                        Image.asset(
-                                                            "assets/images/002_logo_1.png"),
-                                                    width:
-                                                        getHeight(context, 13),
-                                                    height:
-                                                        getHeight(context, 13),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  if (!isLogin) {
-                                                    AwesomeDialog(
-                                                            context: context,
-                                                            animType:
-                                                                AnimType.scale,
-                                                            dialogType:
-                                                                DialogType.info,
-                                                            showCloseIcon: true,
-                                                            title:
-                                                                "Login Please"
-                                                                    .tr,
-                                                            desc:
-                                                                "You need login to add item in cart"
-                                                                    .tr,
-                                                            btnOkColor:
-                                                                mainColorRed,
-                                                            btnCancelOnPress:
-                                                                () {},
-                                                            btnOkText: "Login",
-                                                            btnOkOnPress: () {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            const RegisterWithPhoneNumber()),
-                                                              );
-                                                            },
-                                                            btnCancelColor:
-                                                                mainColorGrey)
-                                                        .show();
-                                                    return;
-                                                  }
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  final cartItem = CartItem(
-                                                      product: product.id!);
-                                                  cartProvider
-                                                      .addToCart(cartItem);
-                                                });
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(6.0),
-                                                child: Container(
-                                                    width: getWidth(context, 8),
-                                                    height:
-                                                        getWidth(context, 8),
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(100),
-                                                        border: Border.all(
-                                                            color: mainColorGrey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        color: mainColorGrey),
-                                                    child: isItemInCart
-                                                        ? Center(
-                                                            child: Text(
-                                                              cartProvider
-                                                                  .calculateQuantityForProduct(
-                                                                      int.parse(
-                                                                          product
-                                                                              .id
-                                                                              .toString()))
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                  fontSize: 16,
-                                                                  color:
-                                                                      mainColorWhite),
-                                                            ),
-                                                          )
-                                                        : Icon(
-                                                            Icons.add,
-                                                            color:
-                                                                mainColorWhite,
-                                                            size: getHeight(
-                                                                context, 3))),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            productrovider
-                                                .setidItem(product.id!);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const Oneitem()),
-                                            );
-                                          },
-                                          child: SizedBox(
-                                            //decoration: BoxDecoration(border: Border.all()),
-                                            width: getWidth(context, 32),
-                                            height: getHeight(context, 13),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  lang == "en"
-                                                      ? product.nameEn
-                                                          .toString()
-                                                      : lang == "ar"
-                                                          ? product.nameAr
-                                                              .toString()
-                                                          : product.nameKu
-                                                              .toString(),
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 14),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  lang == "en"
-                                                      ? product.contentsEn
-                                                          .toString()
-                                                      : lang == "ar"
-                                                          ? product.contentsAr
-                                                              .toString()
-                                                          : product.contentsKu
-                                                              .toString(),
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey
-                                                          .withOpacity(0.5),
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 12),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  addCommasToPrice(
-                                                      product.price2! > -1
-                                                          ? product.price2!
-                                                          : product.price!),
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 12),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
+                          listItemsSmall(
+                              context, productrovider.getProductsByHighlight()),
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
@@ -2280,14 +763,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                               fontFamily: mainFontnormal,
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: getWidth(context, 2),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios_outlined,
-                                            color: mainColorRed,
-                                            size: 14,
-                                          )
+                                          // SizedBox(
+                                          //   width: getWidth(context, 2),
+                                          // ),
+                                          // Icon(
+                                          //   Icons.arrow_forward_ios_outlined,
+                                          //   color: mainColorRed,
+                                          //   size: 14,
+                                          // )
                                         ],
                                       ),
                                     ),
@@ -2296,404 +779,11 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
+                          listItemsSmall(
+                              context, productrovider.getProductsByBestsell()),
                           SizedBox(
-                            height: getHeight(context, 28),
-                            //  decoration: BoxDecoration(border: Border.all()),
-                            child: Visibility(
-                              visible: productrovider.show,
-                              replacement: Skeletonizer(
-                                enabled: true,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 10,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: getWidth(context, 2)),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Stack(
-                                            alignment: lang == "en"
-                                                ? Alignment.bottomLeft
-                                                : Alignment.bottomRight,
-                                            children: [
-                                              Stack(
-                                                alignment: lang == "en"
-                                                    ? Alignment.topRight
-                                                    : Alignment.topLeft,
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {},
-                                                    child: Container(
-                                                      width:
-                                                          getWidth(context, 32),
-                                                      height: getHeight(
-                                                          context, 14),
-                                                      decoration: BoxDecoration(
-                                                          //  border: Border.all(color: mainColorRed),
-                                                          color:
-                                                              mainColorLightGrey,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15)),
-                                                      child: Center(
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          imageUrl:
-                                                              "assets/images/002_logo_1.png",
-                                                          placeholder: (context,
-                                                                  url) =>
-                                                              Image.asset(
-                                                                  "assets/images/002_logo_1.png"),
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              Image.asset(
-                                                                  "assets/images/002_logo_1.png"),
-                                                          width: getHeight(
-                                                              context, 13),
-                                                          height: getHeight(
-                                                              context, 13),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {},
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              6.0),
-                                                      child: Container(
-                                                          width: getWidth(
-                                                              context, 8),
-                                                          height: getWidth(
-                                                              context, 8),
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      100),
-                                                              border: Border.all(
-                                                                  color: mainColorGrey
-                                                                      .withOpacity(
-                                                                          0.5)),
-                                                              color:
-                                                                  mainColorGrey),
-                                                          child: Icon(Icons.add,
-                                                              color:
-                                                                  mainColorWhite,
-                                                              size: getHeight(context, 1.5))),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            //decoration: BoxDecoration(border: Border.all()),
-                                            width: getWidth(context, 32),
-                                            height: getHeight(context, 13),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  lang == "en"
-                                                      ? "product"
-                                                      : lang == "ar"
-                                                          ? "product"
-                                                          : "product",
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 16),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  lang == "en"
-                                                      ? "product"
-                                                      : lang == "ar"
-                                                          ? "product"
-                                                          : "product",
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey
-                                                          .withOpacity(0.5),
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 9),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  "product" " IQD",
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      decoration: TextDecoration
-                                                          .lineThrough,
-                                                      color: mainColorGrey,
-                                                      fontFamily:
-                                                          mainFontnormal,
-                                                      fontSize: 11),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: productrovider
-                                    .getProductsByBestsell()
-                                    .length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final product = productrovider
-                                      .getProductsByBestsell()[index];
-                                  final isItemInCart =
-                                      cartProvider.itemExistsInCart(product);
-                                  return Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 2)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Stack(
-                                          alignment: lang == "en"
-                                              ? Alignment.topRight
-                                              : Alignment.topLeft,
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                productrovider
-                                                    .setidItem(product.id!);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const Oneitem()),
-                                                );
-                                              },
-                                              child: Container(
-                                                width: getWidth(context, 32),
-                                                height: getHeight(context, 14),
-                                                decoration: BoxDecoration(
-                                                    //  border: Border.all(color: mainColorRed),
-                                                    color: mainColorLightGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                child: Center(
-                                                  child: CachedNetworkImage(
-                                                    imageUrl: imageUrlServer +
-                                                        product.coverImg
-                                                            .toString(),
-                                                    placeholder: (context,
-                                                            url) =>
-                                                        Image.asset(
-                                                            "assets/images/002_logo_1.png"),
-                                                    errorWidget: (context, url,
-                                                            error) =>
-                                                        Image.asset(
-                                                            "assets/images/002_logo_1.png"),
-                                                    width:
-                                                        getHeight(context, 13),
-                                                    height:
-                                                        getHeight(context, 13),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  if (!isLogin) {
-                                                    AwesomeDialog(
-                                                            context: context,
-                                                            animType:
-                                                                AnimType.scale,
-                                                            dialogType:
-                                                                DialogType.info,
-                                                            showCloseIcon: true,
-                                                            title:
-                                                                'Login Please'
-                                                                    .tr,
-                                                            desc:
-                                                                "You need login to add item in cart"
-                                                                    .tr,
-                                                            btnOkColor:
-                                                                mainColorRed,
-                                                            btnCancelOnPress:
-                                                                () {},
-                                                            btnOkText:
-                                                                "Login".tr,
-                                                            btnOkOnPress: () {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            const RegisterWithPhoneNumber()),
-                                                              );
-                                                            },
-                                                            btnCancelColor:
-                                                                mainColorGrey)
-                                                        .show();
-                                                    return;
-                                                  }
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  final cartItem = CartItem(
-                                                      product: product.id!);
-                                                  cartProvider
-                                                      .addToCart(cartItem);
-                                                });
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(6.0),
-                                                child: Container(
-                                                    width: getWidth(context, 8),
-                                                    height:
-                                                        getWidth(context, 8),
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(100),
-                                                        border: Border.all(
-                                                            color: mainColorGrey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        color: mainColorGrey),
-                                                    child: isItemInCart
-                                                        ? Center(
-                                                            child: Text(
-                                                              cartProvider
-                                                                  .calculateQuantityForProduct(
-                                                                      int.parse(
-                                                                          product
-                                                                              .id
-                                                                              .toString()))
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                  fontSize: 16,
-                                                                  color:
-                                                                      mainColorWhite),
-                                                            ),
-                                                          )
-                                                        : Icon(
-                                                            Icons.add,
-                                                            color:
-                                                                mainColorWhite,
-                                                            size: getHeight(
-                                                                context, 3))),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            productrovider
-                                                .setidItem(product.id!);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const Oneitem()),
-                                            );
-                                          },
-                                          child: SizedBox(
-                                            //decoration: BoxDecoration(border: Border.all()),
-                                            width: getWidth(context, 32),
-                                            height: getHeight(context, 13),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  lang == "en"
-                                                      ? product.nameEn
-                                                          .toString()
-                                                      : lang == "ar"
-                                                          ? product.nameAr
-                                                              .toString()
-                                                          : product.nameKu
-                                                              .toString(),
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 14),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  lang == "en"
-                                                      ? product.contentsEn
-                                                          .toString()
-                                                      : lang == "ar"
-                                                          ? product.contentsAr
-                                                              .toString()
-                                                          : product.contentsKu
-                                                              .toString(),
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey
-                                                          .withOpacity(0.5),
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 12),
-                                                ),
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Text(
-                                                  addCommasToPrice(
-                                                      product.price2! > -1
-                                                          ? product.price2!
-                                                          : product.price!),
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 12),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
+                            height: getHeight(context, 2),
+                          )
                         ],
                       ),
                     ),

@@ -8,7 +8,6 @@ import 'package:athome/main.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/map/geolocator.dart';
 import 'package:athome/map/locationdeatil.dart';
-import 'package:athome/map/marker.dart';
 
 import 'package:flutter/material.dart';
 
@@ -128,26 +127,19 @@ class _Map_screenState extends State<Map_screen> {
   String housenumber = "";
   double selectLat = 0.0;
   double selectLon = 0.0;
-  final markerList = <Marker>{};
   bool wait = false;
   bool zoom = false;
   _onMapCreated(MapboxMap mapboxMap) {
     _mapController = mapboxMap;
-
-    // We tell the controller to show the user location on the map
     _mapController.location.updateSettings(
         LocationComponentSettings(enabled: true, pulsingEnabled: true));
-
     mapboxMap.annotations.createPolygonAnnotationManager().then((value) {
       polygonAnnotationManager = value;
-
       var options = <PolygonAnnotationOptions>[];
-
       options.add(PolygonAnnotationOptions(
           geometry: Polygon(coordinates: [zone]).toJson(),
           fillColor: Colors.green.value,
           fillOpacity: 0.2));
-
       polygonAnnotationManager?.createMulti(options);
     });
   }
@@ -155,6 +147,24 @@ class _Map_screenState extends State<Map_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Map".tr,
+          style: TextStyle(
+              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
+        ),
+        centerTitle: true,
+        backgroundColor: mainColorWhite,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: mainColorRed,
+            )),
+      ),
       body: SafeArea(
         child: Stack(
           children: [

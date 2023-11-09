@@ -9,7 +9,6 @@ import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
-
 //// a fast way to push to a new screen
 void to(BuildContext context, Widget screen) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
@@ -210,7 +209,7 @@ String calculatePercentageDiscount(
   if (originalPrice <= 0 ||
       discountedPrice <= 0 ||
       originalPrice <= discountedPrice) {
-    return 'N/A'; // Handle invalid or zero values, or when the original price is less than or equal to the discounted price.
+    return 'Off'; // Handle invalid or zero values, or when the original price is less than or equal to the discounted price.
   }
 
   double discountAmount = originalPrice - discountedPrice;

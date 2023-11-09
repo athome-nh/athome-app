@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:athome/Account/profilo.dart';
 import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/controller/productprovider.dart';
+import 'package:athome/home/favorite.dart';
 import 'package:athome/home/my_cart.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:athome/Account/order_screen.dart';
 import 'package:athome/Config/property.dart';
 
 import 'package:athome/Home/Search.dart';
@@ -21,37 +21,37 @@ class NavSwitch extends StatefulWidget {
   State<NavSwitch> createState() => _NavSwitchState();
 }
 
-Widget buildFAB(BuildContext context) {
-  final cartProvider = Provider.of<CartProvider>(context, listen: true);
-  return Visibility(
-    visible: Provider.of<productProvider>(context, listen: true).nointernetCheck
-        ? false
-        : cartProvider.cartItems.isNotEmpty
-            ? true
-            : false,
-    child: Badge(
-      label: Text(cartProvider.cartItems.length.toString()),
-      backgroundColor: mainColorWhite,
-      textColor: mainColorRed,
-      child: FloatingActionButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const MyCart()),
-          );
-        },
-        backgroundColor: mainColorRed,
-        child: Icon(
-          Ionicons.cart_sharp,
-          size: getHeight(context, 5),
-        ),
-      ),
-    ),
-  );
-}
+// Widget buildFAB(BuildContext context) {
+//   final cartProvider = Provider.of<CartProvider>(context, listen: true);
+//   return Visibility(
+//     visible: Provider.of<productProvider>(context, listen: true).nointernetCheck
+//         ? false
+//         : cartProvider.cartItems.isNotEmpty
+//             ? true
+//             : false,
+//     child: Badge(
+//       label: Text(cartProvider.cartItems.length.toString()),
+//       backgroundColor: mainColorWhite,
+//       textColor: mainColorRed,
+//       child: FloatingActionButton(
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(5),
+//         ),
+//         onPressed: () {
+//           Navigator.push(
+//             context,
+//             MaterialPageRoute(builder: (context) => const MyCart()),
+//           );
+//         },
+//         backgroundColor: mainColorRed,
+//         child: Icon(
+//           Ionicons.cart_sharp,
+//           size: getHeight(context, 5),
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
 class _NavSwitchState extends State<NavSwitch> {
   int _selectedIndex = 0;
@@ -59,7 +59,8 @@ class _NavSwitchState extends State<NavSwitch> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeSreen(),
     const Search(),
-    const OrderScreen(),
+    MyCart(false),
+    const Favorite(),
     const Setting(),
   ];
 
@@ -76,6 +77,7 @@ class _NavSwitchState extends State<NavSwitch> {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: WillPopScope(
@@ -114,13 +116,42 @@ class _NavSwitchState extends State<NavSwitch> {
                 label: 'Search'.tr,
               ),
               BottomNavigationBarItem(
-                icon: const Icon(
-                  Icons.shopping_bag_outlined,
+                icon: cartProvider.cartItems.length > 0
+                    ? Badge(
+                        label: Text(
+                          cartProvider.cartItems.length.toString(),
+                        ),
+                        backgroundColor: mainColorGrey,
+                        child: const Icon(
+                          Ionicons.cart_outline,
+                        ),
+                      )
+                    : const Icon(
+                        Ionicons.cart_outline,
+                      ),
+                activeIcon: cartProvider.cartItems.length > 0
+                    ? Badge(
+                        label: Text(
+                          cartProvider.cartItems.length.toString(),
+                        ),
+                        backgroundColor: mainColorGrey,
+                        child: Icon(
+                          Ionicons.cart_sharp,
+                        ),
+                      )
+                    : Icon(
+                        Ionicons.cart_sharp,
+                      ),
+                label: 'Cart'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.heart,
                 ),
                 activeIcon: const Icon(
-                  Icons.shopping_bag,
+                  FontAwesomeIcons.solidHeart,
                 ),
-                label: 'My Orders'.tr,
+                label: 'Favorite'.tr,
               ),
               BottomNavigationBarItem(
                 icon: const Icon(
@@ -135,7 +166,6 @@ class _NavSwitchState extends State<NavSwitch> {
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
           ),
-          floatingActionButton: buildFAB(context),
         ),
       ),
     );

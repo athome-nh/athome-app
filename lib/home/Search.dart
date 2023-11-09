@@ -20,27 +20,11 @@ class _SearchState extends State<Search> {
   var subscription;
   @override
   void initState() {
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.none) {
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(true);
-      } else {
-        Provider.of<productProvider>(context, listen: false)
-            .updatePost(false);
-
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(false);
-      }
-    });
     super.initState();
   }
 
   @override
   void dispose() {
-    subscription.cancel();
-
     super.dispose();
   }
 
@@ -56,83 +40,66 @@ class _SearchState extends State<Search> {
           : Scaffold(
               backgroundColor: mainColorWhite,
               appBar: AppBar(
-                backgroundColor: mainColorWhite,
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                title: Image.asset(
-                  "assets/images/logoB.png",
-                  width: getWidth(context, 30),
+                title: Text(
+                  "Search".tr,
+                  style: TextStyle(
+                      color: mainColorGrey,
+                      fontFamily: mainFontnormal,
+                      fontSize: 20),
                 ),
+                centerTitle: true,
+                backgroundColor: mainColorWhite,
+                elevation: 0,
               ),
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: getWidth(
-                                    context,
-                                    productPro.searchproduct.isNotEmpty
-                                        ? 70
-                                        : 92),
-                                height: getHeight(context, 5),
-                                decoration: BoxDecoration(
-                                    color: const Color(0xffF2F2F2),
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: TextField(
-                                  controller: searchCon,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontbold),
-                                  keyboardType: TextInputType.text,
-                                  onChanged: (value) {
-                                    productPro.setsearch(searchCon.text);
-                                  },
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(
-                                      Ionicons.search_outline,
-                                      color: mainColorGrey.withOpacity(0.45),
-                                      size: 25,
-                                    ),
-                                    border: InputBorder.none,
-                                    hintText: "Search".tr,
-                                    hintStyle: TextStyle(
-                                        fontFamily: mainFontnormal,
-                                        color: mainColorGrey.withOpacity(0.45),
-                                        fontSize: 14),
-                                  ),
-                                ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(context, 4)),
+                        child: Container(
+                          width: getWidth(context, 92),
+                          height: getHeight(context, 5),
+                          decoration: BoxDecoration(
+                              color: const Color(0xffF2F2F2),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: TextField(
+                            controller: searchCon,
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: mainColorGrey,
+                                fontFamily: mainFontbold),
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              productPro.setsearch(searchCon.text);
+                            },
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Ionicons.search_outline,
+                                color: mainColorGrey.withOpacity(0.45),
+                                size: 25,
                               ),
-                              productPro.searchproduct.isNotEmpty
-                                  ? SizedBox(width: getWidth(context, 8))
-                                  : const SizedBox(),
-                              productPro.searchproduct.isNotEmpty
-                                  ? SizedBox(
-                                      width: getWidth(context, 12),
-                                      child: GestureDetector(
-                                          onTap: () {
-                                            searchCon.text = "";
-                                            productPro.setsearch("");
-                                          },
-                                          child: Text(
-                                            "Clear".tr,
-                                            style: TextStyle(
-                                                color: mainColorRed,
-                                                fontFamily: mainFontbold,
-                                                fontSize: 14),
-                                          )),
+                              suffixIcon: productPro.searchproduct.isNotEmpty
+                                  ? TextButton(
+                                      onPressed: () {
+                                        searchCon.text = "";
+                                        productPro.setsearch("");
+                                      },
+                                      child: Icon(
+                                        Ionicons.close,
+                                        color: mainColorGrey.withOpacity(0.45),
+                                        size: 25,
+                                      ),
                                     )
-                                  : const SizedBox(),
-                            ],
+                                  : SizedBox(),
+                              border: InputBorder.none,
+                              hintText: "Search".tr,
+                              hintStyle: TextStyle(
+                                  fontFamily: mainFontnormal,
+                                  color: mainColorGrey.withOpacity(0.45),
+                                  fontSize: 14),
+                            ),
                           ),
                         ),
                       ),
@@ -163,7 +130,7 @@ class _SearchState extends State<Search> {
                                 ],
                               ),
                             )
-                          : listItemsShow(
+                          : listItemsShowSearch(
                               context,
                               productPro.getProductsBySearch(
                                   productPro.searchproduct)),

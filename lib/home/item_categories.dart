@@ -187,7 +187,6 @@ class _itemCategoriesState extends State<itemCategories> {
             ),
           ),
         ),
-        floatingActionButton: buildFAB(context),
       ),
     );
   }

@@ -35,178 +35,104 @@ class _CategoriesState extends State<Categories> {
 
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: DefaultTabController(
-        length: 2, // Number of tabs
-        child: Scaffold(
+      child: Scaffold(
+        backgroundColor: mainColorWhite,
+        appBar: AppBar(
+          title: Text(
+            "All Categories".tr,
+            style: TextStyle(
+                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
+          ),
+          centerTitle: true,
           backgroundColor: mainColorWhite,
-          appBar: AppBar(
-            title: Text(
-              "All Categories".tr,
-              style: TextStyle(
-                  color: mainColorGrey,
-                  fontFamily: mainFontnormal,
-                  fontSize: 24),
-            ),
-            centerTitle: true,
-            backgroundColor: mainColorWhite,
-            elevation: 0,
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: mainColorRed,
-                )),
-            bottom: TabBar(
-              labelColor: mainColorGrey,
-              labelStyle: TextStyle(
-                  fontSize: 14,
-                  fontFamily: mainFontnormal,
-                  color: mainColorGrey),
-              // Change the color of the selected tab indicator
-              indicatorColor: mainColorRed,
-              tabs: [
-                Tab(
-                  text: "Categories".tr,
-                ),
-                Tab(text: "Favorite".tr),
-              ],
-            ),
+          elevation: 0,
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: mainColorRed,
+              )),
 
-            // Change the color of the unselected tab labels
-          ),
-          body: Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: TabBarView(
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: getHeight(context, 80),
-                        width: getWidth(context, 95),
-                        child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: getWidth(context, 0.25),
+          // Change the color of the unselected tab labels
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: getHeight(context, 90),
+                width: getWidth(context, 100),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: getWidth(context, 0.25),
 
-                            crossAxisCount: 3, // Number of columns
-                          ),
-                          itemCount: productPro
-                              .categores.length, // Number of items in the grid
-                          itemBuilder: (BuildContext context, int index) {
-                            final cateItem = productPro.categores[index];
-                            // Build each grid item here
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                GestureDetector(
-                                  onTap: () {
-                                    productPro.setcatetype(cateItem.id!);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              itemCategories()),
-                                    ).then((value) {
-                                      productPro.setsubcateSelect(0);
-                                    });
-                                  },
-                                  child: Card(
-                                    elevation: 3,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          100), // Adjust the corner radius
-                                    ),
-                                    child: Container(
-                                      width: getHeight(context, 10),
-                                      height: getHeight(context, 10),
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xffF2F2F2),
-                                          borderRadius:
-                                              BorderRadius.circular(100)),
-                                      child: Center(
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              imageUrlServer + cateItem.img!,
-                                          placeholder: (context, url) =>
-                                              Image.asset(
-                                                  "assets/images/002_logo_1.png"),
-                                          errorWidget: (context, url, error) =>
-                                              Image.asset(
-                                                  "assets/images/002_logo_1.png"),
-                                          width: getHeight(context, 7),
-                                          height: getHeight(context, 7),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  lang == "en"
-                                      ? textCount(cateItem.nameEn!,
-                                          getWidth(context, 4.3).toInt())
-                                      //cateItem.nameEn!
-                                      : lang == "ar"
-                                          ? cateItem.nameAr!
-                                          : cateItem.nameKu!,
-                                  style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 14),
-                                ),
-                              ],
-                            );
+                    crossAxisCount: 3, // Number of columns
+                  ),
+                  itemCount: productPro
+                      .categores.length, // Number of items in the grid
+                  itemBuilder: (BuildContext context, int index) {
+                    final cateItem = productPro.categores[index];
+                    // Build each grid item here
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {
+                            productPro.setcatetype(cateItem.id!);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => itemCategories()),
+                            ).then((value) {
+                              productPro.setsubcateSelect(0);
+                            });
                           },
+                          child: Container(
+                            width: getHeight(context, 10),
+                            height: getHeight(context, 10),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: mainColorBlack.withOpacity(0.1)),
+                                // color: mainColorLightGrey,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: CachedNetworkImage(
+                                imageUrl: imageUrlServer + cateItem.img!,
+                                placeholder: (context, url) =>
+                                    Image.asset("assets/images/002_logo_1.png"),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset("assets/images/002_logo_1.png"),
+                                width: getHeight(context, 6),
+                                height: getHeight(context, 6),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          lang == "en"
+                              ? cateItem.nameEn!
+                              //cateItem.nameEn!
+                              : lang == "ar"
+                                  ? cateItem.nameAr!
+                                  : cateItem.nameKu!,
+                          maxLines: 1,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: mainColorGrey,
+                              fontFamily: mainFontbold,
+                              fontSize: 12),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-                SingleChildScrollView(
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      if (cartProvider.ListFavId().isEmpty) {
-                        // list is empty
-                        return SizedBox(
-                          width: getWidth(context, 100),
-                          height: getHeight(context, 60),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: getWidth(context, 50),
-                                height: getWidth(context, 70),
-                                child: Image.asset(
-                                    "assets/images/gif_favorite.gif"),
-                              ),
-                              Text(
-                                "No have any favorite".tr,
-                                style: TextStyle(
-                                    fontFamily: mainFontnormal, fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        // list is not empty
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: listItemsShow(
-                            context,
-                            productPro
-                                .getProductsByIds(cartProvider.ListFavId()),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          floatingActionButton: buildFAB(context),
         ),
       ),
     );
