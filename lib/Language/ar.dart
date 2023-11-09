@@ -195,6 +195,8 @@
 //   "Failed to load data": "Failed to load data",
 // };
 
+
+
 const Map<String, String> ar = {
   "currency": " عملة",
   "Order now": "اطلب الان",

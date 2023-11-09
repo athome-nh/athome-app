@@ -237,7 +237,7 @@ const Map<String, String> kur = {
   "Checkout": "دوپاتکردنەوە",
   "Yes": "بەڵێ",
   "No": "نەخێر",
-  "Home": "سەرەکی",
+  "Home": "پەڕەی سەرەکی",
   'Search': 'گەڕان',
   'My Orders': 'داواکاریەکانم',
   'Account': 'پڕۆفایل',
