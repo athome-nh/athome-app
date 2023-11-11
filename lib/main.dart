@@ -64,7 +64,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
         navigatorKey: navigatorKey,
-        //const Setting(),
       ),
     );
   }

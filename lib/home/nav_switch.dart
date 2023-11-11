@@ -3,13 +3,12 @@ import 'package:athome/Account/profilo.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/favorite.dart';
 import 'package:athome/home/my_cart.dart';
+import 'package:athome/home/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:athome/Config/property.dart';
-
-import 'package:athome/Home/Search.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import 'home_page.dart';
@@ -98,6 +97,8 @@ class _NavSwitchState extends State<NavSwitch> {
             backgroundColor: mainColorRed,
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
+              
+              // Home
               BottomNavigationBarItem(
                   activeIcon: const Icon(
                     Ionicons.home,
@@ -106,6 +107,8 @@ class _NavSwitchState extends State<NavSwitch> {
                     Ionicons.home_outline,
                   ),
                   label: "Home".tr),
+              
+              // Search
               BottomNavigationBarItem(
                 icon: const Icon(
                   Ionicons.search_outline,
@@ -115,8 +118,10 @@ class _NavSwitchState extends State<NavSwitch> {
                 ),
                 label: 'Search'.tr,
               ),
+              
+              // Cart
               BottomNavigationBarItem(
-                icon: cartProvider.cartItems.length > 0
+                icon: cartProvider.cartItems.isNotEmpty
                     ? Badge(
                         label: Text(
                           cartProvider.cartItems.length.toString(),
@@ -129,23 +134,25 @@ class _NavSwitchState extends State<NavSwitch> {
                     : const Icon(
                         Ionicons.cart_outline,
                       ),
-                activeIcon: cartProvider.cartItems.length > 0
+                activeIcon: cartProvider.cartItems.isNotEmpty
                     ? Badge(
                         label: Text(
                           cartProvider.cartItems.length.toString(),
                         ),
                         backgroundColor: mainColorGrey,
-                        child: Icon(
+                        child: const Icon(
                           Ionicons.cart_sharp,
                         ),
                       )
-                    : Icon(
+                    : const Icon(
                         Ionicons.cart_sharp,
                       ),
                 label: 'Cart'.tr,
               ),
+
+              // Favorite
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   FontAwesomeIcons.heart,
                 ),
                 activeIcon: const Icon(
@@ -153,6 +160,8 @@ class _NavSwitchState extends State<NavSwitch> {
                 ),
                 label: 'Favorite'.tr,
               ),
+
+              // Account
               BottomNavigationBarItem(
                 icon: const Icon(
                   Ionicons.person_outline,
@@ -162,6 +171,7 @@ class _NavSwitchState extends State<NavSwitch> {
                 ),
                 label: 'Account'.tr,
               ),
+
             ],
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
@@ -171,6 +181,8 @@ class _NavSwitchState extends State<NavSwitch> {
     );
   }
 
+
+  // Dialogbox ( yes and no )
   Future<void> yesNoOption(
     BuildContext context,
   ) async {

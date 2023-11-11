@@ -66,8 +66,8 @@ Widget listItemsShimer(BuildContext context) {
                                   errorWidget: (context, url, error) =>
                                       Image.asset(
                                           "assets/images/002_logo_1.png"),
-                                  width: getWidth(context, 25),
-                                  height: getWidth(context, 25),
+                                  width: getWidth(context, 22),
+                                  height: getWidth(context, 22),
                                 ),
                                 const SizedBox(
                                   height: 5,
@@ -110,13 +110,13 @@ Widget listItemsShimer(BuildContext context) {
                                 ),
                               ],
                             ),
-                            Container(
+                            SizedBox(
                               height: getHeight(context, 7),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: getHeight(context, 7),
                                     width: getWidth(context, 25),
                                     child: Row(
@@ -262,13 +262,13 @@ Widget listItemsBigShimer(BuildContext context) {
                                 ),
                               ],
                             ),
-                            Container(
+                            SizedBox(
                               height: getHeight(context, 7),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: getHeight(context, 7),
                                     width: getWidth(context, 25),
                                     child: Row(
@@ -377,8 +377,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
                                             "assets/images/002_logo_1.png"),
-                                    width: getWidth(context, 23),
-                                    height: getWidth(context, 23),
+                                    width: getWidth(context, 22),
+                                    height: getWidth(context, 22),
                                   ),
                                 ),
                                 const SizedBox(
@@ -437,8 +437,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                                           fontSize: 14),
                                     ),
                                     product.offerPrice! > -1
-                                        ? Text("/")
-                                        : SizedBox(),
+                                        ? const Text("/")
+                                        : const SizedBox(),
                                     product.offerPrice! > -1
                                         ? Text(
                                             addCommasToPrice(
@@ -449,12 +449,12 @@ Widget listItemsSmall(BuildContext context, var data) {
                                                 fontFamily: mainFontbold,
                                                 fontSize: 14),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                   ],
                                 ),
                               ],
                             ),
-                            Container(
+                            SizedBox(
                               height: getHeight(context, 7),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -497,7 +497,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                             ),
                                           ),
                                         )
-                                      : Container(
+                                      : SizedBox(
                                           height: getHeight(context, 7),
                                           width: getWidth(context, 25),
                                           child: Row(
@@ -783,8 +783,8 @@ Widget listItemsShow(BuildContext context, var data) {
                                           fontSize: 14),
                                     ),
                                     product.offerPrice! > -1
-                                        ? Text("/")
-                                        : SizedBox(),
+                                        ? const Text("/")
+                                        : const SizedBox(),
                                     product.offerPrice! > -1
                                         ? Text(
                                             addCommasToPrice(
@@ -795,12 +795,12 @@ Widget listItemsShow(BuildContext context, var data) {
                                                 fontFamily: mainFontbold,
                                                 fontSize: 14),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                   ],
                                 ),
                               ],
                             ),
-                            Container(
+                            SizedBox(
                               height: getHeight(context, 7),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -843,7 +843,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                             ),
                                           ),
                                         )
-                                      : Container(
+                                      : SizedBox(
                                           height: getHeight(context, 7),
                                           width: getWidth(context, 25),
                                           child: Row(
@@ -1129,8 +1129,8 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                           fontSize: 14),
                                     ),
                                     product.offerPrice! > -1
-                                        ? Text("/")
-                                        : SizedBox(),
+                                        ? const Text("/")
+                                        : const SizedBox(),
                                     product.offerPrice! > -1
                                         ? Text(
                                             addCommasToPrice(
@@ -1141,12 +1141,12 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                                 fontFamily: mainFontbold,
                                                 fontSize: 14),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                   ],
                                 ),
                               ],
                             ),
-                            Container(
+                            SizedBox(
                               height: getHeight(context, 7),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1189,7 +1189,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                             ),
                                           ),
                                         )
-                                      : Container(
+                                      : SizedBox(
                                           height: getHeight(context, 7),
                                           width: getWidth(context, 25),
                                           child: Row(
@@ -1458,236 +1458,241 @@ Widget WaitingWiget2(BuildContext context) {
   );
 }
 
-cartEmptyContainer(BuildContext context) {
-  return Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: getHeight(context, 12),
-          width: getWidth(context, 80),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: mainColorRed,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          ),
-          child: Icon(
-            Icons.warning_amber_outlined,
-            size: 70,
-            color: mainColorWhite,
-          ),
-        ),
-        Container(
-          height: getHeight(context, 30),
-          width: getWidth(context, 80),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: mainColorGrey,
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Warning',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: mainFontbold,
-                    color: mainColorWhite),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'Your cart is empty',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: mainFontnormal,
-                    color: mainColorWhite),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Future<void> loiginPopup(BuildContext context) {
-  return showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        content: Stack(
-          alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
+    //
+    cartEmptyContainer(BuildContext context) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: getWidth(context, 70),
-              height: getHeight(context, 50),
+              height: getHeight(context, 12),
+              width: getWidth(context, 80),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: mainColorRed,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              ),
+              child: Icon(
+                Icons.warning_amber_outlined,
+                size: 70,
+                color: mainColorWhite,
+              ),
+            ),
+            Container(
+              height: getHeight(context, 30),
+              width: getWidth(context, 80),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: mainColorGrey,
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20)),
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset(
-                    "assets/images/003_welcome_1.png",
-                    width: getWidth(context, 40),
-                    height: getWidth(context, 40),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Text(
-                    "Login Please".tr,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
+                    'Warning',
                     style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontbold,
-                      fontSize: 25,
-                    ),
+                        fontSize: 30,
+                        fontFamily: mainFontbold,
+                        color: mainColorWhite),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   Text(
-                    "You need login",
-                    textAlign: TextAlign.center,
+                    'Your cart is empty',
                     style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontnormal,
-                      fontSize: 16,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const RegisterWithPhoneNumber()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize:
-                          Size(getWidth(context, 70), getHeight(context, 5)),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: mainColorGrey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                    child: Text(
-                      "Login".tr,
-                      style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize:
-                          Size(getWidth(context, 70), getHeight(context, 5)),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: mainColorRed),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                    child: Text(
-                      "Cancel".tr,
-                      style: TextStyle(
-                        color: mainColorRed,
-                        fontSize: 16,
-                      ),
-                    ),
+                        fontSize: 18,
+                        fontFamily: mainFontnormal,
+                        color: mainColorWhite),
                   ),
                 ],
               ),
             ),
-            IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.close))
           ],
         ),
       );
-    },
-  );
-}
+    }
 
-noInternetWidget(BuildContext context) {
-  return Scaffold(
-    backgroundColor: mainColorWhite,
-    appBar: AppBar(
-      backgroundColor: mainColorWhite,
-      automaticallyImplyLeading: false,
-      elevation: 0.5,
-      title: Image.asset(
-        "assets/images/logoB.png",
-        width: getWidth(context, 30),
-      ),
-    ),
-    body: SafeArea(
-      child: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            "assets/images/wifi.png",
+    // Dialogbox ( Register )
+    Future<void> loiginPopup(BuildContext context) {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Stack(
+              alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
+              children: [
+                SizedBox(
+                  width: getWidth(context, 70),
+                  height: getHeight(context, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/images/003_welcome_1.png",
+                        width: getWidth(context, 40),
+                        height: getWidth(context, 40),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Login Please".tr,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        style: TextStyle(
+                          color: mainColorGrey,
+                          fontFamily: mainFontbold,
+                          fontSize: 25,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "You need login".tr,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: mainColorGrey,
+                          fontFamily: mainFontnormal,
+                          fontSize: 16,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const RegisterWithPhoneNumber()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize:
+                              Size(getWidth(context, 70), getHeight(context, 5)),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: mainColorGrey),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: Text(
+                          "Login".tr,
+                          style: TextStyle(
+                            color: mainColorGrey,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize:
+                              Size(getWidth(context, 70), getHeight(context, 5)),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: mainColorRed),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: Text(
+                          "Cancel".tr,
+                          style: TextStyle(
+                            color: mainColorRed,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.close))
+              ],
+            ),
+          );
+        },
+      );
+    }
+
+    // Page --> No Internet
+    noInternetWidget(BuildContext context) {
+      return Scaffold(
+        backgroundColor: mainColorWhite,
+        appBar: AppBar(
+          backgroundColor: mainColorWhite,
+          automaticallyImplyLeading: false,
+          elevation: 0.5,
+          title: Image.asset(
+            "assets/images/logoB.png",
             width: getWidth(context, 30),
           ),
-          SizedBox(
-            height: 25,
-          ),
-          Text('You\'re offline, connect to a network.'.tr),
-        ],
-      )),
-    ),
-  );
-}
-
-loginFirstContainer(BuildContext context) {
-  return Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Please login first",
-          style: TextStyle(fontSize: 32, fontFamily: mainFontnormal),
         ),
-        Image.asset("assets/images/png_login.png"),
-        SizedBox(
-          height: getWidth(context, 12),
-          width: getWidth(context, 75),
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const RegisterWithPhoneNumber()),
-              );
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(mainColorRed),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+        body: SafeArea(
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/images/wifi.png",
+                width: getWidth(context, 30),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Text("no internet".tr),
+            ],
+          )),
+        ),
+      );
+    }
+
+
+    // Page --> Login First
+    loginFirstContainer(BuildContext context) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Please login first".tr,
+              style: TextStyle(fontSize: 32, fontFamily: mainFontnormal),
+            ),
+            Image.asset("assets/images/png_login.png"),
+            SizedBox(
+              height: getWidth(context, 12),
+              width: getWidth(context, 75),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterWithPhoneNumber()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(mainColorRed),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                ),
+                child: Text(
+                  "Login".tr,
+                  style: TextStyle(
+                      color: mainColorWhite,
+                      fontSize: 22,
+                      fontFamily: mainFontnormal),
                 ),
               ),
-            ),
-            child: Text(
-              'Login',
-              style: TextStyle(
-                  color: mainColorWhite,
-                  fontSize: 22,
-                  fontFamily: mainFontnormal),
-            ),
-          ),
-        )
-      ],
-    ),
-  );
-}
+            )
+          ],
+        ),
+      );
+    }

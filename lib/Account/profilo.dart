@@ -12,12 +12,10 @@ import 'package:athome/home/nav_switch.dart';
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
-
 import 'package:provider/provider.dart';
 import '../controller/cartprovider.dart';
 import '../main.dart';
@@ -55,11 +53,12 @@ class _SettingState extends State<Setting> {
         });
         Provider.of<productProvider>(context, listen: false).updateUser();
       });
-      toastLong("Image changed");
+      toastLong("Image changed".tr);
     } else {}
   }
 
   String selectedLanguage = 'English';
+  
   List<String> items = [
     'Male',
     'Female',
@@ -78,10 +77,10 @@ class _SettingState extends State<Setting> {
   @override
   void initState() {
     selectedItem = lang == "en"
-        ? 'English'
+        ? "English".tr
         : lang == "ar"
-            ? 'Arabic'
-            : 'Kurdish';
+            ? "Arabic".tr
+            : "Kurdish".tr;
     if (isLogin && userdata.isNotEmpty) {
       nameController.text = userdata["name"];
       ageController.text = userdata["age"].toString();
@@ -394,7 +393,7 @@ class _SettingState extends State<Setting> {
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 12),
+                                        const EdgeInsets.symmetric(horizontal: 12),
                                     child: GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -412,21 +411,21 @@ class _SettingState extends State<Setting> {
                                             children: [
                                               Row(
                                                 children: [
-                                                  Icon(
+                                                  const Icon(
                                                     Ionicons.person_outline,
                                                     size: 30,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 10,
                                                   ),
                                                   Text(
-                                                    "Information",
+                                                    "Information".tr,
                                                     style: TextStyle(
                                                         fontFamily:
                                                             mainFontnormal,
                                                         fontSize: 18),
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Icon(
                                                     colapse
                                                         ? Icons
@@ -505,8 +504,7 @@ class _SettingState extends State<Setting> {
                                                                       suffixIconColor:
                                                                           mainColorGrey,
                                                                       hintText:
-                                                                          'Enter Name'
-                                                                              .tr,
+                                                                          "Enter Name".tr,
                                                                       hintStyle: TextStyle(
                                                                           color:
                                                                               mainColorGrey,
@@ -566,8 +564,7 @@ class _SettingState extends State<Setting> {
                                                                       ),
                                                                       //prefixText: "Age: ",
                                                                       hintText:
-                                                                          'Enter Age'
-                                                                              .tr,
+                                                                          "Enter Age".tr,
                                                                       hintStyle:
                                                                           TextStyle(
                                                                               color: mainColorGrey),
@@ -811,7 +808,7 @@ class _SettingState extends State<Setting> {
                                                                           Center(
                                                                         child:
                                                                             Text(
-                                                                          "Cancel"
+                                                                          "Cancle"
                                                                               .tr,
                                                                           style: TextStyle(
                                                                               fontFamily: mainFontbold,
@@ -885,13 +882,13 @@ class _SettingState extends State<Setting> {
                                                               ),
                                                       ],
                                                     )
-                                                  : SizedBox(),
+                                                  : const SizedBox(),
                                               // edit button
                                             ],
                                           ),
                                           waiting
                                               ? WaitingWiget(context)
-                                              : SizedBox(),
+                                              : const SizedBox(),
                                         ],
                                       ),
                                     ),
@@ -912,33 +909,33 @@ class _SettingState extends State<Setting> {
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 12),
+                                        const EdgeInsets.symmetric(horizontal: 12),
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  OrderScreen()),
+                                                  const OrderScreen()),
                                         );
                                       },
                                       child: Row(
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Ionicons.bag_outline,
                                             size: 30,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
-                                            "Orders",
+                                            "Orders".tr,
                                             style: TextStyle(
                                                 fontFamily: mainFontnormal,
                                                 fontSize: 18),
                                           ),
-                                          Spacer(),
-                                          Icon(Icons
+                                          const Spacer(),
+                                          const Icon(Icons
                                               .keyboard_arrow_right_outlined)
                                         ],
                                       ),
@@ -969,7 +966,7 @@ class _SettingState extends State<Setting> {
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
                                       padding:
-                                          EdgeInsets.symmetric(horizontal: 12),
+                                          const EdgeInsets.symmetric(horizontal: 12),
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(
@@ -981,21 +978,21 @@ class _SettingState extends State<Setting> {
                                         },
                                         child: Row(
                                           children: [
-                                            Icon(
+                                            const Icon(
                                               Ionicons.location_outline,
                                               size: 30,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 10,
                                             ),
                                             Text(
-                                              "Addresses",
+                                              "Address".tr,
                                               style: TextStyle(
                                                   fontFamily: mainFontnormal,
                                                   fontSize: 18),
                                             ),
-                                            Spacer(),
-                                            Icon(Icons
+                                            const Spacer(),
+                                            const Icon(Icons
                                                 .keyboard_arrow_right_outlined)
                                           ],
                                         ),
@@ -1027,24 +1024,24 @@ class _SettingState extends State<Setting> {
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
                                       padding:
-                                          EdgeInsets.symmetric(horizontal: 12),
+                                          const EdgeInsets.symmetric(horizontal: 12),
                                       child: Row(
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Ionicons.information_outline,
                                             size: 30,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
-                                            "About us",
+                                            "About us".tr,
                                             style: TextStyle(
                                                 fontFamily: mainFontnormal,
                                                 fontSize: 18),
                                           ),
-                                          Spacer(),
-                                          Icon(Icons
+                                          const Spacer(),
+                                          const Icon(Icons
                                               .keyboard_arrow_right_outlined)
                                         ],
                                       ),
@@ -1101,7 +1098,7 @@ class _SettingState extends State<Setting> {
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
                                       padding:
-                                          EdgeInsets.symmetric(horizontal: 12),
+                                          const EdgeInsets.symmetric(horizontal: 12),
                                       child: Row(
                                         children: [
                                           Icon(
@@ -1109,11 +1106,11 @@ class _SettingState extends State<Setting> {
                                             color: mainColorRed,
                                             size: 30,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
-                                            "Log out",
+                                            "Log out".tr,
                                             style: TextStyle(
                                                 color: mainColorRed,
                                                 fontFamily: mainFontnormal,

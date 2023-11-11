@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Landing/choose_lan.dart';
 import 'package:athome/controller/productprovider.dart';
-import 'package:athome/landing/welcome_screen.dart';
 import 'package:athome/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) =>
-                    seen ? const NavSwitch() : const WelcomeScreen(),
+                    seen ? const NavSwitch() : const ChooseLang(),
               ),
             );
           },
@@ -102,7 +101,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) =>
-                seen ? const NavSwitch() : const WelcomeScreen(),
+                seen ? const NavSwitch() : const ChooseLang(),
           ),
         );
       },

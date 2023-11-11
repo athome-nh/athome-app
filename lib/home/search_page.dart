@@ -1,8 +1,6 @@
 import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Landing/splash_screen.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -92,7 +90,7 @@ class _SearchState extends State<Search> {
                                         size: 25,
                                       ),
                                     )
-                                  : SizedBox(),
+                                  : const SizedBox(),
                               border: InputBorder.none,
                               hintText: "Search".tr,
                               hintStyle: TextStyle(
@@ -106,9 +104,9 @@ class _SearchState extends State<Search> {
                       SizedBox(
                         height: getHeight(context, 1),
                       ),
-                      productPro
-                              .getProductsBySearch(productPro.searchproduct)
-                              .isEmpty
+                      
+                      productPro.getProductsBySearch(
+                        productPro.searchproduct).isEmpty
                           ? Container(
                               padding:
                                   EdgeInsets.only(top: getWidth(context, 40)),
@@ -133,7 +131,9 @@ class _SearchState extends State<Search> {
                           : listItemsShowSearch(
                               context,
                               productPro.getProductsBySearch(
-                                  productPro.searchproduct)),
+                                  productPro.searchproduct),
+                            ),
+                    
                     ],
                   ),
                 ),

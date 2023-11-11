@@ -1,4 +1,3 @@
-import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -9,10 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:athome/Config/property.dart';
-
 import 'package:provider/provider.dart';
-import '../Config/athome_functions.dart';
-import 'nav_switch.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -109,7 +105,7 @@ class _CategoriesState extends State<Categories> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(

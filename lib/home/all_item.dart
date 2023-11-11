@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
-import 'nav_switch.dart';
 
 class AllItem extends StatefulWidget {
   const AllItem({super.key});

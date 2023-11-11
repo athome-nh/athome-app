@@ -1,16 +1,13 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
-
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/product_model/product_model.dart';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
-
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../main.dart';
@@ -88,7 +85,7 @@ class _MyCartState extends State<MyCart> {
                 elevation: 0,
                 actions: [
                   cartProvider.cartItems.isEmpty
-                      ? SizedBox()
+                      ? const SizedBox()
                       : IconButton(
                           onPressed: () {
                             showDialog(
@@ -100,7 +97,7 @@ class _MyCartState extends State<MyCart> {
                                         ? Alignment.topLeft
                                         : Alignment.topRight,
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: getWidth(context, 70),
                                         height: getHeight(context, 50),
                                         child: Column(
@@ -114,7 +111,7 @@ class _MyCartState extends State<MyCart> {
                                               width: getWidth(context, 40),
                                               height: getWidth(context, 40),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Text(
@@ -127,9 +124,9 @@ class _MyCartState extends State<MyCart> {
                                                 fontSize: 25,
                                               ),
                                             ),
-                                            SizedBox(height: 10),
+                                            const SizedBox(height: 10),
                                             Text(
-                                              "You need login to add item to favourite ",
+                                              "You need login to add item to favourite".tr,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color: mainColorGrey,
@@ -161,7 +158,7 @@ class _MyCartState extends State<MyCart> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(height: 5),
+                                            const SizedBox(height: 5),
                                             TextButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
@@ -178,7 +175,7 @@ class _MyCartState extends State<MyCart> {
                                                 ),
                                               ),
                                               child: Text(
-                                                "Cancel".tr,
+                                                "Cancle".tr,
                                                 style: TextStyle(
                                                   color: mainColorGrey,
                                                   fontSize: 16,
@@ -192,7 +189,7 @@ class _MyCartState extends State<MyCart> {
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
-                                          icon: Icon(Icons.close))
+                                          icon: const Icon(Icons.close))
                                     ],
                                   ),
                                 );
@@ -229,7 +226,7 @@ class _MyCartState extends State<MyCart> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Delete  $name',
+                                      "Delete".tr + name,
                                     ),
                                   ),
                                 );

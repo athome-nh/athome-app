@@ -30,6 +30,7 @@ class _HomeSreenState extends State<HomeSreen> {
     productrovider.updatePost(false);
   }
 
+  // Check Internet
   Future<void> checkinternet() async {
     if (await noInternet(context)) {
       Provider.of<productProvider>(context, listen: false)
@@ -103,6 +104,8 @@ class _HomeSreenState extends State<HomeSreen> {
               backgroundColor: mainColorWhite,
               body: SafeArea(
                 child: CustomScrollView(slivers: <Widget>[
+                  
+                  // top
                   SliverAppBar(
                     title: Skeleton.keep(
                       child: Image.asset(
@@ -115,9 +118,9 @@ class _HomeSreenState extends State<HomeSreen> {
                     automaticallyImplyLeading: false,
                     backgroundColor: mainColorLightGrey,
                     expandedHeight: getHeight(
-                        context, 25), // Height of the app bar when expanded
-                    floating: false, // The app bar won't disappear on scroll
-                    pinned: true, // The app bar remains pinned at the top
+                        context, 25),
+                    floating: false,
+                    pinned: true,
                     flexibleSpace: Visibility(
                       visible: productrovider.show,
                       replacement: Skeletonizer(
@@ -125,7 +128,6 @@ class _HomeSreenState extends State<HomeSreen> {
                         child: FlexibleSpaceBar(
                           background: Center(
                             child: Stack(
-                              // alignment: Alignment.bottomRight,
                               children: [
                                 Image.asset(
                                   "assets/images/banner.jpg",
@@ -235,10 +237,14 @@ class _HomeSreenState extends State<HomeSreen> {
                       ),
                     ),
                   ),
+                  
+                  // body
                   SliverToBoxAdapter(
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
+
+                          // Categories
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -293,6 +299,8 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
+                          
+                          // Shimmer Effect
                           SizedBox(
                             height: getHeight(context, 14),
                             child: Visibility(
@@ -321,7 +329,6 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 border: Border.all(
                                                     color: mainColorBlack
                                                         .withOpacity(0.1)),
-                                                // color: mainColorLightGrey,
                                                 borderRadius:
                                                     BorderRadius.circular(100)),
                                             child: Center(
@@ -392,7 +399,6 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 border: Border.all(
                                                     color: mainColorBlack
                                                         .withOpacity(0.1)),
-                                                // color: mainColorLightGrey,
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: Center(
@@ -435,9 +441,12 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ),
                           ),
+
                           productrovider.Orderitems.isNotEmpty
                               ? Column(
                                   children: [
+
+                                    // Recent Order
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -477,30 +486,31 @@ class _HomeSreenState extends State<HomeSreen> {
                                                       fontSize: 14,
                                                       fontFamily:
                                                           mainFontnormal,
-                                                    )),
+                                                    ),
+                                                  ),
                                               ),
-                                              // Icon(
-                                              //   Icons
-                                              //       .arrow_forward_ios_outlined,
-                                              //   color: mainColorRed,
-                                              //   size: 13,
-                                              // )
                                             ],
                                           ),
                                         ),
                                       ],
                                     ),
+                                    
                                     listItemsSmall(
-                                        context,
-                                        productrovider.getProductsByIds(
-                                            productrovider
-                                                .listOrderProductIds())),
+                                      context,
+                                      productrovider.getProductsByIds(
+                                        productrovider.listOrderProductIds(),
+                                      ),
+                                    ),
+                                  
                                   ],
                                 )
                               : const SizedBox(),
+
                           productrovider.getProductsByDiscount().isNotEmpty
                               ? Column(
                                   children: [
+
+                                    // Discount
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -544,26 +554,23 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     fontFamily: mainFontnormal,
                                                   ),
                                                 ),
-                                                // SizedBox(
-                                                //   width: getWidth(context, 2),
-                                                // ),
-                                                // Icon(
-                                                //   Icons
-                                                //       .arrow_forward_ios_outlined,
-                                                //   color: mainColorRed,
-                                                //   size: 14,
-                                                // )
                                               ],
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    listItemsSmall(context,
-                                        productrovider.getProductsByDiscount()),
+
+                                    listItemsSmall(
+                                      context,
+                                      productrovider.getProductsByDiscount(),
+                                    ),
+
                                   ],
                                 )
                               : const SizedBox(),
+
+                          // Highlight
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -605,25 +612,23 @@ class _HomeSreenState extends State<HomeSreen> {
                                           fontFamily: mainFontnormal,
                                         ),
                                       ),
-                                      // SizedBox(
-                                      //   width: getWidth(context, 2),
-                                      // ),
-                                      // Icon(
-                                      //   Icons.arrow_forward_ios_outlined,
-                                      //   color: mainColorRed,
-                                      //   size: 14,
-                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ],
                           ),
+
                           listItemsSmall(
-                              context, productrovider.getProductsByHighlight()),
+                              context,
+                              productrovider.getProductsByHighlight(),
+                          ),
+
+                          // Space    
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
+                          
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 2)),
@@ -717,9 +722,13 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ),
                           ),
+                          
+                          // Space 
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
+
+                          // Best Seller
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -727,7 +736,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: getWidth(context, 2)),
                                 child: Text(
-                                  "Best Seller".tr,
+                                  "Best Sell".tr,
                                   style: TextStyle(
                                       color: mainColorGrey,
                                       fontSize: 16,
@@ -779,11 +788,15 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
+                          
                           listItemsSmall(
                               context, productrovider.getProductsByBestsell()),
+                          
+                          // Space 
                           SizedBox(
                             height: getHeight(context, 2),
                           )
+                        
                         ],
                       ),
                     ),
