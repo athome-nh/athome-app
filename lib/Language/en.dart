@@ -85,13 +85,13 @@ const Map<String, String> en = {
   "About us": "About us",
   "Log out": "Log out",
 
+  
+  
   "You need to login first": "You need to register first to add items to cart",
-
   "Delivery Address": "Delivery Address",
   "Change": "Change",
   "Pyment Method": "Payment Method",
   "Cash on delivery": "Cash on delivery",
-
   "Thank You!": "Thank You!",
   "for yor order": "for your order",
   "Order Number:": "Order Number:",
@@ -106,46 +106,32 @@ const Map<String, String> en = {
   "are you sure delete all items": "are you sure",
   "Delivery Instrusctions": "Delivery details",
   "Type Notes here": "Type Notes here",
-
   'My Orders': 'My Orders',
-
-  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
-      "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
-      "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.":
-      "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
-  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.":
-      "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
-  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.":
-      "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
-  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.":
-      "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!":
-      "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
+  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
+  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
+  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
+  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
+  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
   "Saved Address": "Saved Address",
   "Add your New address": "Add your New address",
   'You\'re online ✅': 'You are online ✅',
   "OK": "OK",
-
   "Warning": "Warning",
   'Log in': 'Log in',
   "Save": "Save",
-
   "Loyalty point": "Loyalty point",
-
   "Signout": "Sign-out",
   "Wellcome back": "Welcome back",
   "Enter your phone number to Shop Smarter & Easier.":
       "Enter your phone number to Shop Smarter & Easier.",
   "About Us": "About Us",
-
   "Edit account": "Edit profile",
   "Male": "Male",
   "Female": "Female",
   "Ordered:": "Ordered:",
-  "Delivered:": "Delivered:",
-
+  "Delivered:": "Delivered:", 
   "Select Location": "Select Location",
   "Not have any location": "you don't have any location",
   "Add another location": "Add another location",
@@ -156,31 +142,23 @@ const Map<String, String> en = {
   "Select": "Select",
   "Date:": "Date:",
   "You not have any order": "You do not have any order",
-  "Sign out": "Sign out",
-
+  "Sign out": "Sign out", 
   "Number": "Number",
   "Coming soon": "Coming soon",
   "Note": "Note",
   "Add your note": "Add your note",
-  "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin":
-      "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
-  "Ok": "Ok",
-
-  "You need login to add item in cart":
-      "You need to register to add item to the cart",
+  "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin": "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
+  "Ok": "Ok", 
+  "You need login to add item in cart": "You need to register to add item to the cart",
   "This list is empty": "The list is empty",
   "info:": "info:",
   "Clear My cart": "Clear My cart",
-  "You want delete all items in cart":
-      "Do you want to delete all items in the cart",
-
-  "New Discount": "New Special offers",
-
+  "You want delete all items in cart": "Do you want to delete all items in the cart", 
+  "New Discount": "New Special offers", 
   "Description": "Description",
   "Notfication": "Notfication",
   "You orders has been picked up": "You order has been picked up",
-  "Now": "Now",
-
+  "Now": "Now", 
   "Track Order": "Track your Order",
   "Order:": "Order:",
   "Cancle order": "Cancel order",
@@ -216,8 +194,7 @@ const Map<String, String> en = {
   "SKIP": "SKIP",
   "FINISH": "FINISH",
   "Next": "Next",
-
-  "Locations": "Locations",
+ "Locations": "Locations",
   "Add name": "Add name",
   "Add name location": "Add name location",
   "Area": "Area",
