@@ -1,4 +1,5 @@
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/model/cart.dart';
@@ -126,7 +127,8 @@ class _MyCartState extends State<MyCart> {
                                             ),
                                             const SizedBox(height: 10),
                                             Text(
-                                              "You need login to add item to favourite".tr,
+                                              "You need login to add item to favourite"
+                                                  .tr,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color: mainColorGrey,
@@ -265,8 +267,8 @@ class _MyCartState extends State<MyCart> {
                                           ),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl:
-                                                  "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                              imageUrl: imageUrlServer +
+                                                  cartitem.coverImg!,
                                               width: getWidth(context, 15),
                                               height: getWidth(context, 15),
                                             ),
@@ -333,28 +335,28 @@ class _MyCartState extends State<MyCart> {
                                                           : cartitem.price!),
                                                   maxLines: 1,
                                                   style: TextStyle(
-                                                      decoration: cartitem
-                                                                  .offerPrice! >
-                                                              -1
-                                                          ? TextDecoration
-                                                              .lineThrough
-                                                          : TextDecoration.none,
-                                                      color:
-                                                          cartitem.offerPrice! >
-                                                                  -1
-                                                              ? mainColorRed
-                                                              : Colors.green,
+                                                      decoration:
+                                                          checkOferPrice(
+                                                                  cartitem)
+                                                              ? TextDecoration
+                                                                  .lineThrough
+                                                              : TextDecoration
+                                                                  .none,
+                                                      color: checkOferPrice(
+                                                              cartitem)
+                                                          ? mainColorRed
+                                                          : Colors.green,
                                                       fontFamily:
-                                                          cartitem.offerPrice! >
-                                                                  -1
+                                                          checkOferPrice(
+                                                                  cartitem)
                                                               ? mainFontnormal
                                                               : mainFontbold,
                                                       fontSize: 14),
                                                 ),
-                                                cartitem.offerPrice! > -1
+                                                checkOferPrice(cartitem)
                                                     ? const Text("/")
                                                     : const SizedBox(),
-                                                cartitem.offerPrice! > -1
+                                                checkOferPrice(cartitem)
                                                     ? Text(
                                                         addCommasToPrice(
                                                             cartitem
@@ -385,34 +387,51 @@ class _MyCartState extends State<MyCart> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               GestureDetector(
-                                                onTap: () {
-                                                  if (cartitem.offerPrice! >
-                                                          -1 &&
-                                                      cartitem.orderLimit ==
-                                                          cartProvider.calculateQuantityForProduct(
-                                                              int.parse(cartitem
-                                                                  .id
-                                                                  .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  final cartItem = CartItem(
-                                                      product:
-                                                          cartitemQ.product);
-                                                  cartProvider
-                                                      .addToCart(cartItem);
-                                                },
+                                                onTap: checkProductStock(
+                                                            cartitem,
+                                                            cartitemQ
+                                                                .quantity) ||
+                                                        checkProductLimit(
+                                                            cartitem,
+                                                            cartitemQ.quantity)
+                                                    ? null
+                                                    : () {
+                                                        final cartItem = CartItem(
+                                                            product: cartitemQ
+                                                                .product);
+                                                        cartProvider.addToCart(
+                                                            cartItem);
+                                                      },
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5),
                                                       border: Border.all(
-                                                          color: Colors.green)),
+                                                          color: checkProductStock(
+                                                                      cartitem,
+                                                                      cartitemQ
+                                                                          .quantity) ||
+                                                                  checkProductLimit(
+                                                                      cartitem,
+                                                                      cartitemQ
+                                                                          .quantity)
+                                                              ? mainColorGrey
+                                                                  .withOpacity(
+                                                                      0.5)
+                                                              : Colors.green)),
                                                   child: Icon(Icons.add,
-                                                      color: Colors.green,
+                                                      color: checkProductStock(
+                                                                  cartitem,
+                                                                  cartitemQ
+                                                                      .quantity) ||
+                                                              checkProductLimit(
+                                                                  cartitem,
+                                                                  cartitemQ
+                                                                      .quantity)
+                                                          ? mainColorGrey
+                                                              .withOpacity(0.5)
+                                                          : Colors.green,
                                                       size: getHeight(
                                                           context, 2.5)),
                                                 ),
@@ -491,6 +510,9 @@ class _MyCartState extends State<MyCart> {
                             children: [
                               SizedBox(
                                 height: getHeight(context, 3),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 1),
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -594,7 +616,12 @@ class _MyCartState extends State<MyCart> {
                                     if (await noInternet(context)) {
                                       return;
                                     }
-
+                                    if (cartProvider
+                                            .calculateTotalPrice(CardItemshow) <
+                                        productrovider.minimumOrder) {
+                                      toastLong("minimum order");
+                                      return;
+                                    }
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(

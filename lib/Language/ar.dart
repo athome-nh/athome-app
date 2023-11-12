@@ -1,5 +1,4 @@
 const Map<String, String> ar = {
-
   // choose_lan
   "Language": "لغة",
   "English": "إنجليزي",
@@ -105,7 +104,7 @@ const Map<String, String> ar = {
  
 
   "currency": " عملة",
-  
+
   "You need to login first": "تحتاج التسجیل",
 
   "Delivery Address": "عنوان",
@@ -157,7 +156,7 @@ const Map<String, String> ar = {
   'You\'re online ✅': 'متصل بالنت ✅',
   'You\'re offline, connect to a network.': '‌‌أنت غیر متصل',
   "OK": "موافق",
-  
+
   "Warning": "تحذیر",
   'Log in': 'تسجیل الدخول',
   "Save": "حفض",
@@ -244,7 +243,6 @@ const Map<String, String> ar = {
   "SKIP": "تخطي",
   "FINISH": "تم",
   "Next": "بعد",
-
 
   "Locations": "الموقع",
   "Add name": "اضافة الاسم",

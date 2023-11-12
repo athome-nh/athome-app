@@ -166,7 +166,7 @@ class _CheckOutState extends State<CheckOut> {
                                         },
                                         child: Container(
                                           width: getWidth(context, 55),
-                                          height: getHeight(context, 12),
+                                          height: getHeight(context, 15),
                                           decoration: BoxDecoration(
                                               border: Border.all(
                                                   color:

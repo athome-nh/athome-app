@@ -22,6 +22,7 @@ Future<void> main() async {
 
 String lang = "";
 String token = "";
+late DateTime datetimeS;
 bool isLogin = false;
 final navigatorKey = GlobalKey<NavigatorState>();
 

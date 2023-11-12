@@ -26,31 +26,30 @@ class WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Directionality(
-        textDirection: lang=="en"?TextDirection.ltr:TextDirection.rtl,
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         backgroundColor: mainColorWhite,
         appBar: AppBar(
-            backgroundColor: mainColorWhite,
-            elevation: 0,
-            leading: IconButton(
-                onPressed: () {
-                  if(currentIndex==0){
-                     Navigator.pop(context);
-                  }else if(currentIndex==1){
-                      buttonCarouselController.jumpToPage(currentIndex-1);
-                  }else if(currentIndex==2){
-                      buttonCarouselController.jumpToPage(currentIndex-1);
-                  }              
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: mainColorRed,
-                )),
-          ),
+          backgroundColor: mainColorWhite,
+          elevation: 0,
+          leading: IconButton(
+              onPressed: () {
+                if (currentIndex == 0) {
+                  Navigator.pop(context);
+                } else if (currentIndex == 1) {
+                  buttonCarouselController.jumpToPage(currentIndex - 1);
+                } else if (currentIndex == 2) {
+                  buttonCarouselController.jumpToPage(currentIndex - 1);
+                }
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: mainColorRed,
+              )),
+        ),
         body: SafeArea(
           child: Column(
             children: [
-
               // slide 3 page
               CarouselSlider(
                 carouselController: buttonCarouselController,
@@ -75,11 +74,11 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   slid3(),
                 ],
               ),
-              
+
               Column(
                 children: [
                   currentIndex == 2
-                        // Get Start button
+                      // Get Start button
                       ? Container(
                           width: getWidth(context, 70),
                           height: getHeight(context, 6),
@@ -116,7 +115,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-        
                               // skip button
                               TextButton(
                                 onPressed: () {
@@ -126,7 +124,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const NavSwitch()),
+                                        builder: (context) =>
+                                            const NavSwitch()),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -143,7 +142,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   textAlign: TextAlign.left,
                                 ),
                               ),
-        
+
                               // 3 dote
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -198,7 +197,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   ),
                                 ],
                               ),
-        
+
                               // next button
                               Container(
                                 height: getHeight(context, 5),
@@ -221,7 +220,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                     child: Row(
                                       children: [
                                         Text(
-                                           'Next'.tr,
+                                          'Next'.tr,
                                           style: TextStyle(
                                             fontFamily: mainFontbold,
                                             fontSize: getHeight(context, 2),
@@ -255,7 +254,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
-    
+
         // logo
         Expanded(
           child: Image.asset(
@@ -268,7 +267,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
-    
+
         // image
         Expanded(
           flex: 2,
@@ -279,7 +278,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-    
+
         // text
         Expanded(
           child: Column(
@@ -326,7 +325,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
-    
+
         // logo
         Expanded(
           child: Image.asset(
@@ -339,7 +338,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
-    
+
         // image
         Expanded(
           flex: 2,
@@ -350,7 +349,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-    
+
         // text
         Expanded(
           child: Column(
@@ -395,7 +394,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
-    
+
         // logo
         Expanded(
           child: Image.asset(
@@ -408,7 +407,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 3),
         ),
-    
+
         // image
         Expanded(
           flex: 2,
@@ -419,7 +418,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-    
+
         // text
         Expanded(
           child: Column(
@@ -456,5 +455,4 @@ class WelcomeScreenState extends State<WelcomeScreen>
       ],
     );
   }
-
 }

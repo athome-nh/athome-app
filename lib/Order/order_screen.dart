@@ -1,3 +1,4 @@
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Order/old_order.dart';
 import 'package:athome/Order/order_items.dart';
 import 'package:athome/controller/cartprovider.dart';
@@ -275,13 +276,19 @@ class _OrderScreenState extends State<OrderScreen> {
                                                           pro.id ==
                                                           element.productId,
                                                     );
+                                                    print(existingItemIndex);
                                                     if (existingItemIndex !=
                                                         -1) {
+                                                      //count order
+
                                                       final cartItem =
                                                           CartItemPast(
                                                         product:
                                                             element.productId!,
-                                                        quantity: element.qt!,
+                                                        quantity: (element
+                                                                .pickedQt! -
+                                                            element
+                                                                .returnedQt!),
                                                       );
                                                       cartProvider
                                                           .addToCartPast(

@@ -68,8 +68,7 @@ class _OldOrderState extends State<OldOrder> {
                           ),
                           child: Center(
                             child: CachedNetworkImage(
-                              imageUrl:
-                                  "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                              imageUrl: imageUrlServer + product.coverImg!,
                               width: getWidth(context, 15),
                               height: getWidth(context, 15),
                             ),
@@ -127,7 +126,10 @@ class _OldOrderState extends State<OldOrder> {
                                       fontSize: 14),
                                 ),
                                 Text(
-                                  item.pickedQt.toString(),
+                                  item.pickedQt == 0
+                                      ? item.qt.toString()
+                                      : (item.pickedQt! - item.returnedQt!)
+                                          .toString(),
                                   style: TextStyle(
                                       color: mainColorGrey,
                                       fontFamily: mainFontnormal,

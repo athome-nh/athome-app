@@ -1,17 +1,18 @@
 const Map<String, String> en = {
-
   // choose_lan
   "Language": "Language",
-  "Kurdish": "Kurdish",  
+  "Kurdish": "Kurdish",
   "Arabic": "Arabic",
   "English": "English",
-  "Get Start":"Get Start",
+  "Get Start": "Get Start",
 
   // welcome_screen
   "wst01": "Shop Smarter & Easier",
-  "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
+  "wsd01":
+      "is an innovative platform designed to enhance your online shopping experience.",
   "wst02": "Learn From the Best",
-  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "wsd02":
+      "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "wst03": "Your Pocket's Friend",
   "wsd03": "Learn whatever you want, whenever or wherever you are.",
 
@@ -51,8 +52,9 @@ const Map<String, String> en = {
   "Not found any item": "No item found",
 
   // my_cart
-  "My Cart":"My Cart",
-  "You need login to add item to favourite":"You need login to add item to favourite",
+  "My Cart": "My Cart",
+  "You need login to add item to favourite":
+      "You need login to add item to favourite",
   "Clear": "Clear",
   "Your cart is empty": "Your cart is empty",
   "Delete": "Delete",
@@ -67,7 +69,7 @@ const Map<String, String> en = {
   "No have any favorite": "you don't have any favorite items",
 
   // Page --> Login First --> my_widget
-  "Please login first":"Please login first",
+  "Please login first": "Please login first",
 
   // Page --> No Internet --> my_widget
   "no internet": "You are offline, connect to WIFI",
@@ -75,13 +77,13 @@ const Map<String, String> en = {
   // profilo
   "Image changed": "Image changed",
   "Information": "Information",
-  "Enter Name":"Enter Name",
-  "Enter Age":"Enter Age",
-  "Edit":"Edit",
-  "Orders":"Orders",
+  "Enter Name": "Enter Name",
+  "Enter Age": "Enter Age",
+  "Edit": "Edit",
+  "Orders": "Orders",
   "Address": "Address",
-  "About us":"About us",
-  "Log out":"Log out",
+  "About us": "About us",
+  "Log out": "Log out",
 
 
   // order_screen
@@ -112,11 +114,13 @@ const Map<String, String> en = {
   "Thank You!": "Thank You!",
   "for yor order": "for your order",
   "Order Number:": "Order Number:",
-  "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
+  "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order":
+      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
   "Send Order": "Send Order",
-  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:": "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
+  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
+      "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
   "Delete All Items": "Delete All Items",
   "are you sure delete all items": "are you sure",
   "Delivery Instrusctions": "Delivery details",
@@ -139,7 +143,8 @@ const Map<String, String> en = {
   "Loyalty point": "Loyalty point",
   "Signout": "Sign-out",
   "Wellcome back": "Welcome back",
-  "Enter your phone number to Shop Smarter & Easier.":"Enter your phone number to Shop Smarter & Easier.",
+  "Enter your phone number to Shop Smarter & Easier.":
+      "Enter your phone number to Shop Smarter & Easier.",
   "About Us": "About Us",
   "Edit account": "Edit profile",
   "Male": "Male",
@@ -176,28 +181,34 @@ const Map<String, String> en = {
   "Track Order": "Track your Order",
   "Order:": "Order:",
   "Cancle order": "Cancel order",
-  "We will send you OTP code to verifiy your phone number.": "We will send you OTP code to verify your phone number.",
+  "We will send you OTP code to verifiy your phone number.":
+      "We will send you OTP code to verify your phone number.",
   "Please enter your phone number": "Please enter your phone number",
   "Please remove 0 form start": "Please remove 0 form the start",
   "Phone Number": "Phone Number",
-  "Please enter your phone number correct": "Please enter your phone number correctly",
+  "Please enter your phone number correct":
+      "Please enter your phone number correctly",
   "Complete Account": "Account created",
-  "Enter your account information to complete your account": "Enter your information to complete your account",
+  "Enter your account information to complete your account":
+      "Enter your information to complete your account",
   "Name": "Name",
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
   "City": "City",
   "Age": "Age",
-  "unknown occurred error please try again later": "Error please try again later",
+  "unknown occurred error please try again later":
+      "Error please try again later",
   "Confirm": "Confirm",
   "Verification": "Verification",
-  "Please enter the 6 digit code sent to": "Please enter the 6 digit code sent to",
+  "Please enter the 6 digit code sent to":
+      "Please enter the 6 digit code sent to",
   "Don't resive the OTP ?": "Didn't receive the OTP ?",
   "Try again in": "Try again in",
   "Resend": "Resend",
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
-  "Account is disable please contact athome admin": "Account is disable please contact athome admin",
+  "Account is disable please contact athome admin":
+      "Account is disable please contact athome admin",
   "the code is un correct": "the code is un-correct",
   "SKIP": "SKIP",
   "FINISH": "FINISH",

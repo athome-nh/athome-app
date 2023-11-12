@@ -26,7 +26,6 @@ class _ChooseLangState extends State<ChooseLang> {
           child: Center(
             child: Column(
               children: [
-                
                 // top image
                 Image.asset("assets/images/world.png"),
                 // Language
@@ -41,7 +40,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 SizedBox(
                   height: getHeight(context, 3),
                 ),
-                // Kurdish 
+                // Kurdish
                 GestureDetector(
                   onTap: () {
                     lang = "kur";
@@ -181,7 +180,6 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                   ),
                 )
-              
               ],
             ),
           ),

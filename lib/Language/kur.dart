@@ -1,5 +1,4 @@
 const Map<String, String> kur = {
-
   // choose_lan
   "Language": "زمان",
   "English": "ئینگلیزی",
@@ -9,7 +8,8 @@ const Map<String, String> kur = {
 
   // welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
-  "wsd01": "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
+  "wsd01":
+      "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
   "wst02": "لە باشترینەکانەوە فێر ببە",
   "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
   "wst03": "كاك رامیار ؟؟",
@@ -104,10 +104,9 @@ const Map<String, String> kur = {
 
 
   "currency": "جۆری دراو",
-  
+
   "You need to login first": "سەرەتا خۆت تۆمار بکە",
-  
-  
+
   "Delivery Address": "ناونیشانی گەیاندن",
   "Change": "گۆڕین",
   "Pyment Method": "شێوازی پارەدان",
@@ -128,7 +127,7 @@ const Map<String, String> kur = {
   "Add To Cart": "زیادکردن بۆ سەبەتەی کڕین",
   "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
       "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
-  
+
   "Delete All Items": "سڕینەوەی گشت بابەتەکان",
   "are you sure delete all items": "دڵنیای لە سڕینەوەی گشت بابەتەکان",
   "Delivery Instrusctions": "زانیاری دەربارەی گەیاندن",
@@ -248,7 +247,7 @@ const Map<String, String> kur = {
   "SKIP": "تێپەڕبوون",
   "FINISH": "کۆتایی هات",
   "Next": "دواتر",
-  
+
   "Locations": "ناونیشان",
   "Add name": "زیادکردنی ناو",
   "Add name location": "زیادکردنی ناوی ناونیشان",

@@ -1,4 +1,5 @@
 import 'package:athome/Config/my_widget.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/home/check_out.dart';
@@ -60,7 +61,15 @@ class _OrederItemsState extends State<OrederItems> {
                     itemCount: cartProvider.cartItemsPast.length,
                     itemBuilder: (BuildContext context, int index) {
                       final cartitem = CardItemshow[index];
+
                       final cartitemQ = cartProvider.cartItemsPast[index];
+                      // if (checkProductLimit(cartitem, cartitemQ.quantity)) {
+                      //   final cartItem = CartItemPast(
+                      //     product: cartitem.id!,
+                      //     quantity: cartitem.orderLimit!,
+                      //   );
+                      //   cartProvider.addToCartPast(cartItem);
+                      // } else {}
                       return Dismissible(
                         key: Key(cartitem.id.toString()),
                         direction: DismissDirection.startToEnd,
@@ -115,7 +124,7 @@ class _OrederItemsState extends State<OrederItems> {
                                     child: Center(
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                            imageUrlServer + cartitem.coverImg!,
                                         width: getWidth(context, 15),
                                         height: getWidth(context, 15),
                                       ),
@@ -180,23 +189,23 @@ class _OrederItemsState extends State<OrederItems> {
                                             maxLines: 1,
                                             style: TextStyle(
                                                 decoration:
-                                                    cartitem.offerPrice! > -1
+                                                    checkOferPrice(cartitem)
                                                         ? TextDecoration
                                                             .lineThrough
                                                         : TextDecoration.none,
-                                                color: cartitem.offerPrice! > -1
+                                                color: checkOferPrice(cartitem)
                                                     ? mainColorRed
                                                     : Colors.green,
                                                 fontFamily:
-                                                    cartitem.offerPrice! > -1
+                                                    checkOferPrice(cartitem)
                                                         ? mainFontnormal
                                                         : mainFontbold,
                                                 fontSize: 14),
                                           ),
-                                          cartitem.offerPrice! > -1
+                                          checkOferPrice(cartitem)
                                               ? const Text("/")
                                               : const SizedBox(),
-                                          cartitem.offerPrice! > -1
+                                          checkOferPrice(cartitem)
                                               ? Text(
                                                   addCommasToPrice(
                                                       cartitem.offerPrice!),
@@ -224,32 +233,45 @@ class _OrederItemsState extends State<OrederItems> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         GestureDetector(
-                                          onTap: () {
-                                            if (cartitem.offerPrice! > -1 &&
-                                                cartitem.orderLimit ==
-                                                    cartProvider
-                                                        .calculateQuantityForProduct(
-                                                            int.parse(cartitem
-                                                                .id
-                                                                .toString()))) {
-                                              toastLong(
-                                                  "you can not add more this item".tr
-                                                  );
-                                              return;
-                                            }
-                                            final cartItem = CartItemPast(
-                                                product: cartitemQ.product);
-                                            cartProvider
-                                                .addToCartPast(cartItem);
-                                          },
+                                          onTap: checkProductStock(cartitem,
+                                                      cartitemQ.quantity) ||
+                                                  checkProductLimit(cartitem,
+                                                      cartitemQ.quantity)
+                                              ? null
+                                              : () {
+                                                  final cartItem = CartItemPast(
+                                                      product:
+                                                          cartitemQ.product);
+                                                  cartProvider
+                                                      .addToCartPast(cartItem);
+                                                },
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 border: Border.all(
-                                                    color: Colors.green)),
+                                                    color: checkProductStock(
+                                                                cartitem,
+                                                                cartitemQ
+                                                                    .quantity) ||
+                                                            checkProductLimit(
+                                                                cartitem,
+                                                                cartitemQ
+                                                                    .quantity)
+                                                        ? mainColorGrey
+                                                            .withOpacity(0.5)
+                                                        : Colors.green)),
                                             child: Icon(Icons.add,
-                                                color: Colors.green,
+                                                color: checkProductStock(
+                                                            cartitem,
+                                                            cartitemQ
+                                                                .quantity) ||
+                                                        checkProductLimit(
+                                                            cartitem,
+                                                            cartitemQ.quantity)
+                                                    ? mainColorGrey
+                                                        .withOpacity(0.5)
+                                                    : Colors.green,
                                                 size: getHeight(context, 2.5)),
                                           ),
                                         ),

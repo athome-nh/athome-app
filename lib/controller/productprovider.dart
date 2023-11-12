@@ -1,3 +1,4 @@
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Network/Network.dart';
 
 import 'package:athome/landing/splash_screen.dart';
@@ -20,41 +21,6 @@ class productProvider extends ChangeNotifier {
     // loadPostData();
     //  updatePost();
   }
-
-  // loadPostData() async {
-  //   final directory = await getTemporaryDirectory();
-  //   String path = "${directory.path}/dict.json";
-  //   File f = File(path);
-
-  //   if (f.existsSync()) {
-  //     final jsonData = f.readAsStringSync();
-  //     var data = json.decode(decryptAES(jsonData));
-  //     setProducts((data['products'] as List)
-  //         .map((x) => ProductModel.fromMap(x))
-  //         .toList());
-  //     setCategorys((data['category'] as List)
-  //         .map((x) => CategoryModel.fromMap(x))
-  //         .toList());
-  //     setsubCategorys((data['subCategory'] as List)
-  //         .map((x) => SubCategory.fromMap(x))
-  //         .toList());
-  //     setproductimages((data['productsImage'] as List)
-  //         .map((x) => ProductsImage.fromMap(x))
-  //         .toList());
-  //     setOrders(
-  //         (data['orders'] as List).map((x) => OrderModel.fromMap(x)).toList());
-  //     setOrderItems((data['orders_item'] as List)
-  //         .map((x) => OrderItems.fromMap(x))
-  //         .toList());
-  //     setlocation((data['locations'] as List)
-  //         .map((x) => Locationuser.fromMap(x))
-  //         .toList());
-  //     return data;
-  //   } else {
-  //     var d = [];
-  //     return d;
-  //   }
-  // }
 
   getDataAll(bool user) {
     print("Start");
@@ -82,6 +48,7 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
+          setMinimumOrder(value['minimum_order']);
           if (user) {
             getDataUser(userdata["id"].toString());
           }
@@ -142,45 +109,6 @@ class productProvider extends ChangeNotifier {
       });
     }
   }
-  // getPost() async {
-  //   print("object");
-  //   String ordeid = userData["id"].toString();
-  //   Network(false).getData("showData/" + ordeid).then((value) async {
-  //     if (value != "") {
-  //       if (value["code"] != 200) {
-  //         var jsonString = json.encode(value);
-  //         final directory = await getTemporaryDirectory();
-  //         String path = "${directory.path}/dict.json";
-  //         var jsonList = json.decode(jsonString);
-  //         setProducts((jsonList['products'] as List)
-  //             .map((x) => ProductModel.fromMap(x))
-  //             .toList());
-  //         setCategorys((jsonList['category'] as List)
-  //             .map((x) => CategoryModel.fromMap(x))
-  //             .toList());
-  //         setsubCategorys((jsonList['subCategory'] as List)
-  //             .map((x) => SubCategory.fromMap(x))
-  //             .toList());
-  //         setproductimages((jsonList['productsImage'] as List)
-  //             .map((x) => ProductsImage.fromMap(x))
-  //             .toList());
-  //         setOrders((jsonList['orders'] as List)
-  //             .map((x) => OrderModel.fromMap(x))
-  //             .toList());
-  //         setOrderItems((jsonList['orders_item'] as List)
-  //             .map((x) => OrderItems.fromMap(x))
-  //             .toList());
-  //         setlocation((jsonList['locations'] as List)
-  //             .map((x) => Locationuser.fromMap(x))
-  //             .toList());
-  //         print("retrive data");
-  //         File f = File(path);
-  //         f.writeAsStringSync(encryptAES(jsonString),
-  //             flush: true, mode: FileMode.write);
-  //       } else {}
-  //     } else {}
-  //   });
-  // }
 
   // List to store your products
 
@@ -198,10 +126,12 @@ class productProvider extends ChangeNotifier {
   String _searchproduct = "";
   String _allitemType = "";
   int _cateType = 0;
+  int _minimumOrder = 0;
   int _idItem = 0;
   int _subcateSelect = 0;
   bool show = false;
   bool nointernetCheck = false;
+
   // Getter to access the list of products
   List<Topmodel> get tops => _tops;
 
@@ -218,6 +148,7 @@ class productProvider extends ChangeNotifier {
 
   String get allitemType => _allitemType;
   int get cateType => _cateType;
+  int get minimumOrder => _minimumOrder;
   int get idItem => _idItem;
   int get subcateSelect => _subcateSelect;
   int get defultlocation => _defultlocation;
@@ -242,11 +173,11 @@ class productProvider extends ChangeNotifier {
   }
 
   List<ProductModel> getProductsByDiscount() {
-    return _products.where((product) => product.offerPrice! > -1).toList();
+    return _products.where((product) => checkOferPrice(product)).toList();
   }
 
   List<ProductModel> getProductsByBrand(int brand) {
-    return _products.where((product) => product.brandIid! == brand).toList();
+    return _products.where((product) => product.brandId! == brand).toList();
   }
 
   List<ProductsImage> getproductimages(int id) {
@@ -255,7 +186,7 @@ class productProvider extends ChangeNotifier {
 
   List<ProductModel> getProductsByBestsell() {
     return _products
-        .where((product) => product.bestSell == 1 && product.offerPrice == -1)
+        .where((product) => product.bestSell == 1 && !checkOferPrice(product))
         .toList();
   }
 
@@ -287,12 +218,19 @@ class productProvider extends ChangeNotifier {
 
   List<ProductModel> getProductsByHighlight() {
     return _products
-        .where((product) => product.highlight == 1 && product.offerPrice == -1)
+        .where((product) => product.highlight == 1 && !checkOferPrice(product))
         .toList();
   }
 
   List<ProductModel> getProductsByHighlight2() {
     return _products.where((product) => product.highlight == 1).toList();
+  }
+
+  List<ProductModel> getProductsByIds2(List<int> idsToRetrieve) {
+    return _products
+        .where((product) =>
+            !checkOferPrice(product) && idsToRetrieve.contains(product.id))
+        .toList();
   }
 
   List<ProductModel> getProductsByIds(List<int> idsToRetrieve) {
@@ -535,6 +473,11 @@ class productProvider extends ChangeNotifier {
 
   void setnointernetcheck(bool value) {
     nointernetCheck = value;
+    notifyListeners();
+  }
+
+  void setMinimumOrder(int value) {
+    _minimumOrder = value;
     notifyListeners();
   }
 }
