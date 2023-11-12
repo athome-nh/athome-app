@@ -126,7 +126,8 @@ class _MyCartState extends State<MyCart> {
                                             ),
                                             const SizedBox(height: 10),
                                             Text(
-                                              "You need login to add item to favourite".tr,
+                                              "You need login to add item to favourite"
+                                                  .tr,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color: mainColorGrey,

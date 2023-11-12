@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:athome/main.dart';
+import 'package:athome/model/product_model/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
@@ -71,6 +72,11 @@ bool isImageValidaty(String path) {
   } else {
     return false;
   }
+}
+
+bool checkOferPrice(ProductModel product) {
+  return product.endOffer != "none" &&
+      datetimeS.isBefore(DateTime.parse(product.endOffer.toString()));
 }
 
 //// Cut text length according to the parameter

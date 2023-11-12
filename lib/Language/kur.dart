@@ -1,5 +1,4 @@
 const Map<String, String> kur = {
-
   // choose_lan
   "Language": "زمان",
   "English": "ئینگلیزی",
@@ -9,7 +8,8 @@ const Map<String, String> kur = {
 
   // welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
-  "wsd01": "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
+  "wsd01":
+      "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
   "wst02": "لە باشترینەکانەوە فێر ببە",
   "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
   "wst03": "كاك رامیار ؟؟",
@@ -44,20 +44,17 @@ const Map<String, String> kur = {
   "no internet": "You are offline, connect to WIFI",
 
   // Page --> Login First --> my_widget
-  "Please login first":"Please login first",
+  "Please login first": "Please login first",
 
   // categories
   "All Categories": "گشت پۆلێنەکان",
 
   // all_item >> shtakan dobar boo
 
-
-
   "currency": "جۆری دراو",
-  
+
   "You need to login first": "سەرەتا خۆت تۆمار بکە",
-  
-  
+
   "Delivery Address": "ناونیشانی گەیاندن",
   "Change": "گۆڕین",
   "Pyment Method": "شێوازی پارەدان",
@@ -80,16 +77,15 @@ const Map<String, String> kur = {
   "Add To Cart": "زیادکردن بۆ سەبەتەی کڕین",
   "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
       "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
-  
+
   "Delete All Items": "سڕینەوەی گشت بابەتەکان",
   "are you sure delete all items": "دڵنیای لە سڕینەوەی گشت بابەتەکان",
   "Delivery Instrusctions": "زانیاری دەربارەی گەیاندن",
   "Type Notes here": "تێبینی بنوسە",
   "Checkout": "دوپاتکردنەوە",
-  
+
   'My Orders': 'داواکاریەکانم',
-  
-  
+
   "Clear": "پاک کردنەوە",
   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
@@ -154,7 +150,7 @@ const Map<String, String> kur = {
       "ببورە لەم کاتەی ئیستادا گەیاندن بەردەست نیە ، تکایە داواکاریەکە بۆ ڕۆژی دواتر داوابکە.",
   "Ok": "Ok",
   "cateItem": "cateItem",
-  
+
   "you can not add more this item":
       "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
   "You need login to add item in cart":
@@ -207,7 +203,7 @@ const Map<String, String> kur = {
   "SKIP": "تێپەڕبوون",
   "FINISH": "کۆتایی هات",
   "Next": "دواتر",
-  
+
   "Locations": "ناونیشان",
   "Add name": "زیادکردنی ناو",
   "Add name location": "زیادکردنی ناوی ناونیشان",

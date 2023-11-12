@@ -331,12 +331,8 @@ class _TrackOrderState extends State<TrackOrder> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => OldOrder(
-                                   
-                                      widget.id,
-                                      widget.total,
-                                      widget.time,
-                                      status)),
+                                  builder: (context) => OldOrder(widget.id,
+                                      widget.total, widget.time, status)),
                             );
                           },
                           child: Text('View order',

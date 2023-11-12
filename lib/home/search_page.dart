@@ -104,9 +104,9 @@ class _SearchState extends State<Search> {
                       SizedBox(
                         height: getHeight(context, 1),
                       ),
-                      
-                      productPro.getProductsBySearch(
-                        productPro.searchproduct).isEmpty
+                      productPro
+                              .getProductsBySearch(productPro.searchproduct)
+                              .isEmpty
                           ? Container(
                               padding:
                                   EdgeInsets.only(top: getWidth(context, 40)),
@@ -133,7 +133,6 @@ class _SearchState extends State<Search> {
                               productPro.getProductsBySearch(
                                   productPro.searchproduct),
                             ),
-                    
                     ],
                   ),
                 ),

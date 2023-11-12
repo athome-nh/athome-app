@@ -51,6 +51,7 @@ class Network {
     Map<String, dynamic> data = {};
     try {
       await dio.get(serverUrl + "time").then((time) async {
+        datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] = "Bearer " + token;
         dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
         Response response = await dio.get(serverUrl + apiRout);
@@ -105,6 +106,7 @@ class Network {
     try {
       if (isLogin) {
         await dio.get(serverUrl + "time").then((time) async {
+          datetimeS = DateTime.parse(time.data["data"]);
           dio.options.headers["Authorization"] = "Bearer " + token;
           dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
           Response response = await dio.post(
@@ -116,6 +118,7 @@ class Network {
         });
       } else {
         await dio.get(serverUrl + "time").then((time) async {
+          datetimeS = DateTime.parse(time.data["data"]);
           dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
           Response response = await dio.post(
             serverUrl + rout,

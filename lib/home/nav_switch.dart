@@ -97,7 +97,6 @@ class _NavSwitchState extends State<NavSwitch> {
             backgroundColor: mainColorRed,
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
-              
               // Home
               BottomNavigationBarItem(
                   activeIcon: const Icon(
@@ -107,7 +106,7 @@ class _NavSwitchState extends State<NavSwitch> {
                     Ionicons.home_outline,
                   ),
                   label: "Home".tr),
-              
+
               // Search
               BottomNavigationBarItem(
                 icon: const Icon(
@@ -118,7 +117,7 @@ class _NavSwitchState extends State<NavSwitch> {
                 ),
                 label: 'Search'.tr,
               ),
-              
+
               // Cart
               BottomNavigationBarItem(
                 icon: cartProvider.cartItems.isNotEmpty
@@ -171,7 +170,6 @@ class _NavSwitchState extends State<NavSwitch> {
                 ),
                 label: 'Account'.tr,
               ),
-
             ],
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
@@ -180,7 +178,6 @@ class _NavSwitchState extends State<NavSwitch> {
       ),
     );
   }
-
 
   // Dialogbox ( yes and no )
   Future<void> yesNoOption(

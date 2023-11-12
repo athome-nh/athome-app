@@ -1,5 +1,4 @@
 const Map<String, String> ar = {
-
   // choose_lan
   "Language": "لغة",
   "English": "إنجليزي",
@@ -43,20 +42,15 @@ const Map<String, String> ar = {
   "no internet": "You are offline, connect to WIFI",
 
   // Page --> Login First --> my_widget
-  "Please login first":"تسجیل الدخول",
+  "Please login first": "تسجیل الدخول",
 
   // categories
   "All Categories": "کل الفئات",
 
   // all_item >> shtakan dobar boo
 
-
-
-  
-
-
   "currency": " عملة",
-  
+
   "You need to login first": "تحتاج التسجیل",
 
   "Delivery Address": "عنوان",
@@ -88,8 +82,7 @@ const Map<String, String> ar = {
   "Type Notes here": "اکتب الملاحضات هنا",
   "Checkout": "التاکید",
   'My Orders': 'طلباتي',
-  
-  
+
   "Clear": "ازاله",
   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
@@ -110,7 +103,7 @@ const Map<String, String> ar = {
   'You\'re online ✅': 'متصل بالنت ✅',
   'You\'re offline, connect to a network.': '‌‌أنت غیر متصل',
   "OK": "موافق",
-  
+
   "Warning": "تحذیر",
   'Log in': 'تسجیل الدخول',
   "Save": "حفض",
@@ -152,7 +145,7 @@ const Map<String, String> ar = {
       "آسف ليس لدينا توصيل في هذا الوقت، سنرسل لك هذا الطلب غدًا في أقرب وقت. او يمكنك إلغاء الطلب حتى قبوله من قبل المشرف",
   "Ok": "موافق",
   "cateItem": "cateItem",
-  
+
   "you can not add more this item": "لقد وصلت الی حد الادني لهذا العنصر",
   "You need login to add item in cart":
       "سجل الدخول لاضافة عناصر الی سلة التسوق",
@@ -203,7 +196,6 @@ const Map<String, String> ar = {
   "SKIP": "تخطي",
   "FINISH": "تم",
   "Next": "بعد",
-
 
   "Locations": "الموقع",
   "Add name": "اضافة الاسم",

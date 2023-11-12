@@ -104,7 +104,6 @@ class _HomeSreenState extends State<HomeSreen> {
               backgroundColor: mainColorWhite,
               body: SafeArea(
                 child: CustomScrollView(slivers: <Widget>[
-                  
                   // top
                   SliverAppBar(
                     title: Skeleton.keep(
@@ -117,8 +116,7 @@ class _HomeSreenState extends State<HomeSreen> {
                     //
                     automaticallyImplyLeading: false,
                     backgroundColor: mainColorLightGrey,
-                    expandedHeight: getHeight(
-                        context, 25),
+                    expandedHeight: getHeight(context, 25),
                     floating: false,
                     pinned: true,
                     flexibleSpace: Visibility(
@@ -237,13 +235,12 @@ class _HomeSreenState extends State<HomeSreen> {
                       ),
                     ),
                   ),
-                  
+
                   // body
                   SliverToBoxAdapter(
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-
                           // Categories
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -299,7 +296,7 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
-                          
+
                           // Shimmer Effect
                           SizedBox(
                             height: getHeight(context, 14),
@@ -445,7 +442,6 @@ class _HomeSreenState extends State<HomeSreen> {
                           productrovider.Orderitems.isNotEmpty
                               ? Column(
                                   children: [
-
                                     // Recent Order
                                     Row(
                                       mainAxisAlignment:
@@ -480,28 +476,27 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     );
                                                   }
                                                 },
-                                                child: Text("View All".tr,
-                                                    style: TextStyle(
-                                                      color: mainColorRed,
-                                                      fontSize: 14,
-                                                      fontFamily:
-                                                          mainFontnormal,
-                                                    ),
+                                                child: Text(
+                                                  "View All".tr,
+                                                  style: TextStyle(
+                                                    color: mainColorRed,
+                                                    fontSize: 14,
+                                                    fontFamily: mainFontnormal,
                                                   ),
+                                                ),
                                               ),
                                             ],
                                           ),
                                         ),
                                       ],
                                     ),
-                                    
+
                                     listItemsSmall(
                                       context,
                                       productrovider.getProductsByIds(
                                         productrovider.listOrderProductIds(),
                                       ),
                                     ),
-                                  
                                   ],
                                 )
                               : const SizedBox(),
@@ -509,7 +504,6 @@ class _HomeSreenState extends State<HomeSreen> {
                           productrovider.getProductsByDiscount().isNotEmpty
                               ? Column(
                                   children: [
-
                                     // Discount
                                     Row(
                                       mainAxisAlignment:
@@ -565,7 +559,6 @@ class _HomeSreenState extends State<HomeSreen> {
                                       context,
                                       productrovider.getProductsByDiscount(),
                                     ),
-
                                   ],
                                 )
                               : const SizedBox(),
@@ -620,15 +613,15 @@ class _HomeSreenState extends State<HomeSreen> {
                           ),
 
                           listItemsSmall(
-                              context,
-                              productrovider.getProductsByHighlight(),
+                            context,
+                            productrovider.getProductsByHighlight(),
                           ),
 
-                          // Space    
+                          // Space
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-                          
+
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 2)),
@@ -722,8 +715,8 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ),
                           ),
-                          
-                          // Space 
+
+                          // Space
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
@@ -788,15 +781,14 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
-                          
+
                           listItemsSmall(
                               context, productrovider.getProductsByBestsell()),
-                          
-                          // Space 
+
+                          // Space
                           SizedBox(
                             height: getHeight(context, 2),
                           )
-                        
                         ],
                       ),
                     ),

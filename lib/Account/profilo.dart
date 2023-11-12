@@ -58,7 +58,7 @@ class _SettingState extends State<Setting> {
   }
 
   String selectedLanguage = 'English';
-  
+
   List<String> items = [
     'Male',
     'Female',
@@ -392,8 +392,8 @@ class _SettingState extends State<Setting> {
                                       border: Border.all(),
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 12),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
                                     child: GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -504,7 +504,8 @@ class _SettingState extends State<Setting> {
                                                                       suffixIconColor:
                                                                           mainColorGrey,
                                                                       hintText:
-                                                                          "Enter Name".tr,
+                                                                          "Enter Name"
+                                                                              .tr,
                                                                       hintStyle: TextStyle(
                                                                           color:
                                                                               mainColorGrey,
@@ -564,7 +565,8 @@ class _SettingState extends State<Setting> {
                                                                       ),
                                                                       //prefixText: "Age: ",
                                                                       hintText:
-                                                                          "Enter Age".tr,
+                                                                          "Enter Age"
+                                                                              .tr,
                                                                       hintStyle:
                                                                           TextStyle(
                                                                               color: mainColorGrey),
@@ -908,8 +910,8 @@ class _SettingState extends State<Setting> {
                                       border: Border.all(),
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 12),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
@@ -965,8 +967,8 @@ class _SettingState extends State<Setting> {
                                         border: Border.all(),
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 12),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(
@@ -1023,8 +1025,8 @@ class _SettingState extends State<Setting> {
                                         border: Border.all(),
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 12),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
                                       child: Row(
                                         children: [
                                           const Icon(
@@ -1097,8 +1099,8 @@ class _SettingState extends State<Setting> {
                                         border: Border.all(color: mainColorRed),
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 12),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
                                       child: Row(
                                         children: [
                                           Icon(
