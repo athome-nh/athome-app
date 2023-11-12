@@ -3,6 +3,7 @@ import 'package:athome/Order/old_order.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/landing/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
@@ -48,6 +49,7 @@ int status = 0;
 class _TrackOrderState extends State<TrackOrder> {
   int updateStatus() {
     Network(false).getData("orderTrack/${widget.id}").then((value) {
+      print(value);
       if (value != "") {
         if (value["code"] == "200") {
           setState(() {
@@ -55,6 +57,7 @@ class _TrackOrderState extends State<TrackOrder> {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
               productrovider.updateOrder(int.parse(widget.id), 5);
+              productrovider.getDataUser(userdata["id"]);
             }
             final productrovider =
                 Provider.of<productProvider>(context, listen: false);

@@ -1,5 +1,6 @@
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Config/value.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
@@ -59,8 +60,7 @@ Widget listItemsShimer(BuildContext context) {
                                   height: 5,
                                 ),
                                 CachedNetworkImage(
-                                  imageUrl:
-                                      "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                  imageUrl: "assets/images/002_logo_1.png",
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/002_logo_1.png"),
                                   errorWidget: (context, url, error) =>
@@ -211,8 +211,7 @@ Widget listItemsBigShimer(BuildContext context) {
                                   height: 5,
                                 ),
                                 CachedNetworkImage(
-                                  imageUrl:
-                                      "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                  imageUrl: "assets/images/002_logo_1.png",
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/002_logo_1.png"),
                                   errorWidget: (context, url, error) =>
@@ -333,6 +332,8 @@ Widget listItemsSmall(BuildContext context, var data) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
           final isFavInCart = cartProvider.FavExistsInCart(product);
+          int count = cartProvider
+              .calculateQuantityForProduct(int.parse(product.id.toString()));
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
             child: Container(
@@ -370,8 +371,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     );
                                   },
                                   child: CachedNetworkImage(
-                                    imageUrl:
-                                        "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                    imageUrl: imageUrlServer + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
                                         "assets/images/002_logo_1.png"),
                                     errorWidget: (context, url, error) =>
@@ -425,21 +425,21 @@ Widget listItemsSmall(BuildContext context, var data) {
                                           : product.price!),
                                       maxLines: 1,
                                       style: TextStyle(
-                                          decoration: product.offerPrice! > -1
+                                          decoration: checkOferPrice(product)
                                               ? TextDecoration.lineThrough
                                               : TextDecoration.none,
-                                          color: product.offerPrice! > -1
+                                          color: checkOferPrice(product)
                                               ? mainColorRed
                                               : Colors.green,
-                                          fontFamily: product.offerPrice! > -1
+                                          fontFamily: checkOferPrice(product)
                                               ? mainFontnormal
                                               : mainFontbold,
                                           fontSize: 14),
                                     ),
-                                    product.offerPrice! > -1
+                                    checkOferPrice(product)
                                         ? const Text("/")
                                         : const SizedBox(),
-                                    product.offerPrice! > -1
+                                    checkOferPrice(product)
                                         ? Text(
                                             addCommasToPrice(
                                                 product.offerPrice!),
@@ -462,26 +462,22 @@ Widget listItemsSmall(BuildContext context, var data) {
                                 children: [
                                   !isItemInCart
                                       ? GestureDetector(
-                                          onTap: () {
-                                            if (!isLogin) {
-                                              loiginPopup(context);
-                                              return;
-                                            }
-                                            if (product.offerPrice! > -1 &&
-                                                product.orderLimit ==
-                                                    cartProvider
-                                                        .calculateQuantityForProduct(
-                                                            int.parse(product.id
-                                                                .toString()))) {
-                                              toastLong(
-                                                  "you can not add more this item"
-                                                      .tr);
-                                              return;
-                                            }
-                                            final cartItem =
-                                                CartItem(product: product.id!);
-                                            cartProvider.addToCart(cartItem);
-                                          },
+                                          onTap: checkProductStock(
+                                                      product, count) ||
+                                                  checkProductLimit(
+                                                      product, count)
+                                              ? null
+                                              : () {
+                                                  if (!isLogin) {
+                                                    loiginPopup(context);
+                                                    return;
+                                                  }
+
+                                                  final cartItem = CartItem(
+                                                      product: product.id!);
+                                                  cartProvider
+                                                      .addToCart(cartItem);
+                                                },
                                           child: Chip(
                                             backgroundColor: mainColorWhite,
                                             label: Text(
@@ -505,57 +501,51 @@ Widget listItemsSmall(BuildContext context, var data) {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               GestureDetector(
-                                                onTap: () {
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  final cartItem = CartItem(
-                                                      product: product.id!);
-                                                  cartProvider
-                                                      .addToCart(cartItem);
-                                                },
+                                                onTap: checkProductStock(
+                                                            product, count) ||
+                                                        checkProductLimit(
+                                                            product, count)
+                                                    ? null
+                                                    : () {
+                                                        final cartItem =
+                                                            CartItem(
+                                                                product: product
+                                                                    .id!);
+                                                        cartProvider.addToCart(
+                                                            cartItem);
+                                                      },
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5),
                                                       border: Border.all(
-                                                          color: Colors.green)),
+                                                          color: checkProductStock(
+                                                                      product,
+                                                                      count) ||
+                                                                  checkProductLimit(
+                                                                      product,
+                                                                      count)
+                                                              ? mainColorGrey
+                                                                  .withOpacity(
+                                                                      0.5)
+                                                              : Colors.green)),
                                                   child: Icon(Icons.add,
-                                                      color: Colors.green,
+                                                      color: checkProductStock(
+                                                                  product,
+                                                                  count) ||
+                                                              checkProductLimit(
+                                                                  product,
+                                                                  count)
+                                                          ? mainColorGrey
+                                                              .withOpacity(0.5)
+                                                          : Colors.green,
                                                       size: getHeight(
                                                           context, 2.5)),
                                                 ),
                                               ),
                                               Text(
-                                                cartProvider
-                                                    .calculateQuantityForProduct(
-                                                        int.parse(product.id
-                                                            .toString()))
-                                                    .toString(),
+                                                count.toString(),
                                                 style: TextStyle(
                                                     color: mainColorGrey,
                                                     fontFamily: mainFontnormal,
@@ -612,7 +602,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                       ),
                     ],
                   ),
-                  product.offerPrice! > -1
+                  checkOferPrice(product)
                       ? Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Container(
@@ -679,6 +669,8 @@ Widget listItemsShow(BuildContext context, var data) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
           final isFavInCart = cartProvider.FavExistsInCart(product);
+          int count = cartProvider
+              .calculateQuantityForProduct(int.parse(product.id.toString()));
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
             child: Container(
@@ -716,8 +708,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                     );
                                   },
                                   child: CachedNetworkImage(
-                                    imageUrl:
-                                        "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                    imageUrl: imageUrlServer + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
                                         "assets/images/002_logo_1.png"),
                                     errorWidget: (context, url, error) =>
@@ -771,21 +762,21 @@ Widget listItemsShow(BuildContext context, var data) {
                                           : product.price!),
                                       maxLines: 1,
                                       style: TextStyle(
-                                          decoration: product.offerPrice! > -1
+                                          decoration: checkOferPrice(product)
                                               ? TextDecoration.lineThrough
                                               : TextDecoration.none,
-                                          color: product.offerPrice! > -1
+                                          color: checkOferPrice(product)
                                               ? mainColorRed
                                               : Colors.green,
-                                          fontFamily: product.offerPrice! > -1
+                                          fontFamily: checkOferPrice(product)
                                               ? mainFontnormal
                                               : mainFontbold,
                                           fontSize: 14),
                                     ),
-                                    product.offerPrice! > -1
+                                    checkOferPrice(product)
                                         ? const Text("/")
                                         : const SizedBox(),
-                                    product.offerPrice! > -1
+                                    checkOferPrice(product)
                                         ? Text(
                                             addCommasToPrice(
                                                 product.offerPrice!),
@@ -808,26 +799,22 @@ Widget listItemsShow(BuildContext context, var data) {
                                 children: [
                                   !isItemInCart
                                       ? GestureDetector(
-                                          onTap: () {
-                                            if (!isLogin) {
-                                              loiginPopup(context);
-                                              return;
-                                            }
-                                            if (product.offerPrice! > -1 &&
-                                                product.orderLimit ==
-                                                    cartProvider
-                                                        .calculateQuantityForProduct(
-                                                            int.parse(product.id
-                                                                .toString()))) {
-                                              toastLong(
-                                                  "you can not add more this item"
-                                                      .tr);
-                                              return;
-                                            }
-                                            final cartItem =
-                                                CartItem(product: product.id!);
-                                            cartProvider.addToCart(cartItem);
-                                          },
+                                          onTap: checkProductStock(
+                                                      product, count) ||
+                                                  checkProductLimit(
+                                                      product, count)
+                                              ? null
+                                              : () {
+                                                  if (!isLogin) {
+                                                    loiginPopup(context);
+                                                    return;
+                                                  }
+
+                                                  final cartItem = CartItem(
+                                                      product: product.id!);
+                                                  cartProvider
+                                                      .addToCart(cartItem);
+                                                },
                                           child: Chip(
                                             backgroundColor: mainColorWhite,
                                             label: Text(
@@ -851,47 +838,45 @@ Widget listItemsShow(BuildContext context, var data) {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               GestureDetector(
-                                                onTap: () {
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  final cartItem = CartItem(
-                                                      product: product.id!);
-                                                  cartProvider
-                                                      .addToCart(cartItem);
-                                                },
+                                                onTap: checkProductStock(
+                                                            product, count) ||
+                                                        checkProductLimit(
+                                                            product, count)
+                                                    ? null
+                                                    : () {
+                                                        final cartItem =
+                                                            CartItem(
+                                                                product: product
+                                                                    .id!);
+                                                        cartProvider.addToCart(
+                                                            cartItem);
+                                                      },
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5),
                                                       border: Border.all(
-                                                          color: Colors.green)),
+                                                          color: checkProductStock(
+                                                                      product,
+                                                                      count) ||
+                                                                  checkProductLimit(
+                                                                      product,
+                                                                      count)
+                                                              ? mainColorGrey
+                                                                  .withOpacity(
+                                                                      0.5)
+                                                              : Colors.green)),
                                                   child: Icon(Icons.add,
-                                                      color: Colors.green,
+                                                      color: checkProductStock(
+                                                                  product,
+                                                                  count) ||
+                                                              checkProductLimit(
+                                                                  product,
+                                                                  count)
+                                                          ? mainColorGrey
+                                                              .withOpacity(0.5)
+                                                          : Colors.green,
                                                       size: getHeight(
                                                           context, 2.5)),
                                                 ),
@@ -958,7 +943,7 @@ Widget listItemsShow(BuildContext context, var data) {
                       ),
                     ],
                   ),
-                  product.offerPrice! > -1
+                  checkOferPrice(product)
                       ? Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Container(
@@ -1025,6 +1010,8 @@ Widget listItemsShowSearch(BuildContext context, var data) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
           final isFavInCart = cartProvider.FavExistsInCart(product);
+          int count = cartProvider
+              .calculateQuantityForProduct(int.parse(product.id.toString()));
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
             child: Container(
@@ -1062,8 +1049,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                     );
                                   },
                                   child: CachedNetworkImage(
-                                    imageUrl:
-                                        "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                    imageUrl: imageUrlServer + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
                                         "assets/images/002_logo_1.png"),
                                     errorWidget: (context, url, error) =>
@@ -1117,21 +1103,21 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                           : product.price!),
                                       maxLines: 1,
                                       style: TextStyle(
-                                          decoration: product.offerPrice! > -1
+                                          decoration: checkOferPrice(product)
                                               ? TextDecoration.lineThrough
                                               : TextDecoration.none,
-                                          color: product.offerPrice! > -1
+                                          color: checkOferPrice(product)
                                               ? mainColorRed
                                               : Colors.green,
-                                          fontFamily: product.offerPrice! > -1
+                                          fontFamily: checkOferPrice(product)
                                               ? mainFontnormal
                                               : mainFontbold,
                                           fontSize: 14),
                                     ),
-                                    product.offerPrice! > -1
+                                    checkOferPrice(product)
                                         ? const Text("/")
                                         : const SizedBox(),
-                                    product.offerPrice! > -1
+                                    checkOferPrice(product)
                                         ? Text(
                                             addCommasToPrice(
                                                 product.offerPrice!),
@@ -1154,26 +1140,22 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                 children: [
                                   !isItemInCart
                                       ? GestureDetector(
-                                          onTap: () {
-                                            if (!isLogin) {
-                                              loiginPopup(context);
-                                              return;
-                                            }
-                                            if (product.offerPrice! > -1 &&
-                                                product.orderLimit ==
-                                                    cartProvider
-                                                        .calculateQuantityForProduct(
-                                                            int.parse(product.id
-                                                                .toString()))) {
-                                              toastLong(
-                                                  "you can not add more this item"
-                                                      .tr);
-                                              return;
-                                            }
-                                            final cartItem =
-                                                CartItem(product: product.id!);
-                                            cartProvider.addToCart(cartItem);
-                                          },
+                                          onTap: checkProductStock(
+                                                      product, count) ||
+                                                  checkProductLimit(
+                                                      product, count)
+                                              ? null
+                                              : () {
+                                                  if (!isLogin) {
+                                                    loiginPopup(context);
+                                                    return;
+                                                  }
+
+                                                  final cartItem = CartItem(
+                                                      product: product.id!);
+                                                  cartProvider
+                                                      .addToCart(cartItem);
+                                                },
                                           child: Chip(
                                             backgroundColor: mainColorWhite,
                                             label: Text(
@@ -1197,57 +1179,51 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               GestureDetector(
-                                                onTap: () {
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  if (product.offerPrice! >
-                                                          -1 &&
-                                                      product.orderLimit ==
-                                                          cartProvider
-                                                              .calculateQuantityForProduct(
-                                                                  int.parse(product
-                                                                      .id
-                                                                      .toString()))) {
-                                                    toastLong(
-                                                        "you can not add more this item"
-                                                            .tr);
-                                                    return;
-                                                  }
-                                                  final cartItem = CartItem(
-                                                      product: product.id!);
-                                                  cartProvider
-                                                      .addToCart(cartItem);
-                                                },
+                                                onTap: checkProductStock(
+                                                            product, count) ||
+                                                        checkProductLimit(
+                                                            product, count)
+                                                    ? null
+                                                    : () {
+                                                        final cartItem =
+                                                            CartItem(
+                                                                product: product
+                                                                    .id!);
+                                                        cartProvider.addToCart(
+                                                            cartItem);
+                                                      },
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5),
                                                       border: Border.all(
-                                                          color: Colors.green)),
+                                                          color: checkProductStock(
+                                                                      product,
+                                                                      count) ||
+                                                                  checkProductLimit(
+                                                                      product,
+                                                                      count)
+                                                              ? mainColorGrey
+                                                                  .withOpacity(
+                                                                      0.5)
+                                                              : Colors.green)),
                                                   child: Icon(Icons.add,
-                                                      color: Colors.green,
+                                                      color: checkProductStock(
+                                                                  product,
+                                                                  count) ||
+                                                              checkProductLimit(
+                                                                  product,
+                                                                  count)
+                                                          ? mainColorGrey
+                                                              .withOpacity(0.5)
+                                                          : Colors.green,
                                                       size: getHeight(
                                                           context, 2.5)),
                                                 ),
                                               ),
                                               Text(
-                                                cartProvider
-                                                    .calculateQuantityForProduct(
-                                                        int.parse(product.id
-                                                            .toString()))
-                                                    .toString(),
+                                                count.toString(),
                                                 style: TextStyle(
                                                     color: mainColorGrey,
                                                     fontFamily: mainFontnormal,
@@ -1304,7 +1280,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                       ),
                     ],
                   ),
-                  product.offerPrice! > -1
+                  checkOferPrice(product)
                       ? Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Container(

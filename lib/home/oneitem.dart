@@ -34,6 +34,8 @@ class _OneitemState extends State<Oneitem> {
     ProductModel Item = productrovider.getoneProductById(productrovider.idItem);
     final isItemInCart = cartProvider.itemExistsInCart(Item);
     final isFavInCart = cartProvider.FavExistsInCart(Item);
+    int count =
+        cartProvider.calculateQuantityForProduct(int.parse(Item.id.toString()));
     List<ProductsImage> images =
         productrovider.getproductimages(productrovider.idItem);
     return Directionality(
@@ -134,7 +136,7 @@ class _OneitemState extends State<Oneitem> {
                                       child: Center(
                                         child: CachedNetworkImage(
                                           imageUrl:
-                                              "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                              imageUrlServer + Item.coverImg!,
                                           // imageUrlServer + Item.coverImg!,
                                           placeholder: (context, url) =>
                                               Image.asset(
@@ -218,19 +220,19 @@ class _OneitemState extends State<Oneitem> {
                                     : Item.price!),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    decoration: Item.offerPrice! > -1
+                                    decoration: checkOferPrice(Item)
                                         ? TextDecoration.lineThrough
                                         : TextDecoration.none,
-                                    color: Item.offerPrice! > -1
+                                    color: checkOferPrice(Item)
                                         ? mainColorRed
                                         : Colors.green,
-                                    fontFamily: Item.offerPrice! > -1
+                                    fontFamily: checkOferPrice(Item)
                                         ? mainFontnormal
                                         : mainFontbold,
                                     fontSize: 16),
                               ),
-                              Item.offerPrice! > -1 ? Text("/") : SizedBox(),
-                              Item.offerPrice! > -1
+                              checkOferPrice(Item) ? Text("/") : SizedBox(),
+                              checkOferPrice(Item)
                                   ? Text(
                                       addCommasToPrice(Item.offerPrice!),
                                       maxLines: 1,
@@ -312,11 +314,18 @@ class _OneitemState extends State<Oneitem> {
                     isItemInCart
                         ? const SizedBox()
                         : TextButton(
-                            onPressed: () {
-                              loiginPopup(context);
-                              final cartItem = CartItem(product: Item.id!);
-                              cartProvider.addToCart(cartItem);
-                            },
+                            onPressed: checkProductStock(Item, count) ||
+                                    checkProductLimit(Item, count)
+                                ? null
+                                : () {
+                                    if (!isLogin) {
+                                      loiginPopup(context);
+                                      return;
+                                    }
+                                    final cartItem =
+                                        CartItem(product: Item.id!);
+                                    cartProvider.addToCart(cartItem);
+                                  },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: mainColorRed,
                               fixedSize: Size(
@@ -374,46 +383,34 @@ class _OneitemState extends State<Oneitem> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
-                                  onTap: () {
-                                    if (Item.offerPrice! > -1 &&
-                                        Item.orderLimit ==
-                                            cartProvider
-                                                .calculateQuantityForProduct(
-                                                    int.parse(
-                                                        Item.id.toString()))) {
-                                      toastLong(
-                                          "you can not add more this item".tr);
-                                      return;
-                                    }
-                                    if (Item.offerPrice! > -1 &&
-                                        Item.orderLimit ==
-                                            cartProvider
-                                                .calculateQuantityForProduct(
-                                                    int.parse(
-                                                        Item.id.toString()))) {
-                                      toastLong(
-                                          "you can not add more this item".tr);
-                                      return;
-                                    }
-                                    final cartItem =
-                                        CartItem(product: Item.id!);
-                                    cartProvider.addToCart(cartItem);
-                                  },
+                                  onTap: checkProductStock(Item, count) ||
+                                          checkProductLimit(Item, count)
+                                      ? null
+                                      : () {
+                                          final cartItem =
+                                              CartItem(product: Item.id!);
+                                          cartProvider.addToCart(cartItem);
+                                        },
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
-                                        border:
-                                            Border.all(color: Colors.green)),
+                                        border: Border.all(
+                                            color: checkProductStock(
+                                                        Item, count) ||
+                                                    checkProductLimit(
+                                                        Item, count)
+                                                ? mainColorGrey.withOpacity(0.5)
+                                                : Colors.green)),
                                     child: Icon(Icons.add,
-                                        color: Colors.green,
+                                        color: checkProductStock(Item, count) ||
+                                                checkProductLimit(Item, count)
+                                            ? mainColorGrey.withOpacity(0.5)
+                                            : Colors.green,
                                         size: getHeight(context, 2.5)),
                                   ),
                                 ),
                                 Text(
-                                  cartProvider
-                                      .calculateQuantityForProduct(
-                                          int.parse(Item.id.toString()))
-                                      .toString(),
+                                  count.toString(),
                                   style: TextStyle(
                                       color: mainColorGrey,
                                       fontFamily: mainFontnormal,

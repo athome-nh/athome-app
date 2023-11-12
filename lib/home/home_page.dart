@@ -334,7 +334,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   BorderRadius.circular(100),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    "https://purepng.com/public/uploads/large/purepng.com-orange-orangeorangefruitbitter-orangeorangesclip-art-17015273374288pjtg.png",
+                                                    "assets/images/002_logo_1.png",
                                                 placeholder: (context, url) =>
                                                     Image.asset(
                                                         "assets/images/002_logo_1.png"),
@@ -493,7 +493,7 @@ class _HomeSreenState extends State<HomeSreen> {
 
                                     listItemsSmall(
                                       context,
-                                      productrovider.getProductsByIds(
+                                      productrovider.getProductsByIds2(
                                         productrovider.listOrderProductIds(),
                                       ),
                                     ),

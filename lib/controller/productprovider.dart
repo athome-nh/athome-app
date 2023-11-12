@@ -48,7 +48,7 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
-          //setMinimumOrder(value['minimum_order']);
+          setMinimumOrder(value['minimum_order']);
           if (user) {
             getDataUser(userdata["id"].toString());
           }
@@ -186,7 +186,7 @@ class productProvider extends ChangeNotifier {
 
   List<ProductModel> getProductsByBestsell() {
     return _products
-        .where((product) => product.bestSell == 1 && product.offerPrice == -1)
+        .where((product) => product.bestSell == 1 && !checkOferPrice(product))
         .toList();
   }
 
@@ -218,12 +218,19 @@ class productProvider extends ChangeNotifier {
 
   List<ProductModel> getProductsByHighlight() {
     return _products
-        .where((product) => product.highlight == 1 && product.offerPrice == -1)
+        .where((product) => product.highlight == 1 && !checkOferPrice(product))
         .toList();
   }
 
   List<ProductModel> getProductsByHighlight2() {
     return _products.where((product) => product.highlight == 1).toList();
+  }
+
+  List<ProductModel> getProductsByIds2(List<int> idsToRetrieve) {
+    return _products
+        .where((product) =>
+            !checkOferPrice(product) && idsToRetrieve.contains(product.id))
+        .toList();
   }
 
   List<ProductModel> getProductsByIds(List<int> idsToRetrieve) {

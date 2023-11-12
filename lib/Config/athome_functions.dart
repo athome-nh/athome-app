@@ -79,6 +79,15 @@ bool checkOferPrice(ProductModel product) {
       datetimeS.isBefore(DateTime.parse(product.endOffer.toString()));
 }
 
+bool checkProductStock(ProductModel product, int i) {
+  i = i + 5;
+  return product.stock == i;
+}
+
+bool checkProductLimit(ProductModel product, int i) {
+  return checkOferPrice(product) && product.orderLimit == i;
+}
+
 //// Cut text length according to the parameter
 String textCount(String txt, int num) {
   String r = "";
