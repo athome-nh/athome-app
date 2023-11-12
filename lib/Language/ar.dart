@@ -33,6 +33,7 @@ const Map<String, String> ar = {
   "Highlight": "العناصر الممیزة",
   "Best Sell": "المنتجات الاکثر مبیعا",
   "View All": "عرض الکل",
+  
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "؟؟؟؟؟",
   "You need login": "?????",
@@ -82,8 +83,26 @@ const Map<String, String> ar = {
   "About us":"حول التطبیق",
   "Log out":"؟؟؟؟؟",
 
+  // order_screen
+  "My Orders":"طلباتي",
+  "On going":"?????",
+  "History":"?????",
+  "Order number:":"?????",
+  "Date:": "تاریخ:",
+  "You not have any order": "لیس لدیك اي طلب",
+  "Re order":"اعادة الطلب",
+  "View":"?????",
 
+  // order_items
+  "Past Order": "الطلبیة السابقة",
+  "Add More Items": "اضافة المزید من العناصر",
 
+  // old_order
+  "Quantity:":"?????",
+  "Date and Time":"?????",
+  "Order No.":"?????",
+
+ 
 
   "currency": " عملة",
   
@@ -115,7 +134,7 @@ const Map<String, String> ar = {
   "Delivery Instrusctions": "تعلیمات التوصیل",
   "Type Notes here": "اکتب الملاحضات هنا",
   
-  'My Orders': 'طلباتي',
+  
   
   
   
@@ -160,13 +179,10 @@ const Map<String, String> ar = {
   "Select Location": "اختر الموقع",
   "Not have any location": "لیس لدیك موقع محفوض",
   "Add another location": "اضافةالموقع التوصیل",
-  "Re Order": "اعادة الطلب",
-  "Add More Items": "اضافة المزید من العناصر",
-  "Past Order": "الطلبیة السابقة",
+  
   "Order ID:": "رقم الطلبیة:",
   "Select": "اختار",
-  "Date:": "تاریخ:",
-  "You not have any order": "لیس لدیك اي طلب",
+  
   "Sign out": "تسجیل الخروج",
   
   "Number": "رقم",

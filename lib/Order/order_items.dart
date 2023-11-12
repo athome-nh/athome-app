@@ -77,7 +77,7 @@ class _OrederItemsState extends State<OrederItems> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Delete  $name',
+                                "Delete".tr + name,
                               ),
                             ),
                           );
@@ -233,8 +233,8 @@ class _OrederItemsState extends State<OrederItems> {
                                                                 .id
                                                                 .toString()))) {
                                               toastLong(
-                                                  "you can not add more this item"
-                                                      .tr);
+                                                  "you can not add more this item".tr
+                                                  );
                                               return;
                                             }
                                             final cartItem = CartItemPast(
@@ -621,7 +621,7 @@ class _OrederItemsState extends State<OrederItems> {
                                   ),
                                 ),
                                 child: Text(
-                                  "Re Order".tr,
+                                  "Re order".tr,
                                   style: TextStyle(
                                     color: mainColorWhite,
                                     fontSize: 16,

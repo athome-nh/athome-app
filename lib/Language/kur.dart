@@ -82,7 +82,24 @@ const Map<String, String> kur = {
   "About us":"دەربارەی ئێمە",
   "Log out":"؟؟؟؟؟",
 
+  // order_screen
+  "My Orders":"داواکاریەکانم",
+  "On going":"?????",
+  "History":"?????",
+  "Order number:":"?????",
+  "Date:": "?????:",
+  "You not have any order": "هیچ داواکاریەکت نیە",
+  "Re order":"دوبارە داواکردن",
+  "View":"?????",
 
+  // order_items
+  "Past Order": "داواکاریێشوتر",
+  "Add More Items": "زیادکردنی بەرهەمی تر",
+
+  // old_order
+  "Quantity:":"?????",
+  "Date and Time":"?????",
+  "Order No.":"?????",
 
 
 
@@ -118,7 +135,7 @@ const Map<String, String> kur = {
   "Type Notes here": "تێبینی بنوسە",
   
   
-  'My Orders': 'داواکاریەکانم',
+  
   
   
  
@@ -164,13 +181,10 @@ const Map<String, String> kur = {
   "Select Location": "جێگیرکردنی ناونیشان",
   "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
   "Add another location": "زیادکردنی ناونیسانی گەیاندن",
-  "Re Order": "دوبارە داواکردن",
-  "Add More Items": "زیادکردنی بەرهەمی تر",
-  "Past Order": "داواکاریێشوتر",
+  
   "Order ID:": "ناوی داواکاری:",
   "Select": "دیاری بکە",
-  "Date:": "ڕۆژ:",
-  "You not have any order": "هیچ داواکاریەکت نیە",
+  
   "Sign out": "دەرچوون",
   
   "Number": "ژمارە",
