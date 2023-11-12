@@ -34,25 +34,55 @@ const Map<String, String> ar = {
   "Best Sell": "المنتجات الاکثر مبیعا",
   "View All": "عرض الکل",
   // Dialogbox ( Register ) --> my_widget
-  "Login Please": "Register First",
+  "Login Please": "؟؟؟؟؟",
   "You need login": "?????",
   "Login": "تسجیل الدخول",
   "Cancle": "الغاء",
 
-  // Page --> No Internet --> my_widget
-  "no internet": "You are offline, connect to WIFI",
-
-  // Page --> Login First --> my_widget
-  "Please login first":"تسجیل الدخول",
+  
 
   // categories
   "All Categories": "کل الفئات",
 
   // all_item >> shtakan dobar boo
 
+  // Search_page
+  "Not found any item": "لم یتم العثور علی أي عنصر",
+
+  // my_cart
+  "My Cart":"؟؟؟؟؟",
+  "You need login to add item to favourite":"؟؟؟؟؟",
+  "Clear": "ازاله",
+  "Your cart is empty": "سلة التسوف فارغة",
+  "Delete": "حذف",
+  "you can not add more this item": "لقد وصلت الی حد الادني لهذا العنصر",
+  "Sub Total": "المجموع",
+  "Delivery Cost": "کلفة التوصیل",
+  "Free Delivery": "توصیل المجاني",
+  "Total": "مجموع",
+  "Checkout": "التاکید",
+
+  // favorite
+  "No have any favorite": "لیس لدیك اي عناصر المفضلة",
+
+  // Page --> No Internet --> my_widget
+  "no internet": "؟؟؟؟؟؟",
+
+  // Page --> Login First --> my_widget
+  "Please login first":"تسجیل الدخول",
+
+  // profilo
+  "Image changed": "؟؟؟؟؟",
+  "Information": "؟؟؟؟؟",
+  "Enter Name":"ادخل الاسم",
+  "Enter Age":"ادخل العمر",
+  "Edit":"Edit",
+  "Orders":"؟؟؟؟؟",
+  "Address": "العنوان",
+  "About us":"حول التطبیق",
+  "Log out":"؟؟؟؟؟",
 
 
-  
 
 
   "currency": " عملة",
@@ -63,9 +93,7 @@ const Map<String, String> ar = {
   "Change": "تغییر",
   "Pyment Method": "طریقة الدفع",
   "Cash on delivery": "الدفع عند التسلیم",
-  "Sub Total": "المجموع",
-  "Delivery Cost": "کلفة التوصیل",
-  "Total": "مجموع",
+  
   "Thank You!": "شکرا",
   "for yor order": "لك علی الطلبیة",
   "Order Number:": "رقم الطلبیة:",
@@ -86,11 +114,11 @@ const Map<String, String> ar = {
   "are you sure delete all items": "متأکد من ازاله کل العناصر",
   "Delivery Instrusctions": "تعلیمات التوصیل",
   "Type Notes here": "اکتب الملاحضات هنا",
-  "Checkout": "التاکید",
+  
   'My Orders': 'طلباتي',
   
   
-  "Clear": "ازاله",
+  
   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
@@ -114,12 +142,9 @@ const Map<String, String> ar = {
   "Warning": "تحذیر",
   'Log in': 'تسجیل الدخول',
   "Save": "حفض",
-  "I want to Delete my account": "I want to Delete my account",
-  'Enter Name': 'ادخل الاسم',
-  'Enter Age': 'ادخل العمر',
   "Loyalty point": "نقطة الولاء",
-  "Address": "العنوان",
-  "About us": "حول التطبیق",
+  "I want to Delete my account": "I want to Delete my account",
+  
   "Signout": "تسجیل الخروج",
   "Wellcome back": "مرحبا بك",
   "Enter your phone number to Shop Smarter & Easier.": "أدخل رقم هاتفك و تسوق",
@@ -131,7 +156,7 @@ const Map<String, String> ar = {
   "Female": "أنثی",
   "Ordered:": "صارت الطلبیة:",
   "Delivered:": "تم التسلیم:",
-  "Free Delivery": "توصیل المجاني",
+  
   "Select Location": "اختر الموقع",
   "Not have any location": "لیس لدیك موقع محفوض",
   "Add another location": "اضافةالموقع التوصیل",
@@ -143,7 +168,7 @@ const Map<String, String> ar = {
   "Date:": "تاریخ:",
   "You not have any order": "لیس لدیك اي طلب",
   "Sign out": "تسجیل الخروج",
-  "No have any favorite": "لیس لدیك اي عناصر المفضلة",
+  
   "Number": "رقم",
   "Coming soon": "قریبا",
   "Note": "ملاحضة",
@@ -153,21 +178,21 @@ const Map<String, String> ar = {
   "Ok": "موافق",
   "cateItem": "cateItem",
   
-  "you can not add more this item": "لقد وصلت الی حد الادني لهذا العنصر",
+  
   "You need login to add item in cart":
       "سجل الدخول لاضافة عناصر الی سلة التسوق",
   "This list is empty": "لا یوجد اڕ عنصر",
   "info:": "info:",
   "Clear My cart": "ازالة سلة المشتریات",
   "You want delete all items in cart": "ازالة العناصر من سلة المشتریات",
-  "Delete": "حذف",
+  
   "New Discount": "عروضات الجدیدة",
-  "Your cart is empty": "سلة التسوف فارغة",
+  
   "Description": "وصف",
   "Notfication": "اشعارات",
   "You orders has been picked up": "تم الاستلام الطلبیة",
   "Now": "الان",
-  "Not found any item": "لم یتم العثور علی أي عنصر",
+  
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
   "Cancle order": "اخلاء الطلبیة",

@@ -77,10 +77,10 @@ class _SettingState extends State<Setting> {
   @override
   void initState() {
     selectedItem = lang == "en"
-        ? "English".tr
+        ? "English"
         : lang == "ar"
-            ? "Arabic".tr
-            : "Kurdish".tr;
+            ? "Arabic"
+            : "Kurdish";
     if (isLogin && userdata.isNotEmpty) {
       nameController.text = userdata["name"];
       ageController.text = userdata["age"].toString();
