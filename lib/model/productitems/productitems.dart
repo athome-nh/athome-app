@@ -8,7 +8,6 @@ class Productitems {
   final String? nameAr;
   final String? nameKu;
   final String? contentsEn;
-
   final String? contentsAr;
   final String? contentsKu;
   final String? coverImg;

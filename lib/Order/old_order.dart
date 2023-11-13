@@ -15,10 +15,8 @@ class OldOrder extends StatefulWidget {
   String total = "";
   String time = "";
   int status = 0;
-  bool check;
 
-  OldOrder(this.id, this.total, this.time, this.status, this.check,
-      {super.key});
+  OldOrder(this.id, this.total, this.time, this.status, {super.key});
   @override
   State<OldOrder> createState() => _OldOrderState();
 }
@@ -48,7 +46,7 @@ class _OldOrderState extends State<OldOrder> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: (productrovider.productitems.isEmpty && widget.check)
+        child: (productrovider.productitems.isEmpty)
             ? Center(child: WaitingWiget(context))
             : ListView.builder(
                 itemCount: items.length,
@@ -73,17 +71,11 @@ class _OldOrderState extends State<OldOrder> {
                               ),
                               child: Center(
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.check
-                                      ? imageUrlServer +
-                                          productrovider
-                                              .getoneProductItemsById(
-                                                  items[index].productId!)
-                                              .coverImg!
-                                      : imageUrlServer +
-                                          productrovider
-                                              .getoneProductById(
-                                                  items[index].productId!)
-                                              .coverImg!,
+                                  imageUrl: imageUrlServer +
+                                      productrovider
+                                          .getoneProductItemsById(
+                                              items[index].productId!)
+                                          .coverImg!,
                                   width: getWidth(context, 15),
                                   height: getWidth(context, 15),
                                 ),
@@ -100,44 +92,19 @@ class _OldOrderState extends State<OldOrder> {
                                   width: getWidth(context, 40),
                                   child: Text(
                                     lang == "en"
-                                        ? widget.check
-                                            ? imageUrlServer +
-                                                productrovider
-                                                    .getoneProductItemsById(
-                                                        items[index].productId!)
-                                                    .nameEn!
-                                            : imageUrlServer +
-                                                productrovider
-                                                    .getoneProductById(
-                                                        items[index].productId!)
-                                                    .nameEn!
+                                        ? productrovider
+                                            .getoneProductItemsById(
+                                                items[index].productId!)
+                                            .nameEn!
                                         : lang == "ar"
-                                            ? widget.check
-                                                ? imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductItemsById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .nameAr!
-                                                : imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .nameAr!
-                                            : widget.check
-                                                ? imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductItemsById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .nameKu!
-                                                : imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .nameKu!,
+                                            ? productrovider
+                                                .getoneProductItemsById(
+                                                    items[index].productId!)
+                                                .nameAr!
+                                            : productrovider
+                                                .getoneProductItemsById(
+                                                    items[index].productId!)
+                                                .nameKu!,
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
                                     style: TextStyle(
@@ -153,44 +120,19 @@ class _OldOrderState extends State<OldOrder> {
                                   width: getWidth(context, 40),
                                   child: Text(
                                     lang == "en"
-                                        ? widget.check
-                                            ? imageUrlServer +
-                                                productrovider
-                                                    .getoneProductItemsById(
-                                                        items[index].productId!)
-                                                    .contentsEn!
-                                            : imageUrlServer +
-                                                productrovider
-                                                    .getoneProductById(
-                                                        items[index].productId!)
-                                                    .contentsEn!
+                                        ? productrovider
+                                            .getoneProductItemsById(
+                                                items[index].productId!)
+                                            .contentsEn!
                                         : lang == "ar"
-                                            ? widget.check
-                                                ? imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductItemsById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .contentsAr!
-                                                : imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .contentsAr!
-                                            : widget.check
-                                                ? imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductItemsById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .contentsKu!
-                                                : imageUrlServer +
-                                                    productrovider
-                                                        .getoneProductById(
-                                                            items[index]
-                                                                .productId!)
-                                                        .contentsKu!,
+                                            ? productrovider
+                                                .getoneProductItemsById(
+                                                    items[index].productId!)
+                                                .contentsAr!
+                                            : productrovider
+                                                .getoneProductItemsById(
+                                                    items[index].productId!)
+                                                .contentsKu!,
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
                                     style: TextStyle(

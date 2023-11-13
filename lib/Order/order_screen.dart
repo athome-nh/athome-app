@@ -353,8 +353,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                                   .toString(),
                                                               order.createdAt
                                                                   .toString(),
-                                                              order.status!,
-                                                              true,
+                                                              order.status!
+                                                           
                                                             )),
                                                   );
                                                 },
