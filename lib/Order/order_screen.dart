@@ -84,9 +84,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   labelColor:
                       mainColorGrey, // Set the color for the selected tab's label
                   indicatorColor: mainColorRed,
-                  tabs: const [
-                    Tab(text: 'On going'),
-                    Tab(text: 'history'),
+                  tabs: [
+                    Tab(text: "On going".tr),
+                    Tab(text: "History".tr),
                   ],
                 ),
               ),
@@ -311,7 +311,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                 child: Row(
                                                   children: [
                                                     Text(
-                                                      "Re order",
+                                                      "Re order".tr,
                                                       style: TextStyle(
                                                           color: mainColorGrey,
                                                           fontFamily:
@@ -361,7 +361,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                 child: Row(
                                                   children: [
                                                     Text(
-                                                      "View",
+                                                      "View".tr,
                                                       style: TextStyle(
                                                           color: mainColorGrey,
                                                           fontFamily:

@@ -86,7 +86,7 @@ class _OrederItemsState extends State<OrederItems> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Delete  $name',
+                                "Delete".tr + name,
                               ),
                             ),
                           );
@@ -643,7 +643,7 @@ class _OrederItemsState extends State<OrederItems> {
                                   ),
                                 ),
                                 child: Text(
-                                  "Re Order".tr,
+                                  "Re order".tr,
                                   style: TextStyle(
                                     color: mainColorWhite,
                                     fontSize: 16,

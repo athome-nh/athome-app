@@ -31,7 +31,7 @@ const Map<String, String> en = {
   // home_page
   "Order now": "Order now",
   "Categories": "Category",
-  "Recent Order": "Recent Orders", // /??
+  "Recent Order": "Recent Orders",
   "Discount": "Special Offers",
   "Highlight": "Highlight",
   "Best Sell": "Best Sell",
@@ -85,6 +85,27 @@ const Map<String, String> en = {
   "About us": "About us",
   "Log out": "Log out",
 
+
+  // order_screen
+  "My Orders":"My Orders",
+  "On going":"On going",
+  "History":"History",
+  "Order number:":"Order number:",
+  "Date:": "Date:",
+  "You not have any order": "You do not have any order",
+  "Re order":"Re order",
+  "View":"View",
+
+  // order_items
+  "Past Order": "Last Order",
+  "Add More Items": "Add More Items",
+
+  // old_order
+  "Quantity:":"Quantity:",
+  "Date and Time":"Date and Time",
+  "Order No.":"Order No.",
+
+
   "You need to login first": "You need to register first to add items to cart",
   "Delivery Address": "Delivery Address",
   "Change": "Change",
@@ -104,21 +125,14 @@ const Map<String, String> en = {
   "are you sure delete all items": "are you sure",
   "Delivery Instrusctions": "Delivery details",
   "Type Notes here": "Type Notes here",
-  'My Orders': 'My Orders',
-  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
-      "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
-      "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.":
-      "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
-  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.":
-      "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
-  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.":
-      "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
-  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.":
-      "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!":
-      "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  
+  "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
+  "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
+  "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
+  "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
+  "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
+  "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
   "Saved Address": "Saved Address",
   "Add your New address": "Add your New address",
   'You\'re online ✅': 'You are online ✅',
@@ -141,13 +155,13 @@ const Map<String, String> en = {
   "Not have any location": "you don't have any location",
   "Add another location": "Add another location",
   "Re Order": "Re Order",
-  "Add More Items": "Add More Items",
-  "Past Order": "Last Order",
+  
+  
   "Order ID:": "Order ID:",
   "Select": "Select",
-  "Date:": "Date:",
-  "You not have any order": "You do not have any order",
-  "Sign out": "Sign out",
+  
+  
+  "Sign out": "Sign out", 
   "Number": "Number",
   "Coming soon": "Coming soon",
   "Note": "Note",

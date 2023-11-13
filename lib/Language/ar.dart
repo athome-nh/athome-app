@@ -32,6 +32,7 @@ const Map<String, String> ar = {
   "Highlight": "العناصر الممیزة",
   "Best Sell": "المنتجات الاکثر مبیعا",
   "View All": "عرض الکل",
+  
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "؟؟؟؟؟",
   "You need login": "?????",
@@ -76,8 +77,29 @@ const Map<String, String> ar = {
   "Edit": "Edit",
   "Orders": "؟؟؟؟؟",
   "Address": "العنوان",
-  "About us": "حول التطبیق",
-  "Log out": "؟؟؟؟؟",
+  "About us":"حول التطبیق",
+  "Log out":"؟؟؟؟؟",
+
+  // order_screen
+  "My Orders":"طلباتي",
+  "On going":"?????",
+  "History":"?????",
+  "Order number:":"?????",
+  "Date:": "تاریخ:",
+  "You not have any order": "لیس لدیك اي طلب",
+  "Re order":"اعادة الطلب",
+  "View":"?????",
+
+  // order_items
+  "Past Order": "الطلبیة السابقة",
+  "Add More Items": "اضافة المزید من العناصر",
+
+  // old_order
+  "Quantity:":"?????",
+  "Date and Time":"?????",
+  "Order No.":"?????",
+
+ 
 
   "currency": " عملة",
 
@@ -108,9 +130,11 @@ const Map<String, String> ar = {
   "are you sure delete all items": "متأکد من ازاله کل العناصر",
   "Delivery Instrusctions": "تعلیمات التوصیل",
   "Type Notes here": "اکتب الملاحضات هنا",
-
-  'My Orders': 'طلباتي',
-
+  
+  
+  
+  
+  
   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
@@ -152,13 +176,10 @@ const Map<String, String> ar = {
   "Select Location": "اختر الموقع",
   "Not have any location": "لیس لدیك موقع محفوض",
   "Add another location": "اضافةالموقع التوصیل",
-  "Re Order": "اعادة الطلب",
-  "Add More Items": "اضافة المزید من العناصر",
-  "Past Order": "الطلبیة السابقة",
+  
   "Order ID:": "رقم الطلبیة:",
   "Select": "اختار",
-  "Date:": "تاریخ:",
-  "You not have any order": "لیس لدیك اي طلب",
+  
   "Sign out": "تسجیل الخروج",
 
   "Number": "رقم",

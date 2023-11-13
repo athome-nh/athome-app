@@ -79,8 +79,29 @@ const Map<String, String> kur = {
   "Edit": "؟؟؟؟؟",
   "Orders": "؟؟؟؟؟",
   "Address": "ناونیشان",
-  "About us": "دەربارەی ئێمە",
-  "Log out": "؟؟؟؟؟",
+  "About us":"دەربارەی ئێمە",
+  "Log out":"؟؟؟؟؟",
+
+  // order_screen
+  "My Orders":"داواکاریەکانم",
+  "On going":"?????",
+  "History":"?????",
+  "Order number:":"?????",
+  "Date:": "?????:",
+  "You not have any order": "هیچ داواکاریەکت نیە",
+  "Re order":"دوبارە داواکردن",
+  "View":"?????",
+
+  // order_items
+  "Past Order": "داواکاریێشوتر",
+  "Add More Items": "زیادکردنی بەرهەمی تر",
+
+  // old_order
+  "Quantity:":"?????",
+  "Date and Time":"?????",
+  "Order No.":"?????",
+
+
 
   "currency": "جۆری دراو",
 
@@ -111,9 +132,12 @@ const Map<String, String> kur = {
   "are you sure delete all items": "دڵنیای لە سڕینەوەی گشت بابەتەکان",
   "Delivery Instrusctions": "زانیاری دەربارەی گەیاندن",
   "Type Notes here": "تێبینی بنوسە",
-
-  'My Orders': 'داواکاریەکانم',
-
+  
+  
+  
+  
+  
+ 
   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
@@ -156,13 +180,10 @@ const Map<String, String> kur = {
   "Select Location": "جێگیرکردنی ناونیشان",
   "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
   "Add another location": "زیادکردنی ناونیسانی گەیاندن",
-  "Re Order": "دوبارە داواکردن",
-  "Add More Items": "زیادکردنی بەرهەمی تر",
-  "Past Order": "داواکاریێشوتر",
+  
   "Order ID:": "ناوی داواکاری:",
   "Select": "دیاری بکە",
-  "Date:": "ڕۆژ:",
-  "You not have any order": "هیچ داواکاریەکت نیە",
+  
   "Sign out": "دەرچوون",
 
   "Number": "ژمارە",
