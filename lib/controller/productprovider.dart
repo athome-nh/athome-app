@@ -9,6 +9,7 @@ import 'package:athome/model/location/location.dart';
 import 'package:athome/model/order_items/order_items.dart';
 import 'package:athome/model/order_model/order_model.dart';
 import 'package:athome/model/product_model/product_model.dart';
+import 'package:athome/model/productitems/productitems.dart';
 import 'package:athome/model/products_image/products_image.dart';
 import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
@@ -20,6 +21,26 @@ class productProvider extends ChangeNotifier {
   productProvider() {
     // loadPostData();
     //  updatePost();
+  }
+  getproductitems(int id) {
+    productitems.clear();
+    String ids = listOrderitemsId(id).substring(2);
+    Network(false)
+        .postData(
+            "getProductInOrder",
+            {
+              "data": ids,
+            },
+            navigatorKey.currentContext!)
+        .then((value) {
+      if (value != "") {
+        if (value["code"] != 200) {
+          setProductitems((value['products'] as List)
+              .map((x) => Productitems.fromMap(x))
+              .toList());
+        } else {}
+      }
+    });
   }
 
   getDataAll(bool user) {
@@ -116,6 +137,8 @@ class productProvider extends ChangeNotifier {
   List<Slidemodel> _slides = [];
   List<Brandmodel> _brands = [];
   List<ProductModel> _products = [];
+  List<Productitems> _productitems = [];
+
   List<CategoryModel> _categores = [];
   List<SubCategory> _subCategores = [];
   List<ProductsImage> _productimages = [];
@@ -141,6 +164,8 @@ class productProvider extends ChangeNotifier {
   List<Locationuser> get location => _location;
   List<OrderModel> get Orders => _Orders;
   List<ProductModel> get products => _products;
+  List<Productitems> get productitems => _productitems;
+
   List<CategoryModel> get categores => _categores;
   List<SubCategory> get subCategores => _subCategores;
   List<ProductsImage> get productimages => _productimages;
@@ -277,6 +302,18 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
+  Productitems getoneProductItemsById(int itemId) {
+    final Productitems? item = _productitems.firstWhere(
+      (element) => element.id == itemId,
+    );
+
+    if (item == null) {
+      throw Exception('Item with ID $itemId not found');
+    }
+
+    return item;
+  }
+
   Brandmodel getonebrandById(int itemId) {
     final Brandmodel? item = _brands.firstWhere(
       (element) => element.id == itemId,
@@ -330,6 +367,18 @@ class productProvider extends ChangeNotifier {
     return totalPrice;
   }
 
+  String listOrderitemsId(int id) {
+    String orderItemsId = "";
+
+    _Orderitems.forEach((element) {
+      if (element.orderId == id) {
+        orderItemsId += ",," + element.productId.toString();
+      }
+    });
+
+    return orderItemsId;
+  }
+
   List<int> listOrderId() {
     List<int> orderPakageId = [];
 
@@ -352,6 +401,12 @@ class productProvider extends ChangeNotifier {
   // Add a product to the list
   void setProducts(List<ProductModel> products) {
     _products = products;
+
+    notifyListeners();
+  }
+
+  void setProductitems(List<Productitems> products) {
+    _productitems = products;
 
     notifyListeners();
   }

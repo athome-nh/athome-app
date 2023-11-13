@@ -1,4 +1,5 @@
 import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -14,7 +15,10 @@ class OldOrder extends StatefulWidget {
   String total = "";
   String time = "";
   int status = 0;
-  OldOrder(this.id, this.total, this.time, this.status, {super.key});
+  bool check;
+
+  OldOrder(this.id, this.total, this.time, this.status, this.check,
+      {super.key});
   @override
   State<OldOrder> createState() => _OldOrderState();
 }
@@ -44,119 +48,197 @@ class _OldOrderState extends State<OldOrder> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (BuildContext context, int index) {
-              final product =
-                  productrovider.getoneProductById(items[index].productId!);
-              final item = items[index];
+        child: (productrovider.productitems.isEmpty && widget.check)
+            ? Center(child: WaitingWiget(context))
+            : ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final item = items[index];
 
-              return Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: getWidth(context, 2),
-                        right: getWidth(context, 4)),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: getWidth(context, 20),
-                          height: getWidth(context, 20),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: mainColorBlack.withOpacity(0.1)),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Center(
-                            child: CachedNetworkImage(
-                              imageUrl: imageUrlServer + product.coverImg!,
-                              width: getWidth(context, 15),
-                              height: getWidth(context, 15),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: getWidth(context, 2),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: getWidth(context, 2),
+                            right: getWidth(context, 4)),
+                        child: Row(
                           children: [
-                            SizedBox(
-                              width: getWidth(context, 40),
-                              child: Text(
-                                lang == "en"
-                                    ? product.nameEn.toString()
-                                    : lang == "ar"
-                                        ? product.nameAr.toString()
-                                        : product.nameKu.toString(),
-                                textAlign: TextAlign.start,
-                                maxLines: 1,
-                                style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 14),
+                            Container(
+                              width: getWidth(context, 20),
+                              height: getWidth(context, 20),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: mainColorBlack.withOpacity(0.1)),
+                                borderRadius: BorderRadius.circular(5),
                               ),
-                            ),
-                            SizedBox(
-                              height: getHeight(context, 1),
-                            ),
-                            SizedBox(
-                              width: getWidth(context, 40),
-                              child: Text(
-                                lang == "en"
-                                    ? product.contentsEn.toString()
-                                    : lang == "ar"
-                                        ? product.contentsAr.toString()
-                                        : product.contentsKu.toString(),
-                                textAlign: TextAlign.start,
-                                maxLines: 1,
-                                style: TextStyle(
-                                    color: mainColorGrey.withOpacity(0.5),
-                                    fontFamily: mainFontbold,
-                                    fontSize: 11),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Quantity: ",
-                                  style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 14),
+                              child: Center(
+                                child: CachedNetworkImage(
+                                  imageUrl: widget.check
+                                      ? imageUrlServer +
+                                          productrovider
+                                              .getoneProductItemsById(
+                                                  items[index].productId!)
+                                              .coverImg!
+                                      : imageUrlServer +
+                                          productrovider
+                                              .getoneProductById(
+                                                  items[index].productId!)
+                                              .coverImg!,
+                                  width: getWidth(context, 15),
+                                  height: getWidth(context, 15),
                                 ),
-                                Text(
-                                  item.pickedQt == 0
-                                      ? item.qt.toString()
-                                      : (item.pickedQt! - item.returnedQt!)
-                                          .toString(),
-                                  style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 16),
+                              ),
+                            ),
+                            SizedBox(
+                              width: getWidth(context, 2),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                SizedBox(
+                                  width: getWidth(context, 40),
+                                  child: Text(
+                                    lang == "en"
+                                        ? widget.check
+                                            ? imageUrlServer +
+                                                productrovider
+                                                    .getoneProductItemsById(
+                                                        items[index].productId!)
+                                                    .nameEn!
+                                            : imageUrlServer +
+                                                productrovider
+                                                    .getoneProductById(
+                                                        items[index].productId!)
+                                                    .nameEn!
+                                        : lang == "ar"
+                                            ? widget.check
+                                                ? imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductItemsById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .nameAr!
+                                                : imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .nameAr!
+                                            : widget.check
+                                                ? imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductItemsById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .nameKu!
+                                                : imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .nameKu!,
+                                    textAlign: TextAlign.start,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontFamily: mainFontbold,
+                                        fontSize: 14),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
+                                SizedBox(
+                                  width: getWidth(context, 40),
+                                  child: Text(
+                                    lang == "en"
+                                        ? widget.check
+                                            ? imageUrlServer +
+                                                productrovider
+                                                    .getoneProductItemsById(
+                                                        items[index].productId!)
+                                                    .contentsEn!
+                                            : imageUrlServer +
+                                                productrovider
+                                                    .getoneProductById(
+                                                        items[index].productId!)
+                                                    .contentsEn!
+                                        : lang == "ar"
+                                            ? widget.check
+                                                ? imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductItemsById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .contentsAr!
+                                                : imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .contentsAr!
+                                            : widget.check
+                                                ? imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductItemsById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .contentsKu!
+                                                : imageUrlServer +
+                                                    productrovider
+                                                        .getoneProductById(
+                                                            items[index]
+                                                                .productId!)
+                                                        .contentsKu!,
+                                    textAlign: TextAlign.start,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: mainColorGrey.withOpacity(0.5),
+                                        fontFamily: mainFontbold,
+                                        fontSize: 11),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Quantity: ",
+                                      style: TextStyle(
+                                          color: mainColorGrey,
+                                          fontFamily: mainFontnormal,
+                                          fontSize: 14),
+                                    ),
+                                    Text(
+                                      item.pickedQt == 0
+                                          ? item.qt.toString()
+                                          : (item.pickedQt! - item.returnedQt!)
+                                              .toString(),
+                                      style: TextStyle(
+                                          color: mainColorGrey,
+                                          fontFamily: mainFontnormal,
+                                          fontSize: 16),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
+                            const Spacer(),
+                            Text(
+                              addCommasToPrice(item.sellPrice!),
+                              maxLines: 1,
+                              style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.green,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 14),
+                            ),
                           ],
                         ),
-                        const Spacer(),
-                        Text(
-                          addCommasToPrice(item.sellPrice!),
-                          maxLines: 1,
-                          style: TextStyle(
-                              decoration: TextDecoration.none,
-                              color: Colors.green,
-                              fontFamily: mainFontbold,
-                              fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider()
-                ],
-              );
-            }),
+                      ),
+                      const Divider()
+                    ],
+                  );
+                }),
       ),
       bottomNavigationBar: Container(
         height: getHeight(context, 30),

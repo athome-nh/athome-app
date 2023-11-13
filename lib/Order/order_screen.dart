@@ -1,10 +1,13 @@
 import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Network/Network.dart';
 import 'package:athome/Order/old_order.dart';
 import 'package:athome/Order/order_items.dart';
+import 'package:athome/Order/show_order.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/order_model/order_model.dart';
+import 'package:athome/model/productitems/productitems.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -335,19 +338,24 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     BorderRadius.circular(5)),
                                             child: TextButton(
                                                 onPressed: () {
+                                                  productrovider
+                                                      .getproductitems(
+                                                          order.id!);
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             OldOrder(
-                                                                order.id
-                                                                    .toString(),
-                                                                order
-                                                                    .returnTotalPrice
-                                                                    .toString(),
-                                                                order.createdAt
-                                                                    .toString(),
-                                                                order.status!)),
+                                                              order.id
+                                                                  .toString(),
+                                                              order
+                                                                  .returnTotalPrice
+                                                                  .toString(),
+                                                              order.createdAt
+                                                                  .toString(),
+                                                              order.status!,
+                                                              true,
+                                                            )),
                                                   );
                                                 },
                                                 child: Row(
