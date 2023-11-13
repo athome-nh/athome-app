@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
   font_awesome_flutter: ^10.5.0
   ionicons: ^0.2.2 
@@ -25,7 +24,6 @@ dependencies:
   intl_phone_number_input: ^0.7.3+1
   flutter_verification_code: ^1.1.7
   gender_picker: ^1.1.0
-  path_provider: ^2.0.11
   encrypt: ^5.0.3
   shared_preferences: ^2.2.1
   fluttertoast: ^8.1.1
@@ -33,18 +31,12 @@ dependencies:
   cached_network_image: ^3.2.3
   provider: ^6.0.0
   skeletonizer: ^0.8.0
-  google_maps_flutter: ^2.5.0
   geolocator: ^10.1.0
-  panara_dialogs: ^0.1.4
   image_picker: ^0.8.4
   loading_indicator: ^3.1.1
-  geocoding: ^2.1.1
   ntp: ^2.0.0
   http: ^1.1.0
-  awesome_dialog: ^3.1.0
-  mapbox_maps_flutter: ^0.5.0
-  latlng: ^1.0.0
-  turf: ^0.0.8
+  mapbox_maps_flutter: ^0.5.0  
 
   
   
@@ -81,6 +73,7 @@ flutter:
     - family: spedaB
       fonts:
         - asset: assets/fonts/Speda-Bold.ttf
+      
          
 
     - family: spedaN

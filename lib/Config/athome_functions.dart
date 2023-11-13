@@ -3,12 +3,12 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:athome/main.dart';
+import 'package:athome/model/product_model/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
-
 
 //// a fast way to push to a new screen
 void to(BuildContext context, Widget screen) {
@@ -72,6 +72,20 @@ bool isImageValidaty(String path) {
   } else {
     return false;
   }
+}
+
+bool checkOferPrice(ProductModel product) {
+  return product.endOffer != "none" &&
+      datetimeS.isBefore(DateTime.parse(product.endOffer.toString()));
+}
+
+bool checkProductStock(ProductModel product, int i) {
+  i = i + 5;
+  return product.stock == i;
+}
+
+bool checkProductLimit(ProductModel product, int i) {
+  return checkOferPrice(product) && product.orderLimit == i;
 }
 
 //// Cut text length according to the parameter
@@ -210,7 +224,7 @@ String calculatePercentageDiscount(
   if (originalPrice <= 0 ||
       discountedPrice <= 0 ||
       originalPrice <= discountedPrice) {
-    return 'N/A'; // Handle invalid or zero values, or when the original price is less than or equal to the discounted price.
+    return 'Off'; // Handle invalid or zero values, or when the original price is less than or equal to the discounted price.
   }
 
   double discountAmount = originalPrice - discountedPrice;

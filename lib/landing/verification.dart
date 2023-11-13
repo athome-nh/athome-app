@@ -8,7 +8,6 @@ import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -276,26 +275,89 @@ class _VerificatoinState extends State<Verificatoin> {
                     MaterialPageRoute(builder: (context) => const NavSwitch()),
                   );
                 } else {
-                  AwesomeDialog(
-                          context: context,
-                          animType: AnimType.scale,
-                          dialogType: DialogType.warning,
-                          showCloseIcon: true,
-                          title: "Account Disabled".tr,
-                          desc: "Account is disable please contact athome admin"
-                              .tr,
-                          btnOkColor: mainColorRed,
-                          btnOkText: "Ok".tr,
-                          btnOkOnPress: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RegisterWithPhoneNumber()),
-                            );
-                          },
-                          btnCancelColor: mainColorGrey)
-                      .show();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Stack(
+                          alignment: lang == "en"
+                              ? Alignment.topLeft
+                              : Alignment.topRight,
+                          children: [
+                            Container(
+                              width: getWidth(context, 70),
+                              height: getHeight(context, 50),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/003_welcome_1.png",
+                                    width: getWidth(context, 40),
+                                    height: getWidth(context, 40),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Account Disabled".tr,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    "Account is disable please contact athome admin"
+                                        .tr,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const RegisterWithPhoneNumber()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(getWidth(context, 70),
+                                          getHeight(context, 5)),
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(color: mainColorGrey),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "Ok".tr,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(Icons.close))
+                          ],
+                        ),
+                      );
+                    },
+                  );
                 }
               } else if (value["code"] == "422") {
                 setState(() {
@@ -376,25 +438,88 @@ class _VerificatoinState extends State<Verificatoin> {
                 MaterialPageRoute(builder: (context) => const NavSwitch()),
               );
             } else {
-              AwesomeDialog(
-                      context: context,
-                      animType: AnimType.scale,
-                      dialogType: DialogType.warning,
-                      showCloseIcon: true,
-                      title: "Account Disabled".tr,
-                      desc: "Account is disable please contact athome admin".tr,
-                      btnOkColor: mainColorRed,
-                      btnOkText: "Ok".tr,
-                      btnOkOnPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const RegisterWithPhoneNumber()),
-                        );
-                      },
-                      btnCancelColor: mainColorGrey)
-                  .show();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    content: Stack(
+                      alignment:
+                          lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                      children: [
+                        Container(
+                          width: getWidth(context, 70),
+                          height: getHeight(context, 50),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset(
+                                "assets/images/003_welcome_1.png",
+                                width: getWidth(context, 40),
+                                height: getWidth(context, 40),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Account Disabled".tr,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  color: mainColorGrey,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 25,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "Account is disable please contact athome admin"
+                                    .tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: mainColorGrey,
+                                  fontFamily: mainFontnormal,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const RegisterWithPhoneNumber()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(getWidth(context, 70),
+                                      getHeight(context, 5)),
+                                  shape: RoundedRectangleBorder(
+                                    side: BorderSide(color: mainColorGrey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
+                                child: Text(
+                                  "Ok".tr,
+                                  style: TextStyle(
+                                    color: mainColorGrey,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.close))
+                      ],
+                    ),
+                  );
+                },
+              );
             }
           } else if (value["code"] == "422") {
             setState(() {

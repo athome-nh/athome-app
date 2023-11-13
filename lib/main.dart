@@ -4,7 +4,6 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'Landing/splash_screen.dart';
@@ -23,6 +22,7 @@ Future<void> main() async {
 
 String lang = "";
 String token = "";
+late DateTime datetimeS;
 bool isLogin = false;
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -65,7 +65,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
         navigatorKey: navigatorKey,
-        //const Setting(),
       ),
     );
   }

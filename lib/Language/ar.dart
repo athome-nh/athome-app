@@ -1,221 +1,117 @@
-// const Map<String, String> ar = {
-//   "currency": "USD",
-//   "Order now": "Order now",
-//   "Categories": "Categories",
-//   "All Categories": "All Categories",
-//   "View All": "View All",
-//   "Discount": "Discount",
-//   "Login Please": "Login Please",
-//   "You need to login first": "You need to login first",
-//   "Highlight": "Highlight",
-//   "Best Sell": "Best Sell",
-//   "Login": "Login",
-//   "Delivery Address": "Delivery Address",
-//   "Change": "Change",
-//   "Pyment Method": "Pyment Method",
-//   "Cash on delivery": "Cash on delivery",
-//   "Sub Total": "Sub Total",
-//   "Delivery Cost": "Delivery Cost",
-//   "Total": "Total",
-//   "Thank You!": "Thank You!",
-//   "for yor order": "for yor order",
-//   "Order Number: 5509": "Order Number: 5509",
-//   "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order":
-//       "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order",
-//   "Track My Order": "Track My Order",
-//   "Back to Home": "Back to Home",
-//   "Send Order": "Send Order",
-//   "Single Oroduct": "Single Oroduct",
-//   "Melon Imported": "Melon Imported",
-//   "info: ": "info: ",
-//   "Place Order": "Place Order",
-//   "Add To Cart": "Add To Cart",
-//   "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
-//       "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
-//   "My Cart": "My Cart",
-//   "Delete All Items": "Delete All Items",
-//   "are you sure delete all items": "are you sure delete all items",
-//   "Delivery Instrusctions": "Delivery Instrusctions",
-//   "Type Notes here": "Type Notes here",
-//   "Checkout": "Checkout",
-//   "Yes": "Yes",
-//   "No": "No",
-//   "Home": "Home",
-//   'Search': 'Search',
-//   'My Orders': 'My Orders',
-//   'Account': 'Account',
-//   "Are you sure exiting the app": "Are you sure exiting the app",
-//   "Clear": "Clear",
-//   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
-//       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-//   "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
-//       "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-//   "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.":
-//       "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
-//   "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.":
-//       "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
-//   "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.":
-//       "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
-//   "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.":
-//       "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-//   "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!":
-//       "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
-//   "Saved Address": "Saved Address",
-//   "Add your New address": "Add your New address",
-//   'You\'re online ✅': 'You\'re online ✅',
-//   'You\'re offline, connect to a network.':
-//       'You\'re offline, connect to a network.',
-//   "OK": "OK",
-//   "Cancle": "Cancle",
-//   "Warning": "Warning",
-//   'Log in': 'Log in',
-//   "Save": "Save",
-//   "I want to Delete my account": "I want to Delete my account",
-//   'Enter Name': 'Enter Name',
-//   'Enter Age': 'Enter Age',
-//   "Loyalty point": "Loyalty point",
-//   "Address": "Address",
-//   "About us": "About us",
-//   "Signout": "Signout",
-//   "Wellcome back": "Wellcome back",
-//   "Enter your phone number to Shop Smarter & Easier.":
-//       "Enter your phone number to Shop Smarter & Easier.",
-//   "About Us": "About Us",
-//   "English": "English",
-//   "Arabic": "Arabic",
-//   "Kurdish": "Kurdish",
-//   "Cancel": "Cancel",
-//   "Edit account": "Edit account",
-//   "Male": "Male",
-//   "Female": "Female",
-//   "Ordered:": "Ordered:",
-//   "Delivered:": "Delivered:",
-//   "Free Delivery": "Free Delivery",
-//   "Select Location": "Select Location",
-//   "Not have any location": "Not have any location",
-//   "Add another location": "Add another location",
-//   "Re Order": "Re Order",
-//   "Add More Items": "Add More Items",
-//   "Past Order": "Past Order",
-//   "Order ID:": "Order ID:",
-//   "Select": "Select",
-//   "Date:": "Date:",
-//   "You not have any order": "You not have any order",
-//   "Sign out": "Sign out",
-//   "No have any favorite": "No have any favorite",
-//   "Number": "Number",
-//   "Coming soon": "Coming soon",
-//   "Note": "Note",
-//   "Add your note": "Add your note",
-//   "Order Number:": "Order Number:",
-//   "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin":
-//       "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
-//   "Ok": "Ok",
-//   "cateItem": "cateItem",
-//   "Recent Order": "Recent Order",
-//   "you can not add more this item": "you can not add more this item",
-//   "You need login to add item in cart": "You need login to add item in cart",
-//   "This list is empty": "This list is empty",
-//   "info:": "info:",
-//   "Clear My cart": "Clear My cart",
-//   "You want delete all items in cart": "You want delete all items in cart",
-//   "Delete": "Delete",
-//   "New Discount": "New Discount",
-//   "Your cart is empty": "Your cart is empty",
-//   "Description": "Description",
-//   "Notfication": "Notfication",
-//   "You orders has been picked up": "You orders has been picked up",
-//   "Now": "Now",
-//   "Not found any item": "Not found any item",
-//   "Track Order": "Track Order",
-//   "Order:": "Order:",
-//   "Cancle order": "Cancle order",
-//   "We will send you OTP code to verifiy your phone number.":
-//       "We will send you OTP code to verifiy your phone number.",
-//   "Get Start": "Get Start",
-//   "Please enter your phone number": "Please enter your phone number",
-//   "Please remove 0 form start": "Please remove 0 form start",
-//   "Phone Number": "Phone Number",
-//   "Please enter your phone number correct":
-//       "Please enter your phone number correct",
-//   "Complete Account": "Complete Account",
-//   "Enter your account information to complete your account":
-//       "Enter your account information to complete your account",
-//   "Name": "Name",
-//   "Enter your Name": "Enter your Name",
-//   "Enter your full name": "Enter your full name",
-//   "City": "City",
-//   "Age": "Age",
-//   "unknown occurred error please try again later":
-//       "unknown occurred error please try again later",
-//   "Confirm": "Confirm",
-//   "Verification": "Verification",
-//   "Please enter the 6 digit code sent to":
-//       "Please enter the 6 digit code sent to",
-//   "Don't resive the OTP ?": "Don't resive the OTP ?",
-//   "Try again in": "Try again in",
-//   "Resend": "Resend",
-//   "Verify": "Verify",
-//   "Account Disabled": "Account Disabled",
-//   "Account is disable please contact athome admin":
-//       "Account is disable please contact athome admin",
-//   "the code is un correct": "the code is un correct",
-//   "SKIP": "SKIP",
-//   "FINISH": "FINISH",
-//   "Next": "Next",
-//   "Shop Smarter & Easier": "Shop Smarter & Easier",
-//   "is an innovative platform designed to enhance your online shopping experience.":
-//       "is an innovative platform designed to enhance your online shopping experience.",
-//   "Learn From the Best": "Learn From the Best",
-//   "We will guide you with the best tutors and experts in Kurdistan/Iraq":
-//       "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-//   "Your Pocket's Friend": "Your Pocket's Friend",
-//   "Learn whatever you want, whenever or wherever you are.":
-//       "Learn whatever you want, whenever or wherever you are.",
-//   "Locations": "Locations",
-//   "Add name": "Add name",
-//   "Add name location": "Add name location",
-//   "Area": "Area",
-//   "Add Area": "Add Area",
-//   "Type Building": "Type Building",
-//   "Floor number": "Floor number",
-//   "Enter floor number": "Enter floor number",
-//   "building name/number": "building name/number",
-//   "Enter building name/number": "Enter building name/number",
-//   "number": "number",
-//   "Enter number": "Enter number",
-//   "Phone number": "Phone number",
-//   "Add phone number": "Add phone number",
-//   "Delete location success": "Delete location success",
-//   "Add location": "Add location",
-//   "Zoom in Please": "Zoom in Please",
-//   "Sorry, we don't deliver here": "Sorry, we don't deliver here",
-//   "Delivery To:": "Delivery To:",
-//   "try again": "try again",
-//   "Failed to load data": "Failed to load data",
-// };
-
-
-
 const Map<String, String> ar = {
-  "currency": " عملة",
+  // choose_lan
+  "Language": "لغة",
+  "English": "إنجليزي",
+  "Arabic": "عربي",
+  "Kurdish": "كردي",
+  "Get Start": "ابدأ",
+
+  // welcome_screen
+  "wst01": "تسوق بذکاء و سهولة",
+  "wsd01": "تطبیق مبتکرة مصممة لتطویرتجربتك عبر الانترنت",
+  "wst02": "تعلم من الافضل",
+  "wsd02": "سنوجهك الی افضل الخبراء من کردستان العراق",
+  "wst03": "صدیقك بالجیب",
+  "wsd03": "تعلم ما ترید متی ترید ، اینما کنت",
+
+  // nav_switch
+  "Home": "?????",
+  "Search": "البحث",
+  "Cart": "السلةالتسوق",
+  "Favorite": "?????",
+  "Account": "حساب",
+  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج",
+  "Yes": "نعم",
+  "No": "لا",
+
+  // home_page
   "Order now": "اطلب الان",
   "Categories": "فئات",
-  "All Categories": "کل الفئات",
-  "View All": "عرض الکل",
+  "Recent Order": "احدث الطلبیات",
   "Discount": "عروضات",
-  "Login Please": "تسجیل الدخول",
-  "You need to login first": "تحتاج التسجیل",
   "Highlight": "العناصر الممیزة",
   "Best Sell": "المنتجات الاکثر مبیعا",
+  "View All": "عرض الکل",
+  
+  // Dialogbox ( Register ) --> my_widget
+  "Login Please": "؟؟؟؟؟",
+  "You need login": "?????",
   "Login": "تسجیل الدخول",
+  "Cancle": "الغاء",
+
+  
+
+  // categories
+  "All Categories": "کل الفئات",
+
+  // all_item >> shtakan dobar boo
+
+  // Search_page
+  "Not found any item": "لم یتم العثور علی أي عنصر",
+
+  // my_cart
+  "My Cart":"؟؟؟؟؟",
+  "You need login to add item to favourite":"؟؟؟؟؟",
+  "Clear": "ازاله",
+  "Your cart is empty": "سلة التسوف فارغة",
+  "Delete": "حذف",
+  "you can not add more this item": "لقد وصلت الی حد الادني لهذا العنصر",
+  "Sub Total": "المجموع",
+  "Delivery Cost": "کلفة التوصیل",
+  "Free Delivery": "توصیل المجاني",
+  "Total": "مجموع",
+  "Checkout": "التاکید",
+
+  // favorite
+  "No have any favorite": "لیس لدیك اي عناصر المفضلة",
+
+  // Page --> No Internet --> my_widget
+  "no internet": "؟؟؟؟؟؟",
+
+  // Page --> Login First --> my_widget
+  "Please login first":"تسجیل الدخول",
+
+  // profilo
+  "Image changed": "؟؟؟؟؟",
+  "Information": "؟؟؟؟؟",
+  "Enter Name":"ادخل الاسم",
+  "Enter Age":"ادخل العمر",
+  "Edit":"Edit",
+  "Orders":"؟؟؟؟؟",
+  "Address": "العنوان",
+  "About us":"حول التطبیق",
+  "Log out":"؟؟؟؟؟",
+
+  // order_screen
+  "My Orders":"طلباتي",
+  "On going":"?????",
+  "History":"?????",
+  "Order number:":"?????",
+  "Date:": "تاریخ:",
+  "You not have any order": "لیس لدیك اي طلب",
+  "Re order":"اعادة الطلب",
+  "View":"?????",
+
+  // order_items
+  "Past Order": "الطلبیة السابقة",
+  "Add More Items": "اضافة المزید من العناصر",
+
+  // old_order
+  "Quantity:":"?????",
+  "Date and Time":"?????",
+  "Order No.":"?????",
+
+ 
+
+  "currency": " عملة",
+
+  "You need to login first": "تحتاج التسجیل",
+
   "Delivery Address": "عنوان",
   "Change": "تغییر",
   "Pyment Method": "طریقة الدفع",
   "Cash on delivery": "الدفع عند التسلیم",
-  "Sub Total": "المجموع",
-  "Delivery Cost": "کلفة التوصیل",
-  "Total": "مجموع",
+  
   "Thank You!": "شکرا",
   "for yor order": "لك علی الطلبیة",
   "Order Number:": "رقم الطلبیة:",
@@ -231,20 +127,16 @@ const Map<String, String> ar = {
   "Add To Cart": "اضافة الی السلة",
   "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
       "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
-  "My Cart": "السلةالتسوق",
+
   "Delete All Items": "ازاله کل العناصر",
   "are you sure delete all items": "متأکد من ازاله کل العناصر",
   "Delivery Instrusctions": "تعلیمات التوصیل",
   "Type Notes here": "اکتب الملاحضات هنا",
-  "Checkout": "التاکید",
-  "Yes": "نعم",
-  "No": "لا",
-  "Home": "Home",
-  'Search': 'البحث',
-  'My Orders': 'طلباتي',
-  'Account': 'حساب',
-  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج",
-  "Clear": "ازاله",
+  
+  
+  
+  
+  
   "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.":
       "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.":
@@ -264,42 +156,34 @@ const Map<String, String> ar = {
   'You\'re online ✅': 'متصل بالنت ✅',
   'You\'re offline, connect to a network.': '‌‌أنت غیر متصل',
   "OK": "موافق",
-  "Cancle": "الغاء",
+
   "Warning": "تحذیر",
   'Log in': 'تسجیل الدخول',
   "Save": "حفض",
-  "I want to Delete my account": "I want to Delete my account",
-  'Enter Name': 'ادخل الاسم',
-  'Enter Age': 'ادخل العمر',
   "Loyalty point": "نقطة الولاء",
-  "Address": "العنوان",
-  "About us": "حول التطبیق",
+  "I want to Delete my account": "I want to Delete my account",
+  
   "Signout": "تسجیل الخروج",
   "Wellcome back": "مرحبا بك",
   "Enter your phone number to Shop Smarter & Easier.": "أدخل رقم هاتفك و تسوق",
   "About Us": "حول التطبیق",
-  "English": "انکلیزي",
-  "Arabic": "عربي",
-  "Kurdish": "کردي",
+
   "Cancel": "الغاء",
   "Edit account": "تحریر الحساب",
   "Male": "ذکر",
   "Female": "أنثی",
   "Ordered:": "صارت الطلبیة:",
   "Delivered:": "تم التسلیم:",
-  "Free Delivery": "توصیل المجاني",
+  
   "Select Location": "اختر الموقع",
   "Not have any location": "لیس لدیك موقع محفوض",
   "Add another location": "اضافةالموقع التوصیل",
-  "Re Order": "اعادة الطلب",
-  "Add More Items": "اضافة المزید من العناصر",
-  "Past Order": "الطلبیة السابقة",
+  
   "Order ID:": "رقم الطلبیة:",
   "Select": "اختار",
-  "Date:": "تاریخ:",
-  "You not have any order": "لیس لدیك اي طلب",
+  
   "Sign out": "تسجیل الخروج",
-  "No have any favorite": "لیس لدیك اي عناصر المفضلة",
+  
   "Number": "رقم",
   "Coming soon": "قریبا",
   "Note": "ملاحضة",
@@ -308,28 +192,28 @@ const Map<String, String> ar = {
       "آسف ليس لدينا توصيل في هذا الوقت، سنرسل لك هذا الطلب غدًا في أقرب وقت. او يمكنك إلغاء الطلب حتى قبوله من قبل المشرف",
   "Ok": "موافق",
   "cateItem": "cateItem",
-  "Recent Order": "احدث الطلبیات",
-  "you can not add more this item": "لقد وصلت الی حد الادني لهذا العنصر",
+  
+  
   "You need login to add item in cart":
       "سجل الدخول لاضافة عناصر الی سلة التسوق",
   "This list is empty": "لا یوجد اڕ عنصر",
   "info:": "info:",
   "Clear My cart": "ازالة سلة المشتریات",
   "You want delete all items in cart": "ازالة العناصر من سلة المشتریات",
-  "Delete": "حذف",
+  
   "New Discount": "عروضات الجدیدة",
-  "Your cart is empty": "سلة التسوف فارغة",
+  
   "Description": "وصف",
   "Notfication": "اشعارات",
   "You orders has been picked up": "تم الاستلام الطلبیة",
   "Now": "الان",
-  "Not found any item": "لم یتم العثور علی أي عنصر",
+  
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
   "Cancle order": "اخلاء الطلبیة",
   "We will send you OTP code to verifiy your phone number.":
       "نرسل لك رمز OTP للتحق من من رقم الهاتف",
-  "Get Start": "ابدأ الان",
+
   "Please enter your phone number": "نرجو ادخال رقم الهاتف خاص بك",
   "Please remove 0 form start": "یرجی الازالة 0 من البداية",
   "Phone Number": "رقم الهاتف",
@@ -359,15 +243,7 @@ const Map<String, String> ar = {
   "SKIP": "تخطي",
   "FINISH": "تم",
   "Next": "بعد",
-  "Shop Smarter & Easier": "تسوق بذکاء و سهولة",
-  "is an innovative platform designed to enhance your online shopping experience.":
-      "تطبیق مبتکرة مصممة لتطویرتجربتك عبر الانترنت",
-  "Learn From the Best": "تعلم من الافضل",
-  "We will guide you with the best tutors and experts in Kurdistan/Iraq":
-      "سنوجهك الی افضل الخبراء من کردستان العراق",
-  "Your Pocket's Friend": "صدیقك بالجیب",
-  "Learn whatever you want, whenever or wherever you are.":
-      "تعلم ما ترید متی ترید ، اینما کنت",
+
   "Locations": "الموقع",
   "Add name": "اضافة الاسم",
   "Add name location": "اضافة اسم الموقع",

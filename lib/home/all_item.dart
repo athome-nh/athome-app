@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
-import 'nav_switch.dart';
 
 class AllItem extends StatefulWidget {
   const AllItem({super.key});
@@ -38,12 +37,12 @@ class _AllItemState extends State<AllItem> {
     late List<ProductModel> products = type == "discount"
         ? productPro.getProductsByDiscount()
         : type == "Highlight"
-            ? productPro.getProductsByHighlight()
+            ? productPro.getProductsByHighlight2()
             : type == "orders"
                 ? productPro.getProductsByIds(productPro.listOrderProductIds())
                 : type == "brand"
                     ? productPro.getProductsByBrand(productPro.idItem)
-                    : productPro.getProductsByBestsell();
+                    : productPro.getProductsByBestsell2();
 
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
@@ -81,11 +80,13 @@ class _AllItemState extends State<AllItem> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              children: [listItemsShow(context, products)],
+              children: [
+                listItemsShow(context, products),
+              ],
             ),
           ),
         ),
-        floatingActionButton: buildFAB(context),
+        //floatingActionButton: buildFAB(context),
       ),
     );
   }

@@ -14,9 +14,9 @@ class ProductModel {
   final String? descriptionAr;
   final String? descriptionKu;
   final String? coverImg;
+  final int? brandId;
   final int? categoryId;
   final int? subCategoryId;
-  final int? brandIid;
   final int? purchasePrice;
   final int? price;
   final int? price2;
@@ -25,6 +25,7 @@ class ProductModel {
   final int? stock;
   final int? highlight;
   final int? bestSell;
+  final String? endOffer;
 
   const ProductModel({
     this.id,
@@ -38,9 +39,9 @@ class ProductModel {
     this.descriptionAr,
     this.descriptionKu,
     this.coverImg,
+    this.brandId,
     this.categoryId,
     this.subCategoryId,
-    this.brandIid,
     this.purchasePrice,
     this.price,
     this.price2,
@@ -49,11 +50,12 @@ class ProductModel {
     this.stock,
     this.highlight,
     this.bestSell,
+    this.endOffer,
   });
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, contentsEn: $contentsEn, contentsAr: $contentsAr, contentsKu: $contentsKu, descriptionEn: $descriptionEn, descriptionAr: $descriptionAr, descriptionKu: $descriptionKu, coverImg: $coverImg, categoryId: $categoryId, subCategoryId: $subCategoryId, purchasePrice: $purchasePrice, price: $price, price2: $price2, offerPrice: $offerPrice, orderLimit: $orderLimit, stock: $stock, highlight: $highlight, bestSell: $bestSell)';
+    return 'ProductModel(id: $id, nameEn: $nameEn, nameAr: $nameAr, nameKu: $nameKu, contentsEn: $contentsEn, contentsAr: $contentsAr, contentsKu: $contentsKu, descriptionEn: $descriptionEn, descriptionAr: $descriptionAr, descriptionKu: $descriptionKu, coverImg: $coverImg, brandId: $brandId, categoryId: $categoryId, subCategoryId: $subCategoryId, purchasePrice: $purchasePrice, price: $price, price2: $price2, offerPrice: $offerPrice, orderLimit: $orderLimit, stock: $stock, highlight: $highlight, bestSell: $bestSell, endOffer: $endOffer)';
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> data) => ProductModel(
@@ -68,9 +70,9 @@ class ProductModel {
         descriptionAr: data['descriptionAR'] as String?,
         descriptionKu: data['descriptionKU'] as String?,
         coverImg: data['coverImg'] as String?,
+        brandId: data['brand_id'] as int?,
         categoryId: data['categoryId'] as int?,
         subCategoryId: data['SubCategoryId'] as int?,
-        brandIid: data['brand_id'] as int?,
         purchasePrice: data['purchase_price'] as int?,
         price: data['price'] as int?,
         price2: data['price2'] as int?,
@@ -79,6 +81,7 @@ class ProductModel {
         stock: data['stock'] as int?,
         highlight: data['highlight'] as int?,
         bestSell: data['bestSell'] as int?,
+        endOffer: data['end_offer'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
@@ -93,9 +96,9 @@ class ProductModel {
         'descriptionAR': descriptionAr,
         'descriptionKU': descriptionKu,
         'coverImg': coverImg,
+        'brand_id': brandId,
         'categoryId': categoryId,
         'SubCategoryId': subCategoryId,
-        'brand_id': brandIid,
         'purchase_price': purchasePrice,
         'price': price,
         'price2': price2,
@@ -104,6 +107,7 @@ class ProductModel {
         'stock': stock,
         'highlight': highlight,
         'bestSell': bestSell,
+        'end_offer': endOffer,
       };
 
   /// `dart:convert`
@@ -130,9 +134,9 @@ class ProductModel {
     String? descriptionAr,
     String? descriptionKu,
     String? coverImg,
+    int? brandId,
     int? categoryId,
     int? subCategoryId,
-    int? brandId,
     int? purchasePrice,
     int? price,
     int? price2,
@@ -141,6 +145,7 @@ class ProductModel {
     int? stock,
     int? highlight,
     int? bestSell,
+    String? endOffer,
   }) {
     return ProductModel(
       id: id ?? this.id,
@@ -154,9 +159,9 @@ class ProductModel {
       descriptionAr: descriptionAr ?? this.descriptionAr,
       descriptionKu: descriptionKu ?? this.descriptionKu,
       coverImg: coverImg ?? this.coverImg,
+      brandId: brandId ?? this.brandId,
       categoryId: categoryId ?? this.categoryId,
       subCategoryId: subCategoryId ?? this.subCategoryId,
-      brandIid: brandIid ?? this.brandIid,
       purchasePrice: purchasePrice ?? this.purchasePrice,
       price: price ?? this.price,
       price2: price2 ?? this.price2,
@@ -165,6 +170,7 @@ class ProductModel {
       stock: stock ?? this.stock,
       highlight: highlight ?? this.highlight,
       bestSell: bestSell ?? this.bestSell,
+      endOffer: endOffer ?? this.endOffer,
     );
   }
 
@@ -189,9 +195,9 @@ class ProductModel {
       descriptionAr.hashCode ^
       descriptionKu.hashCode ^
       coverImg.hashCode ^
+      brandId.hashCode ^
       categoryId.hashCode ^
       subCategoryId.hashCode ^
-      brandIid.hashCode ^
       purchasePrice.hashCode ^
       price.hashCode ^
       price2.hashCode ^
@@ -199,5 +205,6 @@ class ProductModel {
       orderLimit.hashCode ^
       stock.hashCode ^
       highlight.hashCode ^
-      bestSell.hashCode;
+      bestSell.hashCode ^
+      endOffer.hashCode;
 }

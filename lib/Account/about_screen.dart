@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import '../Config/property.dart';
 
@@ -44,9 +43,10 @@ class _AboutScreenState extends State<AboutScreen> {
                 padding: EdgeInsets.only(
                   top: getHeight(context, 10),
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: mainImageLogo1,
-                  width: getWidth(context, 80),
+                child: Image.asset(
+                  'assets/images/002_logo_1.png',
+                  width: getWidth(context, 60),
+                  height: getHeight(context, 20),
                 ),
               ),
               SizedBox(

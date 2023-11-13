@@ -7,7 +7,7 @@ class OrderItems {
   final int? productId;
   final int? orderId;
   final int? customerId;
-  final String? orderCode;
+  //final String? orderCode;
   final int? cost;
   final int? sellPrice;
   final int? offerPrice;
@@ -23,7 +23,7 @@ class OrderItems {
     this.productId,
     this.orderId,
     this.customerId,
-    this.orderCode,
+    //this.orderCode,
     this.cost,
     this.sellPrice,
     this.offerPrice,
@@ -37,7 +37,7 @@ class OrderItems {
 
   @override
   String toString() {
-    return 'OrderItems(id: $id, productId: $productId, orderId: $orderId, customerId: $customerId, orderCode: $orderCode, cost: $cost, sellPrice: $sellPrice, offerPrice: $offerPrice, qt: $qt, pickedQt: $pickedQt, returned: $returned, returnedQt: $returnedQt, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'OrderItems(id: $id, productId: $productId, orderId: $orderId, customerId: $customerId, orderCode: orderCode, cost: $cost, sellPrice: $sellPrice, offerPrice: $offerPrice, qt: $qt, pickedQt: $pickedQt, returned: $returned, returnedQt: $returnedQt, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   factory OrderItems.fromMap(Map<String, dynamic> data) => OrderItems(
@@ -45,7 +45,7 @@ class OrderItems {
         productId: data['productId'] as int?,
         orderId: data['order_id'] as int?,
         customerId: data['customerId'] as int?,
-        orderCode: data['order_code'] as String?,
+        // orderCode: data['order_code'] as String?,
         cost: data['cost'] as int?,
         sellPrice: data['sell_price'] as int?,
         offerPrice: data['offer_price'] as int?,
@@ -66,7 +66,7 @@ class OrderItems {
         'productId': productId,
         'order_id': orderId,
         'customerId': customerId,
-        'order_code': orderCode,
+        //'order_code': orderCode,
         'cost': cost,
         'sell_price': sellPrice,
         'offer_price': offerPrice,
@@ -111,7 +111,7 @@ class OrderItems {
       productId: productId ?? this.productId,
       orderId: orderId ?? this.orderId,
       customerId: customerId ?? this.customerId,
-      orderCode: orderCode ?? this.orderCode,
+      // orderCode: orderCode ?? this.orderCode,
       cost: cost ?? this.cost,
       sellPrice: sellPrice ?? this.sellPrice,
       offerPrice: offerPrice ?? this.offerPrice,
@@ -138,7 +138,7 @@ class OrderItems {
       productId.hashCode ^
       orderId.hashCode ^
       customerId.hashCode ^
-      orderCode.hashCode ^
+      //  orderCode.hashCode ^
       cost.hashCode ^
       sellPrice.hashCode ^
       offerPrice.hashCode ^

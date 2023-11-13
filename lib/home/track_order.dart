@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'package:athome/Account/old_order.dart';
+import 'package:athome/Order/old_order.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:athome/landing/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
@@ -11,11 +12,10 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class TrackOrder extends StatefulWidget {
-  String ordercode = "";
   String id = "";
   String total = "";
   String time = "";
-  TrackOrder(this.ordercode, this.id, this.total, this.time, {super.key});
+  TrackOrder(this.id, this.total, this.time, {super.key});
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
@@ -49,6 +49,7 @@ int status = 0;
 class _TrackOrderState extends State<TrackOrder> {
   int updateStatus() {
     Network(false).getData("orderTrack/${widget.id}").then((value) {
+      print(value);
       if (value != "") {
         if (value["code"] == "200") {
           setState(() {
@@ -56,6 +57,7 @@ class _TrackOrderState extends State<TrackOrder> {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
               productrovider.updateOrder(int.parse(widget.id), 5);
+              productrovider.getDataUser(userdata["id"]);
             }
             final productrovider =
                 Provider.of<productProvider>(context, listen: false);
@@ -125,7 +127,7 @@ class _TrackOrderState extends State<TrackOrder> {
             children: [
               Column(
                 children: [
-                  Text("Order:".tr + widget.ordercode,
+                  Text("Order:".tr + widget.id,
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 28,
@@ -332,11 +334,8 @@ class _TrackOrderState extends State<TrackOrder> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => OldOrder(
-                                      widget.ordercode,
-                                      widget.id,
-                                      widget.total,
-                                      widget.time)),
+                                  builder: (context) => OldOrder(widget.id,
+                                      widget.total, widget.time, status)),
                             );
                           },
                           child: Text('View order',

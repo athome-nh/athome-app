@@ -220,11 +220,11 @@ class _SingInUpState extends State<SingInUp> {
                               items: items.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  enabled: value == "Erbil" ? true : false,
                                   child: Text(
                                     value,
                                     style: TextStyle(
-                                        fontSize: 30, fontFamily: mainFontbold),
+                                        fontSize: 16,
+                                        fontFamily: mainFontnormal),
                                   ),
                                 );
                               }).toList(),
@@ -278,7 +278,8 @@ class _SingInUpState extends State<SingInUp> {
                                   child: Text(
                                     value,
                                     style: TextStyle(
-                                        fontSize: 30, fontFamily: mainFontbold),
+                                        fontSize: 16,
+                                        fontFamily: mainFontnormal),
                                   ),
                                 );
                               }).toList(),
@@ -336,10 +337,9 @@ class _SingInUpState extends State<SingInUp> {
                           .then((value) {
                         if (value != "") {
                           if (value["code"] == "201") {
-                            if (value["data"]["isActive"] == 1) {
+                            if (value["data"]["isActive"] == "1") {
                               setState(() {
                                 isLogin = true;
-
                                 token = value["token"];
                               });
 
@@ -393,7 +393,7 @@ class _SingInUpState extends State<SingInUp> {
                         : Text(
                             "Confirm".tr,
                             style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 20,
                                 fontFamily: mainFontbold,
                                 color: mainColorWhite),
                           ),

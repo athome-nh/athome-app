@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:athome/Config/local_data.dart';
+import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
@@ -24,204 +25,227 @@ class WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: mainColorWhite,
-      body: SafeArea(
-        child: Column(
-          children: [
-            CarouselSlider(
-              carouselController: buttonCarouselController,
-              options: CarouselOptions(
-                autoPlay: false,
-                height: getHeight(context, 88),
-                viewportFraction: 1.0,
-                initialPage: 0,
-                enlargeCenterPage: false,
-                enableInfiniteScroll: false,
-                onPageChanged: (index, reason) {
-                  setState(
-                    () {
-                      currentIndex = index;
-                    },
-                  );
-                },
+    return Directionality(
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: mainColorWhite,
+        appBar: AppBar(
+          backgroundColor: mainColorWhite,
+          elevation: 0,
+          leading: IconButton(
+              onPressed: () {
+                if (currentIndex == 0) {
+                  Navigator.pop(context);
+                } else if (currentIndex == 1) {
+                  buttonCarouselController.jumpToPage(currentIndex - 1);
+                } else if (currentIndex == 2) {
+                  buttonCarouselController.jumpToPage(currentIndex - 1);
+                }
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: mainColorRed,
+              )),
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              // slide 3 page
+              CarouselSlider(
+                carouselController: buttonCarouselController,
+                options: CarouselOptions(
+                  autoPlay: false,
+                  height: getHeight(context, 82),
+                  viewportFraction: 1.0,
+                  initialPage: 0,
+                  enlargeCenterPage: false,
+                  enableInfiniteScroll: false,
+                  onPageChanged: (index, reason) {
+                    setState(
+                      () {
+                        currentIndex = index;
+                      },
+                    );
+                  },
+                ),
+                items: [
+                  slid1(),
+                  slid2(),
+                  slid3(),
+                ],
               ),
-              items: [
-                slid1(),
-                slid2(),
-                slid3(),
-              ],
-            ),
-            Column(
-              children: [
-                currentIndex == 2
-                    ? Container(
-                        width: getWidth(context, 70),
-                        height: getHeight(context, 6),
-                        decoration: BoxDecoration(
-                            color: mainColorRed,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: TextButton(
-                          onPressed: () {
-                            Map<String, dynamic> myMap = {};
-                            myMap["onbord"] = true;
-                            setStringPrefs("data", json.encode(myMap));
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const NavSwitch()),
-                            );
-                          },
-                          style: TextButton.styleFrom(
-                              foregroundColor: mainColorRed),
-                          child: Text(
-                            "Get Start".tr,
-                            style: TextStyle(
-                              fontFamily: mainFontbold,
-                              fontSize: getWidth(context, 4),
-                              color: mainColorWhite,
+
+              Column(
+                children: [
+                  currentIndex == 2
+                      // Get Start button
+                      ? Container(
+                          width: getWidth(context, 70),
+                          height: getHeight(context, 6),
+                          decoration: BoxDecoration(
+                              color: mainColorRed,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: TextButton(
+                            onPressed: () {
+                              Map<String, dynamic> myMap = {};
+                              myMap["onbord"] = true;
+                              setStringPrefs("data", json.encode(myMap));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const NavSwitch()),
+                              );
+                            },
+                            style: TextButton.styleFrom(
+                                foregroundColor: mainColorRed),
+                            child: Text(
+                              "Get Start".tr,
+                              style: TextStyle(
+                                fontFamily: mainFontbold,
+                                fontSize: getWidth(context, 4),
+                                color: mainColorWhite,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    : Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 5),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // skip button
-                            TextButton(
-                              onPressed: () {
-                                Map<String, dynamic> myMap = {};
-                                myMap["onbord"] = true;
-                                setStringPrefs("data", json.encode(myMap));
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: mainColorWhite,
-                                foregroundColor: mainColorWhite,
-                              ),
-                              child: Text(
-                                'SKIP'.tr,
-                                style: TextStyle(
-                                  fontFamily: mainFontbold,
-                                  fontSize: getHeight(context, 2),
-                                  color: mainColorBlack,
-                                ),
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-
-                            // 3 dote
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: getWidth(context, 1), left: 5),
-                                  width: (getWidth(context, 2.5) +
-                                          getHeight(context, 2.5)) /
-                                      2,
-                                  height: (getWidth(context, 2.5) +
-                                          getHeight(context, 2.5)) /
-                                      2,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: currentIndex == 0
-                                        ? mainColorRed
-                                        : mainColorBlack,
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: getWidth(context, 1), left: 5),
-                                  width: (getWidth(context, 2.5) +
-                                          getHeight(context, 2.5)) /
-                                      2,
-                                  height: (getWidth(context, 2.5) +
-                                          getHeight(context, 2.5)) /
-                                      2,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: currentIndex == 1
-                                        ? mainColorRed
-                                        : mainColorBlack,
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: getWidth(context, 1), left: 5),
-                                  width: (getWidth(context, 2.5) +
-                                          getHeight(context, 2.5)) /
-                                      2,
-                                  height: (getWidth(context, 2.5) +
-                                          getHeight(context, 2.5)) /
-                                      2,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: currentIndex == 2
-                                        ? mainColorRed
-                                        : mainColorBlack,
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            // finish and next button
-                            Container(
-                              height: getHeight(context, 5),
-                              decoration: BoxDecoration(
-                                  color: mainColorRed,
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: TextButton(
+                        )
+                      : Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(context, 5),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // skip button
+                              TextButton(
                                 onPressed: () {
-                                  if (currentIndex == 2) {
-                                  } else {
-                                    buttonCarouselController.nextPage();
-                                  }
+                                  Map<String, dynamic> myMap = {};
+                                  myMap["onbord"] = true;
+                                  setStringPrefs("data", json.encode(myMap));
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NavSwitch()),
+                                  );
                                 },
-                                style: TextButton.styleFrom(
-                                    foregroundColor: mainColorRed),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 5),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: mainColorWhite,
+                                  foregroundColor: mainColorWhite,
+                                ),
+                                child: Text(
+                                  'SKIP'.tr,
+                                  style: TextStyle(
+                                    fontFamily: mainFontbold,
+                                    fontSize: getHeight(context, 2),
+                                    color: mainColorBlack,
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        currentIndex == 2
-                                            ? 'FINISH'.tr
-                                            : 'Next'.tr,
-                                        style: TextStyle(
-                                          fontFamily: mainFontbold,
-                                          fontSize: getHeight(context, 2),
-                                          color: mainColorWhite,
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+
+                              // 3 dote
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top: getWidth(context, 1), left: 5),
+                                    width: (getWidth(context, 2.5) +
+                                            getHeight(context, 2.5)) /
+                                        2,
+                                    height: (getWidth(context, 2.5) +
+                                            getHeight(context, 2.5)) /
+                                        2,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: currentIndex == 0
+                                          ? mainColorRed
+                                          : mainColorBlack,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top: getWidth(context, 1), left: 5),
+                                    width: (getWidth(context, 2.5) +
+                                            getHeight(context, 2.5)) /
+                                        2,
+                                    height: (getWidth(context, 2.5) +
+                                            getHeight(context, 2.5)) /
+                                        2,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: currentIndex == 1
+                                          ? mainColorRed
+                                          : mainColorBlack,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top: getWidth(context, 1), left: 5),
+                                    width: (getWidth(context, 2.5) +
+                                            getHeight(context, 2.5)) /
+                                        2,
+                                    height: (getWidth(context, 2.5) +
+                                            getHeight(context, 2.5)) /
+                                        2,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: currentIndex == 2
+                                          ? mainColorRed
+                                          : mainColorBlack,
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              // next button
+                              Container(
+                                height: getHeight(context, 5),
+                                decoration: BoxDecoration(
+                                    color: mainColorRed,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: TextButton(
+                                  onPressed: () {
+                                    if (currentIndex == 2) {
+                                    } else {
+                                      buttonCarouselController.nextPage();
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                      foregroundColor: mainColorRed),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: getWidth(context, 5),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Next'.tr,
+                                          style: TextStyle(
+                                            fontFamily: mainFontbold,
+                                            fontSize: getHeight(context, 2),
+                                            color: mainColorWhite,
+                                          ),
+                                          textAlign: TextAlign.left,
                                         ),
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-// Slide One
+  // Slide One
   Widget slid1() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -260,7 +284,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               Text(
-                "Shop Smarter & Easier".tr,
+                "wst01".tr,
                 style: TextStyle(
                   fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
@@ -276,8 +300,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "is an innovative platform designed to enhance your online shopping experience."
-                      .tr,
+                  "wsd01".tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
@@ -332,7 +355,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               Text(
-                "Learn From the Best".tr,
+                "wst02".tr,
                 style: TextStyle(
                   fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
@@ -348,8 +371,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "We will guide you with the best tutors and experts in Kurdistan/Iraq"
-                      .tr,
+                  "wsd02".tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),
@@ -402,7 +424,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               Text(
-                "Your Pocket's Friend".tr,
+                "wst03".tr,
                 style: TextStyle(
                   fontFamily: mainFontbold,
                   fontSize: getHeight(context, 3),
@@ -418,7 +440,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   horizontal: getWidth(context, 7),
                 ),
                 child: Text(
-                  "Learn whatever you want, whenever or wherever you are.".tr,
+                  "wsd03".tr,
                   style: TextStyle(
                     fontFamily: mainFontnormal,
                     fontSize: getHeight(context, 2),

@@ -1,14 +1,13 @@
 import 'dart:convert';
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
-import 'package:athome/controller/productprovider.dart';
+
 import 'package:athome/landing/splash_screen.dart';
-import 'package:athome/main.dart';
 
 import 'package:athome/model/cart.dart';
 import 'package:athome/model/cartpast.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CartProvider extends ChangeNotifier {
   CartProvider() {
@@ -81,7 +80,6 @@ class CartProvider extends ChangeNotifier {
 
   List<int> ListId() {
     List<int> cardIDs = [];
-
     cartItems.forEach((element) {
       cardIDs.add(element.product);
     });
@@ -141,7 +139,7 @@ class CartProvider extends ChangeNotifier {
     int totalPrice = 0;
     int i = 0;
     for (var cartItem in cartItems) {
-      if (product[i].offerPrice! > -1) {
+      if (checkOferPrice(product[i])) {
         totalPrice += product[i].offerPrice! * cartItem.quantity;
       } else if (product[i].price2! > -1) {
         totalPrice += product[i].price2! * cartItem.quantity;
@@ -244,7 +242,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
-  void removeFromCartPast(CartItem cartItem) {
+  void removeFromCartPast(CartItemPast cartItem) {
     // Check if the item already exists in the cart
     final existingItemIndex = cartItemsPast.indexWhere(
       (item) => item.product == cartItem.product,
@@ -281,7 +279,7 @@ class CartProvider extends ChangeNotifier {
     int totalPrice = 0;
     int i = 0;
     for (var cartItem in cartItemsPast) {
-      if (product[i].offerPrice! > -1) {
+      if (checkOferPrice(product[i])) {
         totalPrice += product[i].offerPrice! * cartItem.quantity;
       } else if (product[i].price2! > -1) {
         totalPrice += product[i].price2! * cartItem.quantity;
