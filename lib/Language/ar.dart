@@ -11,14 +11,16 @@ const Map<String, String> ar = {
   "wsd01": "تطبیق مبتکرة مصممة لتطویرتجربتك عبر الانترنت",
   "wst02": "تعلم من الافضل",
   "wsd02": "سنوجهك الی افضل الخبراء من کردستان العراق",
-  "wst03": "صدیقك بالجیب",
-  "wsd03": "تعلم ما ترید متی ترید ، اینما کنت",
+  "wst03": "???",
+  "wsd03": "???",
+  "NEXT": "التالي",
+  "SKIP": "تخطي",
 
   // nav_switch
-  "Home": "?????",
+  "Home": "الرئیسیة",
   "Search": "البحث",
   "Cart": "السلةالتسوق",
-  "Favorite": "?????",
+  "Favorite": "مفضلاتي",
   "Account": "حساب",
 
   // Dialogbox --> nav_switch
@@ -36,8 +38,8 @@ const Map<String, String> ar = {
   "View All": "عرض الکل",
   
   // Dialogbox ( Register ) --> my_widget
-  "Login Please": "؟؟؟؟؟",
-  "You need login": "?????",
+  "Login Please": "سجل",
+  "You need login": "یرجی التسجیل",
   "Login": "تسجیل الدخول",
   "Cancle": "الغاء",
 
@@ -50,8 +52,8 @@ const Map<String, String> ar = {
   "Not found any item": "لم یتم العثور علی أي عنصر",
 
   // my_cart
-  "My Cart": "؟؟؟؟؟",
-  "You need login to add item to favourite": "؟؟؟؟؟",
+  "My Cart": "سلة التسوق",
+  "You need login to add item to favourite": "للاضافە الی قائمة مفضلاتي یرجی التسجیل",
   "Clear": "ازاله",
   "Your cart is empty": "سلة التسوف فارغة",
   "Delete": "حذف",
@@ -66,46 +68,46 @@ const Map<String, String> ar = {
   "No have any favorite": "لیس لدیك اي عناصر المفضلة",
 
   // Page --> No Internet --> my_widget
-  "no internet": "؟؟؟؟؟؟",
+  "no internet": "انترنت غیر متوفر",
 
   // Page --> Login First --> my_widget
   "Please login first": "تسجیل الدخول",
 
   // profilo
-  "Image changed": "؟؟؟؟؟",
-  "Information": "؟؟؟؟؟",
+  "Image changed": "تسجیل الدخول",
+  "Information": "المعلومات",
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
   "Edit": "Edit",
-  "Orders": "؟؟؟؟؟",
+  "Orders": "طلباتي",
   "Address": "العنوان",
   "About us":"حول التطبیق",
-  "Log out":"؟؟؟؟؟",
+  "Log out":"الخروج",
   "Save": "حفض",
 
   // order_screen
   "My Orders":"طلباتي",
-  "On going":"?????",
-  "History":"?????",
-  "Order number:":"?????",
+  "On going":"قید التنفیذ",
+  "History":"سجل طلباتي",
+  "Order number:":"رقم الطلب",
   "Date:": "تاریخ:",
   "You not have any order": "لیس لدیك اي طلب",
   "Re order":"اعادة الطلب",
-  "View":"?????",
+  "View":"مشاهدة",
 
   // order_items
   "Past Order": "الطلبیة السابقة",
   "Add More Items": "اضافة المزید من العناصر",
 
   // old_order
-  "Quantity:":"?????",
-  "Date and Time":"?????",
-  "Order No.":"?????",
+  "Quantity:":"العدد",
+  "Date and Time":"تاریخ و الوقت",
+  "Order No.":"رقم الطلبیة",
 
   // check_out
-  "Delivery Address": "?????",
+  "Delivery Address": "عنوان التوصیل",
   "Not have any location": "لیس لدیك موقع محفوض",
-  "Add new Location":"?????",
+  "Add new Location":"اضف عنوان التوصیل",
   "Pyment Method": "طریقة الدفع",
   "Cash on delivery": "الدفع عند التسلیم",
   "Coming soon": "قریبا",
@@ -114,23 +116,23 @@ const Map<String, String> ar = {
   "Thank You!": "شکرا",
   "for yor order": "لك علی الطلبیة",
   "Order Number:": "رقم الطلبیة:",
-  "YourOrderIsNowBeingProcessed": "?????",
+  "YourOrderIsNowBeingProcessed": "الطلبیە في قید التجهیز. نبلغکم بمجرد استلام الطلب من المتجر. تحقق من حالة طلبك",
   "Track My Order": "تابع طلبي",
   "Back to Home": "رجوع للقائمة الرئیسیة",
-  "Please Delivery Address":"?????",
+  "Please Delivery Address":"نرجو اضافة موقع التوصیل",
   "Send Order": "ارسال الطلبیة",
   "sorryWeDoNotHaveDelivery": "آسف ليس لدينا توصيل في هذا الوقت، سنرسل لك هذا الطلب غدًا في أقرب وقت. او يمكنك إلغاء الطلب حتى قبوله من قبل المشرف",
   "OK": "موافق",
 
   // about_screen
-  "WelcomeToAthomeOnlineMarketApplication!": "?????",
-  "WideSelectionOfProductsOurOnlineSupermarket": "?????",
-  "EasyToUseInterfaceOurUserFriendly": "?????",
-  "SecurePaymentWePrioritizeTheSecurity": "?????",
-  "PromotionsAndDealsKeep": "?????",
-  "CustomerSupportIfYouHaveAnyQuestions": "?????",
-  "FeedbackAndImprovementWeValueYourFeedback": "?????",
-  "ThankYouForChoosingOurAthome": "?????",
+  "WelcomeToAthomeOnlineMarketApplication!": "مرحبًا بك في تطبيق ات هوم التسوق عبر الإنترنت.  ات هوم یقدم طريقة مريحة وفعالة للتسوق طلبیاتکم و تسليمها مباشرة إلى بیتکم. ات هوم مصممة لتعزيز تجربة التسوق الخاصة بكم و جعل تسوق البقالة خاليًا من المتاعب. إليك نظرة عامة موجزة عما يقدمه تطبيقنا",
+  "WideSelectionOfProductsOurOnlineSupermarket": "مجموعة واسعة من المنتجات: يقدم لکم السوبر ماركت عبر الإنترنت مجموعة واسعة من المنتجات، بدءًا من المنتجات الطازجة وحتى مستلزمات المؤن والأدوات المنزلية ومنتجات العناية الشخصية والمزيد. يمكنك تصفح الفئات المختلفة والعثور على كل ما تحتاجه في متجر واحد مكان.",
+  "EasyToUseInterfaceOurUserFriendly": "واجهة سهلة الاستخدام: تم تصميم واجهتنا سهلة الاستخدام لجعل تجربة التسوق الخاصة بكم سلسة وممتعة. يمكنك بسهولة البحث عن المنتجات، وإضافتها إلى سلة التسوق ، والمتابعة بکم کلك فقط.",
+  "SecurePaymentWePrioritizeTheSecurity": "الدفع الآمن: نحن نعطي الأولوية لأمن معلومات الدفع الخاصة بك. يستخدم تطبيقنا بوابات دفع آمنة لضمان حماية طلبیتک و دفوعاتك.",
+  "PromotionsAndDealsKeep": "العروض والصفقات: ترقب العروض والخصومات والصفقات الخاصة المتاحة على التطبیق. نريد مساعدتكم في التوفير أثناء التسوق.",
+  "CustomerSupportIfYouHaveAnyQuestions": "دعم العملاء: إذا كانت لديك أية أسئلة أو كنت بحاجة إلى المساعدة، فإن فريق دعم العملاء المخصص لدينا موجود لمساعدتك. يمكنك التواصل معنا من خلال التطبيق، وسنقوم بمعالجة على الفور.",
+  "FeedbackAndImprovementWeValueYourFeedback": "التعليقات والتحسينات: نحن نقدر تعليقاتك. تساعدنا اقتراحاتك على تحسين تطبيقنا وخدماتنا. نحن نبحث دائمًا عن طرق للتحسين وتزويدك بأفضل تجربة ممكنة.",
+  "ThankYouForChoosingOurAthome": "شكرًا لك على اختيار ات هوم لتلبية احتياجات، تسوق و نحن نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد",
   "About Us": "حول التطبیق",
 
   // login_page
@@ -170,8 +172,8 @@ const Map<String, String> ar = {
   "Confirm": "التاکید",
 
   // verification
-  "Hold till the waiting time ends":"Hold till the waiting time ends",
-  "Please enter code":"Please enter code",
+  "Hold till the waiting time ends":"???????",
+  "Please enter code":"نرجو ادخال کود",
   "Verification": "التحقق",
   "Please enter the 6 digit code sent to":"یرجی الادخال رمز من 6 ارقام ارسلت الی:",
   "Don't resive the OTP ?": "لم تستلم الرمز؟",
@@ -183,84 +185,63 @@ const Map<String, String> ar = {
   "the code is un correct": "الرمز غیر صحیع",
 
   // map
-  "Map": "?????",
+  "Map": "الموقع",
   "Zoom in Please": "یرجی التکبیر",
   "Sorry, we don't deliver here": "اسف لیس لدینا التوصل بالموقع المحدد",
   "Delivery To:": "التوصیل الی",
   "try again": "یرجی المحاولة",
   "Failed to load data": "فشلت التحمیل البیانات",
 
+  
 
 
+  // mawa
   "Single Oroduct": "منتج واحد",
   "Melon Imported": "Melon Imported",
   "info: ": "معلومات: ",
   "Place Order": "ثبت الطلبیة",
   "Add To Cart": "اضافة الی السلة",
-  
   "Delete All Items": "ازاله کل العناصر",
   "are you sure delete all items": "متأکد من ازاله کل العناصر",
   "Delivery Instrusctions": "تعلیمات التوصیل",
   "Type Notes here": "اکتب الملاحضات هنا",
-  
-  
   "Saved Address": "العنوان الموجود",
   "Add your New address": "اضافة العنوان",
   'You\'re online ✅': 'متصل بالنت ✅',
   'You\'re offline, connect to a network.': '‌‌أنت غیر متصل',
-  
-
   "Warning": "تحذیر",
   'Log in': 'تسجیل الدخول',
-  
   "Loyalty point": "نقطة الولاء",
   "I want to Delete my account": "I want to Delete my account",
-
   "Signout": "تسجیل الخروج",
-  
   "Enter your phone number to Shop Smarter & Easier.": "أدخل رقم هاتفك و تسوق",
-  
-
   "Cancel": "الغاء",
   "Edit account": "تحریر الحساب",
   "Male": "ذکر",
   "Female": "أنثی",
   "Ordered:": "صارت الطلبیة:",
   "Delivered:": "تم التسلیم:",
-
   "Select Location": "اختر الموقع",
-  
   "Add another location": "اضافةالموقع التوصیل",
-  
   "Order ID:": "رقم الطلبیة:",
   "Select": "اختار",
-  
   "Sign out": "تسجیل الخروج",
-
-  
-  
   "cateItem": "cateItem",
-
   "You need login to add item in cart":
       "سجل الدخول لاضافة عناصر الی سلة التسوق",
   "This list is empty": "لا یوجد اڕ عنصر",
   "info:": "info:",
   "Clear My cart": "ازالة سلة المشتریات",
   "You want delete all items in cart": "ازالة العناصر من سلة المشتریات",
-
   "New Discount": "عروضات الجدیدة",
-
   "Description": "وصف",
   "Notfication": "اشعارات",
   "You orders has been picked up": "تم الاستلام الطلبیة",
   "Now": "الان",
-
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
   "Cancle order": "اخلاء الطلبیة",
-  "We will send you OTP code to verifiy your phone number.":
-      "نرسل لك رمز OTP للتحق من من رقم الهاتف",
-
+  "We will send you OTP code to verifiy your phone number.":"نرسل لك رمز OTP للتحق من من رقم الهاتف",
   "Delete location success": "تم ازالة الموقع",
   "Add location": "اضافةالموقع",
  

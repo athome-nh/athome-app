@@ -220,7 +220,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                     child: Row(
                                       children: [
                                         Text(
-                                          'Next'.tr,
+                                          'NEXT'.tr,
                                           style: TextStyle(
                                             fontFamily: mainFontbold,
                                             fontSize: getHeight(context, 2),

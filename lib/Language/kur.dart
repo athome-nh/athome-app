@@ -11,14 +11,16 @@ const Map<String, String> kur = {
   "wsd01": "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
   "wst02": "لە باشترینەکانەوە فێر ببە",
   "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
-  "wst03": "بەڵێ",
+  "wst03": "???",
   "wsd03": "فێرببە هەرشتێک کە دەتەوێ، هەر کاتێك دەتەوێت و لە هەرشوێنێك دەتەوێت",
+  "NEXT": "دواتر",
+  "SKIP": "تێپەڕبوون",
 
   // nav_switch
   "Home": "پەڕەی سەرەکی",
   "Search": "گەڕان",
   "Cart": "سەبەتەی بازاڕ کردن",
-  "Favorite": "دڵخوازەکان",
+  "Favorite": "دڵخوازه‌كان",
   "Account": "پڕۆفایل",
 
   // Dialogbox --> nav_switch
@@ -55,8 +57,7 @@ const Map<String, String> kur = {
   "Clear": "پاک کردنەوە",
   "Your cart is empty": "سەبەتەی کڕین بەتاڵە",
   "Delete": "سڕینەوە",
-  "you can not add more this item":
-      "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
+  "you can not add more this item": "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
   "Sub Total": "کۆی گشتی",
   "Delivery Cost": "تێچوی گەیاندن",
   "Free Delivery": "گەیاندنی خۆڕایی",
@@ -70,7 +71,7 @@ const Map<String, String> kur = {
   "no internet": "ئینتەرنێت بەردەست  نیە",
 
   // Page --> Login First --> my_widget
-  "Please login first":"تکایە خۆت تۆمار بکە",
+  "Please login first": "تکایە خۆت تۆمار بکە",
 
   // profilo
   "Image changed": "وێنەکە گۆڕدرا",
@@ -106,7 +107,7 @@ const Map<String, String> kur = {
   // check_out
   "Delivery Address": "ناونیشانی گەیاندن",
   "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
-  "Add new Location":"?????",
+  "Add new Location":"ناونیشانی گەیاندن",
   "Pyment Method": "شێوازی پارەدان",
   "Cash on delivery": "پارەدان لەکاتی گەیاندن",
   "Coming soon": "بەم زوانە",
@@ -115,23 +116,23 @@ const Map<String, String> kur = {
   "Thank You!": "سوپاس",
   "for yor order": "بۆ بازاڕکردنت",
   "Order Number:": "ژمارەی داواکاری:",
-  "YourOrderIsNowBeingProcessed": "?????",
+  "YourOrderIsNowBeingProcessed": "داواکاریەکەت لە جێبەجێ کردن دایە. لە کاتی وەرگرتنی داواکاریەکەت ئاگادار دەکرێیتەوە. بە دوا داچوون بکە بۆ داواکاریەکەت",
   "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
   "Back to Home": "گەڕانەوە بۆ بازاڕکردن",
-  "Please Delivery Address":"?????",
+  "Please Delivery Address":"تکایە ناونیشانی گەیاندن زیاد بکە",
   "Send Order": "داواکاریەکەت بنێرە",
-  "sorryWeDoNotHaveDelivery": "ببورە لەم کاتەی ئیستادا گەیاندن بەردەست نیە ، تکایە داواکاریەکە بۆ ڕۆژی دواتر داوابکە.",
-  "OK": "?????",
+  "sorryWeDoNotHaveDelivery": "ببورن، لە ئیستا گەیاندمان بەردەست نیە هەوڵ دەدەین لە ڕۆژی داهاتوو گەیاندن ئەنجام بدەین لە زووترین کاتدا. هەرەوەها دەتوانن داواکاریەکەتان بگەڕێننەوە پێش قبوڵ کردنی لەلایەن سەرپەرشتیار ",
+  "OK": "دڵنیام",
 
   // about_screen
-  "WelcomeToAthomeOnlineMarketApplication!": "?????",
-  "WideSelectionOfProductsOurOnlineSupermarket": "?????",
-  "EasyToUseInterfaceOurUserFriendly": "?????",
-  "SecurePaymentWePrioritizeTheSecurity": "?????",
-  "PromotionsAndDealsKeep": "?????",
-  "CustomerSupportIfYouHaveAnyQuestions": "?????",
-  "FeedbackAndImprovementWeValueYourFeedback": "?????",
-  "ThankYouForChoosingOurAthome": "?????",
+  "WelcomeToAthomeOnlineMarketApplication!": "بەخێربێن بۆ ئەپلیکەیشنی ئۆنلاینی ئات هۆم! ئێمە لێرەین بۆ ئەوەی ڕێگایەکی گونجاو و کاریگەرتان بۆ دابین بکەین بۆ کڕینی کەلوپەلەکانتان و گەیاندنیان بۆ دەرگای ماڵەکانتان. پلاتفۆرمەکەمان دیزاین کراوە بۆ باشترکردنی ئەزموونی کڕینەکانت و کڕینی کاڵا بە خۆڕایی. کورته یه ک له سه ر چۆنیه تی به کارهێنانی",
+  "WideSelectionOfProductsOurOnlineSupermarket": "هەڵبژاردنی فراوان لە بەرهەمەکان:  ئات هۆم مارکێتی ئۆنلاین کۆمەڵێک بەرهەمی فراوان پێشکەش دەکات، لە بەرهەمی تازەوە بۆ کەلوپەلی پێویست، کەلوپەلی ماڵەوە، بەرهەمەکانی پێداویستی کەسی و هتد.... دەتوانیت بە ڕێگای جۆراوجۆردا بگەڕێیت و هەموو ئەو شتانە بدۆزیتەوە کە پێویستتە لە یەک شوێندا.",
+  "EasyToUseInterfaceOurUserFriendly": "ڕووکاری ئاسان بۆ بەکارهێنان: ڕووکاری ئاسانی بەکارهێنەرمان دیزاین کردوە بۆ ئەوەی ئەزموونی کڕینەکەت ئاسان و چێژبەخش بێت. دەتوانیت بە ئاسانی بەدوای بەرهەمەکاندا بگەڕێیت، زیادیان بکەیت بۆ سەبەتەی کڕین، و بەردەوام بیت لە بە دوا داچوونی داواکاریەکانت بە چەند کلیکێک.",
+  "SecurePaymentWePrioritizeTheSecurity": "شێوازی پارەدانی پارێزراو: ئێمە لە ئات هۆم جەختمان لە شێوازی پارەدانێکی پاریزراو کردۆتەوە کە لەڵ ویست و پارێزراوی ئێوە بگونجێت و بە ئەرکی گرنگ و ئەولەویمان داناوە بۆ ئەوەی بە شێوازێکی پارێزراو بازاڕیەکانتان ئەنجام بدەن.",
+  "PromotionsAndDealsKeep": "داشکان و مامەڵەکان: ئاگاداری بابەتە تایبەت و داشکاندن و مامەڵەکان بن لەسەر پلاتفۆرمەکەمان. ئێمە دەمانەوێت یارمەتیت بدەین لە پاشەکەوتکردن لە کاتی کڕیندا.",
+  "CustomerSupportIfYouHaveAnyQuestions": "خزمەتگوزاری کەسی: بەشی خزمەتگوزاری کڕیارانمان بەردەوام هاوکار دەبن لە کاتی هەبوونی هەر پرسیار و پێشنیارێک. دوو دڵ مەبە و تیمی ئات هۆم لەگەڵتدایە",
+  "FeedbackAndImprovementWeValueYourFeedback": "پێشنیار و بەرەوپێشچوون: ئێمە بەهای کاردانەوەکەت دەزانین. پێشنیارەکانت یارمەتیمان دەدەن بۆ باشترکردنی پلان و خزمەتگوزاریەکانمان. ئێمە هەمیشە بەدوای ڕێگایەکدا دەگەڕێین بۆ باشترکردن و پێشکەشکردنی باشترین ئەزموون.",
+  "ThankYouForChoosingOurAthome": "سوپاس بۆ هەڵبژاردنی ئات هۆم، بازاڕ کردنت ئەنجام بدە و بەدواداچوون دەکرێت بۆ داواکاریەکەت لەلایەن ئێمەوە. دڵ خۆش بە بازاڕکردنت لەگەڵ ئات هۆم.",
   "About Us": "دەربارەی ئێمە",
 
   // login_page
@@ -171,8 +172,8 @@ const Map<String, String> kur = {
   "Confirm": "دڵنیابوونەوە",
 
   // verification
-  "Hold till the waiting time ends":"Hold till the waiting time ends",
-  "Please enter code":"Please enter code",
+  "Hold till the waiting time ends":"?????",
+  "Please enter code":"تکایە کۆدی یەك جارە داخڵ بکە",
   "Verification": "دڵنیابوونەوە",
   "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی داخڵ بکە",
   "Don't resive the OTP ?": "کۆدی یەک جارەییت بە دەست نەگەیشت ?",
@@ -184,7 +185,7 @@ const Map<String, String> kur = {
   "the code is un correct": "کۆدەکە هەڵەیە",
 
   // map
-  "Map": "?????",
+  "Map": "نەخشە",
   "Zoom in Please": "نزیکتر بکەوە",
   "Sorry, we don't deliver here":"ببورە، گەیادنمان بۆ ناوچەی ناوبراو بەردەست نیە",
   "Delivery To:": "گەیاندن بۆ:",
@@ -195,7 +196,7 @@ const Map<String, String> kur = {
 
 
   
-
+  // mawa
   "Single Oroduct": "یەک داواکاری",
   "Melon Imported": "Melon Imported",
   "info: ": "زانیاری: ",
@@ -207,21 +208,14 @@ const Map<String, String> kur = {
   "are you sure delete all items": "دڵنیای لە سڕینەوەی گشت بابەتەکان",
   "Delivery Instrusctions": "زانیاری دەربارەی گەیاندن",
   "Type Notes here": "تێبینی بنوسە",
-  
-
-
   "Saved Address": "ناونیشانی تۆمارکراو",
   "Add your New address": "ناونیشانی نوێ زیاد بکە",
   'You\'re online ✅': 'پەیوەستی بە ئینتەرنێت ✅',
-  'You\'re offline, connect to a network.':
-      'پەیوەست نیت بە ئینتەرنێت، تکایە خۆت پەیوەست بکە.',
-
+  'You\'re offline, connect to a network.': 'پەیوەست نیت بە ئینتەرنێت، تکایە خۆت پەیوەست بکە.',
 "Loyalty point": "خاڵی دڵسۆزی", 
   "Warning": "ئاگاداری",
   'Log in': 'داخڵ بوون',
-  
   "I want to Delete my account": "I want to Delete my account",
-
   "Signout": "دەرچوون",
   "Cancel": "پوچەڵ کردنەوە",
   "Edit account": "Edit account",
@@ -229,40 +223,25 @@ const Map<String, String> kur = {
   "Female": "مێ",
   "Ordered:": "داواکرا:",
   "Delivered:": "گەیەنرا:",
-
   "Select Location": "جێگیرکردنی ناونیشان",
-  
   "Add another location": "زیادکردنی ناونیسانی گەیاندن",
-  
   "Order ID:": "ناوی داواکاری:",
   "Select": "دیاری بکە",
-  
   "Sign out": "دەرچوون",
-  
-
-
   "cateItem": "cateItem",
-  
-  
-  "You need login to add item in cart":
-      "پێویستە خۆت تۆمار بکەیت بۆ زیاد کردنی ئەم بەرهەمە بۆ سەبەتەی کڕین",
+  "You need login to add item in cart": "پێویستە خۆت تۆمار بکەیت بۆ زیاد کردنی ئەم بەرهەمە بۆ سەبەتەی کڕین",
   "This list is empty": "لیستەکە بەتاڵە",
   "info:": "زانیاری:",
   "Clear My cart": "بەتاڵ کردنی سەبەتەی کڕین",
-  "You want delete all items in cart":
-      " بەتاڵ کردنەوەی هەموو بابەتەکان لە سەبەتەی کڕین",
-
+  "You want delete all items in cart": " بەتاڵ کردنەوەی هەموو بابەتەکان لە سەبەتەی کڕین",
   "New Discount": "داشکانی نوێ",
-
   "Description": "وەسف کردن",
   "Notfication": "ئاگا نامە",
   "You orders has been picked up": "داواکاریەکەت هەڵگیرا",
   "Now": "ئێستا",
-
   "Track Order": "بینینی داواکاری",
   "Order:": "داواکاری:",
   "Cancle order": "پوچەڵ کردنەوەی داواکاری",
-  
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
   "Add location": "زیادکردنی ناونیشان",
   
