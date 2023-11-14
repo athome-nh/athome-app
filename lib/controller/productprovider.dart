@@ -108,18 +108,18 @@ class productProvider extends ChangeNotifier {
   }
 
   updatePost(bool user) async {
-    if (isLogin) {
+    if (user) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
             userdata = valueuser["data"][0];
-            if (userdata["isActive"] == 1) {
+            if (userdata["isActive"] == 0) {
               userdata.clear();
-              // Network(false)
-              //     .postData("logout", {}, navigatorKey.currentContext!);
+              Network(false)
+                  .postData("logout", {}, navigatorKey.currentContext!);
               isLogin = false;
-              // token = "";
-              // setStringPrefs("token", "");
+              token = "";
+              setStringPrefs("token", "");
               Timer(
                 const Duration(seconds: 5),
                 () {
@@ -202,15 +202,15 @@ class productProvider extends ChangeNotifier {
                 },
               );
 
-              getDataAll(isLogin);
+              getDataAll(false);
               return;
             }
-            getDataAll(isLogin);
+            getDataAll(user);
           }
         }
       });
     } else {
-      getDataAll(isLogin);
+      getDataAll(user);
     }
   }
 
