@@ -35,7 +35,7 @@ Future<void> main() async {
  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
     badge: true,
-  );
+  ); 
   NotificationController.instance.initLocalNotification();
 
   runApp(const AtHomeApp());
