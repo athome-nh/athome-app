@@ -3,6 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Landing/splash_screen.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
@@ -33,7 +34,7 @@ class _VerificatoinState extends State<Verificatoin> {
   String _code = '';
   int timecode = 60;
   late Timer _codeTimer;
-  String token = "";
+  String token2 = "";
   int _currentIndex = 0;
 
   void initState() {
@@ -43,7 +44,7 @@ class _VerificatoinState extends State<Verificatoin> {
             // vapidKey: firebaseCloudvapidKey
             )
         .then((val) async {
-      token = val.toString();
+      token2 = val.toString();
     });
     super.initState();
   }
@@ -171,13 +172,13 @@ class _VerificatoinState extends State<Verificatoin> {
                               },
                               child: Text(
                                 timecode != 0
-                                    ? "Try again in".tr + formatedTime(timeInSecond: timecode)
+                                    ? "Try again in".tr +
+                                        formatedTime(timeInSecond: timecode)
                                     : "Resend".tr,
                                 style: TextStyle(
                                     color: mainColorRed,
                                     fontFamily: mainFontnormal,
-                                    fontSize: 12
-                                    ),
+                                    fontSize: 12),
                               ))
                         ],
                       ),
@@ -254,7 +255,7 @@ class _VerificatoinState extends State<Verificatoin> {
         try {
           await _auth.signInWithCredential(credential);
           var data = {
-            "token": token,
+            "token": token2,
             "phone": widget.phone_number,
             "password": _auth.currentUser!.uid.toString(),
           };
@@ -267,6 +268,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     _isLoading = false;
                     _isVerified = true;
                     isLogin = true;
+                    loaddata = false;
                     token = value["token"];
                   });
 
@@ -418,7 +420,7 @@ class _VerificatoinState extends State<Verificatoin> {
     try {
       await _auth.signInWithCredential(credential);
       var data = {
-        "token": token,
+        "token": token2,
         "phone": widget.phone_number,
         "password": _auth.currentUser!.uid.toString(),
       };
@@ -515,6 +517,7 @@ class _VerificatoinState extends State<Verificatoin> {
                 _isLoading = false;
                 _isVerified = true;
                 isLogin = true;
+                loaddata = false;
                 token = value["token"];
               });
               getStringPrefs("data").then((map) {
@@ -614,7 +617,6 @@ class _VerificatoinState extends State<Verificatoin> {
                   );
                 },
               );
-           
             }
           } else if (value["code"] == "422") {
             setState(() {

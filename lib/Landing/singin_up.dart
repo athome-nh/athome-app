@@ -44,7 +44,7 @@ class _SingInUpState extends State<SingInUp> {
   bool ageE = false;
   bool cityE = false;
   bool genderE = false;
-  String token = "";
+  String token2 = "";
   TextEditingController nameController = TextEditingController();
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   List<String> agelist = ["18", "19", "20", "21", "22", "23"];
@@ -55,7 +55,7 @@ class _SingInUpState extends State<SingInUp> {
             // vapidKey: firebaseCloudvapidKey
             )
         .then((val) async {
-      token = val.toString();
+      token2 = val.toString();
     });
     super.initState();
   }
@@ -322,7 +322,7 @@ class _SingInUpState extends State<SingInUp> {
                         "age": age.toString(),
                         "gender": gender,
                         "img": gender == "MAle" ? "" : "img",
-                        "fcmToken": token,
+                        "fcmToken": token2,
                         "device": Platform.isAndroid
                             ? _readAndroidBuildData(
                                     await deviceInfoPlugin.androidInfo)
