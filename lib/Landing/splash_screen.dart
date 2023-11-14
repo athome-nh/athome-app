@@ -28,7 +28,6 @@ class _SplashScreenState extends State<SplashScreen> {
   var subscription;
   @override
   void initState() {
-    checkinternet();
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
@@ -47,9 +46,9 @@ class _SplashScreenState extends State<SplashScreen> {
             isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
             token = myMap.containsKey("token") ? myMap["token"] : "";
           }
-          final productrovider =
-              Provider.of<productProvider>(context, listen: false);
-          productrovider.updatePost(isLogin);
+
+          Provider.of<productProvider>(context, listen: false)
+              .updatePost(isLogin);
         });
 
         Timer(

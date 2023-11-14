@@ -8,6 +8,7 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
@@ -32,12 +33,18 @@ class _VerificatoinState extends State<Verificatoin> {
   String _code = '';
   int timecode = 60;
   late Timer _codeTimer;
-
+  String token = "";
   int _currentIndex = 0;
 
   void initState() {
     verfyphone();
-
+    FirebaseMessaging.instance
+        .getToken(
+            // vapidKey: firebaseCloudvapidKey
+            )
+        .then((val) async {
+      token = val.toString();
+    });
     super.initState();
   }
 
@@ -158,7 +165,8 @@ class _VerificatoinState extends State<Verificatoin> {
                                   _codeTimer.cancel();
                                   verfyphone();
                                 } else {
-                                  toastShort("Hold till the waiting time ends".tr);
+                                  toastShort(
+                                      "Hold till the waiting time ends".tr);
                                 }
                               },
                               child: Text(
@@ -245,13 +253,14 @@ class _VerificatoinState extends State<Verificatoin> {
         try {
           await _auth.signInWithCredential(credential);
           var data = {
+            "token": token,
             "phone": widget.phone_number,
             "password": _auth.currentUser!.uid.toString(),
           };
           Network(false).postData("login", data, context).then((value) async {
             if (value != "") {
               if (value["code"] == "200") {
-                if (value["data"]["isActive"] == 1) {
+                if (value["isActive"] == 1) {
                   _codeTimer.cancel();
                   setState(() {
                     _isLoading = false;
@@ -408,13 +417,98 @@ class _VerificatoinState extends State<Verificatoin> {
     try {
       await _auth.signInWithCredential(credential);
       var data = {
+        "token": token,
         "phone": widget.phone_number,
         "password": _auth.currentUser!.uid.toString(),
       };
       Network(false).postData("login", data, context).then((value) async {
         if (value != "") {
           if (value["code"] == "200") {
-            if (value["data"]["isActive"] == 1) {
+            if (value["isApprove"] == 0) {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    content: Stack(
+                      alignment:
+                          lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                      children: [
+                        Container(
+                          width: getWidth(context, 70),
+                          height: getHeight(context, 50),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset(
+                                "assets/images/003_welcome_1.png",
+                                width: getWidth(context, 40),
+                                height: getWidth(context, 40),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Account Pendding".tr,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  color: mainColorGrey,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 25,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "Account npt approved by admin yet".tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: mainColorGrey,
+                                  fontFamily: mainFontnormal,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const RegisterWithPhoneNumber()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(getWidth(context, 70),
+                                      getHeight(context, 5)),
+                                  shape: RoundedRectangleBorder(
+                                    side: BorderSide(color: mainColorGrey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
+                                child: Text(
+                                  "OK".tr,
+                                  style: TextStyle(
+                                    color: mainColorGrey,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.close))
+                      ],
+                    ),
+                  );
+                },
+              );
+              return;
+            }
+            if (value["isActive"] == 1) {
               _codeTimer.cancel();
               setState(() {
                 _isLoading = false;
@@ -519,6 +613,7 @@ class _VerificatoinState extends State<Verificatoin> {
                   );
                 },
               );
+           
             }
           } else if (value["code"] == "422") {
             setState(() {
