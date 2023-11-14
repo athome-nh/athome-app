@@ -53,12 +53,15 @@ class Network {
       await dio.get(serverUrl + "time").then((time) async {
         datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] = "Bearer " + token;
+
         dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+
         Response response = await dio.get(serverUrl + apiRout);
 
         data = response.data;
       });
     } catch (e) {
+      print(e);
       return "";
     }
     return data;
@@ -97,6 +100,7 @@ class Network {
         }
       });
     } catch (e) {
+      print(e);
       return false;
     }
   }

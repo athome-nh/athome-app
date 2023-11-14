@@ -1,6 +1,8 @@
 import 'package:athome/Config/local_data.dart';
+import 'package:athome/Notifications/NotificationController.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -10,13 +12,32 @@ import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 
+
+
+ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  if (message.data["type"]) {
+    //  Get.to(ChatScreen(message.data["roomid"], message.data["coName"]));
+  }
+  await Firebase.initializeApp();
+}
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+ FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    badge: true,
+  ); 
+  NotificationController.instance.initLocalNotification();
+
   runApp(const AtHomeApp());
 }
 
@@ -47,6 +68,13 @@ class _AtHomeAppState extends State<AtHomeApp> {
         }
       });
     });
+
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  messaging.getToken().then((value){
+
+print(value);
+});
+
     super.initState();
   }
 

@@ -650,6 +650,7 @@ class _CheckOutState extends State<CheckOut> {
                                                       onPressed: () {
                                                         cartProvider
                                                             .clearCart();
+
                                                         Navigator.push(
                                                           context,
                                                           MaterialPageRoute(

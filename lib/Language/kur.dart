@@ -55,7 +55,8 @@ const Map<String, String> kur = {
   "Clear": "پاک کردنەوە",
   "Your cart is empty": "سەبەتەی کڕین بەتاڵە",
   "Delete": "سڕینەوە",
-  "you can not add more this item": "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
+  "you can not add more this item":
+      "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
   "Sub Total": "کۆی گشتی",
   "Delivery Cost": "تێچوی گەیاندن",
   "Free Delivery": "گەیاندنی خۆڕایی",
@@ -220,7 +221,7 @@ const Map<String, String> kur = {
   'Log in': 'داخڵ بوون',
   
   "I want to Delete my account": "I want to Delete my account",
-  
+
   "Signout": "دەرچوون",
   "Cancel": "پوچەڵ کردنەوە",
   "Edit account": "Edit account",
@@ -228,7 +229,7 @@ const Map<String, String> kur = {
   "Female": "مێ",
   "Ordered:": "داواکرا:",
   "Delivered:": "گەیەنرا:",
-  
+
   "Select Location": "جێگیرکردنی ناونیشان",
   
   "Add another location": "زیادکردنی ناونیسانی گەیاندن",
@@ -250,14 +251,14 @@ const Map<String, String> kur = {
   "Clear My cart": "بەتاڵ کردنی سەبەتەی کڕین",
   "You want delete all items in cart":
       " بەتاڵ کردنەوەی هەموو بابەتەکان لە سەبەتەی کڕین",
-  
+
   "New Discount": "داشکانی نوێ",
-  
+
   "Description": "وەسف کردن",
   "Notfication": "ئاگا نامە",
   "You orders has been picked up": "داواکاریەکەت هەڵگیرا",
   "Now": "ئێستا",
-  
+
   "Track Order": "بینینی داواکاری",
   "Order:": "داواکاری:",
   "Cancle order": "پوچەڵ کردنەوەی داواکاری",

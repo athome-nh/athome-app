@@ -333,6 +333,8 @@ class _TrackOrderState extends State<TrackOrder> {
                   loading
                       ? TextButton(
                           onPressed: () {
+                            Provider.of<productProvider>(context, listen: false)
+                                .getproductitems(int.parse(widget.id));
                             Navigator.push(
                               context,
                               MaterialPageRoute(
