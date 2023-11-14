@@ -177,7 +177,7 @@ const Map<String, String> kur = {
   "Verification": "دڵنیابوونەوە",
   "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی داخڵ بکە",
   "Don't resive the OTP ?": "کۆدی یەک جارەییت بە دەست نەگەیشت ?",
-  "Try again in": "دوبارە داوابکەوە لە",
+  "Try again in": "دوبارە داوابکەوە لە ",
   "Resend": "دووبارە ناردنەوە",
   "Verify": "دڵنیا بوونەوە",
   "Account Disabled": "هەژمارەکە ڕاگیرا",

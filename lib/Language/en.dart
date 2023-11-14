@@ -177,7 +177,7 @@ const Map<String, String> en = {
   "Verification": "Verification",
   "Please enter the 6 digit code sent to":"Please enter the 6 digit code sent to",
   "Don't resive the OTP ?": "Didn't receive the OTP ?",
-  "Try again in": "Try again in",
+  "Try again in": "Try again in ",
   "Resend": "Resend",
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
@@ -192,7 +192,7 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
-  
+
 
   // mawaa 
   'You\'re online ✅': 'You are online ✅',

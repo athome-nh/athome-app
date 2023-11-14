@@ -157,7 +157,7 @@ class _VerificatoinState extends State<Verificatoin> {
                           Text(
                             "Don't resive the OTP ?".tr,
                             style: TextStyle(
-                                fontSize: 14, color: Colors.grey.shade500),
+                                fontSize: 12, color: Colors.grey.shade500),
                           ),
                           TextButton(
                               onPressed: () {
@@ -171,12 +171,13 @@ class _VerificatoinState extends State<Verificatoin> {
                               },
                               child: Text(
                                 timecode != 0
-                                    ? "Try again in".tr +
-                                        formatedTime(timeInSecond: timecode)
+                                    ? "Try again in".tr + formatedTime(timeInSecond: timecode)
                                     : "Resend".tr,
                                 style: TextStyle(
                                     color: mainColorRed,
-                                    fontFamily: mainFontbold),
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 12
+                                    ),
                               ))
                         ],
                       ),

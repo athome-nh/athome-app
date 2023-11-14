@@ -316,6 +316,7 @@ Widget listItemsBigShimer(BuildContext context) {
   );
 }
 
+// Home items
 Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
@@ -648,6 +649,7 @@ Widget listItemsSmall(BuildContext context, var data) {
   );
 }
 
+// all items
 Widget listItemsShow(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
@@ -661,7 +663,7 @@ Widget listItemsShow(BuildContext context, var data) {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          childAspectRatio: getWidth(context, 0.20),
+          childAspectRatio: getWidth(context, 0.19),
         ),
 
         itemCount: data.length, // Number of items in the grid
@@ -988,7 +990,7 @@ Widget listItemsShow(BuildContext context, var data) {
     ),
   );
 }
-
+// Search items
 Widget listItemsShowSearch(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);

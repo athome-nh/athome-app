@@ -177,7 +177,7 @@ const Map<String, String> ar = {
   "Verification": "التحقق",
   "Please enter the 6 digit code sent to":"یرجی الادخال رمز من 6 ارقام ارسلت الی:",
   "Don't resive the OTP ?": "لم تستلم الرمز؟",
-  "Try again in": "حاول مری اخری في",
+  "Try again in": "حاول مری اخری في ",
   "Resend": "اعادة الارسال",
   "Verify": "التحقق",
   "Account Disabled": "الحساب متوقف",
