@@ -16,7 +16,7 @@ class location_Deatil extends StatefulWidget {
   double latitude = 0.0;
   String name = "";
   String housenumber = "";
-  location_Deatil(this.longitude, this.latitude, this.name, this.housenumber);
+  location_Deatil(this.longitude, this.latitude, this.name, this.housenumber, {super.key});
 
   @override
   State<location_Deatil> createState() => _location_DeatilState();
@@ -101,7 +101,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         controller.location.updateSettings(
                             LocationComponentSettings(
                                 enabled: true, pulsingEnabled: true));
-                        controller?.flyTo(
+                        controller.flyTo(
                             CameraOptions(
                                 center: Point(
                                         coordinates: Position(
@@ -128,7 +128,9 @@ class _location_DeatilState extends State<location_Deatil> {
                       nameE = false;
                     });
                   },
-                  validator: (value) {},
+                  validator: (value) {
+                    return null;
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -183,7 +185,9 @@ class _location_DeatilState extends State<location_Deatil> {
                   cursorColor: mainColorGrey,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {},
-                  validator: (value) {},
+                  validator: (value) {
+                    return null;
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),

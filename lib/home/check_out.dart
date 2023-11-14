@@ -627,8 +627,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                     context,
                                                                     4)),
                                                     child: Text(
-                                                      "Your Order is now being processed. We will let you know once the order is picked from the outlet. Check the status of your Order"
-                                                          .tr,
+                                                      "YourOrderIsNowBeingProcessed".tr,
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         color: mainColorGrey,
@@ -757,7 +756,7 @@ class _CheckOutState extends State<CheckOut> {
                               }
                             });
                           } else {
-                            toastLong("Please Delivery Address");
+                            toastLong("Please Delivery Address".tr);
                           }
                         },
                   style: ElevatedButton.styleFrom(
@@ -817,8 +816,7 @@ class _CheckOutState extends State<CheckOut> {
                           children: [
                             const SizedBox(),
                             Text(
-                              "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin"
-                                  .tr,
+                              "sorryWeDoNotHaveDelivery".tr,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 color: mainColorWhite.withOpacity(0.7),
@@ -845,7 +843,7 @@ class _CheckOutState extends State<CheckOut> {
                                 ),
                               ),
                               child: Text(
-                                "Ok".tr,
+                                "OK".tr,
                                 style: TextStyle(
                                     fontSize: 18, fontFamily: mainFontnormal),
                               ),

@@ -1359,6 +1359,7 @@ Future noInternet(BuildContext context) {
   return checkInternet(context);
 }
 
+// SnackBar No Internet
 SnackBar noInternetSnackBar = SnackBar(
   duration: const Duration(seconds: 4),
   content: Text(
@@ -1367,10 +1368,12 @@ SnackBar noInternetSnackBar = SnackBar(
   ),
   backgroundColor: mainColorGrey,
 );
+
+// SnackBar Internet Back
 SnackBar internetBackSnackBar = SnackBar(
   duration: const Duration(seconds: 3),
   content: Text(
-    'You\'re online ✅'.tr,
+    "You\'re online ✅".tr,
     style: TextStyle(fontFamily: mainFontnormal),
   ),
   backgroundColor: Colors.green,

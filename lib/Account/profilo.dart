@@ -66,7 +66,7 @@ class _SettingState extends State<Setting> {
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   String gender = "Male";
-
+    
   String selectedItem = 'English';
   bool isEdit = false;
   bool colapse = false;
@@ -742,8 +742,7 @@ class _SettingState extends State<Setting> {
                                                                           Center(
                                                                         child:
                                                                             Text(
-                                                                          "Save"
-                                                                              .tr,
+                                                                          "Save".tr,
                                                                           style: TextStyle(
                                                                               fontFamily: mainFontbold,
                                                                               fontSize: 14,

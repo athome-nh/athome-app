@@ -86,7 +86,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 15.0, horizontal: 20),
                       child: Text(
-                        'Enter your phone number to Shop Smarter & Easier.'.tr,
+                        "EnterYourPhoneNumberToShop".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,
@@ -230,8 +230,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        "We will send you OTP code to verifiy your phone number."
-                            .tr,
+                        "WeWillSendYouOTP".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,

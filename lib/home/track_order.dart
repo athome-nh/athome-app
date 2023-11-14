@@ -292,14 +292,15 @@ class _TrackOrderState extends State<TrackOrder> {
                     : MainAxisAlignment.spaceEvenly,
                 children: [
                   loading
-                      ? status > 0
-                          ? const SizedBox()
-                          : TextButton(
+                      ? status == 0
+                          ? TextButton(
                               onPressed: () {
                                 Network(false)
                                     .postData("userCancel", {"oid": widget.id},
                                         context)
                                     .then((value) {
+                             
+
                                   if (value != "") {
                                     if (value["code"] == "201") {
                                       final productrovider =
@@ -326,7 +327,8 @@ class _TrackOrderState extends State<TrackOrder> {
                                     fontSize: 16,
                                     fontFamily: mainFontnormal,
                                   )),
-                            )
+                            ): const SizedBox()
+                          
                       : const SizedBox(),
                   loading
                       ? TextButton(

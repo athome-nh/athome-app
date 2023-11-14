@@ -102,9 +102,11 @@ class Network {
   }
 
   Future postData(String rout, Map data, BuildContext context) async {
+   
     Map<String, dynamic> data2 = {};
     try {
       if (isLogin) {
+        
         await dio.get(serverUrl + "time").then((time) async {
           datetimeS = DateTime.parse(time.data["data"]);
           dio.options.headers["Authorization"] = "Bearer " + token;
@@ -128,6 +130,7 @@ class Network {
         });
       }
     } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
             duration: const Duration(seconds: 4),
