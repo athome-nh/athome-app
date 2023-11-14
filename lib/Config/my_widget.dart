@@ -321,7 +321,7 @@ Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
   return SizedBox(
-    height: getHeight(context, 27),
+    height: getHeight(context, 28),
     //  decoration: BoxDecoration(border: Border.all()),
     child: Visibility(
       visible: productrovider.show,
@@ -339,7 +339,7 @@ Widget listItemsSmall(BuildContext context, var data) {
             padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
             child: Container(
               width: getWidth(context, 45),
-              height: getHeight(context, 27),
+              height: getHeight(context, 28),
               decoration: BoxDecoration(
                   border: Border.all(color: mainColorBlack.withOpacity(0.1)),
                   // color: mainColorLightGrey,
@@ -358,9 +358,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                           children: [
                             Column(
                               children: [
-                                const SizedBox(
-                                  height: 5,
-                                ),
+                            
                                 GestureDetector(
                                   onTap: () {
                                     productrovider.setidItem(product.id!);

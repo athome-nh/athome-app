@@ -27,7 +27,13 @@ class _ChooseLangState extends State<ChooseLang> {
             child: Column(
               children: [
                 // top image
-                Image.asset("assets/images/world.png"),
+                Container(
+                  //decoration: BoxDecoration(border: Border.all()),
+                  child: Image.asset("assets/images/world.png",
+                  width: getWidth(context, 100),
+                  height: getHeight(context, 45),
+                  ),
+                ),
                 // Language
                 Text(
                   "Language".tr,
@@ -38,7 +44,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 ),
                 // Space
                 SizedBox(
-                  height: getHeight(context, 3),
+                  height: getHeight(context,1),
                 ),
                 // Kurdish
                 GestureDetector(
@@ -74,7 +80,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 ),
                 // Space
                 SizedBox(
-                  height: getHeight(context, 2),
+                  height: getHeight(context, 1),
                 ),
                 // Arabic
                 GestureDetector(
@@ -110,7 +116,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 ),
                 // Space
                 SizedBox(
-                  height: getHeight(context, 2),
+                  height: getHeight(context, 1),
                 ),
                 // English
                 GestureDetector(
@@ -146,7 +152,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 ),
                 // Space
                 SizedBox(
-                  height: getHeight(context, 7),
+                  height: getHeight(context, 5),
                 ),
                 // Get Start
                 GestureDetector(
