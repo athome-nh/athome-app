@@ -39,8 +39,6 @@ const Map<String, String> ar = {
   "Login": "تسجیل الدخول",
   "Cancle": "الغاء",
 
-  
-
   // categories
   "All Categories": "کل الفئات",
 
@@ -50,8 +48,8 @@ const Map<String, String> ar = {
   "Not found any item": "لم یتم العثور علی أي عنصر",
 
   // my_cart
-  "My Cart":"؟؟؟؟؟",
-  "You need login to add item to favourite":"؟؟؟؟؟",
+  "My Cart": "؟؟؟؟؟",
+  "You need login to add item to favourite": "؟؟؟؟؟",
   "Clear": "ازاله",
   "Your cart is empty": "سلة التسوف فارغة",
   "Delete": "حذف",
@@ -69,15 +67,15 @@ const Map<String, String> ar = {
   "no internet": "؟؟؟؟؟؟",
 
   // Page --> Login First --> my_widget
-  "Please login first":"تسجیل الدخول",
+  "Please login first": "تسجیل الدخول",
 
   // profilo
   "Image changed": "؟؟؟؟؟",
   "Information": "؟؟؟؟؟",
-  "Enter Name":"ادخل الاسم",
-  "Enter Age":"ادخل العمر",
-  "Edit":"Edit",
-  "Orders":"؟؟؟؟؟",
+  "Enter Name": "ادخل الاسم",
+  "Enter Age": "ادخل العمر",
+  "Edit": "Edit",
+  "Orders": "؟؟؟؟؟",
   "Address": "العنوان",
   "About us":"حول التطبیق",
   "Log out":"؟؟؟؟؟",
@@ -111,7 +109,7 @@ const Map<String, String> ar = {
   "Change": "تغییر",
   "Pyment Method": "طریقة الدفع",
   "Cash on delivery": "الدفع عند التسلیم",
-  
+
   "Thank You!": "شکرا",
   "for yor order": "لك علی الطلبیة",
   "Order Number:": "رقم الطلبیة:",
@@ -162,7 +160,7 @@ const Map<String, String> ar = {
   "Save": "حفض",
   "Loyalty point": "نقطة الولاء",
   "I want to Delete my account": "I want to Delete my account",
-  
+
   "Signout": "تسجیل الخروج",
   "Wellcome back": "مرحبا بك",
   "Enter your phone number to Shop Smarter & Easier.": "أدخل رقم هاتفك و تسوق",
@@ -174,7 +172,7 @@ const Map<String, String> ar = {
   "Female": "أنثی",
   "Ordered:": "صارت الطلبیة:",
   "Delivered:": "تم التسلیم:",
-  
+
   "Select Location": "اختر الموقع",
   "Not have any location": "لیس لدیك موقع محفوض",
   "Add another location": "اضافةالموقع التوصیل",
@@ -183,7 +181,7 @@ const Map<String, String> ar = {
   "Select": "اختار",
   
   "Sign out": "تسجیل الخروج",
-  
+
   "Number": "رقم",
   "Coming soon": "قریبا",
   "Note": "ملاحضة",
@@ -192,22 +190,21 @@ const Map<String, String> ar = {
       "آسف ليس لدينا توصيل في هذا الوقت، سنرسل لك هذا الطلب غدًا في أقرب وقت. او يمكنك إلغاء الطلب حتى قبوله من قبل المشرف",
   "Ok": "موافق",
   "cateItem": "cateItem",
-  
-  
+
   "You need login to add item in cart":
       "سجل الدخول لاضافة عناصر الی سلة التسوق",
   "This list is empty": "لا یوجد اڕ عنصر",
   "info:": "info:",
   "Clear My cart": "ازالة سلة المشتریات",
   "You want delete all items in cart": "ازالة العناصر من سلة المشتریات",
-  
+
   "New Discount": "عروضات الجدیدة",
-  
+
   "Description": "وصف",
   "Notfication": "اشعارات",
   "You orders has been picked up": "تم الاستلام الطلبیة",
   "Now": "الان",
-  
+
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
   "Cancle order": "اخلاء الطلبیة",

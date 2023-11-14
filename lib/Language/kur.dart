@@ -49,18 +49,18 @@ const Map<String, String> kur = {
   "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
 
   // my_cart
-  "My Cart":"؟؟؟؟؟",
-  "You need login to add item to favourite":"؟؟؟؟؟",
+  "My Cart": "؟؟؟؟؟",
+  "You need login to add item to favourite": "؟؟؟؟؟",
   "Clear": "پاک کردنەوە",
   "Your cart is empty": "سەبەتەی کڕین بەتاڵە",
   "Delete": "سڕینەوە",
-  "you can not add more this item": "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
+  "you can not add more this item":
+      "ناتوانی داواکاری زیاتر لەسەر ئەم بەرهەمە داوا بکەیت",
   "Sub Total": "کۆی گشتی",
   "Delivery Cost": "تێچوی گەیاندن",
   "Free Delivery": "گەیاندنی خۆڕایی",
   "Total": "کۆی گشتی",
   "Checkout": "دوپاتکردنەوە",
-
 
   // favorite
   "No have any favorite": "بەرهەمی دڵخوازت نیە",
@@ -69,15 +69,15 @@ const Map<String, String> kur = {
   "no internet": "؟؟؟؟؟",
 
   // Page --> Login First --> my_widget
-  "Please login first":"؟؟؟؟؟",
+  "Please login first": "؟؟؟؟؟",
 
   // profilo
   "Image changed": "؟؟؟؟؟",
   "Information": "؟؟؟؟؟",
-  "Enter Name":"داخڵ کردنی ناو",
-  "Enter Age":"داخڵ کردنی تەمەن",
-  "Edit":"؟؟؟؟؟",
-  "Orders":"؟؟؟؟؟",
+  "Enter Name": "داخڵ کردنی ناو",
+  "Enter Age": "داخڵ کردنی تەمەن",
+  "Edit": "؟؟؟؟؟",
+  "Orders": "؟؟؟؟؟",
   "Address": "ناونیشان",
   "About us":"دەربارەی ئێمە",
   "Log out":"؟؟؟؟؟",
@@ -158,12 +158,12 @@ const Map<String, String> kur = {
   'You\'re offline, connect to a network.':
       'پەیوەست نیت بە ئینتەرنێت، تکایە خۆت پەیوەست بکە.',
   "OK": "OK",
-"Loyalty point": "خاڵی دڵسۆزی", 
+  "Loyalty point": "خاڵی دڵسۆزی",
   "Warning": "ئاگاداری",
   'Log in': 'داخڵ بوون',
   "Save": "خەزن کردن",
   "I want to Delete my account": "I want to Delete my account",
-  
+
   "Signout": "دەرچوون",
   "Wellcome back": "بەخێر بێیتەوە",
   "Enter your phone number to Shop Smarter & Easier.":
@@ -176,7 +176,7 @@ const Map<String, String> kur = {
   "Female": "مێ",
   "Ordered:": "داواکرا:",
   "Delivered:": "گەیەنرا:",
-  
+
   "Select Location": "جێگیرکردنی ناونیشان",
   "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
   "Add another location": "زیادکردنی ناونیسانی گەیاندن",
@@ -185,7 +185,7 @@ const Map<String, String> kur = {
   "Select": "دیاری بکە",
   
   "Sign out": "دەرچوون",
-  
+
   "Number": "ژمارە",
   "Coming soon": "بەم زوانە",
   "Note": "تێبینی",
@@ -194,8 +194,6 @@ const Map<String, String> kur = {
       "ببورە لەم کاتەی ئیستادا گەیاندن بەردەست نیە ، تکایە داواکاریەکە بۆ ڕۆژی دواتر داوابکە.",
   "Ok": "Ok",
   "cateItem": "cateItem",
-  
-  
 
   "You need login to add item in cart":
       "پێویستە خۆت تۆمار بکەیت بۆ زیاد کردنی ئەم بەرهەمە بۆ سەبەتەی کڕین",
@@ -204,14 +202,14 @@ const Map<String, String> kur = {
   "Clear My cart": "بەتاڵ کردنی سەبەتەی کڕین",
   "You want delete all items in cart":
       " بەتاڵ کردنەوەی هەموو بابەتەکان لە سەبەتەی کڕین",
-  
+
   "New Discount": "داشکانی نوێ",
-  
+
   "Description": "وەسف کردن",
   "Notfication": "ئاگا نامە",
   "You orders has been picked up": "داواکاریەکەت هەڵگیرا",
   "Now": "ئێستا",
-  
+
   "Track Order": "بینینی داواکاری",
   "Order:": "داواکاری:",
   "Cancle order": "پوچەڵ کردنەوەی داواکاری",
