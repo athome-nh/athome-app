@@ -8,9 +8,7 @@ import 'package:athome/main.dart';
 import 'package:athome/Config/value.dart';
 import 'package:athome/map/geolocator.dart';
 import 'package:athome/map/locationdeatil.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -232,7 +230,7 @@ class _Map_screenState extends State<Map_screen> {
                       shape: BoxShape.circle, color: mainColorLightGrey),
                   child: IconButton(
                     onPressed: () async {
-                      await getCureentlocation(); // Our guy 😄
+                      await getCureentlocation();
                     },
                     icon: Icon(FontAwesomeIcons.locationCrosshairs,
                         size: 25, color: mainColorRed),

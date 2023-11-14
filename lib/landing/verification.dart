@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
@@ -159,7 +158,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                   _codeTimer.cancel();
                                   verfyphone();
                                 } else {
-                                  toastShort("Hold till the waiting time ends");
+                                  toastShort("Hold till the waiting time ends".tr);
                                 }
                               },
                               child: Text(
@@ -187,7 +186,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         ),
                         elevation: 0,
                         onPressed: _code.length < 6
-                            ? () => {toastLong("Please enter code")}
+                            ? () => {toastLong("Please enter code".tr)}
                             : () async {
                                 if (await noInternet(context)) {
                                   return;
@@ -338,7 +337,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                       ),
                                     ),
                                     child: Text(
-                                      "Ok".tr,
+                                      "OK".tr,
                                       style: TextStyle(
                                         color: mainColorGrey,
                                         fontSize: 16,
@@ -500,7 +499,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                   ),
                                 ),
                                 child: Text(
-                                  "Ok".tr,
+                                  "OK".tr,
                                   style: TextStyle(
                                     color: mainColorGrey,
                                     fontSize: 16,
