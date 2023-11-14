@@ -108,7 +108,7 @@ class productProvider extends ChangeNotifier {
   }
 
   updatePost(bool user) async {
-    if (user) {
+    if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
