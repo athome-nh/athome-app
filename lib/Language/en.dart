@@ -13,6 +13,8 @@ const Map<String, String> en = {
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "wst03": "Your Pocket's Friend",
   "wsd03": "Learn whatever you want, whenever or wherever you are.",
+  "NEXT": "NEXT",
+  "SKIP": "SKIP",
 
   // nav_switch
   "Home": "Home",
@@ -117,7 +119,7 @@ const Map<String, String> en = {
   "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
-  "Please Delivery Address":"Please Delivery Address",
+  "Please Delivery Address":"Please Add Delivery Address",
   "Send Order": "Send Order",
   "sorryWeDoNotHaveDelivery": "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
   "OK": "OK",
@@ -175,7 +177,7 @@ const Map<String, String> en = {
   "Verification": "Verification",
   "Please enter the 6 digit code sent to":"Please enter the 6 digit code sent to",
   "Don't resive the OTP ?": "Didn't receive the OTP ?",
-  "Try again in": "Try again in",
+  "Try again in": "Try again in ",
   "Resend": "Resend",
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
@@ -190,7 +192,9 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
-  // mawaa
+
+
+  // mawaa 
   'You\'re online ✅': 'You are online ✅',
   "You need login to add item in cart": "You need to register to add item to the cart",
   "This list is empty": "The list is empty",
