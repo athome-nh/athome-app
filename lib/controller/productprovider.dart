@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:athome/Config/athome_functions.dart';
+import 'package:athome/Config/local_data.dart';
+import 'package:athome/Config/property.dart';
+import 'package:athome/Landing/disableaccount.dart';
 import 'package:athome/Network/Network.dart';
 
 import 'package:athome/landing/splash_screen.dart';
@@ -16,6 +21,7 @@ import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:athome/model/topmodel/topmodel.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class productProvider extends ChangeNotifier {
   productProvider() {
@@ -82,7 +88,6 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataUser(String id) {
-    print("Start");
     Network(false).getData("showDataUser/" + id).then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
@@ -97,7 +102,6 @@ class productProvider extends ChangeNotifier {
               .toList());
 
           setshow(true);
-          print("end");
         } else {}
       } else {}
     });
@@ -109,13 +113,104 @@ class productProvider extends ChangeNotifier {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
             userdata = valueuser["data"][0];
+            if (userdata["isActive"] == 1) {
+              userdata.clear();
+              // Network(false)
+              //     .postData("logout", {}, navigatorKey.currentContext!);
+              isLogin = false;
+              // token = "";
+              // setStringPrefs("token", "");
+              Timer(
+                const Duration(seconds: 5),
+                () {
+                  showDialog(
+                    context: navigatorKey.currentContext!,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Stack(
+                          alignment: lang == "en"
+                              ? Alignment.topLeft
+                              : Alignment.topRight,
+                          children: [
+                            Container(
+                              width: getWidth(context, 70),
+                              height: getHeight(context, 50),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/003_welcome_1.png",
+                                    width: getWidth(context, 40),
+                                    height: getWidth(context, 40),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Account Disabled".tr,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    "Account is disable please contact athome admin"
+                                        .tr,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(getWidth(context, 70),
+                                          getHeight(context, 5)),
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(color: mainColorGrey),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "OK".tr,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(Icons.close))
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
 
-            getDataAll(user);
+              getDataAll(isLogin);
+              return;
+            }
+            getDataAll(isLogin);
           }
         }
       });
     } else {
-      getDataAll(user);
+      getDataAll(isLogin);
     }
   }
 
@@ -153,6 +248,7 @@ class productProvider extends ChangeNotifier {
   int _idItem = 0;
   int _subcateSelect = 0;
   bool show = false;
+  bool activeUser = false;
   bool nointernetCheck = false;
 
   // Getter to access the list of products
@@ -522,6 +618,12 @@ class productProvider extends ChangeNotifier {
 
   void setshow(bool value) {
     show = value;
+
+    notifyListeners();
+  }
+
+  void setActiveUser(bool value) {
+    activeUser = value;
 
     notifyListeners();
   }

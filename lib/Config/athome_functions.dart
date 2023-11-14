@@ -42,7 +42,21 @@ String code_3(String code_2, String randomText) {
   List<String> charactersArray = randomText.split('');
   List<String> charactersArray2 = code_2.split('');
 
-  List<int> listOfNum = [13, 21, 44, 18, 28, 55, 5, 11, 25, 32, 23, 16, 7];
+  List<int> listOfNum = [
+    27,
+    14,
+    49,
+    3,
+    60,
+    8,
+    35,
+    22,
+    42,
+    18,
+    55,
+    7,
+    31,
+  ];
 
   for (int i = 0; i < 13; i++) {
     charactersArray[listOfNum[i]] = charactersArray2[i];
@@ -105,33 +119,37 @@ String encryptAES(String plainText) {
   if (plainText.isEmpty) {
     return "";
   }
-  final key = encryption.Key.fromUtf8('1#qw34?r5tgvfdcx>Az678u!jnbg&Klp');
-  final iv = encryption.IV.fromLength(16);
-  final encrypter = encryption.Encrypter(
-      encryption.AES(key, mode: encryption.AESMode.ctr, padding: null));
+  final key = encryption.Key.fromUtf8("12345678901234567890123456789012");
+  final iv = encryption.IV.fromUtf8("0000000000000000");
+
+  final encrypter =
+      encryption.Encrypter(encryption.AES(key, mode: encryption.AESMode.cbc));
+
   final encrypted = encrypter.encrypt(plainText, iv: iv);
 
   return encrypted.base64;
-}
-
-Future<int> getOnlineTimestamp() async {
-  DateTime startDate = await NTP.now();
-  return startDate.hour;
 }
 
 String decryptAES(String ciphertext) {
   if (ciphertext.isEmpty) {
     return "";
   }
-  final key = encryption.Key.fromUtf8('1#qw34?r5tgvfdcx>Az678u!jnbg&Klp');
-  final iv = encryption.IV.fromLength(16);
-  final decrypter = encryption.Encrypter(
-      encryption.AES(key, mode: encryption.AESMode.ctr, padding: null));
-  final decrypted = decrypter
-      .decryptBytes(encryption.Encrypted.fromBase64(ciphertext), iv: iv);
-  final decryptedData = utf8.decode(decrypted);
+  final key = encryption.Key.fromUtf8("12345678901234567890123456789012");
+  final iv = encryption.IV.fromUtf8("0000000000000000");
+  final encrypter =
+      encryption.Encrypter(encryption.AES(key, mode: encryption.AESMode.cbc));
 
-  return decryptedData.toString();
+  final decryptedBytes =
+      encrypter.decrypt(encryption.Encrypted.fromBase64(ciphertext), iv: iv);
+
+  //final decryptedText = utf8.decode(decryptedBytes);
+
+  return decryptedBytes.toString();
+}
+
+Future<int> getOnlineTimestamp() async {
+  DateTime startDate = await NTP.now();
+  return startDate.hour;
 }
 
 /// Main {}

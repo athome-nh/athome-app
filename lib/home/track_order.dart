@@ -56,7 +56,6 @@ class _TrackOrderState extends State<TrackOrder> {
             if (value["status"] == 5) {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
-              productrovider.updateOrder(int.parse(widget.id), 5);
               productrovider.getDataUser(userdata["id"]);
             }
             final productrovider =
@@ -110,6 +109,8 @@ class _TrackOrderState extends State<TrackOrder> {
         elevation: 0,
         leading: IconButton(
             onPressed: () {
+              Provider.of<productProvider>(context, listen: false)
+                  .getDataUser(userdata["id"]);
               Navigator.pop(context);
             },
             icon: Icon(
@@ -299,15 +300,13 @@ class _TrackOrderState extends State<TrackOrder> {
                                     .postData("userCancel", {"oid": widget.id},
                                         context)
                                     .then((value) {
-                             
-
                                   if (value != "") {
                                     if (value["code"] == "201") {
                                       final productrovider =
                                           Provider.of<productProvider>(context,
                                               listen: false);
-                                      productrovider.updateOrder(
-                                          int.parse(widget.id), 6);
+                                      productrovider
+                                          .getDataUser(userdata["id"]);
                                       Navigator.pop(context);
                                     }
                                   }
@@ -327,8 +326,8 @@ class _TrackOrderState extends State<TrackOrder> {
                                     fontSize: 16,
                                     fontFamily: mainFontnormal,
                                   )),
-                            ): const SizedBox()
-                          
+                            )
+                          : const SizedBox()
                       : const SizedBox(),
                   loading
                       ? TextButton(
