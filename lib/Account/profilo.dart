@@ -277,7 +277,7 @@ class _SettingState extends State<Setting> {
                                                                   const EdgeInsets
                                                                       .all(4.0),
                                                               child:
-                                                                  WaitingWiget2(
+                                                                  waitingWiget2(
                                                                       context),
                                                             )
                                                           : Icon(
@@ -335,7 +335,7 @@ class _SettingState extends State<Setting> {
                                                                   const EdgeInsets
                                                                       .all(4.0),
                                                               child:
-                                                                  WaitingWiget2(
+                                                                  waitingWiget2(
                                                                       context),
                                                             )
                                                           : Icon(
@@ -888,7 +888,7 @@ class _SettingState extends State<Setting> {
                                             ],
                                           ),
                                           waiting
-                                              ? WaitingWiget(context)
+                                              ? waitingWiget(context)
                                               : const SizedBox(),
                                         ],
                                       ),

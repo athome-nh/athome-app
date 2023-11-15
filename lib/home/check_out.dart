@@ -411,7 +411,7 @@ class _CheckOutState extends State<CheckOut> {
                   ],
                 ),
               ),
-              waitingcheckout ? WaitingWiget(context) : const SizedBox()
+              waitingcheckout ? waitingWiget(context) : const SizedBox()
             ],
           ),
         ),

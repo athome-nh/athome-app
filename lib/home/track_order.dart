@@ -286,7 +286,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         ),
                       ],
                     )
-                  : WaitingWiget(context),
+                  : waitingWiget(context),
               Row(
                 mainAxisAlignment: status > 0
                     ? MainAxisAlignment.center
