@@ -12,30 +12,26 @@ import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
 
-
-
- Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   if (message.data["type"]) {
     //  Get.to(ChatScreen(message.data["roomid"], message.data["coName"]));
   }
   await Firebase.initializeApp();
 }
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
- FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
     badge: true,
-  ); 
+  );
   NotificationController.instance.initLocalNotification();
 
   runApp(const AtHomeApp());
@@ -68,12 +64,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
         }
       });
     });
-
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-  messaging.getToken().then((value){
-
-print(value);
-});
 
     super.initState();
   }

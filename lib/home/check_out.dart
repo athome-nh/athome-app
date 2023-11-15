@@ -539,6 +539,7 @@ class _CheckOutState extends State<CheckOut> {
                                 .postData("order", data2, context)
                                 .then((value) {
                               if (value != "") {
+                                print(value);
                                 if (value["code"] == "201") {
                                   setState(() {
                                     waitingcheckout = false;
@@ -627,7 +628,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                     context,
                                                                     4)),
                                                     child: Text(
-                                                      "YourOrderIsNowBeingProcessed".tr,
+                                                      "YourOrderIsNowBeingProcessed"
+                                                          .tr,
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         color: mainColorGrey,
