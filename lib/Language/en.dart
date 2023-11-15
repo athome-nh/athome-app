@@ -2,7 +2,7 @@ const Map<String, String> en = {
   // choose_lan
   "Language": "Language",
   "Kurdish": "Kurdish",
-  "Arabic": "Arabic",
+  "Arabic":  "Arabic ",
   "English": "English",
   "Get Start": "Get Start",
 
