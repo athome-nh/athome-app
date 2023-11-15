@@ -66,7 +66,7 @@ class _SettingState extends State<Setting> {
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   String gender = "Male";
-    
+
   String selectedItem = 'English';
   bool isEdit = false;
   bool colapse = false;
@@ -147,7 +147,11 @@ class _SettingState extends State<Setting> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.asset("assets/images/flag_english.png"),
+                              Image.asset(
+                                "assets/images/uk.png",
+                                width: 35,
+                                height: 35,
+                              ),
                               Container(
                                 padding: EdgeInsets.only(
                                   top: getWidth(context, 2),
@@ -168,7 +172,11 @@ class _SettingState extends State<Setting> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.asset("assets/images/flag_iraq.png"),
+                              Image.asset(
+                                "assets/images/iraq.png",
+                                width: 35,
+                                height: 35,
+                              ),
                               Container(
                                 padding: EdgeInsets.only(
                                   top: getWidth(context, 2),
@@ -189,7 +197,11 @@ class _SettingState extends State<Setting> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.asset("assets/images/flag_kurdish.png"),
+                              Image.asset(
+                                "assets/images/flag.png",
+                                width: 35,
+                                height: 35,
+                              ),
                               Container(
                                 padding: EdgeInsets.only(
                                   top: getWidth(context, 2),
@@ -742,7 +754,8 @@ class _SettingState extends State<Setting> {
                                                                           Center(
                                                                         child:
                                                                             Text(
-                                                                          "Save".tr,
+                                                                          "Save"
+                                                                              .tr,
                                                                           style: TextStyle(
                                                                               fontFamily: mainFontbold,
                                                                               fontSize: 14,
