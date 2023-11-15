@@ -498,7 +498,7 @@ class _MyCartState extends State<MyCart> {
                   ? noInternetWidget(context)
                   : cartProvider.cartItems.isNotEmpty
                       ? Container(
-                          height: getHeight(context, 26),
+                          height: getHeight(context, 29),
                           decoration: BoxDecoration(
                             color: mainColorWhite,
                             // borderRadius: const BorderRadius.only(

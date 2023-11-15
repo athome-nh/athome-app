@@ -339,7 +339,7 @@ Widget listItemsSmall(BuildContext context, var data) {
             padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
             child: Container(
               width: getWidth(context, 45),
-              height: getHeight(context, 28),
+              height: getWidth(context, 28),
               decoration: BoxDecoration(
                   border: Border.all(color: mainColorBlack.withOpacity(0.1)),
                   // color: mainColorLightGrey,
@@ -377,7 +377,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                         Image.asset(
                                             "assets/images/002_logo_1.png"),
                                     width: getWidth(context, 22),
-                                    height: getWidth(context, 22),
+                                    height: getWidth(context, 19),
                                   ),
                                 ),
                                 const SizedBox(
@@ -1405,7 +1405,7 @@ Future toastLong(
       fontSize: 14.0);
 }
 
-Widget WaitingWiget(BuildContext context) {
+Widget waitingWiget(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
     child: LoadingIndicator(
@@ -1421,7 +1421,7 @@ Widget WaitingWiget(BuildContext context) {
   );
 }
 
-Widget WaitingWiget2(BuildContext context) {
+Widget waitingWiget2(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
     child: LoadingIndicator(

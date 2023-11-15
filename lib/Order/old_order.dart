@@ -47,7 +47,7 @@ class _OldOrderState extends State<OldOrder> {
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: (productrovider.productitems.isEmpty)
-            ? Center(child: WaitingWiget(context))
+            ? Center(child: waitingWiget(context))
             : ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (BuildContext context, int index) {
