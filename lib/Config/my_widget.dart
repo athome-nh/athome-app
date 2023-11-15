@@ -355,6 +355,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                       Center(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Column(
                               children: [
@@ -471,7 +472,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                                     loiginPopup(context);
                                                     return;
                                                   }
-
+              
                                                   final cartItem = CartItem(
                                                       product: product.id!);
                                                   cartProvider
@@ -641,6 +642,7 @@ Widget listItemsSmall(BuildContext context, var data) {
               ),
             ),
           );
+        
         },
       ),
     ),
@@ -691,6 +693,7 @@ Widget listItemsShow(BuildContext context, var data) {
                       Center(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
@@ -1032,6 +1035,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                       Center(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [

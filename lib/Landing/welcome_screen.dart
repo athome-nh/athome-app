@@ -53,31 +53,28 @@ class WelcomeScreenState extends State<WelcomeScreen>
            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // slide 3 page
-              Container(
-             //   decoration: BoxDecoration(border: Border.all()),
-                child: CarouselSlider(
-                  carouselController: buttonCarouselController,
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    height: getHeight(context, 60),
-                    viewportFraction: 1.0,
-                    initialPage: 0,
-                    enlargeCenterPage: false,
-                    enableInfiniteScroll: false,
-                    onPageChanged: (index, reason) {
-                      setState(
-                        () {
-                          currentIndex = index;
-                        },
-                      );
-                    },
-                  ),
-                  items: [
-                    slid1(),
-                    slid2(),
-                    slid3(),
-                  ],
+              CarouselSlider(
+                carouselController: buttonCarouselController,
+                options: CarouselOptions(
+                  autoPlay: false,
+                  height: getHeight(context, 60),
+                  viewportFraction: 1.0,
+                  initialPage: 0,
+                  enlargeCenterPage: false,
+                  enableInfiniteScroll: false,
+                  onPageChanged: (index, reason) {
+                    setState(
+                      () {
+                        currentIndex = index;
+                      },
+                    );
+                  },
                 ),
+                items: [
+                  slid1(),
+                  slid2(),
+                  slid3(),
+                ],
               ),
           
               currentIndex == 2
