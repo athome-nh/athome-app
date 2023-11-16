@@ -94,7 +94,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 children: [
                   !isLogin
                       ? loginFirstContainer(context)
-                      : productrovider.Orders.isNotEmpty
+                      : productrovider.Orders.isEmpty
                           ? ListView.builder(
                               itemCount:
                                   productrovider.getOrderOngoing().length,
@@ -178,15 +178,16 @@ class _OrderScreenState extends State<OrderScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                //textcheck
+                                Image.asset("assets/Victors/empty.png"),
+                                SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
                                 Text(
                                   "You not have any order".tr,
                                   style: TextStyle(
-                                      fontSize: 32, fontFamily: mainFontnormal),
+                                      fontSize: 18, fontFamily: mainFontnormal),
                                 ),
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                                Image.asset("assets/images/gif_favorite.gif"),
                               ],
                             )),
                   !isLogin
@@ -391,15 +392,16 @@ class _OrderScreenState extends State<OrderScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                //textcheck
+                                Image.asset("assets/Victors/empty.png"),
+                                SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
                                 Text(
                                   "You not have any order".tr,
                                   style: TextStyle(
-                                      fontSize: 32, fontFamily: mainFontnormal),
+                                      fontSize: 18, fontFamily: mainFontnormal),
                                 ),
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                                Image.asset("assets/images/gif_favorite.gif"),
                               ],
                             )),
                 ],

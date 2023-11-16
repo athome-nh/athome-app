@@ -84,55 +84,68 @@ class _itemCategoriesState extends State<itemCategories> {
                         final catesubitems = productPro
                             .getsubcateById(productPro.cateType)[index];
 
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 2)),
-                          child: GestureDetector(
-                            onTap: () {
-                              if (productPro.subcateSelect ==
-                                  catesubitems.id!) {
-                                productPro.setsubcateSelect(0);
-                                namecategore = productPro
-                                    .getCategoryNameById(productPro.cateType);
-                              } else {
-                                productPro.setsubcateSelect(catesubitems.id!);
-                                namecategore = lang == "en"
-                                    ? catesubitems.nameEn.toString()
-                                    : lang == "ar"
-                                        ? catesubitems.nameAr.toString()
-                                        : catesubitems.nameKu.toString();
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                top: getWidth(context, 1.5),
-                                left: getWidth(context, 2),
-                                right: getWidth(context, 2),
-                                bottom: getWidth(context, 1),
-                              ),
-                              decoration: BoxDecoration(
-                                  color: productPro.subcateSelect ==
-                                          catesubitems.id!
-                                      ? mainColorGrey
-                                      : mainColorRed,
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: Center(
-                                child: Text(
-                                  lang == "en"
-                                      ? catesubitems.nameEn.toString()
-                                      : lang == "ar"
-                                          ? catesubitems.nameAr.toString()
-                                          : catesubitems.nameKu.toString(),
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                      color: mainColorWhite,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 14),
+                        return productPro
+                                .getProductsBySubCategory(catesubitems.id!)
+                                .isNotEmpty
+                            ? Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 2)),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (productPro.subcateSelect ==
+                                        catesubitems.id!) {
+                                      productPro.setsubcateSelect(0);
+                                      namecategore =
+                                          productPro.getCategoryNameById(
+                                              productPro.cateType);
+                                    } else {
+                                      productPro
+                                          .setsubcateSelect(catesubitems.id!);
+                                      namecategore = lang == "en"
+                                          ? catesubitems.nameEn.toString()
+                                          : lang == "ar"
+                                              ? catesubitems.nameAr.toString()
+                                              : catesubitems.nameKu.toString();
+                                    }
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: getWidth(context, 1),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: productPro.subcateSelect ==
+                                                  catesubitems.id!
+                                              ? mainColorRed
+                                              : mainColorWhite,
+                                          width:
+                                              2.0, // You can set the thickness of the border
+                                        ),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        lang == "en"
+                                            ? catesubitems.nameEn.toString()
+                                            : lang == "ar"
+                                                ? catesubitems.nameAr.toString()
+                                                : catesubitems.nameKu
+                                                    .toString(),
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            color: productPro.subcateSelect ==
+                                                    catesubitems.id!
+                                                ? mainColorRed
+                                                : mainColorGrey,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 14),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        );
+                              )
+                            : SizedBox();
                       },
                     ),
                   ),
@@ -146,17 +159,24 @@ class _itemCategoriesState extends State<itemCategories> {
                         ? (productPro
                                 .getProductsByCategory(productPro.cateType)
                                 .isEmpty
-                            ? SizedBox(
-                                width: getWidth(context, 100),
-                                height: getWidth(context, 50),
-                                child: Center(
-                                  child: Text(
-                                    "This list is empty".tr,
-                                    style: TextStyle(
-                                        fontFamily: mainFontbold, fontSize: 16),
+                            ? Center(
+                                child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //textcheck
+                                  Image.asset("assets/Victors/empty.png"),
+                                  SizedBox(
+                                    height: getHeight(context, 1),
                                   ),
-                                ),
-                              )
+                                  Text(
+                                    "You not have any order".tr,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: mainFontnormal),
+                                  ),
+                                ],
+                              ))
                             : listItemsShow(
                                 context,
                                 productPro.getProductsByCategory(
@@ -165,17 +185,24 @@ class _itemCategoriesState extends State<itemCategories> {
                                 .getProductsBySubCategory(
                                     productPro.subcateSelect)
                                 .isEmpty
-                            ? SizedBox(
-                                width: getWidth(context, 100),
-                                height: getWidth(context, 50),
-                                child: Center(
-                                  child: Text(
-                                    "This list is empty".tr,
-                                    style: TextStyle(
-                                        fontFamily: mainFontbold, fontSize: 16),
+                            ? Center(
+                                child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //textcheck
+                                  Image.asset("assets/Victors/empty.png"),
+                                  SizedBox(
+                                    height: getHeight(context, 1),
                                   ),
-                                ),
-                              )
+                                  Text(
+                                    "You not have any order".tr,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: mainFontnormal),
+                                  ),
+                                ],
+                              ))
                             : listItemsShow(
                                 context,
                                 productPro.getProductsBySubCategory(

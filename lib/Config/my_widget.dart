@@ -942,7 +942,6 @@ Widget listItemsShow(BuildContext context, var data) {
                                   size: getHeight(context, 3)),
                         ),
                       ),
-                      
                     ],
                   ),
                   checkOferPrice(product)

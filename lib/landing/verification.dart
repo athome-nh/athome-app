@@ -303,7 +303,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Image.asset(
-                                    "assets/images/003_welcome_1.png",
+                                    "assets/Victors/disabled.png",
                                     width: getWidth(context, 40),
                                     height: getWidth(context, 40),
                                   ),
@@ -443,8 +443,9 @@ class _VerificatoinState extends State<Verificatoin> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
+                              //textcheck
                               Image.asset(
-                                "assets/images/003_welcome_1.png",
+                                "assets/Victors/pendding.png",
                                 width: getWidth(context, 40),
                                 height: getWidth(context, 40),
                               ),
@@ -551,7 +552,7 @@ class _VerificatoinState extends State<Verificatoin> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Image.asset(
-                                "assets/images/003_welcome_1.png",
+                                "assets/Victors/disabled.png",
                                 width: getWidth(context, 40),
                                 height: getWidth(context, 40),
                               ),
