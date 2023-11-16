@@ -359,7 +359,6 @@ Widget listItemsSmall(BuildContext context, var data) {
                           children: [
                             Column(
                               children: [
-                            
                                 GestureDetector(
                                   onTap: () {
                                     productrovider.setidItem(product.id!);
@@ -472,7 +471,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                                     loiginPopup(context);
                                                     return;
                                                   }
-              
+
                                                   final cartItem = CartItem(
                                                       product: product.id!);
                                                   cartProvider
@@ -642,7 +641,6 @@ Widget listItemsSmall(BuildContext context, var data) {
               ),
             ),
           );
-        
         },
       ),
     ),
@@ -992,6 +990,7 @@ Widget listItemsShow(BuildContext context, var data) {
     ),
   );
 }
+
 // Search items
 Widget listItemsShowSearch(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -1508,6 +1507,7 @@ Future<void> loiginPopup(BuildContext context) {
         content: Stack(
           alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
           children: [
+            //textcheck
             SizedBox(
               width: getWidth(context, 70),
               height: getHeight(context, 50),
@@ -1516,7 +1516,7 @@ Future<void> loiginPopup(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
-                    "assets/images/003_welcome_1.png",
+                    "assets/Victors/first.png",
                     width: getWidth(context, 40),
                     height: getWidth(context, 40),
                   ),
@@ -1622,14 +1622,18 @@ noInternetWidget(BuildContext context) {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            "assets/images/wifi.png",
-            width: getWidth(context, 30),
+          SizedBox(
+            width: getWidth(context, 100),
+            height: getWidth(context, 100),
+            child: Image.asset("assets/Victors/wifi.png"),
           ),
           const SizedBox(
             height: 25,
           ),
-          Text("no internet".tr),
+          Text(
+            "no internet".tr,
+            style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
+          ),
         ],
       )),
     ),
@@ -1642,11 +1646,9 @@ loginFirstContainer(BuildContext context) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Please login first".tr,
-          style: TextStyle(fontSize: 32, fontFamily: mainFontnormal),
+        Image.asset(
+          "assets/Victors/first.png",
         ),
-        Image.asset("assets/images/png_login.png"),
         SizedBox(
           height: getWidth(context, 12),
           width: getWidth(context, 75),

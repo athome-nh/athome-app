@@ -410,7 +410,7 @@ class _SingInUpState extends State<SingInUp> {
   }
 
   _readIosDeviceInfo(IosDeviceInfo data) {
-    return data.model;
+    return data.name;
     // 'name': data.name,
     // 'systemName': data.systemName,
     // 'systemVersion': data.systemVersion,

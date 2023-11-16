@@ -60,7 +60,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                 SizedBox(
                   height: getHeight(context, 25),
                   child: Image.asset(
-                    "assets/images/verify.gif",
+                    "assets/Victors/login.png",
+                    width: getWidth(context, 100),
                   ),
                 ),
                 // space
@@ -100,13 +101,12 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                 FadeInDown(
                   delay: const Duration(milliseconds: 400),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 5, horizontal: 15),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                     decoration: BoxDecoration(
                       color: mainColorWhite,
                       borderRadius: BorderRadius.circular(8),
-                      border:
-                          Border.all(color: mainColorGrey.withOpacity(0.5)),
+                      border: Border.all(color: mainColorGrey.withOpacity(0.5)),
                       boxShadow: const [
                         BoxShadow(
                           color: Color(0xffeeeeee),
@@ -127,8 +127,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                           ),
                           ignoreBlank: false,
-                          autoValidateMode:
-                              AutovalidateMode.onUserInteraction,
+                          autoValidateMode: AutovalidateMode.onUserInteraction,
                           selectorTextStyle: TextStyle(color: mainColorGrey),
                           textFieldController: controller,
                           formatInput: false,
