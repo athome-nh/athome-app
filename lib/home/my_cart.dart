@@ -106,9 +106,10 @@ class _MyCartState extends State<MyCart> {
                                               CrossAxisAlignment.center,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
+                                          //textcheck
                                           children: <Widget>[
                                             Image.asset(
-                                              "assets/images/003_welcome_1.png",
+                                              "assets/Victors/sure.png",
                                               width: getWidth(context, 40),
                                               height: getWidth(context, 40),
                                             ),

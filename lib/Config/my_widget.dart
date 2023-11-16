@@ -663,8 +663,7 @@ Widget listItemsShow(BuildContext context, var data) {
           mainAxisSpacing: 8,
           childAspectRatio: getWidth(context, 0.19),
         ),
-
-        itemCount: data.length, 
+        itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
@@ -942,7 +941,6 @@ Widget listItemsShow(BuildContext context, var data) {
                                   size: getHeight(context, 3)),
                         ),
                       ),
-                      
                     ],
                   ),
                   checkOferPrice(product)

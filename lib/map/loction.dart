@@ -55,21 +55,15 @@ class _LocationScreenState extends State<LocationScreen> {
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
         ),
-        body: productrovider.location.isNotEmpty
+        body: productrovider.location.isEmpty
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    child: Image.asset("assets/Victors/location.png"),
+                    child: Image.asset("assets/Victors/empty_location.png"),
                   ),
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
+
                   //textCheck
-                  Text(
-                    "Not found any item".tr,
-                    style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
-                  ),
                 ],
               )
             : SingleChildScrollView(
