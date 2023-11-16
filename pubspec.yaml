@@ -86,15 +86,3 @@ flutter:
     - family: iraniN
       fonts:          
         - asset: assets/fonts/iraniN.ttf  
-
-
-    - family: NNA
-      fonts:
-        - asset: assets/fonts/NNA.ttf
-         
-    - family: NNB
-      fonts:          
-        - asset: assets/fonts/NNB.ttf  
-    
-    
-

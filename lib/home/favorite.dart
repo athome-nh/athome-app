@@ -57,14 +57,13 @@ class _FavoriteState extends State<Favorite> {
                         ),
                       ],
                     )
-                  : SingleChildScrollView(
-                      child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: listItemsShow(
-                        context,
-                        productPro.getProductsByIds(cartProvider.ListFavId()),
-                      ),
-                    )),
+                  : Padding(
+                padding: const EdgeInsets.symmetric(horizontal:8 ),
+                  child: listItemsShow(
+                    context,
+                    productPro.getProductsByIds(cartProvider.ListFavId()),
+                  ),
+                    ),
             ),
     );
   }

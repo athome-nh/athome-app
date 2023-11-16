@@ -655,7 +655,7 @@ Widget listItemsShow(BuildContext context, var data) {
     visible: productrovider.show,
     replacement: listItemsBigShimer(context),
     child: SizedBox(
-      height: getHeight(context, 87),
+      height: getHeight(context, 90),
       width: getWidth(context, 100),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -663,7 +663,7 @@ Widget listItemsShow(BuildContext context, var data) {
           mainAxisSpacing: 8,
           childAspectRatio: getWidth(context, 0.19),
         ),
-
+    
         itemCount: data.length, 
         itemBuilder: (BuildContext context, int index) {
           final product = data[index];
@@ -810,7 +810,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                                     loiginPopup(context);
                                                     return;
                                                   }
-
+    
                                                   final cartItem = CartItem(
                                                       product: product.id!);
                                                   cartProvider
