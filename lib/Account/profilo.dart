@@ -39,6 +39,7 @@ class _SettingState extends State<Setting> {
     });
   }
 
+  // change Image
   void change() {
     if (_image != null) {
       setState(() {
@@ -141,7 +142,10 @@ class _SettingState extends State<Setting> {
                           }
                         });
                       },
+
                       items: [
+                        
+                        // English
                         DropdownMenuItem(
                           value: 'English',
                           child: Row(
@@ -167,6 +171,8 @@ class _SettingState extends State<Setting> {
                             ],
                           ),
                         ),
+                        
+                        // Arabic
                         DropdownMenuItem(
                           value: "Arabic",
                           child: Row(
@@ -192,6 +198,8 @@ class _SettingState extends State<Setting> {
                             ],
                           ),
                         ),
+
+                        // Kurdish
                         DropdownMenuItem(
                           value: 'Kurdish',
                           child: Row(
@@ -218,6 +226,7 @@ class _SettingState extends State<Setting> {
                           ),
                         ),
                       ],
+
                     ),
                   ),
                 ],

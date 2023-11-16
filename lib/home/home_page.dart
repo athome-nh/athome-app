@@ -221,6 +221,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   child: Text(
                                                     "Order now".tr,
                                                     style: TextStyle(
+                                                      fontFamily: mainFontnormal,
                                                         color: mainColorWhite,
                                                         fontSize: 14),
                                                   )),

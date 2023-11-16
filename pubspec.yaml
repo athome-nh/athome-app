@@ -64,27 +64,36 @@ flutter:
       fonts:
         - asset: assets/fonts/NRT-Bd.ttf
          
-
     - family: nrtN
       fonts:          
         - asset: assets/fonts/NRT-Reg.ttf
+
 
     - family: spedaB
       fonts:
         - asset: assets/fonts/Speda-Bold.ttf
       
-         
-
     - family: spedaN
       fonts:          
         - asset: assets/fonts/speda.ttf    
         
+
     - family: iraniB
       fonts:
         - asset: assets/fonts/iraniB.ttf
          
-
     - family: iraniN
       fonts:          
         - asset: assets/fonts/iraniN.ttf  
+
+
+    - family: NNA
+      fonts:
+        - asset: assets/fonts/NNA.ttf
+         
+    - family: NNB
+      fonts:          
+        - asset: assets/fonts/NNB.ttf  
+    
+    
 

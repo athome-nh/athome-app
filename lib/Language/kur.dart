@@ -19,7 +19,7 @@ const Map<String, String> kur = {
   // nav_switch
   "Home": "پەڕەی سەرەکی",
   "Search": "گەڕان",
-  "Cart": "سەبەتەی بازاڕ کردن",
+  "Cart": "سەبەتە",
   "Favorite": "دڵخوازه‌كان",
   "Account": "پڕۆفایل",
 
@@ -29,7 +29,7 @@ const Map<String, String> kur = {
   "No": "نەخێر",
 
   // home_page
-  "Order now": "ئێستا داوابکە",
+  "Order now": "ئێستا داوا بكه‌",
   "Categories": "پۆلێنەکان",
   "Recent Order": "نوێترین داواکاری",
   "Discount": "داشکانەکان",

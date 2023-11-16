@@ -657,7 +657,7 @@ Widget listItemsShow(BuildContext context, var data) {
     visible: productrovider.show,
     replacement: listItemsBigShimer(context),
     child: SizedBox(
-      height: getHeight(context, 90),
+      height: getHeight(context, 87),
       width: getWidth(context, 100),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -666,7 +666,7 @@ Widget listItemsShow(BuildContext context, var data) {
           childAspectRatio: getWidth(context, 0.19),
         ),
 
-        itemCount: data.length, // Number of items in the grid
+        itemCount: data.length, 
         itemBuilder: (BuildContext context, int index) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
@@ -944,6 +944,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   size: getHeight(context, 3)),
                         ),
                       ),
+                      
                     ],
                   ),
                   checkOferPrice(product)
