@@ -11,7 +11,7 @@ const Map<String, String> en = {
   "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
   "wst02": "Learn From the Best",
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "Your Pocket's Friend",
+  "wst03": "Favorite brands and hottest trends.",
   "wsd03": "Learn whatever you want, whenever or wherever you are.",
   "NEXT": "NEXT",
   "SKIP": "SKIP",
@@ -24,7 +24,7 @@ const Map<String, String> en = {
   "Account": "Account",
 
   // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "Are you sure exiting the app",
+  "Are you sure exiting the app": "Are you sure you want to log out?",
   "Yes": "Yes",
   "No": "No",
 
@@ -32,7 +32,7 @@ const Map<String, String> en = {
   "Order now": "Order now",
   "Categories": "Category",
   "Recent Order": "Recent Orders",
-  "Discount": "Special Offers",
+  "Discount": "Discount",
   "Highlight": "Highlight",
   "Best Sell": "Best Sell",
   "View All": "View All",
@@ -40,7 +40,7 @@ const Map<String, String> en = {
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "Register First",
   "You need login": "you need to register first",
-  "Login": "Register",
+  "Login": "Register first",
   "Cancle": "Cancel",
 
   // categories
@@ -65,7 +65,7 @@ const Map<String, String> en = {
   "Checkout": "Checkout",
 
   // favorite
-  "No have any favorite": "you don't have any favorite items",
+  "No have any favorite": "You haven't set any favorites. Make it your own!",
 
   // Page --> Login First --> my_widget
   "Please login first": "Please login first",
@@ -79,8 +79,8 @@ const Map<String, String> en = {
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
   "Edit": "Edit",
-  "Orders": "Orders",
-  "Address": "Address",
+  "Orders": "My Orders",
+  "Address": "Location",
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",

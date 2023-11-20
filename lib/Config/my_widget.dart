@@ -21,7 +21,7 @@ import '../home/oneitem.dart';
 Widget listItemsShimer(BuildContext context) {
   return SizedBox(
     height: getHeight(context, 27),
-    //  decoration: BoxDecoration(border: Border.all()),
+    // decoration: BoxDecoration(border: Border.all()),
     child: Skeletonizer(
       effect: ShimmerEffect.raw(colors: [
         mainColorRed.withOpacity(0.1),
@@ -72,7 +72,7 @@ Widget listItemsShimer(BuildContext context) {
                                   height: 5,
                                 ),
                                 Text(
-                                  "slaw chonn bashn",
+                                  "I dont know",
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorGrey,
@@ -83,7 +83,7 @@ Widget listItemsShimer(BuildContext context) {
                                   height: 3,
                                 ),
                                 Text(
-                                  "900 mljklkljkljkjkj",
+                                  "900 ml",
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
@@ -167,7 +167,7 @@ Widget listItemsShimer(BuildContext context) {
 Widget listItemsBigShimer(BuildContext context) {
   return SizedBox(
     height: getHeight(context, 80),
-    //  decoration: BoxDecoration(border: Border.all()),
+    //   decoration: BoxDecoration(border: Border.all()),
     child: Skeletonizer(
       effect: ShimmerEffect.raw(colors: [
         mainColorRed.withOpacity(0.1),
@@ -234,7 +234,7 @@ Widget listItemsBigShimer(BuildContext context) {
                                   height: 3,
                                 ),
                                 Text(
-                                  "900 mljklkljkljkjkj",
+                                  "900 ml",
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
