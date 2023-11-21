@@ -82,6 +82,7 @@ class productProvider extends ChangeNotifier {
           }
 
           setshow(true);
+
           print("end");
         } else {}
       } else {}
@@ -111,7 +112,6 @@ class productProvider extends ChangeNotifier {
   updatePost(bool user) async {
     if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
-        print(valueuser);
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
             userdata = json.decode(decryptAES(valueuser["data"]));

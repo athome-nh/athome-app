@@ -73,13 +73,14 @@ class _HomeSreenState extends State<HomeSreen> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
+      final pro = Provider.of<productProvider>(context, listen: false);
       if (result == ConnectivityResult.none) {
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(true);
+        pro.setnointernetcheck(true);
       } else {
-        Provider.of<productProvider>(context, listen: false).updatePost(false);
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(false);
+        if (pro.nointernetCheck) {
+          pro.updatePost(false);
+          pro.setnointernetcheck(false);
+        }
       }
     });
     super.initState();
@@ -221,7 +222,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   child: Text(
                                                     "Order now".tr,
                                                     style: TextStyle(
-                                                      fontFamily: mainFontnormal,
+                                                        fontFamily:
+                                                            mainFontnormal,
                                                         color: mainColorWhite,
                                                         fontSize: 14),
                                                   )),

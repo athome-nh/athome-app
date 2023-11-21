@@ -142,9 +142,7 @@ class _SettingState extends State<Setting> {
                           }
                         });
                       },
-
                       items: [
-                        
                         // English
                         DropdownMenuItem(
                           value: 'English',
@@ -171,7 +169,7 @@ class _SettingState extends State<Setting> {
                             ],
                           ),
                         ),
-                        
+
                         // Arabic
                         DropdownMenuItem(
                           value: "Arabic",
@@ -226,7 +224,6 @@ class _SettingState extends State<Setting> {
                           ),
                         ),
                       ],
-
                     ),
                   ),
                 ],
@@ -243,7 +240,6 @@ class _SettingState extends State<Setting> {
                               left: getWidth(context, 5),
                               right: getWidth(context, 5),
                               top: getWidth(context, 5),
-                            
                             ),
                             child: Container(
                               padding: const EdgeInsets.all(15),
@@ -260,19 +256,15 @@ class _SettingState extends State<Setting> {
                                               height: getWidth(context, 40),
                                               decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                        50),
+                                                    BorderRadius.circular(50),
                                               ),
                                               child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                        50),
+                                                    BorderRadius.circular(50),
                                                 child: Image.file(
                                                   File(_image!.path),
-                                                  width:
-                                                      getWidth(context, 40),
-                                                  height:
-                                                      getWidth(context, 40),
+                                                  width: getWidth(context, 40),
+                                                  height: getWidth(context, 40),
                                                 ),
                                               ),
                                             ),
@@ -281,30 +273,25 @@ class _SettingState extends State<Setting> {
                                                   _getImage();
                                                 },
                                                 icon: Container(
-                                                  width:
-                                                      getWidth(context, 15),
-                                                  height:
-                                                      getWidth(context, 15),
+                                                  width: getWidth(context, 15),
+                                                  height: getWidth(context, 15),
                                                   decoration: BoxDecoration(
                                                     color: mainColorGrey,
                                                     borderRadius:
-                                                        BorderRadius
-                                                            .circular(50),
+                                                        BorderRadius.circular(
+                                                            50),
                                                   ),
                                                   child: waitingImage
                                                       ? Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(4.0),
-                                                          child:
-                                                              waitingWiget2(
-                                                                  context),
+                                                          child: waitingWiget2(
+                                                              context),
                                                         )
                                                       : Icon(
-                                                          Icons
-                                                              .edit_outlined,
-                                                          color:
-                                                              mainColorWhite,
+                                                          Icons.edit_outlined,
+                                                          color: mainColorWhite,
                                                         ),
                                                 )),
                                           ],
@@ -317,20 +304,16 @@ class _SettingState extends State<Setting> {
                                               height: getWidth(context, 40),
                                               decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                        50),
+                                                    BorderRadius.circular(50),
                                               ),
                                               child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                        50),
+                                                    BorderRadius.circular(50),
                                                 child: CachedNetworkImage(
-                                                  width:
-                                                      getWidth(context, 40),
-                                                  height:
-                                                      getWidth(context, 40),
-                                                  imageUrl: imageUrlServer +
-                                                      image,
+                                                  width: getWidth(context, 40),
+                                                  height: getWidth(context, 40),
+                                                  imageUrl:
+                                                      imageUrlServer + image,
                                                 ),
                                               ),
                                             ),
@@ -339,30 +322,25 @@ class _SettingState extends State<Setting> {
                                                   _getImage();
                                                 },
                                                 icon: Container(
-                                                  width:
-                                                      getWidth(context, 15),
-                                                  height:
-                                                      getWidth(context, 15),
+                                                  width: getWidth(context, 15),
+                                                  height: getWidth(context, 15),
                                                   decoration: BoxDecoration(
                                                     color: mainColorGrey,
                                                     borderRadius:
-                                                        BorderRadius
-                                                            .circular(50),
+                                                        BorderRadius.circular(
+                                                            50),
                                                   ),
                                                   child: waitingImage
                                                       ? Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(4.0),
-                                                          child:
-                                                              waitingWiget2(
-                                                                  context),
+                                                          child: waitingWiget2(
+                                                              context),
                                                         )
                                                       : Icon(
-                                                          Icons
-                                                              .edit_outlined,
-                                                          color:
-                                                              mainColorWhite,
+                                                          Icons.edit_outlined,
+                                                          color: mainColorWhite,
                                                         ),
                                                 )),
                                           ],
@@ -412,8 +390,8 @@ class _SettingState extends State<Setting> {
                                   border: Border.all(),
                                   borderRadius: BorderRadius.circular(5)),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: GestureDetector(
                                   onTap: () {
                                     setState(() {
@@ -424,13 +402,18 @@ class _SettingState extends State<Setting> {
                                     alignment: Alignment.center,
                                     children: [
                                       Column(
-                                        crossAxisAlignment:
-                                          colapse?CrossAxisAlignment.start: CrossAxisAlignment.center ,
-                                        mainAxisAlignment:
-                                          colapse?  MainAxisAlignment.start:MainAxisAlignment.center,
+                                        crossAxisAlignment: colapse
+                                            ? CrossAxisAlignment.start
+                                            : CrossAxisAlignment.center,
+                                        mainAxisAlignment: colapse
+                                            ? MainAxisAlignment.start
+                                            : MainAxisAlignment.center,
                                         children: [
-                                             colapse
-                                              ?SizedBox(height: getHeight(context, 2),):SizedBox(),
+                                          colapse
+                                              ? SizedBox(
+                                                  height: getHeight(context, 2),
+                                                )
+                                              : SizedBox(),
                                           Row(
                                             children: [
                                               const Icon(
@@ -443,8 +426,7 @@ class _SettingState extends State<Setting> {
                                               Text(
                                                 "Information".tr,
                                                 style: TextStyle(
-                                                    fontFamily:
-                                                        mainFontnormal,
+                                                    fontFamily: mainFontnormal,
                                                     fontSize: 18),
                                               ),
                                               const Spacer(),
@@ -457,7 +439,7 @@ class _SettingState extends State<Setting> {
                                               )
                                             ],
                                           ),
-                                         
+
                                           colapse
                                               ? Column(
                                                   children: [
@@ -466,34 +448,28 @@ class _SettingState extends State<Setting> {
                                                           context, 100),
                                                       height: getHeight(
                                                           context, 25),
-                                                      decoration:
-                                                          BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(
-                                                                    5),
-                                                        color:
-                                                            mainColorWhite,
+                                                                .circular(5),
+                                                        color: mainColorWhite,
                                                       ),
                                                       child: Column(
                                                         children: [
                                                           SizedBox(
-                                                            height:
-                                                                getHeight(
-                                                                    context,
-                                                                    1),
+                                                            height: getHeight(
+                                                                context, 1),
                                                           ),
                                                           Padding(
-                                                            padding: const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal:
-                                                                    15),
-                                                            child:
-                                                                Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        15),
+                                                            child: Container(
                                                               decoration:
                                                                   BoxDecoration(
-                                                                border:
-                                                                    Border(
+                                                                border: Border(
                                                                   bottom:
                                                                       BorderSide(
                                                                     color:
@@ -501,15 +477,13 @@ class _SettingState extends State<Setting> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              child:
-                                                                  TextField(
+                                                              child: TextField(
                                                                 style: TextStyle(
                                                                     color:
                                                                         mainColorGrey,
                                                                     fontFamily:
                                                                         mainFontnormal),
-                                                                enabled:
-                                                                    isEdit,
+                                                                enabled: isEdit,
                                                                 controller:
                                                                     nameController,
                                                                 decoration:
@@ -537,24 +511,25 @@ class _SettingState extends State<Setting> {
                                                                   suffixIcon:
                                                                       Icon(
                                                                     isEdit
-                                                                        ? Icons.edit
-                                                                        : Icons.person,
+                                                                        ? Icons
+                                                                            .edit
+                                                                        : Icons
+                                                                            .person,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal:
-                                                                    15),
-                                                            child:
-                                                                Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        15),
+                                                            child: Container(
                                                               decoration:
                                                                   BoxDecoration(
-                                                                border:
-                                                                    Border(
+                                                                border: Border(
                                                                   bottom:
                                                                       BorderSide(
                                                                     color:
@@ -562,8 +537,7 @@ class _SettingState extends State<Setting> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              child:
-                                                                  TextField(
+                                                              child: TextField(
                                                                 style: TextStyle(
                                                                     color:
                                                                         mainColorGrey,
@@ -574,8 +548,7 @@ class _SettingState extends State<Setting> {
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .number,
-                                                                enabled:
-                                                                    isEdit,
+                                                                enabled: isEdit,
                                                                 decoration:
                                                                     InputDecoration(
                                                                   border:
@@ -592,30 +565,32 @@ class _SettingState extends State<Setting> {
                                                                           .tr,
                                                                   hintStyle:
                                                                       TextStyle(
-                                                                          color: mainColorGrey),
+                                                                          color:
+                                                                              mainColorGrey),
                                                                   suffixIconColor:
                                                                       mainColorGrey,
                                                                   suffixIcon:
                                                                       Icon(
                                                                     isEdit
-                                                                        ? Icons.edit
-                                                                        : Icons.calendar_month,
+                                                                        ? Icons
+                                                                            .edit
+                                                                        : Icons
+                                                                            .calendar_month,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal:
-                                                                    15),
-                                                            child:
-                                                                Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        15),
+                                                            child: Container(
                                                               decoration:
                                                                   BoxDecoration(
-                                                                border:
-                                                                    Border(
+                                                                border: Border(
                                                                   bottom:
                                                                       BorderSide(
                                                                     color:
@@ -623,12 +598,12 @@ class _SettingState extends State<Setting> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              child:
-                                                                  FormField<
-                                                                      String>(
-                                                                builder: (FormFieldState<
-                                                                        String>
-                                                                    state) {
+                                                              child: FormField<
+                                                                  String>(
+                                                                builder:
+                                                                    (FormFieldState<
+                                                                            String>
+                                                                        state) {
                                                                   return InputDecorator(
                                                                     decoration:
                                                                         InputDecoration(
@@ -636,8 +611,10 @@ class _SettingState extends State<Setting> {
                                                                           UnderlineInputBorder(
                                                                         borderSide:
                                                                             BorderSide(
-                                                                          color: mainColorGrey,
-                                                                          width: 2.0,
+                                                                          color:
+                                                                              mainColorGrey,
+                                                                          width:
+                                                                              2.0,
                                                                         ),
                                                                       ),
                                                                       //prefixText: "Gender: ",
@@ -652,16 +629,18 @@ class _SettingState extends State<Setting> {
                                                                                 : Icons.female,
                                                                       ),
                                                                       hintStyle:
-                                                                          TextStyle(color: mainColorGrey),
+                                                                          TextStyle(
+                                                                              color: mainColorGrey),
                                                                     ),
                                                                     child:
                                                                         DropdownButtonHideUnderline(
-                                                                      child:
-                                                                          DropdownButton<String>(
+                                                                      child: DropdownButton<
+                                                                          String>(
                                                                         icon:
                                                                             const SizedBox(),
-                                                                        style:
-                                                                            TextStyle(color: mainColorBlack),
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                mainColorBlack),
                                                                         value:
                                                                             gender,
                                                                         isDense:
@@ -677,12 +656,16 @@ class _SettingState extends State<Setting> {
                                                                               },
                                                                         isExpanded:
                                                                             true,
-                                                                        items:
-                                                                            items.map((String value) {
-                                                                          return DropdownMenuItem<String>(
-                                                                            enabled: isEdit,
-                                                                            value: value,
-                                                                            child: Text(
+                                                                        items: items.map((String
+                                                                            value) {
+                                                                          return DropdownMenuItem<
+                                                                              String>(
+                                                                            enabled:
+                                                                                isEdit,
+                                                                            value:
+                                                                                value,
+                                                                            child:
+                                                                                Text(
                                                                               value,
                                                                               style: TextStyle(color: mainColorGrey),
                                                                             ),
@@ -698,7 +681,6 @@ class _SettingState extends State<Setting> {
                                                         ],
                                                       ),
                                                     ),
-                                                   
                                                     isEdit
                                                         ? Row(
                                                             mainAxisAlignment:
@@ -709,20 +691,33 @@ class _SettingState extends State<Setting> {
                                                                 onTap: waiting
                                                                     ? null
                                                                     : () async {
-                                                                        setState(() {
-                                                                          waiting = true;
+                                                                        setState(
+                                                                            () {
+                                                                          waiting =
+                                                                              true;
                                                                         });
 
                                                                         var data =
                                                                             {
-                                                                          "id": userdata["id"],
-                                                                          "name": nameController.text,
-                                                                          "age": ageController.text,
-                                                                          "gender": gender,
+                                                                          "id":
+                                                                              userdata["id"],
+                                                                          "name":
+                                                                              nameController.text,
+                                                                          "age":
+                                                                              ageController.text,
+                                                                          "gender":
+                                                                              gender,
                                                                         };
-                                                                        Network(false).postData("profile", data, context).then((value) {
-                                                                          if (value != "") {
-                                                                            if (value["code"] == "201") {
+                                                                        Network(false)
+                                                                            .postData(
+                                                                                "profile",
+                                                                                data,
+                                                                                context)
+                                                                            .then((value) {
+                                                                          if (value !=
+                                                                              "") {
+                                                                            if (value["code"] ==
+                                                                                "201") {
                                                                               userdata = value["data"];
 
                                                                               setState(() {
@@ -754,51 +749,55 @@ class _SettingState extends State<Setting> {
                                                                   width: getWidth(
                                                                       context,
                                                                       30),
-                                                                  height: getWidth(
-                                                                      context,
-                                                                      10),
+                                                                  height:
+                                                                      getWidth(
+                                                                          context,
+                                                                          10),
                                                                   decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(
-                                                                          5),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
                                                                       color:
                                                                           mainColorRed),
-                                                                  child:
-                                                                      Center(
-                                                                    child:
-                                                                        Text(
-                                                                      "Save"
-                                                                          .tr,
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      "Save".tr,
                                                                       style: TextStyle(
-                                                                          fontFamily: mainFontbold,
-                                                                          fontSize: 14,
-                                                                          color: mainColorWhite),
+                                                                          fontFamily:
+                                                                              mainFontbold,
+                                                                          fontSize:
+                                                                              14,
+                                                                          color:
+                                                                              mainColorWhite),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
                                                               SizedBox(
                                                                 width: getWidth(
-                                                                    context,
-                                                                    2),
+                                                                    context, 2),
                                                               ),
                                                               GestureDetector(
                                                                 onTap: () {
-                                                                  setState(
-                                                                      () {
+                                                                  setState(() {
                                                                     _image =
                                                                         null;
                                                                     image =
-                                                                        userdata["img"];
+                                                                        userdata[
+                                                                            "img"];
                                                                     isEdit =
                                                                         false;
-                                                                    nameController.text =
-                                                                        userdata["name"];
+                                                                    nameController
+                                                                            .text =
+                                                                        userdata[
+                                                                            "name"];
                                                                     ageController
                                                                         .text = userdata[
                                                                             "age"]
                                                                         .toString();
                                                                     gender =
-                                                                        userdata["gender"];
+                                                                        userdata[
+                                                                            "gender"];
                                                                   });
                                                                 },
                                                                 child:
@@ -822,24 +821,27 @@ class _SettingState extends State<Setting> {
                                                                   width: getWidth(
                                                                       context,
                                                                       30),
-                                                                  height: getWidth(
-                                                                      context,
-                                                                      10),
+                                                                  height:
+                                                                      getWidth(
+                                                                          context,
+                                                                          10),
                                                                   decoration: BoxDecoration(
-                                                                      borderRadius: BorderRadius.circular(
-                                                                          5),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
                                                                       color:
                                                                           mainColorRed),
-                                                                  child:
-                                                                      Center(
-                                                                    child:
-                                                                        Text(
+                                                                  child: Center(
+                                                                    child: Text(
                                                                       "Cancle"
                                                                           .tr,
                                                                       style: TextStyle(
-                                                                          fontFamily: mainFontbold,
-                                                                          fontSize: 14,
-                                                                          color: mainColorWhite),
+                                                                          fontFamily:
+                                                                              mainFontbold,
+                                                                          fontSize:
+                                                                              14,
+                                                                          color:
+                                                                              mainColorWhite),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -847,58 +849,53 @@ class _SettingState extends State<Setting> {
                                                             ],
                                                           )
                                                         : GestureDetector(
-                                                          onTap: () {
-                                                            setState(
-                                                                () {
-                                                              isEdit =
-                                                                  true;
-                                                            });
-                                                          },
-                                                          child:
-                                                              Container(
-                                                            padding:
-                                                                EdgeInsets
-                                                                    .only(
-                                                              top: getWidth(
-                                                                  context,
-                                                                  2),
-                                                              left: getWidth(
-                                                                  context,
-                                                                  2),
-                                                              right: getWidth(
-                                                                  context,
-                                                                  2),
-                                                              bottom: getWidth(
-                                                                  context,
-                                                                  1),
-                                                            ),
-                                                            width: getWidth(
-                                                                context,
-                                                                60),
-                                                            height: getWidth(
-                                                                context,
-                                                                10),
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(5),
-                                                              color:
-                                                                  mainColorRed,
-                                                            ),
-                                                            child:
-                                                                Center(
-                                                              child:
-                                                                  Text(
-                                                                "Edit"
-                                                                    .tr,
-                                                                style: TextStyle(
-                                                                    fontFamily: mainFontbold,
-                                                                    fontSize: 16,
-                                                                    color: mainColorWhite),
+                                                            onTap: () {
+                                                              setState(() {
+                                                                isEdit = true;
+                                                              });
+                                                            },
+                                                            child: Container(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .only(
+                                                                top: getWidth(
+                                                                    context, 2),
+                                                                left: getWidth(
+                                                                    context, 2),
+                                                                right: getWidth(
+                                                                    context, 2),
+                                                                bottom:
+                                                                    getWidth(
+                                                                        context,
+                                                                        1),
+                                                              ),
+                                                              width: getWidth(
+                                                                  context, 60),
+                                                              height: getWidth(
+                                                                  context, 10),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5),
+                                                                color:
+                                                                    mainColorRed,
+                                                              ),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Edit".tr,
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                          mainFontbold,
+                                                                      fontSize:
+                                                                          16,
+                                                                      color:
+                                                                          mainColorWhite),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
                                                   ],
                                                 )
                                               : const SizedBox(),
@@ -927,8 +924,8 @@ class _SettingState extends State<Setting> {
                                   border: Border.all(),
                                   borderRadius: BorderRadius.circular(5)),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -954,8 +951,8 @@ class _SettingState extends State<Setting> {
                                             fontSize: 18),
                                       ),
                                       const Spacer(),
-                                      const Icon(Icons
-                                          .keyboard_arrow_right_outlined)
+                                      const Icon(
+                                          Icons.keyboard_arrow_right_outlined)
                                     ],
                                   ),
                                 ),
@@ -1011,8 +1008,8 @@ class _SettingState extends State<Setting> {
                                               fontSize: 18),
                                         ),
                                         const Spacer(),
-                                        const Icon(Icons
-                                            .keyboard_arrow_right_outlined)
+                                        const Icon(
+                                            Icons.keyboard_arrow_right_outlined)
                                       ],
                                     ),
                                   ),
@@ -1028,8 +1025,7 @@ class _SettingState extends State<Setting> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const AboutScreen()),
+                                    builder: (context) => const AboutScreen()),
                               );
                             },
                             child: Padding(
@@ -1060,8 +1056,8 @@ class _SettingState extends State<Setting> {
                                             fontSize: 18),
                                       ),
                                       const Spacer(),
-                                      const Icon(Icons
-                                          .keyboard_arrow_right_outlined)
+                                      const Icon(
+                                          Icons.keyboard_arrow_right_outlined)
                                     ],
                                   ),
                                 ),
@@ -1074,16 +1070,15 @@ class _SettingState extends State<Setting> {
                           GestureDetector(
                             onTap: () {
                               getStringPrefs("data").then((map) {
-                                Map<String, dynamic> myMap =
-                                    json.decode(map);
+                                Map<String, dynamic> myMap = json.decode(map);
                                 myMap["islogin"] = false;
                                 myMap["token"] = "";
                                 setStringPrefs("data", json.encode(myMap));
                               });
 
-                              final cartProvider =
-                                  Provider.of<CartProvider>(context,
-                                      listen: false);
+                              final cartProvider = Provider.of<CartProvider>(
+                                  context,
+                                  listen: false);
                               final product = Provider.of<productProvider>(
                                   context,
                                   listen: false);
@@ -1102,8 +1097,7 @@ class _SettingState extends State<Setting> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const NavSwitch()),
+                                    builder: (context) => const NavSwitch()),
                               );
                             },
                             child: Padding(

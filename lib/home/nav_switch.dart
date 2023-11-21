@@ -70,21 +70,15 @@ class _NavSwitchState extends State<NavSwitch> {
     });
   }
 
-
   checkUpdates() async {
-await Upgrader.clearSavedSettings();
-
+    await Upgrader.clearSavedSettings();
   }
-
- 
 
   @override
   void initState() {
     checkUpdates();
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -96,107 +90,95 @@ await Upgrader.clearSavedSettings();
           yesNoOption(context);
           return false;
         },
-        child: UpgradeAlert(
-             upgrader: Upgrader(
-              debugDisplayAlways: true,
-             canDismissDialog: false,
-              showIgnore: false,
-              showLater: false,
-              messages: UpgraderMessages( code: "ku",),
-              debugLogging: true,
-           //   dialogStyle: UpgradeDialogStyle.cupertino
-               
-             ),
-          child: Scaffold(
-            body: Center(
-              child: _widgetOptions.elementAt(_selectedIndex),
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              showUnselectedLabels: false,
-              selectedFontSize: 12,
-              unselectedFontSize: 12,
-              selectedItemColor: mainColorWhite,
-              unselectedItemColor: mainColorWhite,
-              backgroundColor: mainColorRed,
-              type: BottomNavigationBarType.fixed,
-              items: <BottomNavigationBarItem>[
-                // Home
-                BottomNavigationBarItem(
-                    activeIcon: const Icon(
-                      Ionicons.home,
-                    ),
-                    icon: const Icon(
-                      Ionicons.home_outline,
-                    ),
-                    label: "Home".tr),
-        
-                // Search
-                BottomNavigationBarItem(
-                  icon: const Icon(
-                    Ionicons.search_outline,
-                  ),
+        child: Scaffold(
+          body: Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            showUnselectedLabels: false,
+            selectedFontSize: 12,
+            unselectedFontSize: 12,
+            selectedItemColor: mainColorWhite,
+            unselectedItemColor: mainColorWhite,
+            backgroundColor: mainColorRed,
+            type: BottomNavigationBarType.fixed,
+            items: <BottomNavigationBarItem>[
+              // Home
+              BottomNavigationBarItem(
                   activeIcon: const Icon(
-                    Ionicons.search,
+                    Ionicons.home,
                   ),
-                  label: 'Search'.tr,
+                  icon: const Icon(
+                    Ionicons.home_outline,
+                  ),
+                  label: "Home".tr),
+
+              // Search
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Ionicons.search_outline,
                 ),
-        
-                // Cart
-                BottomNavigationBarItem(
-                  icon: cartProvider.cartItems.isNotEmpty
-                      ? Badge(
-                          label: Text(
-                            cartProvider.cartItems.length.toString(),
-                          ),
-                          backgroundColor: mainColorGrey,
-                          child: const Icon(
-                            Ionicons.cart_outline,
-                          ),
-                        )
-                      : const Icon(
+                activeIcon: const Icon(
+                  Ionicons.search,
+                ),
+                label: 'Search'.tr,
+              ),
+
+              // Cart
+              BottomNavigationBarItem(
+                icon: cartProvider.cartItems.isNotEmpty
+                    ? Badge(
+                        label: Text(
+                          cartProvider.cartItems.length.toString(),
+                        ),
+                        backgroundColor: mainColorGrey,
+                        child: const Icon(
                           Ionicons.cart_outline,
                         ),
-                  activeIcon: cartProvider.cartItems.isNotEmpty
-                      ? Badge(
-                          label: Text(
-                            cartProvider.cartItems.length.toString(),
-                          ),
-                          backgroundColor: mainColorGrey,
-                          child: const Icon(
-                            Ionicons.cart_sharp,
-                          ),
-                        )
-                      : const Icon(
+                      )
+                    : const Icon(
+                        Ionicons.cart_outline,
+                      ),
+                activeIcon: cartProvider.cartItems.isNotEmpty
+                    ? Badge(
+                        label: Text(
+                          cartProvider.cartItems.length.toString(),
+                        ),
+                        backgroundColor: mainColorGrey,
+                        child: const Icon(
                           Ionicons.cart_sharp,
                         ),
-                  label: 'Cart'.tr,
+                      )
+                    : const Icon(
+                        Ionicons.cart_sharp,
+                      ),
+                label: 'Cart'.tr,
+              ),
+
+              // Favorite
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  FontAwesomeIcons.heart,
                 ),
-        
-                // Favorite
-                BottomNavigationBarItem(
-                  icon: const Icon(
-                    FontAwesomeIcons.heart,
-                  ),
-                  activeIcon: const Icon(
-                    FontAwesomeIcons.solidHeart,
-                  ),
-                  label: 'Favorite'.tr,
+                activeIcon: const Icon(
+                  FontAwesomeIcons.solidHeart,
                 ),
-        
-                // Account
-                BottomNavigationBarItem(
-                  icon: const Icon(
-                    Ionicons.person_outline,
-                  ),
-                  activeIcon: const Icon(
-                    Ionicons.person,
-                  ),
-                  label: 'Account'.tr,
+                label: 'Favorite'.tr,
+              ),
+
+              // Account
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Ionicons.person_outline,
                 ),
-              ],
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-            ),
+                activeIcon: const Icon(
+                  Ionicons.person,
+                ),
+                label: 'Account'.tr,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
           ),
         ),
       ),
