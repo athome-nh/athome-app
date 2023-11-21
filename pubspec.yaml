@@ -2,7 +2,7 @@ name: athome
 description: A new Flutter project.
 
 
-version: 2.0.0+1
+version: 1.0.0+1
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
@@ -11,24 +11,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
-  font_awesome_flutter: ^10.6.0
-  ionicons: ^0.2.2 
-  get: ^4.6.6
-  firebase_core: ^2.22.0
-  firebase_auth: ^4.13.0
-  dio: ^5.3.3
+  font_awesome_flutter: ^10.5.0
+  ionicons: ^0.2.2
+  get: ^4.6.5
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
+  dio: ^5.3.2
   connectivity_plus: ^4.0.2
-  device_info_plus: ^9.1.0
+  device_info_plus: ^9.0.3
   animate_do: ^3.1.2
   intl_phone_number_input: ^0.7.3+1
   flutter_verification_code: ^1.1.7
   gender_picker: ^1.1.0
-  encrypt: ^5.0.3
-  shared_preferences: ^2.2.2
-  fluttertoast: ^8.2.4
-  cached_network_image: ^3.3.0
-  provider: ^6.1.1
+  path_provider: ^2.0.11
+  encrypt: ^5.0.1
+  shared_preferences: ^2.2.1
+  fluttertoast: ^8.1.1
+  firebase_messaging: ^14.6.8
+  cached_network_image: ^3.2.3
+  provider: ^6.0.0
+  quickalert: ^1.0.2
   skeletonizer: ^0.8.0
   geolocator: ^10.1.0
   image_picker: ^1.0.4
@@ -36,10 +42,9 @@ dependencies:
   ntp: ^2.0.0
   http: ^0.13.1
   mapbox_maps_flutter: ^0.5.0  
-  firebase_messaging: ^14.7.4
   flutter_local_notifications: ^16.1.0
   upgrader: ^8.2.0  
-  #new_version: ^0.3.1
+ 
 
 
 
@@ -56,7 +61,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/Victors/
     - assets/images/location.png
 
 
@@ -65,24 +69,27 @@ flutter:
       fonts:
         - asset: assets/fonts/NRT-Bd.ttf
          
+
     - family: nrtN
       fonts:          
         - asset: assets/fonts/NRT-Reg.ttf
-
 
     - family: spedaB
       fonts:
         - asset: assets/fonts/Speda-Bold.ttf
       
+         
+
     - family: spedaN
       fonts:          
         - asset: assets/fonts/speda.ttf    
         
-
     - family: iraniB
       fonts:
         - asset: assets/fonts/iraniB.ttf
          
+
     - family: iraniN
       fonts:          
         - asset: assets/fonts/iraniN.ttf  
+
