@@ -34,7 +34,8 @@ class Network {
       if (token.isNotEmpty) {
         await dio.get(serverUrl + "time").then((time) async {
           dio.options.headers["Authorization"] = "Bearer " + token;
-          dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+          dio.options.headers["aToken"] =
+              encryptAES(generateRandomText(time.data["data"]));
           Response response = await dio.get(serverUrl + apiRout);
           data = response.data;
         });
@@ -54,7 +55,8 @@ class Network {
         datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] = "Bearer " + token;
 
-        dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+        dio.options.headers["aToken"] =
+            encryptAES(generateRandomText(time.data["data"]));
 
         Response response = await dio.get(serverUrl + apiRout);
 
@@ -84,7 +86,7 @@ class Network {
         Map<String, String> headers = {
           'Content-Type': 'multipart/form-data',
           'Authorization': "Bearer " + token,
-          'aToken': generateRandomText(time.data["data"]),
+          'aToken': encryptAES(generateRandomText(time.data["data"])),
         };
         var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
           ..fields.addAll(body)
@@ -112,7 +114,8 @@ class Network {
         await dio.get(serverUrl + "time").then((time) async {
           datetimeS = DateTime.parse(time.data["data"]);
           dio.options.headers["Authorization"] = "Bearer " + token;
-          dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+          dio.options.headers["aToken"] =
+              encryptAES(generateRandomText(time.data["data"]));
           Response response = await dio.post(
             serverUrl + rout,
             data: data,
@@ -123,7 +126,8 @@ class Network {
       } else {
         await dio.get(serverUrl + "time").then((time) async {
           datetimeS = DateTime.parse(time.data["data"]);
-          dio.options.headers["aToken"] = generateRandomText(time.data["data"]);
+          dio.options.headers["aToken"] =
+              encryptAES(generateRandomText(time.data["data"]));
           Response response = await dio.post(
             serverUrl + rout,
             data: data,
@@ -145,7 +149,7 @@ class Network {
           .closed
           .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
 
-          return "";
+      return "";
     }
     return data2;
   }

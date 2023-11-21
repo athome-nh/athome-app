@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
@@ -54,7 +55,7 @@ class productProvider extends ChangeNotifier {
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
-          setProducts((value['products'] as List)
+          setProducts((json.decode(decryptAES(value["products"])) as List)
               .map((x) => ProductModel.fromMap(x))
               .toList());
           setCategorys((value['category'] as List)
@@ -112,7 +113,7 @@ class productProvider extends ChangeNotifier {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
-            userdata = valueuser["data"][0];
+            userdata = json.decode(decryptAES(valueuser["data"]));
             if (userdata["isActive"] == 0) {
               userdata.clear();
               Network(false)
