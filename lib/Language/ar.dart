@@ -11,7 +11,7 @@ const Map<String, String> ar = {
   "wsd01": "تطبیق مبتکرة مصممة لتطویرتجربتك عبر الانترنت",
   "wst02": "تعلم من الافضل",
   "wsd02": "سنوجهك الی افضل الخبراء من کردستان العراق",
-  "wst03": "???",
+  "wst03": "منتجات المفضلة و الشائعة",
   "wsd03": "???",
   "NEXT": "التالي",
   "SKIP": "تخطي",
@@ -24,7 +24,7 @@ const Map<String, String> ar = {
   "Account": "حساب",
 
   // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج",
+  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج",//
   "Yes": "نعم",
   "No": "لا",
 
@@ -39,7 +39,7 @@ const Map<String, String> ar = {
   
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "سجل",
-  "You need login": "یرجی التسجیل",
+  "You need login": "یرجی التسجیل قبل التسوق",
   "Login": "تسجیل الدخول",
   "Cancle": "الغاء",
 
@@ -65,7 +65,7 @@ const Map<String, String> ar = {
   "Checkout": "التاکید",
 
   // favorite
-  "No have any favorite": "لیس لدیك اي عناصر المفضلة",
+  "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن. قم بتخصيصها وفقًا لاختياراتك الخاصة!",
 
   // Page --> No Internet --> my_widget
   "no internet": "انترنت غیر متوفر",
@@ -75,12 +75,12 @@ const Map<String, String> ar = {
 
   // profilo
   "Image changed": "تسجیل الدخول",
-  "Information": "المعلومات",
+  "Information": "حسابي",
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
   "Edit": "Edit",
   "Orders": "طلباتي",
-  "Address": "العنوان",
+  "Address": "الموقع",
   "About us":"حول التطبیق",
   "Log out":"الخروج",
   "Save": "حفض",
@@ -172,7 +172,7 @@ const Map<String, String> ar = {
   "Confirm": "التاکید",
 
   // verification
-  "Hold till the waiting time ends":"???????",
+  "Hold till the waiting time ends":"انتظر حتى ينتهي وقت الانتظار", //
   "Please enter code":"نرجو ادخال کود",
   "Verification": "التحقق",
   "Please enter the 6 digit code sent to":"یرجی الادخال رمز من 6 ارقام ارسلت الی:",
