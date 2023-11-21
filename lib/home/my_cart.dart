@@ -29,14 +29,14 @@ class _MyCartState extends State<MyCart> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
+      final pro = Provider.of<productProvider>(context, listen: false);
       if (result == ConnectivityResult.none) {
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(true);
+        pro.setnointernetcheck(true);
       } else {
-        Provider.of<productProvider>(context, listen: false).updatePost(false);
-
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(false);
+        if (pro.nointernetCheck) {
+          pro.updatePost(false);
+          pro.setnointernetcheck(false);
+        }
       }
     });
     super.initState();
