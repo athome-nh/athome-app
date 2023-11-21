@@ -11,7 +11,7 @@ const Map<String, String> en = {
   "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
   "wst02": "Learn From the Best",
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "Favorite brands and hottest trends.",
+  "wst03": "AtHome Is Forever",
   "wsd03": "Learn whatever you want, whenever or wherever you are.",
   "NEXT": "NEXT",
   "SKIP": "SKIP",
@@ -192,7 +192,7 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
-
+ 
 
   // mawaa 
   'You\'re online ✅': 'You are online ✅',
