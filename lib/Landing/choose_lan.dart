@@ -27,12 +27,10 @@ class _ChooseLangState extends State<ChooseLang> {
             child: Column(
               children: [
                 // top image
-                Container(
-                  //decoration: BoxDecoration(border: Border.all()),
-                  child: Image.asset("assets/images/world.png",
+                Image.asset(
+                  "assets/images/world.png",
                   width: getWidth(context, 100),
                   height: getHeight(context, 45),
-                  ),
                 ),
                 // Language
                 Text(
@@ -44,7 +42,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 ),
                 // Space
                 SizedBox(
-                  height: getHeight(context,1),
+                  height: getHeight(context, 1),
                 ),
                 // Kurdish
                 GestureDetector(
@@ -62,7 +60,11 @@ class _ChooseLangState extends State<ChooseLang> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Image.asset("assets/images/flag_kurdish.png"),
+                        Image.asset(
+                          "assets/images/flag.png",
+                          width: 50,
+                          height: 50,
+                        ),
                         Text(
                           "Kurdish".tr,
                           style: TextStyle(
@@ -98,7 +100,11 @@ class _ChooseLangState extends State<ChooseLang> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Image.asset("assets/images/flag_iraq.png"),
+                        Image.asset(
+                          "assets/images/iraq.png",
+                          width: 50,
+                          height: 50,
+                        ),
                         Text(
                           "Arabic".tr,
                           style: TextStyle(
@@ -134,7 +140,11 @@ class _ChooseLangState extends State<ChooseLang> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Image.asset("assets/images/flag_english.png"),
+                        Image.asset(
+                          "assets/images/uk.png",
+                          width: 50,
+                          height: 50,
+                        ),
                         Text(
                           "English".tr,
                           style: TextStyle(

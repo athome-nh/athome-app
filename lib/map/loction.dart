@@ -55,91 +55,108 @@ class _LocationScreenState extends State<LocationScreen> {
                 color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
         ),
-        body: SingleChildScrollView(
-          child: SizedBox(
-            height: getHeight(context, 100),
-            width: getWidth(context, 100),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                  itemCount: productrovider.location.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final location = productrovider.location[index];
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: getHeight(context, 2)),
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Row(children: [
-                              location.type.toString().contains("Home")
-                                  ? Icon(
-                                      Ionicons.home_outline,
-                                      color: mainColorRed,
-                                      size: 35,
-                                    )
-                                  : Icon(
-                                      Ionicons.business_outline,
-                                      color: mainColorRed,
-                                      size: 35,
+        body: productrovider.location.isEmpty
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    child: Image.asset("assets/Victors/empty_location.png"),
+                  ),
+
+                  //textCheck
+                ],
+              )
+            : SingleChildScrollView(
+                child: SizedBox(
+                  height: getHeight(context, 100),
+                  width: getWidth(context, 100),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                        itemCount: productrovider.location.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final location = productrovider.location[index];
+                          return Padding(
+                            padding:
+                                EdgeInsets.only(bottom: getHeight(context, 2)),
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Row(children: [
+                                    location.type.toString().contains("Home")
+                                        ? Icon(
+                                            Ionicons.home_outline,
+                                            color: mainColorRed,
+                                            size: 35,
+                                          )
+                                        : Icon(
+                                            Ionicons.business_outline,
+                                            color: mainColorRed,
+                                            size: 35,
+                                          ),
+                                    SizedBox(
+                                      width: 10,
                                     ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    location.name!,
-                                    style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 22,
-                                        fontFamily: mainFontnormal),
-                                  ),
-                                  Text(
-                                    location.area!,
-                                    style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 12,
-                                        fontFamily: mainFontnormal),
-                                  ),
-                                ],
-                              ),
-                              Spacer(),
-                              TextButton(
-                                  onPressed: () {
-                                    var data = {"id": location.id!};
-                                    Network(false)
-                                        .postData(
-                                            "delete_location", data, context)
-                                        .then((value) {
-                                      if (value != "") {
-                                        if (value["code"] == "201") {
-                                          Provider.of<productProvider>(context,
-                                                  listen: false)
-                                              .deletelocation(location.id!);
-                                          toastShort(
-                                              "Delete location success".tr);
-                                        }
-                                      }
-                                    });
-                                  },
-                                  child: Text(
-                                    "Delete".tr,
-                                    style: TextStyle(
-                                        color: mainColorRed,
-                                        fontFamily: mainFontnormal),
-                                  )),
-                            ]),
-                          ),
-                          Divider()
-                        ],
-                      ),
-                    );
-                  }),
-            ),
-          ),
-        ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          location.name!,
+                                          style: TextStyle(
+                                              color: mainColorGrey,
+                                              fontSize: 22,
+                                              fontFamily: mainFontnormal),
+                                        ),
+                                        Text(
+                                          location.area!,
+                                          style: TextStyle(
+                                              color: mainColorGrey,
+                                              fontSize: 12,
+                                              fontFamily: mainFontnormal),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    TextButton(
+                                        onPressed: () {
+                                          var data = {"id": location.id!};
+                                          Network(false)
+                                              .postData("delete_location", data,
+                                                  context)
+                                              .then((value) {
+                                            if (value != "") {
+                                              if (value["code"] == "201") {
+                                                Provider.of<productProvider>(
+                                                        context,
+                                                        listen: false)
+                                                    .deletelocation(
+                                                        location.id!);
+                                                toastShort(
+                                                    "Delete location success"
+                                                        .tr);
+                                              }
+                                            }
+                                          });
+                                        },
+                                        child: Text(
+                                          "Delete".tr,
+                                          style: TextStyle(
+                                              color: mainColorRed,
+                                              fontFamily: mainFontnormal),
+                                        )),
+                                  ]),
+                                ),
+                                Divider()
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+              ),
       ),
     );
   }

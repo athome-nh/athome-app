@@ -107,23 +107,27 @@ class _SearchState extends State<Search> {
                       productPro
                               .getProductsBySearch(productPro.searchproduct)
                               .isEmpty
-                          ? Container(
-                              padding:
-                                  EdgeInsets.only(top: getWidth(context, 40)),
+                          ? Center(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    width: getWidth(context, 60),
-                                    height: getWidth(context, 60),
+                                    height: getHeight(context, 10),
+                                  ),
+                                  SizedBox(
+                                    width: getWidth(context, 100),
+                                    height: getWidth(context, 100),
                                     child: Image.asset(
-                                        "assets/images/gif_favorite.gif"),
+                                        "assets/Victors/serach_empty.png"),
+                                  ),
+                                  SizedBox(
+                                    height: getHeight(context, 2),
                                   ),
                                   Text(
                                     "Not found any item".tr,
                                     style: TextStyle(
                                         fontFamily: mainFontnormal,
-                                        fontSize: 16),
+                                        fontSize: 18),
                                   ),
                                 ],
                               ),

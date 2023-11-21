@@ -6,7 +6,6 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/login_page.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cart.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ import '../home/oneitem.dart';
 Widget listItemsShimer(BuildContext context) {
   return SizedBox(
     height: getHeight(context, 27),
-    //  decoration: BoxDecoration(border: Border.all()),
+    // decoration: BoxDecoration(border: Border.all()),
     child: Skeletonizer(
       effect: ShimmerEffect.raw(colors: [
         mainColorRed.withOpacity(0.1),
@@ -73,7 +72,7 @@ Widget listItemsShimer(BuildContext context) {
                                   height: 5,
                                 ),
                                 Text(
-                                  "slaw chonn bashn",
+                                  "I dont know",
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorGrey,
@@ -84,7 +83,7 @@ Widget listItemsShimer(BuildContext context) {
                                   height: 3,
                                 ),
                                 Text(
-                                  "900 mljklkljkljkjkj",
+                                  "900 ml",
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
@@ -168,7 +167,7 @@ Widget listItemsShimer(BuildContext context) {
 Widget listItemsBigShimer(BuildContext context) {
   return SizedBox(
     height: getHeight(context, 80),
-    //  decoration: BoxDecoration(border: Border.all()),
+    //   decoration: BoxDecoration(border: Border.all()),
     child: Skeletonizer(
       effect: ShimmerEffect.raw(colors: [
         mainColorRed.withOpacity(0.1),
@@ -235,7 +234,7 @@ Widget listItemsBigShimer(BuildContext context) {
                                   height: 3,
                                 ),
                                 Text(
-                                  "900 mljklkljkljkjkj",
+                                  "900 ml",
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorGrey.withOpacity(0.5),
@@ -355,10 +354,10 @@ Widget listItemsSmall(BuildContext context, var data) {
                       Center(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Column(
                               children: [
-                            
                                 GestureDetector(
                                   onTap: () {
                                     productrovider.setidItem(product.id!);
@@ -663,8 +662,8 @@ Widget listItemsShow(BuildContext context, var data) {
           mainAxisSpacing: 8,
           childAspectRatio: getWidth(context, 0.19),
         ),
-
-        itemCount: data.length, // Number of items in the grid
+    
+        itemCount: data.length, 
         itemBuilder: (BuildContext context, int index) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
@@ -691,6 +690,7 @@ Widget listItemsShow(BuildContext context, var data) {
                       Center(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
@@ -809,7 +809,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                                     loiginPopup(context);
                                                     return;
                                                   }
-
+    
                                                   final cartItem = CartItem(
                                                       product: product.id!);
                                                   cartProvider
@@ -988,6 +988,7 @@ Widget listItemsShow(BuildContext context, var data) {
     ),
   );
 }
+
 // Search items
 Widget listItemsShowSearch(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -1032,6 +1033,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                       Center(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
@@ -1503,6 +1505,7 @@ Future<void> loiginPopup(BuildContext context) {
         content: Stack(
           alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
           children: [
+            //textcheck
             SizedBox(
               width: getWidth(context, 70),
               height: getHeight(context, 50),
@@ -1511,7 +1514,7 @@ Future<void> loiginPopup(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
-                    "assets/images/003_welcome_1.png",
+                    "assets/Victors/first.png",
                     width: getWidth(context, 40),
                     height: getWidth(context, 40),
                   ),
@@ -1617,14 +1620,18 @@ noInternetWidget(BuildContext context) {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            "assets/images/wifi.png",
-            width: getWidth(context, 30),
+          SizedBox(
+            width: getWidth(context, 100),
+            height: getWidth(context, 100),
+            child: Image.asset("assets/Victors/wifi.png"),
           ),
           const SizedBox(
             height: 25,
           ),
-          Text("no internet".tr),
+          Text(
+            "no internet".tr,
+            style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
+          ),
         ],
       )),
     ),
@@ -1637,11 +1644,9 @@ loginFirstContainer(BuildContext context) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Please login first".tr,
-          style: TextStyle(fontSize: 32, fontFamily: mainFontnormal),
+        Image.asset(
+          "assets/Victors/first.png",
         ),
-        Image.asset("assets/images/png_login.png"),
         SizedBox(
           height: getWidth(context, 12),
           width: getWidth(context, 75),

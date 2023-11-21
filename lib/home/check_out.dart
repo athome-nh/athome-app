@@ -100,45 +100,21 @@ class _CheckOutState extends State<CheckOut> {
                       width: getWidth(context, 100),
                       height: getHeight(context, 15),
                       child: productrovider.location.isEmpty
-                          ? Center(
-                              child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Not have any location".tr,
-                                  style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Add new Location".tr,
-                                      style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const Map_screen()),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.add_location_alt_outlined,
-                                          color: mainColorRed,
-                                          size: 30,
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ))
+                          ? GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Map_screen()),
+                                );
+                              },
+                              child: SizedBox(
+                                width: getWidth(context, 100),
+                                height: getHeight(context, 15),
+                                child:
+                                    Image.asset("assets/Victors/location.png"),
+                              ),
+                            )
                           : ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: productrovider.location.length,

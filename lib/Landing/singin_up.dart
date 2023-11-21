@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:animate_do/animate_do.dart';
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
+import 'package:athome/Landing/login_page.dart';
+import 'package:athome/Landing/splash_screen.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
@@ -47,7 +50,53 @@ class _SingInUpState extends State<SingInUp> {
   String token2 = "";
   TextEditingController nameController = TextEditingController();
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-  List<String> agelist = ["18", "19", "20", "21", "22", "23"];
+  List<String> agelist = [
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "51",
+    "52",
+    "53",
+    "54",
+    "55",
+    "56",
+    "57",
+    "58",
+    "59",
+    "60"
+  ];
   @override
   void initState() {
     FirebaseMessaging.instance
@@ -332,48 +381,240 @@ class _SingInUpState extends State<SingInUp> {
                         "platform": Platform.isAndroid ? "android" : "ios",
                         "password": widget.uid,
                       };
-                      Network(false)
-                          .postData("register", data, context)
-                          .then((value) {
-                        if (value != "") {
-                          if (value["code"] == "201") {
-                            if (value["data"]["isActive"] == "1") {
-                              setState(() {
-                                isLogin = true;
-                                token = value["token"];
-                              });
+                      try {
+                        Network(false)
+                            .postData("register", data, context)
+                            .then((value) {
+                          if (value != "") {
+                            if (value["code"] == "200") {
+                              if (value["isApprove"] == 0) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      content: Stack(
+                                        alignment: lang == "en"
+                                            ? Alignment.topLeft
+                                            : Alignment.topRight,
+                                        children: [
+                                          Container(
+                                            width: getWidth(context, 70),
+                                            height: getHeight(context, 50),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                //textcheck
+                                                Image.asset(
+                                                  "assets/Victors/pendding.png",
+                                                  width: getWidth(context, 40),
+                                                  height: getWidth(context, 40),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  "Account Pendding".tr,
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 1,
+                                                  style: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontbold,
+                                                    fontSize: 25,
+                                                  ),
+                                                ),
+                                                SizedBox(height: 10),
+                                                Text(
+                                                  "Account npt approved by admin yet"
+                                                      .tr,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontnormal,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const RegisterWithPhoneNumber()),
+                                                    );
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    fixedSize: Size(
+                                                        getWidth(context, 70),
+                                                        getHeight(context, 5)),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          color: mainColorGrey),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                    ),
+                                                  ),
+                                                  child: Text(
+                                                    "OK".tr,
+                                                    style: TextStyle(
+                                                      color: mainColorGrey,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: Icon(Icons.close))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                                return;
+                              }
+                              if (value["isActive"] == 1) {
+                                setState(() {
+                                  _isLoading = false;
+                                  isLogin = true;
+                                  loaddata = false;
+                                  token = decryptAES(value["token"]);
+                                });
+                                getStringPrefs("data").then((map) {
+                                  Map<String, dynamic> myMap = json.decode(map);
+                                  myMap["islogin"] = true;
+                                  myMap["token"] = value["token"];
+                                  setStringPrefs("data", json.encode(myMap));
+                                });
 
-                              getStringPrefs("data").then((map) {
-                                Map<String, dynamic> myMap = json.decode(map);
-                                myMap["islogin"] = true;
-                                myMap["token"] = value["token"];
-                                setStringPrefs("data", json.encode(myMap));
-                              });
-                              final productrovider =
-                                  Provider.of<productProvider>(context,
-                                      listen: false);
-                              productrovider.updatePost(true);
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const NavSwitch()),
-                              );
-                            } else {
-                              setState(() {
-                                _isLoading = false;
-                              });
-                              //account is diactive
+                                final productrovider =
+                                    Provider.of<productProvider>(context,
+                                        listen: false);
+                                productrovider.updatePost(true);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const NavSwitch()),
+                                );
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      content: Stack(
+                                        alignment: lang == "en"
+                                            ? Alignment.topLeft
+                                            : Alignment.topRight,
+                                        children: [
+                                          Container(
+                                            width: getWidth(context, 70),
+                                            height: getHeight(context, 50),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Image.asset(
+                                                  "assets/Victors/disabled.png",
+                                                  width: getWidth(context, 40),
+                                                  height: getWidth(context, 40),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  "Account Disabled".tr,
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 1,
+                                                  style: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontbold,
+                                                    fontSize: 25,
+                                                  ),
+                                                ),
+                                                SizedBox(height: 10),
+                                                Text(
+                                                  "Account is disable please contact athome admin"
+                                                      .tr,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontnormal,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const RegisterWithPhoneNumber()),
+                                                    );
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    fixedSize: Size(
+                                                        getWidth(context, 70),
+                                                        getHeight(context, 5)),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          color: mainColorGrey),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                    ),
+                                                  ),
+                                                  child: Text(
+                                                    "OK".tr,
+                                                    style: TextStyle(
+                                                      color: mainColorGrey,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: Icon(Icons.close))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              }
                             }
+                          } else {
+                            toastShort(
+                                "unknown occurred error please try again later"
+                                    .tr);
+                            setState(() {
+                              _isLoading = false;
+                            });
                           }
-                        } else {
-                          toastShort(
-                              "unknown occurred error please try again later"
-                                  .tr);
-                          setState(() {
-                            _isLoading = false;
-                          });
-                        }
-                      });
+                        });
+                      } catch (e) {
+                        toastShort(
+                            "unknown occurred error please try again later".tr);
+                        setState(() {
+                          _isLoading = false;
+                        });
+                      }
                     },
                     color: mainColorRed,
                     shape: RoundedRectangleBorder(
@@ -410,7 +651,7 @@ class _SingInUpState extends State<SingInUp> {
   }
 
   _readIosDeviceInfo(IosDeviceInfo data) {
-    return data.model;
+    return data.name;
     // 'name': data.name,
     // 'systemName': data.systemName,
     // 'systemVersion': data.systemVersion,

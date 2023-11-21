@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:animate_do/animate_do.dart';
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
@@ -262,6 +263,92 @@ class _VerificatoinState extends State<Verificatoin> {
           Network(false).postData("login", data, context).then((value) async {
             if (value != "") {
               if (value["code"] == "200") {
+                if (value["isApprove"] == 0) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Stack(
+                          alignment: lang == "en"
+                              ? Alignment.topLeft
+                              : Alignment.topRight,
+                          children: [
+                            Container(
+                              width: getWidth(context, 70),
+                              height: getHeight(context, 50),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  //textcheck
+                                  Image.asset(
+                                    "assets/Victors/pendding.png",
+                                    width: getWidth(context, 40),
+                                    height: getWidth(context, 40),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Account Pendding".tr,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    "Account npt approved by admin yet".tr,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const RegisterWithPhoneNumber()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(getWidth(context, 70),
+                                          getHeight(context, 5)),
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(color: mainColorGrey),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "OK".tr,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(Icons.close))
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                  return;
+                }
                 if (value["isActive"] == 1) {
                   _codeTimer.cancel();
                   setState(() {
@@ -269,15 +356,15 @@ class _VerificatoinState extends State<Verificatoin> {
                     _isVerified = true;
                     isLogin = true;
                     loaddata = false;
-                    token = value["token"];
+                    token = decryptAES(value["token"]);
                   });
-
                   getStringPrefs("data").then((map) {
                     Map<String, dynamic> myMap = json.decode(map);
                     myMap["islogin"] = true;
                     myMap["token"] = value["token"];
                     setStringPrefs("data", json.encode(myMap));
                   });
+
                   final productrovider =
                       Provider.of<productProvider>(context, listen: false);
                   productrovider.updatePost(true);
@@ -303,7 +390,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Image.asset(
-                                    "assets/images/003_welcome_1.png",
+                                    "assets/Victors/disabled.png",
                                     width: getWidth(context, 40),
                                     height: getWidth(context, 40),
                                   ),
@@ -382,7 +469,7 @@ class _VerificatoinState extends State<Verificatoin> {
                             widget.phone_number, _auth.currentUser!.uid)));
               }
             } else {
-              toastShort("unknown occurred error please try again later".tr);
+              // toastShort("unknown occurred error please try again later");
               setState(() {
                 _isLoading = false;
               });
@@ -390,7 +477,6 @@ class _VerificatoinState extends State<Verificatoin> {
           });
         } catch (e) {
           toastLong("the code is un correct".tr);
-
           setState(() {
             _isLoading = false;
             _isVerified = false;
@@ -443,8 +529,9 @@ class _VerificatoinState extends State<Verificatoin> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
+                              //textcheck
                               Image.asset(
-                                "assets/images/003_welcome_1.png",
+                                "assets/Victors/pendding.png",
                                 width: getWidth(context, 40),
                                 height: getWidth(context, 40),
                               ),
@@ -518,7 +605,7 @@ class _VerificatoinState extends State<Verificatoin> {
                 _isVerified = true;
                 isLogin = true;
                 loaddata = false;
-                token = value["token"];
+                token = decryptAES(value["token"]);
               });
               getStringPrefs("data").then((map) {
                 Map<String, dynamic> myMap = json.decode(map);
@@ -551,7 +638,7 @@ class _VerificatoinState extends State<Verificatoin> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Image.asset(
-                                "assets/images/003_welcome_1.png",
+                                "assets/Victors/disabled.png",
                                 width: getWidth(context, 40),
                                 height: getWidth(context, 40),
                               ),

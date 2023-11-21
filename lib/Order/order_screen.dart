@@ -2,7 +2,7 @@ import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/Order/old_order.dart';
 import 'package:athome/Order/order_items.dart';
-import 'package:athome/Order/show_order.dart';
+
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/cartpast.dart';
@@ -94,7 +94,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 children: [
                   !isLogin
                       ? loginFirstContainer(context)
-                      : productrovider.Orders.isNotEmpty
+                      : productrovider.Orders.isEmpty
                           ? ListView.builder(
                               itemCount:
                                   productrovider.getOrderOngoing().length,
@@ -116,7 +116,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                 BorderRadius.circular(5),
                                           ),
                                           child: Image.asset(
-                                            "assets/images/123.png",
+                                            "assets/Victors/ongoing.png",
                                             width: getWidth(context, 15),
                                             height: getHeight(context, 18),
                                           )),
@@ -178,15 +178,16 @@ class _OrderScreenState extends State<OrderScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                //textcheck
+                                Image.asset("assets/Victors/empty.png"),
+                                SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
                                 Text(
                                   "You not have any order".tr,
                                   style: TextStyle(
-                                      fontSize: 32, fontFamily: mainFontnormal),
+                                      fontSize: 18, fontFamily: mainFontnormal),
                                 ),
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                                Image.asset("assets/images/gif_favorite.gif"),
                               ],
                             )),
                   !isLogin
@@ -346,16 +347,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             OldOrder(
-                                                              order.id
-                                                                  .toString(),
-                                                              order
-                                                                  .returnTotalPrice
-                                                                  .toString(),
-                                                              order.createdAt
-                                                                  .toString(),
-                                                              order.status!
-                                                           
-                                                            )),
+                                                                order.id
+                                                                    .toString(),
+                                                                order
+                                                                    .returnTotalPrice
+                                                                    .toString(),
+                                                                order.createdAt
+                                                                    .toString(),
+                                                                order.status!)),
                                                   );
                                                 },
                                                 child: Row(
@@ -393,15 +392,16 @@ class _OrderScreenState extends State<OrderScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                //textcheck
+                                Image.asset("assets/Victors/empty.png"),
+                                SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
                                 Text(
                                   "You not have any order".tr,
                                   style: TextStyle(
-                                      fontSize: 32, fontFamily: mainFontnormal),
+                                      fontSize: 18, fontFamily: mainFontnormal),
                                 ),
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                                Image.asset("assets/images/gif_favorite.gif"),
                               ],
                             )),
                 ],

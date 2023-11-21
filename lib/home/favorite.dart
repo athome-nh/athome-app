@@ -38,44 +38,32 @@ class _FavoriteState extends State<Favorite> {
                 backgroundColor: mainColorWhite,
                 elevation: 0,
               ),
-              body: SingleChildScrollView(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    if (cartProvider.ListFavId().isEmpty) {
-                      // list is empty
-                      return SizedBox(
-                        width: getWidth(context, 100),
-                        height: getHeight(context, 60),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: getWidth(context, 50),
-                              height: getWidth(context, 70),
-                              child:
-                                  Image.asset("assets/images/gif_favorite.gif"),
-                            ),
-                            Text(
-                              "No have any favorite".tr,
-                              style: TextStyle(
-                                  fontFamily: mainFontnormal, fontSize: 16),
-                            ),
-                          ],
+              body: cartProvider.ListFavId().isEmpty
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: getWidth(context, 100),
+                          height: getWidth(context, 100),
+                          child: Image.asset("assets/Victors/fav_empty.png"),
                         ),
-                      );
-                    } else {
-                      // list is not empty
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: listItemsShow(
-                          context,
-                          productPro.getProductsByIds(cartProvider.ListFavId()),
+                        SizedBox(
+                          height: getHeight(context, 2),
                         ),
-                      );
-                    }
-                  },
-                ),
-              ),
+                        Text(
+                          "No have any favorite".tr,
+                          style: TextStyle(
+                              fontFamily: mainFontnormal, fontSize: 18),
+                        ),
+                      ],
+                    )
+                  : Padding(
+                padding: const EdgeInsets.symmetric(horizontal:8 ),
+                  child: listItemsShow(
+                    context,
+                    productPro.getProductsByIds(cartProvider.ListFavId()),
+                  ),
+                    ),
             ),
     );
   }

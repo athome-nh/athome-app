@@ -11,25 +11,25 @@ const Map<String, String> kur = {
   "wsd01": "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
   "wst02": "لە باشترینەکانەوە فێر ببە",
   "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
-  "wst03": "???",
+  "wst03": "بەرهەمی دڵخواز و پڕ فرۆشترینەکان",
   "wsd03": "فێرببە هەرشتێک کە دەتەوێ، هەر کاتێك دەتەوێت و لە هەرشوێنێك دەتەوێت",
   "NEXT": "دواتر",
   "SKIP": "تێپەڕبوون",
 
   // nav_switch
-  "Home": "پەڕەی سەرەکی",
+  "Home": "سەرەکی",
   "Search": "گەڕان",
-  "Cart": "سەبەتەی بازاڕ کردن",
+  "Cart": "سەبەتە",
   "Favorite": "دڵخوازه‌كان",
   "Account": "پڕۆفایل",
 
   // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "دڵنیای لە چونە دەر لە ئات هۆم",
+  "Are you sure exiting the app": "دڵنیای لە چونە دەر لە ئات هۆم", //
   "Yes": "بەڵێ",
   "No": "نەخێر",
 
   // home_page
-  "Order now": "ئێستا داوابکە",
+  "Order now": "ئێستا داوا بكه‌",
   "Categories": "پۆلێنەکان",
   "Recent Order": "نوێترین داواکاری",
   "Discount": "داشکانەکان",
@@ -40,7 +40,7 @@ const Map<String, String> kur = {
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "خۆت تۆمار بکە",
   "You need login": "پێویستە خۆت تۆمار بکەیت",
-  "Login": "خۆ تۆمارکردن",
+  "Login": "خۆتۆمارکردن",
   "Cancle": "پوچەڵ کردنەوە",
 
   // categories
@@ -65,7 +65,7 @@ const Map<String, String> kur = {
   "Checkout": "دوپاتکردنەوە",
 
   // favorite
-  "No have any favorite": "بەرهەمی دڵخوازت نیە",
+  "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە. دڵخوازەکان دیاری بکە و جیاوازیەکان ببینە",
 
   // Page --> No Internet --> my_widget
   "no internet": "ئینتەرنێت بەردەست  نیە",
@@ -75,11 +75,11 @@ const Map<String, String> kur = {
 
   // profilo
   "Image changed": "وێنەکە گۆڕدرا",
-  "Information": "زانیاری",
+  "Information": "پڕۆفایل",
   "Enter Name":"داخڵ کردنی ناو",
   "Enter Age":"داخڵ کردنی تەمەن",
   "Edit":"ڕێکخستن",
-  "Orders":"داواکاریەکان",
+  "Orders":"داواکاریەکانم",
   "Address": "ناونیشان",
   "About us":"دەربارەی ئێمە",
   "Log out":"چوونە دەر",
@@ -172,7 +172,7 @@ const Map<String, String> kur = {
   "Confirm": "دڵنیابوونەوە",
 
   // verification
-  "Hold till the waiting time ends":"?????",
+  "Hold till the waiting time ends":"تا کاتی چاوەڕوانی کۆتایی دێت ڕایبگرە",
   "Please enter code":"تکایە کۆدی یەك جارە داخڵ بکە",
   "Verification": "دڵنیابوونەوە",
   "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی داخڵ بکە",
