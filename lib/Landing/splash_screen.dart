@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Landing/choose_lan.dart';
@@ -44,7 +45,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Map<String, dynamic> myMap = json.decode(map);
             seen = myMap["onbord"];
             isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
-            token = myMap.containsKey("token") ? myMap["token"] : "";
+            token =
+                myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";
           }
 
           Provider.of<productProvider>(context, listen: false)
