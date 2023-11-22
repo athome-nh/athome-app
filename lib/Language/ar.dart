@@ -63,9 +63,11 @@ const Map<String, String> ar = {
   "Free Delivery": "توصیل المجاني",
   "Total": "مجموع",
   "Checkout": "التاکید",
+  "Clear cart":"إزالة الكل",
+  "Are you sure you want to continue?":"دڵنیای له‌ به‌تاڵكردنه‌وه‌ی سه‌به‌ته‌ی كڕین؟",
 
   // favorite
-  "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن. قم بتخصيصها وفقًا لاختياراتك الخاصة!",
+  "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقًا لاختياراتك الخاصة!",
 
   // Page --> No Internet --> my_widget
   "no internet": "انترنت غیر متوفر",
