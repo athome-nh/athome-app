@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:athome/Account/profilo.dart';
+import 'package:athome/Notifications/Notification.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/favorite.dart';
 import 'package:athome/home/my_cart.dart';
@@ -70,13 +71,8 @@ class _NavSwitchState extends State<NavSwitch> {
     });
   }
 
-  checkUpdates() async {
-    await Upgrader.clearSavedSettings();
-  }
-
   @override
   void initState() {
-    checkUpdates();
     super.initState();
   }
 

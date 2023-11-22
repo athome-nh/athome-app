@@ -2,10 +2,12 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:athome/Config/property.dart';
 import 'package:athome/Config/value.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -29,54 +31,59 @@ class FCMNotification {
       if (message != null) {
         if (message.data["screen"] == "userBooking") {
           //userdateselect = message.data["date"];
-
-        
         } else if (message.data["screen"] == "barberBooking") {
-         // dateselectd = message.data["date"];
-        
+          // dateselectd = message.data["date"];
         } else if (message.data["screen"] == "permission") {
-         
-        } else if (message.data["screen"] == "live") {
-          
-        }
+        } else if (message.data["screen"] == "live") {}
         // Navigator.pushNamed(context, '/message',
         //     arguments: MessageArguments(message, true));
-
       }
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
-      if (notification != null && android != null && !kIsWeb) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                // channel.description,
-                //      one that already exists in example app.
-                icon: 'launch_background',
-              ),
-            ));
+      if (notification != null && android != null) {
+        Get.snackbar(message.notification!.title.toString(),
+            message.notification!.body.toString(),
+            backgroundColor: mainColorWhite,
+            colorText: mainColorGrey,
+            duration: Duration(seconds: 5),
+            forwardAnimationCurve: Curves.easeOutBack,
+            icon: Icon(
+              Icons.notifications_active_outlined,
+              color: mainColorRed,
+            )
+
+            // Image.asset(
+            //   "assets/images/1.jpg",
+            //   alignment: Alignment.center,
+            // )
+
+            );
+
+        // flutterLocalNotificationsPlugin.show(
+        //     notification.hashCode,
+        //     notification.title,
+        //     notification.body,
+        //     NotificationDetails(
+        //       android: AndroidNotificationDetails(
+        //         channel.id,
+        //         channel.name,
+        //         // channel.description,
+        //         //      one that already exists in example app.
+        //         icon: 'launch_background',
+        //       ),
+        //     ));
       }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       if (message.data["screen"] == "userBooking") {
-       // userdateselect = message.data["date"];
-       
+        // userdateselect = message.data["date"];
       } else if (message.data["screen"] == "barberBooking") {
-         
-
-      //  dateselectd = message.data["date"];
+        //  dateselectd = message.data["date"];
       } else if (message.data["screen"] == "live") {
-       
-      } else if (message.data["screen"] == "permission") {
-         
-      }
+      } else if (message.data["screen"] == "permission") {}
 
       // Navigator.pushNamed(context, '/message',
       //     arguments: MessageArguments(message, true));
@@ -182,12 +189,7 @@ class FCMNotification {
               'badge': '1', //'$unReadMSGCount'
               "sound": "default",
               "default_vibrate_timings": false,
-               "vibrate_timings": [
-                "0.0s",
-                "0.2s",
-                "0.1s",
-                "o.2s"
-     ],
+              "vibrate_timings": ["0.0s", "0.2s", "0.1s", "o.2s"],
             },
             'priority': 'high',
             'data': <String, dynamic>{
@@ -216,7 +218,7 @@ class FCMNotification {
         Uri.parse('https://fcm.googleapis.com/fcm/send'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization':fcmKey,
+          'Authorization': fcmKey,
         },
         body: jsonEncode(
           <String, dynamic>{
@@ -226,12 +228,7 @@ class FCMNotification {
               'badge': '1', //'$unReadMSGCount'
               "sound": "default",
               "default_vibrate_timings": false,
-               "vibrate_timings": [
-                "0.0s",
-                "0.2s",
-                "0.1s",
-                "0.2s"
-     ],
+              "vibrate_timings": ["0.0s", "0.2s", "0.1s", "0.2s"],
             },
             'priority': 'high',
             'data': <String, dynamic>{
