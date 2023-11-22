@@ -52,8 +52,11 @@ class _FavoriteState extends State<Favorite> {
                         ),
                         Text(
                           "No have any favorite".tr,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontFamily: mainFontnormal, fontSize: 18),
+                              fontFamily: mainFontnormal, 
+                              fontSize: 18,
+                              ),
                         ),
                       ],
                     )

@@ -39,7 +39,7 @@ const Map<String, String> kur = {
 
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "خۆت تۆمار بکە",
-  "You need login": "پێویستە خۆت تۆمار بکەیت",
+  "You need login": "له‌ پێش دا خۆت تۆمار بکە",
   "Login": "خۆتۆمارکردن",
   "Cancle": "پوچەڵ کردنەوە",
 
@@ -63,9 +63,11 @@ const Map<String, String> kur = {
   "Free Delivery": "گەیاندنی خۆڕایی",
   "Total": "کۆی گشتی",
   "Checkout": "دوپاتکردنەوە",
+  "Clear cart":"لابردنی هەموو",
+  "Are you sure you want to continue?":"دڵنیای له‌ به‌تاڵكردنه‌وه‌ی سه‌به‌ته‌ی كڕین؟",
 
   // favorite
-  "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە. دڵخوازەکان دیاری بکە و جیاوازیەکان ببینە",
+  "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە.\nدڵخوازەکان دیاری بکە و جیاوازیەکان ببینە",
 
   // Page --> No Internet --> my_widget
   "no internet": "ئینتەرنێت بەردەست  نیە",

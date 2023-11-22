@@ -39,8 +39,8 @@ const Map<String, String> en = {
 
   // Dialogbox ( Register ) --> my_widget
   "Login Please": "Register First",
-  "You need login": "you need to register first",
-  "Login": "Register first",
+  "You need login": "You have to register first",
+  "Login": "Register",
   "Cancle": "Cancel",
 
   // categories
@@ -63,9 +63,11 @@ const Map<String, String> en = {
   "Free Delivery": "Free Delivery",
   "Total": "Total",
   "Checkout": "Checkout",
+  "Clear cart":"Clear cart",
+  "Are you sure you want to continue?":"Are you sure you want to continue?",
 
   // favorite
-  "No have any favorite": "You haven't set any favorites. Make it your own!",
+  "No have any favorite": "You haven't set any favorite items.\nMake it your own!",
 
   // Page --> Login First --> my_widget
   "Please login first": "Please login first",

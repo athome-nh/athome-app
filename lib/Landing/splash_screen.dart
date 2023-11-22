@@ -29,41 +29,50 @@ class _SplashScreenState extends State<SplashScreen> {
   var subscription;
   @override
   void initState() {
+    //
+    checkinternet();
+
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
+      final pro = Provider.of<productProvider>(context, listen: false);
       if (result == ConnectivityResult.none) {
+        pro.setnointernetcheck(true);
         setState(() {
           textshow = true;
         });
       } else {
-        setState(() {
-          textshow = false;
-        });
-        getStringPrefs("data").then((map) {
-          if (map.isNotEmpty) {
-            Map<String, dynamic> myMap = json.decode(map);
-            seen = myMap["onbord"];
-            isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
-            token =
-                myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";
-          }
+        if (pro.nointernetCheck) {
+          setState(() {
+            pro.setnointernetcheck(false);
+            setState(() {
+              textshow = false;
+            });
+          });
+          getStringPrefs("data").then((map) {
+            if (map.isNotEmpty) {
+              Map<String, dynamic> myMap = json.decode(map);
+              seen = myMap["onbord"];
+              isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
+              token =
+                  myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";
+            }
 
-          Provider.of<productProvider>(context, listen: false)
-              .updatePost(isLogin);
-        });
+            pro.updatePost(isLogin);
+          });
 
-        Timer(
-          const Duration(seconds: 5),
-          () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) =>
-                    seen ? const NavSwitch() : const ChooseLang(),
-              ),
-            );
-          },
-        );
+          Timer(
+            const Duration(seconds: 5),
+            () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) =>
+                      seen ? const NavSwitch() : const ChooseLang(),
+                ),
+              );
+            },
+          );
+        }
       }
     });
     super.initState();
@@ -76,24 +85,28 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> checkinternet() async {
+    final pro = Provider.of<productProvider>(context, listen: false);
     if (await noInternet(context)) {
       setState(() {
+        pro.setnointernetcheck(true);
         textshow = true;
       });
       return;
     }
 
+    setState(() {
+      pro.setnointernetcheck(false);
+      textshow = false;
+    });
     getStringPrefs("data").then((map) {
       if (map.isNotEmpty) {
         Map<String, dynamic> myMap = json.decode(map);
-
         seen = myMap["onbord"];
         isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
-        token = myMap.containsKey("token") ? myMap["token"] : "";
+        token = myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";
       }
-      final productrovider =
-          Provider.of<productProvider>(context, listen: false);
-      productrovider.updatePost(isLogin);
+
+      pro.updatePost(isLogin);
     });
 
     Timer(
@@ -110,38 +123,35 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Opacity(
-              opacity: 0.25,
-              child: Image.asset(
-                mainImagePattern,
-                width: getWidth(context, 100),
-                height: getHeight(context, 100),
-                fit: BoxFit.cover,
-              ),
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return textshow
+        ? noInternetWidget(context)
+        : SafeArea(
+            child: Scaffold(
+              body: Stack(
                 children: [
-                  Image.asset(
-                    mainImageLogo1,
-                    width: getWidth(context, 100),
+                  Opacity(
+                    opacity: 0.25,
+                    child: Image.asset(
+                      mainImagePattern,
+                      width: getWidth(context, 100),
+                      height: getHeight(context, 100),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  textshow
-                      ? Text(
-                          'You\'re offline, connect to a network.'.tr,
-                        )
-                      : SizedBox(),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          mainImageLogo1,
+                          width: getWidth(context, 100),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

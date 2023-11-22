@@ -1,6 +1,7 @@
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -18,11 +19,25 @@ class _SearchState extends State<Search> {
   var subscription;
   @override
   void initState() {
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      final pro = Provider.of<productProvider>(context, listen: false);
+      if (result == ConnectivityResult.none) {
+        pro.setnointernetcheck(true);
+      } else {
+        if (pro.nointernetCheck) {
+          pro.updatePost(false);
+          pro.setnointernetcheck(false);
+        }
+      }
+    });
     super.initState();
   }
 
   @override
   void dispose() {
+    subscription.cancel();
     super.dispose();
   }
 

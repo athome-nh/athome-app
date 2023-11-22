@@ -1531,16 +1531,16 @@ Future<void> loiginPopup(BuildContext context) {
                       fontSize: 25,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "You need login".tr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontnormal,
-                      fontSize: 16,
-                    ),
-                  ),
+                  const SizedBox(height: 15),
+                  // Text(
+                  //   "You need login".tr,
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(
+                  //     color: mainColorGrey,
+                  //     fontFamily: mainFontnormal,
+                  //     fontSize: 16,
+                  //   ),
+                  // ),
                   TextButton(
                     onPressed: () {
                       Navigator.push(
