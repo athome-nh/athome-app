@@ -45,6 +45,7 @@ class _VerificatoinState extends State<Verificatoin> {
             // vapidKey: firebaseCloudvapidKey
             )
         .then((val) async {
+          print(val);
       token2 = val.toString();
     });
     super.initState();
