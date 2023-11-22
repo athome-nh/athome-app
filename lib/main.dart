@@ -1,4 +1,5 @@
 import 'package:athome/Config/local_data.dart';
+import 'package:athome/Notifications/Notification.dart';
 import 'package:athome/Notifications/NotificationController.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/controller/productprovider.dart';
@@ -53,6 +54,8 @@ class AtHomeApp extends StatefulWidget {
 class _AtHomeAppState extends State<AtHomeApp> {
   @override
   void initState() {
+    FCMNotification(context).config();
+
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
