@@ -49,7 +49,6 @@ int status = 0;
 class _TrackOrderState extends State<TrackOrder> {
   int updateStatus() {
     Network(false).getData("orderTrack/${widget.id}").then((value) {
-      print(value);
       if (value != "") {
         if (value["code"] == "200") {
           setState(() {
@@ -320,7 +319,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                               ),
-                              child: Text("Cancle order".tr,
+                              child: Text("Cancel order".tr,
                                   style: TextStyle(
                                     color: mainColorGrey,
                                     fontSize: 16,
@@ -341,12 +340,6 @@ class _TrackOrderState extends State<TrackOrder> {
                                       widget.total, widget.time, status)),
                             );
                           },
-                          child: Text('View order',
-                              style: TextStyle(
-                                color: mainColorWhite,
-                                fontSize: 16,
-                                fontFamily: mainFontnormal,
-                              )),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: mainColorGrey,
                             fixedSize: Size(
@@ -355,8 +348,14 @@ class _TrackOrderState extends State<TrackOrder> {
                               borderRadius: BorderRadius.circular(50),
                             ),
                           ),
+                          child: Text("View order".tr,
+                              style: TextStyle(
+                                color: mainColorWhite,
+                                fontSize: 16,
+                                fontFamily: mainFontnormal,
+                              )),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ],
               )
             ],

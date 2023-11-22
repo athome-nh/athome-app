@@ -82,11 +82,11 @@ class _location_DeatilState extends State<location_Deatil> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Container(
+                  child: SizedBox(
                     height: getHeight(context, 15),
                     width: getWidth(context, 100),
                     child: MapWidget(
-                      key: ValueKey("mapWidget"),
+                      key: const ValueKey("mapWidget"),
                       resourceOptions:
                           ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
                       onMapCreated: (controller) {
@@ -289,7 +289,9 @@ class _location_DeatilState extends State<location_Deatil> {
                                 floorE = false;
                               });
                             },
-                            validator: (value) {},
+                            validator: (value) {
+                              return null;
+                            },
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
@@ -350,7 +352,9 @@ class _location_DeatilState extends State<location_Deatil> {
                                 number2E = false;
                               });
                             },
-                            validator: (value) {},
+                            validator: (value) {
+                              return null;
+                            },
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
@@ -416,7 +420,9 @@ class _location_DeatilState extends State<location_Deatil> {
                                     floorE = false;
                                   });
                                 },
-                                validator: (value) {},
+                                validator: (value) {
+                                  return null;
+                                },
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -477,7 +483,9 @@ class _location_DeatilState extends State<location_Deatil> {
                                     number2E = false;
                                   });
                                 },
-                                validator: (value) {},
+                                validator: (value) {
+                                  return null;
+                                },
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -527,7 +535,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                   : const SizedBox(),
                             ],
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                 SizedBox(
                   height: getHeight(context, 2),
                 ),
@@ -541,7 +549,9 @@ class _location_DeatilState extends State<location_Deatil> {
                       numberE = false;
                     });
                   },
-                  validator: (value) {},
+                  validator: (value) {
+                    return null;
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -599,7 +609,9 @@ class _location_DeatilState extends State<location_Deatil> {
                   cursorColor: mainColorGrey,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {},
-                  validator: (value) {},
+                  validator: (value) {
+                    return null;
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),

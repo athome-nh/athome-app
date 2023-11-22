@@ -185,7 +185,7 @@ class _CheckOutState extends State<CheckOut> {
                                                       Row(
                                                         children: [
                                                           Text(
-                                                            "${location.type} - ${location.number == null ? "" : location.number}",
+                                                            "${location.type} - ${location.number ?? ""}",
                                                             style: TextStyle(
                                                                 fontFamily:
                                                                     mainFontnormal,
@@ -515,7 +515,6 @@ class _CheckOutState extends State<CheckOut> {
                                 .postData("order", data2, context)
                                 .then((value) {
                               if (value != "") {
-                                print(value);
                                 if (value["code"] == "201") {
                                   setState(() {
                                     waitingcheckout = false;

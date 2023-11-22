@@ -833,7 +833,7 @@ class _SettingState extends State<Setting> {
                                                                           mainColorRed),
                                                                   child: Center(
                                                                     child: Text(
-                                                                      "Cancle"
+                                                                      "Cancel"
                                                                           .tr,
                                                                       style: TextStyle(
                                                                           fontFamily:

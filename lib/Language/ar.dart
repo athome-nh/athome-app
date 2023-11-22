@@ -41,7 +41,7 @@ const Map<String, String> ar = {
   "Login Please": "سجل",
   "You need login": "یرجی التسجیل قبل التسوق",
   "Login": "تسجیل الدخول",
-  "Cancle": "الغاء",
+  "Cancel": "الغاء",
 
   // categories
   "All Categories": "کل الفئات",
@@ -162,6 +162,7 @@ const Map<String, String> ar = {
   "Enter number": "ادخال الرقم",
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
+  "Delete location success": "تم ازالة الموقع",
 
   // singin_up
   "Complete Account": "اکمل الحساب",
@@ -194,57 +195,10 @@ const Map<String, String> ar = {
   "try again": "یرجی المحاولة",
   "Failed to load data": "فشلت التحمیل البیانات",
 
-  
-
-
-  // mawa
-  "Single Oroduct": "منتج واحد",
-  "Melon Imported": "Melon Imported",
-  "info: ": "معلومات: ",
-  "Place Order": "ثبت الطلبیة",
-  "Add To Cart": "اضافة الی السلة",
-  "Delete All Items": "ازاله کل العناصر",
-  "are you sure delete all items": "متأکد من ازاله کل العناصر",
-  "Delivery Instrusctions": "تعلیمات التوصیل",
-  "Type Notes here": "اکتب الملاحضات هنا",
-  "Saved Address": "العنوان الموجود",
-  "Add your New address": "اضافة العنوان",
-  'You\'re online ✅': 'متصل بالنت ✅',
-  'You\'re offline, connect to a network.': '‌‌أنت غیر متصل',
-  "Warning": "تحذیر",
-  'Log in': 'تسجیل الدخول',
-  "Loyalty point": "نقطة الولاء",
-  "I want to Delete my account": "I want to Delete my account",
-  "Signout": "تسجیل الخروج",
-  "Enter your phone number to Shop Smarter & Easier.": "أدخل رقم هاتفك و تسوق",
-  "Cancel": "الغاء",
-  "Edit account": "تحریر الحساب",
-  "Male": "ذکر",
-  "Female": "أنثی",
-  "Ordered:": "صارت الطلبیة:",
-  "Delivered:": "تم التسلیم:",
-  "Select Location": "اختر الموقع",
-  "Add another location": "اضافةالموقع التوصیل",
-  "Order ID:": "رقم الطلبیة:",
-  "Select": "اختار",
-  "Sign out": "تسجیل الخروج",
-  "cateItem": "cateItem",
-  "You need login to add item in cart":
-      "سجل الدخول لاضافة عناصر الی سلة التسوق",
-  "This list is empty": "لا یوجد اڕ عنصر",
-  "info:": "info:",
-  "Clear My cart": "ازالة سلة المشتریات",
-  "You want delete all items in cart": "ازالة العناصر من سلة المشتریات",
-  "New Discount": "عروضات الجدیدة",
-  "Description": "وصف",
-  "Notfication": "اشعارات",
-  "You orders has been picked up": "تم الاستلام الطلبیة",
-  "Now": "الان",
+  // track_order
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
-  "Cancle order": "اخلاء الطلبیة",
-  "We will send you OTP code to verifiy your phone number.":"نرسل لك رمز OTP للتحق من من رقم الهاتف",
-  "Delete location success": "تم ازالة الموقع",
-  "Add location": "اضافةالموقع",
- 
+  "Cancel order": "اخلاء الطلبیة",
+  "View order":"View order",
+
 };

@@ -41,7 +41,7 @@ const Map<String, String> kur = {
   "Login Please": "خۆت تۆمار بکە",
   "You need login": "له‌ پێش دا خۆت تۆمار بکە",
   "Login": "خۆتۆمارکردن",
-  "Cancle": "پوچەڵ کردنەوە",
+  "Cancel": "پوچەڵ کردنەوە",
 
   // categories
   "All Categories": "گشت پۆلێنەکان",
@@ -162,6 +162,7 @@ const Map<String, String> kur = {
   "Enter number": "ژمارەکە داخڵ بکە",
   "Phone number": "ژمارەی مۆبایل",
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
+  "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
 
   // singin_up
   "Complete Account": "هەژمارەکەت دروست کرا",
@@ -194,57 +195,10 @@ const Map<String, String> kur = {
   "try again": "دوبارە هەوڵ بدەوە",
   "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی داتا",
 
-  
-
-
-  
-  // mawa
-  "Single Oroduct": "یەک داواکاری",
-  "Melon Imported": "Melon Imported",
-  "info: ": "زانیاری: ",
-  "Place Order": "دانانی داواکاری",
-  "Add To Cart": "زیادکردن بۆ سەبەتەی کڕین",
-  "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:":
-      "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
-  "Delete All Items": "سڕینەوەی گشت بابەتەکان",
-  "are you sure delete all items": "دڵنیای لە سڕینەوەی گشت بابەتەکان",
-  "Delivery Instrusctions": "زانیاری دەربارەی گەیاندن",
-  "Type Notes here": "تێبینی بنوسە",
-  "Saved Address": "ناونیشانی تۆمارکراو",
-  "Add your New address": "ناونیشانی نوێ زیاد بکە",
-  'You\'re online ✅': 'پەیوەستی بە ئینتەرنێت ✅',
-  'You\'re offline, connect to a network.': 'پەیوەست نیت بە ئینتەرنێت، تکایە خۆت پەیوەست بکە.',
-"Loyalty point": "خاڵی دڵسۆزی", 
-  "Warning": "ئاگاداری",
-  'Log in': 'داخڵ بوون',
-  "I want to Delete my account": "I want to Delete my account",
-  "Signout": "دەرچوون",
-  "Cancel": "پوچەڵ کردنەوە",
-  "Edit account": "Edit account",
-  "Male": "نێر",
-  "Female": "مێ",
-  "Ordered:": "داواکرا:",
-  "Delivered:": "گەیەنرا:",
-  "Select Location": "جێگیرکردنی ناونیشان",
-  "Add another location": "زیادکردنی ناونیسانی گەیاندن",
-  "Order ID:": "ناوی داواکاری:",
-  "Select": "دیاری بکە",
-  "Sign out": "دەرچوون",
-  "cateItem": "cateItem",
-  "You need login to add item in cart": "پێویستە خۆت تۆمار بکەیت بۆ زیاد کردنی ئەم بەرهەمە بۆ سەبەتەی کڕین",
-  "This list is empty": "لیستەکە بەتاڵە",
-  "info:": "زانیاری:",
-  "Clear My cart": "بەتاڵ کردنی سەبەتەی کڕین",
-  "You want delete all items in cart": " بەتاڵ کردنەوەی هەموو بابەتەکان لە سەبەتەی کڕین",
-  "New Discount": "داشکانی نوێ",
-  "Description": "وەسف کردن",
-  "Notfication": "ئاگا نامە",
-  "You orders has been picked up": "داواکاریەکەت هەڵگیرا",
-  "Now": "ئێستا",
+  // track_order
   "Track Order": "بینینی داواکاری",
   "Order:": "داواکاری:",
-  "Cancle order": "پوچەڵ کردنەوەی داواکاری",
-  "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
-  "Add location": "زیادکردنی ناونیشان",
-  
+  "Cancel order": "پوچەڵ کردنەوەی داواکاری",
+  "View order":"???",
+ 
 };

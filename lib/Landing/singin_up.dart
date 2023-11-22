@@ -397,7 +397,7 @@ class _SingInUpState extends State<SingInUp> {
                                             ? Alignment.topLeft
                                             : Alignment.topRight,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: getWidth(context, 70),
                                             height: getHeight(context, 50),
                                             child: Column(
@@ -412,7 +412,7 @@ class _SingInUpState extends State<SingInUp> {
                                                   width: getWidth(context, 40),
                                                   height: getWidth(context, 40),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Text(
@@ -425,7 +425,7 @@ class _SingInUpState extends State<SingInUp> {
                                                     fontSize: 25,
                                                   ),
                                                 ),
-                                                SizedBox(height: 10),
+                                                const SizedBox(height: 10),
                                                 Text(
                                                   "Account npt approved by admin yet"
                                                       .tr,
@@ -474,7 +474,7 @@ class _SingInUpState extends State<SingInUp> {
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
-                                              icon: Icon(Icons.close))
+                                              icon: const Icon(Icons.close))
                                         ],
                                       ),
                                     );
@@ -515,7 +515,7 @@ class _SingInUpState extends State<SingInUp> {
                                             ? Alignment.topLeft
                                             : Alignment.topRight,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: getWidth(context, 70),
                                             height: getHeight(context, 50),
                                             child: Column(
@@ -529,7 +529,7 @@ class _SingInUpState extends State<SingInUp> {
                                                   width: getWidth(context, 40),
                                                   height: getWidth(context, 40),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Text(
@@ -542,7 +542,7 @@ class _SingInUpState extends State<SingInUp> {
                                                     fontSize: 25,
                                                   ),
                                                 ),
-                                                SizedBox(height: 10),
+                                                const SizedBox(height: 10),
                                                 Text(
                                                   "Account is disable please contact athome admin"
                                                       .tr,
@@ -591,7 +591,7 @@ class _SingInUpState extends State<SingInUp> {
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
-                                              icon: Icon(Icons.close))
+                                              icon: const Icon(Icons.close))
                                         ],
                                       ),
                                     );
