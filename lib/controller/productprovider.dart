@@ -50,7 +50,10 @@ class productProvider extends ChangeNotifier {
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
-          setProducts((json.decode(decryptAES(value["products"])) as List)
+          // setProducts((json.decode(decryptAES(value["products"])) as List)
+          //     .map((x) => ProductModel.fromMap(x))
+          //     .toList());
+          setProducts((value["products"] as List)
               .map((x) => ProductModel.fromMap(x))
               .toList());
           setCategorys((value['category'] as List)
