@@ -58,6 +58,7 @@ Widget listItemsShimer(BuildContext context) {
                                 const SizedBox(
                                   height: 5,
                                 ),
+                                // rectangle
                                 CachedNetworkImage(
                                   imageUrl: "assets/images/002_logo_1.png",
                                   placeholder: (context, url) => Image.asset(
@@ -68,6 +69,7 @@ Widget listItemsShimer(BuildContext context) {
                                   width: getWidth(context, 22),
                                   height: getWidth(context, 22),
                                 ),
+                                // space
                                 const SizedBox(
                                   height: 5,
                                 ),
@@ -109,31 +111,18 @@ Widget listItemsShimer(BuildContext context) {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: getHeight(context, 7),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: getHeight(context, 7),
-                                    width: getWidth(context, 25),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "45545454544",
-                                          style: TextStyle(
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "45545454544",
+                                  style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
                             ),
                           ],
                         ),
