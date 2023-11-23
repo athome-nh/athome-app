@@ -94,7 +94,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                             color: mainColorRed,
                                             size: 35,
                                           ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Column(
@@ -119,7 +119,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                         ),
                                       ],
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     TextButton(
                                         onPressed: () {
                                           var data = {"id": location.id!};
@@ -134,9 +134,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                                         listen: false)
                                                     .deletelocation(
                                                         location.id!);
-                                                toastShort(
-                                                    "Delete location success"
-                                                        .tr);
+                                                toastShort("Delete location success".tr);
                                               }
                                             }
                                           });
@@ -149,7 +147,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                         )),
                                   ]),
                                 ),
-                                Divider()
+                                const Divider()
                               ],
                             ),
                           );

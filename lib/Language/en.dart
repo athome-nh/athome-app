@@ -41,7 +41,7 @@ const Map<String, String> en = {
   "Login Please": "Register First",
   "You need login": "You have to register first",
   "Login": "Register",
-  "Cancle": "Cancel",
+  "Cancel": "Cancel",
 
   // categories
   "All Categories": "All Categories",
@@ -162,6 +162,7 @@ const Map<String, String> en = {
   "Enter number": "Enter number",
   "Phone number": "Phone number",
   "Add phone number": "Add phone number",
+  "Delete location success": "Delete location success",
 
   // singin_up
   "Complete Account": "Account created",
@@ -194,23 +195,10 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
- 
-
-  // mawaa 
-  'You\'re online ✅': 'You are online ✅',
-  "You need login to add item in cart": "You need to register to add item to the cart",
-  "This list is empty": "The list is empty",
-  "info:": "info:",
-  "Clear My cart": "Clear My cart",
-  "You want delete all items in cart": "Do you want to delete all items in the cart", 
-  "New Discount": "New Special offers", 
-  "Description": "Description",
-  "Notfication": "Notfication",
-  "You orders has been picked up": "You order has been picked up",
-  "Now": "Now", 
+  // track_order
   "Track Order": "Track your Order",
   "Order:": "Order:",
-  "Cancle order": "Cancel order",
-  "Delete location success": "Delete location success",
-  "Add location": "Add location",
+  "Cancel order": "Cancel order",
+  "View order":"View order",
+
 };

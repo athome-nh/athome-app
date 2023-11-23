@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:athome/Account/profilo.dart';
-import 'package:athome/Notifications/Notification.dart';
 import 'package:athome/controller/cartprovider.dart';
 import 'package:athome/home/favorite.dart';
 import 'package:athome/home/my_cart.dart';
@@ -11,7 +10,6 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:athome/Config/property.dart';
 import 'package:provider/provider.dart';
-import 'package:upgrader/upgrader.dart';
 import '../main.dart';
 import 'home_page.dart';
 

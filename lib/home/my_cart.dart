@@ -85,7 +85,7 @@ class _MyCartState extends State<MyCart> {
                 backgroundColor: mainColorWhite,
                 elevation: 0,
                 actions: [
-                  cartProvider.cartItems.isEmpty && !isLogin
+                  cartProvider.cartItems.isEmpty || !isLogin
                       ? const SizedBox()
                       : IconButton(
                           onPressed: () {
@@ -178,7 +178,7 @@ class _MyCartState extends State<MyCart> {
                                                 ),
                                               ),
                                               child: Text(
-                                                "Cancle".tr,
+                                                "Cancel".tr,
                                                 style: TextStyle(
                                                   color: mainColorGrey,
                                                   fontSize: 16,
@@ -202,300 +202,321 @@ class _MyCartState extends State<MyCart> {
                           icon: Icon(
                             Icons.delete_outline,
                             color: mainColorRed,
-                          )),
+                          ),
+                        ),
                 ],
               ),
               body: !isLogin
                   ? loginFirstContainer(context)
                   : cartProvider.cartItems.isNotEmpty
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: ListView.builder(
-                              itemCount: cartProvider.cartItems.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                final cartitem = CardItemshow[index];
-                                final cartitemQ = cartProvider.cartItems[index];
-                                return Dismissible(
-                                  key: Key(cartitem.id.toString()),
-                                  direction: DismissDirection.startToEnd,
-                                  onDismissed: (direction) {
-                                    String name = lang == "en"
-                                        ? cartitem.nameEn.toString()
-                                        : lang == "ar"
-                                            ? cartitem.nameAr.toString()
-                                            : cartitem.nameKu.toString();
-                                    cartProvider.deleteitem(cartitemQ.product);
-                                    CardItemshow =
-                                        productrovider.getProductsByIds(
-                                            cartProvider.ListId());
+                      ? Visibility(
+                          replacement: Center(child: waitingWiget(context)),
+                          visible: productrovider.show,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: ListView.builder(
+                                itemCount: cartProvider.cartItems.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final cartitem = CardItemshow[index];
+                                  final cartitemQ =
+                                      cartProvider.cartItems[index];
+                                  return Dismissible(
+                                    key: Key(cartitem.id.toString()),
+                                    direction: DismissDirection.startToEnd,
+                                    onDismissed: (direction) {
+                                      String name = lang == "en"
+                                          ? cartitem.nameEn.toString()
+                                          : lang == "ar"
+                                              ? cartitem.nameAr.toString()
+                                              : cartitem.nameKu.toString();
+                                      cartProvider
+                                          .deleteitem(cartitemQ.product);
+                                      CardItemshow =
+                                          productrovider.getProductsByIds(
+                                              cartProvider.ListId());
 
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          "Delete".tr + name,
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            "Delete".tr + name,
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  background: Container(
-                                    color: Colors.red,
-                                    child: const Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.white,
+                                      );
+                                    },
+                                    background: Container(
+                                      color: Colors.red,
+                                      child: const Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20),
+                                          child: Icon(
+                                            Icons.delete,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            left: getWidth(context, 2),
-                                            right: getWidth(context, 4)),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              width: getWidth(context, 20),
-                                              height: getWidth(context, 20),
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: mainColorBlack
-                                                        .withOpacity(0.1)),
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                              ),
-                                              child: Center(
-                                                child: CachedNetworkImage(
-                                                  imageUrl: imageUrlServer +
-                                                      cartitem.coverImg!,
-                                                  width: getWidth(context, 15),
-                                                  height: getWidth(context, 15),
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: getWidth(context, 2),
+                                              right: getWidth(context, 4)),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: getWidth(context, 20),
+                                                height: getWidth(context, 20),
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: mainColorBlack
+                                                          .withOpacity(0.1)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
                                                 ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: getWidth(context, 2),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                SizedBox(
-                                                  width: getWidth(context, 40),
-                                                  child: Text(
-                                                    lang == "en"
-                                                        ? cartitem.nameEn
-                                                            .toString()
-                                                        : lang == "ar"
-                                                            ? cartitem.nameAr
-                                                                .toString()
-                                                            : cartitem.nameKu
-                                                                .toString(),
-                                                    textAlign: TextAlign.start,
-                                                    maxLines: 1,
-                                                    style: TextStyle(
-                                                        color: mainColorGrey,
-                                                        fontFamily:
-                                                            mainFontbold,
-                                                        fontSize: 14),
+                                                child: Center(
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: imageUrlServer +
+                                                        cartitem.coverImg!,
+                                                    width:
+                                                        getWidth(context, 15),
+                                                    height:
+                                                        getWidth(context, 15),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: getHeight(context, 1),
-                                                ),
-                                                SizedBox(
-                                                  width: getWidth(context, 40),
-                                                  child: Text(
-                                                    lang == "en"
-                                                        ? cartitem.contentsEn
-                                                            .toString()
-                                                        : lang == "ar"
-                                                            ? cartitem
-                                                                .contentsAr
-                                                                .toString()
-                                                            : cartitem
-                                                                .contentsKu
-                                                                .toString(),
-                                                    textAlign: TextAlign.start,
-                                                    maxLines: 1,
-                                                    style: TextStyle(
-                                                        color: mainColorGrey
-                                                            .withOpacity(0.5),
-                                                        fontFamily:
-                                                            mainFontbold,
-                                                        fontSize: 11),
-                                                  ),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      addCommasToPrice(
-                                                          cartitem.price2! > -1
-                                                              ? cartitem.price2!
-                                                              : cartitem
-                                                                  .price!),
-                                                      maxLines: 1,
-                                                      style: TextStyle(
-                                                          decoration: checkOferPrice(
-                                                                  cartitem)
-                                                              ? TextDecoration
-                                                                  .lineThrough
-                                                              : TextDecoration
-                                                                  .none,
-                                                          color: checkOferPrice(
-                                                                  cartitem)
-                                                              ? mainColorRed
-                                                              : Colors.green,
-                                                          fontFamily:
-                                                              checkOferPrice(
-                                                                      cartitem)
-                                                                  ? mainFontnormal
-                                                                  : mainFontbold,
-                                                          fontSize: 14),
-                                                    ),
-                                                    checkOferPrice(cartitem)
-                                                        ? const Text("/")
-                                                        : const SizedBox(),
-                                                    checkOferPrice(cartitem)
-                                                        ? Text(
-                                                            addCommasToPrice(
-                                                                cartitem
-                                                                    .offerPrice!),
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .green,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 14),
-                                                          )
-                                                        : const SizedBox(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            const Spacer(),
-                                            Container(
-                                              width: getWidth(context, 20),
-                                              height: getHeight(context, 4),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                color: mainColorWhite,
                                               ),
-                                              child: Row(
+                                              SizedBox(
+                                                width: getWidth(context, 2),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
-                                                        .spaceBetween,
+                                                        .spaceEvenly,
                                                 children: [
-                                                  GestureDetector(
-                                                    onTap: checkProductStock(
-                                                                cartitem,
-                                                                cartitemQ
-                                                                    .quantity) ||
-                                                            checkProductLimit(
-                                                                cartitem,
-                                                                cartitemQ
-                                                                    .quantity)
-                                                        ? null
-                                                        : () {
-                                                            final cartItem =
-                                                                CartItem(
-                                                                    product:
-                                                                        cartitemQ
-                                                                            .product);
-                                                            cartProvider
-                                                                .addToCart(
-                                                                    cartItem);
-                                                          },
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5),
-                                                          border: Border.all(
-                                                              color: checkProductStock(
-                                                                          cartitem,
-                                                                          cartitemQ
-                                                                              .quantity) ||
-                                                                      checkProductLimit(
-                                                                          cartitem,
-                                                                          cartitemQ
-                                                                              .quantity)
-                                                                  ? mainColorGrey
-                                                                      .withOpacity(
-                                                                          0.5)
-                                                                  : Colors
-                                                                      .green)),
-                                                      child: Icon(Icons.add,
-                                                          color: checkProductStock(
-                                                                      cartitem,
-                                                                      cartitemQ
-                                                                          .quantity) ||
-                                                                  checkProductLimit(
-                                                                      cartitem,
-                                                                      cartitemQ
-                                                                          .quantity)
-                                                              ? mainColorGrey
-                                                                  .withOpacity(
-                                                                      0.5)
-                                                              : Colors.green,
-                                                          size: getHeight(
-                                                              context, 2.5)),
+                                                  SizedBox(
+                                                    width:
+                                                        getWidth(context, 40),
+                                                    child: Text(
+                                                      lang == "en"
+                                                          ? cartitem.nameEn
+                                                              .toString()
+                                                          : lang == "ar"
+                                                              ? cartitem.nameAr
+                                                                  .toString()
+                                                              : cartitem.nameKu
+                                                                  .toString(),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 14),
                                                     ),
                                                   ),
-                                                  Text(
-                                                    cartitemQ.quantity
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: mainColorGrey,
-                                                        fontFamily:
-                                                            mainFontnormal,
-                                                        fontSize: 18),
+                                                  SizedBox(
+                                                    height:
+                                                        getHeight(context, 1),
                                                   ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      final cartItem = CartItem(
-                                                          product: cartitemQ
-                                                              .product);
-                                                      cartProvider
-                                                          .removeFromCart(
-                                                              cartItem);
-                                                    },
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5),
-                                                          border: Border.all(
-                                                              color:
-                                                                  mainColorRed)),
-                                                      child: Icon(Icons.remove,
-                                                          color: mainColorRed,
-                                                          size: getHeight(
-                                                              context, 2.5)),
+                                                  SizedBox(
+                                                    width:
+                                                        getWidth(context, 40),
+                                                    child: Text(
+                                                      lang == "en"
+                                                          ? cartitem.contentsEn
+                                                              .toString()
+                                                          : lang == "ar"
+                                                              ? cartitem
+                                                                  .contentsAr
+                                                                  .toString()
+                                                              : cartitem
+                                                                  .contentsKu
+                                                                  .toString(),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                          color: mainColorGrey
+                                                              .withOpacity(0.5),
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 11),
                                                     ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        addCommasToPrice(
+                                                            cartitem.price2! >
+                                                                    -1
+                                                                ? cartitem
+                                                                    .price2!
+                                                                : cartitem
+                                                                    .price!),
+                                                        maxLines: 1,
+                                                        style: TextStyle(
+                                                            decoration: checkOferPrice(
+                                                                    cartitem)
+                                                                ? TextDecoration
+                                                                    .lineThrough
+                                                                : TextDecoration
+                                                                    .none,
+                                                            color: checkOferPrice(
+                                                                    cartitem)
+                                                                ? mainColorRed
+                                                                : Colors.green,
+                                                            fontFamily: checkOferPrice(
+                                                                    cartitem)
+                                                                ? mainFontnormal
+                                                                : mainFontbold,
+                                                            fontSize: 14),
+                                                      ),
+                                                      checkOferPrice(cartitem)
+                                                          ? const Text("/")
+                                                          : const SizedBox(),
+                                                      checkOferPrice(cartitem)
+                                                          ? Text(
+                                                              addCommasToPrice(
+                                                                  cartitem
+                                                                      .offerPrice!),
+                                                              maxLines: 1,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .green,
+                                                                  fontFamily:
+                                                                      mainFontbold,
+                                                                  fontSize: 14),
+                                                            )
+                                                          : const SizedBox(),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                          ],
+                                              const Spacer(),
+                                              Container(
+                                                width: getWidth(context, 20),
+                                                height: getHeight(context, 4),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: mainColorWhite,
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: checkProductStock(
+                                                                  cartitem,
+                                                                  cartitemQ
+                                                                      .quantity) ||
+                                                              checkProductLimit(
+                                                                  cartitem,
+                                                                  cartitemQ
+                                                                      .quantity)
+                                                          ? null
+                                                          : () {
+                                                              final cartItem =
+                                                                  CartItem(
+                                                                      product:
+                                                                          cartitemQ
+                                                                              .product);
+                                                              cartProvider
+                                                                  .addToCart(
+                                                                      cartItem);
+                                                            },
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            border: Border.all(
+                                                                color: checkProductStock(
+                                                                            cartitem,
+                                                                            cartitemQ
+                                                                                .quantity) ||
+                                                                        checkProductLimit(
+                                                                            cartitem,
+                                                                            cartitemQ
+                                                                                .quantity)
+                                                                    ? mainColorGrey
+                                                                        .withOpacity(
+                                                                            0.5)
+                                                                    : Colors
+                                                                        .green)),
+                                                        child: Icon(Icons.add,
+                                                            color: checkProductStock(
+                                                                        cartitem,
+                                                                        cartitemQ
+                                                                            .quantity) ||
+                                                                    checkProductLimit(
+                                                                        cartitem,
+                                                                        cartitemQ
+                                                                            .quantity)
+                                                                ? mainColorGrey
+                                                                    .withOpacity(
+                                                                        0.5)
+                                                                : Colors.green,
+                                                            size: getHeight(
+                                                                context, 2.5)),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      cartitemQ.quantity
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          fontSize: 18),
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        final cartItem = CartItem(
+                                                            product: cartitemQ
+                                                                .product);
+                                                        cartProvider
+                                                            .removeFromCart(
+                                                                cartItem);
+                                                      },
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            border: Border.all(
+                                                                color:
+                                                                    mainColorRed)),
+                                                        child: Icon(
+                                                            Icons.remove,
+                                                            color: mainColorRed,
+                                                            size: getHeight(
+                                                                context, 2.5)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      const Divider()
-                                    ],
-                                  ),
-                                );
-                              }),
+                                        const Divider()
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
                         )
                       : Center(
                           child: Column(

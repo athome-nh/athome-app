@@ -1,12 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:athome/Config/athome_functions.dart';
 import 'package:athome/Config/local_data.dart';
 import 'package:athome/Config/property.dart';
-import 'package:athome/Landing/disableaccount.dart';
 import 'package:athome/Network/Network.dart';
-
 import 'package:athome/landing/splash_screen.dart';
 import 'package:athome/main.dart';
 import 'package:athome/model/brandmodel/brandmodel.dart';
@@ -20,7 +17,6 @@ import 'package:athome/model/products_image/products_image.dart';
 import 'package:athome/model/slidemodel/slidemodel.dart';
 import 'package:athome/model/sub_category/sub_category.dart';
 import 'package:athome/model/topmodel/topmodel.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,7 +47,6 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataAll(bool user) {
-    print("Start");
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
@@ -82,15 +77,13 @@ class productProvider extends ChangeNotifier {
           }
 
           setshow(true);
-
-          print("end");
         } else {}
       } else {}
     });
   }
 
   getDataUser(String id) {
-    Network(false).getData("showDataUser/" + id).then((value) async {
+    Network(false).getData("showDataUser/$id").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
           setlocation((value['locations'] as List)
@@ -134,7 +127,7 @@ class productProvider extends ChangeNotifier {
                               ? Alignment.topLeft
                               : Alignment.topRight,
                           children: [
-                            Container(
+                            SizedBox(
                               width: getWidth(context, 70),
                               height: getHeight(context, 50),
                               child: Column(
@@ -146,7 +139,7 @@ class productProvider extends ChangeNotifier {
                                     width: getWidth(context, 40),
                                     height: getWidth(context, 40),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Text(
@@ -159,7 +152,7 @@ class productProvider extends ChangeNotifier {
                                       fontSize: 25,
                                     ),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     "Account is disable please contact athome admin"
                                         .tr,
@@ -195,7 +188,7 @@ class productProvider extends ChangeNotifier {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                icon: Icon(Icons.close))
+                                icon: const Icon(Icons.close))
                           ],
                         ),
                       );
@@ -468,11 +461,11 @@ class productProvider extends ChangeNotifier {
   String listOrderitemsId(int id) {
     String orderItemsId = "";
 
-    _Orderitems.forEach((element) {
+    for (var element in _Orderitems) {
       if (element.orderId == id) {
-        orderItemsId += ",," + element.productId.toString();
+        orderItemsId += ",,${element.productId}";
       }
-    });
+    }
 
     return orderItemsId;
   }
@@ -480,18 +473,18 @@ class productProvider extends ChangeNotifier {
   List<int> listOrderId() {
     List<int> orderPakageId = [];
 
-    _Orders.forEach((element) {
+    for (var element in _Orders) {
       orderPakageId.add(element.id!);
-    });
+    }
 
     return orderPakageId.toSet().toList();
   }
 
   List<int> listOrderProductIds() {
     List<int> OrderProductId = [];
-    _Orderitems.forEach((element) {
+    for (var element in _Orderitems) {
       OrderProductId.add(element.productId!);
-    });
+    }
 
     return OrderProductId.toSet().toList();
   }
