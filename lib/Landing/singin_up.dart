@@ -370,7 +370,9 @@ class _SingInUpState extends State<SingInUp> {
                         "city": city == "Select City" ? "Erbil" : city,
                         "age": age.toString(),
                         "gender": gender,
-                        "img": gender == "MAle" ? "" : "img",
+                        "img": gender == "Male"
+                            ? "storage/profile/Man.png"
+                            : "storage/profile/Woman.png",
                         "fcmToken": token2,
                         "device": Platform.isAndroid
                             ? _readAndroidBuildData(

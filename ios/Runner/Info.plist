@@ -79,5 +79,11 @@
 	</array>
 	   <key>FirebaseAppDelegateProxyEnabled</key>
     <false/>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+<string>We need access to your photo library to select images.</string>
+<key>NSCameraUsageDescription</key>
+<string>We need access to your camera to take photos.</string>
+
 </dict>
 </plist>
