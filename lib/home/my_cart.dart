@@ -664,7 +664,145 @@ class _MyCartState extends State<MyCart> {
                                     if (cartProvider
                                             .calculateTotalPrice(CardItemshow) <
                                         productrovider.minimumOrder) {
-                                      toastLong("minimum order");
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            content: Stack(
+                                              alignment: lang == "en"
+                                                  ? Alignment.topLeft
+                                                  : Alignment.topRight,
+                                              children: [
+                                                SizedBox(
+                                                  width: getWidth(context, 70),
+                                                  height:
+                                                      getHeight(context, 50),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    //textcheck
+                                                    children: <Widget>[
+                                                      Image.asset(
+                                                        "assets/Victors/sure.png",
+                                                        width: getWidth(
+                                                            context, 40),
+                                                        height: getWidth(
+                                                            context, 40),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text(
+                                                        "Clear cart".tr,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 1,
+                                                        style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 25,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                          height: 10),
+                                                      Text(
+                                                        "Are you sure you wnat to continue?"
+                                                            .tr,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          cartProvider
+                                                              .clearCart();
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          fixedSize: Size(
+                                                              getWidth(
+                                                                  context, 70),
+                                                              getHeight(
+                                                                  context, 5)),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                color:
+                                                                    mainColorRed),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          "Clear".tr,
+                                                          style: TextStyle(
+                                                            color: mainColorRed,
+                                                            fontSize: 16,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          fixedSize: Size(
+                                                              getWidth(
+                                                                  context, 70),
+                                                              getHeight(
+                                                                  context, 5)),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                color:
+                                                                    mainColorGrey),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          "Cancel".tr,
+                                                          style: TextStyle(
+                                                            color:
+                                                                mainColorGrey,
+                                                            fontSize: 16,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon:
+                                                        const Icon(Icons.close))
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+
                                       return;
                                     }
                                     Navigator.push(

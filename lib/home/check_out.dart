@@ -7,6 +7,7 @@ import 'package:athome/map/map_screen.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
@@ -82,7 +83,12 @@ class _CheckOutState extends State<CheckOut> {
                               fontSize: 20),
                         ),
                         IconButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              LocationPermission permission =
+                                  await Geolocator.requestPermission();
+                              if (permission == LocationPermission.denied) {
+                                // Handle case where the user denied access to their location
+                              }
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -101,7 +107,12 @@ class _CheckOutState extends State<CheckOut> {
                       height: getHeight(context, 15),
                       child: productrovider.location.isEmpty
                           ? GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                LocationPermission permission =
+                                    await Geolocator.requestPermission();
+                                if (permission == LocationPermission.denied) {
+                                  // Handle case where the user denied access to their location
+                                }
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -581,7 +592,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                 mainFontbold),
                                                       ),
                                                       Text(
-                                                        value["data"],
+                                                        value["id"].toString(),
                                                         style: TextStyle(
                                                             fontSize: 16,
                                                             color:

@@ -5,6 +5,7 @@ import 'package:athome/controller/productprovider.dart';
 import 'package:athome/main.dart';
 import 'package:athome/map/map_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,12 @@ class _LocationScreenState extends State<LocationScreen> {
           elevation: 0,
           actions: [
             IconButton(
-                onPressed: () {
+                onPressed: () async {
+                  LocationPermission permission =
+                      await Geolocator.requestPermission();
+                  if (permission == LocationPermission.denied) {
+                    // Handle case where the user denied access to their location
+                  }
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const Map_screen()),
@@ -134,7 +140,9 @@ class _LocationScreenState extends State<LocationScreen> {
                                                         listen: false)
                                                     .deletelocation(
                                                         location.id!);
-                                                toastShort("Delete location success".tr);
+                                                toastShort(
+                                                    "Delete location success"
+                                                        .tr);
                                               }
                                             }
                                           });

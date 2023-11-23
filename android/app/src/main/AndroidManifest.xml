@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
 
         android:label="athome"
@@ -42,6 +43,7 @@
         android:name="com.google.firebase.messaging.default_notification_icon"
          android:resource="@drawable/launcher_icon2" />  
          
+
 
 
 

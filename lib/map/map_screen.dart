@@ -370,6 +370,7 @@ class _Map_screenState extends State<Map_screen> {
   }
 
   Future<void> getCureentlocation() async {
+    print("object");
     final myLocationData = await getCurrentLatLng();
 
     getLocationName(myLocationData.longitude, myLocationData.latitude);

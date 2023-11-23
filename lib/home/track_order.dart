@@ -4,6 +4,7 @@ import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Network/Network.dart';
 import 'package:athome/controller/productprovider.dart';
 import 'package:athome/landing/splash_screen.dart';
+import 'package:athome/main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:athome/Config/property.dart';
@@ -28,22 +29,9 @@ List images = [
   "assets/images/new_delivered.gif",
   "assets/images/Order-Success.gif",
 ];
-List titles = [
-  "Order Placed",
-  "Processing Order",
-  "Processing Order",
-  "Order Is On way",
-  "Order Ready For Pickup",
-  "Order is delivered"
-];
-List content = [
-  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-  "Your order is  delivered thank you for ordering jassk xcnc kz  ."
-];
+late List titles;
+late List content;
+
 int status = 0;
 
 class _TrackOrderState extends State<TrackOrder> {
@@ -55,7 +43,7 @@ class _TrackOrderState extends State<TrackOrder> {
             if (value["status"] == 5) {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
-              productrovider.getDataUser(userdata["id"]);
+              productrovider.getDataUser(userdata["id"].toString());
             }
             final productrovider =
                 Provider.of<productProvider>(context, listen: false);
@@ -74,6 +62,58 @@ class _TrackOrderState extends State<TrackOrder> {
   Timer? _timer;
   @override
   void initState() {
+    if (lang == "en") {
+      titles = [
+        "Order Placed",
+        "Processing Order",
+        "Processing Order",
+        "Order Is On way",
+        "Order Ready For Pickup",
+        "Order is delivered"
+      ];
+      content = [
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+      ];
+    } else if (lang == "ar") {
+      titles = [
+        "Order Placed",
+        "Processing Order",
+        "Processing Order",
+        "Order Is On way",
+        "Order Ready For Pickup",
+        "Order is delivered"
+      ];
+      content = [
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+      ];
+    } else {
+      titles = [
+        "Order Placed",
+        "Processing Order",
+        "Processing Order",
+        "Order Is On way",
+        "Order Ready For Pickup",
+        "Order is delivered"
+      ];
+      content = [
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
+        "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+      ];
+    }
     updateStatus();
     _startTimer();
     super.initState();
@@ -108,9 +148,9 @@ class _TrackOrderState extends State<TrackOrder> {
         elevation: 0,
         leading: IconButton(
             onPressed: () {
-              Provider.of<productProvider>(context, listen: false)
-                  .getDataUser(userdata["id"]);
               Navigator.pop(context);
+              Provider.of<productProvider>(context, listen: false)
+                  .getDataUser(userdata["id"].toString());
             },
             icon: Icon(
               Icons.arrow_back_ios,

@@ -86,6 +86,7 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataUser(String id) {
+    print("user");
     Network(false).getData("showDataUser/$id").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
