@@ -217,8 +217,8 @@ class _NavSwitchState extends State<NavSwitch> {
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               color: mainColorWhite.withOpacity(0.7),
-                              fontFamily: mainFontbold,
-                              fontSize: 18,
+                              fontFamily: mainFontnormal,
+                              fontSize: 16,
                             ),
                           ),
                           const SizedBox(),
@@ -235,7 +235,7 @@ class _NavSwitchState extends State<NavSwitch> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: mainColorGrey,
-                                  fixedSize: const Size(70, 35),
+                                  fixedSize: const Size(100, 35),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -243,7 +243,9 @@ class _NavSwitchState extends State<NavSwitch> {
                                 child: Text(
                                   "No".tr,
                                   style: TextStyle(
-                                      fontSize: 18, fontFamily: mainFontbold),
+                                      fontSize: 16, 
+                                      fontFamily: mainFontbold
+                                      ),
                                 ),
                               ),
                               ElevatedButton(
@@ -252,7 +254,7 @@ class _NavSwitchState extends State<NavSwitch> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: mainColorRed,
-                                  fixedSize: const Size(70, 35),
+                                  fixedSize: const Size(100, 35),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -260,7 +262,9 @@ class _NavSwitchState extends State<NavSwitch> {
                                 child: Text(
                                   "Yes".tr,
                                   style: TextStyle(
-                                      fontSize: 18, fontFamily: mainFontbold),
+                                      fontSize: 16,
+                                      fontFamily: mainFontbold,
+                                      ),
                                 ),
                               ),
                               const SizedBox(),

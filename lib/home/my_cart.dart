@@ -676,7 +676,7 @@ class _MyCartState extends State<MyCart> {
                                                 SizedBox(
                                                   width: getWidth(context, 70),
                                                   height:
-                                                      getHeight(context, 50),
+                                                      getHeight(context, 40),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
@@ -722,10 +722,42 @@ class _MyCartState extends State<MyCart> {
                                                           fontSize: 16,
                                                         ),
                                                       ),
+                                                      // TextButton(
+                                                      //   onPressed: () {
+                                                      //     cartProvider
+                                                      //         .clearCart();
+                                                      //     Navigator.pop(
+                                                      //         context);
+                                                      //   },
+                                                      //   style: ElevatedButton
+                                                      //       .styleFrom(
+                                                      //     fixedSize: Size(
+                                                      //         getWidth(
+                                                      //             context, 70),
+                                                      //         getHeight(
+                                                      //             context, 5)),
+                                                      //     shape:
+                                                      //         RoundedRectangleBorder(
+                                                      //       side: BorderSide(
+                                                      //           color:
+                                                      //               mainColorRed),
+                                                      //       borderRadius:
+                                                      //           BorderRadius
+                                                      //               .circular(
+                                                      //                   5),
+                                                      //     ),
+                                                      //   ),
+                                                      //   child: Text(
+                                                      //     "Clear".tr,
+                                                      //     style: TextStyle(
+                                                      //       color: mainColorRed,
+                                                      //       fontSize: 16,
+                                                      //     ),
+                                                      //   ),
+                                                      // ),
+                                                      const SizedBox(height: 40),
                                                       TextButton(
                                                         onPressed: () {
-                                                          cartProvider
-                                                              .clearCart();
                                                           Navigator.pop(
                                                               context);
                                                         },
@@ -733,39 +765,7 @@ class _MyCartState extends State<MyCart> {
                                                             .styleFrom(
                                                           fixedSize: Size(
                                                               getWidth(
-                                                                  context, 70),
-                                                              getHeight(
-                                                                  context, 5)),
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            side: BorderSide(
-                                                                color:
-                                                                    mainColorRed),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5),
-                                                          ),
-                                                        ),
-                                                        child: Text(
-                                                          "Clear".tr,
-                                                          style: TextStyle(
-                                                            color: mainColorRed,
-                                                            fontSize: 16,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(height: 5),
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          fixedSize: Size(
-                                                              getWidth(
-                                                                  context, 70),
+                                                                  context, 40),
                                                               getHeight(
                                                                   context, 5)),
                                                           shape:
@@ -780,7 +780,7 @@ class _MyCartState extends State<MyCart> {
                                                           ),
                                                         ),
                                                         child: Text(
-                                                          "Cancel".tr,
+                                                          "OK".tr,
                                                           style: TextStyle(
                                                             color:
                                                                 mainColorGrey,
