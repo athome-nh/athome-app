@@ -62,14 +62,9 @@ class _MyCartState extends State<MyCart> {
       child: productrovider.nointernetCheck
           ? noInternetWidget(context)
           : Scaffold(
-              backgroundColor: mainColorWhite,
               appBar: AppBar(
                 title: Text(
                   "My Cart".tr,
-                  style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontnormal,
-                      fontSize: 24),
                 ),
                 leading: widget.back
                     ? IconButton(
@@ -81,9 +76,6 @@ class _MyCartState extends State<MyCart> {
                           color: mainColorRed,
                         ))
                     : const SizedBox(),
-                centerTitle: true,
-                backgroundColor: mainColorWhite,
-                elevation: 0,
                 actions: [
                   cartProvider.cartItems.isEmpty || !isLogin
                       ? const SizedBox()
@@ -142,23 +134,13 @@ class _MyCartState extends State<MyCart> {
                                                 cartProvider.clearCart();
                                                 Navigator.pop(context);
                                               },
-                                              style: ElevatedButton.styleFrom(
+                                              style: TextButton.styleFrom(
                                                 fixedSize: Size(
                                                     getWidth(context, 70),
                                                     getHeight(context, 5)),
-                                                shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      color: mainColorRed),
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
                                               ),
                                               child: Text(
                                                 "Clear".tr,
-                                                style: TextStyle(
-                                                  color: mainColorRed,
-                                                  fontSize: 16,
-                                                ),
                                               ),
                                             ),
                                             const SizedBox(height: 5),
@@ -166,23 +148,13 @@ class _MyCartState extends State<MyCart> {
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
-                                              style: ElevatedButton.styleFrom(
+                                              style: TextButton.styleFrom(
                                                 fixedSize: Size(
                                                     getWidth(context, 70),
                                                     getHeight(context, 5)),
-                                                shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      color: mainColorGrey),
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
                                               ),
                                               child: Text(
                                                 "Cancel".tr,
-                                                style: TextStyle(
-                                                  color: mainColorGrey,
-                                                  fontSize: 16,
-                                                ),
                                               ),
                                             ),
                                           ],
@@ -201,7 +173,6 @@ class _MyCartState extends State<MyCart> {
                           },
                           icon: Icon(
                             Icons.delete_outline,
-                            color: mainColorRed,
                           ),
                         ),
                 ],
@@ -270,6 +241,7 @@ class _MyCartState extends State<MyCart> {
                                                 width: getWidth(context, 20),
                                                 height: getWidth(context, 20),
                                                 decoration: BoxDecoration(
+                                                  color: mainColorWhite,
                                                   border: Border.all(
                                                       color: mainColorBlack
                                                           .withOpacity(0.1)),
@@ -313,7 +285,7 @@ class _MyCartState extends State<MyCart> {
                                                           TextAlign.start,
                                                       maxLines: 1,
                                                       style: TextStyle(
-                                                          color: mainColorGrey,
+                                                          color: mainColorBlack,
                                                           fontFamily:
                                                               mainFontbold,
                                                           fontSize: 14),
@@ -475,7 +447,7 @@ class _MyCartState extends State<MyCart> {
                                                       cartitemQ.quantity
                                                           .toString(),
                                                       style: TextStyle(
-                                                          color: mainColorGrey,
+                                                          color: mainColorBlack,
                                                           fontFamily:
                                                               mainFontnormal,
                                                           fontSize: 18),
@@ -569,7 +541,7 @@ class _MyCartState extends State<MyCart> {
                                     Text(
                                       "Sub Total".tr,
                                       style: TextStyle(
-                                          color: mainColorGrey,
+                                          color: mainColorBlack,
                                           fontFamily: mainFontnormal,
                                           fontSize: 16),
                                     ),
@@ -578,7 +550,7 @@ class _MyCartState extends State<MyCart> {
                                       addCommasToPrice(cartProvider
                                           .calculateTotalPrice(CardItemshow)),
                                       style: TextStyle(
-                                          color: mainColorGrey,
+                                          color: mainColorBlack,
                                           fontFamily: mainFontnormal,
                                           fontSize: 16),
                                     ),
@@ -598,7 +570,7 @@ class _MyCartState extends State<MyCart> {
                                     Text(
                                       "Delivery Cost".tr,
                                       style: TextStyle(
-                                          color: mainColorGrey,
+                                          color: mainColorBlack,
                                           fontFamily: mainFontnormal,
                                           fontSize: 16),
                                     ),
@@ -634,7 +606,7 @@ class _MyCartState extends State<MyCart> {
                                       textAlign: TextAlign.start,
                                       "Total".tr,
                                       style: TextStyle(
-                                          color: mainColorGrey,
+                                          color: mainColorBlack,
                                           fontFamily: mainFontbold,
                                           fontSize: 20),
                                     ),
@@ -755,37 +727,23 @@ class _MyCartState extends State<MyCart> {
                                                       //     ),
                                                       //   ),
                                                       // ),
-                                                      const SizedBox(height: 40),
+                                                      const SizedBox(
+                                                          height: 40),
                                                       TextButton(
                                                         onPressed: () {
                                                           Navigator.pop(
                                                               context);
                                                         },
-                                                        style: ElevatedButton
+                                                        style: TextButton
                                                             .styleFrom(
                                                           fixedSize: Size(
                                                               getWidth(
                                                                   context, 40),
                                                               getHeight(
                                                                   context, 5)),
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            side: BorderSide(
-                                                                color:
-                                                                    mainColorGrey),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5),
-                                                          ),
                                                         ),
                                                         child: Text(
                                                           "OK".tr,
-                                                          style: TextStyle(
-                                                            color:
-                                                                mainColorGrey,
-                                                            fontSize: 16,
-                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -813,20 +771,12 @@ class _MyCartState extends State<MyCart> {
                                                   CardItemshow))),
                                     );
                                   },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: mainColorRed,
+                                  style: TextButton.styleFrom(
                                     fixedSize: Size(getWidth(context, 90),
                                         getHeight(context, 6)),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
                                   ),
                                   child: Text(
                                     "Checkout".tr,
-                                    style: TextStyle(
-                                      color: mainColorWhite,
-                                      fontSize: 18,
-                                    ),
                                   ),
                                 ),
                               ),

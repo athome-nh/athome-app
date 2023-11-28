@@ -105,12 +105,8 @@ class _SettingState extends State<Setting> {
           : Scaffold(
               backgroundColor: mainColorWhite,
               appBar: AppBar(
-                backgroundColor: mainColorWhite,
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                title: Image.asset(
-                  "assets/images/logoB.png",
-                  width: getWidth(context, 30),
+                title: Text(
+                  "Account".tr,
                 ),
                 actions: [
                   Padding(
@@ -119,8 +115,9 @@ class _SettingState extends State<Setting> {
                       underline: Container(),
                       value: selectedItem,
                       icon: const SizedBox(),
+                      dropdownColor: mainColorGrey,
                       style: TextStyle(
-                        color: mainColorGrey,
+                        color: mainColorWhite,
                         fontFamily: mainFontbold,
                         fontSize: 16, // Text size
                       ),
@@ -163,7 +160,9 @@ class _SettingState extends State<Setting> {
                                 ),
                                 child: Text(
                                   "English".tr,
-                                  style: TextStyle(fontFamily: mainFontnormal),
+                                  style: TextStyle(
+                                    fontFamily: mainFontnormal,
+                                  ),
                                 ),
                               ),
                             ],
@@ -322,8 +321,8 @@ class _SettingState extends State<Setting> {
                                                   _getImage();
                                                 },
                                                 icon: Container(
-                                                  width: getWidth(context, 15),
-                                                  height: getWidth(context, 15),
+                                                  width: getWidth(context, 12),
+                                                  height: getWidth(context, 12),
                                                   decoration: BoxDecoration(
                                                     color: mainColorGrey,
                                                     borderRadius:
@@ -687,8 +686,8 @@ class _SettingState extends State<Setting> {
                                                                 MainAxisAlignment
                                                                     .center,
                                                             children: [
-                                                              GestureDetector(
-                                                                onTap: waiting
+                                                              TextButton(
+                                                                onPressed: waiting
                                                                     ? null
                                                                     : () async {
                                                                         setState(
@@ -728,57 +727,24 @@ class _SettingState extends State<Setting> {
                                                                           }
                                                                         });
                                                                       },
-                                                                child:
-                                                                    Container(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
-                                                                    top: getWidth(
-                                                                        context,
-                                                                        2),
-                                                                    left: getWidth(
-                                                                        context,
-                                                                        2),
-                                                                    right: getWidth(
-                                                                        context,
-                                                                        2),
-                                                                    bottom: getWidth(
-                                                                        context,
-                                                                        1),
-                                                                  ),
-                                                                  width: getWidth(
-                                                                      context,
-                                                                      30),
-                                                                  height:
-                                                                      getWidth(
-                                                                          context,
-                                                                          10),
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              5),
-                                                                      color:
-                                                                          mainColorRed),
-                                                                  child: Center(
-                                                                    child: Text(
-                                                                      "Save".tr,
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              mainFontbold,
-                                                                          fontSize:
-                                                                              14,
-                                                                          color:
-                                                                              mainColorWhite),
-                                                                    ),
-                                                                  ),
+                                                                style: TextButton.styleFrom(
+                                                                    fixedSize: Size(
+                                                                        getWidth(
+                                                                            context,
+                                                                            40),
+                                                                        getHeight(
+                                                                            context,
+                                                                            5))),
+                                                                child: Text(
+                                                                  "Save".tr,
                                                                 ),
                                                               ),
                                                               SizedBox(
                                                                 width: getWidth(
                                                                     context, 2),
                                                               ),
-                                                              GestureDetector(
-                                                                onTap: () {
+                                                              TextButton(
+                                                                onPressed: () {
                                                                   setState(() {
                                                                     _image =
                                                                         null;
@@ -800,102 +766,38 @@ class _SettingState extends State<Setting> {
                                                                             "gender"];
                                                                   });
                                                                 },
-                                                                child:
-                                                                    Container(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
-                                                                    top: getWidth(
-                                                                        context,
-                                                                        2),
-                                                                    left: getWidth(
-                                                                        context,
-                                                                        2),
-                                                                    right: getWidth(
-                                                                        context,
-                                                                        2),
-                                                                    bottom: getWidth(
-                                                                        context,
-                                                                        1),
-                                                                  ),
-                                                                  width: getWidth(
-                                                                      context,
-                                                                      30),
-                                                                  height:
-                                                                      getWidth(
-                                                                          context,
-                                                                          10),
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              5),
-                                                                      color:
-                                                                          mainColorRed),
-                                                                  child: Center(
-                                                                    child: Text(
-                                                                      "Cancel"
-                                                                          .tr,
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              mainFontbold,
-                                                                          fontSize:
-                                                                              14,
-                                                                          color:
-                                                                              mainColorWhite),
-                                                                    ),
-                                                                  ),
+                                                                style: TextButton.styleFrom(
+                                                                    fixedSize: Size(
+                                                                        getWidth(
+                                                                            context,
+                                                                            39),
+                                                                        getHeight(
+                                                                            context,
+                                                                            5))),
+                                                                child: Text(
+                                                                  "Cancel".tr,
                                                                 ),
-                                                              ),
+                                                              )
                                                             ],
                                                           )
-                                                        : GestureDetector(
-                                                            onTap: () {
+                                                        : TextButton(
+                                                            onPressed: () {
                                                               setState(() {
                                                                 isEdit = true;
                                                               });
                                                             },
-                                                            child: Container(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .only(
-                                                                top: getWidth(
-                                                                    context, 2),
-                                                                left: getWidth(
-                                                                    context, 2),
-                                                                right: getWidth(
-                                                                    context, 2),
-                                                                bottom:
+                                                            style: TextButton.styleFrom(
+                                                                fixedSize: Size(
                                                                     getWidth(
                                                                         context,
-                                                                        1),
-                                                              ),
-                                                              width: getWidth(
-                                                                  context, 60),
-                                                              height: getWidth(
-                                                                  context, 10),
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                                color:
-                                                                    mainColorRed,
-                                                              ),
-                                                              child: Center(
-                                                                child: Text(
-                                                                  "Edit".tr,
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          mainFontbold,
-                                                                      fontSize:
-                                                                          16,
-                                                                      color:
-                                                                          mainColorWhite),
-                                                                ),
-                                                              ),
+                                                                        80),
+                                                                    getHeight(
+                                                                        context,
+                                                                        5))),
+                                                            child: Text(
+                                                              "Edit".tr,
                                                             ),
-                                                          ),
+                                                          )
                                                   ],
                                                 )
                                               : const SizedBox(),

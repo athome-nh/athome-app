@@ -372,18 +372,16 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   height: 5,
                                 ),
                                 Text(
-                                  lang == "en"
-                                      ? product.nameEn.toString()
-                                      : lang == "ar"
-                                          ? product.nameAr.toString()
-                                          : product.nameKu.toString(),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 13),
-                                ),
+                                    lang == "en"
+                                        ? product.nameEn.toString()
+                                        : lang == "ar"
+                                            ? product.nameAr.toString()
+                                            : product.nameKu.toString(),
+                                    textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!),
                                 const SizedBox(
                                   height: 3,
                                 ),
@@ -466,6 +464,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                                       .addToCart(cartItem);
                                                 },
                                           child: Chip(
+                                            side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
                                               "Add to cart",
@@ -651,8 +650,7 @@ Widget listItemsShow(BuildContext context, var data) {
           mainAxisSpacing: 8,
           childAspectRatio: getWidth(context, 0.19),
         ),
-    
-        itemCount: data.length, 
+        itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
@@ -798,7 +796,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                                     loiginPopup(context);
                                                     return;
                                                   }
-    
+
                                                   final cartItem = CartItem(
                                                       product: product.id!);
                                                   cartProvider
@@ -1539,20 +1537,12 @@ Future<void> loiginPopup(BuildContext context) {
                                 const RegisterWithPhoneNumber()),
                       );
                     },
-                    style: ElevatedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       fixedSize:
                           Size(getWidth(context, 70), getHeight(context, 5)),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: mainColorGrey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
                     ),
                     child: Text(
                       "Login".tr,
-                      style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 16,
-                      ),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -1560,20 +1550,12 @@ Future<void> loiginPopup(BuildContext context) {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    style: ElevatedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       fixedSize:
                           Size(getWidth(context, 70), getHeight(context, 5)),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: mainColorRed),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
                     ),
                     child: Text(
                       "Cancel".tr,
-                      style: TextStyle(
-                        color: mainColorRed,
-                        fontSize: 16,
-                      ),
                     ),
                   ),
                 ],
@@ -1647,20 +1629,11 @@ loginFirstContainer(BuildContext context) {
                     builder: (context) => const RegisterWithPhoneNumber()),
               );
             },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(mainColorRed),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
-              ),
+            style: TextButton.styleFrom(
+              fixedSize: Size(getWidth(context, 70), getHeight(context, 5)),
             ),
             child: Text(
               "Login".tr,
-              style: TextStyle(
-                  color: mainColorWhite,
-                  fontSize: 22,
-                  fontFamily: mainFontnormal),
             ),
           ),
         )

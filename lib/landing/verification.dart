@@ -45,7 +45,7 @@ class _VerificatoinState extends State<Verificatoin> {
             // vapidKey: firebaseCloudvapidKey
             )
         .then((val) async {
-          print(val);
+      print(val);
       token2 = val.toString();
     });
     super.initState();
@@ -319,20 +319,12 @@ class _VerificatoinState extends State<Verificatoin> {
                                                 const RegisterWithPhoneNumber()),
                                       );
                                     },
-                                    style: ElevatedButton.styleFrom(
+                                    style: TextButton.styleFrom(
                                       fixedSize: Size(getWidth(context, 70),
                                           getHeight(context, 5)),
-                                      shape: RoundedRectangleBorder(
-                                        side: BorderSide(color: mainColorGrey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
                                     ),
                                     child: Text(
                                       "OK".tr,
-                                      style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                      ),
                                     ),
                                   ),
                                 ],
@@ -428,20 +420,12 @@ class _VerificatoinState extends State<Verificatoin> {
                                                 const RegisterWithPhoneNumber()),
                                       );
                                     },
-                                    style: ElevatedButton.styleFrom(
+                                    style: TextButton.styleFrom(
                                       fixedSize: Size(getWidth(context, 70),
                                           getHeight(context, 5)),
-                                      shape: RoundedRectangleBorder(
-                                        side: BorderSide(color: mainColorGrey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
                                     ),
                                     child: Text(
                                       "OK".tr,
-                                      style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                      ),
                                     ),
                                   ),
                                 ],
@@ -568,20 +552,12 @@ class _VerificatoinState extends State<Verificatoin> {
                                             const RegisterWithPhoneNumber()),
                                   );
                                 },
-                                style: ElevatedButton.styleFrom(
+                                style: TextButton.styleFrom(
                                   fixedSize: Size(getWidth(context, 70),
                                       getHeight(context, 5)),
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(color: mainColorGrey),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
                                 ),
                                 child: Text(
                                   "OK".tr,
-                                  style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontSize: 16,
-                                  ),
                                 ),
                               ),
                             ],
@@ -676,20 +652,12 @@ class _VerificatoinState extends State<Verificatoin> {
                                             const RegisterWithPhoneNumber()),
                                   );
                                 },
-                                style: ElevatedButton.styleFrom(
+                                style: TextButton.styleFrom(
                                   fixedSize: Size(getWidth(context, 70),
                                       getHeight(context, 5)),
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(color: mainColorGrey),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
                                 ),
                                 child: Text(
                                   "OK".tr,
-                                  style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontSize: 16,
-                                  ),
                                 ),
                               ),
                             ],

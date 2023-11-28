@@ -4,5 +4,6 @@
         "strings": "off",
         "other": "off"
     },
-    "sde.buildOnSave": true
+    "sde.buildOnSave": true,
+    "editor.inlineSuggest.showToolbar": "onHover"
 }

@@ -136,16 +136,10 @@ class _TrackOrderState extends State<TrackOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mainColorWhite,
       appBar: AppBar(
         title: Text(
           "Track Order".tr,
-          style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
         ),
-        centerTitle: true,
-        backgroundColor: mainColorWhite,
-        elevation: 0,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -154,7 +148,6 @@ class _TrackOrderState extends State<TrackOrder> {
             },
             icon: Icon(
               Icons.arrow_back_ios,
-              color: mainColorRed,
             )),
       ),
       body: SingleChildScrollView(
@@ -169,13 +162,13 @@ class _TrackOrderState extends State<TrackOrder> {
                 children: [
                   Text("Order:".tr + widget.id,
                       style: TextStyle(
-                        color: mainColorGrey,
+                        color: mainColorBlack,
                         fontSize: 28,
                         fontFamily: mainFontnormal,
                       )),
                   Text(widget.time.substring(0, 19),
                       style: TextStyle(
-                        color: mainColorGrey,
+                        color: mainColorBlack,
                         fontSize: 20,
                         fontFamily: mainFontnormal,
                       )),
@@ -207,7 +200,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                     ? LoadingIndicator(
                                         indicatorType:
                                             Indicator.ballSpinFadeLoader,
-                                        colors: [mainColorRed],
+                                        colors: [mainColorWhite],
                                         strokeWidth: 5,
                                       )
                                     : status > 0
@@ -236,7 +229,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                     ? LoadingIndicator(
                                         indicatorType:
                                             Indicator.ballSpinFadeLoader,
-                                        colors: [mainColorRed],
+                                        colors: [mainColorWhite],
                                         strokeWidth: 5,
                                       )
                                     : status > 1 || status == 2
@@ -265,7 +258,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                     ? LoadingIndicator(
                                         indicatorType:
                                             Indicator.ballSpinFadeLoader,
-                                        colors: [mainColorRed],
+                                        colors: [mainColorWhite],
                                         strokeWidth: 5,
                                       )
                                     : status > 3
@@ -306,7 +299,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         ),
                         Text(titles[status],
                             style: TextStyle(
-                              color: mainColorGrey,
+                              color: mainColorBlack,
                               fontSize: 28,
                               fontFamily: mainFontnormal,
                             )),
@@ -317,7 +310,7 @@ class _TrackOrderState extends State<TrackOrder> {
                             content[status],
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: mainColorGrey,
+                              color: mainColorBlack,
                               fontSize: 16,
                               fontFamily: mainFontnormal,
                             ),
@@ -351,20 +344,14 @@ class _TrackOrderState extends State<TrackOrder> {
                                   }
                                 });
                               },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: mainColorLightGrey,
+                              style: TextButton.styleFrom(
+                                backgroundColor: mainColorRed,
                                 fixedSize: Size(getWidth(context, 35),
                                     getHeight(context, 3)),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
                               ),
-                              child: Text("Cancel order".tr,
-                                  style: TextStyle(
-                                    color: mainColorGrey,
-                                    fontSize: 16,
-                                    fontFamily: mainFontnormal,
-                                  )),
+                              child: Text(
+                                "Cancel order".tr,
+                              ),
                             )
                           : const SizedBox()
                       : const SizedBox(),
@@ -380,20 +367,13 @@ class _TrackOrderState extends State<TrackOrder> {
                                       widget.total, widget.time, status)),
                             );
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: mainColorGrey,
+                          style: TextButton.styleFrom(
                             fixedSize: Size(
                                 getWidth(context, 35), getHeight(context, 3)),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
                           ),
-                          child: Text("View order".tr,
-                              style: TextStyle(
-                                color: mainColorWhite,
-                                fontSize: 16,
-                                fontFamily: mainFontnormal,
-                              )),
+                          child: Text(
+                            "View order".tr,
+                          ),
                         )
                       : const SizedBox(),
                 ],

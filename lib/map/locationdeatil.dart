@@ -16,7 +16,8 @@ class location_Deatil extends StatefulWidget {
   double latitude = 0.0;
   String name = "";
   String housenumber = "";
-  location_Deatil(this.longitude, this.latitude, this.name, this.housenumber, {super.key});
+  location_Deatil(this.longitude, this.latitude, this.name, this.housenumber,
+      {super.key});
 
   @override
   State<location_Deatil> createState() => _location_DeatilState();
@@ -660,20 +661,13 @@ class _location_DeatilState extends State<location_Deatil> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: mainColorRed,
-                          // fixedSize: Size(
-                          //     getWidth(context, 35), getHeight(context, 6)),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
+                        style: TextButton.styleFrom(
+
+                            // fixedSize: Size(
+                            //     getWidth(context, 35), getHeight(context, 6)),
+                            ),
                         child: Text(
                           "Cancel".tr,
-                          style: TextStyle(
-                            color: mainColorWhite,
-                            fontSize: 16,
-                          ),
                         ),
                       ),
                       TextButton(
@@ -739,20 +733,13 @@ class _location_DeatilState extends State<location_Deatil> {
                             }
                           });
                         },
-                        style: ElevatedButton.styleFrom(
+                        style: TextButton.styleFrom(
                           backgroundColor: mainColorRed,
                           // fixedSize: Size(
                           //     getWidth(context, 35), getHeight(context, 6)),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
                         ),
                         child: Text(
                           "Save".tr,
-                          style: TextStyle(
-                            color: mainColorWhite,
-                            fontSize: 16,
-                          ),
                         ),
                       ),
                     ],
