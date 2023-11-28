@@ -100,11 +100,12 @@ class _OldOrderState extends State<OldOrder> {
                                             ? productrovider
                                                 .getoneProductItemsById(
                                                     items[index].productId!)
-                                                .nameAr!
+                                                .nameAR
+                                                .toString()
                                             : productrovider
                                                 .getoneProductItemsById(
                                                     items[index].productId!)
-                                                .nameKu!,
+                                                .nameKU!,
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
                                     style: TextStyle(
@@ -128,11 +129,11 @@ class _OldOrderState extends State<OldOrder> {
                                             ? productrovider
                                                 .getoneProductItemsById(
                                                     items[index].productId!)
-                                                .contentsAr!
+                                                .contentsAR!
                                             : productrovider
                                                 .getoneProductItemsById(
                                                     items[index].productId!)
-                                                .contentsKu!,
+                                                .contentsKU!,
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
                                     style: TextStyle(

@@ -14,19 +14,17 @@ String mainFontnormal = 'nrtN';
 // String mainFontnormal = 'iraniN';
 
 /// Define { Colors } in AtHome
-Color mainColorRed = const Color(0xFFe73339);
-Color mainColorSuger = const Color(0xFFF8EACF);
-Color mainColorSuger1 = const Color(0xFFe0d4ba);
-Color mainColorGrey = const Color(0xFF3a393b);
-Color mainColorLightGrey = const Color(0xFFf2f2f2);
+Color mainColorRed = const Color(0xFFc82036);
+Color mainColorGrey = const Color(0xFF014a64);
+// Color mainColorLightGrey = const Color(0xFFf2f2f2);
 Color mainColorWhite = const Color(0XFFffffff);
-Color mainColorBlack = const Color(0XFF000000);
+Color mainColorBlack = const Color(0XFF1c1c1c);
 Color mainFacebookColor = const Color(0xff367FC0);
 Color mainGoogleColor = const Color(0xffDD4B39);
 
 ///Define { Images } in AtHome
 String mainImagePattern = 'assets/images/001_pattern.jpg';
-String mainImageLogo1 = 'assets/images/Splash.gif';
+String mainImageLogo1 = 'assets/images/dlly_las.gif';
 
 /// Define { Width and Height } of the device screen
 double getWidth(BuildContext context, double percentage) {

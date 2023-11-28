@@ -101,9 +101,7 @@ class CartProvider extends ChangeNotifier {
         var jsonList = jsonDecode(value);
         List<CartItem> cart =
             (jsonList as List).map((x) => CartItem.fromMap(x)).toList();
-
         cartItems = cart;
-
         notifyListeners();
       }
     });

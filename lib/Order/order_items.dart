@@ -634,20 +634,12 @@ class _OrederItemsState extends State<OrederItems> {
                                                     CardItemshow))),
                                   );
                                 },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainColorRed,
+                                style: TextButton.styleFrom(
                                   fixedSize: Size(getWidth(context, 40),
                                       getHeight(context, 6)),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
                                 ),
                                 child: Text(
                                   "Re order".tr,
-                                  style: TextStyle(
-                                    color: mainColorWhite,
-                                    fontSize: 16,
-                                  ),
                                 ),
                               ),
                               TextButton(
@@ -666,20 +658,12 @@ class _OrederItemsState extends State<OrederItems> {
                                   );
                                   cartProvider.clearCartPast();
                                 },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainColorRed,
+                                style: TextButton.styleFrom(
                                   fixedSize: Size(getWidth(context, 40),
                                       getHeight(context, 6)),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
                                 ),
                                 child: Text(
                                   "Add More Items".tr,
-                                  style: TextStyle(
-                                    color: mainColorWhite,
-                                    fontSize: 16,
-                                  ),
                                 ),
                               ),
                             ],

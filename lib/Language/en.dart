@@ -93,7 +93,7 @@ const Map<String, String> en = {
   "History":"History",
   "Order number:":"Order number:",
   "Date:": "Date:",
-  "You not have any order": "You do not have any order",
+  "You not have any order": "You do not have any Item",
   "Re order":"Re order",
   "View":"View",
 

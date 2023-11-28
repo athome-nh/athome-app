@@ -7,6 +7,7 @@ import 'package:athome/map/map_screen.dart';
 import 'package:athome/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:athome/Config/property.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
@@ -40,23 +41,16 @@ class _CheckOutState extends State<CheckOut> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
             "Checkout".tr,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
-          centerTitle: true,
-          backgroundColor: mainColorWhite,
-          elevation: 0,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
         ),
         body: SingleChildScrollView(
@@ -77,12 +71,17 @@ class _CheckOutState extends State<CheckOut> {
                         Text(
                           "Delivery Address".tr,
                           style: TextStyle(
-                              color: mainColorGrey,
+                              color: mainColorBlack,
                               fontFamily: mainFontnormal,
                               fontSize: 20),
                         ),
                         IconButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              LocationPermission permission =
+                                  await Geolocator.requestPermission();
+                              if (permission == LocationPermission.denied) {
+                                // Handle case where the user denied access to their location
+                              }
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -101,7 +100,12 @@ class _CheckOutState extends State<CheckOut> {
                       height: getHeight(context, 15),
                       child: productrovider.location.isEmpty
                           ? GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                LocationPermission permission =
+                                    await Geolocator.requestPermission();
+                                if (permission == LocationPermission.denied) {
+                                  // Handle case where the user denied access to their location
+                                }
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -148,8 +152,9 @@ class _CheckOutState extends State<CheckOut> {
                                                   color:
                                                       locationID == location.id!
                                                           ? mainColorRed
-                                                          : Colors.transparent),
-                                              color: mainColorLightGrey,
+                                                          : mainColorGrey),
+                                              color: mainColorGrey
+                                                  .withOpacity(0.1),
                                               borderRadius:
                                                   BorderRadius.circular(5)),
                                           child: Padding(
@@ -170,7 +175,7 @@ class _CheckOutState extends State<CheckOut> {
                                                             fontFamily:
                                                                 mainFontbold,
                                                             color:
-                                                                mainColorGrey,
+                                                                mainColorBlack,
                                                             fontSize: 16),
                                                       ),
                                                       Text(
@@ -250,7 +255,7 @@ class _CheckOutState extends State<CheckOut> {
                     Text(
                       "Pyment Method".tr,
                       style: TextStyle(
-                          color: mainColorGrey,
+                          color: mainColorBlack,
                           fontFamily: mainFontnormal,
                           fontSize: 20),
                     ),
@@ -406,7 +411,7 @@ class _CheckOutState extends State<CheckOut> {
                     Text(
                       "Sub Total".tr,
                       style: TextStyle(
-                          color: mainColorGrey,
+                          color: mainColorBlack,
                           fontFamily: mainFontnormal,
                           fontSize: 16),
                     ),
@@ -414,7 +419,7 @@ class _CheckOutState extends State<CheckOut> {
                       textAlign: TextAlign.end,
                       addCommasToPrice(widget.total),
                       style: TextStyle(
-                          color: mainColorGrey,
+                          color: mainColorBlack,
                           fontFamily: mainFontnormal,
                           fontSize: 16),
                     ),
@@ -432,7 +437,7 @@ class _CheckOutState extends State<CheckOut> {
                     Text(
                       "Delivery Cost".tr,
                       style: TextStyle(
-                          color: mainColorGrey,
+                          color: mainColorBlack,
                           fontFamily: mainFontnormal,
                           fontSize: 16),
                     ),
@@ -449,8 +454,7 @@ class _CheckOutState extends State<CheckOut> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
-                child: Divider(
-                    color: mainColorGrey.withOpacity(0.2), thickness: 1),
+                child: Divider(thickness: 1),
               ),
               SizedBox(
                 height: getHeight(context, 1),
@@ -464,7 +468,7 @@ class _CheckOutState extends State<CheckOut> {
                       textAlign: TextAlign.start,
                       "Total".tr,
                       style: TextStyle(
-                          color: mainColorGrey,
+                          color: mainColorBlack,
                           fontFamily: mainFontbold,
                           fontSize: 20),
                     ),
@@ -581,7 +585,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                 mainFontbold),
                                                       ),
                                                       Text(
-                                                        value["data"],
+                                                        value["id"].toString(),
                                                         style: TextStyle(
                                                             fontSize: 16,
                                                             color:
@@ -651,8 +655,8 @@ class _CheckOutState extends State<CheckOut> {
                                                           );
                                                         });
                                                       },
-                                                      style: ElevatedButton
-                                                          .styleFrom(
+                                                      style:
+                                                          TextButton.styleFrom(
                                                         backgroundColor:
                                                             mainColorRed,
                                                         fixedSize: Size(
@@ -660,19 +664,9 @@ class _CheckOutState extends State<CheckOut> {
                                                                 context, 85),
                                                             getHeight(
                                                                 context, 6)),
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5),
-                                                        ),
                                                       ),
                                                       child: Text(
                                                         "Track My Order".tr,
-                                                        style: TextStyle(
-                                                          color: mainColorWhite,
-                                                          fontSize: 16,
-                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -689,11 +683,6 @@ class _CheckOutState extends State<CheckOut> {
                                                     },
                                                     child: Text(
                                                       "Back to Home".tr,
-                                                      style: TextStyle(
-                                                          color: mainColorGrey,
-                                                          fontFamily:
-                                                              mainFontnormal,
-                                                          fontSize: 14),
                                                     ),
                                                   ),
                                                 ],
@@ -737,20 +726,12 @@ class _CheckOutState extends State<CheckOut> {
                             toastLong("Please Delivery Address".tr);
                           }
                         },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: mainColorRed,
+                  style: TextButton.styleFrom(
                     fixedSize:
                         Size(getWidth(context, 85), getHeight(context, 6)),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
                   ),
                   child: Text(
                     "Send Order".tr,
-                    style: TextStyle(
-                      color: mainColorWhite,
-                      fontSize: 18,
-                    ),
                   ),
                 ),
               ),

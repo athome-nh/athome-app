@@ -25,18 +25,10 @@ class _FavoriteState extends State<Favorite> {
       child: productPro.nointernetCheck
           ? noInternetWidget(context)
           : Scaffold(
-              backgroundColor: mainColorWhite,
               appBar: AppBar(
                 title: Text(
                   "Favorite".tr,
-                  style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontnormal,
-                      fontSize: 20),
                 ),
-                centerTitle: true,
-                backgroundColor: mainColorWhite,
-                elevation: 0,
               ),
               body: cartProvider.ListFavId().isEmpty
                   ? Column(
@@ -54,18 +46,18 @@ class _FavoriteState extends State<Favorite> {
                           "No have any favorite".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontFamily: mainFontnormal, 
-                              fontSize: 18,
-                              ),
+                            fontFamily: mainFontnormal,
+                            fontSize: 18,
+                          ),
                         ),
                       ],
                     )
                   : Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8 ),
-                  child: listItemsShow(
-                    context,
-                    productPro.getProductsByIds(cartProvider.ListFavId()),
-                  ),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: listItemsShow(
+                        context,
+                        productPro.getProductsByIds(cartProvider.ListFavId()),
+                      ),
                     ),
             ),
     );

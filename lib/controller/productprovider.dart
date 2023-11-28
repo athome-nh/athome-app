@@ -50,7 +50,10 @@ class productProvider extends ChangeNotifier {
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
-          setProducts((json.decode(decryptAES(value["products"])) as List)
+          // setProducts((json.decode(decryptAES(value["products"])) as List)
+          //     .map((x) => ProductModel.fromMap(x))
+          //     .toList());
+          setProducts((value["products"] as List)
               .map((x) => ProductModel.fromMap(x))
               .toList());
           setCategorys((value['category'] as List)
@@ -83,6 +86,7 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataUser(String id) {
+    print("user");
     Network(false).getData("showDataUser/$id").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
@@ -165,20 +169,12 @@ class productProvider extends ChangeNotifier {
                                   ),
                                   TextButton(
                                     onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
+                                    style: TextButton.styleFrom(
                                       fixedSize: Size(getWidth(context, 70),
                                           getHeight(context, 5)),
-                                      shape: RoundedRectangleBorder(
-                                        side: BorderSide(color: mainColorGrey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
                                     ),
                                     child: Text(
                                       "OK".tr,
-                                      style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                      ),
                                     ),
                                   ),
                                 ],
@@ -214,7 +210,7 @@ class productProvider extends ChangeNotifier {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
-            userdata = valueuser["data"][0];
+            userdata = json.decode(decryptAES(valueuser["data"]));
           }
         }
       });

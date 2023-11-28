@@ -148,19 +148,13 @@ class _Map_screenState extends State<Map_screen> {
       appBar: AppBar(
         title: Text(
           "Map".tr,
-          style: TextStyle(
-              color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
         ),
-        centerTitle: true,
-        backgroundColor: mainColorWhite,
-        elevation: 0,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_ios,
-              color: mainColorRed,
             )),
       ),
       body: SafeArea(
@@ -227,13 +221,13 @@ class _Map_screenState extends State<Map_screen> {
                 alignment: Alignment.centerRight,
                 child: Container(
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: mainColorLightGrey),
+                      shape: BoxShape.circle, color: mainColorGrey),
                   child: IconButton(
                     onPressed: () async {
                       await getCureentlocation();
                     },
                     icon: Icon(FontAwesomeIcons.locationCrosshairs,
-                        size: 25, color: mainColorRed),
+                        size: 25, color: mainColorWhite),
                   ),
                 ),
               ),
@@ -248,7 +242,7 @@ class _Map_screenState extends State<Map_screen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         shape: BoxShape.rectangle,
-                        color: zoom ? mainColorRed : Colors.green),
+                        color: zoom ? mainColorRed : mainColorGrey),
                     child: Center(
                         child: wait
                             ? Container(
@@ -370,6 +364,7 @@ class _Map_screenState extends State<Map_screen> {
   }
 
   Future<void> getCureentlocation() async {
+    print("object");
     final myLocationData = await getCurrentLatLng();
 
     getLocationName(myLocationData.longitude, myLocationData.latitude);

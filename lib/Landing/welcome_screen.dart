@@ -50,7 +50,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         ),
         body: SafeArea(
           child: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // slide 3 page
               CarouselSlider(
@@ -76,12 +76,12 @@ class WelcomeScreenState extends State<WelcomeScreen>
                   slid3(),
                 ],
               ),
-          
+
               currentIndex == 2
                   // Get Start button
-                  ?             ZoomIn(
-                  delay: const Duration(milliseconds: 100),
-                    child: Container(
+                  ? ZoomIn(
+                      delay: const Duration(milliseconds: 100),
+                      child: Container(
                         width: getWidth(context, 70),
                         height: getHeight(context, 6),
                         decoration: BoxDecoration(
@@ -102,15 +102,10 @@ class WelcomeScreenState extends State<WelcomeScreen>
                               foregroundColor: mainColorRed),
                           child: Text(
                             "Get Start".tr,
-                            style: TextStyle(
-                              fontFamily: mainFontbold,
-                              fontSize: getWidth(context, 4),
-                              color: mainColorWhite,
-                            ),
                           ),
                         ),
                       ),
-                  )
+                    )
                   : Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: getWidth(context, 5),
@@ -165,7 +160,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                               Container(
                                 margin: EdgeInsets.only(
                                     top: getWidth(context, 1), left: 5),
-                                 width: getWidth(context, 2.5),
+                                width: getWidth(context, 2.5),
                                 height: getWidth(context, 2.5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
@@ -177,7 +172,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                               Container(
                                 margin: EdgeInsets.only(
                                     top: getWidth(context, 1), left: 5),
-                                 width: getWidth(context, 2.5),
+                                width: getWidth(context, 2.5),
                                 height: getWidth(context, 2.5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
@@ -224,7 +219,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
                           //     ),
                           //   ),
                           // ),
-                       
                         ],
                       ),
                     ),
@@ -238,9 +232,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
   // Slide One
   Widget slid1() {
     return Column(
-     
       children: [
-     
         // logo
         // Expanded(
         //   child: Image.asset(
@@ -250,13 +242,12 @@ class WelcomeScreenState extends State<WelcomeScreen>
         //     fit: BoxFit.cover,
         //   ),
         // ),
-     
 
         // image
         Image.asset(
           "assets/images/003_welcome_1.png",
-            width: getWidth(context, 100),
-                height: getHeight(context, 40),
+          width: getWidth(context, 100),
+          height: getHeight(context, 40),
         ),
         SizedBox(
           height: getHeight(context, 5),
@@ -296,10 +287,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
   // Slide Two
   Widget slid2() {
     return Column(
-    
       children: [
-      
-
         // logo
         // Image.asset(
         //   "assets/images/002_logo_1.png",
@@ -307,13 +295,12 @@ class WelcomeScreenState extends State<WelcomeScreen>
         //   height: getHeight(context, 100),
         //   fit: BoxFit.cover,
         // ),
-    
 
         // image
         Image.asset(
           "assets/images/003_welcome_2.png",
-              width: getWidth(context, 100),
-              height: getHeight(context, 40),
+          width: getWidth(context, 100),
+          height: getHeight(context, 40),
         ),
         SizedBox(
           height: getHeight(context, 5),
@@ -354,7 +341,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
   Widget slid3() {
     return Column(
       children: [
-      
         // logo
         // Expanded(
         //   child: Image.asset(
@@ -371,8 +357,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
         // image
         Image.asset(
           "assets/images/003_welcome_3.png",
-             width: getWidth(context, 100),
-              height: getHeight(context, 40),
+          width: getWidth(context, 100),
+          height: getHeight(context, 40),
         ),
         SizedBox(
           height: getHeight(context, 5),

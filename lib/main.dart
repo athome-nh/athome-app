@@ -1,4 +1,5 @@
 import 'package:athome/Config/local_data.dart';
+import 'package:athome/Config/property.dart';
 import 'package:athome/Notifications/Notification.dart';
 import 'package:athome/Notifications/NotificationController.dart';
 import 'package:athome/controller/cartprovider.dart';
@@ -79,6 +80,66 @@ class _AtHomeAppState extends State<AtHomeApp> {
         ChangeNotifierProvider(create: (_) => productProvider()),
       ],
       child: GetMaterialApp(
+        theme: ThemeData(
+          popupMenuTheme: PopupMenuThemeData(color: mainColorWhite),
+          dividerTheme:
+              DividerThemeData(color: mainColorBlack.withOpacity(0.2)),
+          buttonTheme: ButtonThemeData(buttonColor: mainColorGrey),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              textStyle: TextStyle(
+                  color: mainColorWhite,
+                  fontFamily: mainFontnormal,
+                  fontSize: 14),
+              foregroundColor: mainColorWhite, // Text color of the button
+              backgroundColor: mainColorGrey, // Background color of the button
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(5.0), // Border radius of the button
+              ),
+            ),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              textStyle: TextStyle(
+                  color: mainColorWhite,
+                  fontFamily: mainFontnormal,
+                  fontSize: 14),
+              foregroundColor: mainColorWhite, // Text color of the button
+              backgroundColor: mainColorGrey, // Background color of the button
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(5.0), // Border radius of the button
+              ),
+            ),
+          ),
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+              primary: const Color(0xFF014a64),
+              secondary: const Color(0xFFc82036),
+              background: const Color(0xFFeeeeee),
+              brightness: Brightness.light,
+              seedColor: mainColorWhite),
+          scaffoldBackgroundColor: mainColorWhite,
+          appBarTheme: AppBarTheme(
+            actionsIconTheme: IconThemeData(color: mainColorWhite, size: 25),
+            iconTheme: IconThemeData(color: mainColorWhite),
+            centerTitle: true,
+            elevation: 0,
+            titleTextStyle: TextStyle(
+                color: mainColorWhite,
+                fontSize: 20,
+                fontFamily: mainFontnormal),
+            backgroundColor: mainColorGrey,
+          ),
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            showUnselectedLabels: false,
+            selectedItemColor: mainColorWhite,
+            unselectedItemColor: mainColorWhite,
+            backgroundColor: mainColorGrey,
+            type: BottomNavigationBarType.fixed,
+          ),
+        ),
         translations: Translation(),
         locale: const Locale("en"),
         fallbackLocale: const Locale("en"),

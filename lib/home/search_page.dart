@@ -51,23 +51,18 @@ class _SearchState extends State<Search> {
       child: productPro.nointernetCheck
           ? noInternetWidget(context)
           : Scaffold(
-              backgroundColor: mainColorWhite,
               appBar: AppBar(
                 title: Text(
                   "Search".tr,
-                  style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontnormal,
-                      fontSize: 20),
                 ),
-                centerTitle: true,
-                backgroundColor: mainColorWhite,
-                elevation: 0,
               ),
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: getHeight(context, 1),
+                      ),
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: getWidth(context, 4)),

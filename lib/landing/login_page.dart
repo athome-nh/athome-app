@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:athome/Config/my_widget.dart';
 import 'package:athome/Config/property.dart';
 import 'package:athome/landing/verification.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -22,6 +23,21 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
 
   @override
   void initState() {
+    
+    FirebaseMessaging.instance
+        .getAPNSToken(
+            // vapidKey: firebaseCloudvapidKey
+            )
+        .then((val) async {
+      print(val);
+    });
+     FirebaseMessaging.instance
+        .getToken(
+            // vapidKey: firebaseCloudvapidKey
+            )
+        .then((val) async {
+      print(val);
+    });
     super.initState();
   }
 

@@ -370,7 +370,9 @@ class _SingInUpState extends State<SingInUp> {
                         "city": city == "Select City" ? "Erbil" : city,
                         "age": age.toString(),
                         "gender": gender,
-                        "img": gender == "MAle" ? "" : "img",
+                        "img": gender == "Male"
+                            ? "storage/profile/Man.png"
+                            : "storage/profile/Woman.png",
                         "fcmToken": token2,
                         "device": Platform.isAndroid
                             ? _readAndroidBuildData(
@@ -450,21 +452,9 @@ class _SingInUpState extends State<SingInUp> {
                                                     fixedSize: Size(
                                                         getWidth(context, 70),
                                                         getHeight(context, 5)),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          color: mainColorGrey),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                    ),
                                                   ),
                                                   child: Text(
                                                     "OK".tr,
-                                                    style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontSize: 16,
-                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -482,122 +472,28 @@ class _SingInUpState extends State<SingInUp> {
                                 );
                                 return;
                               }
-                              if (value["isActive"] == 1) {
-                                setState(() {
-                                  _isLoading = false;
-                                  isLogin = true;
-                                  loaddata = false;
-                                  token = decryptAES(value["token"]);
-                                });
-                                getStringPrefs("data").then((map) {
-                                  Map<String, dynamic> myMap = json.decode(map);
-                                  myMap["islogin"] = true;
-                                  myMap["token"] = value["token"];
-                                  setStringPrefs("data", json.encode(myMap));
-                                });
+                              setState(() {
+                                _isLoading = false;
+                                isLogin = true;
+                                loaddata = false;
+                                token = decryptAES(value["token"]);
+                              });
+                              getStringPrefs("data").then((map) {
+                                Map<String, dynamic> myMap = json.decode(map);
+                                myMap["islogin"] = true;
+                                myMap["token"] = value["token"];
+                                setStringPrefs("data", json.encode(myMap));
+                              });
 
-                                final productrovider =
-                                    Provider.of<productProvider>(context,
-                                        listen: false);
-                                productrovider.updatePost(true);
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
-                                );
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      content: Stack(
-                                        alignment: lang == "en"
-                                            ? Alignment.topLeft
-                                            : Alignment.topRight,
-                                        children: [
-                                          SizedBox(
-                                            width: getWidth(context, 70),
-                                            height: getHeight(context, 50),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Image.asset(
-                                                  "assets/Victors/disabled.png",
-                                                  width: getWidth(context, 40),
-                                                  height: getWidth(context, 40),
-                                                ),
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Account Disabled".tr,
-                                                  textAlign: TextAlign.center,
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                    color: mainColorGrey,
-                                                    fontFamily: mainFontbold,
-                                                    fontSize: 25,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  "Account is disable please contact athome admin"
-                                                      .tr,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    color: mainColorGrey,
-                                                    fontFamily: mainFontnormal,
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const RegisterWithPhoneNumber()),
-                                                    );
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    fixedSize: Size(
-                                                        getWidth(context, 70),
-                                                        getHeight(context, 5)),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          color: mainColorGrey),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                    ),
-                                                  ),
-                                                  child: Text(
-                                                    "OK".tr,
-                                                    style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          IconButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              icon: const Icon(Icons.close))
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              }
+                              final productrovider =
+                                  Provider.of<productProvider>(context,
+                                      listen: false);
+                              productrovider.updatePost(true);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const NavSwitch()),
+                              );
                             }
                           } else {
                             toastShort(

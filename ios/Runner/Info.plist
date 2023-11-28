@@ -58,7 +58,6 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
-		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -78,5 +77,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	   <key>FirebaseAppDelegateProxyEnabled</key>
+    <false/>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+<string>We need access to your photo library to select images.</string>
+<key>NSCameraUsageDescription</key>
+<string>We need access to your camera to take photos.</string>
+
 </dict>
 </plist>

@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
           });
 
           Timer(
-            const Duration(seconds: 5),
+            const Duration(seconds: 6),
             () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
@@ -127,29 +127,11 @@ class _SplashScreenState extends State<SplashScreen> {
         ? noInternetWidget(context)
         : SafeArea(
             child: Scaffold(
-              body: Stack(
-                children: [
-                  Opacity(
-                    opacity: 0.25,
-                    child: Image.asset(
-                      mainImagePattern,
-                      width: getWidth(context, 100),
-                      height: getHeight(context, 100),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          mainImageLogo1,
-                          width: getWidth(context, 100),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              body: Center(
+                child: Image.asset(
+                  mainImageLogo1,
+                  width: getWidth(context, 100),
+                ),
               ),
             ),
           );
