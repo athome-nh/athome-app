@@ -47,7 +47,6 @@ class _AllItemState extends State<AllItem> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
             type == "discount"
@@ -59,25 +58,20 @@ class _AllItemState extends State<AllItem> {
                         : type == "brand"
                             ? name
                             : "Best Sell".tr,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
-          centerTitle: true,
-          backgroundColor: mainColorWhite,
-          elevation: 0,
+
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
 
           // Change the color of the unselected tab labels
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal:8 ),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: listItemsShow(context, products),
         ),
         //floatingActionButton: buildFAB(context),

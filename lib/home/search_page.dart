@@ -41,6 +41,7 @@ class _SearchState extends State<Search> {
     super.dispose();
   }
 
+  bool isSearch = false;
   TextEditingController searchCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -52,102 +53,94 @@ class _SearchState extends State<Search> {
           ? noInternetWidget(context)
           : Scaffold(
               appBar: AppBar(
-                title: Text(
-                  "Search".tr,
+                title: TextField(
+                  controller: searchCon,
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: mainColorWhite,
+                      fontFamily: mainFontbold),
+                  keyboardType: TextInputType.text,
+                  onChanged: (value) {
+                    productPro.setsearch(searchCon.text);
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Ionicons.search_outline,
+                      color: mainColorWhite,
+                      size: 25,
+                    ),
+                    hintText: "Search".tr,
+                    hintStyle: TextStyle(
+                        fontFamily: mainFontnormal,
+                        color: mainColorWhite.withOpacity(0.8),
+                        fontSize: 14),
+                  ),
                 ),
+                actions: [
+                  searchCon.text.isNotEmpty
+                      ? IconButton(
+                          icon: Icon(Icons.cancel),
+                          onPressed: () {
+                            setState(() {
+                              isSearch = false;
+                              searchCon.text = "";
+                              productPro.setsearch("");
+                            });
+                          },
+                        )
+                      : SizedBox(),
+                ],
               ),
               body: SafeArea(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 4)),
-                        child: Container(
-                          width: getWidth(context, 92),
-                          height: getHeight(context, 5),
-                          decoration: BoxDecoration(
-                              color: const Color(0xffF2F2F2),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: TextField(
-                            controller: searchCon,
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: mainColorGrey,
-                                fontFamily: mainFontbold),
-                            keyboardType: TextInputType.text,
-                            onChanged: (value) {
-                              productPro.setsearch(searchCon.text);
-                            },
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Ionicons.search_outline,
-                                color: mainColorGrey.withOpacity(0.45),
-                                size: 25,
-                              ),
-                              suffixIcon: productPro.searchproduct.isNotEmpty
-                                  ? TextButton(
-                                      onPressed: () {
-                                        searchCon.text = "";
-                                        productPro.setsearch("");
-                                      },
-                                      child: Icon(
-                                        Ionicons.close,
-                                        color: mainColorGrey.withOpacity(0.45),
-                                        size: 25,
-                                      ),
-                                    )
-                                  : const SizedBox(),
-                              border: InputBorder.none,
-                              hintText: "Search".tr,
-                              hintStyle: TextStyle(
-                                  fontFamily: mainFontnormal,
-                                  color: mainColorGrey.withOpacity(0.45),
-                                  fontSize: 14),
-                            ),
-                          ),
+                child: GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                  },
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: getHeight(context, 1),
                         ),
-                      ),
-                      SizedBox(
-                        height: getHeight(context, 1),
-                      ),
-                      productPro
-                              .getProductsBySearch(productPro.searchproduct)
-                              .isEmpty
-                          ? Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: getHeight(context, 10),
+                        !productPro.show
+                            ? listItemsBigShimer(context)
+                            : productPro
+                                    .getProductsBySearch(
+                                        productPro.searchproduct)
+                                    .isEmpty
+                                ? Center(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          height: getHeight(context, 10),
+                                        ),
+                                        SizedBox(
+                                          width: getWidth(context, 100),
+                                          height: getWidth(context, 100),
+                                          child: Image.asset(
+                                              "assets/Victors/serach_empty.png"),
+                                        ),
+                                        SizedBox(
+                                          height: getHeight(context, 2),
+                                        ),
+                                        Text(
+                                          "Not found any item".tr,
+                                          style: TextStyle(
+                                              fontFamily: mainFontnormal,
+                                              fontSize: 18),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : listItemsShowSearch(
+                                    context,
+                                    productPro.getProductsBySearch(
+                                        productPro.searchproduct),
                                   ),
-                                  SizedBox(
-                                    width: getWidth(context, 100),
-                                    height: getWidth(context, 100),
-                                    child: Image.asset(
-                                        "assets/Victors/serach_empty.png"),
-                                  ),
-                                  SizedBox(
-                                    height: getHeight(context, 2),
-                                  ),
-                                  Text(
-                                    "Not found any item".tr,
-                                    style: TextStyle(
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 18),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : listItemsShowSearch(
-                              context,
-                              productPro.getProductsBySearch(
-                                  productPro.searchproduct),
-                            ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

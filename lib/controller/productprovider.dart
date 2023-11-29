@@ -198,9 +198,10 @@ class productProvider extends ChangeNotifier {
             }
             getDataAll(user);
           }
-        }
+        } else {}
       });
     } else {
+      print("11111");
       getDataAll(user);
     }
   }

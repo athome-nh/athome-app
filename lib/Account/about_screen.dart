@@ -16,22 +16,13 @@ class _AboutScreenState extends State<AboutScreen> {
       appBar: AppBar(
         title: Text(
           "About Us".tr,
-          style: TextStyle(
-            fontFamily: mainFontnormal,
-            color: mainColorGrey,
-            fontSize: 20,
-          ),
         ),
-        centerTitle: true,
-        backgroundColor: mainColorWhite,
-        elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
           icon: Icon(
             Icons.arrow_back_ios,
-            color: mainColorRed,
           ),
         ),
       ),
@@ -41,16 +32,15 @@ class _AboutScreenState extends State<AboutScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  top: getHeight(context, 10),
+                  top: getHeight(context, 5),
                 ),
                 child: Image.asset(
-                  'assets/images/002_logo_1.png',
-                  width: getWidth(context, 60),
-                  height: getHeight(context, 20),
+                  'assets/images/Logo-Type-2.png',
+                  width: getWidth(context, 80),
                 ),
               ),
               SizedBox(
-                height: getHeight(context, 10),
+                height: getHeight(context, 5),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
@@ -58,7 +48,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "WelcomeToAthomeOnlineMarketApplication!".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -73,7 +63,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "WideSelectionOfProductsOurOnlineSupermarket".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -88,7 +78,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "EasyToUseInterfaceOurUserFriendly".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -103,7 +93,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "SecurePaymentWePrioritizeTheSecurity".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -118,7 +108,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "PromotionsAndDealsKeep".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -133,7 +123,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "CustomerSupportIfYouHaveAnyQuestions".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -148,7 +138,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "FeedbackAndImprovementWeValueYourFeedback".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
@@ -163,7 +153,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "ThankYouForChoosingOurAthome".tr,
                   style: TextStyle(
                       // height: 1.5,
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontnormal,
                       fontSize: 16),
                   textAlign: TextAlign.justify,
