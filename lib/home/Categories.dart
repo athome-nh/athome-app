@@ -95,10 +95,11 @@ class _CategoriesState extends State<Categories> {
                             child: Center(
                               child: CachedNetworkImage(
                                 imageUrl: imageUrlServer + cateItem.img!,
-                                placeholder: (context, url) =>
-                                    Image.asset("assets/images/002_logo_1.png"),
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
-                                    Image.asset("assets/images/002_logo_1.png"),
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
                                 width: getHeight(context, 6),
                                 height: getHeight(context, 6),
                               ),

@@ -23,7 +23,6 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
 
   @override
   void initState() {
-    
     FirebaseMessaging.instance
         .getAPNSToken(
             // vapidKey: firebaseCloudvapidKey
@@ -31,7 +30,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
         .then((val) async {
       print(val);
     });
-     FirebaseMessaging.instance
+    FirebaseMessaging.instance
         .getToken(
             // vapidKey: firebaseCloudvapidKey
             )
@@ -161,8 +160,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             return null; // Return null when the input is valid
                           },
                           maxLength: 10,
-                          keyboardType: const TextInputType.numberWithOptions(
-                              signed: true, decimal: true),
+                          keyboardType: TextInputType.number,
                           cursorColor: mainColorRed,
                           inputDecoration: InputDecoration(
                             contentPadding:

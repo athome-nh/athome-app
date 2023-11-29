@@ -81,6 +81,10 @@ class _AtHomeAppState extends State<AtHomeApp> {
       ],
       child: GetMaterialApp(
         theme: ThemeData(
+          dialogTheme: DialogTheme(
+            backgroundColor:
+                mainColorWhite, // Set the background color of AlertDialog
+          ),
           popupMenuTheme: PopupMenuThemeData(color: mainColorWhite),
           dividerTheme:
               DividerThemeData(color: mainColorBlack.withOpacity(0.2)),

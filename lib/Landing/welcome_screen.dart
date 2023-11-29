@@ -98,8 +98,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                   builder: (context) => const NavSwitch()),
                             );
                           },
-                          style: TextButton.styleFrom(
-                              foregroundColor: mainColorRed),
                           child: Text(
                             "Get Start".tr,
                           ),
@@ -236,7 +234,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         // logo
         // Expanded(
         //   child: Image.asset(
-        //     "assets/images/002_logo_1.png",
+        //     "assets/images/Logo-Type-2.png",
         //     width: getWidth(context, 80),
         //     height: getHeight(context, 100),
         //     fit: BoxFit.cover,
@@ -290,7 +288,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
       children: [
         // logo
         // Image.asset(
-        //   "assets/images/002_logo_1.png",
+        //   "assets/images/Logo-Type-2.png",
         //   width: getWidth(context, 80),
         //   height: getHeight(context, 100),
         //   fit: BoxFit.cover,
@@ -344,7 +342,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         // logo
         // Expanded(
         //   child: Image.asset(
-        //     "assets/images/002_logo_1.png",
+        //     "assets/images/Logo-Type-2.png",
         //     width: getWidth(context, 80),
         //     height: getHeight(context, 100),
         //     fit: BoxFit.cover,

@@ -140,10 +140,10 @@ class _OneitemState extends State<Oneitem> {
                                           // imageUrlServer + Item.coverImg!,
                                           placeholder: (context, url) =>
                                               Image.asset(
-                                                  "assets/images/002_logo_1.png"),
+                                                  "assets/images/Logo-Type-2.png"),
                                           errorWidget: (context, url, error) =>
                                               Image.asset(
-                                                  "assets/images/002_logo_1.png"),
+                                                  "assets/images/Logo-Type-2.png"),
                                           width: getWidth(context, 100),
                                           height: getHeight(context, 20),
                                         ),

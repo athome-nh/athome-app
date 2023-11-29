@@ -43,6 +43,7 @@ class Network {
         toastLong('An error occured, Please try again.');
       }
     } catch (e) {
+      print(e);
       return "";
     }
     return data;
