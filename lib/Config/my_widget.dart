@@ -360,16 +360,18 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   height: 5,
                                 ),
                                 Text(
-                                    lang == "en"
-                                        ? product.nameEn.toString()
-                                        : lang == "ar"
-                                            ? product.nameAr.toString()
-                                            : product.nameKu.toString(),
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!),
+                                  lang == "en"
+                                      ? product.nameEn.toString()
+                                      : lang == "ar"
+                                          ? product.nameAr.toString()
+                                          : product.nameKu.toString(),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 14),
+                                ),
                                 const SizedBox(
                                   height: 3,
                                 ),
@@ -706,7 +708,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorBlack,
-                                      fontFamily: mainFontbold,
+                                      fontFamily: mainFontnormal,
                                       fontSize: 14),
                                 ),
                                 const SizedBox(
@@ -1050,7 +1052,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: mainColorBlack,
-                                      fontFamily: mainFontbold,
+                                      fontFamily: mainFontnormal,
                                       fontSize: 14),
                                 ),
                                 const SizedBox(
@@ -1416,63 +1418,6 @@ Widget waitingWiget2(BuildContext context) {
   );
 }
 
-//
-cartEmptyContainer(BuildContext context) {
-  return Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: getHeight(context, 12),
-          width: getWidth(context, 80),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: mainColorRed,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          ),
-          child: Icon(
-            Icons.warning_amber_outlined,
-            size: 70,
-            color: mainColorWhite,
-          ),
-        ),
-        Container(
-          height: getHeight(context, 30),
-          width: getWidth(context, 80),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: mainColorGrey,
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Warning',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: mainFontbold,
-                    color: mainColorWhite),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'Your cart is empty',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: mainFontnormal,
-                    color: mainColorWhite),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
 // Dialogbox ( Register )
 Future<void> loiginPopup(BuildContext context) {
   return showDialog(
@@ -1503,7 +1448,7 @@ Future<void> loiginPopup(BuildContext context) {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
-                      color: mainColorGrey,
+                      color: mainColorBlack,
                       fontFamily: mainFontbold,
                       fontSize: 25,
                     ),
@@ -1533,10 +1478,6 @@ Future<void> loiginPopup(BuildContext context) {
                     ),
                     child: Text(
                       "Register".tr,
-                      style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 16,
-                      ),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -1545,6 +1486,7 @@ Future<void> loiginPopup(BuildContext context) {
                       Navigator.pop(context);
                     },
                     style: TextButton.styleFrom(
+                      backgroundColor: mainColorRed,
                       fixedSize:
                           Size(getWidth(context, 70), getHeight(context, 5)),
                     ),

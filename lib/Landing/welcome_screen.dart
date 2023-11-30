@@ -29,10 +29,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
           backgroundColor: mainColorWhite,
-          elevation: 0,
           leading: IconButton(
               onPressed: () {
                 if (currentIndex == 0) {
@@ -151,8 +149,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: currentIndex == 0
-                                      ? mainColorRed
-                                      : mainColorBlack,
+                                      ? mainColorGrey
+                                      : mainColorRed,
                                 ),
                               ),
                               Container(
@@ -163,8 +161,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: currentIndex == 1
-                                      ? mainColorRed
-                                      : mainColorBlack,
+                                      ? mainColorGrey
+                                      : mainColorRed,
                                 ),
                               ),
                               Container(
@@ -175,8 +173,8 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: currentIndex == 2
-                                      ? mainColorRed
-                                      : mainColorBlack,
+                                      ? mainColorGrey
+                                      : mainColorRed,
                                 ),
                               ),
                             ],
@@ -257,7 +255,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           style: TextStyle(
             fontFamily: mainFontbold,
             fontSize: getHeight(context, 3),
-            color: mainColorGrey,
+            color: mainColorBlack,
           ),
           textAlign: TextAlign.center,
         ),
@@ -273,7 +271,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
             style: TextStyle(
               fontFamily: mainFontnormal,
               fontSize: getHeight(context, 2),
-              color: mainColorGrey,
+              color: mainColorBlack,
             ),
             textAlign: TextAlign.center,
           ),
@@ -326,7 +324,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
             style: TextStyle(
               fontFamily: mainFontnormal,
               fontSize: getHeight(context, 2),
-              color: mainColorGrey,
+              color: mainColorBlack,
             ),
             textAlign: TextAlign.center,
           ),
@@ -368,7 +366,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
           style: TextStyle(
             fontFamily: mainFontbold,
             fontSize: getHeight(context, 3),
-            color: mainColorGrey,
+            color: mainColorBlack,
           ),
           textAlign: TextAlign.center,
         ),
@@ -384,7 +382,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
             style: TextStyle(
               fontFamily: mainFontnormal,
               fontSize: getHeight(context, 2),
-              color: mainColorGrey,
+              color: mainColorBlack,
             ),
             textAlign: TextAlign.center,
           ),

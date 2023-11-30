@@ -39,19 +39,13 @@ class _OrederItemsState extends State<OrederItems> {
         appBar: AppBar(
           title: Text(
             "Past Order".tr,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
-          centerTitle: true,
-          backgroundColor: mainColorWhite,
-          elevation: 0,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
         ),
         body: cartProvider.cartItemsPast.isNotEmpty
@@ -93,13 +87,13 @@ class _OrederItemsState extends State<OrederItems> {
                         },
                         background: Container(
                           color: Colors.red,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20),
                               child: Icon(
                                 Icons.delete,
-                                color: Colors.white,
+                                color: mainColorWhite,
                               ),
                             ),
                           ),
@@ -150,7 +144,7 @@ class _OrederItemsState extends State<OrederItems> {
                                           textAlign: TextAlign.start,
                                           maxLines: 1,
                                           style: TextStyle(
-                                              color: mainColorGrey,
+                                              color: mainColorBlack,
                                               fontFamily: mainFontbold,
                                               fontSize: 14),
                                         ),
@@ -323,8 +317,10 @@ class _OrederItemsState extends State<OrederItems> {
                     ),
                     Text(
                       "Your cart is empty".tr,
-                      style:
-                          TextStyle(fontFamily: mainFontnormal, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: mainFontnormal,
+                          color: mainColorBlack,
+                          fontSize: 16),
                     ),
                   ],
                 ),
@@ -351,7 +347,7 @@ class _OrederItemsState extends State<OrederItems> {
                               Text(
                                 "Sub Total".tr,
                                 style: TextStyle(
-                                    color: mainColorGrey,
+                                    color: mainColorBlack,
                                     fontFamily: mainFontnormal,
                                     fontSize: 16),
                               ),
@@ -360,7 +356,7 @@ class _OrederItemsState extends State<OrederItems> {
                                 addCommasToPrice(cartProvider
                                     .calculateTotalPricePast(CardItemshow)),
                                 style: TextStyle(
-                                    color: mainColorGrey,
+                                    color: mainColorBlack,
                                     fontFamily: mainFontnormal,
                                     fontSize: 16),
                               ),
@@ -379,7 +375,7 @@ class _OrederItemsState extends State<OrederItems> {
                               Text(
                                 "Delivery Cost".tr,
                                 style: TextStyle(
-                                    color: mainColorGrey,
+                                    color: mainColorBlack,
                                     fontFamily: mainFontnormal,
                                     fontSize: 16),
                               ),
@@ -414,7 +410,7 @@ class _OrederItemsState extends State<OrederItems> {
                                 textAlign: TextAlign.start,
                                 "Total".tr,
                                 style: TextStyle(
-                                    color: mainColorGrey,
+                                    color: mainColorBlack,
                                     fontFamily: mainFontbold,
                                     fontSize: 20),
                               ),
@@ -445,186 +441,6 @@ class _OrederItemsState extends State<OrederItems> {
                                     return;
                                   }
 
-                                  // ignore: use_build_context_synchronously
-                                  // showModalBottomSheet(
-                                  //   context: context,
-                                  //   isDismissible: true,
-                                  //   shape: const RoundedRectangleBorder(
-                                  //     borderRadius: BorderRadius.vertical(
-                                  //       top: Radius.circular(25.0),
-                                  //     ),
-                                  //   ),
-                                  //   builder: (BuildContext context) {
-                                  //     return Container(
-                                  //       color: mainColorWhite,
-                                  //       child: Column(
-                                  //         children: <Widget>[
-                                  //           Container(
-                                  //             padding: EdgeInsets.only(
-                                  //               top: getWidth(context, 2),
-                                  //               left: getWidth(context, 2),
-                                  //               right: getWidth(context, 2),
-                                  //               bottom: getWidth(context, 1),
-                                  //             ),
-                                  //             margin: const EdgeInsets.all(8.0),
-                                  //             height: getWidth(context, 10),
-                                  //             width: double.infinity,
-                                  //             decoration: BoxDecoration(
-                                  //               color: mainColorGrey
-                                  //                   .withOpacity(0.5),
-                                  //               borderRadius:
-                                  //                   BorderRadius.circular(5),
-                                  //             ),
-                                  //             child: Center(
-                                  //               child: Text(
-                                  //                 "Select Location".tr,
-                                  //                 style: TextStyle(
-                                  //                   color: mainColorWhite,
-                                  //                   fontSize: 20,
-                                  //                   fontFamily: mainFontnormal,
-                                  //                 ),
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //           SizedBox(
-                                  //             height: getHeight(context, 40),
-                                  //             child: Padding(
-                                  //               padding:
-                                  //                   const EdgeInsets.all(8.0),
-                                  //               child: productrovider
-                                  //                       .location.isNotEmpty
-                                  //                   ? ListView.builder(
-                                  //                       itemCount:
-                                  //                           productrovider
-                                  //                               .location
-                                  //                               .length,
-                                  //                       itemBuilder:
-                                  //                           (BuildContext
-                                  //                                   context,
-                                  //                               int index) {
-                                  //                         final location =
-                                  //                             productrovider
-                                  //                                     .location[
-                                  //                                 index];
-                                  //                         return Padding(
-                                  //                           padding: EdgeInsets.only(
-                                  //                               bottom:
-                                  //                                   getHeight(
-                                  //                                       context,
-                                  //                                       1)),
-                                  //                           child:
-                                  //                               GestureDetector(
-                                  //                             onTap: () {
-                                  //                               cartProvider.addPastToCart(
-                                  //                                   cartProvider
-                                  //                                       .cartItemsPast);
-
-                                  //                               Navigator.push(
-                                  //                                 context,
-                                  //                                 MaterialPageRoute(
-                                  //                                     builder:
-                                  //                                         (context) =>
-                                  //                                             CheckOut()),
-                                  //                               ).then((value) {
-                                  //                                 cartProvider
-                                  //                                     .clearCart();
-                                  //                               });
-                                  //                             },
-                                  //                             child: Container(
-                                  //                               decoration: BoxDecoration(
-                                  //                                   color:
-                                  //                                       mainColorLightGrey,
-                                  //                                   borderRadius:
-                                  //                                       BorderRadius.circular(
-                                  //                                           5)),
-                                  //                               child: ListTile(
-                                  //                                 title: Text(
-                                  //                                   location
-                                  //                                       .name!,
-                                  //                                   style: TextStyle(
-                                  //                                       color:
-                                  //                                           mainColorGrey,
-                                  //                                       fontSize:
-                                  //                                           14,
-                                  //                                       fontFamily:
-                                  //                                           mainFontbold),
-                                  //                                 ),
-                                  //                                 subtitle:
-                                  //                                     Text(
-                                  //                                   location
-                                  //                                       .area!,
-                                  //                                   style: TextStyle(
-                                  //                                       color:
-                                  //                                           mainColorGrey,
-                                  //                                       fontSize:
-                                  //                                           14,
-                                  //                                       fontFamily:
-                                  //                                           mainFontnormal),
-                                  //                                 ),
-                                  //                                 trailing:
-                                  //                                     Text(
-                                  //                                   "Select".tr,
-                                  //                                   style: TextStyle(
-                                  //                                       color:
-                                  //                                           mainColorRed,
-                                  //                                       fontFamily:
-                                  //                                           mainFontnormal),
-                                  //                                 ),
-                                  //                               ),
-                                  //                             ),
-                                  //                           ),
-                                  //                         );
-                                  //                       })
-                                  //                   : Center(
-                                  //                       child: Text(
-                                  //                       "Not have any location"
-                                  //                           .tr,
-                                  //                       style: TextStyle(
-                                  //                         color: mainColorGrey,
-                                  //                         fontSize: 20,
-                                  //                       ),
-                                  //                     )),
-                                  //             ),
-                                  //           ),
-                                  //           Padding(
-                                  //             padding: EdgeInsets.symmetric(
-                                  //                 horizontal:
-                                  //                     getWidth(context, 4)),
-                                  //             child: TextButton(
-                                  //               onPressed: () {
-                                  //                 Navigator.pop(context);
-                                  //                 Navigator.push(
-                                  //                   context,
-                                  //                   MaterialPageRoute(
-                                  //                       builder: (context) =>
-                                  //                           const Map_screen()),
-                                  //                 );
-                                  //               },
-                                  //               style: ElevatedButton.styleFrom(
-                                  //                 backgroundColor: mainColorRed,
-                                  //                 fixedSize: Size(
-                                  //                     getWidth(context, 85),
-                                  //                     getHeight(context, 6)),
-                                  //                 shape: RoundedRectangleBorder(
-                                  //                   borderRadius:
-                                  //                       BorderRadius.circular(
-                                  //                           5),
-                                  //                 ),
-                                  //               ),
-                                  //               child: Text(
-                                  //                 "Add another location".tr,
-                                  //                 style: TextStyle(
-                                  //                   color: mainColorWhite,
-                                  //                   fontSize: 16,
-                                  //                 ),
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //         ],
-                                  //       ),
-                                  //     );
-                                  //   },
-                                  // );
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -635,6 +451,7 @@ class _OrederItemsState extends State<OrederItems> {
                                   );
                                 },
                                 style: TextButton.styleFrom(
+                                  backgroundColor: mainColorRed,
                                   fixedSize: Size(getWidth(context, 40),
                                       getHeight(context, 6)),
                                 ),

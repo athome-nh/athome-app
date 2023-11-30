@@ -252,6 +252,9 @@ class _CheckOutState extends State<CheckOut> {
                                 );
                               }),
                     ),
+                    SizedBox(
+                      height: getHeight(context, 2),
+                    ),
                     Text(
                       "Pyment Method".tr,
                       style: TextStyle(
@@ -278,7 +281,7 @@ class _CheckOutState extends State<CheckOut> {
                               Text(
                                 "Cash on delivery".tr,
                                 style: TextStyle(
-                                    color: mainColorGrey,
+                                    color: mainColorBlack,
                                     fontFamily: mainFontnormal,
                                     fontSize: 12),
                               ),
@@ -556,14 +559,14 @@ class _CheckOutState extends State<CheckOut> {
                                                   Text("Thank You!".tr,
                                                       style: TextStyle(
                                                         fontSize: 24,
-                                                        color: mainColorGrey,
+                                                        color: mainColorBlack,
                                                         fontFamily:
                                                             mainFontnormal,
                                                       )),
                                                   Text("for yor order".tr,
                                                       style: TextStyle(
                                                         fontSize: 16,
-                                                        color: mainColorGrey,
+                                                        color: mainColorBlack,
                                                         fontFamily:
                                                             mainFontnormal,
                                                       )),
@@ -580,7 +583,8 @@ class _CheckOutState extends State<CheckOut> {
                                                         "Order Number:".tr,
                                                         style: TextStyle(
                                                             fontSize: 16,
-                                                            color: mainColorRed,
+                                                            color:
+                                                                mainColorBlack,
                                                             fontFamily:
                                                                 mainFontbold),
                                                       ),
@@ -588,8 +592,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         value["id"].toString(),
                                                         style: TextStyle(
                                                             fontSize: 16,
-                                                            color:
-                                                                mainColorGrey,
+                                                            color: mainColorRed,
                                                             fontFamily:
                                                                 mainFontbold),
                                                       ),
@@ -611,7 +614,7 @@ class _CheckOutState extends State<CheckOut> {
                                                           .tr,
                                                       style: TextStyle(
                                                         fontSize: 14,
-                                                        color: mainColorGrey,
+                                                        color: mainColorBlack,
                                                         fontFamily:
                                                             mainFontnormal,
                                                       ),
@@ -657,8 +660,6 @@ class _CheckOutState extends State<CheckOut> {
                                                       },
                                                       style:
                                                           TextButton.styleFrom(
-                                                        backgroundColor:
-                                                            mainColorRed,
                                                         fixedSize: Size(
                                                             getWidth(
                                                                 context, 85),
@@ -669,6 +670,10 @@ class _CheckOutState extends State<CheckOut> {
                                                         "Track My Order".tr,
                                                       ),
                                                     ),
+                                                  ),
+                                                  SizedBox(
+                                                    height:
+                                                        getHeight(context, 2),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
@@ -681,6 +686,14 @@ class _CheckOutState extends State<CheckOut> {
                                                                 const NavSwitch()),
                                                       ); // Close the bottom sheet
                                                     },
+                                                    style: TextButton.styleFrom(
+                                                      backgroundColor:
+                                                          mainColorRed,
+                                                      fixedSize: Size(
+                                                          getWidth(context, 85),
+                                                          getHeight(
+                                                              context, 6)),
+                                                    ),
                                                     child: Text(
                                                       "Back to Home".tr,
                                                     ),

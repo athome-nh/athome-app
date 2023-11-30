@@ -182,23 +182,19 @@ class _NavSwitchState extends State<NavSwitch> {
       builder: (BuildContext context) {
         return StatefulBuilder(builder: (context2, state) {
           return AlertDialog(
-            backgroundColor: mainColorGrey,
             contentPadding: const EdgeInsets.all(0),
             content: ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: ClipRect(
                 child: Container(
                   width: getWidth(context, 90),
-                  height: getHeight(context, 25),
-                  decoration: BoxDecoration(
-                      color: mainColorGrey.withOpacity(0.1),
-                      border:
-                          Border.all(color: mainColorWhite.withOpacity(0.1)),
-                      borderRadius: BorderRadius.circular(5)),
+                  height: getHeight(context, 20),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(5)),
                   padding: const EdgeInsets.all(10),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxHeight: getHeight(context, 25),
+                      maxHeight: getHeight(context, 20),
                     ),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -209,15 +205,15 @@ class _NavSwitchState extends State<NavSwitch> {
                             "Are you sure exiting the app".tr,
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: mainColorWhite.withOpacity(0.7),
+                              color: mainColorBlack,
                               fontFamily: mainFontnormal,
                               fontSize: 16,
                             ),
                           ),
                           const SizedBox(),
                           const SizedBox(),
-                          const SizedBox(),
-                          const SizedBox(),
+                          // const SizedBox(),
+                          // const SizedBox(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -227,16 +223,11 @@ class _NavSwitchState extends State<NavSwitch> {
                                   Navigator.pop(context);
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainColorGrey,
-                                  fixedSize: const Size(100, 35),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
+                                    backgroundColor: mainColorRed,
+                                    fixedSize: Size(getWidth(context, 30),
+                                        getHeight(context, 4))),
                                 child: Text(
                                   "No".tr,
-                                  style: TextStyle(
-                                      fontSize: 16, fontFamily: mainFontbold),
                                 ),
                               ),
                               ElevatedButton(
@@ -244,18 +235,10 @@ class _NavSwitchState extends State<NavSwitch> {
                                   exit(0);
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainColorRed,
-                                  fixedSize: const Size(100, 35),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
+                                    fixedSize: Size(getWidth(context, 30),
+                                        getHeight(context, 4))),
                                 child: Text(
                                   "Yes".tr,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontFamily: mainFontbold,
-                                  ),
                                 ),
                               ),
                               const SizedBox(),

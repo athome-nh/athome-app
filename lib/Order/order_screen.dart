@@ -357,6 +357,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                               });
                                             },
                                             style: TextButton.styleFrom(
+                                                backgroundColor: mainColorRed,
                                                 fixedSize: Size(
                                                     getWidth(context, 30),
                                                     getHeight(context, 3))),

@@ -426,7 +426,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: mainColorBlack,
-                                              fontFamily: mainFontbold,
+                                              fontFamily: mainFontnormal,
                                               fontSize: 12),
                                         ),
                                       ],

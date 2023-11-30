@@ -128,6 +128,7 @@ class _SearchState extends State<Search> {
                                         Text(
                                           "Not found any item".tr,
                                           style: TextStyle(
+                                              color: mainColorBlack,
                                               fontFamily: mainFontnormal,
                                               fontSize: 18),
                                         ),

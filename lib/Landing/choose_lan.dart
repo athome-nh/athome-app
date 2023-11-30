@@ -38,7 +38,7 @@ class _ChooseLangState extends State<ChooseLang> {
                   style: TextStyle(
                       fontFamily: mainFontbold,
                       fontSize: 24,
-                      color: mainColorGrey),
+                      color: mainColorBlack),
                 ),
                 // Space
                 SizedBox(
@@ -70,7 +70,7 @@ class _ChooseLangState extends State<ChooseLang> {
                           style: TextStyle(
                               fontFamily: mainFontbold,
                               fontSize: 14,
-                              color: mainColorGrey),
+                              color: mainColorBlack),
                         ),
                         Icon(
                           Icons.check,
@@ -110,7 +110,7 @@ class _ChooseLangState extends State<ChooseLang> {
                           style: TextStyle(
                               fontFamily: mainFontbold,
                               fontSize: 14,
-                              color: mainColorGrey),
+                              color: mainColorBlack),
                         ),
                         Icon(
                           Icons.check,
@@ -150,7 +150,7 @@ class _ChooseLangState extends State<ChooseLang> {
                           style: TextStyle(
                               fontFamily: mainFontbold,
                               fontSize: 14,
-                              color: mainColorGrey),
+                              color: mainColorBlack),
                         ),
                         Icon(
                           Icons.check,
@@ -191,7 +191,7 @@ class _ChooseLangState extends State<ChooseLang> {
                         style: TextStyle(
                             fontFamily: mainFontbold,
                             fontSize: 14,
-                            color: mainColorGrey),
+                            color: mainColorBlack),
                       ),
                     ),
                   ),
