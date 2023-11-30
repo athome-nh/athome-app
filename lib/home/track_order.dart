@@ -72,12 +72,12 @@ class _TrackOrderState extends State<TrackOrder> {
         "Order is delivered"
       ];
       content = [
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+        "Great choice! Your order is confirmed. Thanks for shopping with us.",
+        "Our team is working on your order. Updates will follow shortly.",
+        "Our team is working on your order. Updates will follow shortly.",
+        "Your items are in transit and will be at your doorstep soon.",
+        "You can now pick up your order; The driver is waiting on your step door !",
+        "?????"
       ];
     } else if (lang == "ar") {
       titles = [
@@ -89,12 +89,12 @@ class _TrackOrderState extends State<TrackOrder> {
         "Order is delivered"
       ];
       content = [
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+        "اختيار رائع! تم تأكيد طلبك. شكرًا لتسوقك معنا",
+        "جاري معالجة الطلب. سيتم إرسال التحديثات في وقت قريب"
+        "جاري معالجة الطلب. سيتم إرسال التحديثات في وقت قريب",
+        "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبًا.",
+        "الطلب جاهز للاستلام يمكنك الآن استلام طلبك. السائق في انتظارك عند باب منزلك",
+        "?????"
       ];
     } else {
       titles = [
@@ -106,12 +106,12 @@ class _TrackOrderState extends State<TrackOrder> {
         "Order is delivered"
       ];
       content = [
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is on way to deliver you jassk xcnc kz nkcxnk acs sazxz .",
-        "Your order is  delivered thank you for ordering jassk xcnc kz  ."
+        "هەڵبژاردنێکی دروست! داواکاریەکەت وەرگیرا . سوپاس بۆ بازاڕ کردنت لە دڵی لاس مارکێت",
+        "داواکاریەکەت کاری لەسەر دەکرێت. چاوەڕوانی پێشهاتی داهاتوو  بکەن",
+        "داواکاریەکەت کاری لەسەر دەکرێت. چاوەڕوانی پێشهاتی داهاتوو  بکەن",
+        "داواکاریەکەت لەڕێگایەداواکاریەکەت بە زووترین کات دەگات بۆ شوێنی داواکراو",
+        "داواکاریەکەت گەیشت ئیستا دەتوانیت داواکاریەکەت وەرگریت. شۆفێر لە بەر دەرگایە",
+        "?????"
       ];
     }
     updateStatus();

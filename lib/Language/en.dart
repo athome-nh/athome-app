@@ -38,9 +38,9 @@ const Map<String, String> en = {
   "View All": "View All",
 
   // Dialogbox ( Register ) --> my_widget
-  "Login Please": "Register First",
+  "Register First": "Register First",
   "You need login": "You have to register first",
-  "Login": "Register",
+  "Register": "Register",
   "Cancel": "Cancel",
 
   // categories
@@ -53,7 +53,6 @@ const Map<String, String> en = {
 
   // my_cart
   "My Cart": "My Cart",
-  "You need login to add item to favourite":"You need login to add item to favourite",
   "Clear": "Clear",
   "Your cart is empty": "Your cart is empty",
   "Delete": "Delete",
@@ -70,7 +69,7 @@ const Map<String, String> en = {
   "No have any favorite": "You haven't set any favorite items.\nMake it your own!",
 
   // Page --> Login First --> my_widget
-  "Please login first": "Please login first",
+  "Please login first": "Please login first", // nmayaa
 
   // Page --> No Internet --> my_widget
   "no internet": "You are offline, connect to WIFI",
@@ -125,17 +124,6 @@ const Map<String, String> en = {
   "Send Order": "Send Order",
   "sorryWeDoNotHaveDelivery": "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
   "OK": "OK",
-
-  // about_screen
-  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
-  "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-  "EasyToUseInterfaceOurUserFriendly": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "SecurePaymentWePrioritizeTheSecurity": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
-  "PromotionsAndDealsKeep": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
-  "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
-  "FeedbackAndImprovementWeValueYourFeedback": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "ThankYouForChoosingOurAthome": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
-   "About Us": "About Us",
 
   // login_page
   "Wellcome back": "Welcome back",
@@ -200,5 +188,16 @@ const Map<String, String> en = {
   "Order:": "Order:",
   "Cancel order": "Cancel order",
   "View order":"View order",
+
+  // about_screen
+  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
+  "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  "EasyToUseInterfaceOurUserFriendly": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
+  "SecurePaymentWePrioritizeTheSecurity": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
+  "PromotionsAndDealsKeep": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
+  "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
+  "FeedbackAndImprovementWeValueYourFeedback": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
+  "ThankYouForChoosingOurAthome": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+   "About Us": "About Us",
 
 };

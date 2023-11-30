@@ -1499,7 +1499,7 @@ Future<void> loiginPopup(BuildContext context) {
                     height: 10,
                   ),
                   Text(
-                    "Login Please".tr,
+                    "Register First".tr,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
@@ -1532,7 +1532,11 @@ Future<void> loiginPopup(BuildContext context) {
                           Size(getWidth(context, 70), getHeight(context, 5)),
                     ),
                     child: Text(
-                      "Login".tr,
+                      "Register".tr,
+                      style: TextStyle(
+                        color: mainColorGrey,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -1623,7 +1627,11 @@ loginFirstContainer(BuildContext context) {
               fixedSize: Size(getWidth(context, 70), getHeight(context, 5)),
             ),
             child: Text(
-              "Login".tr,
+              "Register".tr,
+              style: TextStyle(
+                  color: mainColorWhite,
+                  fontSize: 22,
+                  fontFamily: mainFontnormal),
             ),
           ),
         )
