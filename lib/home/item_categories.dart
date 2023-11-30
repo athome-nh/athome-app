@@ -33,16 +33,11 @@ class _itemCategoriesState extends State<itemCategories> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
             namecategore,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
-          centerTitle: true,
-          backgroundColor: mainColorWhite,
-          elevation: 0,
+
           leading: IconButton(
               onPressed: () {
                 productPro.setsubcateSelect(0);
@@ -50,7 +45,6 @@ class _itemCategoriesState extends State<itemCategories> {
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
           actions: [
             productPro.subcateSelect == 0
@@ -61,7 +55,6 @@ class _itemCategoriesState extends State<itemCategories> {
                     },
                     icon: Icon(
                       Icons.close,
-                      color: mainColorRed,
                     ))
           ],
 
@@ -73,85 +66,97 @@ class _itemCategoriesState extends State<itemCategories> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  SizedBox(
-                    width: getWidth(context, 95),
-                    height: getWidth(context, 9),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount:
-                          productPro.getsubcateById(productPro.cateType).length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final catesubitems = productPro
-                            .getsubcateById(productPro.cateType)[index];
+                  productPro.getsubcateById(productPro.cateType).isNotEmpty
+                      ? SizedBox(
+                          width: getWidth(context, 95),
+                          height: getWidth(context, 9),
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: productPro
+                                .getsubcateById(productPro.cateType)
+                                .length,
+                            itemBuilder: (BuildContext context, int index) {
+                              final catesubitems = productPro
+                                  .getsubcateById(productPro.cateType)[index];
 
-                        return productPro
-                                .getProductsBySubCategory(catesubitems.id!)
-                                .isNotEmpty
-                            ? Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (productPro.subcateSelect ==
-                                        catesubitems.id!) {
-                                      productPro.setsubcateSelect(0);
-                                      namecategore =
-                                          productPro.getCategoryNameById(
-                                              productPro.cateType);
-                                    } else {
-                                      productPro
-                                          .setsubcateSelect(catesubitems.id!);
-                                      namecategore = lang == "en"
-                                          ? catesubitems.nameEn.toString()
-                                          : lang == "ar"
-                                              ? catesubitems.nameAr.toString()
-                                              : catesubitems.nameKu.toString();
-                                    }
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 1),
-                                    ),
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: productPro.subcateSelect ==
-                                                  catesubitems.id!
-                                              ? mainColorRed
-                                              : mainColorWhite,
-                                          width:
-                                              2.0, // You can set the thickness of the border
+                              return productPro
+                                      .getProductsBySubCategory(
+                                          catesubitems.id!)
+                                      .isNotEmpty
+                                  ? Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: getWidth(context, 2)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          if (productPro.subcateSelect ==
+                                              catesubitems.id!) {
+                                            productPro.setsubcateSelect(0);
+                                            namecategore =
+                                                productPro.getCategoryNameById(
+                                                    productPro.cateType);
+                                          } else {
+                                            productPro.setsubcateSelect(
+                                                catesubitems.id!);
+                                            namecategore = lang == "en"
+                                                ? catesubitems.nameEn.toString()
+                                                : lang == "ar"
+                                                    ? catesubitems.nameAr
+                                                        .toString()
+                                                    : catesubitems.nameKu
+                                                        .toString();
+                                          }
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 1),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            border: Border(
+                                              bottom: BorderSide(
+                                                color:
+                                                    productPro.subcateSelect ==
+                                                            catesubitems.id!
+                                                        ? mainColorGrey
+                                                        : mainColorWhite,
+                                                width:
+                                                    2.0, // You can set the thickness of the border
+                                              ),
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              lang == "en"
+                                                  ? catesubitems.nameEn
+                                                      .toString()
+                                                  : lang == "ar"
+                                                      ? catesubitems.nameAr
+                                                          .toString()
+                                                      : catesubitems.nameKu
+                                                          .toString(),
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                  color: productPro
+                                                              .subcateSelect ==
+                                                          catesubitems.id!
+                                                      ? mainColorRed
+                                                      : mainColorBlack,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 14),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        lang == "en"
-                                            ? catesubitems.nameEn.toString()
-                                            : lang == "ar"
-                                                ? catesubitems.nameAr.toString()
-                                                : catesubitems.nameKu
-                                                    .toString(),
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                            color: productPro.subcateSelect ==
-                                                    catesubitems.id!
-                                                ? mainColorRed
-                                                : mainColorGrey,
-                                            fontFamily: mainFontnormal,
-                                            fontSize: 14),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            : SizedBox();
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
+                                    )
+                                  : SizedBox();
+                            },
+                          ),
+                        )
+                      : SizedBox(),
+                  productPro.getsubcateById(productPro.cateType).isNotEmpty
+                      ? SizedBox(
+                          height: getHeight(context, 2),
+                        )
+                      : SizedBox(),
                   SizedBox(
                     height: getHeight(context, 85),
                     width: getWidth(context, 95),

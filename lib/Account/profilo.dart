@@ -637,7 +637,7 @@ class _SettingState extends State<Setting> {
                                                                               value: value,
                                                                               child: Text(
                                                                                 value,
-                                                                                style: TextStyle(color: mainColorBlack),
+                                                                                style: TextStyle(color: mainColorBlack, fontFamily: mainFontnormal),
                                                                               ),
                                                                             );
                                                                           }).toList(),

@@ -705,7 +705,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
                                   style: TextStyle(
-                                      color: mainColorGrey,
+                                      color: mainColorBlack,
                                       fontFamily: mainFontbold,
                                       fontSize: 14),
                                 ),
@@ -913,7 +913,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   color: mainColorRed,
                                   size: getHeight(context, 3))
                               : Icon(FontAwesomeIcons.heart,
-                                  color: mainColorBlack,
+                                  color: mainColorGrey,
                                   size: getHeight(context, 3)),
                         ),
                       ),

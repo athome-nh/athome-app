@@ -36,19 +36,14 @@ class _CategoriesState extends State<Categories> {
         appBar: AppBar(
           title: Text(
             "All Categories".tr,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 24),
           ),
-          centerTitle: true,
-          backgroundColor: mainColorWhite,
-          elevation: 0,
+
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
 
           // Change the color of the unselected tab labels
@@ -119,7 +114,7 @@ class _CategoriesState extends State<Categories> {
                           maxLines: 1,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: mainColorGrey,
+                              color: mainColorBlack,
                               fontFamily: mainFontbold,
                               fontSize: 12),
                         ),

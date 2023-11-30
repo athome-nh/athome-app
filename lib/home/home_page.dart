@@ -253,7 +253,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 child: Text(
                                   "Categories".tr,
                                   style: TextStyle(
-                                      color: mainColorGrey,
+                                      color: mainColorBlack,
                                       fontSize: 16,
                                       fontFamily: mainFontbold),
                                 ),
@@ -425,7 +425,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           maxLines: 1,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              color: mainColorGrey,
+                                              color: mainColorBlack,
                                               fontFamily: mainFontbold,
                                               fontSize: 12),
                                         ),
@@ -451,7 +451,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           child: Text(
                                             "Recent Order".tr,
                                             style: TextStyle(
-                                                color: mainColorGrey,
+                                                color: mainColorBlack,
                                                 fontSize: 16,
                                                 fontFamily: mainFontbold),
                                           ),
@@ -513,7 +513,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           child: Text(
                                             "Discount".tr,
                                             style: TextStyle(
-                                                color: mainColorGrey,
+                                                color: mainColorBlack,
                                                 fontSize: 16,
                                                 fontFamily: mainFontbold),
                                           ),
@@ -568,7 +568,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 child: Text(
                                   "Highlight".tr,
                                   style: TextStyle(
-                                      color: mainColorGrey,
+                                      color: mainColorBlack,
                                       fontSize: 16,
                                       fontFamily: mainFontbold),
                                 ),
@@ -727,7 +727,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 child: Text(
                                   "Best Sell".tr,
                                   style: TextStyle(
-                                      color: mainColorGrey,
+                                      color: mainColorBlack,
                                       fontSize: 16,
                                       fontFamily: mainFontbold),
                                 ),

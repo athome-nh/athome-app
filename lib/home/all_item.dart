@@ -71,7 +71,7 @@ class _AllItemState extends State<AllItem> {
           // Change the color of the unselected tab labels
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.all(8),
           child: listItemsShow(context, products),
         ),
         //floatingActionButton: buildFAB(context),
