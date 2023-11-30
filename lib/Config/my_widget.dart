@@ -1511,7 +1511,7 @@ Future<void> loiginPopup(BuildContext context) {
                     height: 10,
                   ),
                   Text(
-                    "Login Please".tr,
+                    "Register First".tr,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
@@ -1548,7 +1548,7 @@ Future<void> loiginPopup(BuildContext context) {
                       ),
                     ),
                     child: Text(
-                      "Login".tr,
+                      "Register".tr,
                       style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 16,
@@ -1656,7 +1656,7 @@ loginFirstContainer(BuildContext context) {
               ),
             ),
             child: Text(
-              "Login".tr,
+              "Register".tr,
               style: TextStyle(
                   color: mainColorWhite,
                   fontSize: 22,

@@ -697,7 +697,7 @@ class _MyCartState extends State<MyCart> {
                                                         height: 10,
                                                       ),
                                                       Text(
-                                                        "Clear cart".tr,
+                                                        "title(Kak ramyar)",
                                                         textAlign:
                                                             TextAlign.center,
                                                         maxLines: 1,
@@ -711,8 +711,8 @@ class _MyCartState extends State<MyCart> {
                                                       const SizedBox(
                                                           height: 10),
                                                       Text(
-                                                        "Are you sure you wnat to continue?"
-                                                            .tr,
+                                                        "la limiti parakay daman naya kamtra"
+                                                            ,
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
