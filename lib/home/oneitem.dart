@@ -49,19 +49,14 @@ class _OneitemState extends State<Oneitem> {
                 : lang == "ar"
                     ? Item.nameAr!
                     : Item.nameKu!,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
-          centerTitle: true,
-          backgroundColor: mainColorWhite,
-          elevation: 0,
+
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
 
           // Change the color of the unselected tab labels
@@ -169,7 +164,7 @@ class _OneitemState extends State<Oneitem> {
                                     color: mainColorRed,
                                     size: getHeight(context, 3))
                                 : Icon(FontAwesomeIcons.heart,
-                                    color: mainColorBlack,
+                                    color: mainColorGrey,
                                     size: getHeight(context, 3)),
                           ),
                         ),
@@ -190,8 +185,8 @@ class _OneitemState extends State<Oneitem> {
                             maxLines: 2,
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontbold,
+                                color: mainColorBlack,
+                                fontFamily: mainFontnormal,
                                 fontSize: 24),
                           ),
                           SizedBox(
@@ -260,7 +255,7 @@ class _OneitemState extends State<Oneitem> {
                                 ? Item.descriptionAr!
                                 : Item.descriptionKu!,
                         style: TextStyle(
-                            color: mainColorGrey,
+                            color: mainColorBlack,
                             fontFamily: mainFontnormal,
                             fontSize: 16),
                         textAlign: TextAlign.justify,
@@ -275,7 +270,7 @@ class _OneitemState extends State<Oneitem> {
                       child: Text(
                         "Similar item",
                         style: TextStyle(
-                            color: mainColorGrey,
+                            color: mainColorBlack,
                             fontSize: 20,
                             fontFamily: mainFontbold),
                       ),
@@ -327,7 +322,6 @@ class _OneitemState extends State<Oneitem> {
                                     cartProvider.addToCart(cartItem);
                                   },
                             style: TextButton.styleFrom(
-                              backgroundColor: mainColorRed,
                               fixedSize: Size(
                                   getWidth(context, 40), getHeight(context, 4)),
                             ),
@@ -345,7 +339,6 @@ class _OneitemState extends State<Oneitem> {
                               );
                             },
                             style: TextButton.styleFrom(
-                              backgroundColor: mainColorRed,
                               fixedSize: Size(
                                   getWidth(context, 30), getHeight(context, 4)),
                             ),

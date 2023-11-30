@@ -115,7 +115,7 @@ class _CategoriesState extends State<Categories> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: mainColorBlack,
-                              fontFamily: mainFontbold,
+                              fontFamily: mainFontnormal,
                               fontSize: 12),
                         ),
                       ],
