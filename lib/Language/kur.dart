@@ -199,5 +199,13 @@ const Map<String, String> kur = {
   "FeedbackAndImprovementWeValueYourFeedback": "پێشنیار و بەرەوپێشچوون: ئێمە بەهای کاردانەوەکەت دەزانین. پێشنیارەکانت یارمەتیمان دەدەن بۆ باشترکردنی پلان و خزمەتگوزاریەکانمان. ئێمە هەمیشە بەدوای ڕێگایەکدا دەگەڕێین بۆ باشترکردن و پێشکەشکردنی باشترین ئەزموون.",
   "ThankYouForChoosingOurAthome": "سوپاس بۆ هەڵبژاردنی ئات هۆم، بازاڕ کردنت ئەنجام بدە و بەدواداچوون دەکرێت بۆ داواکاریەکەت لەلایەن ئێمەوە. دڵ خۆش بە بازاڕکردنت لەگەڵ ئات هۆم.",
   "About Us": "دەربارەی ئێمە",
+
+  //more old_order
+  "Order Placed":"???", // check bawar
+  "Processing Order":"???", // check bawar
+  "Order Is On way":"???", // check bawar
+  "Order Ready For Pickup":"???", // check bawar
+  "Order is delivered":"???", // check bawar
+  "Undelivered":"???", // check bawar
  
 };

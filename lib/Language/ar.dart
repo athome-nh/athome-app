@@ -200,4 +200,12 @@ const Map<String, String> ar = {
   "ThankYouForChoosingOurAthome": "شكرًا لك على اختيار ات هوم لتلبية احتياجات، تسوق و نحن نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد",
   "About Us": "حول التطبیق",
 
+  //more old_order
+  "Order Placed":"???", // check bawar
+  "Processing Order":"???", // check bawar
+  "Order Is On way":"???", // check bawar
+  "Order Ready For Pickup":"???", // check bawar
+  "Order is delivered":"???", // check bawar
+  "Undelivered":"???", // check bawar
+
 };
