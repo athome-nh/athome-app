@@ -25,47 +25,42 @@ class _FavoriteState extends State<Favorite> {
       child: productPro.nointernetCheck
           ? noInternetWidget(context)
           : Scaffold(
-              backgroundColor: mainColorWhite,
               appBar: AppBar(
                 title: Text(
                   "Favorite".tr,
-                  style: TextStyle(
-                      color: mainColorGrey,
-                      fontFamily: mainFontnormal,
-                      fontSize: 20),
                 ),
-                centerTitle: true,
-                backgroundColor: mainColorWhite,
-                elevation: 0,
               ),
               body: cartProvider.ListFavId().isEmpty
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: getWidth(context, 100),
-                          height: getWidth(context, 100),
-                          child: Image.asset("assets/Victors/fav_empty.png"),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        Text(
-                          "No have any favorite".tr,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontFamily: mainFontnormal, 
-                              fontSize: 18,
+                  ? !productPro.show
+                      ? listItemsBigShimer(context)
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: getWidth(context, 100),
+                              height: getWidth(context, 100),
+                              child:
+                                  Image.asset("assets/Victors/fav_empty.png"),
+                            ),
+                            SizedBox(
+                              height: getHeight(context, 2),
+                            ),
+                            Text(
+                              "No have any favorite".tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: mainFontnormal,
+                                fontSize: 18,
                               ),
-                        ),
-                      ],
-                    )
+                            ),
+                          ],
+                        )
                   : Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8 ),
-                  child: listItemsShow(
-                    context,
-                    productPro.getProductsByIds(cartProvider.ListFavId()),
-                  ),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: listItemsShow(
+                        context,
+                        productPro.getProductsByIds(cartProvider.ListFavId()),
+                      ),
                     ),
             ),
     );

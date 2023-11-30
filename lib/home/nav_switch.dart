@@ -89,13 +89,6 @@ class _NavSwitchState extends State<NavSwitch> {
             child: _widgetOptions.elementAt(_selectedIndex),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            showUnselectedLabels: false,
-            selectedFontSize: 12,
-            unselectedFontSize: 12,
-            selectedItemColor: mainColorWhite,
-            unselectedItemColor: mainColorWhite,
-            backgroundColor: mainColorRed,
-            type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               // Home
               BottomNavigationBarItem(
@@ -125,7 +118,7 @@ class _NavSwitchState extends State<NavSwitch> {
                         label: Text(
                           cartProvider.cartItems.length.toString(),
                         ),
-                        backgroundColor: mainColorGrey,
+                        backgroundColor: mainColorRed,
                         child: const Icon(
                           Ionicons.cart_outline,
                         ),
@@ -138,7 +131,7 @@ class _NavSwitchState extends State<NavSwitch> {
                         label: Text(
                           cartProvider.cartItems.length.toString(),
                         ),
-                        backgroundColor: mainColorGrey,
+                        backgroundColor: mainColorRed,
                         child: const Icon(
                           Ionicons.cart_sharp,
                         ),
@@ -243,9 +236,7 @@ class _NavSwitchState extends State<NavSwitch> {
                                 child: Text(
                                   "No".tr,
                                   style: TextStyle(
-                                      fontSize: 16, 
-                                      fontFamily: mainFontbold
-                                      ),
+                                      fontSize: 16, fontFamily: mainFontbold),
                                 ),
                               ),
                               ElevatedButton(
@@ -262,9 +253,9 @@ class _NavSwitchState extends State<NavSwitch> {
                                 child: Text(
                                   "Yes".tr,
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: mainFontbold,
-                                      ),
+                                    fontSize: 16,
+                                    fontFamily: mainFontbold,
+                                  ),
                                 ),
                               ),
                               const SizedBox(),

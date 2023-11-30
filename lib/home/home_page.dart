@@ -102,41 +102,44 @@ class _HomeSreenState extends State<HomeSreen> {
       child: productrovider.nointernetCheck
           ? noInternetWidget(context)
           : Scaffold(
-              backgroundColor: mainColorWhite,
               body: SafeArea(
                 child: CustomScrollView(slivers: <Widget>[
                   // top
                   SliverAppBar(
-                    title: Skeleton.keep(
-                      child: Image.asset(
-                        "assets/images/logoB.png",
-                        width: getWidth(context, 30),
-                      ),
+                    title: Image.asset(
+                      "assets/images/dlly_Logo.png",
+                      width: getWidth(context, 30),
                     ),
 
                     //
                     automaticallyImplyLeading: false,
-                    backgroundColor: mainColorLightGrey,
+                    backgroundColor: Colors.transparent,
+                    centerTitle: false,
                     expandedHeight: getHeight(context, 25),
                     floating: false,
                     pinned: true,
                     flexibleSpace: Visibility(
                       visible: productrovider.show,
                       replacement: Skeletonizer(
+                        effect: ShimmerEffect.raw(colors: [
+                          mainColorGrey.withOpacity(0.1),
+                          mainColorWhite,
+                          // mainColorRed.withOpacity(0.1),
+                        ]),
                         enabled: true,
                         child: FlexibleSpaceBar(
                           background: Center(
                             child: Stack(
                               children: [
-                                Image.asset(
-                                  "assets/images/banner.jpg",
-                                  // placeholder: (context, url) =>
-                                  //     Image.asset("assets/images/002_logo_1.png"),
-                                  // errorWidget: (context, url, error) =>
-                                  //     Image.asset("assets/images/002_logo_1.png"),
+                                CachedNetworkImage(
+                                  imageUrl: "assets/images/Logo-Type-2.png",
+                                  placeholder: (context, url) => Image.asset(
+                                      "assets/images/Logo-Type-2.png"),
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset(
+                                          "assets/images/Logo-Type-2.png"),
                                   width: getWidth(context, 100),
                                   height: getHeight(context, 100),
-                                  fit: BoxFit.fill,
                                 ),
                                 Padding(
                                   padding:
@@ -149,13 +152,13 @@ class _HomeSreenState extends State<HomeSreen> {
                                       width: getWidth(context, 25),
                                       height: getWidth(context, 9),
                                       decoration: BoxDecoration(
-                                          color: mainColorRed,
+                                          color: mainColorGrey,
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       child: Text(
                                         "",
                                         style: TextStyle(
-                                            color: mainColorRed, fontSize: 14),
+                                            color: mainColorGrey, fontSize: 14),
                                       ),
                                     ),
                                   ),
@@ -181,10 +184,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                             : imageUrlServer +
                                                 productrovider.tops[0].imgKur!
                                     : "",
-                                placeholder: (context, url) =>
-                                    Image.asset("assets/images/002_logo_1.png"),
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
-                                    Image.asset("assets/images/002_logo_1.png"),
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
                                 width: getWidth(context, 100),
                                 height: getHeight(context, 100),
                                 fit: BoxFit.fill,
@@ -221,11 +225,6 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   },
                                                   child: Text(
                                                     "Order now".tr,
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            mainFontnormal,
-                                                        color: mainColorWhite,
-                                                        fontSize: 14),
                                                   )),
                                             ),
                                           ),
@@ -274,16 +273,12 @@ class _HomeSreenState extends State<HomeSreen> {
                                           );
                                   },
                                   style: TextButton.styleFrom(
-                                      foregroundColor: mainColorRed),
+                                      foregroundColor: mainColorRed,
+                                      backgroundColor: Colors.transparent),
                                   child: Row(
                                     children: [
                                       Text(
                                         "View All".tr,
-                                        style: TextStyle(
-                                          color: mainColorRed,
-                                          fontSize: 14,
-                                          fontFamily: mainFontnormal,
-                                        ),
                                       ),
                                       // SizedBox(
                                       //   width: getWidth(context, 2),
@@ -307,9 +302,9 @@ class _HomeSreenState extends State<HomeSreen> {
                               visible: productrovider.show,
                               replacement: Skeletonizer(
                                 effect: ShimmerEffect.raw(colors: [
-                                  mainColorRed.withOpacity(0.1),
-                                  mainColorWhite,
                                   mainColorGrey.withOpacity(0.1),
+                                  mainColorWhite,
+                                  //   mainColorRed.withOpacity(0.1),
                                 ]),
                                 enabled: true,
                                 child: ListView.builder(
@@ -337,14 +332,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   BorderRadius.circular(100),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    "assets/images/002_logo_1.png",
+                                                    "assets/images/shimer.png",
                                                 placeholder: (context, url) =>
                                                     Image.asset(
-                                                        "assets/images/002_logo_1.png"),
+                                                        "assets/images/shimer.png"),
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     Image.asset(
-                                                        "assets/images/002_logo_1.png"),
+                                                        "assets/images/shimer.png"),
                                                 fit: BoxFit.fill,
                                                 width: getHeight(context, 5),
                                                 height: getHeight(context, 5),
@@ -407,11 +402,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     cateItem.img!,
                                                 placeholder: (context, url) =>
                                                     Image.asset(
-                                                        "assets/images/002_logo_1.png"),
+                                                        "assets/images/Logo-Type-2.png"),
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     Image.asset(
-                                                        "assets/images/002_logo_1.png"),
+                                                        "assets/images/Logo-Type-2.png"),
                                                 width: getHeight(context, 5),
                                                 height: getHeight(context, 5),
                                               ),
@@ -479,13 +474,13 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     );
                                                   }
                                                 },
+                                                style: TextButton.styleFrom(
+                                                    foregroundColor:
+                                                        mainColorRed,
+                                                    backgroundColor:
+                                                        Colors.transparent),
                                                 child: Text(
                                                   "View All".tr,
-                                                  style: TextStyle(
-                                                    color: mainColorRed,
-                                                    fontSize: 14,
-                                                    fontFamily: mainFontnormal,
-                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -540,16 +535,13 @@ class _HomeSreenState extends State<HomeSreen> {
                                               }
                                             },
                                             style: TextButton.styleFrom(
-                                                foregroundColor: mainColorRed),
+                                                foregroundColor: mainColorRed,
+                                                backgroundColor:
+                                                    Colors.transparent),
                                             child: Row(
                                               children: [
                                                 Text(
                                                   "View All".tr,
-                                                  style: TextStyle(
-                                                    color: mainColorRed,
-                                                    fontSize: 14,
-                                                    fontFamily: mainFontnormal,
-                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -597,16 +589,12 @@ class _HomeSreenState extends State<HomeSreen> {
                                     }
                                   },
                                   style: TextButton.styleFrom(
-                                      foregroundColor: mainColorRed),
+                                      foregroundColor: mainColorRed,
+                                      backgroundColor: Colors.transparent),
                                   child: Row(
                                     children: [
                                       Text(
                                         "View All".tr,
-                                        style: TextStyle(
-                                          color: mainColorRed,
-                                          fontSize: 14,
-                                          fontFamily: mainFontnormal,
-                                        ),
                                       ),
                                     ],
                                   ),
@@ -631,6 +619,11 @@ class _HomeSreenState extends State<HomeSreen> {
                             child: Visibility(
                               visible: productrovider.show,
                               replacement: Skeletonizer(
+                                effect: ShimmerEffect.raw(colors: [
+                                  mainColorGrey.withOpacity(0.1),
+                                  mainColorWhite,
+                                  //  mainColorRed.withOpacity(0.1),
+                                ]),
                                 enabled: true,
                                 child: SizedBox(
                                   width: getWidth(context, 100),
@@ -641,7 +634,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       items: [
                                         ClipRRect(
                                           child: Image.asset(
-                                            "assets/images/002_logo_1.png",
+                                            "assets/images/Logo-Type-2.png",
                                             width: getWidth(context, 100),
                                             height: getHeight(context, 20),
                                             fit: BoxFit.fill,
@@ -689,11 +682,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     imageUrlServer + item.img!,
                                                 placeholder: (context, url) =>
                                                     Image.asset(
-                                                        "assets/images/002_logo_1.png"),
+                                                        "assets/images/Logo-Type-2.png"),
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     Image.asset(
-                                                        "assets/images/002_logo_1.png"),
+                                                        "assets/images/Logo-Type-2.png"),
                                                 width: getWidth(context, 100),
                                                 height: getHeight(context, 20),
                                                 fit: BoxFit.fill,
@@ -757,25 +750,13 @@ class _HomeSreenState extends State<HomeSreen> {
                                         }
                                       },
                                       style: TextButton.styleFrom(
-                                          foregroundColor: mainColorRed),
+                                          foregroundColor: mainColorRed,
+                                          backgroundColor: Colors.transparent),
                                       child: Row(
                                         children: [
                                           Text(
                                             "View All".tr,
-                                            style: TextStyle(
-                                              color: mainColorRed,
-                                              fontSize: 14,
-                                              fontFamily: mainFontnormal,
-                                            ),
                                           ),
-                                          // SizedBox(
-                                          //   width: getWidth(context, 2),
-                                          // ),
-                                          // Icon(
-                                          //   Icons.arrow_forward_ios_outlined,
-                                          //   color: mainColorRed,
-                                          //   size: 14,
-                                          // )
                                         ],
                                       ),
                                     ),

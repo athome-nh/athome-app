@@ -169,20 +169,12 @@ class productProvider extends ChangeNotifier {
                                   ),
                                   TextButton(
                                     onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
+                                    style: TextButton.styleFrom(
                                       fixedSize: Size(getWidth(context, 70),
                                           getHeight(context, 5)),
-                                      shape: RoundedRectangleBorder(
-                                        side: BorderSide(color: mainColorGrey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
                                     ),
                                     child: Text(
                                       "OK".tr,
-                                      style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                      ),
                                     ),
                                   ),
                                 ],
@@ -206,9 +198,10 @@ class productProvider extends ChangeNotifier {
             }
             getDataAll(user);
           }
-        }
+        } else {}
       });
     } else {
+      print("11111");
       getDataAll(user);
     }
   }
@@ -218,7 +211,7 @@ class productProvider extends ChangeNotifier {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
-            userdata = valueuser["data"][0];
+            userdata = json.decode(decryptAES(valueuser["data"]));
           }
         }
       });

@@ -140,10 +140,10 @@ class _OneitemState extends State<Oneitem> {
                                           // imageUrlServer + Item.coverImg!,
                                           placeholder: (context, url) =>
                                               Image.asset(
-                                                  "assets/images/002_logo_1.png"),
+                                                  "assets/images/Logo-Type-2.png"),
                                           errorWidget: (context, url, error) =>
                                               Image.asset(
-                                                  "assets/images/002_logo_1.png"),
+                                                  "assets/images/Logo-Type-2.png"),
                                           width: getWidth(context, 100),
                                           height: getHeight(context, 20),
                                         ),
@@ -326,22 +326,14 @@ class _OneitemState extends State<Oneitem> {
                                         CartItem(product: Item.id!);
                                     cartProvider.addToCart(cartItem);
                                   },
-                            style: ElevatedButton.styleFrom(
+                            style: TextButton.styleFrom(
                               backgroundColor: mainColorRed,
                               fixedSize: Size(
                                   getWidth(context, 40), getHeight(context, 4)),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side:
-                                    BorderSide(color: mainColorRed, width: 1.0),
-                              ),
                             ),
-                            child: Text("Add To Cart".tr,
-                                style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 16,
-                                  fontFamily: mainFontnormal,
-                                )),
+                            child: Text(
+                              "Add To Cart".tr,
+                            ),
                           ),
                     isItemInCart
                         ? TextButton(
@@ -352,22 +344,14 @@ class _OneitemState extends State<Oneitem> {
                                     builder: (context) => MyCart(true)),
                               );
                             },
-                            style: ElevatedButton.styleFrom(
+                            style: TextButton.styleFrom(
                               backgroundColor: mainColorRed,
                               fixedSize: Size(
                                   getWidth(context, 30), getHeight(context, 4)),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side:
-                                    BorderSide(color: mainColorRed, width: 1.0),
-                              ),
                             ),
-                            child: Text("My Cart".tr,
-                                style: TextStyle(
-                                  color: mainColorWhite,
-                                  fontSize: 16,
-                                  fontFamily: mainFontnormal,
-                                )),
+                            child: Text(
+                              "My Cart".tr,
+                            ),
                           )
                         : const SizedBox(),
                     isItemInCart ? const Spacer() : const SizedBox(),

@@ -452,21 +452,9 @@ class _SingInUpState extends State<SingInUp> {
                                                     fixedSize: Size(
                                                         getWidth(context, 70),
                                                         getHeight(context, 5)),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          color: mainColorGrey),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                    ),
                                                   ),
                                                   child: Text(
                                                     "OK".tr,
-                                                    style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontSize: 16,
-                                                    ),
                                                   ),
                                                 ),
                                               ],

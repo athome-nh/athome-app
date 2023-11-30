@@ -24,9 +24,9 @@ Widget listItemsShimer(BuildContext context) {
     // decoration: BoxDecoration(border: Border.all()),
     child: Skeletonizer(
       effect: ShimmerEffect.raw(colors: [
-        mainColorRed.withOpacity(0.1),
-        mainColorWhite,
         mainColorGrey.withOpacity(0.1),
+        mainColorWhite,
+        // mainColorRed.withOpacity(0.1),
       ]),
       enabled: true,
       child: ListView.builder(
@@ -60,12 +60,11 @@ Widget listItemsShimer(BuildContext context) {
                                 ),
                                 // rectangle
                                 CachedNetworkImage(
-                                  imageUrl: "assets/images/002_logo_1.png",
-                                  placeholder: (context, url) => Image.asset(
-                                      "assets/images/002_logo_1.png"),
+                                  imageUrl: "assets/images/shimer.png",
+                                  placeholder: (context, url) =>
+                                      Image.asset("assets/images/shimer.png"),
                                   errorWidget: (context, url, error) =>
-                                      Image.asset(
-                                          "assets/images/002_logo_1.png"),
+                                      Image.asset("assets/images/shimer.png"),
                                   width: getWidth(context, 22),
                                   height: getWidth(context, 22),
                                 ),
@@ -159,16 +158,16 @@ Widget listItemsBigShimer(BuildContext context) {
     //   decoration: BoxDecoration(border: Border.all()),
     child: Skeletonizer(
       effect: ShimmerEffect.raw(colors: [
-        mainColorRed.withOpacity(0.1),
-        mainColorWhite,
         mainColorGrey.withOpacity(0.1),
+        mainColorWhite,
+        //mainColorRed.withOpacity(0.1),
       ]),
       enabled: true,
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          childAspectRatio: getWidth(context, 0.15),
+          childAspectRatio: getWidth(context, 0.19),
         ),
 
         itemCount: 8, // Number of items in the grid
@@ -199,12 +198,11 @@ Widget listItemsBigShimer(BuildContext context) {
                                   height: 5,
                                 ),
                                 CachedNetworkImage(
-                                  imageUrl: "assets/images/002_logo_1.png",
-                                  placeholder: (context, url) => Image.asset(
-                                      "assets/images/002_logo_1.png"),
+                                  imageUrl: "assets/images/shimer.png",
+                                  placeholder: (context, url) =>
+                                      Image.asset("assets/images/shimer.png"),
                                   errorWidget: (context, url, error) =>
-                                      Image.asset(
-                                          "assets/images/002_logo_1.png"),
+                                      Image.asset("assets/images/shimer.png"),
                                   width: getWidth(context, 25),
                                   height: getWidth(context, 25),
                                 ),
@@ -250,30 +248,20 @@ Widget listItemsBigShimer(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: getHeight(context, 7),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: getHeight(context, 7),
-                                    width: getWidth(context, 25),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "45545454544",
-                                          style: TextStyle(
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              height: getHeight(context, 3),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "45545454544",
+                                  style: TextStyle(
+                                      color: mainColorGrey,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -360,10 +348,10 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   child: CachedNetworkImage(
                                     imageUrl: imageUrlServer + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
-                                        "assets/images/002_logo_1.png"),
+                                        "assets/images/Logo-Type-2.png"),
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
-                                            "assets/images/002_logo_1.png"),
+                                            "assets/images/Logo-Type-2.png"),
                                     width: getWidth(context, 22),
                                     height: getWidth(context, 19),
                                   ),
@@ -372,18 +360,16 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   height: 5,
                                 ),
                                 Text(
-                                  lang == "en"
-                                      ? product.nameEn.toString()
-                                      : lang == "ar"
-                                          ? product.nameAr.toString()
-                                          : product.nameKu.toString(),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 13),
-                                ),
+                                    lang == "en"
+                                        ? product.nameEn.toString()
+                                        : lang == "ar"
+                                            ? product.nameAr.toString()
+                                            : product.nameKu.toString(),
+                                    textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!),
                                 const SizedBox(
                                   height: 3,
                                 ),
@@ -466,6 +452,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                                       .addToCart(cartItem);
                                                 },
                                           child: Chip(
+                                            side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
                                               "Add to cart",
@@ -651,8 +638,7 @@ Widget listItemsShow(BuildContext context, var data) {
           mainAxisSpacing: 8,
           childAspectRatio: getWidth(context, 0.19),
         ),
-    
-        itemCount: data.length, 
+        itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           final product = data[index];
           final isItemInCart = cartProvider.itemExistsInCart(product);
@@ -699,10 +685,10 @@ Widget listItemsShow(BuildContext context, var data) {
                                   child: CachedNetworkImage(
                                     imageUrl: imageUrlServer + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
-                                        "assets/images/002_logo_1.png"),
+                                        "assets/images/Logo-Type-2.png"),
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
-                                            "assets/images/002_logo_1.png"),
+                                            "assets/images/Logo-Type-2.png"),
                                     width: getWidth(context, 25),
                                     height: getWidth(context, 25),
                                   ),
@@ -798,13 +784,14 @@ Widget listItemsShow(BuildContext context, var data) {
                                                     loiginPopup(context);
                                                     return;
                                                   }
-    
+
                                                   final cartItem = CartItem(
                                                       product: product.id!);
                                                   cartProvider
                                                       .addToCart(cartItem);
                                                 },
                                           child: Chip(
+                                            side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
                                               "Add to cart",
@@ -986,7 +973,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
     visible: productrovider.show,
     replacement: listItemsBigShimer(context),
     child: SizedBox(
-      height: getHeight(context, 80),
+      height: getHeight(context, 76),
       width: getWidth(context, 100),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -1042,10 +1029,10 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   child: CachedNetworkImage(
                                     imageUrl: imageUrlServer + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
-                                        "assets/images/002_logo_1.png"),
+                                        "assets/images/Logo-Type-2.png"),
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
-                                            "assets/images/002_logo_1.png"),
+                                            "assets/images/Logo-Type-2.png"),
                                     width: getWidth(context, 25),
                                     height: getWidth(context, 25),
                                   ),
@@ -1062,7 +1049,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
                                   style: TextStyle(
-                                      color: mainColorGrey,
+                                      color: mainColorBlack,
                                       fontFamily: mainFontbold,
                                       fontSize: 14),
                                 ),
@@ -1148,6 +1135,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                                       .addToCart(cartItem);
                                                 },
                                           child: Chip(
+                                            side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
                                               "Add to cart",
@@ -1216,7 +1204,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                               Text(
                                                 count.toString(),
                                                 style: TextStyle(
-                                                    color: mainColorGrey,
+                                                    color: mainColorBlack,
                                                     fontFamily: mainFontnormal,
                                                     fontSize: 16),
                                               ),
@@ -1265,7 +1253,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   color: mainColorRed,
                                   size: getHeight(context, 3))
                               : Icon(FontAwesomeIcons.heart,
-                                  color: mainColorBlack,
+                                  color: mainColorGrey,
                                   size: getHeight(context, 3)),
                         ),
                       ),
@@ -1539,13 +1527,9 @@ Future<void> loiginPopup(BuildContext context) {
                                 const RegisterWithPhoneNumber()),
                       );
                     },
-                    style: ElevatedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       fixedSize:
                           Size(getWidth(context, 70), getHeight(context, 5)),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: mainColorGrey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
                     ),
                     child: Text(
                       "Register".tr,
@@ -1560,20 +1544,12 @@ Future<void> loiginPopup(BuildContext context) {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    style: ElevatedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       fixedSize:
                           Size(getWidth(context, 70), getHeight(context, 5)),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: mainColorRed),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
                     ),
                     child: Text(
                       "Cancel".tr,
-                      style: TextStyle(
-                        color: mainColorRed,
-                        fontSize: 16,
-                      ),
                     ),
                   ),
                 ],
@@ -1647,13 +1623,8 @@ loginFirstContainer(BuildContext context) {
                     builder: (context) => const RegisterWithPhoneNumber()),
               );
             },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(mainColorRed),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
-              ),
+            style: TextButton.styleFrom(
+              fixedSize: Size(getWidth(context, 70), getHeight(context, 5)),
             ),
             child: Text(
               "Register".tr,
