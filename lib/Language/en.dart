@@ -207,5 +207,6 @@ const Map<String, String> en = {
   "Order Ready For Pickup":"Order Ready For Pickup",
   "Order is delivered":"Order is delivered",
   "Undelivered":"Undelivered",
+  "Order Deatil":"Order Deatil",
 
 };

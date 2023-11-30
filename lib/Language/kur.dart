@@ -207,5 +207,6 @@ const Map<String, String> kur = {
   "Order Ready For Pickup":"???", // check bawar
   "Order is delivered":"???", // check bawar
   "Undelivered":"???", // check bawar
+  "Order Deatil":"???", /// check bawar
  
 };
