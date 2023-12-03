@@ -36,11 +36,11 @@ class _OldOrderState extends State<OldOrder> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios,
                     )),
                 title: Text(
-                  "Order Deatil",
+                  "Order Deatil".tr,
                 ),
               ),
               body: Padding(
@@ -152,7 +152,7 @@ class _OldOrderState extends State<OldOrder> {
                                         Row(
                                           children: [
                                             Text(
-                                              "Quantity: ",
+                                              "Quantity: ".tr,
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,
@@ -210,16 +210,16 @@ class _OldOrderState extends State<OldOrder> {
                           horizontal: getWidth(context, 4)),
                       child: Text(
                         widget.status == 0
-                            ? "Order Placed"
+                            ? "Order Placed".tr
                             : (widget.status == 1 || widget.status == 2)
-                                ? "Processing Order"
+                                ? "Processing Order".tr
                                 : widget.status == 3
-                                    ? "Order Is On way"
+                                    ? "Order Is On way".tr
                                     : widget.status == 4
-                                        ? "Order Ready For Pickup"
+                                        ? "Order Ready For Pickup".tr
                                         : widget.status == 5
-                                            ? "Order is delivered"
-                                            : "Undelivered",
+                                            ? "Order is delivered".tr
+                                            : "Undelivered".tr,
                         style: TextStyle(
                             color: widget.status < 5
                                 ? mainColorBlack
@@ -341,7 +341,7 @@ class _OldOrderState extends State<OldOrder> {
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: getWidth(context, 4)),
-                      child: Divider(),
+                      child: const Divider(),
                     ),
                     SizedBox(
                       height: getHeight(context, 1),
