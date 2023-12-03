@@ -208,10 +208,13 @@ class _itemCategoriesState extends State<itemCategories> {
                                   ),
                                 ],
                               ))
-                            : listItemsShow(
-                                context,
-                                productPro.getProductsBySubCategory(
-                                    productPro.subcateSelect),
+                            : Padding(
+                                padding: EdgeInsets.only(bottom: 20),
+                                child: listItemsShow(
+                                  context,
+                                  productPro.getProductsBySubCategory(
+                                      productPro.subcateSelect),
+                                ),
                               )),
                   ),
                 ],

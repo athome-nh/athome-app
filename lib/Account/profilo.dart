@@ -106,6 +106,7 @@ class _SettingState extends State<Setting> {
           : Scaffold(
               backgroundColor: mainColorWhite,
               appBar: AppBar(
+                automaticallyImplyLeading: false,
                 title: Text(
                   "Account".tr,
                 ),

@@ -59,178 +59,178 @@ class _VerificatoinState extends State<Verificatoin> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: mainColorWhite,
-        appBar: AppBar(
-          elevation: 0,
+    return Directionality(
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+      child: Scaffold(
           backgroundColor: mainColorWhite,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: mainColorRed,
-              )),
-        ),
-        body: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).requestFocus(FocusNode());
-          },
-          child: SingleChildScrollView(
-            child: Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
-                height: getHeight(context, 88),
-                width: getWidth(context, 100),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: getHeight(context, 27),
-                      child: Image.asset(
-                        "assets/images/verify.gif",
-                      ),
-                    ),
-
-                    SizedBox(
-                      height: getHeight(context, 4),
-                    ),
-                    FadeInDown(
-                        duration: const Duration(milliseconds: 500),
-                        child: Text(
-                          "Verification",
-                          style: TextStyle(
-                              color: mainColorGrey,
-                              fontSize: 30,
-                              fontFamily: mainFontbold),
-                        )),
-                    SizedBox(
-                      height: getHeight(context, 4),
-                    ),
-                    FadeInDown(
-                      delay: const Duration(milliseconds: 500),
-                      duration: const Duration(milliseconds: 500),
-                      child: Text(
-                        "${"Please enter the 6 digit code sent to".tr}\n${widget.phone_number}",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey.shade500,
-                            fontFamily: mainFontbold,
-                            height: 1.5),
-                      ),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 4),
-                    ),
-
-                    // Verification Code Input
-                    FadeInDown(
-                      delay: const Duration(milliseconds: 600),
-                      duration: const Duration(milliseconds: 500),
-                      child: VerificationCode(
-                        length: 6,
-                        textStyle:
-                            TextStyle(fontSize: 20, color: mainColorGrey),
-                        underlineColor: mainColorRed,
-                        keyboardType: TextInputType.number,
-                        underlineUnfocusedColor: mainColorGrey,
-                        onCompleted: (value) async {
-                          _code = value;
-                          FocusScope.of(context).requestFocus(FocusNode());
-                          if (await noInternet(context)) {
-                            return;
-                          }
-                          verifySmsCode();
-                        },
-                        onEditing: (value) {},
-                      ),
-                    ),
-
-                    SizedBox(
-                      height: getHeight(context, 2),
-                    ),
-                    FadeInDown(
-                      delay: const Duration(milliseconds: 700),
-                      duration: const Duration(milliseconds: 500),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't resive the OTP ?".tr,
-                            style: TextStyle(
-                                fontSize: 12, color: Colors.grey.shade500),
-                          ),
-                          TextButton(
-                              onPressed: () {
-                                if (timecode == 0) {
-                                  _codeTimer.cancel();
-                                  verfyphone();
-                                } else {
-                                  toastShort(
-                                      "Hold till the waiting time ends".tr);
-                                }
-                              },
-                              child: Text(
-                                timecode != 0
-                                    ? "Try again in".tr +
-                                        formatedTime(timeInSecond: timecode)
-                                    : "Resend".tr,
-                                style: TextStyle(
-                                    color: mainColorRed,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 12),
-                              ))
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 6),
-                    ),
-                    FadeInDown(
-                      delay: const Duration(milliseconds: 800),
-                      duration: const Duration(milliseconds: 500),
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              15.0), // Customize the border radius
-                        ),
-                        elevation: 0,
-                        onPressed: _code.length < 6
-                            ? () => {toastLong("Please enter code".tr)}
-                            : () async {
-                                if (await noInternet(context)) {
-                                  return;
-                                }
-                                verifySmsCode();
-                              },
-                        color: mainColorRed,
-                        minWidth: getWidth(context, 100),
-                        height: getHeight(context, 5.5),
-                        child: _isLoading
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  backgroundColor: Colors.white,
-                                  strokeWidth: 3,
-                                  color: Colors.black,
-                                ),
-                              )
-                            : Text(
-                                "Verify".tr,
-                                style: TextStyle(
-                                    color: mainColorWhite,
-                                    fontSize: 14,
-                                    fontFamily: mainFontbold),
-                              ),
-                      ),
-                    )
-                  ],
+          appBar: AppBar(
+            backgroundColor: mainColorWhite,
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: mainColorGrey,
                 )),
           ),
-        ));
+          body: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
+            },
+            child: SingleChildScrollView(
+              child: Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
+                  height: getHeight(context, 88),
+                  width: getWidth(context, 100),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: getHeight(context, 27),
+                        child: Image.asset(
+                          "assets/images/verify.gif",
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: getHeight(context, 4),
+                      ),
+                      FadeInDown(
+                          duration: const Duration(milliseconds: 500),
+                          child: Text(
+                            "Verification",
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontSize: 30,
+                                fontFamily: mainFontbold),
+                          )),
+                      SizedBox(
+                        height: getHeight(context, 4),
+                      ),
+                      FadeInDown(
+                        delay: const Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
+                        child: Text(
+                          "${"Please enter the 6 digit code sent to".tr}\n${widget.phone_number}",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: mainColorBlack,
+                              fontFamily: mainFontnormal,
+                              height: 1.5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 4),
+                      ),
+
+                      // Verification Code Input
+                      FadeInDown(
+                        delay: const Duration(milliseconds: 600),
+                        duration: const Duration(milliseconds: 500),
+                        child: Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: VerificationCode(
+                            length: 6,
+                            textStyle:
+                                TextStyle(fontSize: 20, color: mainColorBlack),
+                            underlineColor: mainColorRed,
+                            keyboardType: TextInputType.number,
+                            underlineUnfocusedColor: mainColorGrey,
+                            onCompleted: (value) async {
+                              _code = value;
+                              FocusScope.of(context).requestFocus(FocusNode());
+                              if (await noInternet(context)) {
+                                return;
+                              }
+                              verifySmsCode();
+                            },
+                            onEditing: (value) {},
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: getHeight(context, 2),
+                      ),
+                      FadeInDown(
+                        delay: const Duration(milliseconds: 700),
+                        duration: const Duration(milliseconds: 500),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Don't resive the OTP ?".tr,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: mainColorBlack,
+                              ),
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  if (timecode == 0) {
+                                    _codeTimer.cancel();
+                                    verfyphone();
+                                  } else {
+                                    toastShort(
+                                        "Hold till the waiting time ends".tr);
+                                  }
+                                },
+                                style: TextButton.styleFrom(
+                                    backgroundColor: Colors.transparent),
+                                child: Text(
+                                  timecode != 0
+                                      ? "Try again in".tr +
+                                          formatedTime(timeInSecond: timecode)
+                                      : "Resend".tr,
+                                  style: TextStyle(
+                                      color: mainColorRed,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 10),
+                                ))
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 6),
+                      ),
+                      FadeInDown(
+                        delay: const Duration(milliseconds: 800),
+                        duration: const Duration(milliseconds: 500),
+                        child: TextButton(
+                          onPressed: _code.length < 6
+                              ? () => {toastLong("Please enter code".tr)}
+                              : () async {
+                                  if (await noInternet(context)) {
+                                    return;
+                                  }
+                                  verifySmsCode();
+                                },
+                          style: TextButton.styleFrom(
+                              fixedSize: Size(getHeight(context, 100),
+                                  getHeight(context, 6))),
+                          child: _isLoading
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    backgroundColor: Colors.white,
+                                    strokeWidth: 3,
+                                    color: Colors.black,
+                                  ),
+                                )
+                              : Text(
+                                  "Verify".tr,
+                                ),
+                        ),
+                      )
+                    ],
+                  )),
+            ),
+          )),
+    );
   }
 
   FirebaseAuth _auth = FirebaseAuth.instance;

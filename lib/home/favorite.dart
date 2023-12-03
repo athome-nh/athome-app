@@ -26,6 +26,7 @@ class _FavoriteState extends State<Favorite> {
           ? noInternetWidget(context)
           : Scaffold(
               appBar: AppBar(
+                automaticallyImplyLeading: false,
                 title: Text(
                   "Favorite".tr,
                 ),
@@ -57,7 +58,7 @@ class _FavoriteState extends State<Favorite> {
                           ],
                         )
                   : Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.all(8),
                       child: listItemsShow(
                         context,
                         productPro.getProductsByIds(cartProvider.ListFavId()),

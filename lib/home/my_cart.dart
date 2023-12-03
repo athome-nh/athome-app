@@ -955,20 +955,18 @@ class _MyCartState extends State<MyCart> {
                                                                 .center,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .center,
+                                                                .spaceAround,
                                                         //textcheck
                                                         children: <Widget>[
                                                           Image.asset(
-                                                            "assets/Victors/sure.png",
+                                                            "assets/Victors/minum.png",
                                                             width: getWidth(
                                                                 context, 40),
                                                             height: getWidth(
                                                                 context, 40),
                                                           ),
-                                                          const SizedBox(
-                                                            height: 10,
-                                                          ),
                                                           Text(
+                                                            //textbawar
                                                             "Clear cart".tr,
                                                             textAlign: TextAlign
                                                                 .center,
@@ -981,9 +979,8 @@ class _MyCartState extends State<MyCart> {
                                                               fontSize: 25,
                                                             ),
                                                           ),
-                                                          const SizedBox(
-                                                              height: 10),
                                                           Text(
+                                                            //textbawar
                                                             "Are you sure you wnat to continue?"
                                                                 .tr,
                                                             textAlign: TextAlign

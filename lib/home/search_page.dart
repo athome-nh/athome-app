@@ -53,6 +53,7 @@ class _SearchState extends State<Search> {
           ? noInternetWidget(context)
           : Scaffold(
               appBar: AppBar(
+                automaticallyImplyLeading: false,
                 title: TextField(
                   controller: searchCon,
                   style: TextStyle(

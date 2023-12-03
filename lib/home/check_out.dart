@@ -538,128 +538,166 @@ class _CheckOutState extends State<CheckOut> {
                                         isDismissible: false,
                                         enableDrag: false,
                                         builder: (BuildContext context) {
-                                          return Container(
-                                            height: getHeight(context, 90),
-                                            color: mainColorWhite,
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      getWidth(context, 4)),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Icon(
-                                                    Icons
-                                                        .shopping_cart_outlined,
-                                                    color: mainColorRed,
-                                                    size:
-                                                        getHeight(context, 20),
-                                                  ),
-                                                  Text("Thank You!".tr,
-                                                      style: TextStyle(
-                                                        fontSize: 24,
-                                                        color: mainColorBlack,
-                                                        fontFamily:
-                                                            mainFontnormal,
-                                                      )),
-                                                  Text("for yor order".tr,
-                                                      style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: mainColorBlack,
-                                                        fontFamily:
-                                                            mainFontnormal,
-                                                      )),
-                                                  SizedBox(
-                                                    height:
-                                                        getHeight(context, 1),
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        "Order Number:".tr,
+                                          return Directionality(
+                                            textDirection: lang == "en"
+                                                ? TextDirection.ltr
+                                                : TextDirection.rtl,
+                                            child: Container(
+                                              height: getHeight(context, 100),
+                                              color: mainColorWhite,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        getWidth(context, 4)),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Image.asset(
+                                                      "assets/Victors/sendorder.png",
+                                                      width:
+                                                          getWidth(context, 40),
+                                                      height:
+                                                          getWidth(context, 40),
+                                                    ),
+                                                    Text("Thank You!".tr,
                                                         style: TextStyle(
-                                                            fontSize: 16,
-                                                            color:
-                                                                mainColorBlack,
-                                                            fontFamily:
-                                                                mainFontbold),
-                                                      ),
-                                                      Text(
-                                                        value["id"].toString(),
+                                                          fontSize: 24,
+                                                          color: mainColorBlack,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                        )),
+                                                    Text("for yor order".tr,
                                                         style: TextStyle(
-                                                            fontSize: 16,
-                                                            color: mainColorRed,
-                                                            fontFamily:
-                                                                mainFontbold),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        getHeight(context, 1),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal:
-                                                                getWidth(
-                                                                    context,
-                                                                    4)),
-                                                    child: Text(
-                                                      "YourOrderIsNowBeingProcessed"
-                                                          .tr,
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        color: mainColorBlack,
-                                                        fontFamily:
-                                                            mainFontnormal,
+                                                          fontSize: 16,
+                                                          color: mainColorBlack,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                        )),
+                                                    SizedBox(
+                                                      height:
+                                                          getHeight(context, 1),
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          "Order Number:".tr,
+                                                          style: TextStyle(
+                                                              fontSize: 16,
+                                                              color:
+                                                                  mainColorBlack,
+                                                              fontFamily:
+                                                                  mainFontbold),
+                                                        ),
+                                                        Text(
+                                                          value["id"]
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              fontSize: 16,
+                                                              color:
+                                                                  mainColorRed,
+                                                              fontFamily:
+                                                                  mainFontbold),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height:
+                                                          getHeight(context, 1),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal:
+                                                                  getWidth(
+                                                                      context,
+                                                                      4)),
+                                                      child: Text(
+                                                        "YourOrderIsNowBeingProcessed"
+                                                            .tr,
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: mainColorBlack,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        getHeight(context, 2),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                      horizontal:
-                                                          getWidth(context, 4),
+                                                    SizedBox(
+                                                      height:
+                                                          getHeight(context, 2),
                                                     ),
-                                                    child: TextButton(
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                        horizontal: getWidth(
+                                                            context, 4),
+                                                      ),
+                                                      child: TextButton(
+                                                        onPressed: () {
+                                                          cartProvider
+                                                              .clearCart();
+
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) => TrackOrder(
+                                                                    value["id"]
+                                                                        .toString(),
+                                                                    value["total"]
+                                                                        .toString(),
+                                                                    value["time"]
+                                                                        .toString())),
+                                                          ).then((value) {
+                                                            cartProvider
+                                                                .clearCart();
+                                                            Navigator
+                                                                .pushReplacement(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          const NavSwitch()),
+                                                            );
+                                                          });
+                                                        },
+                                                        style: TextButton
+                                                            .styleFrom(
+                                                          fixedSize: Size(
+                                                              getWidth(
+                                                                  context, 85),
+                                                              getHeight(
+                                                                  context, 6)),
+                                                        ),
+                                                        child: Text(
+                                                          "Track My Order".tr,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height:
+                                                          getHeight(context, 2),
+                                                    ),
+                                                    TextButton(
                                                       onPressed: () {
                                                         cartProvider
                                                             .clearCart();
 
-                                                        Navigator.push(
+                                                        Navigator
+                                                            .pushReplacement(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder: (context) => TrackOrder(
-                                                                  value["id"]
-                                                                      .toString(),
-                                                                  value["total"]
-                                                                      .toString(),
-                                                                  value["time"]
-                                                                      .toString())),
-                                                        ).then((value) {
-                                                          cartProvider
-                                                              .clearCart();
-                                                          Navigator
-                                                              .pushReplacement(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        const NavSwitch()),
-                                                          );
-                                                        });
+                                                              builder: (context) =>
+                                                                  const NavSwitch()),
+                                                        ); // Close the bottom sheet
                                                       },
                                                       style:
                                                           TextButton.styleFrom(
+                                                        backgroundColor:
+                                                            mainColorRed,
                                                         fixedSize: Size(
                                                             getWidth(
                                                                 context, 85),
@@ -667,38 +705,11 @@ class _CheckOutState extends State<CheckOut> {
                                                                 context, 6)),
                                                       ),
                                                       child: Text(
-                                                        "Track My Order".tr,
+                                                        "Back to Home".tr,
                                                       ),
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        getHeight(context, 2),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      cartProvider.clearCart();
-
-                                                      Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const NavSwitch()),
-                                                      ); // Close the bottom sheet
-                                                    },
-                                                    style: TextButton.styleFrom(
-                                                      backgroundColor:
-                                                          mainColorRed,
-                                                      fixedSize: Size(
-                                                          getWidth(context, 85),
-                                                          getHeight(
-                                                              context, 6)),
-                                                    ),
-                                                    child: Text(
-                                                      "Back to Home".tr,
-                                                    ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );

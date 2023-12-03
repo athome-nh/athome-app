@@ -58,7 +58,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
             },
             icon: Icon(
               Icons.arrow_back_ios,
-              color: mainColorRed,
+              color: mainColorGrey,
             )),
       ),
       body: GestureDetector(
@@ -90,7 +90,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         fontFamily: mainFontbold,
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
-                        color: mainColorGrey),
+                        color: mainColorBlack),
                   ),
                 ),
                 FadeInDown(
@@ -103,7 +103,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: mainColorGrey,
+                        color: mainColorBlack,
                         fontFamily: mainFontnormal,
                       ),
                     ),
@@ -121,9 +121,9 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       color: mainColorWhite,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: mainColorGrey.withOpacity(0.5)),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0xffeeeeee),
+                          color: mainColorWhite,
                           blurRadius: 10,
                           offset: Offset(0, 4),
                         ),
@@ -142,7 +142,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           ),
                           ignoreBlank: false,
                           autoValidateMode: AutovalidateMode.onUserInteraction,
-                          selectorTextStyle: TextStyle(color: mainColorGrey),
+                          selectorTextStyle: TextStyle(color: mainColorBlack),
                           textFieldController: controller,
                           formatInput: false,
                           validator: (userInput) {
@@ -168,7 +168,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             border: InputBorder.none,
                             hintText: 'Phone Number'.tr,
                             hintStyle:
-                                TextStyle(color: mainColorGrey, fontSize: 16),
+                                TextStyle(color: mainColorBlack, fontSize: 16),
                           ),
                           onSaved: (PhoneNumber number) {},
                         ),
@@ -191,8 +191,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                 ),
                 FadeInDown(
                   delay: const Duration(milliseconds: 600),
-                  child: MaterialButton(
-                    minWidth: getWidth(context, 100),
+                  child: TextButton(
                     onPressed: () async {
                       if (await noInternet(context)) {
                         return;
@@ -218,11 +217,9 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           MaterialPageRoute(
                               builder: (context) => Verificatoin(ph)));
                     },
-                    color: mainColorRed,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 30),
+                    style: TextButton.styleFrom(
+                        fixedSize: Size(
+                            getWidth(context, 100), getHeight(context, 6))),
                     child: Text(
                       "Get Start".tr,
                       style: TextStyle(
@@ -244,7 +241,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: mainColorGrey.withOpacity(0.7),
+                        color: mainColorBlack.withOpacity(0.7),
                         fontFamily: mainFontbold,
                       ),
                     ),

@@ -56,15 +56,9 @@ class _location_DeatilState extends State<location_Deatil> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: mainColorWhite,
-          centerTitle: true,
           title: Text(
             "Locations".tr,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
           leading: IconButton(
               onPressed: () {
@@ -72,7 +66,6 @@ class _location_DeatilState extends State<location_Deatil> {
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
         ),
         body: SingleChildScrollView(
@@ -122,7 +115,7 @@ class _location_DeatilState extends State<location_Deatil> {
                 TextFormField(
                   maxLines: 1,
                   controller: nameController,
-                  cursorColor: mainColorGrey,
+                  cursorColor: mainColorBlack,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {
                     setState(() {
@@ -136,26 +129,26 @@ class _location_DeatilState extends State<location_Deatil> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey, // Customize border color
+                        color: mainColorBlack, // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey
+                        color: mainColorBlack
                             .withOpacity(0.5), // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     labelText: "Name".tr,
                     labelStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.8),
+                        color: mainColorBlack.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
                     hintText: "Add name".tr,
                     hintStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.5),
+                        color: mainColorBlack.withOpacity(0.5),
                         fontSize: 14,
                         fontFamily: mainFontnormal),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -183,7 +176,7 @@ class _location_DeatilState extends State<location_Deatil> {
                 TextFormField(
                   maxLines: 1,
                   controller: streetController,
-                  cursorColor: mainColorGrey,
+                  cursorColor: mainColorBlack,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {},
                   validator: (value) {
@@ -193,26 +186,26 @@ class _location_DeatilState extends State<location_Deatil> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey, // Customize border color
+                        color: mainColorBlack, // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey
+                        color: mainColorBlack
                             .withOpacity(0.5), // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     labelText: "Area".tr,
                     labelStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.8),
+                        color: mainColorBlack.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
                     hintText: "Add Area".tr,
                     hintStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.5),
+                        color: mainColorBlack.withOpacity(0.5),
                         fontSize: 14,
                         fontFamily: mainFontnormal),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -231,7 +224,7 @@ class _location_DeatilState extends State<location_Deatil> {
                       decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: mainColorGrey
+                              color: mainColorBlack
                                   .withOpacity(0.5), // Customize border color
                               width: 1.0, // Customize border width
                             ),
@@ -239,12 +232,12 @@ class _location_DeatilState extends State<location_Deatil> {
                           ),
                           labelText: "Type Building".tr,
                           labelStyle: TextStyle(
-                              color: mainColorGrey,
+                              color: mainColorBlack,
                               fontSize: 16,
                               fontFamily: mainFontnormal),
                           border: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: mainColorGrey
+                                color: mainColorBlack
                                     .withOpacity(0.5), // Customize border color
                                 width: 1.0, // Customize border width
                               ),
@@ -283,7 +276,7 @@ class _location_DeatilState extends State<location_Deatil> {
                           TextFormField(
                             maxLines: 1,
                             controller: floorController,
-                            cursorColor: mainColorGrey,
+                            cursorColor: mainColorBlack,
                             keyboardType: TextInputType.text,
                             onChanged: (value) {
                               setState(() {
@@ -298,26 +291,26 @@ class _location_DeatilState extends State<location_Deatil> {
                                 borderRadius: BorderRadius.circular(5),
                                 borderSide: BorderSide(
                                   color:
-                                      mainColorGrey, // Customize border color
+                                      mainColorBlack, // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
                                 borderSide: BorderSide(
-                                  color: mainColorGrey.withOpacity(
+                                  color: mainColorBlack.withOpacity(
                                       0.5), // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
                               ),
                               labelText: "Floor number".tr,
                               labelStyle: TextStyle(
-                                  color: mainColorGrey.withOpacity(0.8),
+                                  color: mainColorBlack.withOpacity(0.8),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
                               hintText: "Floor number".tr,
                               hintStyle: TextStyle(
-                                  color: mainColorGrey.withOpacity(0.5),
+                                  color: mainColorBlack.withOpacity(0.5),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
                               floatingLabelBehavior:
@@ -346,7 +339,7 @@ class _location_DeatilState extends State<location_Deatil> {
                           TextFormField(
                             maxLines: 1,
                             controller: number2Controller,
-                            cursorColor: mainColorGrey,
+                            cursorColor: mainColorBlack,
                             keyboardType: TextInputType.text,
                             onChanged: (value) {
                               setState(() {
@@ -361,26 +354,26 @@ class _location_DeatilState extends State<location_Deatil> {
                                 borderRadius: BorderRadius.circular(5),
                                 borderSide: BorderSide(
                                   color:
-                                      mainColorGrey, // Customize border color
+                                      mainColorBlack, // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
                                 borderSide: BorderSide(
-                                  color: mainColorGrey.withOpacity(
+                                  color: mainColorBlack.withOpacity(
                                       0.5), // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
                               ),
                               labelText: "building name/number".tr,
                               labelStyle: TextStyle(
-                                  color: mainColorGrey.withOpacity(0.8),
+                                  color: mainColorBlack.withOpacity(0.8),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
                               hintText: "building name/number".tr,
                               hintStyle: TextStyle(
-                                  color: mainColorGrey.withOpacity(0.5),
+                                  color: mainColorBlack.withOpacity(0.5),
                                   fontSize: 16,
                                   fontFamily: mainFontnormal),
                               floatingLabelBehavior:
@@ -414,7 +407,7 @@ class _location_DeatilState extends State<location_Deatil> {
                               TextFormField(
                                 maxLines: 1,
                                 controller: floorController,
-                                cursorColor: mainColorGrey,
+                                cursorColor: mainColorBlack,
                                 keyboardType: TextInputType.text,
                                 onChanged: (value) {
                                   setState(() {
@@ -429,26 +422,26 @@ class _location_DeatilState extends State<location_Deatil> {
                                     borderRadius: BorderRadius.circular(5),
                                     borderSide: BorderSide(
                                       color:
-                                          mainColorGrey, // Customize border color
+                                          mainColorBlack, // Customize border color
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
                                     borderSide: BorderSide(
-                                      color: mainColorGrey.withOpacity(
+                                      color: mainColorBlack.withOpacity(
                                           0.5), // Customize border color
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
                                   labelText: "Floor number".tr,
                                   labelStyle: TextStyle(
-                                      color: mainColorGrey.withOpacity(0.8),
+                                      color: mainColorBlack.withOpacity(0.8),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
                                   hintText: "Floor number".tr,
                                   hintStyle: TextStyle(
-                                      color: mainColorGrey.withOpacity(0.5),
+                                      color: mainColorBlack.withOpacity(0.5),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
                                   floatingLabelBehavior:
@@ -477,7 +470,7 @@ class _location_DeatilState extends State<location_Deatil> {
                               TextFormField(
                                 maxLines: 1,
                                 controller: number2Controller,
-                                cursorColor: mainColorGrey,
+                                cursorColor: mainColorBlack,
                                 keyboardType: TextInputType.text,
                                 onChanged: (value) {
                                   setState(() {
@@ -492,26 +485,26 @@ class _location_DeatilState extends State<location_Deatil> {
                                     borderRadius: BorderRadius.circular(5),
                                     borderSide: BorderSide(
                                       color:
-                                          mainColorGrey, // Customize border color
+                                          mainColorBlack, // Customize border color
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
                                     borderSide: BorderSide(
-                                      color: mainColorGrey.withOpacity(
+                                      color: mainColorBlack.withOpacity(
                                           0.5), // Customize border color
                                       width: 1.0, // Customize border width
                                     ),
                                   ),
                                   labelText: "building name/number".tr,
                                   labelStyle: TextStyle(
-                                      color: mainColorGrey.withOpacity(0.8),
+                                      color: mainColorBlack.withOpacity(0.8),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
                                   hintText: "building name/number".tr,
                                   hintStyle: TextStyle(
-                                      color: mainColorGrey.withOpacity(0.5),
+                                      color: mainColorBlack.withOpacity(0.5),
                                       fontSize: 16,
                                       fontFamily: mainFontnormal),
                                   floatingLabelBehavior:
@@ -543,7 +536,7 @@ class _location_DeatilState extends State<location_Deatil> {
                 TextFormField(
                   maxLines: 1,
                   controller: numberController,
-                  cursorColor: mainColorGrey,
+                  cursorColor: mainColorBlack,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {
                     setState(() {
@@ -557,26 +550,26 @@ class _location_DeatilState extends State<location_Deatil> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey, // Customize border color
+                        color: mainColorBlack, // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey
+                        color: mainColorBlack
                             .withOpacity(0.5), // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     labelText: type + "number".tr,
                     labelStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.8),
+                        color: mainColorBlack.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
                     hintText: type + "number".tr,
                     hintStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.5),
+                        color: mainColorBlack.withOpacity(0.5),
                         fontSize: 14,
                         fontFamily: mainFontnormal),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -607,7 +600,7 @@ class _location_DeatilState extends State<location_Deatil> {
                 TextFormField(
                   maxLines: 1,
                   controller: phoneController,
-                  cursorColor: mainColorGrey,
+                  cursorColor: mainColorBlack,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {},
                   validator: (value) {
@@ -617,14 +610,14 @@ class _location_DeatilState extends State<location_Deatil> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey, // Customize border color
+                        color: mainColorBlack, // Customize border color
                         width: 1.0, // Customize border width
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(
-                        color: mainColorGrey
+                        color: mainColorBlack
                             .withOpacity(0.5), // Customize border color
                         width: 1.0, // Customize border width
                       ),
@@ -633,15 +626,15 @@ class _location_DeatilState extends State<location_Deatil> {
                     prefixText: "+964 | ",
 
                     prefixStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.8),
+                        color: mainColorBlack.withOpacity(0.8),
                         fontFamily: mainFontnormal),
                     labelStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.8),
+                        color: mainColorBlack.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
                     hintText: "Add phone number".tr,
                     hintStyle: TextStyle(
-                        color: mainColorGrey.withOpacity(0.5),
+                        color: mainColorBlack.withOpacity(0.5),
                         fontSize: 14,
                         fontFamily: mainFontnormal),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -657,89 +650,89 @@ class _location_DeatilState extends State<location_Deatil> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        style: TextButton.styleFrom(
-
-                            // fixedSize: Size(
-                            //     getWidth(context, 35), getHeight(context, 6)),
-                            ),
-                        child: Text(
-                          "Cancel".tr,
+                      Container(
+                        width: getWidth(context, 40),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          style: TextButton.styleFrom(),
+                          child: Text(
+                            "Cancel".tr,
+                          ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () async {
-                          // if (nameController.text.isEmpty) {
-                          //   setState(() {
-                          //     nameE = true;
-                          //   });
-                          //   return;
-                          // }
+                      Container(
+                        width: getWidth(context, 40),
+                        child: TextButton(
+                          onPressed: () async {
+                            // if (nameController.text.isEmpty) {
+                            //   setState(() {
+                            //     nameE = true;
+                            //   });
+                            //   return;
+                            // }
 
-                          // if (floorController.text.isEmpty &&
-                          //     (type == 'Office' || type == 'Apartment')) {
-                          //   setState(() {
-                          //     floorE = true;
-                          //   });
-                          //   return;
-                          // }
-                          // if (numberController.text.isEmpty) {
-                          //   setState(() {
-                          //     numberE = true;
-                          //   });
-                          //   return;
-                          // }
-                          // if (number2Controller.text.isEmpty &&
-                          //     (type == 'Office' || type == 'Apartment')) {
-                          //   setState(() {
-                          //     number2E = true;
-                          //   });
-                          //   return;
-                          // }
+                            // if (floorController.text.isEmpty &&
+                            //     (type == 'Office' || type == 'Apartment')) {
+                            //   setState(() {
+                            //     floorE = true;
+                            //   });
+                            //   return;
+                            // }
+                            // if (numberController.text.isEmpty) {
+                            //   setState(() {
+                            //     numberE = true;
+                            //   });
+                            //   return;
+                            // }
+                            // if (number2Controller.text.isEmpty &&
+                            //     (type == 'Office' || type == 'Apartment')) {
+                            //   setState(() {
+                            //     number2E = true;
+                            //   });
+                            //   return;
+                            // }
 
-                          var data = {
-                            "id": userdata["id"],
-                            "longitude": widget.longitude,
-                            "latitude": widget.latitude,
-                            "area": streetController.text,
-                            "name": nameController.text,
-                            "floor": floorController.text,
-                            "number": numberController.text,
-                            "phone": phoneController.text,
-                            "building_name": number2Controller.text,
-                            "type": type,
-                            "in_range": 1,
-                          };
-                          Network(false)
-                              .postData("location", data, context)
-                              .then((value) {
-                            if (value != "") {
-                              if (value["code"] == "201") {
-                                Locationuser loc =
-                                    Locationuser.fromMap(value["data"]);
+                            var data = {
+                              "id": userdata["id"],
+                              "longitude": widget.longitude,
+                              "latitude": widget.latitude,
+                              "area": streetController.text,
+                              "name": nameController.text,
+                              "floor": floorController.text,
+                              "number": numberController.text,
+                              "phone": phoneController.text,
+                              "building_name": number2Controller.text,
+                              "type": type,
+                              "in_range": 1,
+                            };
+                            Network(false)
+                                .postData("location", data, context)
+                                .then((value) {
+                              if (value != "") {
+                                if (value["code"] == "201") {
+                                  Locationuser loc =
+                                      Locationuser.fromMap(value["data"]);
 
-                                final productrovider =
-                                    Provider.of<productProvider>(context,
-                                        listen: false);
-                                productrovider
-                                    .getDataUser(userdata["id"].toString());
-                                productrovider.addlocation(loc);
-                                Navigator.pop(context);
-                                Navigator.pop(context);
+                                  final productrovider =
+                                      Provider.of<productProvider>(context,
+                                          listen: false);
+                                  productrovider
+                                      .getDataUser(userdata["id"].toString());
+                                  productrovider.addlocation(loc);
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                }
                               }
-                            }
-                          });
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor: mainColorRed,
-                          // fixedSize: Size(
-                          //     getWidth(context, 35), getHeight(context, 6)),
-                        ),
-                        child: Text(
-                          "Save".tr,
+                            });
+                          },
+                          style: TextButton.styleFrom(
+                            backgroundColor: mainColorRed,
+                          ),
+                          child: Text(
+                            "Save".tr,
+                          ),
                         ),
                       ),
                     ],

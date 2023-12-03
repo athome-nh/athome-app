@@ -24,10 +24,7 @@ class _LocationScreenState extends State<LocationScreen> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
-          backgroundColor: mainColorWhite,
-          elevation: 0,
           actions: [
             IconButton(
                 onPressed: () async {
@@ -43,7 +40,6 @@ class _LocationScreenState extends State<LocationScreen> {
                 },
                 icon: Icon(
                   Icons.add,
-                  color: mainColorRed,
                 ))
           ],
           leading: IconButton(
@@ -52,13 +48,10 @@ class _LocationScreenState extends State<LocationScreen> {
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
           centerTitle: true,
           title: Text(
             "Locations".tr,
-            style: TextStyle(
-                color: mainColorGrey, fontFamily: mainFontnormal, fontSize: 22),
           ),
         ),
         body: productrovider.location.isEmpty
@@ -92,12 +85,12 @@ class _LocationScreenState extends State<LocationScreen> {
                                     location.type.toString().contains("Home")
                                         ? Icon(
                                             Ionicons.home_outline,
-                                            color: mainColorRed,
+                                            color: mainColorGrey,
                                             size: 35,
                                           )
                                         : Icon(
                                             Ionicons.business_outline,
-                                            color: mainColorRed,
+                                            color: mainColorGrey,
                                             size: 35,
                                           ),
                                     const SizedBox(
@@ -147,6 +140,9 @@ class _LocationScreenState extends State<LocationScreen> {
                                             }
                                           });
                                         },
+                                        style: TextButton.styleFrom(
+                                            backgroundColor:
+                                                Colors.transparent),
                                         child: Text(
                                           "Delete".tr,
                                           style: TextStyle(
