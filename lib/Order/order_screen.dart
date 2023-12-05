@@ -70,8 +70,8 @@ class _OrderScreenState extends State<OrderScreen> {
                 ),
                 bottom: TabBar(
                   unselectedLabelColor: mainColorWhite,
-                  labelColor: mainColorRed,
-                  indicatorColor: mainColorRed,
+                  labelColor: mainColorWhite,
+                  indicatorColor: mainColorWhite,
                   labelStyle:
                       TextStyle(fontFamily: mainFontnormal, fontSize: 14),
                   unselectedLabelStyle:

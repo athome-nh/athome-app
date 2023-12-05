@@ -967,7 +967,7 @@ class _MyCartState extends State<MyCart> {
                                                           ),
                                                           Text(
                                                             //textbawar
-                                                            "Clear cart".tr,
+                                                            "minium order".tr,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             maxLines: 1,
@@ -981,8 +981,11 @@ class _MyCartState extends State<MyCart> {
                                                           ),
                                                           Text(
                                                             //textbawar
-                                                            "Are you sure you wnat to continue?"
-                                                                .tr,
+                                                            "minium order is "
+                                                                    .tr +
+                                                                productrovider
+                                                                    .minimumOrder
+                                                                    .toString(),
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(
