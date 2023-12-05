@@ -50,7 +50,7 @@ class _HomeSreenState extends State<HomeSreen> {
           (element) => element.id == item.product,
         );
         if (existingItemIndex == -1) {
-          cartprovider.removeFromCart(item);
+          cartprovider.cartItems.remove(cartprovider.cartItems[item.product]);
         }
       }
       List<CartItem> myfav = cartprovider.FavItems;
@@ -59,7 +59,7 @@ class _HomeSreenState extends State<HomeSreen> {
           (element) => element.id == item.product,
         );
         if (existingItemIndex == -1) {
-          cartprovider.addFavToCart(item);
+          cartprovider.FavItems.remove(cartprovider.FavItems[item.product]);
         }
       }
       loaddata = true;

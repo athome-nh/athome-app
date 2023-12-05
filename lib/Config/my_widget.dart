@@ -1512,11 +1512,7 @@ Future<void> loiginPopup(BuildContext context) {
 // Page --> No Internet
 noInternetWidget(BuildContext context) {
   return Scaffold(
-    backgroundColor: mainColorWhite,
     appBar: AppBar(
-      backgroundColor: mainColorWhite,
-      automaticallyImplyLeading: false,
-      elevation: 0.5,
       title: Image.asset(
         "assets/images/logoB.png",
         width: getWidth(context, 30),

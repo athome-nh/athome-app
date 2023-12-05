@@ -55,17 +55,12 @@ class AtHomeApp extends StatefulWidget {
 class _AtHomeAppState extends State<AtHomeApp> {
   @override
   void initState() {
-
-FirebaseMessaging.instance.getToken().then((value) {
-
-
-  print(value);
-}) ;
-FirebaseMessaging.instance.getAPNSToken().then((value) {
-
-
-  print(value);
-}) ;
+    FirebaseMessaging.instance.getToken().then((value) {
+      print(value);
+    });
+    FirebaseMessaging.instance.getAPNSToken().then((value) {
+      print(value);
+    });
 
     FCMNotification(context).config();
 
@@ -84,7 +79,6 @@ FirebaseMessaging.instance.getAPNSToken().then((value) {
     super.initState();
   }
 
- 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -132,11 +126,11 @@ FirebaseMessaging.instance.getAPNSToken().then((value) {
           ),
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-              primary: const Color(0xFF014a64),
-              secondary: const Color(0xFFc82036),
-              background: const Color(0xFFeeeeee),
+              primary: mainColorGrey,
+              secondary: mainColorRed,
+              background: mainColorWhite,
               brightness: Brightness.light,
-              seedColor: mainColorWhite),
+              seedColor: mainColorGrey),
           scaffoldBackgroundColor: mainColorWhite,
           appBarTheme: AppBarTheme(
             actionsIconTheme: IconThemeData(color: mainColorWhite, size: 25),
