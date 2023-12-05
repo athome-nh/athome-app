@@ -1028,7 +1028,6 @@ class _SettingState extends State<Setting> {
                                 padding: EdgeInsets.only(
                                   left: getWidth(context, 5),
                                   right: getWidth(context, 5),
-                                  top: getWidth(context, 5),
                                 ),
                                 child: Container(
                                   padding: const EdgeInsets.all(15),
@@ -1041,25 +1040,20 @@ class _SettingState extends State<Setting> {
                                               alignment: Alignment.bottomRight,
                                               children: [
                                                 Container(
-                                                  width: getWidth(context, 40),
-                                                  height: getWidth(context, 40),
+                                                  width: getWidth(context, 30),
+                                                  height: getWidth(context, 30),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            50),
+                                                            100),
                                                   ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                    child: Image.file(
-                                                      File(_image!.path),
-                                                      width:
-                                                          getWidth(context, 40),
-                                                      height:
-                                                          getWidth(context, 40),
-                                                    ),
-                                                  ),
+                                                  child: CircleAvatar(
+                                                      backgroundColor:
+                                                          mainColorGrey,
+                                                      backgroundImage:
+                                                          FileImage(
+                                                        File(_image!.path),
+                                                      )),
                                                 ),
                                                 IconButton(
                                                     onPressed: () {
@@ -1067,14 +1061,14 @@ class _SettingState extends State<Setting> {
                                                     },
                                                     icon: Container(
                                                       width:
-                                                          getWidth(context, 15),
+                                                          getWidth(context, 8),
                                                       height:
-                                                          getWidth(context, 15),
+                                                          getWidth(context, 8),
                                                       decoration: BoxDecoration(
                                                         color: mainColorGrey,
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(50),
+                                                                .circular(100),
                                                       ),
                                                       child: waitingImage
                                                           ? Padding(
@@ -1088,6 +1082,7 @@ class _SettingState extends State<Setting> {
                                                           : Icon(
                                                               Icons
                                                                   .edit_outlined,
+                                                              size: 15,
                                                               color:
                                                                   mainColorWhite,
                                                             ),
@@ -1098,36 +1093,32 @@ class _SettingState extends State<Setting> {
                                               alignment: Alignment.bottomRight,
                                               children: [
                                                 Container(
-                                                  width: getWidth(context, 40),
-                                                  height: getWidth(context, 40),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                    child: CachedNetworkImage(
-                                                      width:
-                                                          getWidth(context, 40),
-                                                      height:
-                                                          getWidth(context, 40),
-                                                      imageUrl: imageUrlServer +
-                                                          image,
+                                                    width:
+                                                        getWidth(context, 30),
+                                                    height:
+                                                        getWidth(context, 30),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100),
                                                     ),
-                                                  ),
-                                                ),
+                                                    child: CircleAvatar(
+                                                      backgroundColor:
+                                                          mainColorGrey,
+                                                      backgroundImage:
+                                                          NetworkImage(
+                                                        imageUrlServer + image,
+                                                      ),
+                                                    )),
                                                 IconButton(
                                                     onPressed: () {
                                                       _getImage();
                                                     },
                                                     icon: Container(
                                                       width:
-                                                          getWidth(context, 12),
+                                                          getWidth(context, 8),
                                                       height:
-                                                          getWidth(context, 12),
+                                                          getWidth(context, 8),
                                                       decoration: BoxDecoration(
                                                         color: mainColorGrey,
                                                         borderRadius:
@@ -1146,6 +1137,7 @@ class _SettingState extends State<Setting> {
                                                           : Icon(
                                                               Icons
                                                                   .edit_outlined,
+                                                              size: 15,
                                                               color:
                                                                   mainColorWhite,
                                                             ),
@@ -1154,7 +1146,7 @@ class _SettingState extends State<Setting> {
                                             ),
 
                                       Padding(
-                                        padding: const EdgeInsets.all(15),
+                                        padding: const EdgeInsets.all(8),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -1163,27 +1155,30 @@ class _SettingState extends State<Setting> {
                                               userdata["name"].toString(),
                                               style: TextStyle(
                                                   fontFamily: mainFontbold,
-                                                  fontSize: 26,
+                                                  fontSize: 22,
                                                   color: mainColorBlack),
                                             ),
-                                            Text(
-                                              userdata["phone"]
-                                                  .toString()
-                                                  .substring(4),
-                                              style: TextStyle(
-                                                  fontFamily: mainFontbold,
-                                                  fontSize: 16,
-                                                  color: mainColorBlack),
-                                            ),
+                                            Chip(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              avatar: Icon(Icons.call),
+                                              label: Text(
+                                                userdata["phone"]
+                                                    .toString()
+                                                    .substring(4),
+                                                style: TextStyle(
+                                                    fontFamily: mainFontbold,
+                                                    fontSize: 12,
+                                                    color: mainColorBlack),
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: getHeight(context, 2),
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -1195,7 +1190,7 @@ class _SettingState extends State<Setting> {
                                       : getHeight(context, 6),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: mainColorBlack,
+                                        color: mainColorBlack.withOpacity(0.2),
                                       ),
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
@@ -1229,7 +1224,7 @@ class _SettingState extends State<Setting> {
                                                   Icon(
                                                     color: mainColorBlack,
                                                     Ionicons.person_outline,
-                                                    size: 30,
+                                                    size: 20,
                                                   ),
                                                   const SizedBox(
                                                     width: 10,
@@ -1240,7 +1235,7 @@ class _SettingState extends State<Setting> {
                                                         color: mainColorBlack,
                                                         fontFamily:
                                                             mainFontnormal,
-                                                        fontSize: 18),
+                                                        fontSize: 16),
                                                   ),
                                                   const Spacer(),
                                                   Icon(
@@ -1621,7 +1616,7 @@ class _SettingState extends State<Setting> {
                                   height: getHeight(context, 6),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: mainColorBlack,
+                                        color: mainColorBlack.withOpacity(0.2),
                                       ),
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
@@ -1640,7 +1635,7 @@ class _SettingState extends State<Setting> {
                                         children: [
                                           const Icon(
                                             Ionicons.bag_outline,
-                                            size: 30,
+                                            size: 20,
                                           ),
                                           const SizedBox(
                                             width: 10,
@@ -1650,7 +1645,7 @@ class _SettingState extends State<Setting> {
                                             style: TextStyle(
                                                 color: mainColorBlack,
                                                 fontFamily: mainFontnormal,
-                                                fontSize: 18),
+                                                fontSize: 16),
                                           ),
                                           const Spacer(),
                                           const Icon(Icons
@@ -1681,7 +1676,8 @@ class _SettingState extends State<Setting> {
                                     height: getHeight(context, 6),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                          color: mainColorBlack,
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
                                         ),
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
@@ -1701,7 +1697,7 @@ class _SettingState extends State<Setting> {
                                             Icon(
                                               color: mainColorBlack,
                                               Ionicons.location_outline,
-                                              size: 30,
+                                              size: 20,
                                             ),
                                             const SizedBox(
                                               width: 10,
@@ -1711,7 +1707,7 @@ class _SettingState extends State<Setting> {
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,
-                                                  fontSize: 18),
+                                                  fontSize: 16),
                                             ),
                                             const Spacer(),
                                             const Icon(Icons
@@ -1743,7 +1739,114 @@ class _SettingState extends State<Setting> {
                                     height: getHeight(context, 6),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                          color: mainColorBlack,
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            color: mainColorBlack,
+                                            Ionicons.lock_closed_outline,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Privacy Poilcy".tr,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
+                                          const Spacer(),
+                                          const Icon(Icons
+                                              .keyboard_arrow_right_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AboutScreen()),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            color: mainColorBlack,
+                                            Ionicons.document_text_outline,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Terms Of Use".tr,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
+                                          const Spacer(),
+                                          const Icon(Icons
+                                              .keyboard_arrow_right_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AboutScreen()),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
                                         ),
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
@@ -1754,7 +1857,7 @@ class _SettingState extends State<Setting> {
                                           Icon(
                                             color: mainColorBlack,
                                             Ionicons.information_outline,
-                                            size: 30,
+                                            size: 20,
                                           ),
                                           const SizedBox(
                                             width: 10,
@@ -1764,7 +1867,7 @@ class _SettingState extends State<Setting> {
                                             style: TextStyle(
                                                 color: mainColorBlack,
                                                 fontFamily: mainFontnormal,
-                                                fontSize: 18),
+                                                fontSize: 16),
                                           ),
                                           const Spacer(),
                                           const Icon(Icons
@@ -1820,7 +1923,9 @@ class _SettingState extends State<Setting> {
                                   child: Container(
                                     height: getHeight(context, 6),
                                     decoration: BoxDecoration(
-                                        border: Border.all(color: mainColorRed),
+                                        border: Border.all(
+                                            color:
+                                                mainColorRed.withOpacity(0.5)),
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -1830,7 +1935,7 @@ class _SettingState extends State<Setting> {
                                           Icon(
                                             Ionicons.log_out_outline,
                                             color: mainColorRed,
-                                            size: 30,
+                                            size: 20,
                                           ),
                                           const SizedBox(
                                             width: 10,
@@ -1840,7 +1945,7 @@ class _SettingState extends State<Setting> {
                                             style: TextStyle(
                                                 color: mainColorRed,
                                                 fontFamily: mainFontnormal,
-                                                fontSize: 18),
+                                                fontSize: 16),
                                           ),
                                         ],
                                       ),

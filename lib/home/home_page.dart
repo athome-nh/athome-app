@@ -117,7 +117,8 @@ class _HomeSreenState extends State<HomeSreen> {
                     centerTitle: false,
                     expandedHeight: getHeight(context, 25),
                     floating: false,
-                    pinned: true,
+                    pinned: false,
+
                     flexibleSpace: Visibility(
                       visible: productrovider.show,
                       replacement: Skeletonizer(

@@ -41,7 +41,6 @@ class _OneitemState extends State<Oneitem> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
         appBar: AppBar(
           title: Text(
             lang == "en"
@@ -61,232 +60,223 @@ class _OneitemState extends State<Oneitem> {
 
           // Change the color of the unselected tab labels
         ),
-        body: Column(
-          children: [
-            Expanded(
-              flex: 12,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1)),
+                child: Stack(
+                  alignment:
+                      lang == "en" ? Alignment.topRight : Alignment.topLeft,
                   children: [
-                    Stack(
-                      alignment:
-                          lang == "en" ? Alignment.topRight : Alignment.topLeft,
-                      children: [
-                        Container(
-                          width: getWidth(context, 100),
-                          height: getHeight(context, 30),
-                          decoration: BoxDecoration(
-                              //    color: Color(0xffF2F2F2),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              images.isNotEmpty
-                                  ? SizedBox(
-                                      width: getWidth(context, 100),
-                                      height: getHeight(context, 25),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        child: CarouselSlider(
-                                          items: images.map((imageUrl) {
-                                            return Builder(
-                                              builder: (BuildContext context) {
-                                                return ClipRRect(
-                                                  child: CachedNetworkImage(
-                                                    imageUrl: imageUrlServer +
-                                                        imageUrl.img!,
-                                                    width:
-                                                        getWidth(context, 100),
-                                                    height:
-                                                        getHeight(context, 25),
-                                                  ),
-                                                );
-                                              },
+                    Container(
+                      width: getWidth(context, 100),
+                      height: getHeight(context, 30),
+                      decoration: BoxDecoration(
+                          // color: Colors.white,
+                          // border: Border.all(
+                          //     color: mainColorBlack.withOpacity(0.1)),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          images.isNotEmpty
+                              ? SizedBox(
+                                  width: getWidth(context, 100),
+                                  height: getHeight(context, 25),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    child: CarouselSlider(
+                                      items: images.map((imageUrl) {
+                                        return Builder(
+                                          builder: (BuildContext context) {
+                                            return ClipRRect(
+                                              child: CachedNetworkImage(
+                                                imageUrl: imageUrlServer +
+                                                    imageUrl.img!,
+                                                width: getWidth(context, 100),
+                                                height: getHeight(context, 25),
+                                              ),
                                             );
-                                          }).toList(),
-                                          options: CarouselOptions(
-                                            autoPlay: true,
-                                            aspectRatio: 16 / 9,
-                                            viewportFraction: 1.0,
-                                            enlargeCenterPage: true,
-                                            autoPlayInterval:
-                                                const Duration(seconds: 2),
-                                            autoPlayAnimationDuration:
-                                                const Duration(
-                                                    milliseconds: 2000),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : Container(
-                                      width: getWidth(context, 100),
-                                      height: getHeight(context, 25),
-                                      decoration: BoxDecoration(
-                                          //       color: Color(0xffF2F2F2),
-                                          borderRadius:
-                                              BorderRadius.circular(100)),
-                                      child: Center(
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              imageUrlServer + Item.coverImg!,
-                                          // imageUrlServer + Item.coverImg!,
-                                          placeholder: (context, url) =>
-                                              Image.asset(
-                                                  "assets/images/Logo-Type-2.png"),
-                                          errorWidget: (context, url, error) =>
-                                              Image.asset(
-                                                  "assets/images/Logo-Type-2.png"),
-                                          width: getWidth(context, 100),
-                                          height: getHeight(context, 20),
-                                        ),
+                                          },
+                                        );
+                                      }).toList(),
+                                      options: CarouselOptions(
+                                        autoPlay: true,
+                                        aspectRatio: 16 / 9,
+                                        viewportFraction: 1.0,
+                                        enlargeCenterPage: true,
+                                        autoPlayInterval:
+                                            const Duration(seconds: 2),
+                                        autoPlayAnimationDuration:
+                                            const Duration(milliseconds: 2000),
                                       ),
                                     ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (!isLogin) {
-                              loiginPopup(context);
-
-                              return;
-                            }
-                            final cartItem = CartItem(product: Item.id!);
-                            cartProvider.addFavToCart(cartItem);
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: isFavInCart
-                                ? Icon(FontAwesomeIcons.solidHeart,
-                                    color: mainColorRed,
-                                    size: getHeight(context, 3))
-                                : Icon(FontAwesomeIcons.heart,
-                                    color: mainColorGrey,
-                                    size: getHeight(context, 3)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 3)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            lang == "en"
-                                ? Item.nameEn!
-                                : lang == "ar"
-                                    ? Item.nameAr!
-                                    : Item.nameKu!,
-                            maxLines: 2,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 24),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            lang == "en"
-                                ? Item.contentsEn!
-                                : lang == "ar"
-                                    ? Item.contentsAr!
-                                    : Item.contentsKu!,
-                            style: TextStyle(
-                                color: mainColorGrey.withOpacity(0.5),
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                addCommasToPrice(Item.price2! > -1
-                                    ? Item.price2!
-                                    : Item.price!),
-                                maxLines: 1,
-                                style: TextStyle(
-                                    decoration: checkOferPrice(Item)
-                                        ? TextDecoration.lineThrough
-                                        : TextDecoration.none,
-                                    color: checkOferPrice(Item)
-                                        ? mainColorRed
-                                        : Colors.green,
-                                    fontFamily: checkOferPrice(Item)
-                                        ? mainFontnormal
-                                        : mainFontbold,
-                                    fontSize: 16),
-                              ),
-                              checkOferPrice(Item) ? Text("/") : SizedBox(),
-                              checkOferPrice(Item)
-                                  ? Text(
-                                      addCommasToPrice(Item.offerPrice!),
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                          color: Colors.green,
-                                          fontFamily: mainFontbold,
-                                          fontSize: 16),
-                                    )
-                                  : SizedBox(),
-                            ],
-                          ),
+                                  ),
+                                )
+                              : Container(
+                                  width: getWidth(context, 100),
+                                  height: getHeight(context, 25),
+                                  decoration: BoxDecoration(
+                                      //       color: Color(0xffF2F2F2),
+                                      borderRadius: BorderRadius.circular(100)),
+                                  child: Center(
+                                    child: CachedNetworkImage(
+                                      imageUrl: imageUrlServer + Item.coverImg!,
+                                      // imageUrlServer + Item.coverImg!,
+                                      placeholder: (context, url) =>
+                                          Image.asset(
+                                              "assets/images/Logo-Type-2.png"),
+                                      errorWidget: (context, url, error) =>
+                                          Image.asset(
+                                              "assets/images/Logo-Type-2.png"),
+                                      width: getWidth(context, 100),
+                                      height: getHeight(context, 20),
+                                    ),
+                                  ),
+                                ),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: getHeight(context, 2),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 3)),
-                      child: Text(
-                        lang == "en"
-                            ? Item.descriptionEn!
-                            : lang == "ar"
-                                ? Item.descriptionAr!
-                                : Item.descriptionKu!,
-                        style: TextStyle(
-                            color: mainColorBlack,
-                            fontFamily: mainFontnormal,
-                            fontSize: 16),
-                        textAlign: TextAlign.justify,
+                    GestureDetector(
+                      onTap: () {
+                        if (!isLogin) {
+                          loiginPopup(context);
+
+                          return;
+                        }
+                        final cartItem = CartItem(product: Item.id!);
+                        cartProvider.addFavToCart(cartItem);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: isFavInCart
+                            ? Icon(FontAwesomeIcons.solidHeart,
+                                color: mainColorRed,
+                                size: getHeight(context, 3))
+                            : Icon(FontAwesomeIcons.heart,
+                                color: mainColorGrey,
+                                size: getHeight(context, 3)),
                       ),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 4),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 3)),
-                      child: Text(
-                        "Similar item",
-                        style: TextStyle(
-                            color: mainColorBlack,
-                            fontSize: 20,
-                            fontFamily: mainFontbold),
-                      ),
-                    ),
-                    listItemsSmall(
-                        context,
-                        productrovider.getProductsBySubCategory2(
-                            Item.subCategoryId!, Item.id!)),
-                    const SizedBox(
-                      height: 5,
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: getWidth(context, 3)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      lang == "en"
+                          ? Item.nameEn!
+                          : lang == "ar"
+                              ? Item.nameAr!
+                              : Item.nameKu!,
+                      maxLines: 2,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: mainColorBlack,
+                          fontFamily: mainFontnormal,
+                          fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      lang == "en"
+                          ? Item.contentsEn!
+                          : lang == "ar"
+                              ? Item.contentsAr!
+                              : Item.contentsKu!,
+                      style: TextStyle(
+                          color: mainColorGrey.withOpacity(0.5),
+                          fontFamily: mainFontnormal,
+                          fontSize: 16),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          addCommasToPrice(
+                              Item.price2! > -1 ? Item.price2! : Item.price!),
+                          maxLines: 1,
+                          style: TextStyle(
+                              decoration: checkOferPrice(Item)
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none,
+                              color: checkOferPrice(Item)
+                                  ? mainColorRed
+                                  : Colors.green,
+                              fontFamily: checkOferPrice(Item)
+                                  ? mainFontnormal
+                                  : mainFontbold,
+                              fontSize: 16),
+                        ),
+                        checkOferPrice(Item) ? Text("/") : SizedBox(),
+                        checkOferPrice(Item)
+                            ? Text(
+                                addCommasToPrice(Item.offerPrice!),
+                                maxLines: 1,
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontFamily: mainFontbold,
+                                    fontSize: 16),
+                              )
+                            : SizedBox(),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: getHeight(context, 2),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: getWidth(context, 3)),
+                child: Text(
+                  lang == "en"
+                      ? Item.descriptionEn!
+                      : lang == "ar"
+                          ? Item.descriptionAr!
+                          : Item.descriptionKu!,
+                  style: TextStyle(
+                      color: mainColorBlack.withOpacity(0.5),
+                      fontFamily: mainFontnormal,
+                      fontSize: 16),
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+              SizedBox(
+                height: getHeight(context, 4),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: getWidth(context, 3)),
+                child: Text(
+                  "Similar item",
+                  style: TextStyle(
+                      color: mainColorBlack,
+                      fontSize: 20,
+                      fontFamily: mainFontbold),
+                ),
+              ),
+              listItemsSmall(
+                  context,
+                  productrovider.getProductsBySubCategory2(
+                      Item.subCategoryId!, Item.id!)),
+              const SizedBox(
+                height: 5,
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: Row(
           children: [
