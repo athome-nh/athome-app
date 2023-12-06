@@ -56,10 +56,10 @@ class _AtHomeAppState extends State<AtHomeApp> {
   @override
   void initState() {
     FirebaseMessaging.instance.getToken().then((value) {
-      print(value);
+      //print(value);
     });
     FirebaseMessaging.instance.getAPNSToken().then((value) {
-      print(value);
+      //print(value);
     });
 
     FCMNotification(context).config();
