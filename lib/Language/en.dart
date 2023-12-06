@@ -68,11 +68,11 @@ const Map<String, String> en = {
   // favorite
   "No have any favorite": "You haven't set any favorite items.\nMake it your own!",
 
-  // Page --> Login First --> my_widget
-  "Please login first": "Please login first", // nmayaa
-
   // Page --> No Internet --> my_widget
   "no internet": "You are offline, connect to WIFI",
+
+  // Page --> Login First --> my_widget
+  "Please login first": "Please login first", // nmayaa
 
   // profilo
   "Image changed": "Image changed",

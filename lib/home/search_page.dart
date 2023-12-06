@@ -10,12 +10,11 @@ import 'package:provider/provider.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
-
   @override
   State<Search> createState() => _SearchState();
 }
 
-class _SearchState extends State<Search> {
+class _SearchState extends State<Search> { 
   var subscription;
   @override
   void initState() {
@@ -80,7 +79,7 @@ class _SearchState extends State<Search> {
                 actions: [
                   searchCon.text.isNotEmpty
                       ? IconButton(
-                          icon: Icon(Icons.cancel),
+                          icon: const Icon(Icons.cancel),
                           onPressed: () {
                             setState(() {
                               isSearch = false;
@@ -89,7 +88,7 @@ class _SearchState extends State<Search> {
                             });
                           },
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ],
               ),
               body: SafeArea(
@@ -105,10 +104,8 @@ class _SearchState extends State<Search> {
                         ),
                         !productPro.show
                             ? listItemsBigShimer(context)
-                            : productPro
-                                    .getProductsBySearch(
-                                        productPro.searchproduct)
-                                    .isEmpty
+                            : productPro.getProductsBySearch(productPro.searchproduct).isEmpty
+                                // if not have item    
                                 ? Center(
                                     child: Column(
                                       mainAxisAlignment:
@@ -136,10 +133,9 @@ class _SearchState extends State<Search> {
                                       ],
                                     ),
                                   )
+                                // if have item 
                                 : listItemsShowSearch(
-                                    context,
-                                    productPro.getProductsBySearch(
-                                        productPro.searchproduct),
+                                  context,productPro.getProductsBySearch(productPro.searchproduct),
                                   ),
                       ],
                     ),

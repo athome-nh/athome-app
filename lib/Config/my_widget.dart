@@ -975,7 +975,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
     visible: productrovider.show,
     replacement: listItemsBigShimer(context),
     child: SizedBox(
-      height: getHeight(context, 76),
+      height: getHeight(context, 81),
       width: getWidth(context, 100),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -998,7 +998,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
               height: getHeight(context, 27),
               decoration: BoxDecoration(
                   border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                  // color: mainColorLightGrey,
+                   color: mainColorBlack,
                   borderRadius: BorderRadius.circular(5)),
               child: Stack(
                 alignment:
