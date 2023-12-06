@@ -11,8 +11,8 @@ const Map<String, String> en = {
   "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
   "wst02": "Learn From the Best",
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "AtHome Is Forever",
-  "wsd03": "Learn whatever you want, whenever or wherever you are.",
+  "wst03": "Fast Delevery",
+  "wsd03": "we will reach you whatever you are ",
   "NEXT": "NEXT",
   "SKIP": "SKIP",
 
@@ -24,7 +24,7 @@ const Map<String, String> en = {
   "Account": "Account",
 
   // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "Are you sure you want to log out?",
+  "Are you sure exiting the app": "Are you sure exiting the app",
   "Yes": "Yes",
   "No": "No",
 
@@ -63,7 +63,7 @@ const Map<String, String> en = {
   "Total": "Total",
   "Checkout": "Checkout",
   "Clear cart":"Clear cart",
-  "Are you sure you want to continue?":"Are you sure you want to continue?",
+  "Are you sure you want to continue?":"Are you sure about continuing?",
 
   // favorite
   "No have any favorite": "You haven't set any favorite items.\nMake it your own!",
@@ -80,8 +80,8 @@ const Map<String, String> en = {
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
   "Edit": "Edit",
-  "Orders": "My Orders",
-  "Address": "Location",
+  "Orders": "Orders",
+  "Address": "Address",
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",
@@ -92,8 +92,8 @@ const Map<String, String> en = {
   "History":"History",
   "Order number:":"Order number:",
   "Date:": "Date:",
-  "You not have any order": "You do not have any Item",
-  "Re order":"Re order",
+  "You not have any order": "You do not have any order",
+  "Re order":"Reorder",
   "View":"View",
 
   // order_items
@@ -115,7 +115,7 @@ const Map<String, String> en = {
   "Note": "Note",
   "Add your note": "Add your note",
   "Thank You!": "Thank You!",
-  "for yor order": "for your order",
+  "for yor order": "For shopping with Dlly Lass Market.",
   "Order Number:": "Order Number:",
   "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
