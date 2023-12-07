@@ -32,11 +32,11 @@ class _HomeSreenState extends State<HomeSreen> {
 
   // Check Internet
   Future<void> checkinternet() async {
-    if (await noInternet(context)) {
-      Provider.of<productProvider>(context, listen: false)
-          .setnointernetcheck(true);
-      return;
-    }
+    // if (await noInternet(context)) {
+    //   Provider.of<productProvider>(context, listen: false)
+    //       .setnointernetcheck(true);
+    //   return;
+    // }
 
     if (loaddata) {
       // update(context);

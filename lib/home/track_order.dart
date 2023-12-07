@@ -19,7 +19,7 @@ class TrackOrder extends StatefulWidget {
   TrackOrder(this.id, this.total, this.time, {super.key});
   @override
   State<TrackOrder> createState() => _TrackOrderState();
-}
+} 
 
 List images = [
   "assets/images/new_pick.gif",
