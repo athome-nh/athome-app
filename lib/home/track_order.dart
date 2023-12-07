@@ -69,49 +69,47 @@ class _TrackOrderState extends State<TrackOrder> {
         "Processing Order",
         "Order Is On way",
         "Order Ready For Pickup",
-        "Order is delivered"
+        "The Order Is Delivered"
       ];
       content = [
         "Great choice! Your order is confirmed. Thanks for shopping with us.",
         "Our team is working on your order. Updates will follow shortly.",
         "Our team is working on your order. Updates will follow shortly.",
-        "Your items are in transit and will be at your doorstep soon.",
-        "You can now pick up your order; The driver is waiting on your step door !",
-        "?????"
+        "Your order is in transit and will be at your doorstep soon.",
+        "You can now pick up your order. The driver is waiting on your doorstep!",
+        
       ];
     } else if (lang == "ar") {
       titles = [
-        "Order Placed",
-        "Processing Order",
-        "Processing Order",
-        "Order Is On way",
-        "Order Ready For Pickup",
-        "Order is delivered"
+        "تم التثبیت الطلب",
+        "قید العمل",
+        "قید العمل",
+        "الطلبیة قيد التوصيل",
+        "الطلبیة جاهز للاستلام",
+        "تم توصيل الطلب"
       ];
       content = [
-        "اختيار رائع! تم تأكيد طلبك. شكرًا لتسوقك معنا",
+        "اختيار رائع! تم تأكيد طلبك. شكرًا لتسوقك معنا",
         "جاري معالجة الطلب. سيتم إرسال التحديثات في وقت قريب"
-            "جاري معالجة الطلب. سيتم إرسال التحديثات في وقت قريب",
-        "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبًا.",
-        "الطلب جاهز للاستلام يمكنك الآن استلام طلبك. السائق في انتظارك عند باب منزلك",
-        "?????"
+        "جاري معالجة الطلب. سيتم إرسال التحديثات في وقت قريب",
+        "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبًا",
+        "الطلب جاهز للاستلام الآن. السائق في انتظارك",
       ];
     } else {
       titles = [
-        "Order Placed",
-        "Processing Order",
-        "Processing Order",
-        "Order Is On way",
-        "Order Ready For Pickup",
-        "Order is delivered"
+        "داواکاریەکەت تۆمارکرا",
+        "لە ژێر کارکردن دایە",
+        "لە ژێر کارکردن دایە",
+        "داواکاریەکە لە ڕێگایە ",
+        "داواکاریەکە ئامادەیە بۆ وەرگرتن",
+        "داواکاریەکە گەیەنرا"
       ];
       content = [
-        "هەڵبژاردنێکی دروست! داواکاریەکەت وەرگیرا . سوپاس بۆ بازاڕ کردنت لە دڵی لاس مارکێت",
-        "داواکاریەکەت کاری لەسەر دەکرێت. چاوەڕوانی پێشهاتی داهاتوو  بکەن",
-        "داواکاریەکەت کاری لەسەر دەکرێت. چاوەڕوانی پێشهاتی داهاتوو  بکەن",
-        "داواکاریەکەت لەڕێگایەداواکاریەکەت بە زووترین کات دەگات بۆ شوێنی داواکراو",
-        "داواکاریەکەت گەیشت ئیستا دەتوانیت داواکاریەکەت وەرگریت. شۆفێر لە بەر دەرگایە",
-        "?????"
+        "داواکاریەکی دروست! ، داواکاریەکەت وەرگیرا. سوپاس بۆ بازاڕکردنت لەگەڵ ئێمە",
+        "داواکاریەکەت کاری لەسەر دەکرێت، لەهەر نوێکاریەک بە زووترین کات ئاگادار دەکرێنەوە",
+        "داواکاریەکەت کاری لەسەر دەکرێت، لەهەر نوێکاریەک بە زووترین کات ئاگادار دەکرێنەوە",
+        "داواکاریەکە لە ڕێگایە لە زووترین کاتدا دەگاتە دەست",
+        "دەتوانیت داواکاریەکەتان وەربگرن. شۆفێر لەبەر دەرگایە",
       ];
     }
     updateStatus();

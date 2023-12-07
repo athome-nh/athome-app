@@ -190,14 +190,14 @@ const Map<String, String> en = {
   "View order":"View order",
 
   // about_screen     // check athome
-  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
+  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
   "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "EasyToUseInterfaceOurUserFriendly": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
   "SecurePaymentWePrioritizeTheSecurity": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
   "PromotionsAndDealsKeep": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
   "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
   "FeedbackAndImprovementWeValueYourFeedback": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "ThankYouForChoosingOurAthome": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  "ThankYouForChoosingOurAthome": "Thank you for choosing our Dlly Las for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
    "About Us": "About Us",
 
   //more old_order
@@ -205,8 +205,12 @@ const Map<String, String> en = {
   "Processing Order":"Processing Order",
   "Order Is On way":"Order Is On way",
   "Order Ready For Pickup":"Order Ready For Pickup",
-  "Order is delivered":"Order is delivered",
+  "Order is delivered":"The order is delivered",
   "Undelivered":"Undelivered",
   "Order Deatil":"Order Deatil",
+
+  //
+  "min title":"Minimum Order required",
+  "min deatil":"You're almost there! Add more items to reach the minimum order amount.",
 
 };

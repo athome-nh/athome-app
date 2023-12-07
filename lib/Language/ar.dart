@@ -140,24 +140,24 @@ const Map<String, String> ar = {
   "Add name": "اضافة الاسم",
   "Add name location": "اضافة اسم الموقع",
   "Area": "المنطقة",
-  "Add Area": "اضافةالمنطقة",
-  "Type Building": "نوع المنی",
+  "Add Area": "اضافة المنطقة",
+  "Type Building": "نوع المبنی",
   "Floor number": "رقم الطابق",
   "Enter floor number": "ادخال رقم الطابق",
-  "building name/number": "اسم المنی/ الرقم",
-  "Enter building name/number": "ادخال اسم المنی/ الرقم",
+  "building name/number": "أسم المبنى/ الرقم",
+  "Enter building name/number": "ادخال أسم المبنی/ الرقم",
   "number": "رقم",
   "Enter number": "ادخال الرقم",
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
-  "Delete location success": "تم ازالة الموقع",
+  "Delete location success": "تم إزالة الموقع بنجاح",
 
   // singin_up
   "Complete Account": "اکمل الحساب",
   "Enter your account information to complete your account":"یرجی ادخال معلومات الحساب لاکمال الحساب",
   "Enter your Name": "ادخال الاسم",
   "Enter your full name": "یرجی الادخال الاسم الکامل",
-  "City": "مدن",
+  "City": "مدينة",
   "Age": "عمر",
   "unknown occurred error please try again later":"خطأ غیر معرقف، یرجی اعادة المحاولة لاحقا",
   "Confirm": "التاکید",
@@ -172,16 +172,16 @@ const Map<String, String> ar = {
   "Resend": "اعادة الارسال",
   "Verify": "التحقق",
   "Account Disabled": "الحساب متوقف",
-  "Account is disable please contact athome admin":"الحساب متوقف یرجی الاخبار الادارة",
+  "Account is disable please contact athome admin":"الحساب متوقف یرجی  التواصل مع الادارة",
   "the code is un correct": "الرمز غیر صحیع",
 
   // map
-  "Map": "الموقع",
-  "Zoom in Please": "یرجی التکبیر",
-  "Sorry, we don't deliver here": "اسف لیس لدینا التوصل بالموقع المحدد",
+  "Map": "الخريطة",
+  "Zoom in Please": "تكبير",
+  "Sorry, we don't deliver here": "للأسف -لا يوجد خدمة توصيل في هذا الموقع",
   "Delivery To:": "التوصیل الی",
-  "try again": "یرجی المحاولة",
-  "Failed to load data": "فشلت التحمیل البیانات",
+  "try again": "يرجى المحاولة مرة أخرى",
+  "Failed to load data": "فشلت عملية تحميل البيانات",
 
   // track_order
   "Track Order": "تابع الطلبیة",
@@ -201,12 +201,16 @@ const Map<String, String> ar = {
   "About Us": "حول التطبیق",
 
   //more old_order
-  "Order Placed":"???", // check bawar
-  "Processing Order":"???", // check bawar
-  "Order Is On way":"???", // check bawar
-  "Order Ready For Pickup":"???", // check bawar
-  "Order is delivered":"???", // check bawar
-  "Undelivered":"???", // check bawar
-  "Order Deatil":"???", /// check bawar
+  "Order Placed":"تم التثبیت الطلب",
+  "Processing Order":"قید العمل",
+  "Order Is On way":"الطلبیة قيد التوصيل",
+  "Order Ready For Pickup":"الطلبیة جاهز للاستلام",
+  "Order is delivered":"تم توصيل الطلب",
+  "Undelivered":"لم يتم توصيل الطلب",
+  "Order Deatil":"تفاصيل الطلبية",
+
+  //
+  "min title":"الحد الأدنى للشراء المطلوب",
+  "min deatil":"أنت على بُعد قليل! أضف المزيد من المنتجات لتحقيق الحد الأدنى للطلب",
 
 };

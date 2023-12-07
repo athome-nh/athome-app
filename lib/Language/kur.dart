@@ -208,5 +208,9 @@ const Map<String, String> kur = {
   "Order is delivered":"???", // check bawar
   "Undelivered":"???", // check bawar
   "Order Deatil":"???", /// check bawar
- 
+
+  //
+  "min title":"کەمترین داواکاری پێشکەشکراو",
+  "min deatil":"تکایە بەرهەمی زیاتر لە سەبەتەی کرین داوابکە، بۆ ئەوەی داواکاریەکەت جێ بەجێ بکرێت",
+
 };
