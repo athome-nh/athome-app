@@ -154,7 +154,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         translations: Translation(),
         locale: const Locale("en"),
         fallbackLocale: const Locale("en"),
-        title: 'AtHome Market',
+        title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
         navigatorKey: navigatorKey,
