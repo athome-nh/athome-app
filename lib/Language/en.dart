@@ -173,7 +173,7 @@ const Map<String, String> en = {
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin":"Account is disable please contact athome admin", // check
-  "the code is un correct": "the code is un-correct",
+  "the code is un correct": "the code is wrong",
 
   // map
   "Map": "Map",
