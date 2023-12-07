@@ -39,7 +39,7 @@ class _HomeSreenState extends State<HomeSreen> {
     }
 
     if (loaddata) {
-      update(context);
+      // update(context);
     } else {
       final productrovider =
           Provider.of<productProvider>(context, listen: false);

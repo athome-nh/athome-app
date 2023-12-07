@@ -1106,7 +1106,7 @@ class _SettingState extends State<Setting> {
                                                       backgroundColor:
                                                           mainColorGrey,
                                                       backgroundImage:
-                                                          NetworkImage(
+                                                          CachedNetworkImageProvider(
                                                         imageUrlServer + image,
                                                       ),
                                                     )),

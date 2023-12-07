@@ -56,10 +56,10 @@ class _AtHomeAppState extends State<AtHomeApp> {
   @override
   void initState() {
     FirebaseMessaging.instance.getToken().then((value) {
-      //print(value);
+      print(value);
     });
     FirebaseMessaging.instance.getAPNSToken().then((value) {
-      //print(value);
+      print(value);
     });
 
     FCMNotification(context).config();
@@ -154,7 +154,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         translations: Translation(),
         locale: const Locale("en"),
         fallbackLocale: const Locale("en"),
-        title: 'DLLY LAS',
+        title: 'AtHome Market',
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
         navigatorKey: navigatorKey,

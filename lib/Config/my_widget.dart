@@ -998,7 +998,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
               height: getHeight(context, 27),
               decoration: BoxDecoration(
                   border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                   color: mainColorBlack,
+                  //  color: mainColorBlack,
                   borderRadius: BorderRadius.circular(5)),
               child: Stack(
                 alignment:
@@ -1317,21 +1317,21 @@ Future<bool> checkInternet(BuildContext context) async {
     retrive = false;
   } else {
     retrive = true;
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Container(
-          child: Text(
-            'No internet connection, check your connection',
-            style: TextStyle(
-              color: mainColorWhite,
-              fontFamily: "RK",
-            ),
-          ),
-        ),
-        backgroundColor: mainColorGrey,
-      ),
-    );
+    // ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     content: Container(
+    //       child: Text(
+    //         'No internet connection, check your connection',
+    //         style: TextStyle(
+    //           color: mainColorWhite,
+    //           fontFamily: "RK",
+    //         ),
+    //       ),
+    //     ),
+    //     backgroundColor: mainColorGrey,
+    //   ),
+    // );
   }
   return retrive;
 }
@@ -1514,7 +1514,7 @@ noInternetWidget(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: Image.asset(
-        "assets/images/logoB.png",
+        "assets/images/Dlly Las Logo White.png",
         width: getWidth(context, 30),
       ),
     ),

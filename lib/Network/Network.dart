@@ -122,7 +122,7 @@ class Network {
             serverUrl + rout,
             data: data,
           );
-          print(response.data);
+
           data2 = response.data;
         });
       } else {
