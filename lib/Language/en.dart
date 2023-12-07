@@ -11,8 +11,8 @@ const Map<String, String> en = {
   "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
   "wst02": "Learn From the Best",
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "AtHome Is Forever",
-  "wsd03": "Learn whatever you want, whenever or wherever you are.",
+  "wst03": "Fast Delevery",
+  "wsd03": "we will reach you whatever you are ",
   "NEXT": "NEXT",
   "SKIP": "SKIP",
 
@@ -24,7 +24,7 @@ const Map<String, String> en = {
   "Account": "Account",
 
   // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "Are you sure you want to log out?",
+  "Are you sure exiting the app": "Are you sure exiting the app",
   "Yes": "Yes",
   "No": "No",
 
@@ -63,7 +63,7 @@ const Map<String, String> en = {
   "Total": "Total",
   "Checkout": "Checkout",
   "Clear cart":"Clear cart",
-  "Are you sure you want to continue?":"Are you sure you want to continue?",
+  "Are you sure you want to continue?":"Are you sure about continuing?",
 
   // favorite
   "No have any favorite": "You haven't set any favorite items.\nMake it your own!",
@@ -80,8 +80,8 @@ const Map<String, String> en = {
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
   "Edit": "Edit",
-  "Orders": "My Orders",
-  "Address": "Location",
+  "Orders": "Orders",
+  "Address": "Address",
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",
@@ -92,8 +92,8 @@ const Map<String, String> en = {
   "History":"History",
   "Order number:":"Order number:",
   "Date:": "Date:",
-  "You not have any order": "You do not have any Item",
-  "Re order":"Re order",
+  "You not have any order": "You do not have any order",
+  "Re order":"Reorder",
   "View":"View",
 
   // order_items
@@ -115,7 +115,7 @@ const Map<String, String> en = {
   "Note": "Note",
   "Add your note": "Add your note",
   "Thank You!": "Thank You!",
-  "for yor order": "for your order",
+  "for yor order": "For shopping with Dlly Lass Market.",
   "Order Number:": "Order Number:",
   "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
@@ -173,7 +173,7 @@ const Map<String, String> en = {
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin":"Account is disable please contact athome admin", // check
-  "the code is un correct": "the code is un-correct",
+  "the code is un correct": "the code is wrong",
 
   // map
   "Map": "Map",
@@ -190,14 +190,14 @@ const Map<String, String> en = {
   "View order":"View order",
 
   // about_screen     // check athome
-  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to athome online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers:",
+  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
   "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "EasyToUseInterfaceOurUserFriendly": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
   "SecurePaymentWePrioritizeTheSecurity": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
   "PromotionsAndDealsKeep": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
   "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
   "FeedbackAndImprovementWeValueYourFeedback": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "ThankYouForChoosingOurAthome": "Thank you for choosing our athome for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  "ThankYouForChoosingOurAthome": "Thank you for choosing our Dlly Las for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
    "About Us": "About Us",
 
   //more old_order
@@ -205,8 +205,12 @@ const Map<String, String> en = {
   "Processing Order":"Processing Order",
   "Order Is On way":"Order Is On way",
   "Order Ready For Pickup":"Order Ready For Pickup",
-  "Order is delivered":"Order is delivered",
+  "Order is delivered":"The order is delivered",
   "Undelivered":"Undelivered",
   "Order Deatil":"Order Deatil",
+
+  //
+  "min title":"Minimum Order required",
+  "min deatil":"You're almost there! Add more items to reach the minimum order amount.",
 
 };

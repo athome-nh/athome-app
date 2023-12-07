@@ -53,6 +53,7 @@ class Network {
     Map<String, dynamic> data = {};
     try {
       await dio.get(serverUrl + "time").then((time) async {
+        
         datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] = "Bearer " + token;
 

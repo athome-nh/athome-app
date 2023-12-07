@@ -1,18 +1,18 @@
 const Map<String, String> ar = {
   // choose_lan
-  "Language": "لغة",
+  "Language": "اللغة",
   "English": "إنجليزي",
-  "Arabic": "عربي",
+  "Arabic": "العربية",
   "Kurdish": "كردي",
   "Get Start": "ابدأ",
 
   // welcome_screen
   "wst01": "تسوق بذکاء و سهولة",
-  "wsd01": "تطبیق مبتکرة مصممة لتطویرتجربتك عبر الانترنت",
-  "wst02": "تعلم من الافضل",
-  "wsd02": "سنوجهك الی افضل الخبراء من کردستان العراق",
-  "wst03": "ات هوم الی اللأبد",
-  "wsd03": "فێر ببە لە باشترین، لە هارکاتێک و لە هەر شوێنێك بێت",
+  "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
+  "wst02": "تعلم من الأفضل",
+  "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
+  "wst03": "توصیل سریع",
+  "wsd03": "سنصل الیك أینما ما كنت",
   "NEXT": "التالي",
   "SKIP": "تخطي",
 
@@ -21,25 +21,25 @@ const Map<String, String> ar = {
   "Search": "البحث",
   "Cart": "السلةالتسوق",
   "Favorite": "مفضلاتي",
-  "Account": "حساب",
+  "Account": "الحساب",
 
   // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج",//
+  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
   "Yes": "نعم",
   "No": "لا",
 
   // home_page
   "Order now": "اطلب الان",
-  "Categories": "فئات",
+  "Categories": "الفئات",
   "Recent Order": "احدث الطلبیات",
-  "Discount": "عروضات",
-  "Highlight": "العناصر الممیزة",
-  "Best Sell": "المنتجات الاکثر مبیعا",
+  "Discount": "العروضات",
+  "Highlight": "المنتجات المميزة",
+  "Best Sell": "المنتجات الاکثر مبیعاً",
   "View All": "عرض الکل",
   
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "سجل",
-  "You need login": "یرجی التسجیل قبل التسوق",
+  "Register First": "تسجيل",
+  "You need login": "یرجی التسجیل أولاً",
   "Register": "تسجیل الدخول",
   "Cancel": "الغاء",
 
@@ -49,19 +49,19 @@ const Map<String, String> ar = {
   // all_item >> shtakan dobar boo
 
   // Search_page
-  "Not found any item": "لم یتم العثور علی أي عنصر",
+  "Not found any item": "لم یتم العثور علی أي منتج",
 
   // my_cart
   "My Cart": "سلة التسوق",
   "Clear": "ازاله",
   "Your cart is empty": "سلة التسوف فارغة",
   "Delete": "حذف",
-  "you can not add more this item": "لقد وصلت الی حد الادني لهذا العنصر",
-  "Sub Total": "المجموع",
+  "you can not add more this item": "لايمكن إضافة منتج أخر",
+  "Sub Total": "المجموع الجزئي",
   "Delivery Cost": "کلفة التوصیل",
   "Free Delivery": "توصیل المجاني",
-  "Total": "مجموع",
-  "Checkout": "التاکید",
+  "Total": "المجموع الكلي",
+  "Checkout": "تاکید",
   "Clear cart":"إزالة الكل",
   "Are you sure you want to continue?":"دڵنیای له‌ به‌تاڵكردنه‌وه‌ی سه‌به‌ته‌ی كڕین؟",
 
@@ -69,13 +69,13 @@ const Map<String, String> ar = {
   "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقًا لاختياراتك الخاصة!",
 
   // Page --> No Internet --> my_widget
-  "no internet": "انترنت غیر متوفر",
+  "no internet": "الانترنت غیر متوفر",
 
   // Page --> Login First --> my_widget
   "Please login first": "تسجیل الدخول", // nmayaa
 
   // profilo
-  "Image changed": "تسجیل الدخول",
+  "Image changed": "تم التغیر الصورة",
   "Information": "حسابي",
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
@@ -83,81 +83,81 @@ const Map<String, String> ar = {
   "Orders": "طلباتي",
   "Address": "الموقع",
   "About us":"حول التطبیق",
-  "Log out":"الخروج",
-  "Save": "حفض",
+  "Log out":"خروج",
+  "Save": "حفظ",
 
   // order_screen
   "My Orders":"طلباتي",
   "On going":"قید التنفیذ",
-  "History":"سجل طلباتي",
+  "History":"السجل",
   "Order number:":"رقم الطلب",
-  "Date:": "تاریخ:",
+  "Date:": "التأريخ:",
   "You not have any order": "لیس لدیك اي طلب",
-  "Re order":"اعادة الطلب",
-  "View":"مشاهدة",
+  "Re order":"إعادة الطلب",
+  "View":"عرض",
 
   // order_items
-  "Past Order": "الطلبیة السابقة",
-  "Add More Items": "اضافة المزید من العناصر",
+  "Past Order": "أخر طلبية",
+  "Add More Items": "اضافة مزيد من المنتجات",
 
   // old_order
   "Quantity:":"العدد",
-  "Date and Time":"تاریخ و الوقت",
+  "Date and Time":"التاریخ و الوقت",
   "Order No.":"رقم الطلبیة",
 
   // check_out
   "Delivery Address": "عنوان التوصیل",
-  "Not have any location": "لیس لدیك موقع محفوض",
-  "Add new Location":"اضف عنوان التوصیل",
+  "Not have any location": "لیس لدیك موقع محفوظ",
+  "Add new Location":"إضافة عنوان جديد",
   "Pyment Method": "طریقة الدفع",
   "Cash on delivery": "الدفع عند التسلیم",
   "Coming soon": "قریبا",
-  "Note": "ملاحضة",
-  "Add your note": "أضف ملاحضات خاص بك",
-  "Thank You!": "شکرا",
-  "for yor order": "لك علی الطلبیة",
+  "Note": "ملاحظة",
+  "Add your note": "أضف ملاحظات",
+  "Thank You!": "شکراً",
+  "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
   "Order Number:": "رقم الطلبیة:",
-  "YourOrderIsNowBeingProcessed": "الطلبیە في قید التجهیز. نبلغکم بمجرد استلام الطلب من المتجر. تحقق من حالة طلبك",
-  "Track My Order": "تابع طلبي",
-  "Back to Home": "رجوع للقائمة الرئیسیة",
-  "Please Delivery Address":"نرجو اضافة موقع التوصیل",
+  "YourOrderIsNowBeingProcessed": "الطلبیە قید التجهیز، سيتم إعلامك بمجرد استلام الطلب من المتجر. تابع حالة طلبك",
+  "Track My Order": "متابعة الطلب",
+  "Back to Home": "الرجوع للقائمة الرئیسیة",
+  "Please Delivery Address":"يرجى إضافة الموقع",
   "Send Order": "ارسال الطلبیة",
-  "sorryWeDoNotHaveDelivery": "آسف ليس لدينا توصيل في هذا الوقت، سنرسل لك هذا الطلب غدًا في أقرب وقت. او يمكنك إلغاء الطلب حتى قبوله من قبل المشرف",
+  "sorryWeDoNotHaveDelivery": "للاسف ليس لدينا خدمة توصيل في الوقت الحالي. سنرسل إليك هذا الطلب غدًا في أقرب وقت ممكن. و يمكنك إلغاء الطلب قبل قبوله من قبل المشرف",
   "OK": "موافق",
 
   // login_page
   "Wellcome back": "مرحبا بك",
-  "EnterYourPhoneNumberToShop": "أدخل رقم هاتفك و تسوق",
-  "Please enter your phone number": "نرجو ادخال رقم الهاتف خاص بك",
+  "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك واستمتع",
+  "Please enter your phone number": "یرجی ادخال رقم الهاتف",
   "Please enter your phone number correct":"یرجی ادخال رقم الهاتف الصحیح",
-  "Please remove 0 form start": "یرجی الازالة 0 من البداية",
+  "Please remove 0 form start": "یرجی إزالة 0 من البداية",
   "Phone Number": "رقم الهاتف",
-  "WeWillSendYouOTP":"نرسل لك رمز OTP للتحق من من رقم الهاتف",
+  "WeWillSendYouOTP":"سنرسل لك رمز التحقق",
 
   // locationdeatil
   "Locations": "الموقع",
-  "Name": "اسم",
+  "Name": "الأسم",
   "Add name": "اضافة الاسم",
   "Add name location": "اضافة اسم الموقع",
-  "Area": "منطقة",
-  "Add Area": "اضافةالمنطقة",
-  "Type Building": "نوع المنی",
+  "Area": "المنطقة",
+  "Add Area": "اضافة المنطقة",
+  "Type Building": "نوع المبنی",
   "Floor number": "رقم الطابق",
   "Enter floor number": "ادخال رقم الطابق",
-  "building name/number": "اسم المنی/ الرقم",
-  "Enter building name/number": "ادخال اسم المنی/ الرقم",
+  "building name/number": "أسم المبنى/ الرقم",
+  "Enter building name/number": "ادخال أسم المبنی/ الرقم",
   "number": "رقم",
   "Enter number": "ادخال الرقم",
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
-  "Delete location success": "تم ازالة الموقع",
+  "Delete location success": "تم إزالة الموقع بنجاح",
 
   // singin_up
   "Complete Account": "اکمل الحساب",
   "Enter your account information to complete your account":"یرجی ادخال معلومات الحساب لاکمال الحساب",
   "Enter your Name": "ادخال الاسم",
   "Enter your full name": "یرجی الادخال الاسم الکامل",
-  "City": "مدن",
+  "City": "مدينة",
   "Age": "عمر",
   "unknown occurred error please try again later":"خطأ غیر معرقف، یرجی اعادة المحاولة لاحقا",
   "Confirm": "التاکید",
@@ -172,16 +172,16 @@ const Map<String, String> ar = {
   "Resend": "اعادة الارسال",
   "Verify": "التحقق",
   "Account Disabled": "الحساب متوقف",
-  "Account is disable please contact athome admin":"الحساب متوقف یرجی الاخبار الادارة",
+  "Account is disable please contact athome admin":"الحساب متوقف یرجی  التواصل مع الادارة",
   "the code is un correct": "الرمز غیر صحیع",
 
   // map
-  "Map": "الموقع",
-  "Zoom in Please": "یرجی التکبیر",
-  "Sorry, we don't deliver here": "اسف لیس لدینا التوصل بالموقع المحدد",
+  "Map": "الخريطة",
+  "Zoom in Please": "تكبير",
+  "Sorry, we don't deliver here": "للأسف -لا يوجد خدمة توصيل في هذا الموقع",
   "Delivery To:": "التوصیل الی",
-  "try again": "یرجی المحاولة",
-  "Failed to load data": "فشلت التحمیل البیانات",
+  "try again": "يرجى المحاولة مرة أخرى",
+  "Failed to load data": "فشلت عملية تحميل البيانات",
 
   // track_order
   "Track Order": "تابع الطلبیة",
@@ -201,12 +201,16 @@ const Map<String, String> ar = {
   "About Us": "حول التطبیق",
 
   //more old_order
-  "Order Placed":"???", // check bawar
-  "Processing Order":"???", // check bawar
-  "Order Is On way":"???", // check bawar
-  "Order Ready For Pickup":"???", // check bawar
-  "Order is delivered":"???", // check bawar
-  "Undelivered":"???", // check bawar
-  "Order Deatil":"???", /// check bawar
+  "Order Placed":"تم التثبیت الطلب",
+  "Processing Order":"قید العمل",
+  "Order Is On way":"الطلبیة قيد التوصيل",
+  "Order Ready For Pickup":"الطلبیة جاهز للاستلام",
+  "Order is delivered":"تم توصيل الطلب",
+  "Undelivered":"لم يتم توصيل الطلب",
+  "Order Deatil":"تفاصيل الطلبية",
+
+  //
+  "min title":"الحد الأدنى للشراء المطلوب",
+  "min deatil":"أنت على بُعد قليل! أضف المزيد من المنتجات لتحقيق الحد الأدنى للطلب",
 
 };
