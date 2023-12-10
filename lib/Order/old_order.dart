@@ -76,6 +76,7 @@ class _OldOrderState extends State<OldOrder> {
                                                   .getoneProductItemsById(
                                                       items[index].productId!)
                                                   .coverImg!,
+                                          filterQuality: FilterQuality.low,
                                           width: getWidth(context, 15),
                                           height: getWidth(context, 15),
                                         ),

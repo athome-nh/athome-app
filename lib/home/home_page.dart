@@ -139,6 +139,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   errorWidget: (context, url, error) =>
                                       Image.asset(
                                           "assets/images/Logo-Type-2.png"),
+                                  filterQuality: FilterQuality.low,
                                   width: getWidth(context, 100),
                                   height: getHeight(context, 100),
                                 ),
@@ -190,6 +191,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 errorWidget: (context, url, error) =>
                                     Image.asset(
                                         "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
                                 width: getWidth(context, 100),
                                 height: getHeight(context, 100),
                                 fit: BoxFit.fill,
@@ -408,6 +410,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         error) =>
                                                     Image.asset(
                                                         "assets/images/Logo-Type-2.png"),
+                                                filterQuality:
+                                                    FilterQuality.low,
                                                 width: getHeight(context, 5),
                                                 height: getHeight(context, 5),
                                               ),
@@ -688,6 +692,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         error) =>
                                                     Image.asset(
                                                         "assets/images/Logo-Type-2.png"),
+                                                filterQuality:
+                                                    FilterQuality.low,
                                                 width: getWidth(context, 100),
                                                 height: getHeight(context, 20),
                                                 fit: BoxFit.fill,

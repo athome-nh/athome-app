@@ -135,47 +135,52 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       ),
                       child: Stack(
                         children: [
-                          InternationalPhoneNumberInput(
-                            countries: const ["IQ"],
-                            initialValue: initialPhoneNumber,
-                            focusNode: null,
-                            onInputChanged: (PhoneNumber number) {},
-                            onInputValidated: (bool value) {},
-                            selectorConfig: const SelectorConfig(
-                              selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                          Directionality(
+                            textDirection: TextDirection.ltr,
+                            child: InternationalPhoneNumberInput(
+                              countries: const ["IQ"],
+                              initialValue: initialPhoneNumber,
+                              focusNode: null,
+                              onInputChanged: (PhoneNumber number) {},
+                              onInputValidated: (bool value) {},
+                              selectorConfig: const SelectorConfig(
+                                selectorType:
+                                    PhoneInputSelectorType.BOTTOM_SHEET,
+                              ),
+                              ignoreBlank: false,
+                              autoValidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              selectorTextStyle:
+                                  TextStyle(color: mainColorBlack),
+                              textFieldController: controller,
+                              formatInput: false,
+                              validator: (userInput) {
+                                if (userInput!.isEmpty) {
+                                  return 'Please enter your phone number'.tr;
+                                }
+                                if (userInput.length < 10) {
+                                  return 'Please enter your phone number correct'
+                                      .tr;
+                                }
+                                if (userInput.toString().startsWith("0")) {
+                                  return 'Please remove 0 form start'.tr;
+                                }
+                                if (userInput.length == 10) {}
+                                return null; // Return null when the input is valid
+                              },
+                              maxLength: 10,
+                              keyboardType: TextInputType.number,
+                              cursorColor: mainColorRed,
+                              inputDecoration: InputDecoration(
+                                contentPadding:
+                                    const EdgeInsets.only(bottom: 15, left: 0),
+                                border: InputBorder.none,
+                                hintText: 'Phone Number'.tr,
+                                hintStyle: TextStyle(
+                                    color: mainColorBlack, fontSize: 16),
+                              ),
+                              onSaved: (PhoneNumber number) {},
                             ),
-                            ignoreBlank: false,
-                            autoValidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            selectorTextStyle: TextStyle(color: mainColorBlack),
-                            textFieldController: controller,
-                            formatInput: false,
-                            validator: (userInput) {
-                              if (userInput!.isEmpty) {
-                                return 'Please enter your phone number'.tr;
-                              }
-                              if (userInput.length < 10) {
-                                return 'Please enter your phone number correct'
-                                    .tr;
-                              }
-                              if (userInput.toString().startsWith("0")) {
-                                return 'Please remove 0 form start'.tr;
-                              }
-                              if (userInput.length == 10) {}
-                              return null; // Return null when the input is valid
-                            },
-                            maxLength: 10,
-                            keyboardType: TextInputType.number,
-                            cursorColor: mainColorRed,
-                            inputDecoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.only(bottom: 15, left: 0),
-                              border: InputBorder.none,
-                              hintText: 'Phone Number'.tr,
-                              hintStyle: TextStyle(
-                                  color: mainColorBlack, fontSize: 16),
-                            ),
-                            onSaved: (PhoneNumber number) {},
                           ),
                           Positioned(
                             left: 90,

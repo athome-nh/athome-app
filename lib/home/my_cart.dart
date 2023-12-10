@@ -224,6 +224,7 @@ class _MyCartState extends State<MyCart> {
                                                       error) =>
                                                   Image.asset(
                                                       "assets/images/home.png"),
+                                              filterQuality: FilterQuality.low,
                                               width: getWidth(context, 15),
                                               height: getWidth(context, 15),
                                             ),
@@ -395,6 +396,8 @@ class _MyCartState extends State<MyCart> {
                                                             imageUrlServer +
                                                                 cartitem
                                                                     .coverImg!,
+                                                        filterQuality:
+                                                            FilterQuality.low,
                                                         width: getWidth(
                                                             context, 15),
                                                         height: getWidth(

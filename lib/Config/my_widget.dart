@@ -352,6 +352,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
                                             "assets/images/Logo-Type-2.png"),
+                                    filterQuality: FilterQuality.low,
                                     width: getWidth(context, 22),
                                     height: getWidth(context, 19),
                                   ),
@@ -691,6 +692,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
                                             "assets/images/Logo-Type-2.png"),
+                                    filterQuality: FilterQuality.low,
                                     width: getWidth(context, 25),
                                     height: getWidth(context, 25),
                                   ),
@@ -1035,6 +1037,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
                                             "assets/images/Logo-Type-2.png"),
+                                    filterQuality: FilterQuality.low,
                                     width: getWidth(context, 25),
                                     height: getWidth(context, 25),
                                   ),

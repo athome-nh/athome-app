@@ -125,6 +125,7 @@ class _OrederItemsState extends State<OrederItems> {
                                       child: CachedNetworkImage(
                                         imageUrl:
                                             imageUrlServer + cartitem.coverImg!,
+                                        filterQuality: FilterQuality.low,
                                         width: getWidth(context, 15),
                                         height: getWidth(context, 15),
                                       ),

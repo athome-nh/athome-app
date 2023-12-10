@@ -95,6 +95,7 @@ class _CategoriesState extends State<Categories> {
                                 errorWidget: (context, url, error) =>
                                     Image.asset(
                                         "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
                                 width: getHeight(context, 6),
                                 height: getHeight(context, 6),
                               ),
