@@ -158,7 +158,13 @@ class _itemCategoriesState extends State<itemCategories> {
                         )
                       : SizedBox(),
                   SizedBox(
-                    height: getHeight(context, 82),
+                    height: getHeight(
+                        context,
+                        productPro
+                                .getsubcateById(productPro.cateType)
+                                .isNotEmpty
+                            ? 82
+                            : 89),
                     width: getWidth(context, 95),
                     child: productPro.subcateSelect == 0
                         ? (productPro
@@ -208,13 +214,10 @@ class _itemCategoriesState extends State<itemCategories> {
                                   ),
                                 ],
                               ))
-                            : Padding(
-                                padding: EdgeInsets.only(bottom: 20),
-                                child: listItemsShow(
-                                  context,
-                                  productPro.getProductsBySubCategory(
-                                      productPro.subcateSelect),
-                                ),
+                            : listItemsShow(
+                                context,
+                                productPro.getProductsBySubCategory(
+                                    productPro.subcateSelect),
                               )),
                   ),
                 ],

@@ -57,12 +57,9 @@ class _FavoriteState extends State<Favorite> {
                             ),
                           ],
                         )
-                  : Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: listItemsShow(
-                        context,
-                        productPro.getProductsByIds(cartProvider.ListFavId()),
-                      ),
+                  : listItemsShow(
+                      context,
+                      productPro.getProductsByIds(cartProvider.ListFavId()),
                     ),
             ),
           );
