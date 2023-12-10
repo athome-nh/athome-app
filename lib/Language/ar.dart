@@ -101,7 +101,7 @@ const Map<String, String> ar = {
   "Add More Items": "اضافة مزيد من المنتجات",
 
   // old_order
-  "Quantity:":"العدد",
+  "Quantity: ":"العدد",
   "Date and Time":"التاریخ و الوقت",
   "Order No.":"رقم الطلبیة",
 
