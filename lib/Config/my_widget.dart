@@ -1511,32 +1511,35 @@ Future<void> loiginPopup(BuildContext context) {
 
 // Page --> No Internet
 noInternetWidget(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Image.asset(
-        "assets/images/Dlly Las Logo White.png",
-        width: getWidth(context, 30),
+  return Directionality(
+    textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+    child: Scaffold(
+      appBar: AppBar(
+        title: Image.asset(
+          "assets/images/Dlly Las Logo White.png",
+          width: getWidth(context, 30),
+        ),
       ),
-    ),
-    body: SafeArea(
-      child: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: getWidth(context, 100),
-            height: getWidth(context, 100),
-            child: Image.asset("assets/Victors/wifi.png"),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Text(
-            "no internet".tr,
-            style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
-          ),
-        ],
-      )),
+      body: SafeArea(
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: getWidth(context, 100),
+              height: getWidth(context, 100),
+              child: Image.asset("assets/Victors/wifi.png"),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Text(
+              "no internet".tr,
+              style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
+            ),
+          ],
+        )),
+      ),
     ),
   );
 }

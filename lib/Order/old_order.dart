@@ -26,11 +26,11 @@ class _OldOrderState extends State<OldOrder> {
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
     List<OrderItems> items = productrovider.getordersbyOrderId(widget.id);
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.nointernetCheck
-          ? noInternetWidget(context)
-          : Scaffold(
+    return productrovider.nointernetCheck
+        ? noInternetWidget(context)
+        : Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Scaffold(
               appBar: AppBar(
                 leading: IconButton(
                     onPressed: () {
@@ -375,6 +375,6 @@ class _OldOrderState extends State<OldOrder> {
                 ),
               ),
             ),
-    );
+          );
   }
 }

@@ -97,11 +97,11 @@ class _HomeSreenState extends State<HomeSreen> {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.nointernetCheck
-          ? noInternetWidget(context)
-          : Scaffold(
+    return productrovider.nointernetCheck
+        ? noInternetWidget(context)
+        : Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Scaffold(
               body: SafeArea(
                 child: CustomScrollView(slivers: <Widget>[
                   // top
@@ -781,6 +781,6 @@ class _HomeSreenState extends State<HomeSreen> {
                 ]),
               ),
             ),
-    );
+          );
   }
 }

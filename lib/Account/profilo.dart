@@ -99,11 +99,11 @@ class _SettingState extends State<Setting> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: Provider.of<productProvider>(context, listen: true).nointernetCheck
-          ? noInternetWidget(context)
-          : Scaffold(
+    return Provider.of<productProvider>(context, listen: true).nointernetCheck
+        ? noInternetWidget(context)
+        : Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Scaffold(
               backgroundColor: mainColorWhite,
               appBar: AppBar(
                 automaticallyImplyLeading: false,
@@ -403,8 +403,11 @@ class _SettingState extends State<Setting> {
                                                   colapse
                                                       ? Icons
                                                           .keyboard_arrow_up_outlined
-                                                      : Icons
-                                                          .keyboard_arrow_right_outlined,
+                                                      : lang == "en"
+                                                          ? Icons
+                                                              .keyboard_arrow_right_outlined
+                                                          : Icons
+                                                              .keyboard_arrow_left_outlined,
                                                 )
                                               ],
                                             ),
@@ -817,8 +820,13 @@ class _SettingState extends State<Setting> {
                                               fontSize: 18),
                                         ),
                                         const Spacer(),
-                                        const Icon(
-                                            Icons.keyboard_arrow_right_outlined)
+                                        Icon(
+                                          lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined,
+                                        )
                                       ],
                                     ),
                                   ),
@@ -1242,8 +1250,11 @@ class _SettingState extends State<Setting> {
                                                     colapse
                                                         ? Icons
                                                             .keyboard_arrow_up_outlined
-                                                        : Icons
-                                                            .keyboard_arrow_right_outlined,
+                                                        : lang == "en"
+                                                            ? Icons
+                                                                .keyboard_arrow_right_outlined
+                                                            : Icons
+                                                                .keyboard_arrow_left_outlined,
                                                   )
                                                 ],
                                               ),
@@ -1648,8 +1659,11 @@ class _SettingState extends State<Setting> {
                                                 fontSize: 16),
                                           ),
                                           const Spacer(),
-                                          const Icon(Icons
-                                              .keyboard_arrow_right_outlined)
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
                                         ],
                                       ),
                                     ),
@@ -1710,8 +1724,11 @@ class _SettingState extends State<Setting> {
                                                   fontSize: 16),
                                             ),
                                             const Spacer(),
-                                            const Icon(Icons
-                                                .keyboard_arrow_right_outlined)
+                                            Icon(lang == "en"
+                                                ? Icons
+                                                    .keyboard_arrow_right_outlined
+                                                : Icons
+                                                    .keyboard_arrow_left_outlined)
                                           ],
                                         ),
                                       ),
@@ -1764,8 +1781,11 @@ class _SettingState extends State<Setting> {
                                                 fontSize: 16),
                                           ),
                                           const Spacer(),
-                                          const Icon(Icons
-                                              .keyboard_arrow_right_outlined)
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
                                         ],
                                       ),
                                     ),
@@ -1817,8 +1837,11 @@ class _SettingState extends State<Setting> {
                                                 fontSize: 16),
                                           ),
                                           const Spacer(),
-                                          const Icon(Icons
-                                              .keyboard_arrow_right_outlined)
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
                                         ],
                                       ),
                                     ),
@@ -1870,8 +1893,11 @@ class _SettingState extends State<Setting> {
                                                 fontSize: 16),
                                           ),
                                           const Spacer(),
-                                          const Icon(Icons
-                                              .keyboard_arrow_right_outlined)
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
                                         ],
                                       ),
                                     ),
@@ -1960,6 +1986,6 @@ class _SettingState extends State<Setting> {
                           ),
                         ),
             ),
-    );
+          );
   }
 }
