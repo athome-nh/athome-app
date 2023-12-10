@@ -126,11 +126,15 @@ class _SplashScreenState extends State<SplashScreen> {
     return textshow
         ? noInternetWidget(context)
         : SafeArea(
-            child: Scaffold(
-              body: Center(
-                child: Image.asset(
-                  mainImageLogo1,
-                  width: getWidth(context, 100),
+            child: Directionality(
+              textDirection:
+                  lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+              child: Scaffold(
+                body: Center(
+                  child: Image.asset(
+                    mainImageLogo1,
+                    width: getWidth(context, 100),
+                  ),
                 ),
               ),
             ),

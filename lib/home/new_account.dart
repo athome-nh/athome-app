@@ -71,104 +71,109 @@ class _Account_newState extends State<Account_new> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: mainColorGrey.withOpacity(0.1),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Account".tr,
+    return Directionality(
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: mainColorGrey.withOpacity(0.1),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            "Account".tr,
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                  child: Column(children: [
-                    // image
-                    _image != null
-                        ? Stack(
-                            alignment: Alignment.bottomRight,
-                            children: [
-                              Container(
-                                width: getWidth(context, 40),
-                                height: getWidth(context, 40),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(50),
-                                  child: Image.file(
-                                    File(_image!.path),
-                                    width: getWidth(context, 40),
-                                    height: getWidth(context, 40),
+        body: SingleChildScrollView(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Container(
+                    child: Column(children: [
+                      // image
+                      _image != null
+                          ? Stack(
+                              alignment: Alignment.bottomRight,
+                              children: [
+                                Container(
+                                  width: getWidth(context, 40),
+                                  height: getWidth(context, 40),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(50),
+                                    child: Image.file(
+                                      File(_image!.path),
+                                      width: getWidth(context, 40),
+                                      height: getWidth(context, 40),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    _getImage();
-                                  },
-                                  icon: Container(
-                                    width: getWidth(context, 15),
-                                    height: getWidth(context, 15),
-                                    decoration: BoxDecoration(
-                                      color: mainColorGrey,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: waitingImage
-                                        ? Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: waitingWiget2(context),
-                                          )
-                                        : Icon(
-                                            Icons.edit_outlined,
-                                            color: mainColorWhite,
-                                          ),
-                                  )),
-                            ],
-                          )
-                        : Stack(
-                            alignment: Alignment.bottomRight,
-                            children: [
-                              ClipOval(
-                                child: Image.network(
-                                  imageUrlServer + image,
-                                  fit: BoxFit
-                                      .fill, // Customize the BoxFit property
-                                  width: 75,
-                                  height: 75,
+                                IconButton(
+                                    onPressed: () {
+                                      _getImage();
+                                    },
+                                    icon: Container(
+                                      width: getWidth(context, 15),
+                                      height: getWidth(context, 15),
+                                      decoration: BoxDecoration(
+                                        color: mainColorGrey,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: waitingImage
+                                          ? Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: waitingWiget2(context),
+                                            )
+                                          : Icon(
+                                              Icons.edit_outlined,
+                                              color: mainColorWhite,
+                                            ),
+                                    )),
+                              ],
+                            )
+                          : Stack(
+                              alignment: Alignment.bottomRight,
+                              children: [
+                                ClipOval(
+                                  child: Image.network(
+                                    imageUrlServer + image,
+                                    fit: BoxFit
+                                        .fill, // Customize the BoxFit property
+                                    width: 75,
+                                    height: 75,
+                                  ),
                                 ),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    _getImage();
-                                  },
-                                  icon: Container(
-                                    width: getWidth(context, 8),
-                                    height: getWidth(context, 8),
-                                    decoration: BoxDecoration(
-                                      color: mainColorGrey,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: waitingImage
-                                        ? Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: waitingWiget2(context),
-                                          )
-                                        : Icon(
-                                            Icons.edit_outlined,
-                                            color: mainColorWhite,
-                                          ),
-                                  )),
-                            ],
-                          ),
-                  ]),
-                ),
-              )
-            ]),
+                                IconButton(
+                                    onPressed: () {
+                                      _getImage();
+                                    },
+                                    icon: Container(
+                                      width: getWidth(context, 8),
+                                      height: getWidth(context, 8),
+                                      decoration: BoxDecoration(
+                                        color: mainColorGrey,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: waitingImage
+                                          ? Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: waitingWiget2(context),
+                                            )
+                                          : Icon(
+                                              Icons.edit_outlined,
+                                              color: mainColorWhite,
+                                            ),
+                                    )),
+                              ],
+                            ),
+                    ]),
+                  ),
+                )
+              ]),
+        ),
       ),
     );
   }

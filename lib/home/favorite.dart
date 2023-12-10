@@ -20,11 +20,11 @@ class _FavoriteState extends State<Favorite> {
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productPro.nointernetCheck
-          ? noInternetWidget(context)
-          : Scaffold(
+    return productPro.nointernetCheck
+        ? noInternetWidget(context)
+        : Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 title: Text(
@@ -65,6 +65,6 @@ class _FavoriteState extends State<Favorite> {
                       ),
                     ),
             ),
-    );
+          );
   }
 }

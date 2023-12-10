@@ -58,11 +58,11 @@ class _MyCartState extends State<MyCart> {
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListId());
 
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.nointernetCheck
-          ? noInternetWidget(context)
-          : Scaffold(
+    return productrovider.nointernetCheck
+        ? noInternetWidget(context)
+        : Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Scaffold(
               appBar: AppBar(
                 title: Text(
                   "My Cart".tr,
@@ -1061,6 +1061,6 @@ class _MyCartState extends State<MyCart> {
                             )
                           : const SizedBox(),
             ),
-    );
+          );
   }
 }

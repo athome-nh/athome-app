@@ -14,7 +14,7 @@ class Search extends StatefulWidget {
   State<Search> createState() => _SearchState();
 }
 
-class _SearchState extends State<Search> { 
+class _SearchState extends State<Search> {
   var subscription;
   @override
   void initState() {
@@ -46,11 +46,11 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
     searchCon.text = productPro.searchproduct;
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productPro.nointernetCheck
-          ? noInternetWidget(context)
-          : Scaffold(
+    return productPro.nointernetCheck
+        ? noInternetWidget(context)
+        : Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 title: TextField(
@@ -104,8 +104,11 @@ class _SearchState extends State<Search> {
                         ),
                         !productPro.show
                             ? listItemsBigShimer(context)
-                            : productPro.getProductsBySearch(productPro.searchproduct).isEmpty
-                                // if not have item    
+                            : productPro
+                                    .getProductsBySearch(
+                                        productPro.searchproduct)
+                                    .isEmpty
+                                // if not have item
                                 ? Center(
                                     child: Column(
                                       mainAxisAlignment:
@@ -133,9 +136,11 @@ class _SearchState extends State<Search> {
                                       ],
                                     ),
                                   )
-                                // if have item 
+                                // if have item
                                 : listItemsShowSearch(
-                                  context,productPro.getProductsBySearch(productPro.searchproduct),
+                                    context,
+                                    productPro.getProductsBySearch(
+                                        productPro.searchproduct),
                                   ),
                       ],
                     ),
@@ -143,6 +148,6 @@ class _SearchState extends State<Search> {
                 ),
               ),
             ),
-    );
+          );
   }
 }
