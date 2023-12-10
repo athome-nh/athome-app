@@ -204,7 +204,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 ? Alignment.bottomLeft
                                                 : Alignment.bottomRight,
                                             child: Container(
-                                              width: getWidth(context, 25),
+                                              width: getWidth(context, 30),
                                               height: getWidth(context, 9),
                                               decoration: BoxDecoration(
                                                   color: mainColorRed,
@@ -333,14 +333,14 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   BorderRadius.circular(100),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    "assets/images/shimer.png",
+                                                    "assets/images/home.png",
                                                 placeholder: (context, url) =>
                                                     Image.asset(
-                                                        "assets/images/shimer.png"),
+                                                        "assets/images/home.png"),
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     Image.asset(
-                                                        "assets/images/shimer.png"),
+                                                        "assets/images/home.png"),
                                                 fit: BoxFit.fill,
                                                 width: getHeight(context, 5),
                                                 height: getHeight(context, 5),

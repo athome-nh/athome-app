@@ -219,11 +219,11 @@ class _MyCartState extends State<MyCart> {
                                               imageUrl: imageUrlServer,
                                               placeholder: (context, url) =>
                                                   Image.asset(
-                                                      "assets/images/shimer.png"),
+                                                      "assets/images/home.png"),
                                               errorWidget: (context, url,
                                                       error) =>
                                                   Image.asset(
-                                                      "assets/images/shimer.png"),
+                                                      "assets/images/home.png"),
                                               width: getWidth(context, 15),
                                               height: getWidth(context, 15),
                                             ),
@@ -948,7 +948,7 @@ class _MyCartState extends State<MyCart> {
                                                       width:
                                                           getWidth(context, 70),
                                                       height: getHeight(
-                                                          context, 40),
+                                                          context, 45),
                                                       child: Column(
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
@@ -966,8 +966,7 @@ class _MyCartState extends State<MyCart> {
                                                                 context, 40),
                                                           ),
                                                           Text(
-                                                            //textbawar
-                                                            "minium order".tr,
+                                                            "min title".tr,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             maxLines: 1,
@@ -981,11 +980,12 @@ class _MyCartState extends State<MyCart> {
                                                           ),
                                                           Text(
                                                             //textbawar
-                                                            "minium order is "
-                                                                    .tr +
-                                                                productrovider
-                                                                    .minimumOrder
-                                                                    .toString(),
+                                                            // "minium order is "
+                                                            //         .tr +
+                                                            //     productrovider
+                                                            //         .minimumOrder
+                                                            //         .toString(),
+                                                            "min deatil".tr,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(

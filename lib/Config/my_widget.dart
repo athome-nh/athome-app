@@ -60,11 +60,11 @@ Widget listItemsShimer(BuildContext context) {
                                 ),
                                 // rectangle
                                 CachedNetworkImage(
-                                  imageUrl: "assets/images/shimer.png",
+                                  imageUrl: "assets/images/home.png",
                                   placeholder: (context, url) =>
-                                      Image.asset("assets/images/shimer.png"),
+                                      Image.asset("assets/images/home.png"),
                                   errorWidget: (context, url, error) =>
-                                      Image.asset("assets/images/shimer.png"),
+                                      Image.asset("assets/images/home.png"),
                                   width: getWidth(context, 22),
                                   height: getWidth(context, 22),
                                 ),
@@ -198,11 +198,11 @@ Widget listItemsBigShimer(BuildContext context) {
                                   height: 5,
                                 ),
                                 CachedNetworkImage(
-                                  imageUrl: "assets/images/shimer.png",
+                                  imageUrl: "assets/images/home.png",
                                   placeholder: (context, url) =>
-                                      Image.asset("assets/images/shimer.png"),
+                                      Image.asset("assets/images/home.png"),
                                   errorWidget: (context, url, error) =>
-                                      Image.asset("assets/images/shimer.png"),
+                                      Image.asset("assets/images/home.png"),
                                   width: getWidth(context, 25),
                                   height: getWidth(context, 25),
                                 ),
@@ -457,7 +457,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                             side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
-                                              "Add to cart",
+                                              "Add to cart".tr,
                                               style: TextStyle(
                                                   fontFamily: mainFontnormal,
                                                   fontSize: 14,
@@ -796,7 +796,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                             side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
-                                              "Add to cart",
+                                              "Add to cart".tr,
                                               style: TextStyle(
                                                   fontFamily: mainFontnormal,
                                                   fontSize: 14,
@@ -1140,7 +1140,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                             side: BorderSide.none,
                                             backgroundColor: mainColorWhite,
                                             label: Text(
-                                              "Add to cart",
+                                              "Add to cart".tr,
                                               style: TextStyle(
                                                   fontFamily: mainFontnormal,
                                                   fontSize: 14,

@@ -158,7 +158,7 @@ class _itemCategoriesState extends State<itemCategories> {
                         )
                       : SizedBox(),
                   SizedBox(
-                    height: getHeight(context, 85),
+                    height: getHeight(context, 82),
                     width: getWidth(context, 95),
                     child: productPro.subcateSelect == 0
                         ? (productPro
@@ -175,7 +175,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                     height: getHeight(context, 1),
                                   ),
                                   Text(
-                                    "You not have any order".tr,
+                                    "You not have any item".tr,
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontFamily: mainFontnormal),
@@ -201,7 +201,7 @@ class _itemCategoriesState extends State<itemCategories> {
                                     height: getHeight(context, 1),
                                   ),
                                   Text(
-                                    "You not have any order".tr,
+                                    "You not have any item".tr,
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontFamily: mainFontnormal),

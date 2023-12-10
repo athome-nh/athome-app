@@ -273,11 +273,11 @@ class _SettingState extends State<Setting> {
                                               imageUrl: imageUrlServer,
                                               placeholder: (context, url) =>
                                                   Image.asset(
-                                                      "assets/images/shimer.png"),
+                                                      "assets/images/home.png"),
                                               errorWidget: (context, url,
                                                       error) =>
                                                   Image.asset(
-                                                      "assets/images/shimer.png"),
+                                                      "assets/images/home.png"),
                                             ),
                                           ),
                                         ),

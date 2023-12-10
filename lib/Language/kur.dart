@@ -186,7 +186,7 @@ const Map<String, String> kur = {
   // track_order
   "Track Order": "بینینی داواکاری",
   "Order:": "داواکاری:",
-  "Cancel order": "پوچەڵ کردنەوەی داواکاری",
+  "Cancel order": "پوچەڵ کردنەوەی",
   "View order":"بینینی داواکاری ",
 
   // about_screen
@@ -213,4 +213,9 @@ const Map<String, String> kur = {
   "min title":"کەمترین داواکاری پێشکەشکراو",
   "min deatil":"تکایە بەرهەمی زیاتر لە سەبەتەی کرین داوابکە، بۆ ئەوەی داواکاریەکەت جێ بەجێ بکرێت",
 
+  // item_categories
+  "You not have any item":"هیچ بابەتێک بەردەست نیە",
+
+  // oneitem --> labir kraboo
+  "Add To Cart":"زیادی بکە بۆ سەبەتە",
 };

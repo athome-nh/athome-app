@@ -213,4 +213,12 @@ const Map<String, String> en = {
   "min title":"Minimum Order required",
   "min deatil":"You're almost there! Add more items to reach the minimum order amount.",
 
+  // item_categories
+  "You not have any item":"No items are available",
+
+  // oneitem --> labir kraboo
+  "Add To Cart":"Add To Cart",
+
+
+
 };

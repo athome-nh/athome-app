@@ -330,7 +330,7 @@ class _OneitemState extends State<Oneitem> {
                             },
                             style: TextButton.styleFrom(
                               fixedSize: Size(
-                                  getWidth(context, 30), getHeight(context, 4)),
+                                  getWidth(context, 40), getHeight(context, 4)),
                             ),
                             child: Text(
                               "My Cart".tr,

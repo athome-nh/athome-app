@@ -618,11 +618,12 @@ class _CheckOutState extends State<CheckOut> {
                                                       child: Text(
                                                         "YourOrderIsNowBeingProcessed"
                                                             .tr,
+                                                            textAlign: TextAlign.center,
                                                         style: TextStyle(
+                                                          
                                                           fontSize: 14,
                                                           color: mainColorBlack,
-                                                          fontFamily:
-                                                              mainFontnormal,
+                                                          fontFamily: mainFontnormal,
                                                         ),
                                                       ),
                                                     ),

@@ -187,7 +187,7 @@ const Map<String, String> ar = {
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
   "Cancel order": "اخلاء الطلبیة",
-  "View order":"View order",
+  "View order":"عرض الطلب",
 
   // about_screen
   "WelcomeToAthomeOnlineMarketApplication!": "مرحبًا بك في تطبيق ات هوم التسوق عبر الإنترنت.  ات هوم یقدم طريقة مريحة وفعالة للتسوق طلبیاتکم و تسليمها مباشرة إلى بیتکم. ات هوم مصممة لتعزيز تجربة التسوق الخاصة بكم و جعل تسوق البقالة خاليًا من المتاعب. إليك نظرة عامة موجزة عما يقدمه تطبيقنا",
@@ -212,5 +212,12 @@ const Map<String, String> ar = {
   //
   "min title":"الحد الأدنى للشراء المطلوب",
   "min deatil":"أنت على بُعد قليل! أضف المزيد من المنتجات لتحقيق الحد الأدنى للطلب",
+
+  // item_categories
+  "You not have any item":"لا توجد عناصر متوفرة",
+
+  // oneitem --> labir kraboo
+  "Add To Cart":"أضف إلى السلة",
+
 
 };
