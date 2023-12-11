@@ -1503,26 +1503,24 @@ noInternetWidget(BuildContext context) {
           width: getWidth(context, 30),
         ),
       ),
-      body: SafeArea(
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: getWidth(context, 100),
-              height: getWidth(context, 100),
-              child: Image.asset("assets/Victors/wifi.png"),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Text(
-              "no internet".tr,
-              style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
-            ),
-          ],
-        )),
-      ),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: getWidth(context, 100),
+            height: getWidth(context, 100),
+            child: Image.asset("assets/Victors/wifi.png"),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Text(
+            "no internet".tr,
+            style: TextStyle(fontFamily: mainFontnormal, fontSize: 18),
+          ),
+        ],
+      )),
     ),
   );
 }

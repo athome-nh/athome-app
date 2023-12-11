@@ -159,151 +159,148 @@ class _Map_screenState extends State<Map_screen> {
                 Icons.arrow_back_ios,
               )),
         ),
-        body: SafeArea(
-          child: Stack(
-            children: [
-              MapWidget(
-                  key: const ValueKey("mapWidget"),
-                  onCameraChangeListener: (cameraChangedEventData) {
-                    setState(() {
-                      wait = true;
-                    });
-                    if (scrollTimer != null) {
-                      scrollTimer!.cancel();
-                    }
-                    scrollTimer = Timer(const Duration(milliseconds: 500), () {
-                      _mapController.getCameraState().then((value) {
-                        final split = value.center["coordinates"]
-                            .toString()
-                            .substring(1)
-                            .replaceAll("]", '')
-                            .split(",");
+        body: Stack(
+          children: [
+            MapWidget(
+                key: const ValueKey("mapWidget"),
+                onCameraChangeListener: (cameraChangedEventData) {
+                  setState(() {
+                    wait = true;
+                  });
+                  if (scrollTimer != null) {
+                    scrollTimer!.cancel();
+                  }
+                  scrollTimer = Timer(const Duration(milliseconds: 500), () {
+                    _mapController.getCameraState().then((value) {
+                      final split = value.center["coordinates"]
+                          .toString()
+                          .substring(1)
+                          .replaceAll("]", '')
+                          .split(",");
 
-                        if (isPointInsidePolygon(
-                            Position(
-                                double.parse(split[0]), double.parse(split[1])),
-                            zone)) {
-                          if (value.zoom < 12) {
-                            setState(() {
-                              zoom = true;
-                              nameloc = "Zoom in Please".tr;
-                              wait = false;
-                            });
-                          } else {
-                            getLocationName(
-                                double.parse(split[0]), double.parse(split[1]));
-                          }
-                        } else {
+                      if (isPointInsidePolygon(
+                          Position(
+                              double.parse(split[0]), double.parse(split[1])),
+                          zone)) {
+                        if (value.zoom < 12) {
                           setState(() {
                             zoom = true;
-                            nameloc = "Sorry, we don't deliver here".tr;
+                            nameloc = "Zoom in Please".tr;
                             wait = false;
                           });
+                        } else {
+                          getLocationName(
+                              double.parse(split[0]), double.parse(split[1]));
                         }
-                      });
+                      } else {
+                        setState(() {
+                          zoom = true;
+                          nameloc = "Sorry, we don't deliver here".tr;
+                          wait = false;
+                        });
+                      }
                     });
-                  },
-                  resourceOptions:
-                      ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
-                  onMapCreated: _onMapCreated),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 40),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    "assets/images/PIN@2x.png",
-                    width: 65,
-                    height: 65,
+                  });
+                },
+                resourceOptions:
+                    ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
+                onMapCreated: _onMapCreated),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+              child: Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  "assets/images/PIN@2x.png",
+                  width: 65,
+                  height: 65,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 120, right: 10),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: mainColorGrey),
+                  child: IconButton(
+                    onPressed: () async {
+                      await getCureentlocation();
+                    },
+                    icon: Icon(FontAwesomeIcons.locationCrosshairs,
+                        size: 25, color: mainColorWhite),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 120, right: 10),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                    width: getWidth(context, 100),
+                    height: getHeight(context, 6),
                     decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: mainColorGrey),
-                    child: IconButton(
-                      onPressed: () async {
-                        await getCureentlocation();
-                      },
-                      icon: Icon(FontAwesomeIcons.locationCrosshairs,
-                          size: 25, color: mainColorWhite),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                      width: getWidth(context, 100),
-                      height: getHeight(context, 6),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          shape: BoxShape.rectangle,
-                          color: zoom ? mainColorRed : mainColorGrey),
-                      child: Center(
-                          child: wait
-                              ? Container(
-                                  height: getWidth(context, 10),
-                                  child: LoadingIndicator(
-                                    indicatorType: Indicator.ballRotateChase,
-                                    colors: [
-                                      mainColorWhite,
-                                      // mainColorRed,
-                                      // mainColorSuger,
-                                    ],
+                        borderRadius: BorderRadius.circular(5),
+                        shape: BoxShape.rectangle,
+                        color: zoom ? mainColorRed : mainColorGrey),
+                    child: Center(
+                        child: wait
+                            ? Container(
+                                height: getWidth(context, 10),
+                                child: LoadingIndicator(
+                                  indicatorType: Indicator.ballRotateChase,
+                                  colors: [
+                                    mainColorWhite,
+                                    // mainColorRed,
+                                    // mainColorSuger,
+                                  ],
 
-                                    // strokeWidth: 5,
-                                  ),
-                                )
-                              : GestureDetector(
-                                  onTap: zoom
-                                      ? null
-                                      : () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  location_Deatil(
-                                                      selectLon,
-                                                      selectLat,
-                                                      nameloc,
-                                                      housenumber),
-                                            ),
-                                          );
-                                        },
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      zoom
-                                          ? const SizedBox()
-                                          : Text(
-                                              "Delivery To:".tr,
-                                              style: TextStyle(
-                                                  color: mainColorWhite,
-                                                  fontSize: 16),
-                                            ),
-                                      zoom
-                                          ? const SizedBox()
-                                          : const SizedBox(
-                                              width: 3,
-                                            ),
-                                      Text(
-                                        nameloc,
-                                        style: TextStyle(
-                                            color: mainColorWhite,
-                                            fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                ))),
-                ),
+                                  // strokeWidth: 5,
+                                ),
+                              )
+                            : GestureDetector(
+                                onTap: zoom
+                                    ? null
+                                    : () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                location_Deatil(
+                                                    selectLon,
+                                                    selectLat,
+                                                    nameloc,
+                                                    housenumber),
+                                          ),
+                                        );
+                                      },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    zoom
+                                        ? const SizedBox()
+                                        : Text(
+                                            "Delivery To:".tr,
+                                            style: TextStyle(
+                                                color: mainColorWhite,
+                                                fontSize: 16),
+                                          ),
+                                    zoom
+                                        ? const SizedBox()
+                                        : const SizedBox(
+                                            width: 3,
+                                          ),
+                                    Text(
+                                      nameloc,
+                                      style: TextStyle(
+                                          color: mainColorWhite, fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                              ))),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

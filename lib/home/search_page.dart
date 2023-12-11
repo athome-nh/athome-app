@@ -91,50 +91,48 @@ class _SearchState extends State<Search> {
                       : const SizedBox(),
                 ],
               ),
-              body: SafeArea(
-                child: GestureDetector(
-                  onTap: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
-                  },
-                  child: !productPro.show
-                      ? listItemsBigShimer(context)
-                      : productPro
-                              .getProductsBySearch(productPro.searchproduct)
-                              .isEmpty
-                          // if not have item
-                          ? Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: getHeight(context, 10),
-                                  ),
-                                  SizedBox(
-                                    width: getWidth(context, 100),
-                                    height: getWidth(context, 100),
-                                    child: Image.asset(
-                                        "assets/Victors/serach_empty.png"),
-                                  ),
-                                  SizedBox(
-                                    height: getHeight(context, 2),
-                                  ),
-                                  Text(
-                                    "Not found any item".tr,
-                                    style: TextStyle(
-                                        color: mainColorBlack,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 18),
-                                  ),
-                                ],
-                              ),
-                            )
-                          // if have item
-                          : listItemsShowSearch(
-                              context,
-                              productPro.getProductsBySearch(
-                                  productPro.searchproduct),
+              body: GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+                child: !productPro.show
+                    ? listItemsBigShimer(context)
+                    : productPro
+                            .getProductsBySearch(productPro.searchproduct)
+                            .isEmpty
+                        // if not have item
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: getHeight(context, 10),
+                                ),
+                                SizedBox(
+                                  width: getWidth(context, 100),
+                                  height: getWidth(context, 100),
+                                  child: Image.asset(
+                                      "assets/Victors/serach_empty.png"),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+                                Text(
+                                  "Not found any item".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 18),
+                                ),
+                              ],
                             ),
-                ),
+                          )
+                        // if have item
+                        : listItemsShowSearch(
+                            context,
+                            productPro.getProductsBySearch(
+                                productPro.searchproduct),
+                          ),
               ),
             ),
           );

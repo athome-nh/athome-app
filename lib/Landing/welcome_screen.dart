@@ -46,180 +46,178 @@ class WelcomeScreenState extends State<WelcomeScreen>
                 color: mainColorRed,
               )),
         ),
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // slide 3 page
-              CarouselSlider(
-                carouselController: buttonCarouselController,
-                options: CarouselOptions(
-                  autoPlay: false,
-                  height: getHeight(context, 60),
-                  viewportFraction: 1.0,
-                  initialPage: 0,
-                  enlargeCenterPage: false,
-                  enableInfiniteScroll: false,
-                  onPageChanged: (index, reason) {
-                    setState(
-                      () {
-                        currentIndex = index;
-                      },
-                    );
-                  },
-                ),
-                items: [
-                  slid1(),
-                  slid2(),
-                  slid3(),
-                ],
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // slide 3 page
+            CarouselSlider(
+              carouselController: buttonCarouselController,
+              options: CarouselOptions(
+                autoPlay: false,
+                height: getHeight(context, 60),
+                viewportFraction: 1.0,
+                initialPage: 0,
+                enlargeCenterPage: false,
+                enableInfiniteScroll: false,
+                onPageChanged: (index, reason) {
+                  setState(
+                    () {
+                      currentIndex = index;
+                    },
+                  );
+                },
               ),
+              items: [
+                slid1(),
+                slid2(),
+                slid3(),
+              ],
+            ),
 
-              currentIndex == 2
-                  // Get Start button
-                  ? ZoomIn(
-                      delay: const Duration(milliseconds: 100),
-                      child: Container(
-                        width: getWidth(context, 70),
-                        height: getHeight(context, 6),
-                        decoration: BoxDecoration(
-                            color: mainColorRed,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: TextButton(
-                          onPressed: () {
-                            Map<String, dynamic> myMap = {};
-                            myMap["onbord"] = true;
-                            setStringPrefs("data", json.encode(myMap));
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const NavSwitch()),
-                            );
-                          },
-                          child: Text(
-                            "Get Start".tr,
-                          ),
+            currentIndex == 2
+                // Get Start button
+                ? ZoomIn(
+                    delay: const Duration(milliseconds: 100),
+                    child: Container(
+                      width: getWidth(context, 70),
+                      height: getHeight(context, 6),
+                      decoration: BoxDecoration(
+                          color: mainColorRed,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: TextButton(
+                        onPressed: () {
+                          Map<String, dynamic> myMap = {};
+                          myMap["onbord"] = true;
+                          setStringPrefs("data", json.encode(myMap));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const NavSwitch()),
+                          );
+                        },
+                        child: Text(
+                          "Get Start".tr,
                         ),
                       ),
-                    )
-                  : Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: getWidth(context, 5),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // skip button
-                          // TextButton(
-                          //   onPressed: () {
-                          //     Map<String, dynamic> myMap = {};
-                          //     myMap["onbord"] = true;
-                          //     setStringPrefs("data", json.encode(myMap));
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) =>
-                          //               const NavSwitch()),
-                          //     );
-                          //   },
-                          //   style: ElevatedButton.styleFrom(
-                          //     backgroundColor: mainColorWhite,
-                          //     foregroundColor: mainColorWhite,
-                          //   ),
-                          //   child: Text(
-                          //     'SKIP'.tr,
-                          //     style: TextStyle(
-                          //       fontFamily: mainFontbold,
-                          //       fontSize: getHeight(context, 2),
-                          //       color: mainColorBlack,
-                          //     ),
-                          //     textAlign: TextAlign.left,
-                          //   ),
-                          // ),
-
-                          // 3 dote
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    top: getWidth(context, 1), left: 5),
-                                width: getWidth(context, 2.5),
-                                height: getWidth(context, 2.5),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: currentIndex == 0
-                                      ? mainColorGrey
-                                      : mainColorRed,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    top: getWidth(context, 1), left: 5),
-                                width: getWidth(context, 2.5),
-                                height: getWidth(context, 2.5),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: currentIndex == 1
-                                      ? mainColorGrey
-                                      : mainColorRed,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    top: getWidth(context, 1), left: 5),
-                                width: getWidth(context, 2.5),
-                                height: getWidth(context, 2.5),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: currentIndex == 2
-                                      ? mainColorGrey
-                                      : mainColorRed,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          // next button
-                          // Container(
-                          //   height: getHeight(context, 5),
-                          //   decoration: BoxDecoration(
-                          //       color: mainColorRed,
-                          //       borderRadius: BorderRadius.circular(5)),
-                          //   child: TextButton(
-                          //     onPressed: () {
-                          //       if (currentIndex == 2) {
-                          //       } else {
-                          //         buttonCarouselController.nextPage();
-                          //       }
-                          //     },
-                          //     style: TextButton.styleFrom(
-                          //         foregroundColor: mainColorRed),
-                          //     child: Padding(
-                          //       padding: EdgeInsets.symmetric(
-                          //         horizontal: getWidth(context, 5),
-                          //       ),
-                          //       child: Row(
-                          //         children: [
-                          //           Text(
-                          //             'NEXT'.tr,
-                          //             style: TextStyle(
-                          //               fontFamily: mainFontbold,
-                          //               fontSize: getHeight(context, 2),
-                          //               color: mainColorWhite,
-                          //             ),
-                          //             textAlign: TextAlign.left,
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-                        ],
-                      ),
                     ),
-            ],
-          ),
+                  )
+                : Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getWidth(context, 5),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // skip button
+                        // TextButton(
+                        //   onPressed: () {
+                        //     Map<String, dynamic> myMap = {};
+                        //     myMap["onbord"] = true;
+                        //     setStringPrefs("data", json.encode(myMap));
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) =>
+                        //               const NavSwitch()),
+                        //     );
+                        //   },
+                        //   style: ElevatedButton.styleFrom(
+                        //     backgroundColor: mainColorWhite,
+                        //     foregroundColor: mainColorWhite,
+                        //   ),
+                        //   child: Text(
+                        //     'SKIP'.tr,
+                        //     style: TextStyle(
+                        //       fontFamily: mainFontbold,
+                        //       fontSize: getHeight(context, 2),
+                        //       color: mainColorBlack,
+                        //     ),
+                        //     textAlign: TextAlign.left,
+                        //   ),
+                        // ),
+
+                        // 3 dote
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  top: getWidth(context, 1), left: 5),
+                              width: getWidth(context, 2.5),
+                              height: getWidth(context, 2.5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: currentIndex == 0
+                                    ? mainColorGrey
+                                    : mainColorRed,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  top: getWidth(context, 1), left: 5),
+                              width: getWidth(context, 2.5),
+                              height: getWidth(context, 2.5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: currentIndex == 1
+                                    ? mainColorGrey
+                                    : mainColorRed,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  top: getWidth(context, 1), left: 5),
+                              width: getWidth(context, 2.5),
+                              height: getWidth(context, 2.5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: currentIndex == 2
+                                    ? mainColorGrey
+                                    : mainColorRed,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // next button
+                        // Container(
+                        //   height: getHeight(context, 5),
+                        //   decoration: BoxDecoration(
+                        //       color: mainColorRed,
+                        //       borderRadius: BorderRadius.circular(5)),
+                        //   child: TextButton(
+                        //     onPressed: () {
+                        //       if (currentIndex == 2) {
+                        //       } else {
+                        //         buttonCarouselController.nextPage();
+                        //       }
+                        //     },
+                        //     style: TextButton.styleFrom(
+                        //         foregroundColor: mainColorRed),
+                        //     child: Padding(
+                        //       padding: EdgeInsets.symmetric(
+                        //         horizontal: getWidth(context, 5),
+                        //       ),
+                        //       child: Row(
+                        //         children: [
+                        //           Text(
+                        //             'NEXT'.tr,
+                        //             style: TextStyle(
+                        //               fontFamily: mainFontbold,
+                        //               fontSize: getHeight(context, 2),
+                        //               color: mainColorWhite,
+                        //             ),
+                        //             textAlign: TextAlign.left,
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                  ),
+          ],
         ),
       ),
     );
