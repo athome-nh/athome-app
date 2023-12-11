@@ -83,6 +83,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>for map</string>
 </dict>
 </plist>
