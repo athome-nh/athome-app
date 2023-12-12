@@ -82,6 +82,8 @@ const Map<String, String> en = {
   "Edit": "Edit",
   "Orders": "Orders",
   "Address": "Address",
+  // "Pri": "Address",
+  // "Address": "Address",
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",
@@ -218,7 +220,5 @@ const Map<String, String> en = {
 
   // oneitem --> labir kraboo
   "Add To Cart":"Add To Cart",
-
-
 
 };
