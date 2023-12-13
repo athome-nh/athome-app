@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "1011426718162",
-    "project_id": "athome-bb55d",
-    "storage_bucket": "athome-bb55d.appspot.com"
+    "project_number": "1089291202108",
+    "project_id": "dllylas-ec27d",
+    "storage_bucket": "dllylas-ec27d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1011426718162:android:c0148224d3e5171b12d80b",
+        "mobilesdk_app_id": "1:1089291202108:android:2e30af1ebeeecf475edd39",
         "android_client_info": {
-          "package_name": "nl.nutriholland.athome"
+          "package_name": "com.market.dllylas"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1011426718162-pdrpmibsle8236iimmus8ks86eqq1tod.apps.googleusercontent.com",
+          "client_id": "1089291202108-6dmqnot1ica77rin85kdecsr0fmtn6ln.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBty0ndrY2xTpjbmDjeS6w1Ywxllfo5tAM"
+          "current_key": "AIzaSyAS-MygXJ9k-nCT4ZIFPUe9YN_N7GC4frs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1011426718162-pdrpmibsle8236iimmus8ks86eqq1tod.apps.googleusercontent.com",
+              "client_id": "1089291202108-6dmqnot1ica77rin85kdecsr0fmtn6ln.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1089291202108-dmf8fkom8bb7i105pef3ububtr8rcnu3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.market.dllylas"
+              }
             }
           ]
         }

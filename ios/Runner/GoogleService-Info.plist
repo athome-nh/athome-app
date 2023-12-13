@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1011426718162-hoaj4kp3mm2m39837517ahvs5k6rbcmu.apps.googleusercontent.com</string>
+	<string>1089291202108-dmf8fkom8bb7i105pef3ububtr8rcnu3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1011426718162-hoaj4kp3mm2m39837517ahvs5k6rbcmu</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>1011426718162-32qt7pnlrfia2v4njt435dvkepeqovms.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.1089291202108-dmf8fkom8bb7i105pef3ububtr8rcnu3</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD9HlIia8jWPX6cpgVjnPYGUd8HEx-X9Ik</string>
+	<string>AIzaSyCrd3RE9LY1-YCxMpSOEA9klOaBJsWcW80</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1011426718162</string>
+	<string>1089291202108</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>nl.nutriholland.athome</string>
+	<string>com.market.dllylas</string>
 	<key>PROJECT_ID</key>
-	<string>athome-bb55d</string>
+	<string>dllylas-ec27d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>athome-bb55d.appspot.com</string>
+	<string>dllylas-ec27d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1011426718162:ios:fd5db714b145435412d80b</string>
+	<string>1:1089291202108:ios:4a56330d94989da55edd39</string>
 </dict>
 </plist>

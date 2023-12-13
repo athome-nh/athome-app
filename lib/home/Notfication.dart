@@ -1,6 +1,6 @@
-import 'package:athome/main.dart';
+import 'package:DllyLas/main.dart';
 import 'package:flutter/material.dart';
-import 'package:athome/Config/property.dart';
+import 'package:DllyLas/Config/property.dart';
 import 'package:get/get.dart';
 
 class NotficationScreen extends StatefulWidget {

@@ -2,8 +2,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:athome/Config/property.dart';
-import 'package:athome/Config/value.dart';
+import 'package:DllyLas/Config/property.dart';
+import 'package:DllyLas/Config/value.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';

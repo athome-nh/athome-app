@@ -1,13 +1,13 @@
-import 'package:athome/Config/athome_functions.dart';
-import 'package:athome/Config/value.dart';
+import 'package:DllyLas/Config/athome_functions.dart';
+import 'package:DllyLas/Config/value.dart';
 
-import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/controller/productprovider.dart';
-import 'package:athome/home/my_cart.dart';
+import 'package:DllyLas/controller/cartprovider.dart';
+import 'package:DllyLas/controller/productprovider.dart';
+import 'package:DllyLas/home/my_cart.dart';
 
-import 'package:athome/model/cart.dart';
-import 'package:athome/model/product_model/product_model.dart';
-import 'package:athome/model/products_image/products_image.dart';
+import 'package:DllyLas/model/cart.dart';
+import 'package:DllyLas/model/product_model/product_model.dart';
+import 'package:DllyLas/model/products_image/products_image.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';

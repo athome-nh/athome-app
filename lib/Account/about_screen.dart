@@ -1,4 +1,4 @@
-import 'package:athome/main.dart';
+ import 'package:DllyLas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Config/property.dart';

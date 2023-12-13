@@ -1,8 +1,8 @@
-import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Config/property.dart';
-import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/controller/productprovider.dart';
-import 'package:athome/model/product_model/product_model.dart';
+import 'package:DllyLas/Config/my_widget.dart';
+import 'package:DllyLas/Config/property.dart';
+import 'package:DllyLas/controller/cartprovider.dart';
+import 'package:DllyLas/controller/productprovider.dart';
+import 'package:DllyLas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';

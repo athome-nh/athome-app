@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBty0ndrY2xTpjbmDjeS6w1Ywxllfo5tAM',
-    appId: '1:1011426718162:android:c0148224d3e5171b12d80b',
-    messagingSenderId: '1011426718162',
-    projectId: 'athome-bb55d',
-    storageBucket: 'athome-bb55d.appspot.com',
+    apiKey: 'AIzaSyAS-MygXJ9k-nCT4ZIFPUe9YN_N7GC4frs',
+    appId: '1:1089291202108:android:2e30af1ebeeecf475edd39',
+    messagingSenderId: '1089291202108',
+    projectId: 'dllylas-ec27d',
+    storageBucket: 'dllylas-ec27d.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD9HlIia8jWPX6cpgVjnPYGUd8HEx-X9Ik',
-    appId: '1:1011426718162:ios:fd5db714b145435412d80b',
-    messagingSenderId: '1011426718162',
-    projectId: 'athome-bb55d',
-    storageBucket: 'athome-bb55d.appspot.com',
-    iosClientId:
-        '1011426718162-hoaj4kp3mm2m39837517ahvs5k6rbcmu.apps.googleusercontent.com',
-    iosBundleId: 'nl.nutriholland.athome',
+    apiKey: 'AIzaSyCrd3RE9LY1-YCxMpSOEA9klOaBJsWcW80',
+    appId: '1:1089291202108:ios:4a56330d94989da55edd39',
+    messagingSenderId: '1089291202108',
+    projectId: 'dllylas-ec27d',
+    storageBucket: 'dllylas-ec27d.appspot.com',
+    iosClientId: '1089291202108-dmf8fkom8bb7i105pef3ububtr8rcnu3.apps.googleusercontent.com',
+    iosBundleId: 'com.market.dllylas',
   );
 }

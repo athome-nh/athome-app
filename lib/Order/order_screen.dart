@@ -1,10 +1,10 @@
-import 'package:athome/Order/old_order.dart';
-import 'package:athome/Order/order_items.dart';
+import 'package:DllyLas/Order/old_order.dart';
+import 'package:DllyLas/Order/order_items.dart';
 
-import 'package:athome/controller/cartprovider.dart';
-import 'package:athome/main.dart';
-import 'package:athome/model/cartpast.dart';
-import 'package:athome/model/order_model/order_model.dart';
+import 'package:DllyLas/controller/cartprovider.dart';
+import 'package:DllyLas/main.dart';
+import 'package:DllyLas/model/cartpast.dart';
+import 'package:DllyLas/model/order_model/order_model.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
