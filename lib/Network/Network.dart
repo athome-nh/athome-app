@@ -1,10 +1,10 @@
 // ignore_for_file: empty_catches, file_names
 
-import 'package:athome/Config/athome_functions.dart';
-import 'package:athome/Config/value.dart';
-import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Config/property.dart';
-import 'package:athome/main.dart';
+import 'package:DllyLas/Config/athome_functions.dart';
+import 'package:DllyLas/Config/value.dart';
+import 'package:DllyLas/Config/my_widget.dart';
+import 'package:DllyLas/Config/property.dart';
+import 'package:DllyLas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

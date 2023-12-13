@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:athome/main.dart';
-import 'package:athome/model/product_model/product_model.dart';
+import 'package:DllyLas/main.dart';
+import 'package:DllyLas/model/product_model/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:animate_do/animate_do.dart';
-import 'package:athome/Config/local_data.dart';
-import 'package:athome/main.dart';
+import 'package:DllyLas/Config/local_data.dart';
+import 'package:DllyLas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';

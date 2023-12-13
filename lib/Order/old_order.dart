@@ -1,10 +1,10 @@
-import 'package:athome/Config/athome_functions.dart';
-import 'package:athome/Config/my_widget.dart';
-import 'package:athome/Config/property.dart';
-import 'package:athome/Config/value.dart';
-import 'package:athome/controller/productprovider.dart';
-import 'package:athome/main.dart';
-import 'package:athome/model/order_items/order_items.dart';
+import 'package:DllyLas/Config/athome_functions.dart';
+import 'package:DllyLas/Config/my_widget.dart';
+import 'package:DllyLas/Config/property.dart';
+import 'package:DllyLas/Config/value.dart';
+import 'package:DllyLas/controller/productprovider.dart';
+import 'package:DllyLas/main.dart';
+import 'package:DllyLas/model/order_items/order_items.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

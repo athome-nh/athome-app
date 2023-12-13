@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'package:athome/Config/athome_functions.dart';
-import 'package:athome/Config/local_data.dart';
+import 'package:DllyLas/Config/athome_functions.dart';
+import 'package:DllyLas/Config/local_data.dart';
 
-import 'package:athome/landing/splash_screen.dart';
+import 'package:DllyLas/landing/splash_screen.dart';
 
-import 'package:athome/model/cart.dart';
-import 'package:athome/model/cartpast.dart';
-import 'package:athome/model/product_model/product_model.dart';
+import 'package:DllyLas/model/cart.dart';
+import 'package:DllyLas/model/cartpast.dart';
+import 'package:DllyLas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 
 class CartProvider extends ChangeNotifier {
