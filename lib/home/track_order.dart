@@ -28,6 +28,7 @@ List images = [
   "assets/images/new_way.gif",
   "assets/images/new_delivered.gif",
   "assets/images/Order-Success.gif",
+  "assets/images/Order-Success.gif",
 ];
 late List titles;
 late List content;
