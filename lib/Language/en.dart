@@ -12,7 +12,7 @@ const Map<String, String> en = {
   "wst02": "Learn From the Best",
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "wst03": "Fast Delevery",
-  "wsd03": "we will reach you whatever you are ",
+  "wsd03": "we will reach you wherever you are",
   "NEXT": "NEXT",
   "SKIP": "SKIP",
 
@@ -108,9 +108,9 @@ const Map<String, String> en = {
   "Order No.":"Order No.",
 
   // check_out
-  "Delivery Address": "Delivery Address",
+  "Delivery Address": "Add a new Location",
   "Not have any location": "you don't have any location",
-  "Add new Location":"Add new Location",
+  "Add new Location":"Cash on delivery",
   "Pyment Method": "Payment Method",
   "Cash on delivery": "Cash on delivery",
   "Coming soon": "Coming soon",
