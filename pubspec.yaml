@@ -36,12 +36,12 @@ dependencies:
   quickalert: ^1.0.2
   skeletonizer: ^0.8.0
   geolocator: ^10.1.0
-  image_picker: ^1.0.4
+  image_picker: ^1.0.5
   loading_indicator: ^3.1.1
   ntp: ^2.0.0
   http: ^1.1.2
-  mapbox_maps_flutter: ^0.5.0  
-  flutter_local_notifications: ^16.1.0
+  mapbox_maps_flutter: ^0.5.1  
+  flutter_local_notifications: ^16.2.0
   upgrader: ^8.4.0  
   google_fonts: ^6.1.0
   change_app_package_name: ^1.1.0

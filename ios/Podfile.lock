@@ -89,7 +89,7 @@ PODS:
   - libphonenumber_plugin (0.0.1):
     - Flutter
     - PhoneNumberKit
-  - mapbox_maps_flutter (0.5.0):
+  - mapbox_maps_flutter (0.5.1):
     - Flutter
     - MapboxMaps (~> 10.13.1)
   - MapboxCommon (23.5.0)
@@ -234,7 +234,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 41b9ef0b4c08a6db4b7eb51a21ae5183ec99a2c8
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   libphonenumber_plugin: 48bf4078546377eedaab4aa54978cd0f6fa23072
-  mapbox_maps_flutter: bad1576756da36dce455f94bd8a9a3e2afd0ff76
+  mapbox_maps_flutter: efaafab8a2b4ae99d7b8b5074ed4949a82e1683f
   MapboxCommon: fdf7fd31c90b7b607cd9c63e37797f023c01d860
   MapboxCoreMaps: 24270c7c6b8cb71819fc2f3c549db9620ee4d019
   MapboxMaps: cb76511b98d3b95c74b0771ed105bc69f30ace6b
