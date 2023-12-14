@@ -1,5 +1,7 @@
 // ignore_for_file: empty_catches, file_names
 
+import 'dart:convert';
+
 import 'package:DllyLas/Config/athome_functions.dart';
 import 'package:DllyLas/Config/value.dart';
 import 'package:DllyLas/Config/my_widget.dart';
@@ -53,7 +55,6 @@ class Network {
     Map<String, dynamic> data = {};
     try {
       await dio.get(serverUrl + "time").then((time) async {
-        
         datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] = "Bearer " + token;
 
@@ -83,6 +84,7 @@ class Network {
 
   Future addImage(Map<String, String> body, String filepath) async {
     String addimageUrl = serverUrl + "profileImg";
+
     try {
       await dio.get(serverUrl + "time").then((time) async {
         Map<String, String> headers = {
@@ -90,6 +92,7 @@ class Network {
           'Authorization': "Bearer " + token,
           'aToken': encryptAES(generateRandomText(time.data["data"])),
         };
+
         var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
           ..fields.addAll(body)
           ..headers.addAll(headers)
@@ -98,6 +101,9 @@ class Network {
         var response = await request.send();
 
         if (response.statusCode == 201) {
+          var responseData = await http.Response.fromStream(response);
+          var decodedData = json.decode(responseData.body);
+          print('Response data: $decodedData');
           return true;
         } else {
           return false;
