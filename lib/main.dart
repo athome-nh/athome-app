@@ -53,42 +53,39 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
-  
   Future<void> a() async {
     //   await FirebaseMessaging.instance.getToken().then((value) {
     //   print(value);
     // });
-  // await  FirebaseMessaging.instance.getAPNSToken().then((value) {
-  //     print(value);
-  //   });
+    // await  FirebaseMessaging.instance.getAPNSToken().then((value) {
+    //     print(value);
+    //   });
   }
 
-
-
- Future getDeviceToken() async {
-    //request user permission for push notification 
+  Future getDeviceToken() async {
+    //request user permission for push notification
     FirebaseMessaging.instance.requestPermission();
     FirebaseMessaging _firebaseMessage = FirebaseMessaging.instance;
-    String? deviceToken = await _firebaseMessage.getToken();
-    return (deviceToken == null) ? "" : deviceToken;
+    String? deviceToken = await _firebaseMessage.getAPNSToken();
+    String? deviceToken2 = await _firebaseMessage.getToken();
+    print(deviceToken2);
+    return (deviceToken2 == null) ? "sdd" : deviceToken2;
   }
 
-prenttoken() async { 
-
-
-  String deviceToken = await getDeviceToken();
+  prenttoken() async {
+    String deviceToken = await getDeviceToken();
     print("###### PRINT DEVICE TOKEN TO USE FOR PUSH NOTIFCIATION ######");
     print(deviceToken);
     print("############################################################");
+  }
 
-}
   @override
   void initState() {
 //      FCMNotification(context).config();
 //    print(FCMNotification(context).getToken());
 //  a();
 
- prenttoken();
+    prenttoken();
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
