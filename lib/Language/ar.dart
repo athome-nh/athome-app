@@ -1,9 +1,9 @@
 const Map<String, String> ar = {
   // choose_lan
   "Language": "اللغة",
-  "English": "إنجليزي",
-  "Arabic": "العربية",
   "Kurdish": "كردي",
+  "Arabic": "العربية",
+  "English": "إنجليزي",  
   "Get Start": "ابدأ",
 
   // welcome_screen
@@ -38,7 +38,7 @@ const Map<String, String> ar = {
   "View All": "عرض الکل",
   
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "تسجيل",
+  "Register First": "تسجيل اولاً",
   "You need login": "یرجی التسجیل أولاً",
   "Register": "تسجیل الدخول",
   "Cancel": "الغاء",
@@ -63,7 +63,7 @@ const Map<String, String> ar = {
   "Total": "المجموع الكلي",
   "Checkout": "تاکید",
   "Clear cart":"إزالة الكل",
-  "Are you sure you want to continue?":"دڵنیای له‌ به‌تاڵكردنه‌وه‌ی سه‌به‌ته‌ی كڕین؟",
+  "Are you sure you want to continue?":"هل انت مأكد من الاستمرار ؟",
 
   // favorite
   "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقًا لاختياراتك الخاصة!",
@@ -72,7 +72,7 @@ const Map<String, String> ar = {
   "no internet": "الانترنت غیر متوفر",
 
   // Page --> Login First --> my_widget
-  "Please login first": "تسجیل الدخول", // nmayaa
+  "Please login first": "الرجاء تسجیل الدخول أولاً",
 
   // profilo
   "Image changed": "تم التغیر الصورة",
@@ -88,7 +88,7 @@ const Map<String, String> ar = {
 
   // order_screen
   "My Orders":"طلباتي",
-  "On going":"قید التنفیذ",
+  "On going":"جاري التنفیذ",
   "History":"السجل",
   "Order number:":"رقم الطلب",
   "Date:": "التأريخ:",
@@ -97,7 +97,7 @@ const Map<String, String> ar = {
   "View":"عرض",
 
   // order_items
-  "Past Order": "أخر طلبية",
+  "Past Order": "سجل الطلبات",
   "Add More Items": "اضافة مزيد من المنتجات",
 
   // old_order
@@ -113,23 +113,23 @@ const Map<String, String> ar = {
   "Cash on delivery": "الدفع عند التسلیم",
   "Coming soon": "قریبا",
   "Note": "ملاحظة",
-  "Add your note": "أضف ملاحظات",
+  "Add your note": "أضف ملاحظاتك",
   "Thank You!": "شکراً",
   "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
   "Order Number:": "رقم الطلبیة:",
-  "YourOrderIsNowBeingProcessed": "الطلبیە قید التجهیز، سيتم إعلامك بمجرد استلام الطلب من المتجر. تابع حالة طلبك",
+  "YourOrderIsNowBeingProcessed": "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر. يمكنكم التحقق من حالة طلبك في أي وقت.",
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
   "Please Delivery Address":"يرجى إضافة الموقع",
   "Send Order": "ارسال الطلبیة",
-  "sorryWeDoNotHaveDelivery": "للاسف ليس لدينا خدمة توصيل في الوقت الحالي. سنرسل إليك هذا الطلب غدًا في أقرب وقت ممكن. و يمكنك إلغاء الطلب قبل قبوله من قبل المشرف",
+  "sorryWeDoNotHaveDelivery": "للاسف ليس لدينا خدمة توصيل في الوقت الحالي. سنرسل إليك هذا الطلب غدًا في أقرب وقت ممكن. و يمكنك إلغاء الطلب قبل قبوله من قبل الادارة.",
   "OK": "موافق",
 
   // login_page
   "Wellcome back": "مرحبا بك",
-  "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك واستمتع",
+  "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك للتسوق بشكل أكثر ذكاءً وأسهل",
   "Please enter your phone number": "یرجی ادخال رقم الهاتف",
-  "Please enter your phone number correct":"یرجی ادخال رقم الهاتف الصحیح",
+  "Please enter your phone number correct":"یرجی ادخال رقم الهاتفك بشكل صحیح",
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",
   "Phone Number": "رقم الهاتف",
   "WeWillSendYouOTP":"سنرسل لك رمز التحقق",
@@ -153,20 +153,20 @@ const Map<String, String> ar = {
   "Delete location success": "تم إزالة الموقع بنجاح",
 
   // singin_up
-  "Complete Account": "اکمل الحساب",
-  "Enter your account information to complete your account":"یرجی ادخال معلومات الحساب لاکمال الحساب",
+  "Complete Account": "تم انشاء الحساب",
+  "Enter your account information to complete your account":"یرجی ادخال المعلومات الخاصة بك لاکمال الحسابك",
   "Enter your Name": "ادخال الاسم",
   "Enter your full name": "یرجی الادخال الاسم الکامل",
   "City": "مدينة",
   "Age": "عمر",
-  "unknown occurred error please try again later":"خطأ غیر معرقف، یرجی اعادة المحاولة لاحقا",
+  "unknown occurred error please try again later":"حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
   "Confirm": "التاکید",
 
   // verification
   "Hold till the waiting time ends":"انتظر حتى ينتهي وقت الانتظار", //
-  "Please enter code":"نرجو ادخال کود",
+  "Please enter code":"الرجاء إدخال الرمز التحقق",
   "Verification": "التحقق",
-  "Please enter the 6 digit code sent to":"یرجی الادخال رمز من 6 ارقام ارسلت الی:",
+  "Please enter the 6 digit code sent to":"یرجی الادخال رمز المكون من ٦ ارقام الذي ارسلت الی",
   "Don't resive the OTP ?": "لم تستلم الرمز؟",
   "Try again in": "حاول مری اخری في ",
   "Resend": "اعادة الارسال",
@@ -186,24 +186,24 @@ const Map<String, String> ar = {
   // track_order
   "Track Order": "تابع الطلبیة",
   "Order:": "الطلبیة:",
-  "Cancel order": "اخلاء الطلبیة",
+  "Cancel order": "الغاء الطلب",
   "View order":"عرض الطلب",
 
   // about_screen
-  "WelcomeToAthomeOnlineMarketApplication!": "مرحبًا بك في تطبيق ات هوم التسوق عبر الإنترنت.  ات هوم یقدم طريقة مريحة وفعالة للتسوق طلبیاتکم و تسليمها مباشرة إلى بیتکم. ات هوم مصممة لتعزيز تجربة التسوق الخاصة بكم و جعل تسوق البقالة خاليًا من المتاعب. إليك نظرة عامة موجزة عما يقدمه تطبيقنا",
-  "WideSelectionOfProductsOurOnlineSupermarket": "مجموعة واسعة من المنتجات: يقدم لکم السوبر ماركت عبر الإنترنت مجموعة واسعة من المنتجات، بدءًا من المنتجات الطازجة وحتى مستلزمات المؤن والأدوات المنزلية ومنتجات العناية الشخصية والمزيد. يمكنك تصفح الفئات المختلفة والعثور على كل ما تحتاجه في متجر واحد مكان.",
-  "EasyToUseInterfaceOurUserFriendly": "واجهة سهلة الاستخدام: تم تصميم واجهتنا سهلة الاستخدام لجعل تجربة التسوق الخاصة بكم سلسة وممتعة. يمكنك بسهولة البحث عن المنتجات، وإضافتها إلى سلة التسوق ، والمتابعة بکم کلك فقط.",
-  "SecurePaymentWePrioritizeTheSecurity": "الدفع الآمن: نحن نعطي الأولوية لأمن معلومات الدفع الخاصة بك. يستخدم تطبيقنا بوابات دفع آمنة لضمان حماية طلبیتک و دفوعاتك.",
-  "PromotionsAndDealsKeep": "العروض والصفقات: ترقب العروض والخصومات والصفقات الخاصة المتاحة على التطبیق. نريد مساعدتكم في التوفير أثناء التسوق.",
+  "WelcomeToAthomeOnlineMarketApplication!": "مرحبًا بك في تطبيق دلي لاس للتسوق عبر الإنترنت. دلي لاس یقدم طريقة مريحة وفعالة للتسوق و توصيل مشترياتك مباشرة إلى باب منزلك . دلي لاس مصممة لتعزيز تجربة التسوق الخاصة بكم و جعل تسوق المواد البقالة خاليًا من المتاعب. إليك نظرة عامة مختصرة عما يقدمه تطبيقنا",
+  "WideSelectionOfProductsOurOnlineSupermarket": "مجموعة واسعة من المنتجات: يقدم لکم تطبيقنا دلي لاس مجموعة واسعة من المنتجات، بدءًا من المنتجات الطازجة وحتى مستلزمات المؤن والأدوات المنزلية ومنتجات العناية الشخصية والمزيد. يمكنك تصفح الفئات المختلفة والعثور على كل ما تحتاجه في  مكان واحد.",
+  "EasyToUseInterfaceOurUserFriendly": "واجهة سهلة الاستخدام:يتميز الموقع دلي لاس بواجهة سهلة الاستخدام لجعل تجربة التسوق الخاصة بكم مريحة و ممتعة. و يمنحك هذا التطبيق ميزة البحث عن المنتجات بشكل سريع وفعال و إضافتها الى سلة التسوق. ويمكنك المتابعة إلى إتمام عملية الشراء ببضع كليكات فقط.",
+  "SecurePaymentWePrioritizeTheSecurity": "الدفع الآمن: ضمان دفع آمنًا و موثوقًا في تطبيق دلي لاس ، نضع أمن المعاملات المالية على رأس أولوياتنا. يوظف تطبيقنا بوابة دفع آمنة متطورة لحماية معاملاتك، مما يضمن دفعًا آمنًا.",
+  "PromotionsAndDealsKeep": "لعروض والصفقات: ترقّبوا العروض الحصرية والخصومات والصفقات المميزة المتاحة على التطبيق دلي لاس ! نلتزم بمساعدتكم على تحقيق توفير كبير في احتياجاتكم التسوقية اليومية. فلا تفوتوا هذه الفرصة!.",
   "CustomerSupportIfYouHaveAnyQuestions": "دعم العملاء: إذا كانت لديك أية أسئلة أو كنت بحاجة إلى المساعدة، فإن فريق دعم العملاء المخصص لدينا موجود لمساعدتك. يمكنك التواصل معنا من خلال التطبيق، وسنقوم بمعالجة على الفور.",
-  "FeedbackAndImprovementWeValueYourFeedback": "التعليقات والتحسينات: نحن نقدر تعليقاتك. تساعدنا اقتراحاتك على تحسين تطبيقنا وخدماتنا. نحن نبحث دائمًا عن طرق للتحسين وتزويدك بأفضل تجربة ممكنة.",
-  "ThankYouForChoosingOurAthome": "شكرًا لك على اختيار ات هوم لتلبية احتياجات، تسوق و نحن نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد",
+  "FeedbackAndImprovementWeValueYourFeedback": "آراؤكم وتطويرنا: نقدر ملاحظاتكم بقدر كبير. فاقتراحاتكم تساعدنا على تطوير تطبيقنا وخدماتنا. نحن نسعى دائمًا للبحث عن طرق للتحسين وتقديم أفضل تجربة ممكنة لكم.",
+  "ThankYouForChoosingOurAthome": "نشكركم على اختياركم تطبيق دلي لاس لتلبية طلباتكم. نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد!",
   "About Us": "حول التطبیق",
 
   //more old_order
   "Order Placed":"تم التثبیت الطلب",
   "Processing Order":"قید العمل",
-  "Order Is On way":"الطلبیة قيد التوصيل",
+  "Order Is On way":"سيتم توصيل طلبك قريبًا",
   "Order Ready For Pickup":"الطلبیة جاهز للاستلام",
   "Order is delivered":"تم توصيل الطلب",
   "Undelivered":"لم يتم توصيل الطلب",
@@ -211,10 +211,10 @@ const Map<String, String> ar = {
 
   //
   "min title":"الحد الأدنى للشراء المطلوب",
-  "min deatil":"أنت على بُعد قليل! أضف المزيد من المنتجات لتحقيق الحد الأدنى للطلب",
+  "min deatil":"أنت على بُعد قليل! نرجو منك إضاقة المزيد من المنتجات إلى طلبك حتى يتمكن من تلبية الحد الأدنى المطلوب",
 
   // item_categories
-  "You not have any item":"لا توجد عناصر متوفرة",
+  "You not have any item":"لا تملك أي عنصر",
 
   // oneitem --> labir kraboo
   "Add To Cart":"أضف إلى السلة",

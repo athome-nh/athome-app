@@ -12,7 +12,7 @@ const Map<String, String> en = {
   "wst02": "Learn From the Best",
   "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "wst03": "Fast Delevery",
-  "wsd03": "we will reach you whatever you are ",
+  "wsd03": "we will reach you wherever you are",
   "NEXT": "NEXT",
   "SKIP": "SKIP",
 
@@ -82,8 +82,6 @@ const Map<String, String> en = {
   "Edit": "Edit",
   "Orders": "Orders",
   "Address": "Address",
-  // "Pri": "Address",
-  // "Address": "Address",
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",
@@ -99,7 +97,7 @@ const Map<String, String> en = {
   "View":"View",
 
   // order_items
-  "Past Order": "Last Order",
+  "Past Order": "Order history",
   "Add More Items": "Add More Items",
 
   // old_order
@@ -110,7 +108,7 @@ const Map<String, String> en = {
   // check_out
   "Delivery Address": "Delivery Address",
   "Not have any location": "you don't have any location",
-  "Add new Location":"Add new Location",
+  "Add new Location":"Add a new Location",
   "Pyment Method": "Payment Method",
   "Cash on delivery": "Cash on delivery",
   "Coming soon": "Coming soon",
@@ -124,7 +122,7 @@ const Map<String, String> en = {
   "Back to Home": "Back to Home",
   "Please Delivery Address":"Please Add Delivery Address",
   "Send Order": "Send Order",
-  "sorryWeDoNotHaveDelivery": "sorry we do not have delivery at this time we send you this order tomorrow as soon as.and you can cancel the order till Accept by admin",
+  "sorryWeDoNotHaveDelivery": "sorry we don't offer delivery at this moment.we will dispatch your order as soon as possible.you can cancel the order until it is accepted by the admin.",
   "OK": "OK",
 
   // login_page
@@ -166,7 +164,7 @@ const Map<String, String> en = {
 
   // verification
   "Hold till the waiting time ends":"Hold till the waiting time ends",
-  "Please enter code":"Please enter code",
+  "Please enter code":"Please enter verification code",
   "Verification": "Verification",
   "Please enter the 6 digit code sent to":"Please enter the 6 digit code sent to",
   "Don't resive the OTP ?": "Didn't receive the OTP ?",
@@ -180,7 +178,7 @@ const Map<String, String> en = {
   // map
   "Map": "Map",
   "Zoom in Please": "Zoom in",
-  "Sorry, we don't deliver here": "Sorry, we don't deliver here",
+  "Sorry, we don't deliver here": "Sorry, we don't have delivery in the selected zone",
   "Delivery To:": "Deliver To:",
   "try again": "try again",
   "Failed to load data": "Failed to load data",
@@ -191,21 +189,21 @@ const Map<String, String> en = {
   "Cancel order": "Cancel order",
   "View order":"View order",
 
-  // about_screen     // check athome
-  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
-  "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online supermarket offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  // about_screen
+  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
+  "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online market  application offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
   "EasyToUseInterfaceOurUserFriendly": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "SecurePaymentWePrioritizeTheSecurity": "Secure Payment: We prioritize the security of your payment information. Our application uses secure payment gateways to ensure that your transactions are protected.",
-  "PromotionsAndDealsKeep": "Promotions and Deals: Keep an eye out for special promotions, discounts, and deals available on our platform. We want to help you save while you shop.",
-  "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we'll promptly address your concerns.",
+  "SecurePaymentWePrioritizeTheSecurity": "Secure payment: We prioritize the security of your payment information.Our application utilizes a secure payment gateway to safeguard your transactions, prioritizing the utmost protection of your sensitive financial information",
+  "PromotionsAndDealsKeep": "promotions and deals: keep an eye out for special promotions, discounts, and deals available on our platform. We're committed to helping you save big on your everyday shopping needs. So don't miss out!",
+  "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we will promptly address your concerns.",
   "FeedbackAndImprovementWeValueYourFeedback": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "ThankYouForChoosingOurAthome": "Thank you for choosing our Dlly Las for your grocery shopping needs. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  "ThankYouForChoosingOurAthome": "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
    "About Us": "About Us",
 
   //more old_order
   "Order Placed":"Order Placed",
   "Processing Order":"Processing Order",
-  "Order Is On way":"Order Is On way",
+  "Order Is On way":"Your order is on it's way",
   "Order Ready For Pickup":"Order Ready For Pickup",
   "Order is delivered":"The order is delivered",
   "Undelivered":"Undelivered",
@@ -216,7 +214,7 @@ const Map<String, String> en = {
   "min deatil":"You're almost there! Add more items to reach the minimum order amount.",
 
   // item_categories
-  "You not have any item":"No items are available",
+  "You not have any item":"You do not have any items",
 
   // oneitem --> labir kraboo
   "Add To Cart":"Add To Cart",
