@@ -28,7 +28,7 @@ List images = [
   "assets/images/new_way.gif",
   "assets/images/new_delivered.gif",
   "assets/images/Order-Success.gif",
-  "assets/images/Order-Success.gif",
+  "assets/images/Order-Faild.gif",
 ];
 late List titles;
 late List content;
@@ -71,6 +71,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "Order Is On way",
         "Order Ready For Pickup",
         "The Order Is Delivered"
+        "Undelivered",
       ];
       content = [
         "Great choice! Your order is confirmed. Thanks for shopping with us.",
@@ -78,6 +79,8 @@ class _TrackOrderState extends State<TrackOrder> {
         "Our team is working on your order. Updates will follow shortly.",
         "Your order is in transit and will be at your doorstep soon.",
         "You can now pick up your order. The driver is waiting on your doorstep!",
+        "The Order Is Delivered",
+        "Undelivered",
       ];
     } else if (lang == "ar") {
       titles = [
@@ -86,7 +89,8 @@ class _TrackOrderState extends State<TrackOrder> {
         "قید العمل",
         "الطلبیة قيد التوصيل",
         "الطلبیة جاهز للاستلام",
-        "تم توصيل الطلب"
+        "تم توصيل الطلب",
+        "لم يتم توصيل الطلب",
       ];
       content = [
         "اختيار رائع! تم تأكيد طلبك. شكرًا لتسوقك معنا",
@@ -94,6 +98,8 @@ class _TrackOrderState extends State<TrackOrder> {
         "يُعمل فريقنا على طلبك حاليًا. يتم إرسال التحديثات إليك قريبًا",
         "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبًا",
         "الطلب جاهز للاستلام الآن. السائق في انتظارك",
+        "تم توصيل الطلب",
+        "لم يتم توصيل الطلب",
       ];
     } else {
       titles = [
@@ -102,7 +108,8 @@ class _TrackOrderState extends State<TrackOrder> {
         "لە ژێر کارکردن دایە",
         "داواکاریەکە لە ڕێگایە ",
         "داواکاریەکە ئامادەیە بۆ وەرگرتن",
-        "داواکاریەکە گەیەنرا"
+        "داواکاریەکە گەیەنرا",
+        "داواکاریەکە نەگەیەنرا",
       ];
       content = [
         "داواکاریەکی دروست! ، داواکاریەکەت وەرگیرا. سوپاس بۆ بازاڕکردنت لەگەڵ ئێمە",
@@ -110,6 +117,8 @@ class _TrackOrderState extends State<TrackOrder> {
         "داواکاریەکەت کاری لەسەر دەکرێت، لەهەر نوێکاریەک بە زووترین کات ئاگادار دەکرێیتەوە",
         "داواکاریەکە لە ڕێگایە لە زووترین کاتدا دەگاتە لات",
         "دەتوانیت داواکاریەکەتان وەربگرن. شۆفێر لەبەر دەرگایە",
+        "داواکاریەکە گەیەنرا"
+        "داواکاریەکە نەگەیەنرا",
       ];
     }
     updateStatus();
