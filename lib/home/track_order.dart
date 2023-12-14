@@ -70,7 +70,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "Processing Order",
         "Order Is On way",
         "Order Ready For Pickup",
-        "The Order Is Delivered"
+        "The Order Is Delivered",
         "Undelivered",
       ];
       content = [
@@ -78,6 +78,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "Our team is working on your order. Updates will follow shortly.",
         "Our team is working on your order. Updates will follow shortly.",
         "Your order is in transit and will be at your doorstep soon.",
+        
         "You can now pick up your order. The driver is waiting on your doorstep!",
         "We are pleased to inform you that your esteemed order has been delivered successfully.",
         "Unfortunately, your order wasn't delivered. Please call our customer support team.",
@@ -93,9 +94,9 @@ class _TrackOrderState extends State<TrackOrder> {
         "لم يتم توصيل الطلب",
       ];
       content = [
-        "اختيار رائع! تم تأكيد طلبك. شكرًا لتسوقك معنا",
-        "يُعمل فريقنا على طلبك حالياً. يتم إرسال التحديثات إليك قريبًا",
-        "يُعمل فريقنا على طلبك حالياً. يتم إرسال التحديثات إليك قريبًا",
+        "اختيار رائع! تم تأكيد طلبك. شكرا لتسوقك معنا",
+        "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبًا",
+        "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبا",
         "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبًا",
         "الطلب جاهز للاستلام الآن. السائق في انتظارك",
         "يسعدنا إخباركم بأن طلبكم الموقّر قد تم تسليمه بنجاح.",
