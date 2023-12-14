@@ -217,6 +217,12 @@ const Map<String, String> en = {
   "You not have any item":"You do not have any items",
 
   // oneitem --> labir kraboo
-  "Add To Cart":"Add To Cart",
+  "Add to cart":"Add to cart",
+
+  //
+  "Privacy Poilcy":"Privacy policy",
+  "Terms Of Use":"Terms Of Use",
+
+
 
 };

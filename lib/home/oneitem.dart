@@ -316,7 +316,7 @@ class _OneitemState extends State<Oneitem> {
                                   getWidth(context, 40), getHeight(context, 4)),
                             ),
                             child: Text(
-                              "Add To Cart".tr,
+                              "Add To cart".tr,
                             ),
                           ),
                     isItemInCart
