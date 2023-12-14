@@ -217,7 +217,12 @@ const Map<String, String> ar = {
   "You not have any item":"لا تملك أي عنصر",
 
   // oneitem --> labir kraboo
-  "Add To Cart":"أضف إلى السلة",
+  "Add to cart":"أضف إلى السلة",
+
+  //
+  "Privacy Poilcy":"سياسة الخصوصية",
+  "Terms Of Use":"شروط الاستخدام",
+
 
 
 };

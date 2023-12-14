@@ -217,5 +217,9 @@ const Map<String, String> kur = {
   "You not have any item":"هیچ بابەتێک بەردەست نیە",
 
   // oneitem --> labir kraboo
-  "Add To Cart":"زیادی بکە بۆ سەبەتە",
+  "Add to cart":"زیادی بکە بۆ سەبەتە",
+
+  //
+  "Privacy Poilcy":"سیاسەتی  تایبەتمەندێتی",
+  "Terms Of Use":"مەرجەکانی بەکارهێنان",
 };
