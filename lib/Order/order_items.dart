@@ -444,7 +444,9 @@ class _OrederItemsState extends State<OrederItems> {
                                             cartProvider
                                                 .calculateTotalPricePast(
                                                     CardItemshow))),
-                                  );
+                                  ).then((value) {
+                                    cartProvider.clearCart();
+                                  });
                                 },
                                 style: TextButton.styleFrom(
                                   backgroundColor: mainColorRed,
