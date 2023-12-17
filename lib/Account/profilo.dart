@@ -63,7 +63,7 @@ class _SettingState extends State<Setting> {
 
   List<String> items = [
     'Male',
-    'Female',
+    'Female', 
   ];
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
