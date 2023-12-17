@@ -61,7 +61,7 @@ class _SettingState extends State<Setting> {
 
   String selectedLanguage = 'English';
 
-  List<String> items = [
+  List<String> items = [ 
     'Male',
     'Female', 
   ];

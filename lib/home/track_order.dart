@@ -78,7 +78,6 @@ class _TrackOrderState extends State<TrackOrder> {
         "Our team is working on your order. Updates will follow shortly.",
         "Our team is working on your order. Updates will follow shortly.",
         "Your order is in transit and will be at your doorstep soon.",
-
         "You can now pick up your order. The driver is waiting on your doorstep!",
         "We are pleased to inform you that your esteemed order has been delivered successfully.",
         "Unfortunately, your order wasn't delivered. Please call our customer support team.",
