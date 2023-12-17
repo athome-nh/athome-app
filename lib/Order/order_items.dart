@@ -231,7 +231,7 @@ class _OrederItemsState extends State<OrederItems> {
                                                       product:
                                                           cartitemQ.product);
                                                   cartProvider
-                                                      .addToCartPast(cartItem);
+                                                      .plusToCartPast(cartItem);
                                                 },
                                           child: Container(
                                             decoration: BoxDecoration(
@@ -434,6 +434,8 @@ class _OrederItemsState extends State<OrederItems> {
                                   if (await noInternet(context)) {
                                     return;
                                   }
+                                  cartProvider.addPastToCart(
+                                      cartProvider.cartItemsPast);
 
                                   Navigator.push(
                                     context,

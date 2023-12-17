@@ -226,6 +226,23 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void plusToCartPast(CartItemPast cartItem) {
+    // Check if the item already exists in the cart
+    final existingItemIndex = _cartItemsPast.indexWhere(
+      (item) => item.product == cartItem.product,
+    );
+
+    if (existingItemIndex != -1) {
+      // If the item exists, update the quantity
+      _cartItemsPast[existingItemIndex].quantity += 1;
+    } else {
+      // If the item doesn't exist, add it to the cart
+      _cartItemsPast.add(cartItem);
+    }
+
+    notifyListeners();
+  }
+
   void clearCartPast() {
     cartItemsPast.clear();
 
