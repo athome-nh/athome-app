@@ -217,7 +217,7 @@ class CartProvider extends ChangeNotifier {
 
     if (existingItemIndex != -1) {
       // If the item exists, update the quantity
-      _cartItemsPast[existingItemIndex].quantity += cartItem.quantity;
+      _cartItemsPast[existingItemIndex].quantity = cartItem.quantity;
     } else {
       // If the item doesn't exist, add it to the cart
       _cartItemsPast.add(cartItem);

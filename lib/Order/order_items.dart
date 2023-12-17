@@ -55,21 +55,8 @@ class _OrederItemsState extends State<OrederItems> {
                     itemCount: cartProvider.cartItemsPast.length,
                     itemBuilder: (BuildContext context, int index) {
                       final cartitem = CardItemshow[index];
-
                       final cartitemQ = cartProvider.cartItemsPast[index];
-                      if (checkProductLimit(cartitem, cartitemQ.quantity)) {
-                        final cartItem = CartItemPast(
-                          product: cartitem.id!,
-                          quantity: cartitem.orderLimit!,
-                        );
-                        cartProvider.addToCartPast(cartItem);
-                      } else if (cartitemQ.quantity > cartitem.stock!) {
-                        final cartItem = CartItemPast(
-                          product: cartitem.id!,
-                          quantity: cartitem.stock!,
-                        );
-                        cartProvider.addToCartPast(cartItem);
-                      }
+
                       return Dismissible(
                         key: Key(cartitem.id.toString()),
                         direction: DismissDirection.startToEnd,

@@ -66,9 +66,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
     //request user permission for push notification
     FirebaseMessaging.instance.requestPermission();
     FirebaseMessaging _firebaseMessage = FirebaseMessaging.instance;
-    String? deviceToken = await _firebaseMessage.getAPNSToken();
+    // String? deviceToken = await _firebaseMessage.getAPNSToken();
     String? deviceToken2 = await _firebaseMessage.getToken();
-    print(deviceToken2);
     return (deviceToken2 == null) ? "sdd" : deviceToken2;
   }
 
@@ -81,10 +80,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
 
   @override
   void initState() {
-//      FCMNotification(context).config();
-//    print(FCMNotification(context).getToken());
-//  a();
-
     prenttoken();
     getStringPrefs("lang").then((value) {
       setState(() {
