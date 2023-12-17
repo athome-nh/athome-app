@@ -1,3 +1,4 @@
+import 'package:DllyLas/Config/athome_functions.dart';
 import 'package:DllyLas/Order/old_order.dart';
 import 'package:DllyLas/Order/order_items.dart';
 
@@ -253,76 +254,6 @@ class _OrderScreenState extends State<OrderScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            // Container(
-                                            //   height: getHeight(context, 4),
-                                            //   decoration: BoxDecoration(
-                                            //       border: Border.all(
-                                            //           color: mainColorGrey),
-                                            //       borderRadius:
-                                            //           BorderRadius.circular(5)),
-                                            //   child: TextButton(
-                                            //       onPressed: () {
-                                            //         productrovider
-                                            //             .getordersbyOrderId(
-                                            //                 order.id.toString())
-                                            //             .forEach((element) {
-                                            //           final existingItemIndex =
-                                            //               productrovider.products
-                                            //                   .indexWhere(
-                                            //             (pro) =>
-                                            //                 pro.id ==
-                                            //                 element.productId,
-                                            //           );
-                                            //           print(existingItemIndex);
-                                            //           if (existingItemIndex !=
-                                            //               -1) {
-                                            //             //count order
-                                            //             final cartItem =
-                                            //                 CartItemPast(
-                                            //               product:
-                                            //                   element.productId!,
-                                            //               quantity: (element
-                                            //                       .pickedQt! -
-                                            //                   element
-                                            //                       .returnedQt!),
-                                            //             );
-                                            //             cartProvider
-                                            //                 .addToCartPast(
-                                            //                     cartItem);
-                                            //           } else {}
-                                            //         });
-                                            //         Navigator.push(
-                                            //           context,
-                                            //           MaterialPageRoute(
-                                            //               builder: (context) =>
-                                            //                   const OrederItems()),
-                                            //         ).then((value) {
-                                            //           cartProvider
-                                            //               .clearCartPast();
-                                            //         });
-                                            //       },
-                                            //       child: Row(
-                                            //         children: [
-                                            //           Text(
-                                            //             "Re order".tr,
-                                            //             style: TextStyle(
-                                            //                 color: mainColorGrey,
-                                            //                 fontFamily:
-                                            //                     mainFontnormal,
-                                            //                 fontSize: 12),
-                                            //           ),
-                                            //           const SizedBox(
-                                            //             width: 5,
-                                            //           ),
-                                            //           Icon(
-                                            //             Ionicons.repeat_outline,
-                                            //             color: mainColorRed,
-                                            //             size: 20,
-                                            //           ),
-                                            //         ],
-                                            //       )),
-                                            // ),
-
                                             TextButton(
                                               onPressed: () {
                                                 productrovider
@@ -336,20 +267,61 @@ class _OrderScreenState extends State<OrderScreen> {
                                                         pro.id ==
                                                         element.productId,
                                                   );
-                                                  print(existingItemIndex);
+
                                                   if (existingItemIndex != -1) {
                                                     //count order
-
-                                                    final cartItem =
-                                                        CartItemPast(
-                                                      product:
-                                                          element.productId!,
-                                                      quantity: (element
-                                                              .pickedQt! -
-                                                          element.returnedQt!),
-                                                    );
-                                                    cartProvider.addToCartPast(
-                                                        cartItem);
+                                                    final productitem =
+                                                        productrovider.products[
+                                                            existingItemIndex];
+                                                    int count = (element
+                                                            .pickedQt! -
+                                                        element.returnedQt!);
+                                                    print(productitem.nameEn
+                                                            .toString() +
+                                                        ":" +
+                                                        count.toString());
+                                                    if (checkOferPrice(
+                                                            productitem) &&
+                                                        productitem
+                                                                .orderLimit! <
+                                                            count) {
+                                                      print(productitem.nameEn);
+                                                      final cartItem =
+                                                          CartItemPast(
+                                                        product:                              
+                                                            productitem.id!,
+                                                        quantity: productitem
+                                                            .orderLimit!,
+                                                      );
+                                                      cartProvider
+                                                          .addToCartPast(
+                                                              cartItem);
+                                                    } else if (count >
+                                                        productitem.stock!) {
+                                                      final cartItem =
+                                                          CartItemPast(
+                                                        product:
+                                                            productitem.id!,
+                                                        quantity:
+                                                            productitem.stock!,
+                                                      );
+                                                      cartProvider
+                                                          .addToCartPast(
+                                                              cartItem);
+                                                    } else {
+                                                      final cartItem =
+                                                          CartItemPast(
+                                                        product:
+                                                            element.productId!,
+                                                        quantity: (element
+                                                                .pickedQt! -
+                                                            element
+                                                                .returnedQt!),
+                                                      );
+                                                      cartProvider
+                                                          .addToCartPast(
+                                                              cartItem);
+                                                    }
                                                   } else {}
                                                 });
                                                 Navigator.push(
