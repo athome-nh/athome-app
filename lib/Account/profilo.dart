@@ -36,6 +36,7 @@ class _SettingState extends State<Setting> {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       _image = pickedFile;
+
       change();
     });
   }
@@ -63,7 +64,7 @@ class _SettingState extends State<Setting> {
 
   List<String> items = [
     'Male',
-    'Female', 
+    'Female',
   ];
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
