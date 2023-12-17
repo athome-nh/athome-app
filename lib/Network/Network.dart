@@ -92,7 +92,32 @@ class Network {
           'Authorization': "Bearer " + token,
           'aToken': encryptAES(generateRandomText(time.data["data"])),
         };
+        print(filepath);
+        // try {
+        //   // Create a FormData object to hold the image file
+        //   FormData formData = FormData.fromMap({
+        //     'image':
+        //         await MultipartFile.fromFile(filepath, filename: 'image.jpg'),
+        //   });
+        //   dio.options.headers["Authorization"] = "Bearer " + token;
 
+        //   dio.options.headers["aToken"] =
+        //       encryptAES(generateRandomText(time.data["data"]));
+        //   // Send the image using a POST request
+        //   var response = await dio.post(addimageUrl, data: formData);
+
+        //   // Check if the request was successful (status code 200)
+        //   if (response.statusCode == 201) {
+        //     print("response");
+        //     print(response.data);
+        //     print('Image uploaded successfully');
+        //   } else {
+        //     print(
+        //         'Failed to upload image. Status code: ${response.statusCode}');
+        //   }
+        // } catch (error) {
+        //   print('Error uploading image: $error');
+        // }
         var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
           ..fields.addAll(body)
           ..headers.addAll(headers)
@@ -106,6 +131,7 @@ class Network {
           print('Response data: $decodedData');
           return true;
         } else {
+          print(response.statusCode);
           return false;
         }
       });
