@@ -78,7 +78,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "Our team is working on your order. Updates will follow shortly.",
         "Our team is working on your order. Updates will follow shortly.",
         "Your order is in transit and will be at your doorstep soon.",
-        
+
         "You can now pick up your order. The driver is waiting on your doorstep!",
         "We are pleased to inform you that your esteemed order has been delivered successfully.",
         "Unfortunately, your order wasn't delivered. Please call our customer support team.",
@@ -95,12 +95,12 @@ class _TrackOrderState extends State<TrackOrder> {
       ];
       content = [
         "اختيار رائع! تم تأكيد طلبك. شكرا لتسوقك معنا",
-        "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبًا",
         "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبا",
-        "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبًا",
+        "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبا",
+        "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبا",
         "الطلب جاهز للاستلام الآن. السائق في انتظارك",
-        "يسعدنا إخباركم بأن طلبكم الموقّر قد تم تسليمه بنجاح.",
-        "نعتذر، طلبكم لم يصل، فضلاً اتصلوا بدعم العملاء لحل مشكلة",
+        "يسعدنا إخباركم بأن طلبكم الموقر قد تم تسليمه بنجاح",
+        "نعتذر، طلبكم لم يصل، فضلا اتصلوا بدعم العملاء لحل مشكلة",
       ];
     } else {
       titles = [
@@ -119,7 +119,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "داواکاریەکە لە ڕێگایە لە زووترین کاتدا دەگاتە لات",
         "دەتوانیت داواکاریەکەتان وەربگرن. شۆفێر لەبەر دەرگایە",
         "ئاگادارتان دەکەینەوە کە داواکاری بەڕێزتان بە سەرکەوتوویی گەیشتووە."
-        "ببورە، داواکاریەکەت نەگەیشت، بۆ زانیاری زیاتر پەیوەندی بکە بە کارمەندی بەشی خزمەتگوزاری بەشداربووان.",
+        "داواکاریەکەت نەگەیشت، تکایە پەیوەندی بکە بە کارمەندی بەشی خزمەتگوزاری بەشداربووان.",
       ];
     }
     updateStatus();
