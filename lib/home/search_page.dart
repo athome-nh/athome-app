@@ -105,17 +105,15 @@ class _SearchState extends State<Search> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                
                                 SizedBox(
-                                  height: getHeight(context, 10),
-                                ),
-                                SizedBox(
-                                  width: getWidth(context, 100),
-                                  height: getWidth(context, 100),
+                                  width: getWidth(context, 80),
+                                  height: getWidth(context, 80),
                                   child: Image.asset(
                                       "assets/Victors/serach_empty.png"),
                                 ),
                                 SizedBox(
-                                  height: getHeight(context, 2),
+                                  height: getHeight(context, 5),
                                 ),
                                 Text(
                                   "Not found any item".tr,
