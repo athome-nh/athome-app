@@ -347,10 +347,9 @@ class _TrackOrderState extends State<TrackOrder> {
                                             Provider.of<productProvider>(
                                                 context,
                                                 listen: false);
-                                        productrovider.updateOrder(
-                                            int.parse(widget.id), status);
                                         productrovider.getDataUser(
                                             userdata["id"].toString());
+
                                         Navigator.pop(context);
                                       }
                                     }

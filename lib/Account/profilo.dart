@@ -33,7 +33,8 @@ class _SettingState extends State<Setting> {
   XFile? _image;
 
   Future<void> _getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     setState(() {
       _image = pickedFile;
 
@@ -62,7 +63,7 @@ class _SettingState extends State<Setting> {
 
   String selectedLanguage = 'English';
 
-  List<String> items = [ 
+  List<String> items = [
     'Male',
     'Female',
   ];
@@ -272,6 +273,7 @@ class _SettingState extends State<Setting> {
                                               width: getWidth(context, 40),
                                               height: getWidth(context, 40),
                                               imageUrl: imageUrlServer,
+                                              filterQuality: FilterQuality.low,
                                               placeholder: (context, url) =>
                                                   Image.asset(
                                                       "assets/images/home.png"),

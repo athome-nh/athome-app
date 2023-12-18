@@ -51,8 +51,8 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final productrovider = Provider.of<productProvider>(context, listen: false);
-    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    final productrovider = Provider.of<productProvider>(context, listen: true);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     return productrovider.nointernetCheck
         ? noInternetWidget(context)
         : Directionality(
@@ -273,22 +273,23 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     final productitem =
                                                         productrovider.products[
                                                             existingItemIndex];
-                                                    int count = (element
-                                                            .pickedQt! -
-                                                        element.returnedQt!);
-                                                    print(productitem.nameEn
-                                                            .toString() +
-                                                        ":" +
-                                                        count.toString());
+                                                    int count = element.qt!;
+                                                    if (order.status == 5) {
+                                                      count = (element
+                                                              .pickedQt! -
+                                                          element.returnedQt!);
+                                                    } else {
+                                                      count = element.qt!;
+                                                    }
+
                                                     if (checkOferPrice(
                                                             productitem) &&
                                                         productitem
                                                                 .orderLimit! <
                                                             count) {
-                                                      print(productitem.nameEn);
                                                       final cartItem =
                                                           CartItemPast(
-                                                        product:                              
+                                                        product:
                                                             productitem.id!,
                                                         quantity: productitem
                                                             .orderLimit!,
@@ -313,10 +314,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                           CartItemPast(
                                                         product:
                                                             element.productId!,
-                                                        quantity: (element
-                                                                .pickedQt! -
-                                                            element
-                                                                .returnedQt!),
+                                                        quantity: count,
                                                       );
                                                       cartProvider
                                                           .addToCartPast(
