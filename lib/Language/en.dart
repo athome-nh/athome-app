@@ -90,7 +90,7 @@ const Map<String, String> en = {
   "My Orders":"My Orders",
   "On going":"On going",
   "History":"History",
-  "Order number:":"Order number:",
+  "Order number:":"Order number: ",
   "Date:": "Date:",
   "You not have any order": "You do not have any order",
   "Re order":"Reorder",
@@ -101,7 +101,7 @@ const Map<String, String> en = {
   "Add More Items": "Add More Items",
 
   // old_order
-  "Quantity: ":"Quantity: ", // check bawar
+  "Quantity: ":"Quantity : ",
   "Date and Time":"Date and Time",
   "Order No.":"Order No.",
 

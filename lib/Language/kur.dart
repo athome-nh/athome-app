@@ -90,7 +90,7 @@ const Map<String, String> kur = {
   "My Orders":"داواکاریەکانم",
   "On going": "بەردەوامی هەیە",
   "History":"داواکاریەکانی ڕابردوو",
-  "Order number:":"ژمارەی داواکاری:",
+  "Order number:":"ژمارەی داواکاری :",
   "Date:": "به‌روار:",
   "You not have any order": "هیچ داواکاریەکت نیە",
   "Re order":"دوبارە داواکردن",
@@ -101,7 +101,7 @@ const Map<String, String> kur = {
   "Add More Items": "زیادکردنی بەرهەمی تر",
 
   // old_order
-  "Quantity: ":"بڕی",
+  "Quantity: ":"بڕی : ",
   "Date and Time":"کات و بەروار",
   "Order No.":"ژمارەی داواکاری",
 
@@ -129,7 +129,7 @@ const Map<String, String> kur = {
   "Wellcome back": "بەخێر بێیتەوە",
   "EnterYourPhoneNumberToShop": "ژمارە مۆبایل داخڵ بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
   "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت داخڵ بکە ",
-  "Please enter your phone number correct":"تکایە ژمارەی مۆبایلەلەکت بە دروستی داخڵ بکە",
+  "Please enter your phone number correct":"ژمارەی مۆبایلەلەکت بە دروستی داخڵ بکە",
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
   "Phone Number": "ژمارە مۆبایل",
   "WeWillSendYouOTP":"کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
