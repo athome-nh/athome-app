@@ -90,7 +90,7 @@ const Map<String, String> ar = {
   "My Orders":"طلباتي",
   "On going":"جاري التنفیذ",
   "History":"السجل",
-  "Order number:":"رقم الطلب",
+  "Order number:":"رقم الطلبیة:",
   "Date:": "التأريخ:",
   "You not have any order": "لیس لدیك اي طلب",
   "Re order":"إعادة الطلب",
