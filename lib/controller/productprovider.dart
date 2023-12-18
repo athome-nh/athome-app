@@ -77,9 +77,9 @@ class productProvider extends ChangeNotifier {
           setMinimumOrder(value['minimum_order']);
           if (user) {
             getDataUser(userdata["id"].toString());
+          } else {
+            setshow(true);
           }
-
-          setshow(true);
         } else {}
       } else {}
     });
@@ -99,7 +99,6 @@ class productProvider extends ChangeNotifier {
           setOrderItems((value['orders_item'] as List)
               .map((x) => OrderItems.fromMap(x))
               .toList());
-
           setshow(true);
         } else {}
       } else {}
@@ -375,7 +374,7 @@ class productProvider extends ChangeNotifier {
         ? category!.nameEn.toString()
         : lang == "ar"
             ? category!.nameAr.toString()
-            : category!.nameKu.toString() ?? 'Category Not Found';
+            : category!.nameKu.toString();
   }
 
   ProductModel getoneProductById(int itemId) {
@@ -414,9 +413,9 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
-  List<OrderItems> getordersbyOrderId(String order_id) {
+  List<OrderItems> getordersbyOrderId(String orderId) {
     return _Orderitems.where(
-        (product) => order_id.contains(product.orderId.toString())).toList();
+        (product) => orderId.contains(product.orderId.toString())).toList();
   }
 
   void updateOrder(int oid, int status) {
@@ -426,7 +425,7 @@ class productProvider extends ChangeNotifier {
       notifyListeners();
     } else {
       // Handle the case where the product with the specified ID is not found.
-      print('Product with ID ${oid} not found.');
+      print('Product with ID $oid not found.');
     }
   }
 
@@ -444,12 +443,11 @@ class productProvider extends ChangeNotifier {
 
   int calculateTotalPriceOrder(int id) {
     int totalPrice = 0;
-    int i = 0;
+
     for (var order in _Orderitems) {
       if (order.id == id) {
         totalPrice += order.sellPrice! * order.qt!;
       }
-      i++;
     }
 
     return totalPrice;
@@ -558,10 +556,6 @@ class productProvider extends ChangeNotifier {
     Locationuser item = _location.firstWhere(
       (element) => element.id == itemId,
     );
-
-    if (item == null) {
-      throw Exception('Item with ID $itemId not found');
-    }
 
     return item;
   }
