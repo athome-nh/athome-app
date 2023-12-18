@@ -158,17 +158,15 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 if (userInput!.isEmpty) {
                                   return 'Please enter your phone number'.tr;
                                 }
-                                if (userInput.length < 10) {
+                                if (userInput.length < 11) {
                                   return 'Please enter your phone number correct'
                                       .tr;
                                 }
-                                if (userInput.toString().startsWith("0")) {
-                                  return 'Please remove 0 form start'.tr;
-                                }
-                                if (userInput.length == 10) {}
+
+                                if (userInput.length == 11) {}
                                 return null; // Return null when the input is valid
                               },
-                              maxLength: 10,
+                              maxLength: 11,
                               keyboardType: TextInputType.number,
                               cursorColor: mainColorRed,
                               inputDecoration: InputDecoration(
@@ -210,10 +208,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           toastLong('Please enter your phone number'.tr);
                           return;
                         }
-                        if (controller.text.startsWith("0")) {
-                          toastLong('Please remove 0 form start'.tr);
-                          return;
-                        }
+
                         if (controller.text.length < 10) {
                           toastLong('Please enter your phone number'.tr);
                           return;
