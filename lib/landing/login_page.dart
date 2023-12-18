@@ -209,7 +209,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           return;
                         }
 
-                        if (controller.text.length < 10) {
+                        if (controller.text.length < 11) {
                           toastLong('Please enter your phone number'.tr);
                           return;
                         }
