@@ -101,7 +101,7 @@ const Map<String, String> en = {
   "Add More Items": "Add More Items",
 
   // old_order
-  "Quantity: ":"Quantity : ",
+  "Quantity: ":"Quantity: ",
   "Date and Time":"Date and Time",
   "Order No.":"Order No.",
 
@@ -116,7 +116,7 @@ const Map<String, String> en = {
   "Add your note": "Add your note",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
-  "Order Number:": "Order Number:", 
+  "Order Number:": "Order Number: ", 
   "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
@@ -129,7 +129,7 @@ const Map<String, String> en = {
   "Wellcome back": "Welcome back",
   "EnterYourPhoneNumberToShop": "Enter your phone number to Shop Smarter & Easier.",
   "Please enter your phone number": "Please enter your phone number",
-  "Please enter your phone number correct":"Please enter your phone number correctly",
+  "Please enter your phone number correct":"accurate phone number needed",
   "Please remove 0 form start": "Please remove 0 form the start",
   "Phone Number": "Phone Number",
   "WeWillSendYouOTP":"We will send you OTP code to verify your phone number.",
@@ -178,14 +178,14 @@ const Map<String, String> en = {
   // map
   "Map": "Map",
   "Zoom in Please": "Zoom in",
-  "Sorry, we don't deliver here": "Sorry, we don't have delivery in the selected zone",
+  "Sorry, we don't deliver here": "your location excludes delivery service",
   "Delivery To:": "Deliver To:",
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
   // track_order
   "Track Order": "Track your Order",
-  "Order:": "Order:",
+  "Order:": "Order: ",
   "Cancel order": "Cancel order",
   "View order":"View order",
 

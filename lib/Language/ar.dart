@@ -116,7 +116,7 @@ const Map<String, String> ar = {
   "Add your note": "أضف ملاحظاتك",
   "Thank You!": "شکرا",
   "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
-  "Order Number:": "رقم الطلبیة:",
+  "Order Number:": "رقم الطلبیة: ",
   "YourOrderIsNowBeingProcessed": "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر. يمكنكم التحقق من حالة طلبك في أي وقت.",
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
@@ -185,7 +185,7 @@ const Map<String, String> ar = {
 
   // track_order
   "Track Order": "تابع الطلبیة",
-  "Order:": "الطلبیة:",
+  "Order:": "الطلبیة: ",
   "Cancel order": "الغاء الطلب",
   "View order":"عرض الطلب",
 
