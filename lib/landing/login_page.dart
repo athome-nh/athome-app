@@ -46,6 +46,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
     super.dispose();
   }
 
+  int max = 11;
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -141,7 +142,17 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               countries: const ["IQ"],
                               initialValue: initialPhoneNumber,
                               focusNode: null,
-                              onInputChanged: (PhoneNumber number) {},
+                              onInputChanged: (PhoneNumber number) {
+                                if (controller.text.startsWith("0")) {
+                                  setState(() {
+                                    max = 11;
+                                  });
+                                } else {
+                                  setState(() {
+                                    max = 10;
+                                  });
+                                }
+                              },
                               onInputValidated: (bool value) {},
                               selectorConfig: const SelectorConfig(
                                 selectorType:
@@ -158,15 +169,15 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 if (userInput!.isEmpty) {
                                   return 'Please enter your phone number'.tr;
                                 }
-                                if (userInput.length < 11) {
+                                if (userInput.length < max) {
                                   return 'Please enter your phone number correct'
                                       .tr;
                                 }
 
-                                if (userInput.length == 11) {}
+                                if (userInput.length == max) {}
                                 return null; // Return null when the input is valid
                               },
-                              maxLength: 11,
+                              maxLength: max,
                               keyboardType: TextInputType.number,
                               cursorColor: mainColorRed,
                               inputDecoration: InputDecoration(
@@ -209,14 +220,17 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           return;
                         }
 
-                        if (controller.text.length < 11) {
+                        if (controller.text.length < max) {
                           toastLong('Please enter your phone number'.tr);
                           return;
                         }
-
                         String ph = controller.text.trim();
-                        ph = "+964$ph";
+                        if (controller.text.startsWith("0")) {
+                          ph = ph.substring(1);
+                        }
 
+                        ph = "+964$ph";
+                        print(ph);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
