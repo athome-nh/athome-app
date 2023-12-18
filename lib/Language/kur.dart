@@ -101,7 +101,7 @@ const Map<String, String> kur = {
   "Add More Items": "زیادکردنی بەرهەمی تر",
 
   // old_order
-  "Quantity: ":"بڕی : ",
+  "Quantity: ":"",
   "Date and Time":"کات و بەروار",
   "Order No.":"ژمارەی داواکاری",
 
@@ -116,7 +116,7 @@ const Map<String, String> kur = {
   "Add your note": "زیادکردنی تێبینی",
   "Thank You!": "سوپاس",
   "for yor order": "بۆ بازاڕکردن و هەڵبژاردنی دڵی لاس مارکێت",
-  "Order Number:": "ژمارەی داواکاری:",
+  "Order Number:": "ژمارەی داواکاری: ",
   "YourOrderIsNowBeingProcessed": "داواکاریەکەت لە جێبەجێ کردن دایە. لە کاتی وەرگرتنی داواکاریەکەت ئاگادار دەکرێیتەوە.دەتوانیت لە هەر کاتێک زانیاری لەسەر داواکاریەکەت وەرگریت.",
   "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
   "Back to Home": "گەڕانەوە بۆ پەرەی سەرەکی",
@@ -185,7 +185,7 @@ const Map<String, String> kur = {
 
   // track_order
   "Track Order": "بەدواداچوونی داواکاری",
-  "Order:": "داواکاری:",
+  "Order:": "داواکاری: ",
   "Cancel order": "پوچەڵ کردنەوەی داواکاری",
   "View order":"بینینی داواکاری ",
 
