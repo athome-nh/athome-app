@@ -117,7 +117,7 @@ const Map<String, String> ar = {
   "Thank You!": "شکرا",
   "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
   "Order Number:": "رقم الطلبیة: ",
-  "YourOrderIsNowBeingProcessed": "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر. يمكنكم التحقق من حالة طلبك في أي وقت.",
+  "YourOrderIsNowBeingProcessed": "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر.",
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
   "Please Delivery Address":"يرجى إضافة الموقع",

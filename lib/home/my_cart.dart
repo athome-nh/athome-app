@@ -713,8 +713,7 @@ class _MyCartState extends State<MyCart> {
                                       ),
                                       Text(
                                         textAlign: TextAlign.end,
-                                        addCommasToPrice(cartProvider
-                                            .calculateTotalPrice(CardItemshow)),
+                                        addCommasToPrice(10000),
                                         style: TextStyle(
                                             color: mainColorBlack,
                                             fontFamily: mainFontnormal,
@@ -778,8 +777,7 @@ class _MyCartState extends State<MyCart> {
                                       ),
                                       Text(
                                         textAlign: TextAlign.end,
-                                        addCommasToPrice(cartProvider
-                                            .calculateTotalPrice(CardItemshow)),
+                                        addCommasToPrice(10000),
                                         style: TextStyle(
                                             color: Colors.green,
                                             fontFamily: mainFontbold,

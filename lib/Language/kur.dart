@@ -117,7 +117,7 @@ const Map<String, String> kur = {
   "Thank You!": "سوپاس",
   "for yor order": "بۆ بازاڕکردن و هەڵبژاردنی دڵی لاس مارکێت",
   "Order Number:": "ژمارەی داواکاری: ",
-  "YourOrderIsNowBeingProcessed": "داواکاریەکەت لە جێبەجێ کردن دایە. لە کاتی وەرگرتنی داواکاریەکەت ئاگادار دەکرێیتەوە.دەتوانیت لە هەر کاتێک زانیاری لەسەر داواکاریەکەت وەرگریت.",
+  "YourOrderIsNowBeingProcessed": "داواکاریەکەت لە جێبەجێ کردن دایە. لە کاتی وەرگرتنی داواکاریەکەت ئاگادار دەکرێیتەوە.",
   "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
   "Back to Home": "گەڕانەوە بۆ پەرەی سەرەکی",
   "Please Delivery Address":"تکایە ناونیشانی گەیاندن زیاد بکە",
@@ -186,7 +186,7 @@ const Map<String, String> kur = {
   // track_order
   "Track Order": "بەدواداچوونی داواکاری",
   "Order:": "داواکاری: ",
-  "Cancel order": "پوچەڵ کردنەوەی داواکاری",
+  "Cancel order": "پوچەڵ کردنەوە",
   "View order":"بینینی داواکاری ",
 
   // about_screen

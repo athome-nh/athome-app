@@ -709,6 +709,11 @@ class _CheckOutState extends State<CheckOut> {
                                                         "Back to Home".tr,
                                                       ),
                                                     ),
+
+                                                    SizedBox(
+                                                      height:
+                                                          getHeight(context, 5),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
