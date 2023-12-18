@@ -90,7 +90,7 @@ const Map<String, String> kur = {
   "My Orders":"داواکاریەکانم",
   "On going": "بەردەوامی هەیە",
   "History":"داواکاریەکانی ڕابردوو",
-  "Order number:":"ژمارەی داواکاری :",
+  "Order number:":"ژمارەی داواکاری: ",
   "Date:": "به‌روار:",
   "You not have any order": "هیچ داواکاریەکت نیە",
   "Re order":"دوبارە داواکردن",
@@ -101,7 +101,7 @@ const Map<String, String> kur = {
   "Add More Items": "زیادکردنی بەرهەمی تر",
 
   // old_order
-  "Quantity: ":"",
+  "Quantity: ":"بڕی: ",
   "Date and Time":"کات و بەروار",
   "Order No.":"ژمارەی داواکاری",
 
