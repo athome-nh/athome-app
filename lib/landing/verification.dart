@@ -161,35 +161,39 @@ class _VerificatoinState extends State<Verificatoin> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "Don't resive the OTP ?".tr,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: mainColorBlack,
+                            Flexible(
+                              child: Text(
+                                "Don't resive the OTP ?".tr,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: mainColorBlack,
+                                ),
                               ),
                             ),
-                            TextButton(
-                                onPressed: () {
-                                  if (timecode == 0) {
-                                    _codeTimer.cancel();
-                                    verfyphone();
-                                  } else {
-                                    toastShort(
-                                        "Hold till the waiting time ends".tr);
-                                  }
-                                },
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.transparent),
-                                child: Text(
-                                  timecode != 0
-                                      ? "Try again in".tr +
-                                          formatedTime(timeInSecond: timecode)
-                                      : "Resend".tr,
-                                  style: TextStyle(
-                                      color: mainColorRed,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 10),
-                                ))
+                            Flexible(
+                              child: TextButton(
+                                  onPressed: () {
+                                    if (timecode == 0) {
+                                      _codeTimer.cancel();
+                                      verfyphone();
+                                    } else {
+                                      toastShort(
+                                          "Hold till the waiting time ends".tr);
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.transparent),
+                                  child: Text(
+                                    timecode != 0
+                                        ? "Try again in".tr +
+                                            formatedTime(timeInSecond: timecode)
+                                        : "Resend".tr,
+                                    style: TextStyle(
+                                        color: mainColorRed,
+                                        fontFamily: mainFontnormal,
+                                        fontSize: 10),
+                                  )),
+                            )
                           ],
                         ),
                       ),

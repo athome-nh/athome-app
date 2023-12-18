@@ -116,7 +116,7 @@ const Map<String, String> en = {
   "Add your note": "Add your note",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
-  "Order Number:": "Order Number:",
+  "Order Number:": "Order Number:", 
   "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
