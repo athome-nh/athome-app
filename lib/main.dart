@@ -1,7 +1,6 @@
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Notifications/Notification.dart';
-import 'package:dllylas/Notifications/NotificationController.dart';
+ import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -53,34 +52,13 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
-  Future<void> a() async {
-    //   await FirebaseMessaging.instance.getToken().then((value) {
-    //   print(value);
-    // });
-    // await  FirebaseMessaging.instance.getAPNSToken().then((value) {
-    //     print(value);
-    //   });
-  }
-
-  Future getDeviceToken() async {
-    //request user permission for push notification
-    FirebaseMessaging.instance.requestPermission();
-    FirebaseMessaging _firebaseMessage = FirebaseMessaging.instance;
-    // String? deviceToken = await _firebaseMessage.getAPNSToken();
-    String? deviceToken2 = await _firebaseMessage.getToken();
-    return (deviceToken2 == null) ? "sdd" : deviceToken2;
-  }
-
-  prenttoken() async {
-    String deviceToken = await getDeviceToken();
-    print("###### PRINT DEVICE TOKEN TO USE FOR PUSH NOTIFCIATION ######");
-    print(deviceToken);
-    print("############################################################");
-  }
+  
+ 
+  
 
   @override
   void initState() {
-    prenttoken();
+    
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
