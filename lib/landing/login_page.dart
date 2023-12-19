@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:DllyLas/Config/my_widget.dart';
-import 'package:DllyLas/Config/property.dart';
-import 'package:DllyLas/landing/verification.dart';
-import 'package:DllyLas/main.dart';
+import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/landing/verification.dart';
+import 'package:dllylas/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

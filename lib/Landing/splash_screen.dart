@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:DllyLas/Config/athome_functions.dart';
-import 'package:DllyLas/Config/local_data.dart';
-import 'package:DllyLas/Config/my_widget.dart';
-import 'package:DllyLas/Landing/choose_lan.dart';
-import 'package:DllyLas/controller/productprovider.dart';
-import 'package:DllyLas/main.dart';
+import 'package:dllylas/Config/athome_functions.dart';
+import 'package:dllylas/Config/local_data.dart';
+import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Landing/choose_lan.dart';
+import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

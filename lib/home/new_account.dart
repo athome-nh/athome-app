@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:DllyLas/Config/my_widget.dart';
-import 'package:DllyLas/Config/property.dart';
-import 'package:DllyLas/Config/value.dart';
+import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Config/value.dart';
 
-import 'package:DllyLas/Network/Network.dart';
-import 'package:DllyLas/controller/productprovider.dart';
-import 'package:DllyLas/landing/splash_screen.dart';
-import 'package:DllyLas/main.dart';
+import 'package:dllylas/Network/Network.dart';
+import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/landing/splash_screen.dart';
+import 'package:dllylas/main.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

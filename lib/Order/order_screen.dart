@@ -1,11 +1,11 @@
-import 'package:DllyLas/Config/athome_functions.dart';
-import 'package:DllyLas/Order/old_order.dart';
-import 'package:DllyLas/Order/order_items.dart';
+import 'package:dllylas/Config/athome_functions.dart';
+import 'package:dllylas/Order/old_order.dart';
+import 'package:dllylas/Order/order_items.dart';
 
-import 'package:DllyLas/controller/cartprovider.dart';
-import 'package:DllyLas/main.dart';
-import 'package:DllyLas/model/cartpast.dart';
-import 'package:DllyLas/model/order_model/order_model.dart';
+import 'package:dllylas/controller/cartprovider.dart';
+import 'package:dllylas/main.dart';
+import 'package:dllylas/model/cartpast.dart';
+import 'package:dllylas/model/order_model/order_model.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';

@@ -1,9 +1,9 @@
-import 'package:DllyLas/Config/local_data.dart';
-import 'package:DllyLas/Config/property.dart';
-import 'package:DllyLas/Notifications/Notification.dart';
-import 'package:DllyLas/Notifications/NotificationController.dart';
-import 'package:DllyLas/controller/cartprovider.dart';
-import 'package:DllyLas/controller/productprovider.dart';
+import 'package:dllylas/Config/local_data.dart';
+import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Notifications/Notification.dart';
+import 'package:dllylas/Notifications/NotificationController.dart';
+import 'package:dllylas/controller/cartprovider.dart';
+import 'package:dllylas/controller/productprovider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

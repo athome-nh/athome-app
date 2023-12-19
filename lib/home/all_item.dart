@@ -1,8 +1,8 @@
-import 'package:DllyLas/Config/my_widget.dart';
-import 'package:DllyLas/Config/property.dart';
-import 'package:DllyLas/controller/cartprovider.dart';
-import 'package:DllyLas/controller/productprovider.dart';
-import 'package:DllyLas/model/product_model/product_model.dart';
+import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/controller/cartprovider.dart';
+import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';

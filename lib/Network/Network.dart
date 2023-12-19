@@ -2,11 +2,11 @@
 
 import 'dart:convert';
 
-import 'package:DllyLas/Config/athome_functions.dart';
-import 'package:DllyLas/Config/value.dart';
-import 'package:DllyLas/Config/my_widget.dart';
-import 'package:DllyLas/Config/property.dart';
-import 'package:DllyLas/main.dart';
+import 'package:dllylas/Config/athome_functions.dart';
+import 'package:dllylas/Config/value.dart';
+import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

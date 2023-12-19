@@ -1,4 +1,4 @@
-import 'package:DllyLas/Landing/welcome_screen.dart';
+import 'package:dllylas/Landing/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Config/local_data.dart';

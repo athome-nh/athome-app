@@ -1,13 +1,13 @@
-import 'package:DllyLas/Config/value.dart';
-import 'package:DllyLas/controller/cartprovider.dart';
-import 'package:DllyLas/controller/productprovider.dart';
-import 'package:DllyLas/home/item_categories.dart';
-import 'package:DllyLas/main.dart';
-import 'package:DllyLas/model/product_model/product_model.dart';
+import 'package:dllylas/Config/value.dart';
+import 'package:dllylas/controller/cartprovider.dart';
+import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/item_categories.dart';
+import 'package:dllylas/main.dart';
+import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:DllyLas/Config/property.dart';
+import 'package:dllylas/Config/property.dart';
 import 'package:provider/provider.dart';
 
 class Categories extends StatefulWidget {

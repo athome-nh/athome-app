@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "nl.nutriholland" "\0"
-            VALUE "FileDescription", "athome" "\0"
+            VALUE "CompanyName", "com.market" "\0"
+            VALUE "FileDescription", "dllylas" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "athome" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 nl.nutriholland. All rights reserved." "\0"
-            VALUE "OriginalFilename", "athome.exe" "\0"
-            VALUE "ProductName", "athome" "\0"
+            VALUE "InternalName", "dllylas" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.market. All rights reserved." "\0"
+            VALUE "OriginalFilename", "dllylas.exe" "\0"
+            VALUE "ProductName", "dllylas" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

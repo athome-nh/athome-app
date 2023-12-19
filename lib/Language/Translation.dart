@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
-import 'package:DllyLas/Language/ar.dart';
-import 'package:DllyLas/Language/en.dart';
-import 'package:DllyLas/Language/kur.dart';
+import 'package:dllylas/Language/ar.dart';
+import 'package:dllylas/Language/en.dart';
+import 'package:dllylas/Language/kur.dart';
 import 'package:get/get.dart';
 
 class Translation extends Translations {
