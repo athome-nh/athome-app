@@ -62,6 +62,7 @@ flutter:
     - assets/images/
     - assets/Victors/
     - assets/images/location.png
+    - assets/images/LogoLoading.gif
 
 
   fonts:
