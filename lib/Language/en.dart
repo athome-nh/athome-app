@@ -211,7 +211,8 @@ const Map<String, String> en = {
 
   //
   "min title":"Minimum Order required",
-  "min deatil":"You're almost there! Add more items to reach the minimum order amount.",
+  "min deatil":"Unlock free delivery by reaching a convenient purchase threhold of 10000 dinars",
+  //"min deatil":"You're almost there! Add more items to reach the minimum order amount.", // old
 
   // item_categories
   "You not have any item":"You do not have any items",

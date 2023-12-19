@@ -976,7 +976,7 @@ class _MyCartState extends State<MyCart> {
                                                                   mainColorBlack,
                                                               fontFamily:
                                                                   mainFontbold,
-                                                              fontSize: 25,
+                                                              fontSize: 22,
                                                             ),
                                                           ),
                                                           Text(
