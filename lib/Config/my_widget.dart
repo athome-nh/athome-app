@@ -1372,32 +1372,34 @@ Future toastLong(
 Widget waitingWiget(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
-    child: LoadingIndicator(
-      indicatorType: Indicator.ballRotateChase,
-      colors: [
-        mainColorGrey,
-        // mainColorRed,
-        // mainColorSuger,
-      ],
+    child: Image.asset("LogoLoading.gif"),
+    // LoadingIndicator(
+    //   indicatorType: Indicator.ballRotateChase,
+    //   colors: [
+    //     mainColorGrey,
+    //     // mainColorRed,
+    //     // mainColorSuger,
+    //   ],
 
-      // strokeWidth: 5,
-    ),
+    //   // strokeWidth: 5,
+    // ),
   );
 }
 
 Widget waitingWiget2(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
-    child: LoadingIndicator(
-      indicatorType: Indicator.ballRotateChase,
-      colors: [
-        mainColorWhite,
-        // mainColorRed,
-        // mainColorSuger,
-      ],
+    child: Image.asset("LogoLoading.gif"),
+    // LoadingIndicator(
+    //   indicatorType: Indicator.ballRotateChase,
+    //   colors: [
+    //     mainColorWhite,
+    //     // mainColorRed,
+    //     // mainColorSuger,
+    //   ],
 
-      // strokeWidth: 5,
-    ),
+    //   // strokeWidth: 5,
+    // ),
   );
 }
 

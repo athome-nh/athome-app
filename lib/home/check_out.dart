@@ -547,11 +547,9 @@ class _CheckOutState extends State<CheckOut> {
                                               color: mainColorWhite,
                                               child: Padding(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal:
-                                                        getWidth(context, 4)),
+                                                    horizontal: getWidth(context, 4)),
                                                 child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Image.asset(
                                                       "assets/Victors/sendorder.png",
@@ -684,16 +682,14 @@ class _CheckOutState extends State<CheckOut> {
                                                     ),
                                                     TextButton(
                                                       onPressed: () {
-                                                        cartProvider
-                                                            .clearCart();
+                                                        cartProvider.clearCart();
 
-                                                        Navigator
-                                                            .pushReplacement(
+                                                        Navigator.pushReplacement(
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
                                                                   const NavSwitch()),
-                                                        ); // Close the bottom sheet
+                                                        );
                                                       },
                                                       style:
                                                           TextButton.styleFrom(
