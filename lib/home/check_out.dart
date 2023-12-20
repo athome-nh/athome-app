@@ -499,7 +499,7 @@ class _CheckOutState extends State<CheckOut> {
                       : () {
                           if (locationID != 0) {
                             setState(() {
-                              // waitingcheckout = true;
+                              waitingcheckout = true;
                             });
 
                             String data = "";

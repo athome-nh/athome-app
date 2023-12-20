@@ -39,9 +39,9 @@
 
  
     <!-- Specify the custom sound resource -->
-    <meta-data
+    <!-- <meta-data
         android:name="com.google.firebase.messaging.default_notification_sound"
-        android:resource="@raw/dllylas.wav" />
+        android:resource="@raw/dllylas.wav" /> -->
 
 
         </activity>
