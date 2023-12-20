@@ -29,9 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   var subscription;
   @override
   void initState() {
-    //
     checkinternet();
-
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
@@ -42,6 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
           textshow = true;
         });
       } else {
+        Provider.of<productProvider>(context, listen: false).getDataAll(false);
         if (pro.nointernetCheck) {
           setState(() {
             pro.setnointernetcheck(false);
@@ -49,6 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               textshow = false;
             });
           });
+
           getStringPrefs("data").then((map) {
             if (map.isNotEmpty) {
               Map<String, dynamic> myMap = json.decode(map);
