@@ -67,6 +67,7 @@ class _SettingState extends State<Setting> {
     'Male',
     'Female',
   ];
+  
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   String gender = "Male";

@@ -121,7 +121,7 @@ const Map<String, String> ar = {
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
   "Please Delivery Address":"يرجى إضافة الموقع",
-  "Send Order": "ارسال الطلبیة",
+  "Send Order": "ارسال الطلبیة", // bawar
   "sorryWeDoNotHaveDelivery": "للأسف ليس لدينا خدمة توصيل في الوقت الحالي. سنرسل إليك هذا الطلب غدا في أقرب وقت ممكن. و يمكنك إلغاء الطلب قبل قبوله من قبل الادارة.",
   "OK": "موافق",
 
@@ -223,6 +223,9 @@ const Map<String, String> ar = {
   //
   "Privacy Poilcy":"سياسة الخصوصية",
   "Terms Of Use":"شروط الاستخدام",
+  "Male":"ذكر",
+  "Female":"أنثى",
+  "Erbil":"اربيل",
 
 
 

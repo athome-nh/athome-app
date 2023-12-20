@@ -121,9 +121,9 @@ const Map<String, String> en = {
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
   "Please Delivery Address":"Please Add Delivery Address",
-  "Send Order": "Send Order",
+  "Send Order": "Send Order", // bawar
   "sorryWeDoNotHaveDelivery": "sorry we don't offer delivery at this moment.we will dispatch your order as soon as possible.you can cancel the order until it is accepted by the admin.",
-  "OK": "OK",
+  "OK": "OK", 
 
   // login_page
   "Wellcome back": "Welcome back",
@@ -162,7 +162,7 @@ const Map<String, String> en = {
   "unknown occurred error please try again later":"Error please try again later",
   "Confirm": "Confirm",
 
-  // verification
+  // verification 
   "Hold till the waiting time ends":"Hold till the waiting time ends",
   "Please enter code":"Please enter verification code",
   "Verification": "Verification",
@@ -223,7 +223,8 @@ const Map<String, String> en = {
   //
   "Privacy Poilcy":"Privacy policy",
   "Terms Of Use":"Terms Of Use",
-
-
+  "Male":"Male",
+  "Female":"Female",
+  "Erbil":"Erbil",
 
 };

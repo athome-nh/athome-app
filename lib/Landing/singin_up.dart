@@ -572,7 +572,6 @@ class _SingInUpState extends State<SingInUp> {
           final split = value.toString().split('.');
           gender = split[1];
         },
-        //textbawar male nd female
         maleText: "Male",
         femaleText: "Female",
         selectedGender: gender == "Male"

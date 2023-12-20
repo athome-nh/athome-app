@@ -980,7 +980,6 @@ class _MyCartState extends State<MyCart> {
                                                             ),
                                                           ),
                                                           Text(
-                                                            //textbawar
                                                             // "minium order is "
                                                             //         .tr +
                                                             //     productrovider
