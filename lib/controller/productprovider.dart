@@ -89,7 +89,7 @@ class productProvider extends ChangeNotifier {
           setlocation((value['locations'] as List)
               .map((x) => Locationuser.fromMap(x))
               .toList());
-          setOrders((value['orders'] as List)
+          setOrders((value['orders'] as List) 
               .map((x) => OrderModel.fromMap(x))
               .toList());
           setOrderItems((value['orders_item'] as List)
