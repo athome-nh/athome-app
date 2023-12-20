@@ -499,7 +499,7 @@ class _CheckOutState extends State<CheckOut> {
                       : () {
                           if (locationID != 0) {
                             setState(() {
-                              waitingcheckout = true;
+                              // waitingcheckout = true;
                             });
 
                             String data = "";
@@ -520,12 +520,7 @@ class _CheckOutState extends State<CheckOut> {
                               "order_data": data.substring(2),
                               "note": NoteController.text,
                             };
-                            Network(false)
-                                .dio
-                                .get(serverUrl + "time")
-                                .then((time) async {
-                              print(time);
-                            });
+
                             Network(false)
                                 .postData("order", data2, context)
                                 .then((value) {
@@ -542,248 +537,45 @@ class _CheckOutState extends State<CheckOut> {
                                   productrovider
                                       .getDataUser(userdata["id"].toString());
 
-                                  getOnlineTimestamp().then((hour) {
-                                    if (hour > 7 && hour < 23) {
-                                      Navigator.push(
+                                  DateTime timecheck =
+                                      DateTime.parse(value["now"].toString());
+
+                                  if (timecheck.hour > 7 &&
+                                      timecheck.hour < 15) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => successScreen(
+                                              value["total"].toString(),
+                                              value["id"].toString(),
+                                              value["time"].toString(),
+                                              false)),
+                                    ).then((value) {
+                                      Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => successScreen(
-                                                value["total"].toString(),
-                                                value["id"].toString(),
-                                                value["time"].toString(),
-                                                false)),
-                                      ).then((value) {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NavSwitch()),
-                                        );
-                                      });
-                                      // showModalBottomSheet(
-                                      //   context: context,
-                                      //   isDismissible: false,
-                                      //   enableDrag: false,
-                                      //   builder: (BuildContext context) {
-                                      //     return Directionality(
-                                      //       textDirection: lang == "en"
-                                      //           ? TextDirection.ltr
-                                      //           : TextDirection.rtl,
-                                      //       child: Container(
-                                      //         height: getHeight(context, 100),
-                                      //         color: mainColorWhite,
-                                      //         child: Padding(
-                                      //           padding: EdgeInsets.symmetric(
-                                      //               horizontal:
-                                      //                   getWidth(context, 4)),
-                                      //           child: Column(
-                                      //             mainAxisAlignment:
-                                      //                 MainAxisAlignment.center,
-                                      //             children: <Widget>[
-                                      //               Image.asset(
-                                      //                 "assets/Victors/sendorder.png",
-                                      //                 width:
-                                      //                     getWidth(context, 40),
-                                      //                 height:
-                                      //                     getWidth(context, 40),
-                                      //               ),
-                                      //               Text("Thank You!".tr,
-                                      //                   style: TextStyle(
-                                      //                     fontSize: 24,
-                                      //                     color: mainColorBlack,
-                                      //                     fontFamily:
-                                      //                         mainFontnormal,
-                                      //                   )),
-                                      //               Text("for yor order".tr,
-                                      //                   style: TextStyle(
-                                      //                     fontSize: 16,
-                                      //                     color: mainColorBlack,
-                                      //                     fontFamily:
-                                      //                         mainFontnormal,
-                                      //                   )),
-                                      //               SizedBox(
-                                      //                 height:
-                                      //                     getHeight(context, 1),
-                                      //               ),
-                                      //               Row(
-                                      //                 mainAxisAlignment:
-                                      //                     MainAxisAlignment
-                                      //                         .center,
-                                      //                 children: [
-                                      //                   Text(
-                                      //                     "Order Number:".tr,
-                                      //                     style: TextStyle(
-                                      //                         fontSize: 16,
-                                      //                         color:
-                                      //                             mainColorBlack,
-                                      //                         fontFamily:
-                                      //                             mainFontbold),
-                                      //                   ),
-                                      //                   Text(
-                                      //                     value["id"]
-                                      //                         .toString(),
-                                      //                     style: TextStyle(
-                                      //                         fontSize: 16,
-                                      //                         color:
-                                      //                             mainColorRed,
-                                      //                         fontFamily:
-                                      //                             mainFontbold),
-                                      //                   ),
-                                      //                 ],
-                                      //               ),
-                                      //               SizedBox(
-                                      //                 height:
-                                      //                     getHeight(context, 1),
-                                      //               ),
-                                      //               Padding(
-                                      //                 padding:
-                                      //                     EdgeInsets.symmetric(
-                                      //                         horizontal:
-                                      //                             getWidth(
-                                      //                                 context,
-                                      //                                 4)),
-                                      //                 child: Text(
-                                      //                   "YourOrderIsNowBeingProcessed"
-                                      //                       .tr,
-                                      //                   textAlign:
-                                      //                       TextAlign.center,
-                                      //                   style: TextStyle(
-                                      //                     fontSize: 14,
-                                      //                     color: mainColorBlack,
-                                      //                     fontFamily:
-                                      //                         mainFontnormal,
-                                      //                   ),
-                                      //                 ),
-                                      //               ),
-                                      //               SizedBox(
-                                      //                 height:
-                                      //                     getHeight(context, 2),
-                                      //               ),
-                                      //               Padding(
-                                      //                 padding:
-                                      //                     EdgeInsets.symmetric(
-                                      //                   horizontal: getWidth(
-                                      //                       context, 4),
-                                      //                 ),
-                                      //                 child: TextButton(
-                                      //                   onPressed: () {
-                                      //                     cartProvider
-                                      //                         .clearCart();
-
-                                      //                     Navigator.push(
-                                      //                       context,
-                                      //                       MaterialPageRoute(
-                                      //                           builder: (context) => TrackOrder(
-                                      //                               value["id"]
-                                      //                                   .toString(),
-                                      //                               value["total"]
-                                      //                                   .toString(),
-                                      //                               value["time"]
-                                      //                                   .toString())),
-                                      //                     ).then((value) {
-                                      //                       cartProvider
-                                      //                           .clearCart();
-                                      //                       Navigator
-                                      //                           .pushReplacement(
-                                      //                         context,
-                                      //                         MaterialPageRoute(
-                                      //                             builder:
-                                      //                                 (context) =>
-                                      //                                     const NavSwitch()),
-                                      //                       );
-                                      //                     });
-                                      //                   },
-                                      //                   style: TextButton
-                                      //                       .styleFrom(
-                                      //                     fixedSize: Size(
-                                      //                         getWidth(
-                                      //                             context, 85),
-                                      //                         getHeight(
-                                      //                             context, 6)),
-                                      //                   ),
-                                      //                   child: Text(
-                                      //                     "Track My Order".tr,
-                                      //                   ),
-                                      //                 ),
-                                      //               ),
-                                      //               SizedBox(
-                                      //                 height:
-                                      //                     getHeight(context, 2),
-                                      //               ),
-                                      //               TextButton(
-                                      //                 onPressed: () {
-                                      //                   cartProvider
-                                      //                       .clearCart();
-
-                                      //                   Navigator
-                                      //                       .pushReplacement(
-                                      //                     context,
-                                      //                     MaterialPageRoute(
-                                      //                         builder: (context) =>
-                                      //                             const NavSwitch()),
-                                      //                   );
-                                      //                 },
-                                      //                 style:
-                                      //                     TextButton.styleFrom(
-                                      //                   backgroundColor:
-                                      //                       mainColorRed,
-                                      //                   fixedSize: Size(
-                                      //                       getWidth(
-                                      //                           context, 85),
-                                      //                       getHeight(
-                                      //                           context, 6)),
-                                      //                 ),
-                                      //                 child: Text(
-                                      //                   "Back to Home".tr,
-                                      //                 ),
-                                      //               ),
-                                      //               SizedBox(
-                                      //                 height:
-                                      //                     getHeight(context, 5),
-                                      //               ),
-                                      //             ],
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //     );
-                                      //   },
-                                      // ).then((value) {
-                                      //   cartProvider.clearCart();
-                                      //   Navigator.pushReplacement(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             const NavSwitch()),
-                                      //   );
-                                      // });
-                                    } else {
-                                      Navigator.push(
+                                            builder: (context) =>
+                                                const NavSwitch()),
+                                      );
+                                    });
+                                  } else {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => successScreen(
+                                              value["total"].toString(),
+                                              value["id"].toString(),
+                                              value["time"].toString(),
+                                              true)),
+                                    ).then((value) {
+                                      Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => successScreen(
-                                                value["total"].toString(),
-                                                value["id"].toString(),
-                                                value["time"].toString(),
-                                                true)),
-                                      ).then((value) {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NavSwitch()),
-                                        );
-                                      });
-                                      // alert(context).then((value) {
-                                      //   cartProvider.clearCart();
-                                      //   Navigator.pushReplacement(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             const NavSwitch()),
-                                      //   );
-                                      // });
-                                    }
-                                  });
+                                            builder: (context) =>
+                                                const NavSwitch()),
+                                      );
+                                    });
+                                  }
                                 } else {
                                   setState(() {
                                     waitingcheckout = false;
