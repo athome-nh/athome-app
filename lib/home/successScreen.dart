@@ -26,7 +26,7 @@ class _successScreenState extends State<successScreen> {
       appBar: AppBar(
         //textbawar
         title: Text(
-          "nawy page",
+          "nawy page".tr,
         ),
         automaticallyImplyLeading: false,
       ),
@@ -114,7 +114,7 @@ class _successScreenState extends State<successScreen> {
                     ),
                     //textbawar
                     child: Text(
-                      "Yes i Agree",
+                      "Yes i Agree".tr,
                     ),
                   ),
                 )
@@ -177,7 +177,7 @@ class _successScreenState extends State<successScreen> {
                   ),
                   //textbawar
                   child: Text(
-                    "No, Cancel order",
+                    "No, Cancel order".tr,
                   ),
                 )
               : TextButton(

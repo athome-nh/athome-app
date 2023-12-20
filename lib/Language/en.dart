@@ -227,4 +227,10 @@ const Map<String, String> en = {
   "Female":"Female",
   "Erbil":"Erbil",
 
+  //
+  "nawy page":"nawy page",
+  "Yes i Agree":"Yes i Agree",
+  "No, Cancel order":"No, Cancel order",
+
+
 };
