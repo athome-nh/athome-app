@@ -634,7 +634,7 @@ class _SettingState extends State<Setting> {
                                                                                   enabled: isEdit,
                                                                                   value: value,
                                                                                   child: Text(
-                                                                                    value,
+                                                                                    value.tr,
                                                                                     style: TextStyle(color: mainColorBlack, fontFamily: mainFontnormal),
                                                                                   ),
                                                                                 );
@@ -1476,7 +1476,7 @@ class _SettingState extends State<Setting> {
                                                                                 enabled: isEdit,
                                                                                 value: value,
                                                                                 child: Text(
-                                                                                  value,
+                                                                                  value.tr,
                                                                                   style: TextStyle(color: mainColorBlack),
                                                                                 ),
                                                                               );

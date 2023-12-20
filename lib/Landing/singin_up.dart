@@ -35,14 +35,8 @@ class _SingInUpState extends State<SingInUp> {
 
   String age = '18';
   String gender = "";
-  List<String> items = [
-    'Select City',
-    'Map'.tr,
-    'Sulaymaniyah',
-    'Duhok',
-    'Halabja'
-  ];
-  String city = "Select City";
+  List<String> items = ['Erbil', 'Sulaymaniyah', 'Duhok', 'Halabja'];
+  String city = "Erbil";
   bool nameE = false;
   bool ageE = false;
   bool cityE = false;
@@ -261,16 +255,18 @@ class _SingInUpState extends State<SingInUp> {
                               child: DropdownButton<String>(
                                 value: city,
                                 isDense: true,
-                                onChanged: (value) {
-                                  setState(() {
-                                    city = value.toString();
-                                  });
-                                },
+                                onChanged: true
+                                    ? null
+                                    : (value) {
+                                        setState(() {
+                                          city = value.toString();
+                                        });
+                                      },
                                 items: items.map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
                                     child: Text(
-                                      value,
+                                      value.tr,
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontFamily: mainFontnormal),
@@ -573,8 +569,8 @@ class _SingInUpState extends State<SingInUp> {
           gender = split[1];
         },
         //textbawar male nd female
-        maleText: "Male",
-        femaleText: "Female",
+        maleText: "Male".tr,
+        femaleText: "Female".tr,
         selectedGender: gender == "Male"
             ? Gender.Male
             : gender == ""
