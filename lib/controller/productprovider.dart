@@ -47,12 +47,11 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataAll(bool user) {
+    print("data");
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
-          // setProducts((json.decode(decryptAES(value["products"])) as List)
-          //     .map((x) => ProductModel.fromMap(x))
-          //     .toList());
+          print("reqestresponse");
           setProducts((value["products"] as List)
               .map((x) => ProductModel.fromMap(x))
               .toList());
@@ -75,11 +74,8 @@ class productProvider extends ChangeNotifier {
               .map((x) => Brandmodel.fromMap(x))
               .toList());
           setMinimumOrder(value['minimum_order']);
-          if (user) {
-            getDataUser(userdata["id"].toString());
-          } else {
-            setshow(true);
-          }
+          print("end");
+          setshow(true);
         } else {}
       } else {}
     });
@@ -99,13 +95,14 @@ class productProvider extends ChangeNotifier {
           setOrderItems((value['orders_item'] as List)
               .map((x) => OrderItems.fromMap(x))
               .toList());
-          setshow(true);
+          setshowuser(true);
         } else {}
       } else {}
     });
   }
 
   updatePost(bool user) async {
+    // getDataAll(false);
     if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
@@ -192,17 +189,13 @@ class productProvider extends ChangeNotifier {
                 },
               );
 
-              getDataAll(false);
               return;
             }
-            getDataAll(user);
+            getDataUser(userdata["id"].toString());
           }
         } else {}
       });
-    } else {
-      print("11111");
-      getDataAll(user);
-    }
+    } else {}
   }
 
   updateUser() async {
@@ -239,6 +232,7 @@ class productProvider extends ChangeNotifier {
   int _idItem = 0;
   int _subcateSelect = 0;
   bool show = false;
+  bool showuser = false;
   bool activeUser = false;
   bool nointernetCheck = false;
 
@@ -604,6 +598,12 @@ class productProvider extends ChangeNotifier {
 
   void setshow(bool value) {
     show = value;
+
+    notifyListeners();
+  }
+
+  void setshowuser(bool value) {
+    showuser = value;
 
     notifyListeners();
   }

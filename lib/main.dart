@@ -1,6 +1,6 @@
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
- import 'package:dllylas/Notifications/NotificationController.dart';
+import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -52,13 +52,8 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
-  
- 
-  
-
   @override
   void initState() {
-    
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {
@@ -152,7 +147,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
-        navigatorKey: navigatorKey, 
+        navigatorKey: navigatorKey,
       ),
     );
   }
