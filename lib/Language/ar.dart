@@ -121,8 +121,8 @@ const Map<String, String> ar = {
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
   "Please Delivery Address":"يرجى إضافة الموقع",
-  "Send Order": "ارسال الطلبیة", // bawar
-  "sorryWeDoNotHaveDelivery": "للأسف ليس لدينا خدمة توصيل في الوقت الحالي. سنرسل إليك هذا الطلب غدا في أقرب وقت ممكن. و يمكنك إلغاء الطلب قبل قبوله من قبل الادارة.",
+  "Send Order": "ارسال الطلبیة",
+  "sorryWeDoNotHaveDelivery": "إلى الزبون الكريم نحيطكم علماً بأن وقت التسليم المحدد لطلبكم قد انتهى. هل ترغبون في استلام الطلب غداً صباحاً؟",
   "OK": "موافق",
 
   // login_page
@@ -226,6 +226,11 @@ const Map<String, String> ar = {
   "Male":"ذكر",
   "Female":"أنثى",
   "Erbil":"اربيل",
+
+  //
+  "nawy page":"تم الطلب بنجاح",
+  "Yes i Agree":"نعم",
+  "No, Cancel order":"نرجو إلغاء الطلب",
 
 
 

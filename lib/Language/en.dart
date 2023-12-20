@@ -121,8 +121,8 @@ const Map<String, String> en = {
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
   "Please Delivery Address":"Please Add Delivery Address",
-  "Send Order": "Send Order", // bawar
-  "sorryWeDoNotHaveDelivery": "sorry we don't offer delivery at this moment.we will dispatch your order as soon as possible.you can cancel the order until it is accepted by the admin.",
+  "Send Order": "Send Order",
+  "sorryWeDoNotHaveDelivery": "Dear customer, our delivery time has ended. would you like to receive the order tomorrow ?",
   "OK": "OK", 
 
   // login_page
@@ -228,9 +228,9 @@ const Map<String, String> en = {
   "Erbil":"Erbil",
 
   //
-  "nawy page":"nawy page",
-  "Yes i Agree":"Yes i Agree",
-  "No, Cancel order":"No, Cancel order",
+  "Ordered successfully":"Ordered successfully",
+  "Yes i Agree":"Yes",
+  "No, Cancel order":"Cancel order",
 
 
 };

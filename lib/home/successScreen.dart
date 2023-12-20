@@ -24,9 +24,8 @@ class _successScreenState extends State<successScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //textbawar
         title: Text(
-          "nawy page".tr,
+          "Ordered successfully".tr,
         ),
         automaticallyImplyLeading: false,
       ),
@@ -112,7 +111,6 @@ class _successScreenState extends State<successScreen> {
                       fixedSize:
                           Size(getWidth(context, 85), getHeight(context, 6)),
                     ),
-                    //textbawar
                     child: Text(
                       "Yes i Agree".tr,
                     ),
@@ -175,7 +173,6 @@ class _successScreenState extends State<successScreen> {
                     fixedSize:
                         Size(getWidth(context, 85), getHeight(context, 6)),
                   ),
-                  //textbawar
                   child: Text(
                     "No, Cancel order".tr,
                   ),
