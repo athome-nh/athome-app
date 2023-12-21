@@ -337,6 +337,7 @@ class _Map_screenState extends State<Map_screen> {
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
     httpClient.close();
+    print(responseBody);
     if (response.statusCode == 200) {
       var data = json.decode(responseBody);
       setState(() {

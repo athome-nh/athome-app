@@ -165,10 +165,12 @@ class _TrackOrderState extends State<TrackOrder> {
             width: getWidth(context, 100),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
                   children: [
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
                     Text("Order:".tr + widget.id,
                         style: TextStyle(
                           color: mainColorBlack,
@@ -328,6 +330,9 @@ class _TrackOrderState extends State<TrackOrder> {
                         ],
                       )
                     : waitingWiget(context),
+                SizedBox(
+                  height: getHeight(context, 2),
+                ),
                 Row(
                   mainAxisAlignment: status > 0
                       ? MainAxisAlignment.center

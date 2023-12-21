@@ -192,7 +192,7 @@ class _CheckOutState extends State<CheckOut> {
                                                       Row(
                                                         children: [
                                                           Text(
-                                                            "${location.type} - ${location.number ?? ""}",
+                                                            "${location.type.toString().tr} - ${location.number ?? ""}",
                                                             style: TextStyle(
                                                                 fontFamily:
                                                                     mainFontnormal,
@@ -407,6 +407,7 @@ class _CheckOutState extends State<CheckOut> {
             color: mainColorWhite,
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
@@ -541,7 +542,7 @@ class _CheckOutState extends State<CheckOut> {
                                       DateTime.parse(value["now"].toString());
                                   print(timecheck);
                                   if (timecheck.hour > 7 &&
-                                      timecheck.hour < 15) {
+                                      timecheck.hour < 23) {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(

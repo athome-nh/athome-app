@@ -2,15 +2,17 @@ const Map<String, String> en = {
   // choose_lan
   "Language": "Language",
   "Kurdish": "Kurdish",
-  "Arabic":  "Arabic ",
+  "Arabic": "Arabic ",
   "English": "English",
   "Get Start": "Get Start",
 
   // welcome_screen
   "wst01": "Shop Smarter & Easier",
-  "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
+  "wsd01":
+      "is an innovative platform designed to enhance your online shopping experience.",
   "wst02": "Learn From the Best",
-  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "wsd02":
+      "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "wst03": "Fast Delevery",
   "wsd03": "we will reach you wherever you are",
   "NEXT": "NEXT",
@@ -62,11 +64,12 @@ const Map<String, String> en = {
   "Free Delivery": "Free Delivery",
   "Total": "Total",
   "Checkout": "Checkout",
-  "Clear cart":"Clear cart",
-  "Are you sure you want to continue?":"Are you sure about continuing?",
+  "Clear cart": "Clear cart",
+  "Are you sure you want to continue?": "Are you sure about continuing?",
 
   // favorite
-  "No have any favorite": "You haven't set any favorite items.\nMake it your own!",
+  "No have any favorite":
+      "You haven't set any favorite items.\nMake it your own!",
 
   // Page --> No Internet --> my_widget
   "no internet": "You are offline, connect to WIFI",
@@ -85,30 +88,30 @@ const Map<String, String> en = {
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",
-  
+
   // order_screen
-  "My Orders":"My Orders",
-  "On going":"On going",
-  "History":"History",
-  "Order number:":"Order number: ",
+  "My Orders": "My Orders",
+  "On going": "On going",
+  "History": "History",
+  "Order number:": "Order number: ",
   "Date:": "Date:",
   "You not have any order": "You do not have any order",
-  "Re order":"Reorder",
-  "View":"View",
+  "Re order": "Reorder",
+  "View": "View",
 
   // order_items
   "Past Order": "Order history",
   "Add More Items": "Add More Items",
 
   // old_order
-  "Quantity: ":"Quantity: ",
-  "Date and Time":"Date and Time",
-  "Order No.":"Order No.",
+  "Quantity: ": "Quantity: ",
+  "Date and Time": "Date and Time",
+  "Order No.": "Order No.",
 
   // check_out
   "Delivery Address": "Delivery Address",
   "Not have any location": "you don't have any location",
-  "Add new Location":"Add a new Location",
+  "Add new Location": "Add a new Location",
   "Pyment Method": "Payment Method",
   "Cash on delivery": "Cash on delivery",
   "Coming soon": "Coming soon",
@@ -116,26 +119,29 @@ const Map<String, String> en = {
   "Add your note": "Add your note",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
-  "Order Number:": "Order Number: ", 
-  "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
+  "Order Number:": "Order Number: ",
+  "YourOrderIsNowBeingProcessed":
+      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
-  "Please Delivery Address":"Please Add Delivery Address",
+  "Please Delivery Address": "Please Add Delivery Address",
   "Send Order": "Send Order",
-  "sorryWeDoNotHaveDelivery": "Dear customer, our delivery time has ended. would you like to receive the order tomorrow ?",
-  "OK": "OK", 
+  "sorryWeDoNotHaveDelivery":
+      "Dear customer, our delivery time has ended. would you like to receive the order tomorrow ?",
+  "OK": "OK",
 
   // login_page
   "Wellcome back": "Welcome back",
-  "EnterYourPhoneNumberToShop": "Enter your phone number to Shop Smarter & Easier.",
+  "EnterYourPhoneNumberToShop":
+      "Enter your phone number to Shop Smarter & Easier.",
   "Please enter your phone number": "Please enter your phone number",
-  "Please enter your phone number correct":"accurate phone number needed",
+  "Please enter your phone number correct": "accurate phone number needed",
   "Please remove 0 form start": "Please remove 0 form the start",
   "Phone Number": "Phone Number",
-  "WeWillSendYouOTP":"We will send you OTP code to verify your phone number.",
+  "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
 
   // locationdeatil
-  "Locations":"Locations",
+  "Locations": "Locations",
   "Name": "Name",
   "Add name": "Add name",
   "Add name location": "Add name location",
@@ -146,7 +152,7 @@ const Map<String, String> en = {
   "Enter floor number": "Enter floor number",
   "building name/number": "building name/number",
   "Enter building name/number": "Enter building name/number",
-  "number": "number",
+  "number": "number ",
   "Enter number": "Enter number",
   "Phone number": "Phone number",
   "Add phone number": "Add phone number",
@@ -154,25 +160,29 @@ const Map<String, String> en = {
 
   // singin_up
   "Complete Account": "Account created",
-  "Enter your account information to complete your account":"Enter your information to complete your account",
+  "Enter your account information to complete your account":
+      "Enter your information to complete your account",
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
   "City": "City",
   "Age": "Age",
-  "unknown occurred error please try again later":"Error please try again later",
+  "unknown occurred error please try again later":
+      "Error please try again later",
   "Confirm": "Confirm",
 
-  // verification 
-  "Hold till the waiting time ends":"Hold till the waiting time ends",
-  "Please enter code":"Please enter verification code",
+  // verification
+  "Hold till the waiting time ends": "Hold till the waiting time ends",
+  "Please enter code": "Please enter verification code",
   "Verification": "Verification",
-  "Please enter the 6 digit code sent to":"Please enter the 6 digit code sent to",
+  "Please enter the 6 digit code sent to":
+      "Please enter the 6 digit code sent to",
   "Don't resive the OTP ?": "Didn't receive the OTP ?",
   "Try again in": "Try again in ",
   "Resend": "Resend",
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
-  "Account is disable please contact athome admin":"Account is disable please contact athome admin", // check
+  "Account is disable please contact athome admin":
+      "Account is disable please contact athome admin", // check
   "the code is un correct": "the code is wrong",
 
   // map
@@ -187,50 +197,62 @@ const Map<String, String> en = {
   "Track Order": "Track your Order",
   "Order:": "Order: ",
   "Cancel order": "Cancel order",
-  "View order":"View order",
+  "View order": "View order",
 
   // about_screen
-  "WelcomeToAthomeOnlineMarketApplication!": "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
-  "WideSelectionOfProductsOurOnlineSupermarket": "Wide Selection of Products: Our online market  application offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-  "EasyToUseInterfaceOurUserFriendly": "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "SecurePaymentWePrioritizeTheSecurity": "Secure payment: We prioritize the security of your payment information.Our application utilizes a secure payment gateway to safeguard your transactions, prioritizing the utmost protection of your sensitive financial information",
-  "PromotionsAndDealsKeep": "promotions and deals: keep an eye out for special promotions, discounts, and deals available on our platform. We're committed to helping you save big on your everyday shopping needs. So don't miss out!",
-  "CustomerSupportIfYouHaveAnyQuestions": "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we will promptly address your concerns.",
-  "FeedbackAndImprovementWeValueYourFeedback": "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "ThankYouForChoosingOurAthome": "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
-   "About Us": "About Us",
+  "WelcomeToAthomeOnlineMarketApplication!":
+      "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
+  "WideSelectionOfProductsOurOnlineSupermarket":
+      "Wide Selection of Products: Our online market  application offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  "EasyToUseInterfaceOurUserFriendly":
+      "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
+  "SecurePaymentWePrioritizeTheSecurity":
+      "Secure payment: We prioritize the security of your payment information.Our application utilizes a secure payment gateway to safeguard your transactions, prioritizing the utmost protection of your sensitive financial information",
+  "PromotionsAndDealsKeep":
+      "promotions and deals: keep an eye out for special promotions, discounts, and deals available on our platform. We're committed to helping you save big on your everyday shopping needs. So don't miss out!",
+  "CustomerSupportIfYouHaveAnyQuestions":
+      "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we will promptly address your concerns.",
+  "FeedbackAndImprovementWeValueYourFeedback":
+      "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
+  "ThankYouForChoosingOurAthome":
+      "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  "About Us": "About Us",
 
   //more old_order
-  "Order Placed":"Order Placed",
-  "Processing Order":"Processing Order",
-  "Order Is On way":"Your order is on it's way",
-  "Order Ready For Pickup":"Order Ready For Pickup",
-  "Order is delivered":"The order is delivered",
-  "Undelivered":"Undelivered",
-  "Order Deatil":"Order Deatil",
+  "Order Placed": "Order Placed",
+  "Processing Order": "Processing Order",
+  "Order Is On way": "Your order is on it's way",
+  "Order Ready For Pickup": "Order Ready For Pickup",
+  "Order is delivered": "The order is delivered",
+  "Undelivered": "Undelivered",
+  "Order Deatil": "Order Deatil",
 
   //
-  "min title":"Minimum Order required",
-  "min deatil":"Unlock free delivery by reaching a convenient purchase threhold of 10000 dinars",
+  "min title": "Minimum Order required",
+  "min deatil":
+      "Unlock free delivery by reaching a convenient purchase threhold of 10000 dinars",
   //"min deatil":"You're almost there! Add more items to reach the minimum order amount.", // old
 
   // item_categories
-  "You not have any item":"You do not have any items",
+  "You not have any item": "You do not have any items",
 
   // oneitem --> labir kraboo
-  "Add to cart":"Add to cart",
+  "Add to cart": "Add to cart",
+  "Similar item": "Related items",
+  //
+  "Privacy Poilcy": "Privacy policy",
+  "Terms Of Use": "Terms Of Use",
+  "Male": "Male",
+  "Female": "Female",
+  "Erbil": "Erbil",
 
   //
-  "Privacy Poilcy":"Privacy policy",
-  "Terms Of Use":"Terms Of Use",
-  "Male":"Male",
-  "Female":"Female",
-  "Erbil":"Erbil",
+  "Ordered successfully": "Ordered successfully",
+  "Yes i Agree": "Yes",
+  "No, Cancel order": "Cancel order",
 
   //
-  "Ordered successfully":"Ordered successfully",
-  "Yes i Agree":"Yes",
-  "No, Cancel order":"Cancel order",
-
-
+  'House': 'House',
+  'Office': 'Office',
+  'Apartment': 'Apartment',
 };

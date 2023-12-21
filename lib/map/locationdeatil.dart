@@ -36,11 +36,11 @@ class _location_DeatilState extends State<location_Deatil> {
   bool numberE = false;
   bool number2E = false;
   List<String> items = [
-    'Home',
+    'House',
     'Office',
     'Apartment',
   ];
-  String type = 'Home';
+  String type = 'House';
   @override
   void initState() {
     if (isLogin) {
@@ -256,7 +256,7 @@ class _location_DeatilState extends State<location_Deatil> {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
-                                value,
+                                value.tr,
                                 style: TextStyle(
                                     fontSize: 16, fontFamily: mainFontnormal),
                               ),
@@ -562,12 +562,16 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: 1.0, // Customize border width
                       ),
                     ),
-                    labelText: type + "number".tr,
+                    labelText: lang == "en"
+                        ? type.tr + "number".tr
+                        : "number".tr + type.tr,
                     labelStyle: TextStyle(
                         color: mainColorBlack.withOpacity(0.8),
                         fontSize: 16,
                         fontFamily: mainFontnormal),
-                    hintText: type + "number".tr,
+                    hintText: lang == "en"
+                        ? type.tr + "number".tr
+                        : "number".tr + type.tr,
                     hintStyle: TextStyle(
                         color: mainColorBlack.withOpacity(0.5),
                         fontSize: 14,
@@ -623,8 +627,11 @@ class _location_DeatilState extends State<location_Deatil> {
                       ),
                     ),
                     labelText: "Phone number".tr,
-                    prefixText: "+964 | ",
-
+                    suffixText: lang != "en" ? " | +964" : "",
+                    prefixText: lang == "en" ? "+964 | " : "",
+                    suffixStyle: TextStyle(
+                        color: mainColorBlack.withOpacity(0.8),
+                        fontFamily: mainFontnormal),
                     prefixStyle: TextStyle(
                         color: mainColorBlack.withOpacity(0.8),
                         fontFamily: mainFontnormal),

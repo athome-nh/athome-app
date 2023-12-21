@@ -82,7 +82,7 @@ class _LocationScreenState extends State<LocationScreen> {
                               children: [
                                 Container(
                                   child: Row(children: [
-                                    location.type.toString().contains("Home")
+                                    location.type.toString().contains("House")
                                         ? Icon(
                                             Ionicons.home_outline,
                                             color: mainColorGrey,
@@ -105,14 +105,14 @@ class _LocationScreenState extends State<LocationScreen> {
                                         Text(
                                           location.name!,
                                           style: TextStyle(
-                                              color: mainColorGrey,
+                                              color: mainColorBlack,
                                               fontSize: 22,
                                               fontFamily: mainFontnormal),
                                         ),
                                         Text(
                                           location.area!,
                                           style: TextStyle(
-                                              color: mainColorGrey,
+                                              color: mainColorBlack,
                                               fontSize: 12,
                                               fontFamily: mainFontnormal),
                                         ),

@@ -121,7 +121,7 @@ class _MyCartState extends State<MyCart> {
                                             ),
                                             const SizedBox(height: 10),
                                             Text(
-                                              "Are you sure you wnat to continue?"
+                                              "Are you sure you want to continue?"
                                                   .tr,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
@@ -821,6 +821,7 @@ class _MyCartState extends State<MyCart> {
                                 // ),
                               ),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
                                     height: getHeight(context, 3),

@@ -11,7 +11,7 @@ import 'package:dllylas/model/products_image/products_image.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
- import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
@@ -260,7 +260,7 @@ class _OneitemState extends State<Oneitem> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 3)),
                 child: Text(
-                  "Similar item",
+                  "Similar item".tr,
                   style: TextStyle(
                       color: mainColorBlack,
                       fontSize: 20,
@@ -315,7 +315,7 @@ class _OneitemState extends State<Oneitem> {
                                   getWidth(context, 40), getHeight(context, 4)),
                             ),
                             child: Text(
-                              "Add To cart".tr,
+                              "Add to cart".tr,
                             ),
                           ),
                     isItemInCart

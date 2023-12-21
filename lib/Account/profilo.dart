@@ -67,7 +67,7 @@ class _SettingState extends State<Setting> {
     'Male',
     'Female',
   ];
-  
+
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   String gender = "Male";
@@ -1729,118 +1729,119 @@ class _SettingState extends State<Setting> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: getHeight(context, 2),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const AboutScreen()),
-                                  );
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 5),
-                                  ),
-                                  child: Container(
-                                    height: getHeight(context, 6),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color:
-                                              mainColorBlack.withOpacity(0.2),
-                                        ),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            color: mainColorBlack,
-                                            Ionicons.lock_closed_outline,
-                                            size: 20,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            "Privacy Poilcy".tr,
-                                            style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 16),
-                                          ),
-                                          const Spacer(),
-                                          Icon(lang == "en"
-                                              ? Icons
-                                                  .keyboard_arrow_right_outlined
-                                              : Icons
-                                                  .keyboard_arrow_left_outlined)
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: getHeight(context, 2),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const AboutScreen()),
-                                  );
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 5),
-                                  ),
-                                  child: Container(
-                                    height: getHeight(context, 6),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color:
-                                              mainColorBlack.withOpacity(0.2),
-                                        ),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            color: mainColorBlack,
-                                            Ionicons.document_text_outline,
-                                            size: 20,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            "Terms Of Use".tr,
-                                            style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 16),
-                                          ),
-                                          const Spacer(),
-                                          Icon(lang == "en"
-                                              ? Icons
-                                                  .keyboard_arrow_right_outlined
-                                              : Icons
-                                                  .keyboard_arrow_left_outlined)
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // SizedBox(
+                              //   height: getHeight(context, 2),
+                              // ),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //           builder: (context) =>
+                              //               const AboutScreen()),
+                              //     );
+                              //   },
+                              //   child: Padding(
+                              //     padding: EdgeInsets.symmetric(
+                              //       horizontal: getWidth(context, 5),
+                              //     ),
+                              //     child: Container(
+                              //       height: getHeight(context, 6),
+                              //       decoration: BoxDecoration(
+                              //           border: Border.all(
+                              //             color:
+                              //                 mainColorBlack.withOpacity(0.2),
+                              //           ),
+                              //           borderRadius: BorderRadius.circular(5)),
+                              //       child: Padding(
+                              //         padding: const EdgeInsets.symmetric(
+                              //             horizontal: 12),
+                              //         child: Row(
+                              //           children: [
+                              //             Icon(
+                              //               color: mainColorBlack,
+                              //               Ionicons.lock_closed_outline,
+                              //               size: 20,
+                              //             ),
+                              //             const SizedBox(
+                              //               width: 10,
+                              //             ),
+                              //             Text(
+                              //               "Privacy Poilcy".tr,
+                              //               style: TextStyle(
+                              //                   color: mainColorBlack,
+                              //                   fontFamily: mainFontnormal,
+                              //                   fontSize: 16),
+                              //             ),
+                              //             const Spacer(),
+                              //             Icon(lang == "en"
+                              //                 ? Icons
+                              //                     .keyboard_arrow_right_outlined
+                              //                 : Icons
+                              //                     .keyboard_arrow_left_outlined)
+                              //           ],
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // SizedBox(
+                              //   height: getHeight(context, 2),
+                              // ),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //           builder: (context) =>
+                              //               const AboutScreen()),
+                              //     );
+                              //   },
+                              //   child: Padding(
+                              //     padding: EdgeInsets.symmetric(
+                              //       horizontal: getWidth(context, 5),
+                              //     ),
+                              //     child: Container(
+                              //       height: getHeight(context, 6),
+                              //       decoration: BoxDecoration(
+                              //           border: Border.all(
+                              //             color:
+                              //                 mainColorBlack.withOpacity(0.2),
+                              //           ),
+                              //           borderRadius: BorderRadius.circular(5)),
+                              //       child: Padding(
+                              //         padding: const EdgeInsets.symmetric(
+                              //             horizontal: 12),
+                              //         child: Row(
+                              //           children: [
+                              //             Icon(
+                              //               color: mainColorBlack,
+                              //               Ionicons.document_text_outline,
+                              //               size: 20,
+                              //             ),
+                              //             const SizedBox(
+                              //               width: 10,
+                              //             ),
+                              //             Text(
+                              //               "Terms Of Use".tr,
+                              //               style: TextStyle(
+                              //                   color: mainColorBlack,
+                              //                   fontFamily: mainFontnormal,
+                              //                   fontSize: 16),
+                              //             ),
+                              //             const Spacer(),
+                              //             Icon(lang == "en"
+                              //                 ? Icons
+                              //                     .keyboard_arrow_right_outlined
+                              //                 : Icons
+                              //                     .keyboard_arrow_left_outlined)
+                              //           ],
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
