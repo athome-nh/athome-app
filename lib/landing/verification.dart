@@ -269,77 +269,85 @@ class _VerificatoinState extends State<Verificatoin> {
             if (value != "") {
               if (value["code"] == "200") {
                 if (value["isApprove"] == 0) {
+                  setState(() {
+                    _isLoading = false;
+                  });
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        content: Stack(
-                          alignment: lang == "en"
-                              ? Alignment.topLeft
-                              : Alignment.topRight,
-                          children: [
-                            Container(
-                              width: getWidth(context, 70),
-                              height: getHeight(context, 50),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  //textcheck
-                                  Image.asset(
-                                    "assets/Victors/pendding.png",
-                                    width: getWidth(context, 40),
-                                    height: getWidth(context, 40),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Account Pendding".tr,
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 25,
+                        content: Directionality(
+                          textDirection: lang == "en"
+                              ? TextDirection.ltr
+                              : TextDirection.rtl,
+                          child: Stack(
+                            alignment: lang == "en"
+                                ? Alignment.topLeft
+                                : Alignment.topRight,
+                            children: [
+                              Container(
+                                width: getWidth(context, 70),
+                                height: getHeight(context, 50),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    //textcheck
+                                    Image.asset(
+                                      "assets/Victors/pendding.png",
+                                      width: getWidth(context, 40),
+                                      height: getWidth(context, 40),
                                     ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text(
-                                    "Account npt approved by admin yet".tr,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 16,
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const RegisterWithPhoneNumber()),
-                                      );
-                                    },
-                                    style: TextButton.styleFrom(
-                                      fixedSize: Size(getWidth(context, 70),
-                                          getHeight(context, 5)),
+                                    Text(
+                                      "Account Pendding".tr,
+                                      textAlign: TextAlign.center,
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontFamily: mainFontbold,
+                                        fontSize: 25,
+                                      ),
                                     ),
-                                    child: Text(
-                                      "OK".tr,
+                                    SizedBox(height: 10),
+                                    Text(
+                                      "Account npt approved by admin yet".tr,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontFamily: mainFontnormal,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const NavSwitch()),
+                                        );
+                                      },
+                                      style: TextButton.styleFrom(
+                                        fixedSize: Size(getWidth(context, 70),
+                                            getHeight(context, 5)),
+                                      ),
+                                      child: Text(
+                                        "OK".tr,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(Icons.close))
-                          ],
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(Icons.close))
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -370,6 +378,9 @@ class _VerificatoinState extends State<Verificatoin> {
                     MaterialPageRoute(builder: (context) => const NavSwitch()),
                   );
                 } else {
+                  setState(() {
+                    _isLoading = false;
+                  });
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -421,7 +432,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const RegisterWithPhoneNumber()),
+                                                const NavSwitch()),
                                       );
                                     },
                                     style: TextButton.styleFrom(
@@ -503,6 +514,9 @@ class _VerificatoinState extends State<Verificatoin> {
         if (value != "") {
           if (value["code"] == "200") {
             if (value["isApprove"] == 0) {
+              setState(() {
+                _isLoading = false;
+              });
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -553,7 +567,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const RegisterWithPhoneNumber()),
+                                            const NavSwitch()),
                                   );
                                 },
                                 style: TextButton.styleFrom(
@@ -603,6 +617,9 @@ class _VerificatoinState extends State<Verificatoin> {
                 MaterialPageRoute(builder: (context) => const NavSwitch()),
               );
             } else {
+              setState(() {
+                _isLoading = false;
+              });
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -653,7 +670,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const RegisterWithPhoneNumber()),
+                                            const NavSwitch()),
                                   );
                                 },
                                 style: TextButton.styleFrom(

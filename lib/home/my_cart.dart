@@ -86,91 +86,96 @@ class _MyCartState extends State<MyCart> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  content: Stack(
-                                    alignment: lang == "en"
-                                        ? Alignment.topLeft
-                                        : Alignment.topRight,
-                                    children: [
-                                      SizedBox(
-                                        width: getWidth(context, 70),
-                                        height: getHeight(context, 50),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          //textcheck
-                                          children: <Widget>[
-                                            Image.asset(
-                                              "assets/Victors/sure.png",
-                                              width: getWidth(context, 40),
-                                              height: getWidth(context, 40),
-                                            ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              "Clear cart".tr,
-                                              textAlign: TextAlign.center,
-                                              maxLines: 1,
-                                              style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontFamily: mainFontbold,
-                                                fontSize: 25,
+                                  content: Directionality(
+                                    textDirection: lang == "en"
+                                        ? TextDirection.ltr
+                                        : TextDirection.rtl,
+                                    child: Stack(
+                                      alignment: lang == "en"
+                                          ? Alignment.topLeft
+                                          : Alignment.topRight,
+                                      children: [
+                                        SizedBox(
+                                          width: getWidth(context, 70),
+                                          height: getHeight(context, 50),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            //textcheck
+                                            children: <Widget>[
+                                              Image.asset(
+                                                "assets/Victors/sure.png",
+                                                width: getWidth(context, 40),
+                                                height: getWidth(context, 40),
                                               ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Text(
-                                              "Are you sure you want to continue?"
-                                                  .tr,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 16,
+                                              const SizedBox(
+                                                height: 10,
                                               ),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                cartProvider.clearCart();
-                                                Navigator.pop(context);
-                                              },
-                                              style: TextButton.styleFrom(
-                                                fixedSize: Size(
-                                                    getWidth(context, 70),
-                                                    getHeight(context, 5)),
-                                                backgroundColor: mainColorRed,
+                                              Text(
+                                                "Clear cart".tr,
+                                                textAlign: TextAlign.center,
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontbold,
+                                                  fontSize: 25,
+                                                ),
                                               ),
-                                              child: Text(
-                                                "Clear".tr,
+                                              const SizedBox(height: 10),
+                                              Text(
+                                                "Are you sure you want to continue?"
+                                                    .tr,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 16,
+                                                ),
                                               ),
-                                            ),
-                                            const SizedBox(height: 5),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              style: TextButton.styleFrom(
-                                                fixedSize: Size(
-                                                    getWidth(context, 70),
-                                                    getHeight(context, 5)),
+                                              TextButton(
+                                                onPressed: () {
+                                                  cartProvider.clearCart();
+                                                  Navigator.pop(context);
+                                                },
+                                                style: TextButton.styleFrom(
+                                                  fixedSize: Size(
+                                                      getWidth(context, 70),
+                                                      getHeight(context, 5)),
+                                                  backgroundColor: mainColorRed,
+                                                ),
+                                                child: Text(
+                                                  "Clear".tr,
+                                                ),
                                               ),
-                                              child: Text(
-                                                "Cancel".tr,
+                                              const SizedBox(height: 5),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                style: TextButton.styleFrom(
+                                                  fixedSize: Size(
+                                                      getWidth(context, 70),
+                                                      getHeight(context, 5)),
+                                                ),
+                                                child: Text(
+                                                  "Cancel".tr,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      IconButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          icon: Icon(
-                                            Icons.close,
-                                            color: mainColorBlack,
-                                          ))
-                                    ],
+                                        IconButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            icon: Icon(
+                                              Icons.close,
+                                              color: mainColorBlack,
+                                            ))
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -941,94 +946,101 @@ class _MyCartState extends State<MyCart> {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                content: Stack(
-                                                  alignment: lang == "en"
-                                                      ? Alignment.topLeft
-                                                      : Alignment.topRight,
-                                                  children: [
-                                                    SizedBox(
-                                                      width:
-                                                          getWidth(context, 70),
-                                                      height: getHeight(
-                                                          context, 45),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        //textcheck
-                                                        children: <Widget>[
-                                                          Image.asset(
-                                                            "assets/Victors/minum.png",
-                                                            width: getWidth(
-                                                                context, 40),
-                                                            height: getWidth(
-                                                                context, 40),
-                                                          ),
-                                                          Text(
-                                                            "min title".tr,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                              color:
-                                                                  mainColorBlack,
-                                                              fontFamily:
-                                                                  mainFontbold,
-                                                              fontSize: 22,
+                                                content: Directionality(
+                                                  textDirection: lang == "en"
+                                                      ? TextDirection.ltr
+                                                      : TextDirection.rtl,
+                                                  child: Stack(
+                                                    alignment: lang == "en"
+                                                        ? Alignment.topLeft
+                                                        : Alignment.topRight,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: getWidth(
+                                                            context, 70),
+                                                        height: getHeight(
+                                                            context, 45),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceAround,
+                                                          //textcheck
+                                                          children: <Widget>[
+                                                            Image.asset(
+                                                              "assets/Victors/minum.png",
+                                                              width: getWidth(
+                                                                  context, 40),
+                                                              height: getWidth(
+                                                                  context, 40),
                                                             ),
-                                                          ),
-                                                          Text(
-                                                            // "minium order is "
-                                                            //         .tr +
-                                                            //     productrovider
-                                                            //         .minimumOrder
-                                                            //         .toString(),
-                                                            "min deatil".tr,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: TextStyle(
-                                                              color:
-                                                                  mainColorBlack,
-                                                              fontFamily:
-                                                                  mainFontnormal,
-                                                              fontSize: 16,
+                                                            Text(
+                                                              "min title".tr,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              maxLines: 1,
+                                                              style: TextStyle(
+                                                                color:
+                                                                    mainColorBlack,
+                                                                fontFamily:
+                                                                    mainFontbold,
+                                                                fontSize: 22,
+                                                              ),
                                                             ),
-                                                          ),
-                                                          const SizedBox(
-                                                              height: 40),
-                                                          TextButton(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            style: TextButton
-                                                                .styleFrom(
-                                                              fixedSize: Size(
-                                                                  getWidth(
-                                                                      context,
-                                                                      70),
-                                                                  getHeight(
-                                                                      context,
-                                                                      5)),
+                                                            Text(
+                                                              // "minium order is "
+                                                              //         .tr +
+                                                              //     productrovider
+                                                              //         .minimumOrder
+                                                              //         .toString(),
+                                                              "min deatil".tr,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: TextStyle(
+                                                                color:
+                                                                    mainColorBlack,
+                                                                fontFamily:
+                                                                    mainFontnormal,
+                                                                fontSize: 16,
+                                                              ),
                                                             ),
-                                                            child: Text(
-                                                              "OK".tr,
+                                                            const SizedBox(
+                                                                height: 40),
+                                                            TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              style: TextButton
+                                                                  .styleFrom(
+                                                                fixedSize: Size(
+                                                                    getWidth(
+                                                                        context,
+                                                                        70),
+                                                                    getHeight(
+                                                                        context,
+                                                                        5)),
+                                                              ),
+                                                              child: Text(
+                                                                "OK".tr,
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                    IconButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        icon: const Icon(
-                                                            Icons.close))
-                                                  ],
+                                                      IconButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          icon: const Icon(
+                                                              Icons.close))
+                                                    ],
+                                                  ),
                                                 ),
                                               );
                                             },

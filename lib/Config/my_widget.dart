@@ -1409,85 +1409,88 @@ Future<void> loiginPopup(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        content: Stack(
-          alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
-          children: [
-            //textcheck
-            SizedBox(
-              width: getWidth(context, 70),
-              height: getHeight(context, 50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/Victors/first.png",
-                    width: getWidth(context, 40),
-                    height: getWidth(context, 40),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Register First".tr,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    style: TextStyle(
-                      color: mainColorBlack,
-                      fontFamily: mainFontbold,
-                      fontSize: 25,
+        content: Directionality(
+          textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+          child: Stack(
+            alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
+            children: [
+              //textcheck
+              SizedBox(
+                width: getWidth(context, 70),
+                height: getHeight(context, 50),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/Victors/first.png",
+                      width: getWidth(context, 40),
+                      height: getWidth(context, 40),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  // Text(
-                  //   "You need login".tr,
-                  //   textAlign: TextAlign.center,
-                  //   style: TextStyle(
-                  //     color: mainColorGrey,
-                  //     fontFamily: mainFontnormal,
-                  //     fontSize: 16,
-                  //   ),
-                  // ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const RegisterWithPhoneNumber()),
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      fixedSize:
-                          Size(getWidth(context, 70), getHeight(context, 5)),
+                    const SizedBox(
+                      height: 10,
                     ),
-                    child: Text(
-                      "Register".tr,
+                    Text(
+                      "Register First".tr,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      style: TextStyle(
+                        color: mainColorBlack,
+                        fontFamily: mainFontbold,
+                        fontSize: 25,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: mainColorRed,
-                      fixedSize:
-                          Size(getWidth(context, 70), getHeight(context, 5)),
+                    const SizedBox(height: 15),
+                    // Text(
+                    //   "You need login".tr,
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //     color: mainColorGrey,
+                    //     fontFamily: mainFontnormal,
+                    //     fontSize: 16,
+                    //   ),
+                    // ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const RegisterWithPhoneNumber()),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                        fixedSize:
+                            Size(getWidth(context, 70), getHeight(context, 5)),
+                      ),
+                      child: Text(
+                        "Register".tr,
+                      ),
                     ),
-                    child: Text(
-                      "Cancel".tr,
+                    const SizedBox(height: 5),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: mainColorRed,
+                        fixedSize:
+                            Size(getWidth(context, 70), getHeight(context, 5)),
+                      ),
+                      child: Text(
+                        "Cancel".tr,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.close))
-          ],
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.close))
+            ],
+          ),
         ),
       );
     },

@@ -169,7 +169,12 @@ const Map<String, String> en = {
   "unknown occurred error please try again later":
       "Error please try again later",
   "Confirm": "Confirm",
-
+  "Account range out": "Sorry....",
+  "Account range out content":
+      "at this time, subscriber registration is unavailable .we kindly request you to attempt registration within 24hr. ",
+  "Account Pendding": "Wait...",
+  "Account npt approved by admin yet":
+      "Dear subscriber, please wait utile you get approvement by our admin",
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",
@@ -229,8 +234,7 @@ const Map<String, String> en = {
 
   //
   "min title": "Minimum Order required",
-  "min deatil":
-      "Unlock free delivery by reaching a convenient purchase threhold of 10000 dinars",
+  "min deatil": "Dear Customer, The minimum acceptable order is 10,000 IQD",
   //"min deatil":"You're almost there! Add more items to reach the minimum order amount.", // old
 
   // item_categories

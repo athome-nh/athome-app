@@ -123,66 +123,71 @@ class productProvider extends ChangeNotifier {
                     context: navigatorKey.currentContext!,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        content: Stack(
-                          alignment: lang == "en"
-                              ? Alignment.topLeft
-                              : Alignment.topRight,
-                          children: [
-                            SizedBox(
-                              width: getWidth(context, 70),
-                              height: getHeight(context, 50),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Image.asset(
-                                    "assets/Victors/disabled.png",
-                                    width: getWidth(context, 40),
-                                    height: getWidth(context, 40),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Account Disabled".tr,
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 25,
+                        content: Directionality(
+                          textDirection: lang == "en"
+                              ? TextDirection.ltr
+                              : TextDirection.rtl,
+                          child: Stack(
+                            alignment: lang == "en"
+                                ? Alignment.topLeft
+                                : Alignment.topRight,
+                            children: [
+                              SizedBox(
+                                width: getWidth(context, 70),
+                                height: getHeight(context, 50),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Image.asset(
+                                      "assets/Victors/disabled.png",
+                                      width: getWidth(context, 40),
+                                      height: getWidth(context, 40),
                                     ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    "Account is disable please contact athome admin"
-                                        .tr,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: mainColorGrey,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 16,
+                                    const SizedBox(
+                                      height: 10,
                                     ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {},
-                                    style: TextButton.styleFrom(
-                                      fixedSize: Size(getWidth(context, 70),
-                                          getHeight(context, 5)),
+                                    Text(
+                                      "Account Disabled".tr,
+                                      textAlign: TextAlign.center,
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontFamily: mainFontbold,
+                                        fontSize: 25,
+                                      ),
                                     ),
-                                    child: Text(
-                                      "OK".tr,
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      "Account is disable please contact athome admin"
+                                          .tr,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontFamily: mainFontnormal,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    TextButton(
+                                      onPressed: () {},
+                                      style: TextButton.styleFrom(
+                                        fixedSize: Size(getWidth(context, 70),
+                                            getHeight(context, 5)),
+                                      ),
+                                      child: Text(
+                                        "OK".tr,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: const Icon(Icons.close))
-                          ],
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: const Icon(Icons.close))
+                            ],
+                          ),
                         ),
                       );
                     },

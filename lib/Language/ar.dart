@@ -166,7 +166,12 @@ const Map<String, String> ar = {
   "unknown occurred error please try again later":
       "حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
   "Confirm": "التاکید",
-
+  "Account range out": "...آسف",
+  "Account range out content":
+      "في الوقت الحالي، خدمة تسجيل الاشتراك غير متاحة. نرجو منك التفضل بإعادة محاولة التسجيل خلال 24 ساعة.",
+  "Account Pendding": "...انتظر",
+  "Account npt approved by admin yet":
+      "عزيزي المشترك، يرجى الانتظار حتى تحصل على موافقة الادمن",
   // verification
   "Hold till the waiting time ends": "انتظر حتى ينتهي وقت الانتظار", //
   "Please enter code": "الرجاء إدخال الرمز التحقق",
@@ -226,8 +231,7 @@ const Map<String, String> ar = {
 
   //
   "min title": "الحد الأدنى للشراء المطلوب",
-  "min deatil":
-      "احصل على توصيل مجاني من خلال الوصول إلى حد شراء مناسب قدرة 10000 دينار",
+  "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو 10,000 دينار",
   //"min deatil":"أنت على بعد قليل! نرجو منك إضاقة المزيد من المنتجات إلى طلبك حتى يتمكن من تلبية الحد الأدنى المطلوب", // old
 
   // item_categories

@@ -169,7 +169,12 @@ const Map<String, String> kur = {
   "unknown occurred error please try again later":
       "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
   "Confirm": "دڵنیابوونەوە",
-
+  "Account range out": "...ببورە",
+  "Account range out content":
+      "بەشداربووی بەڕێز، لە ئێستادا ناتوانیت خۆت تۆمار بکەیت تکایە لە ماوەی 24 کاتژمێر دووبارە هەوڵبدەوە.",
+  "Account Pendding": "...چاوەڕوانبە",
+  "Account npt approved by admin yet":
+      "بەشدار بووی بەڕێز، تکایە چاوەڕوانبە تا هەژمارەکەت پشتڕاست دەکرێتەوە",
   // verification
   "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
   "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
@@ -229,8 +234,7 @@ const Map<String, String> kur = {
 
   //
   "min title": "کەمترین داواکاری پێشکەشکراو",
-  "min deatil":
-      "بۆ بەدەست هێنانی گەیاندنی خۆڕایی تکایە بە بڕی 10000دینار بازاری بکە",
+  "min deatil": "کڕیاڕی بەڕێز کەمترین بڕی داواکاری 10،000 دینارە",
   //"min deatil":"تکایە بەرهەمی زیاتر لە سەبەتەی کرین داوابکە، بۆ ئەوەی داواکاریەکەت جێ بەجێ بکرێت", // old
 
   // item_categories
