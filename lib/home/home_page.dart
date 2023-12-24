@@ -110,7 +110,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       "assets/images/dlly_Logo.png",
                       width: getWidth(context, 30),
                     ),
-              
+
                     //
                     automaticallyImplyLeading: false,
                     backgroundColor: Colors.transparent,
@@ -118,7 +118,7 @@ class _HomeSreenState extends State<HomeSreen> {
                     expandedHeight: getHeight(context, 25),
                     floating: false,
                     pinned: false,
-              
+
                     flexibleSpace: Visibility(
                       visible: productrovider.show,
                       replacement: Skeletonizer(
@@ -155,7 +155,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                       height: getWidth(context, 9),
                                       decoration: BoxDecoration(
                                           color: mainColorGrey,
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: Text(
                                         "",
                                         style: TextStyle(
@@ -185,10 +186,11 @@ class _HomeSreenState extends State<HomeSreen> {
                                             : imageUrlServer +
                                                 productrovider.tops[0].imgKur!
                                     : "",
-                                placeholder: (context, url) =>
-                                    Image.asset("assets/images/Logo-Type-2.png"),
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
-                                    Image.asset("assets/images/Logo-Type-2.png"),
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
                                 filterQuality: FilterQuality.low,
                                 width: getWidth(context, 100),
                                 height: getHeight(context, 100),
@@ -238,7 +240,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       ),
                     ),
                   ),
-              
+
                   // body
                   SliverToBoxAdapter(
                     child: SingleChildScrollView(
@@ -295,7 +297,7 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
-              
+
                           // Shimmer Effect
                           SizedBox(
                             height: getHeight(context, 14),
@@ -311,7 +313,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: 10,
-                                  itemBuilder: (BuildContext context, int index) {
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
                                     return Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: getWidth(context, 2)),
@@ -383,7 +386,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   builder: (context) =>
                                                       itemCategories()),
                                             ).then((value) {
-                                              productrovider.setsubcateSelect(0);
+                                              productrovider
+                                                  .setsubcateSelect(0);
                                             });
                                           },
                                           child: Container(
@@ -406,7 +410,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         error) =>
                                                     Image.asset(
                                                         "assets/images/Logo-Type-2.png"),
-                                                filterQuality: FilterQuality.low,
+                                                filterQuality:
+                                                    FilterQuality.low,
                                                 width: getHeight(context, 5),
                                                 height: getHeight(context, 5),
                                               ),
@@ -436,7 +441,7 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ),
                           ),
-              
+
                           productrovider.Orderitems.isNotEmpty
                               ? Column(
                                   children: [
@@ -475,7 +480,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   }
                                                 },
                                                 style: TextButton.styleFrom(
-                                                    foregroundColor: mainColorRed,
+                                                    foregroundColor:
+                                                        mainColorRed,
                                                     backgroundColor:
                                                         Colors.transparent),
                                                 child: Text(
@@ -487,7 +493,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                         ),
                                       ],
                                     ),
-              
+
                                     listItemsSmall(
                                       context,
                                       productrovider.getProductsByIds2(
@@ -497,7 +503,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   ],
                                 )
                               : const SizedBox(),
-              
+
                           productrovider.getProductsByDiscount().isNotEmpty
                               ? Column(
                                   children: [
@@ -548,7 +554,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                         ),
                                       ],
                                     ),
-              
+
                                     listItemsSmall(
                                       context,
                                       productrovider.getProductsByDiscount(),
@@ -556,7 +562,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   ],
                                 )
                               : const SizedBox(),
-              
+
                           // Highlight
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -601,17 +607,17 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
-              
+
                           listItemsSmall(
                             context,
                             productrovider.getProductsByHighlight(),
                           ),
-              
+
                           // Space
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-              
+
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 2)),
@@ -686,7 +692,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         error) =>
                                                     Image.asset(
                                                         "assets/images/Logo-Type-2.png"),
-                                                filterQuality: FilterQuality.low,
+                                                filterQuality:
+                                                    FilterQuality.low,
                                                 width: getWidth(context, 100),
                                                 height: getHeight(context, 20),
                                                 fit: BoxFit.fill,
@@ -711,12 +718,12 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ),
                           ),
-              
+
                           // Space
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-              
+
                           // Best Seller
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -765,10 +772,10 @@ class _HomeSreenState extends State<HomeSreen> {
                               ),
                             ],
                           ),
-              
+
                           listItemsSmall(
                               context, productrovider.getProductsByBestsell()),
-              
+
                           // Space
                           SizedBox(
                             height: getHeight(context, 2),

@@ -136,7 +136,7 @@ class _Map_screenState extends State<Map_screen> {
       var options = <PolygonAnnotationOptions>[];
       options.add(PolygonAnnotationOptions(
           geometry: Polygon(coordinates: [zone]).toJson(),
-          fillColor: Colors.green.value,
+          fillColor: Colors.transparent.value,
           fillOpacity: 0.2));
       polygonAnnotationManager?.createMulti(options);
     });

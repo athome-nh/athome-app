@@ -185,7 +185,7 @@ class _SingInUpState extends State<SingInUp> {
                         ),
                         labelText: "Name".tr,
                         labelStyle: TextStyle(
-                            color: mainColorGrey.withOpacity(0.8),
+                            color: mainColorBlack.withOpacity(0.8),
                             fontSize: 18,
                             fontFamily: mainFontbold),
                         hintText: "Enter your Name".tr,
@@ -469,6 +469,9 @@ class _SingInUpState extends State<SingInUp> {
                                       );
                                     },
                                   );
+                                  setState(() {
+                                    _isLoading = false;
+                                  });
                                   return;
                                 }
                                 setState(() {
@@ -493,6 +496,91 @@ class _SingInUpState extends State<SingInUp> {
                                   MaterialPageRoute(
                                       builder: (context) => const NavSwitch()),
                                 );
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      content: Stack(
+                                        alignment: lang == "en"
+                                            ? Alignment.topLeft
+                                            : Alignment.topRight,
+                                        children: [
+                                          SizedBox(
+                                            width: getWidth(context, 70),
+                                            height: getHeight(context, 50),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                //textcheck
+                                                Image.asset(
+                                                  "assets/Victors/pendding.png",
+                                                  width: getWidth(context, 40),
+                                                  height: getWidth(context, 40),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  "Account Pendding".tr,
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 1,
+                                                  style: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontbold,
+                                                    fontSize: 25,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  "Account npt approved by admin yet"
+                                                      .tr,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontFamily: mainFontnormal,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const RegisterWithPhoneNumber()),
+                                                    );
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    fixedSize: Size(
+                                                        getWidth(context, 70),
+                                                        getHeight(context, 5)),
+                                                  ),
+                                                  child: Text(
+                                                    "OK".tr,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(Icons.close))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                                setState(() {
+                                  _isLoading = false;
+                                });
+                                return;
                               }
                             } else {
                               toastShort(
@@ -559,7 +647,6 @@ class _SingInUpState extends State<SingInUp> {
 
   Widget _genderWidget(bool showOther, bool alignment) {
     return Container(
-      //margin: EdgeInsets.all(16.0),
       alignment: Alignment.center,
       child: GenderPickerWithImage(
         verticalAlignedText: alignment,
@@ -568,7 +655,7 @@ class _SingInUpState extends State<SingInUp> {
           final split = value.toString().split('.');
           gender = split[1];
         },
-        //textbawar male nd female
+
         maleText: "Male".tr,
         femaleText: "Female".tr,
         selectedGender: gender == "Male"

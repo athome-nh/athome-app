@@ -132,10 +132,10 @@ const Map<String, String> kur = {
   // login_page
   "Wellcome back": "بەخێر بێیتەوە",
   "EnterYourPhoneNumberToShop":
-      "ژمارە مۆبایل داخڵ بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
-  "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت داخڵ بکە ",
+      "ژمارە مۆبایل تۆمار بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
+  "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت تۆمار بکە ",
   "Please enter your phone number correct":
-      "ژمارەی مۆبایلەلەکت بە دروستی داخڵ بکە",
+      "ژمارەی مۆبایلەلەکت بە دروستی تۆمار بکە",
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
   "Phone Number": "ژمارە مۆبایل",
   "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
@@ -144,26 +144,26 @@ const Map<String, String> kur = {
   "Locations": "ناونیشان",
   "Name": "ناو",
   "Add name": "زیادکردنی ناو",
-  "Add name location": "ناوی شوێنەکەت داخڵ بکە",
+  "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",
   "Add Area": "زیادکردنی ناونیشان",
   "Type Building": "جۆری نیشینگە",
   "Floor number": "ژمارەی نهۆم",
-  "Enter floor number": "ژمارەی خانوو",
+  "Enter floor number": "ژمارەی نهۆم تۆمار بکە",
   "building name/number": "ژمارە/ناوی باڵەخانە",
-  "Enter building name/number": "ناو/ژمارەی باڵەخانە داخڵ بکە",
+  "Enter building name/number": "ناو/ژمارەی باڵەخانە تۆمار بکە",
   "number": "ژمارەی ",
-  "Enter number": "ژمارەکە داخڵ بکە",
-  "Phone number": "ژمارەی مۆبایل داخڵ بکە",
+  "Enter number": "ژمارەکە تۆمار بکە",
+  "Phone number": "ژمارەی مۆبایل تۆمار بکە",
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
 
   // singin_up
   "Complete Account": "هەژمارەکەت دروست کرا",
   "Enter your account information to complete your account":
-      "زانیاری هەژمارەکەت داخڵ بکە",
-  "Enter your Name": "ناوت داخڵ بکە",
-  "Enter your full name": "ناوی تەواوت داخڵ بکە",
+      "زانیاری هەژمارەکەت تۆمار بکە",
+  "Enter your Name": "ناوت تۆمار بکە",
+  "Enter your full name": "ناوی تەواوت تۆمار بکە",
   "City": "شار",
   "Age": "تەمەن",
   "unknown occurred error please try again later":
@@ -172,9 +172,9 @@ const Map<String, String> kur = {
 
   // verification
   "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
-  "Please enter code": "تکایە کۆدی دڵنیابوونەوە داخڵ بکە",
+  "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
   "Verification": "دڵنیابوونەوە",
-  "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی داخڵ بکە",
+  "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی تۆمار بکە",
   "Don't resive the OTP ?": "ئایا کۆدی دڵنیابونەوەت بە دەست گەیشت ؟",
   "Try again in": "دوبارە داوابکەوە لە ",
   "Resend": "دووبارە ناردنەوە",
