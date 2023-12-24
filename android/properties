@@ -1,0 +1,4 @@
+storePassword=IT_team2012_2024
+keyPassword=IT_team2012_2024
+keyAlias=upload
+storeFile=/Users/hunar/Desktop/Las docs/upload-keystore.jks
