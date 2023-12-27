@@ -87,22 +87,5 @@ flutter:
       fonts:          
         - asset: assets/fonts/NRT-Reg.ttf
 
-    - family: spedaB
-      fonts:
-        - asset: assets/fonts/Speda-Bold.ttf
-      
-         
-
-    - family: spedaN
-      fonts:          
-        - asset: assets/fonts/speda.ttf    
-        
-    - family: iraniB
-      fonts:
-        - asset: assets/fonts/iraniB.ttf
-         
-
-    - family: iraniN
-      fonts:          
-        - asset: assets/fonts/iraniN.ttf  
+  
 

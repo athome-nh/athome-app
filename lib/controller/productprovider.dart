@@ -47,11 +47,9 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataAll(bool user) {
-    print("data");
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
-          print("reqestresponse");
           setProducts((value["products"] as List)
               .map((x) => ProductModel.fromMap(x))
               .toList());
@@ -74,7 +72,7 @@ class productProvider extends ChangeNotifier {
               .map((x) => Brandmodel.fromMap(x))
               .toList());
           setMinimumOrder(value['minimum_order']);
-          print("end");
+
           setshow(true);
         } else {}
       } else {}
@@ -82,11 +80,9 @@ class productProvider extends ChangeNotifier {
   }
 
   getDataUser(String id) {
-    print("user");
     Network(false).getData("showDataUser/$id").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
-          print(value);
           setlocation((value['locations'] as List)
               .map((x) => Locationuser.fromMap(x))
               .toList());
@@ -236,6 +232,7 @@ class productProvider extends ChangeNotifier {
   int _cateType = 0;
   int _minimumOrder = 0;
   int _idItem = 0;
+  int _idBrand = 0;
   int _subcateSelect = 0;
   bool show = false;
   bool showuser = false;
@@ -262,6 +259,7 @@ class productProvider extends ChangeNotifier {
   int get cateType => _cateType;
   int get minimumOrder => _minimumOrder;
   int get idItem => _idItem;
+  int get idBrand => _idBrand;
   int get subcateSelect => _subcateSelect;
   int get defultlocation => _defultlocation;
 
@@ -425,7 +423,6 @@ class productProvider extends ChangeNotifier {
       notifyListeners();
     } else {
       // Handle the case where the product with the specified ID is not found.
-      print('Product with ID $oid not found.');
     }
   }
 
@@ -586,6 +583,11 @@ class productProvider extends ChangeNotifier {
 
   void setidItem(int idItem) {
     _idItem = idItem;
+    notifyListeners();
+  }
+
+  void setidbrand(int id) {
+    _idBrand = id;
     notifyListeners();
   }
 

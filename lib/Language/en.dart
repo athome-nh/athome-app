@@ -88,6 +88,7 @@ const Map<String, String> en = {
   "About us": "About us",
   "Log out": "Log out",
   "Save": "Save",
+  "Gender": "Gender",
 
   // order_screen
   "My Orders": "My Orders",
@@ -163,6 +164,7 @@ const Map<String, String> en = {
   "Enter your account information to complete your account":
       "Enter your information to complete your account",
   "Enter your Name": "Enter your Name",
+  "Enter your age": "Enter your age",
   "Enter your full name": "Enter your full name",
   "City": "City",
   "Age": "Age",
@@ -259,4 +261,6 @@ const Map<String, String> en = {
   'House': 'House',
   'Office': 'Office',
   'Apartment': 'Apartment',
+  "An error occurred, Please try again later.":
+      "An error occurred, Please try again later.",
 };

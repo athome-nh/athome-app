@@ -87,7 +87,7 @@ const Map<String, String> kur = {
   "About us": "دەربارەی ئێمە",
   "Log out": "چوونە دەر",
   "Save": "زەخیرە کردن",
-
+  "Gender": "ڕەگەز",
   // order_screen
   "My Orders": "داواکاریەکانم",
   "On going": "بەردەوامی هەیە",
@@ -163,6 +163,8 @@ const Map<String, String> kur = {
   "Enter your account information to complete your account":
       "زانیاری هەژمارەکەت تۆمار بکە",
   "Enter your Name": "ناوت تۆمار بکە",
+  "Enter your age": "تەمەنت تۆمار بکە",
+
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
   "City": "شار",
   "Age": "تەمەن",
@@ -258,4 +260,6 @@ const Map<String, String> kur = {
   'House': 'خانوو',
   'Office': 'نووسینگە',
   'Apartment': 'شوقە',
+  "An error occurred, Please try again later.":
+      "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
 };

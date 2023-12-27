@@ -540,7 +540,7 @@ class _CheckOutState extends State<CheckOut> {
 
                                   DateTime timecheck =
                                       DateTime.parse(value["now"].toString());
-                                  print(timecheck);
+
                                   if (timecheck.hour > 7 &&
                                       timecheck.hour < 23) {
                                     Navigator.push(

@@ -28,16 +28,12 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
         .getAPNSToken(
             // vapidKey: firebaseCloudvapidKey
             )
-        .then((val) async {
-      print(val);
-    });
+        .then((val) async {});
     FirebaseMessaging.instance
         .getToken(
             // vapidKey: firebaseCloudvapidKey
             )
-        .then((val) async {
-      print(val);
-    });
+        .then((val) async {});
     super.initState();
   }
 
@@ -230,7 +226,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         }
 
                         ph = "+964$ph";
-                        print(ph);
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

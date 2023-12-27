@@ -46,10 +46,14 @@ class _TrackOrderState extends State<TrackOrder> {
                   Provider.of<productProvider>(context, listen: false);
               productrovider.getDataUser(userdata["id"].toString());
             }
+
             final productrovider =
                 Provider.of<productProvider>(context, listen: false);
             productrovider.updateOrder(int.parse(widget.id), status);
             status = value["status"];
+            if (value["status"] > 5) {
+              status = 6;
+            }
             loading = true;
             return value["status"];
           });
@@ -160,243 +164,237 @@ class _TrackOrderState extends State<TrackOrder> {
               )),
         ),
         body: SingleChildScrollView(
-          child: SizedBox(
-            height: getHeight(context, 85),
-            width: getWidth(context, 100),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Text("Order:".tr + widget.id,
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontSize: 28,
-                          fontFamily: mainFontnormal,
-                        )),
-                    Text(widget.time.substring(0, 19),
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontSize: 20,
-                          fontFamily: mainFontnormal,
-                        )),
-                  ],
-                ),
-                loading
-                    ? Column(
-                        children: [
-                          // gif image place and size
-                          Image.asset(
-                            images[status],
-                            width: getWidth(context, 100),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: getWidth(context, 5)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: getWidth(context, 8),
-                                  height: getWidth(context, 8),
-                                  decoration: BoxDecoration(
-                                    color: mainColorGrey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: status == 0
-                                      ? LoadingIndicator(
-                                          indicatorType:
-                                              Indicator.ballSpinFadeLoader,
-                                          colors: [mainColorWhite],
-                                          strokeWidth: 5,
-                                        )
-                                      : status > 0
-                                          ? Icon(
-                                              Icons.check_circle,
-                                              color: mainColorWhite,
-                                              size: getWidth(context, 5),
-                                            )
-                                          : const SizedBox(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  SizedBox(
+                    height: getHeight(context, 1),
+                  ),
+                  Text("Order:".tr + widget.id,
+                      style: TextStyle(
+                        color: mainColorBlack,
+                        fontSize: 28,
+                        fontFamily: mainFontnormal,
+                      )),
+                  Text(widget.time.substring(0, 19),
+                      style: TextStyle(
+                        color: mainColorBlack,
+                        fontSize: 20,
+                        fontFamily: mainFontnormal,
+                      )),
+                ],
+              ),
+              loading
+                  ? Column(
+                      children: [
+                        // gif image place and size
+                        Image.asset(
+                          images[status],
+                          width: getWidth(context, 100),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 5)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                width: getWidth(context, 8),
+                                height: getWidth(context, 8),
+                                decoration: BoxDecoration(
+                                  color: mainColorGrey,
+                                  shape: BoxShape.circle,
                                 ),
-                                SizedBox(
-                                    width: getWidth(context, 18),
-                                    child: Divider(
-                                      color: mainColorGrey,
-                                      thickness: 3,
-                                    )),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: getWidth(context, 8),
-                                  height: getWidth(context, 8),
-                                  decoration: BoxDecoration(
-                                    color: mainColorGrey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: status == 1 || status == 2
-                                      ? LoadingIndicator(
-                                          indicatorType:
-                                              Indicator.ballSpinFadeLoader,
-                                          colors: [mainColorWhite],
-                                          strokeWidth: 5,
-                                        )
-                                      : status > 1 || status == 2
-                                          ? Icon(
-                                              Icons.check_circle,
-                                              color: mainColorWhite,
-                                              size: getWidth(context, 5),
-                                            )
-                                          : const SizedBox(),
-                                ),
-                                SizedBox(
-                                    width: getWidth(context, 18),
-                                    child: Divider(
-                                      color: mainColorGrey,
-                                      thickness: 3,
-                                    )),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: getWidth(context, 8),
-                                  height: getWidth(context, 8),
-                                  decoration: BoxDecoration(
-                                    color: mainColorGrey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: status == 3
-                                      ? LoadingIndicator(
-                                          indicatorType:
-                                              Indicator.ballSpinFadeLoader,
-                                          colors: [mainColorWhite],
-                                          strokeWidth: 5,
-                                        )
-                                      : status > 3
-                                          ? Icon(
-                                              Icons.check_circle,
-                                              color: mainColorWhite,
-                                              size: getWidth(context, 5),
-                                            )
-                                          : const SizedBox(),
-                                ),
-                                SizedBox(
-                                    width: getWidth(context, 18),
-                                    child: Divider(
-                                      color: mainColorGrey,
-                                      thickness: 3,
-                                    )),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: getWidth(context, 8),
-                                  height: getWidth(context, 8),
-                                  decoration: BoxDecoration(
-                                    color: mainColorGrey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: status == 4 || status == 5
-                                      ? Icon(
-                                          Icons.check_circle,
-                                          color: mainColorWhite,
-                                          size: getWidth(context, 5),
-                                        )
-                                      : const SizedBox(),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: getHeight(context, 3),
-                          ),
-                          Text(titles[status],
-                              style: TextStyle(
-                                color: mainColorBlack,
-                                fontSize: 28,
-                                fontFamily: mainFontnormal,
-                              )),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: getWidth(context, 10)),
-                            child: Text(
-                              content[status],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorBlack,
-                                fontSize: 16,
-                                fontFamily: mainFontnormal,
+                                child: status == 0
+                                    ? LoadingIndicator(
+                                        indicatorType:
+                                            Indicator.ballSpinFadeLoader,
+                                        colors: [mainColorWhite],
+                                        strokeWidth: 5,
+                                      )
+                                    : status > 0
+                                        ? Icon(
+                                            Icons.check_circle,
+                                            color: mainColorWhite,
+                                            size: getWidth(context, 5),
+                                          )
+                                        : const SizedBox(),
                               ),
+                              SizedBox(
+                                  width: getWidth(context, 18),
+                                  child: Divider(
+                                    color: mainColorGrey,
+                                    thickness: 3,
+                                  )),
+                              Container(
+                                alignment: Alignment.center,
+                                width: getWidth(context, 8),
+                                height: getWidth(context, 8),
+                                decoration: BoxDecoration(
+                                  color: mainColorGrey,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: status == 1 || status == 2
+                                    ? LoadingIndicator(
+                                        indicatorType:
+                                            Indicator.ballSpinFadeLoader,
+                                        colors: [mainColorWhite],
+                                        strokeWidth: 5,
+                                      )
+                                    : status > 1 || status == 2
+                                        ? Icon(
+                                            Icons.check_circle,
+                                            color: mainColorWhite,
+                                            size: getWidth(context, 5),
+                                          )
+                                        : const SizedBox(),
+                              ),
+                              SizedBox(
+                                  width: getWidth(context, 18),
+                                  child: Divider(
+                                    color: mainColorGrey,
+                                    thickness: 3,
+                                  )),
+                              Container(
+                                alignment: Alignment.center,
+                                width: getWidth(context, 8),
+                                height: getWidth(context, 8),
+                                decoration: BoxDecoration(
+                                  color: mainColorGrey,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: status == 3
+                                    ? LoadingIndicator(
+                                        indicatorType:
+                                            Indicator.ballSpinFadeLoader,
+                                        colors: [mainColorWhite],
+                                        strokeWidth: 5,
+                                      )
+                                    : status > 3
+                                        ? Icon(
+                                            Icons.check_circle,
+                                            color: mainColorWhite,
+                                            size: getWidth(context, 5),
+                                          )
+                                        : const SizedBox(),
+                              ),
+                              SizedBox(
+                                  width: getWidth(context, 18),
+                                  child: Divider(
+                                    color: mainColorGrey,
+                                    thickness: 3,
+                                  )),
+                              Container(
+                                alignment: Alignment.center,
+                                width: getWidth(context, 8),
+                                height: getWidth(context, 8),
+                                decoration: BoxDecoration(
+                                  color: mainColorGrey,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: status == 4 || status == 5
+                                    ? Icon(
+                                        Icons.check_circle,
+                                        color: mainColorWhite,
+                                        size: getWidth(context, 5),
+                                      )
+                                    : const SizedBox(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: getHeight(context, 3),
+                        ),
+                        Text(titles[status],
+                            style: TextStyle(
+                              color: mainColorBlack,
+                              fontSize: 28,
+                              fontFamily: mainFontnormal,
+                            )),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 10)),
+                          child: Text(
+                            content[status],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: mainColorBlack,
+                              fontSize: 16,
+                              fontFamily: mainFontnormal,
                             ),
                           ),
-                        ],
-                      )
-                    : waitingWiget(context),
-                SizedBox(
-                  height: getHeight(context, 2),
-                ),
-                Row(
-                  mainAxisAlignment: status > 0
-                      ? MainAxisAlignment.center
-                      : MainAxisAlignment.spaceEvenly,
-                  children: [
-                    loading
-                        ? status == 0
-                            ? TextButton(
-                                onPressed: () {
-                                  Network(false)
-                                      .postData("userCancel",
-                                          {"oid": widget.id}, context)
-                                      .then((value) {
-                                    if (value != "") {
-                                      if (value["code"] == "201") {
-                                        final productrovider =
-                                            Provider.of<productProvider>(
-                                                context,
-                                                listen: false);
-                                        productrovider.getDataUser(
-                                            userdata["id"].toString());
+                        ),
+                      ],
+                    )
+                  : waitingWiget(context),
+              SizedBox(
+                height: getHeight(context, 2),
+              ),
+              Row(
+                mainAxisAlignment: status > 0
+                    ? MainAxisAlignment.center
+                    : MainAxisAlignment.spaceEvenly,
+                children: [
+                  loading
+                      ? status == 0
+                          ? TextButton(
+                              onPressed: () {
+                                Network(false)
+                                    .postData("userCancel", {"oid": widget.id},
+                                        context)
+                                    .then((value) {
+                                  if (value != "") {
+                                    if (value["code"] == "201") {
+                                      final productrovider =
+                                          Provider.of<productProvider>(context,
+                                              listen: false);
+                                      productrovider.getDataUser(
+                                          userdata["id"].toString());
 
-                                        Navigator.pop(context);
-                                      }
+                                      Navigator.pop(context);
                                     }
-                                  });
-                                },
-                                style: TextButton.styleFrom(
-                                  backgroundColor: mainColorRed,
-                                  fixedSize: Size(getWidth(context, 35),
-                                      getHeight(context, 3)),
-                                ),
-                                child: Text(
-                                  "Cancel order".tr,
-                                ),
-                              )
-                            : const SizedBox()
-                        : const SizedBox(),
-                    loading
-                        ? TextButton(
-                            onPressed: () {
-                              Provider.of<productProvider>(context,
-                                      listen: false)
-                                  .getproductitems(int.parse(widget.id));
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => OldOrder(widget.id,
-                                        widget.total, widget.time, status)),
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              fixedSize: Size(
-                                  getWidth(context, 35), getHeight(context, 3)),
-                            ),
-                            child: Text(
-                              "View order".tr,
-                            ),
-                          )
-                        : const SizedBox(),
-                  ],
-                )
-              ],
-            ),
+                                  }
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                backgroundColor: mainColorRed,
+                                fixedSize: Size(getWidth(context, 35),
+                                    getHeight(context, 3)),
+                              ),
+                              child: Text(
+                                "Cancel order".tr,
+                              ),
+                            )
+                          : const SizedBox()
+                      : const SizedBox(),
+                  loading
+                      ? TextButton(
+                          onPressed: () {
+                            Provider.of<productProvider>(context, listen: false)
+                                .getproductitems(int.parse(widget.id));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OldOrder(widget.id,
+                                      widget.total, widget.time, status)),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(
+                                getWidth(context, 35), getHeight(context, 3)),
+                          ),
+                          child: Text(
+                            "View order".tr,
+                          ),
+                        )
+                      : const SizedBox(),
+                ],
+              )
+            ],
           ),
         ),
       ),

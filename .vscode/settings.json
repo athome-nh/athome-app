@@ -5,5 +5,5 @@
         "other": "off"
     },
     "sde.buildOnSave": true,
-    "editor.inlineSuggest.showToolbar": "onHover"
+    "editor.inlineSuggest.showToolbar": "always"
 }

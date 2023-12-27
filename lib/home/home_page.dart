@@ -216,7 +216,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                   onPressed: () {
                                                     productrovider
                                                         .settype("brand");
-                                                    productrovider.setidItem(
+                                                    productrovider.setidbrand(
                                                         productrovider
                                                             .tops[0].brandId!);
                                                     Navigator.push(
@@ -673,7 +673,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                             onTap: () {
                                               productrovider.settype("brand");
                                               productrovider
-                                                  .setidItem(item.brandId!);
+                                                  .setidbrand(item.brandId!);
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(

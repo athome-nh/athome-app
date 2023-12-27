@@ -94,7 +94,9 @@ class _location_DeatilState extends State<location_Deatil> {
                                 quickZoomEnabled: false,
                                 doubleTapToZoomInEnabled: false,
                                 doubleTouchToZoomOutEnabled: false,
-                                pinchToZoomEnabled: true,
+                                pinchToZoomEnabled: false,
+                                scrollDecelerationEnabled: false,
+                                scrollEnabled: false,
                                 focalPoint: ScreenCoordinate(
                                     x: widget.latitude, y: widget.longitude)));
                             controller.location.updateSettings(
@@ -599,14 +601,14 @@ class _location_DeatilState extends State<location_Deatil> {
                           ),
                         ),
                         labelText: lang == "en"
-                            ? type.tr + "number".tr
+                            ? type.tr + " " + "number".tr
                             : "number".tr + type.tr,
                         labelStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.8),
                             fontSize: 16,
                             fontFamily: mainFontnormal),
                         hintText: lang == "en"
-                            ? type.tr + "number".tr
+                            ? type.tr + " " + "number".tr
                             : "number".tr + type.tr,
                         hintStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.5),
@@ -704,7 +706,9 @@ class _location_DeatilState extends State<location_Deatil> {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              style: TextButton.styleFrom(),
+                              style: TextButton.styleFrom(
+                                backgroundColor: mainColorRed,
+                              ),
                               child: Text(
                                 "Cancel".tr,
                               ),
@@ -792,9 +796,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                         }
                                       });
                                     },
-                              style: TextButton.styleFrom(
-                                backgroundColor: mainColorRed,
-                              ),
+                              style: TextButton.styleFrom(),
                               child: Text(
                                 "Save".tr,
                               ),

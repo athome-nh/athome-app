@@ -43,7 +43,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: mainColorRed,
               )),
         ),
         body: Column(

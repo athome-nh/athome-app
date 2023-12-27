@@ -1,5 +1,4 @@
 import 'package:dllylas/Config/my_widget.dart';
-import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
@@ -28,10 +27,10 @@ class _AllItemState extends State<AllItem> {
     String type = productPro.allitemType;
     String name = type == "brand"
         ? lang == "en"
-            ? productPro.getonebrandById(productPro.idItem).nameEn!
+            ? productPro.getonebrandById(productPro.idBrand).nameEn!
             : lang == "ar"
-                ? productPro.getonebrandById(productPro.idItem).nameAr!
-                : productPro.getonebrandById(productPro.idItem).nameKu!
+                ? productPro.getonebrandById(productPro.idBrand).nameAr!
+                : productPro.getonebrandById(productPro.idBrand).nameKu!
         : "";
 
     late List<ProductModel> products = type == "discount"
@@ -41,7 +40,7 @@ class _AllItemState extends State<AllItem> {
             : type == "orders"
                 ? productPro.getProductsByIds(productPro.listOrderProductIds())
                 : type == "brand"
-                    ? productPro.getProductsByBrand(productPro.idItem)
+                    ? productPro.getProductsByBrand(productPro.idBrand)
                     : productPro.getProductsByBestsell2();
 
     return Directionality(

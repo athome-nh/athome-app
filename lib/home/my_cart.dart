@@ -74,7 +74,6 @@ class _MyCartState extends State<MyCart> {
                         },
                         icon: Icon(
                           Icons.arrow_back_ios,
-                          color: mainColorRed,
                         ))
                     : const SizedBox(),
                 actions: [

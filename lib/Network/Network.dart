@@ -10,6 +10,7 @@ import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
 import 'dio_connectivity_request_retrier.dart';
 
@@ -42,10 +43,11 @@ class Network {
           data = response.data;
         });
       } else {
-        toastLong('An error occured, Please try again.');
+        toastLong(
+          'An error occurred, Please try again later.'.tr,
+        );
       }
     } catch (e) {
-      print(e);
       return "";
     }
     return data;
@@ -66,7 +68,6 @@ class Network {
         data = response.data;
       });
     } catch (e) {
-      print(e);
       return "";
     }
     return data;
@@ -92,32 +93,7 @@ class Network {
           'Authorization': "Bearer " + token,
           'aToken': encryptAES(generateRandomText(time.data["data"])),
         };
-        print(filepath);
-        // try {
-        //   // Create a FormData object to hold the image file
-        //   FormData formData = FormData.fromMap({
-        //     'image':
-        //         await MultipartFile.fromFile(filepath, filename: 'image.jpg'),
-        //   });
-        //   dio.options.headers["Authorization"] = "Bearer " + token;
 
-        //   dio.options.headers["aToken"] =
-        //       encryptAES(generateRandomText(time.data["data"]));
-        //   // Send the image using a POST request
-        //   var response = await dio.post(addimageUrl, data: formData);
-
-        //   // Check if the request was successful (status code 200)
-        //   if (response.statusCode == 201) {
-        //     print("response");
-        //     print(response.data);
-        //     print('Image uploaded successfully');
-        //   } else {
-        //     print(
-        //         'Failed to upload image. Status code: ${response.statusCode}');
-        //   }
-        // } catch (error) {
-        //   print('Error uploading image: $error');
-        // }
         var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
           ..fields.addAll(body)
           ..headers.addAll(headers)
@@ -128,15 +104,13 @@ class Network {
         if (response.statusCode == 201) {
           var responseData = await http.Response.fromStream(response);
           var decodedData = json.decode(responseData.body);
-          print('Response data: $decodedData');
+
           return true;
         } else {
-          print(response.statusCode);
           return false;
         }
       });
     } catch (e) {
-      print(e);
       return false;
     }
   }
@@ -170,12 +144,11 @@ class Network {
         });
       }
     } catch (e) {
-      print(e);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
             duration: const Duration(seconds: 4),
             content: Text(
-              'An error occured, Please try again.',
+              'An error occurred, Please try again later.'.tr,
               style: TextStyle(color: mainColorWhite),
             ),
             backgroundColor: mainColorGrey,

@@ -64,6 +64,7 @@ class _SettingState extends State<Setting> {
   String selectedLanguage = 'English';
 
   List<String> items = [
+    "Gender",
     'Male',
     'Female',
   ];
@@ -88,8 +89,8 @@ class _SettingState extends State<Setting> {
             : "Kurdish";
     if (isLogin && userdata.isNotEmpty) {
       nameController.text = userdata["name"];
-      ageController.text = userdata["age"].toString();
-      gender = userdata["gender"];
+      ageController.text = userdata["age"].toString() ?? "0";
+      gender = userdata["gender"] ?? "Gender";
       image = userdata["img"];
     }
     super.initState();
@@ -663,6 +664,7 @@ class _SettingState extends State<Setting> {
                                                                               setState(() {
                                                                                 waiting = true;
                                                                               });
+                                                                            
 
                                                                               var data = {
                                                                                 "id": userdata["id"],

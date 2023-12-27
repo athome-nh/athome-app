@@ -23,7 +23,7 @@ Color mainFacebookColor = const Color(0xff367FC0);
 Color mainGoogleColor = const Color(0xffDD4B39);
 
 ///Define { Images } in AtHome
-String mainImagePattern = 'assets/images/001_pattern.jpg';
+// String mainImagePattern = 'assets/images/001_pattern.jpg';
 String mainImageLogo1 = 'assets/images/dlly_las.gif';
 
 /// Define { Width and Height } of the device screen

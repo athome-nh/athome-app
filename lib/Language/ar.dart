@@ -86,6 +86,7 @@ const Map<String, String> ar = {
   "About us": "حول التطبیق",
   "Log out": "خروج",
   "Save": "حفظ",
+  "Gender": "جنس",
 
   // order_screen
   "My Orders": "طلباتي",
@@ -125,7 +126,7 @@ const Map<String, String> ar = {
   "Please Delivery Address": "يرجى إضافة الموقع",
   "Send Order": "ارسال الطلبیة",
   "sorryWeDoNotHaveDelivery":
-      "إلى الزبون الكريم نحيطكم علماً بأن وقت التسليم المحدد لطلبكم قد انتهى. هل ترغبون في استلام الطلب غداً صباحاً؟",
+      " الزبون الكريم نحيطكم علماً بأن وقت التسليم المحدد لطلبكم قد انتهى. هل ترغبون في استلام الطلب غداً صباحاً؟",
   "OK": "موافق",
 
   // login_page
@@ -160,6 +161,7 @@ const Map<String, String> ar = {
   "Enter your account information to complete your account":
       "یرجی ادخال المعلومات الخاصة بك لاکمال الحسابك",
   "Enter your Name": "ادخال الاسم",
+  "Enter your age": "ادخال العمر",
   "Enter your full name": "یرجی الادخال الاسم الکامل",
   "City": "مدينة",
   "Age": "عمر",
@@ -255,4 +257,6 @@ const Map<String, String> ar = {
   'House': 'منزل',
   'Office': 'مكتب',
   'Apartment': 'شقة',
+  "An error occurred, Please try again later.":
+      "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
 };
