@@ -48,7 +48,7 @@ class productProvider extends ChangeNotifier {
 
   getDataAll(bool user) {
     Network(false).getData("showData").then((value) async {
-      if (value != "") {
+      if (value != "") { 
         if (value["code"] != 200) {
           setProducts((value["products"] as List)
               .map((x) => ProductModel.fromMap(x))
