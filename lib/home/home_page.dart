@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Home/all_item.dart';
@@ -16,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeSreen extends StatefulWidget {
   const HomeSreen({super.key});
@@ -69,6 +73,35 @@ class _HomeSreenState extends State<HomeSreen> {
   var subscription;
   @override
   void initState() {
+    FirebaseFirestore.instance
+        .collection("onLoad")
+        .doc("1")
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        if (documentSnapshot.get("show") == true) {
+          if (lang == "en") {
+            ShowInfo(context, documentSnapshot.get("titleen"),
+                documentSnapshot.get("contenten"), "OK".tr, "error");
+          } else if (lang == "ar") {
+            ShowInfo(context, documentSnapshot.get("titler"),
+                documentSnapshot.get("contentar"), "OK".tr, "error");
+          } else {
+            ShowInfo(context, documentSnapshot.get("titleku"),
+                documentSnapshot.get("contentku"), "OK".tr, "error");
+          }
+        }
+        if (currentVersion != documentSnapshot.get("newversion")) {
+          ShowInfo(
+              context,
+              "New update is available".tr,
+              "A newer version of dlly las application is available, please download the latest version ."
+                  .tr,
+              "Update".tr,
+              "error");
+        }
+      }
+    });
     checkinternet();
     subscription = Connectivity()
         .onConnectivityChanged
@@ -788,5 +821,99 @@ class _HomeSreenState extends State<HomeSreen> {
               ),
             ),
           );
+  }
+
+  Future<void> ShowInfo(BuildContext context, String title, String content,
+      String buttontxt, String type) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Stack(
+              alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
+              children: [
+                SizedBox(
+                  width: getWidth(context, 100),
+                  height: getHeight(context, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/Victors/info.png",
+                        width: getWidth(context, 40),
+                        height: getWidth(context, 40),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        title.tr,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        style: TextStyle(
+                          color: mainColorBlack,
+                          fontFamily: mainFontbold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        content,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: mainColorBlack,
+                          fontFamily: mainFontnormal,
+                          fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      TextButton(
+                        onPressed: () async {
+                          if (type == "error1") {
+                            exit(0);
+                          } else {
+                            if (Platform.isAndroid) {
+                              Uri url = Uri.parse(
+                                  'https://play.google.com/store/apps/details?id=com.market.dllylas');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception('Could not launch $url');
+                              }
+                            } else {
+                              Uri url = Uri.parse(
+                                  'https://apps.apple.com/app/com.market.dllylas');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception('Could not launch $url');
+                              }
+                            }
+                          }
+                        },
+                        style: TextButton.styleFrom(
+                          fixedSize: Size(
+                              getWidth(context, 70), getHeight(context, 5)),
+                        ),
+                        child: Text(
+                          buttontxt,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.close))
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

@@ -262,4 +262,8 @@ const Map<String, String> kur = {
   'Apartment': 'شوقە',
   "An error occurred, Please try again later.":
       "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
+  "New update is available": "ئەپدەیتێکی نوێ بەردەستە",
+  "A newer version of dlly las application is available, please download the latest version .":
+      "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
+  "Update": "دابەزاندن",
 };

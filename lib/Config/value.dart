@@ -1,6 +1,7 @@
 const serverUrl = "https://dllylas.app/api/";
 const imageUrlServer = "https://dllylas.app/";
 const domain = "https://dllylas.app/api/";
+const currentVersion = "1.0.0";
 // const serverUrl = "http://192.168.0.125/api/";
 // const imageUrlServer = "http://192.168.0.125/";
 // const domain = "192.168.0.125/api/";

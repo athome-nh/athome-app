@@ -263,4 +263,8 @@ const Map<String, String> en = {
   'Apartment': 'Apartment',
   "An error occurred, Please try again later.":
       "An error occurred, Please try again later.",
+  "New update is available": "New update is available",
+  "A newer version of dlly las application is available, please download the latest version .":
+      "A newer version of dlly las application is available, please download the latest version .",
+  "Update": "Update",
 };
