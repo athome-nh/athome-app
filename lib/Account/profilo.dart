@@ -7,17 +7,22 @@ import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Network/Network.dart';
+import 'package:dllylas/Privacy.dart';
+import 'package:dllylas/Privacy_Arabic.dart';
+import 'package:dllylas/Privacy_Kurdish.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import '../controller/cartprovider.dart';
 import '../main.dart';
 
@@ -342,6 +347,9 @@ class _SettingState extends State<Setting> {
                                                     fontSize: 16,
                                                     color: mainColorBlack),
                                               ),
+                                              TextButton(
+                                                  onPressed: () {},
+                                                  child: Text("Deletion"))
                                             ],
                                           ),
                                         ),
@@ -664,7 +672,6 @@ class _SettingState extends State<Setting> {
                                                                               setState(() {
                                                                                 waiting = true;
                                                                               });
-                                                                            
 
                                                                               var data = {
                                                                                 "id": userdata["id"],
@@ -1175,7 +1182,214 @@ class _SettingState extends State<Setting> {
                                                     fontSize: 12,
                                                     color: mainColorBlack),
                                               ),
-                                            )
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog(
+                                                        content: Directionality(
+                                                          textDirection: lang ==
+                                                                  "en"
+                                                              ? TextDirection
+                                                                  .ltr
+                                                              : TextDirection
+                                                                  .rtl,
+                                                          child: Stack(
+                                                            alignment:
+                                                                lang == "en"
+                                                                    ? Alignment
+                                                                        .topLeft
+                                                                    : Alignment
+                                                                        .topRight,
+                                                            children: [
+                                                              SizedBox(
+                                                                width: getWidth(
+                                                                    context,
+                                                                    70),
+                                                                height:
+                                                                    getHeight(
+                                                                        context,
+                                                                        50),
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  //textcheck
+                                                                  children: <Widget>[
+                                                                    Image.asset(
+                                                                      "assets/Victors/sure.png",
+                                                                      width: getWidth(
+                                                                          context,
+                                                                          40),
+                                                                      height: getWidth(
+                                                                          context,
+                                                                          40),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                      height:
+                                                                          10,
+                                                                    ),
+                                                                    Text(
+                                                                      "Delete Account"
+                                                                          .tr,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      maxLines:
+                                                                          1,
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color:
+                                                                            mainColorBlack,
+                                                                        fontFamily:
+                                                                            mainFontbold,
+                                                                        fontSize:
+                                                                            25,
+                                                                      ),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
+                                                                    Text(
+                                                                      "Are you sure you want to continue?"
+                                                                          .tr,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color:
+                                                                            mainColorBlack,
+                                                                        fontFamily:
+                                                                            mainFontnormal,
+                                                                        fontSize:
+                                                                            16,
+                                                                      ),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: waiting
+                                                                          ? null
+                                                                          : () {
+                                                                              setState(() {
+                                                                                waiting = true;
+                                                                              });
+                                                                              var data = {
+                                                                                "id": userdata["id"].toString(),
+                                                                              };
+                                                                              Network(false).postData("delete", data, context).then((value) async {
+                                                                                if (value != "") {
+                                                                                  if (value["code"] == "201") {
+                                                                                    getStringPrefs("data").then((map) {
+                                                                                      Map<String, dynamic> myMap = json.decode(map);
+                                                                                      myMap["islogin"] = false;
+                                                                                      myMap["token"] = "";
+                                                                                      setStringPrefs("data", json.encode(myMap));
+                                                                                    });
+
+                                                                                    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+                                                                                    final product = Provider.of<productProvider>(context, listen: false);
+
+                                                                                    setState(() {
+                                                                                      userdata = {};
+                                                                                      token = "";
+                                                                                      isLogin = false;
+                                                                                    });
+                                                                                    product.Orderitems.clear();
+                                                                                    product.location.clear();
+                                                                                    product.Orders.clear();
+                                                                                    cartProvider.cartItems.clear();
+                                                                                    cartProvider.FavItems.clear();
+                                                                                    await FirebaseAuth.instance.currentUser!.delete();
+                                                                                    Navigator.pop(context);
+                                                                                    Navigator.pushReplacement(
+                                                                                      context,
+                                                                                      MaterialPageRoute(builder: (context) => const NavSwitch()),
+                                                                                    );
+                                                                                  } else {
+                                                                                    setState(() {
+                                                                                      waiting = false;
+                                                                                    });
+                                                                                  }
+                                                                                } else {
+                                                                                  setState(() {
+                                                                                    waiting = false;
+                                                                                  });
+                                                                                }
+                                                                              });
+                                                                            },
+                                                                      style: TextButton
+                                                                          .styleFrom(
+                                                                        fixedSize: Size(
+                                                                            getWidth(context,
+                                                                                70),
+                                                                            getHeight(context,
+                                                                                5)),
+                                                                        backgroundColor:
+                                                                            mainColorRed,
+                                                                      ),
+                                                                      child:
+                                                                          Text(
+                                                                        "Delete"
+                                                                            .tr,
+                                                                      ),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            5),
+                                                                    TextButton(
+                                                                      onPressed: waiting
+                                                                          ? null
+                                                                          : () {
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                      style: TextButton
+                                                                          .styleFrom(
+                                                                        fixedSize: Size(
+                                                                            getWidth(context,
+                                                                                70),
+                                                                            getHeight(context,
+                                                                                5)),
+                                                                      ),
+                                                                      child:
+                                                                          Text(
+                                                                        "Cancel"
+                                                                            .tr,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              IconButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  icon: Icon(
+                                                                    Icons.close,
+                                                                    color:
+                                                                        mainColorBlack,
+                                                                  ))
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                style: TextButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  foregroundColor: mainColorRed,
+                                                ),
+                                                child:
+                                                    Text("Delete Account".tr))
                                           ],
                                         ),
                                       ),
@@ -1731,62 +1945,65 @@ class _SettingState extends State<Setting> {
                                   ),
                                 ),
                               ),
-                              // SizedBox(
-                              //   height: getHeight(context, 2),
-                              // ),
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) =>
-                              //               const AboutScreen()),
-                              //     );
-                              //   },
-                              //   child: Padding(
-                              //     padding: EdgeInsets.symmetric(
-                              //       horizontal: getWidth(context, 5),
-                              //     ),
-                              //     child: Container(
-                              //       height: getHeight(context, 6),
-                              //       decoration: BoxDecoration(
-                              //           border: Border.all(
-                              //             color:
-                              //                 mainColorBlack.withOpacity(0.2),
-                              //           ),
-                              //           borderRadius: BorderRadius.circular(5)),
-                              //       child: Padding(
-                              //         padding: const EdgeInsets.symmetric(
-                              //             horizontal: 12),
-                              //         child: Row(
-                              //           children: [
-                              //             Icon(
-                              //               color: mainColorBlack,
-                              //               Ionicons.lock_closed_outline,
-                              //               size: 20,
-                              //             ),
-                              //             const SizedBox(
-                              //               width: 10,
-                              //             ),
-                              //             Text(
-                              //               "Privacy Poilcy".tr,
-                              //               style: TextStyle(
-                              //                   color: mainColorBlack,
-                              //                   fontFamily: mainFontnormal,
-                              //                   fontSize: 16),
-                              //             ),
-                              //             const Spacer(),
-                              //             Icon(lang == "en"
-                              //                 ? Icons
-                              //                     .keyboard_arrow_right_outlined
-                              //                 : Icons
-                              //                     .keyboard_arrow_left_outlined)
-                              //           ],
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () async {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => lang == "en"
+                                              ? PrivacyScreen()
+                                              : lang == "ar"
+                                                  ? PrivacyScreen_AR()
+                                                  : PrivacyScreen_KU()));
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            color: mainColorBlack,
+                                            Ionicons.lock_closed_outline,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Privacy Poilcy".tr,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
+                                          const Spacer(),
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
                               // SizedBox(
                               //   height: getHeight(context, 2),
                               // ),

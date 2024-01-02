@@ -266,4 +266,7 @@ const Map<String, String> kur = {
   "A newer version of dlly las application is available, please download the latest version .":
       "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
   "Update": "دابەزاندن",
+  "By continuing, you agree to get Dlly Las's Privacy Policy":
+      "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
+  "Delete Account": "هەژمارەکە بسڕەوە",
 };

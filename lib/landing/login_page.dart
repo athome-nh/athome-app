@@ -1,6 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Privacy.dart';
+import 'package:dllylas/Privacy_Arabic.dart';
+import 'package:dllylas/Privacy_Kurdish.dart';
 import 'package:dllylas/landing/verification.dart';
 import 'package:dllylas/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -202,8 +205,33 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     ),
                   ),
                   SizedBox(
-                    height: getHeight(context, 14),
+                    height: getHeight(context, 1),
                   ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => lang == "en"
+                                    ? PrivacyScreen()
+                                    : lang == "ar"
+                                        ? PrivacyScreen_AR()
+                                        : PrivacyScreen_KU()));
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        foregroundColor: mainColorGrey,
+                      ),
+                      child: Text(
+                        "By continuing, you agree to get Dlly Las's Privacy Policy"
+                            .tr,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(),
+                      )),
+                  SizedBox(
+                    height: getHeight(context, 12),
+                  ),
+
                   FadeInDown(
                     delay: const Duration(milliseconds: 600),
                     child: TextButton(
@@ -247,6 +275,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   SizedBox(
                     height: getHeight(context, 2),
                   ),
+
                   FadeInDown(
                     delay: const Duration(milliseconds: 800),
                     child: Padding(

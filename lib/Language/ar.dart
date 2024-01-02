@@ -263,4 +263,7 @@ const Map<String, String> ar = {
   "A newer version of dlly las application is available, please download the latest version .":
       "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",
   "Update": "تحديث",
+  "By continuing, you agree to get Dlly Las's Privacy Policy":
+      "من خلال المتابعة، فإنك توافق على الحصول على سياسة الخصوصية الخاصة بـ Dlly Las",
+  "Delete Account": "حذف الحساب",
 };

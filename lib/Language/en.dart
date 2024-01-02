@@ -267,4 +267,7 @@ const Map<String, String> en = {
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",
   "Update": "Update",
+  "By continuing, you agree to get Dlly Las's Privacy Policy":
+      "By continuing, you agree to get Dlly Las's Privacy Policy",
+  "Delete Account": "Delete Account",
 };
