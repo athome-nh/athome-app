@@ -65,7 +65,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back_ios,
                       )),
                   title: Text(
@@ -93,8 +93,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         ? loginFirstContainer(context)
                         : productrovider.Orders.isNotEmpty
                             ? ListView.builder(
-                                itemCount:
-                                    productrovider.getOrderOngoing().length,
+                                itemCount: productrovider.getOrderOngoing().length,
                                 itemBuilder: (BuildContext context, int index) {
                                   OrderModel order = productrovider
                                       .getOrderOngoing()
@@ -123,14 +122,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                             Text(
                                               "Order number:".tr,
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 18,
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack),
                                             ),
                                             Text(
                                               order.id.toString(),
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 18,
                                                   fontFamily: mainFontbold,
                                                   color: mainColorRed),
                                             ),
@@ -165,7 +164,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                               color: mainColorBlack),
                                         ),
                                       ),
-                                      Divider()
+                                      const Divider()
                                     ],
                                   );
                                 })
@@ -223,14 +222,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                             Text(
                                               "Order number:".tr,
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 18,
                                                   fontFamily: mainFontbold,
                                                   color: mainColorGrey),
                                             ),
                                             Text(
                                               order.id.toString(),
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 18,
                                                   fontFamily: mainFontbold,
                                                   color: mainColorRed),
                                             ),
@@ -418,7 +417,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                           ],
                                         ),
                                       ),
-                                      Divider()
+                                      const Divider()
                                     ],
                                   );
                                 })
