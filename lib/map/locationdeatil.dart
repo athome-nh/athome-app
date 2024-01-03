@@ -779,7 +779,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                                 Provider.of<productProvider>(
                                                     context,
                                                     listen: false);
-                                            productrovider.getDataUser(
+                                            productrovider.getuserdata(
                                                 userdata["id"].toString());
                                             productrovider.addlocation(loc);
                                             Navigator.pop(context);

@@ -17,6 +17,7 @@ import 'package:dllylas/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
@@ -84,7 +85,7 @@ class _SettingState extends State<Setting> {
   bool waiting = false;
   bool waitingImage = false;
   String image = "";
-
+  bool nameE = false;
   @override
   void initState() {
     selectedItem = lang == "en"
@@ -483,6 +484,14 @@ class _SettingState extends State<Setting> {
                                                                               mainFontnormal),
                                                                       enabled:
                                                                           isEdit,
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        setState(
+                                                                            () {
+                                                                          nameE =
+                                                                              false;
+                                                                        });
+                                                                      },
                                                                       controller:
                                                                           nameController,
                                                                       decoration:
@@ -672,6 +681,7 @@ class _SettingState extends State<Setting> {
                                                                               setState(() {
                                                                                 waiting = true;
                                                                               });
+                                                                              if (nameController.text.isEmpty) {}
 
                                                                               var data = {
                                                                                 "id": userdata["id"],
@@ -1554,6 +1564,41 @@ class _SettingState extends State<Setting> {
                                                                   ),
                                                                 ),
                                                               ),
+                                                              nameE
+                                                                  ? Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .only(
+                                                                        top: getHeight(
+                                                                            context,
+                                                                            0.5),
+                                                                      ),
+                                                                      child:
+                                                                          Row(
+                                                                        children: [
+                                                                          Icon(
+                                                                            FontAwesomeIcons.circleInfo,
+                                                                            color:
+                                                                                mainColorRed.withOpacity(0.7),
+                                                                            size:
+                                                                                15,
+                                                                          ),
+                                                                          SizedBox(
+                                                                            width:
+                                                                                getWidth(context, 1),
+                                                                          ),
+                                                                          Text(
+                                                                            "Enter your full name".tr,
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontFamily: mainFontbold,
+                                                                              color: mainColorRed.withOpacity(0.8),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    )
+                                                                  : const SizedBox(),
                                                               Padding(
                                                                 padding: const EdgeInsets
                                                                     .symmetric(
@@ -1721,7 +1766,14 @@ class _SettingState extends State<Setting> {
                                                                             setState(() {
                                                                               waiting = true;
                                                                             });
+                                                                            if (nameController.text.isEmpty) {
+                                                                              setState(() {
+                                                                                nameE = true;
 
+                                                                                waiting = false;
+                                                                              });
+                                                                              return;
+                                                                            }
                                                                             var data =
                                                                                 {
                                                                               "id": userdata["id"],

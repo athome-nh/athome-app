@@ -44,7 +44,7 @@ class _TrackOrderState extends State<TrackOrder> {
             if (value["status"] == 5) {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
-              productrovider.getDataUser(userdata["id"].toString());
+              productrovider.getuserdata(userdata["id"].toString());
             }
 
             final productrovider =
@@ -157,7 +157,7 @@ class _TrackOrderState extends State<TrackOrder> {
               onPressed: () {
                 Navigator.pop(context);
                 Provider.of<productProvider>(context, listen: false)
-                    .getDataUser(userdata["id"].toString());
+                    .getuserdata(userdata["id"].toString());
               },
               icon: Icon(
                 Icons.arrow_back_ios,
@@ -352,7 +352,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                       final productrovider =
                                           Provider.of<productProvider>(context,
                                               listen: false);
-                                      productrovider.getDataUser(
+                                      productrovider.getuserdata(
                                           userdata["id"].toString());
 
                                       Navigator.pop(context);

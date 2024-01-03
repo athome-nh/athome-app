@@ -12,112 +12,160 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Privacy Policy'),
-        ),
-        body: const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
+        textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Privacy Policy'),
+          ),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
                   'Privacy Policy for Dlly Las Grocery App',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  'Effective Date: 24/12/2023',
+                  'Your Privacy is Important to Us',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'At Dlly Las Grocery App, we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and share your personal data when you use our grocery application.',
                   style: TextStyle(fontSize: 16.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  '1. Introduction\n'
-                  'Welcome to Dlly Las, your trusted grocery app! This Privacy Policy is designed to help you understand '
-                  'how we collect, use, and safeguard your personal information when you use our mobile application. '
-                  'By downloading, installing, or using the Dlly Las app, you agree to the practices described in this Privacy Policy.',
+                  'Easy Access to Privacy Policy',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'You can easily access this privacy policy within the app and on the mobile application store. It\'s important that you read this policy carefully to understand how we handle your personal information.',
                   style: TextStyle(fontSize: 16.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  '2. Information We Collect\n'
-                  'To provide you with the best grocery shopping experience, we collect the following information when '
-                  'you create an account:\n'
-                  'Name: To personalize your experience and address you appropriately.\n'
-                  'City: To assist with delivery location selection.\n'
-                  'Age and Gender: To better understand our user demographics and tailor our services accordingly.\n'
-                  'The type of your cell phone: for solving all the errors that we face them from all devices',
+                  'Information We Collect',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'We collect the following personal information:',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                    '• Account Information: Name, phone number, delivery address, Age and Gender'),
+                Text(
+                    '• Order Information: Order history, items purchased, payment information'),
+                Text('• Device Information: Device type, operating system'),
+                SizedBox(height: 16.0),
+                Text(
+                  'How We Use Your Information',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'We use your personal information for the following purposes:',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                SizedBox(height: 8.0),
+                Text('• Processing and fulfilling your grocery orders'),
+                Text('• Providing customer support'),
+                Text('• Improving our app and services'),
+                Text(
+                    '• Sending you notifications about offers and order status'),
+                SizedBox(height: 16.0),
+                Text(
+                  'Sharing Your Information',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'Rest assured, your personal data will always be super secure. We do not share it with any third-party companies or services. Only our trusted delivery partners receive limited information for order fulfillment:',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                    'Delivery driver: They receive your name, phone number, and delivery address to ensure smooth delivery, and subtotal payment to understand the order value and confirm receipt.'),
+                SizedBox(height: 16.0),
+                Text(
+                  'Your Privacy Choices',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'You have the following choices regarding your personal information:',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                SizedBox(height: 8.0),
+                Text('• Access and update your information'),
+                Text(
+                    '• Withdraw your consent to certain uses of your information'),
+                Text(
+                    '• Delete your information: you can easily delete all your personal information.'),
+                SizedBox(height: 16.0),
+                Text(
+                  'Data Security',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'We prioritize the security of your information. We implement industry-standard security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal data.',
                   style: TextStyle(fontSize: 16.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  '3. Permissions\n'
-                  'Location: We request access to your device\'s location to help you select the delivery location accurately '
-                  'and provide you with the most efficient delivery service.\n'
-                  'Storage: We seek permission to access your device\'s storage for uploading and storing your profile '
-                  'image, enhancing your personalized experience.\n'
-                  'Notification: We request permission to send you notifications related to order updates, promotions, and '
-                  'important information.',
-                  style: TextStyle(fontSize: 16.0),
+                  'Additional Information',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 8.0),
+                Text('• We do not sell any personal data.'),
+                Text(
+                    '• We only use location information with your consent and for the purpose of delivering your groceries.'),
+                Text(
+                    '• We only disclose personal data when necessary to provide the service or when required by applicable laws.'),
                 SizedBox(height: 16.0),
                 Text(
-                  '4. Use of Information\n'
-                  'We use the collected information to:\n'
-                  '• Create and manage your account.\n'
-                  '• Facilitate order processing and delivery.\n'
-                  '• Personalize your experience.\n'
-                  '• Send relevant notifications and updates.\n'
-                  '• Improve our services and address user preferences.',
-                  style: TextStyle(fontSize: 16.0),
+                  'Permissions',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 8.0),
+                Text(
+                    '• Location permission: We request your location permission to provide features like store locator and delivery tracking. You can disable location permission in your device settings.'),
+                Text(
+                    '• Storage permission: We request your permission to access your device storage to upload your optional profile picture to your account.'),
+                Text(
+                    '• Notification permission: We request notification permission to send you order updates and delivery notifications. You can manage notification settings in your device settings.'),
                 SizedBox(height: 16.0),
                 Text(
-                  '5. Order Cancellation\n'
-                  'Users have the right to cancel their orders before the order picker begins the picking process. Once the '
-                  'order is being picked, cancellation may not be possible. Users can initiate the cancellation process '
-                  'through the app.',
-                  style: TextStyle(fontSize: 16.0),
+                  'Effective Date',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 8.0),
+                Text('This privacy policy is effective as of [3.jan.2024].'),
                 SizedBox(height: 16.0),
                 Text(
-                  '6. Data Security\n'
-                  'We prioritize the security of your information. We implement industry-standard security measures to '
-                  'protect against unauthorized access, alteration, disclosure, or destruction of your personal data.',
-                  style: TextStyle(fontSize: 16.0),
+                  'Changes to Privacy Policy',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 8.0),
+                Text(
+                    'We may update this privacy policy from time to time. If we make any material changes, we will notify you through the app.'),
                 SizedBox(height: 16.0),
                 Text(
-                  '7. Third-Party Services\n'
-                  'We may engage third-party services for analytics, payment processing, and delivery. These entities are '
-                  'obligated to protect your information and adhere to applicable data protection laws.',
-                  style: TextStyle(fontSize: 16.0),
+                  'Contact Us',
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 16.0),
+                SizedBox(height: 8.0),
                 Text(
-                  '8. Changes to Privacy Policy\n'
-                  'We reserve the right to update our Privacy Policy to reflect changes in our practices. Users will be '
-                  'notified of any significant changes. It is advisable to review the Privacy Policy periodically.',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  '9. Contact Us\n'
-                  'If you have any questions, concerns, or feedback regarding our Privacy Policy, please contact us at '
-                  '[info@dllylas.com].\n'
-                  'Thank you for choosing Dlly Las for your grocery needs!',
-                  style: TextStyle(fontSize: 16.0),
-                ),
+                    'If you have any questions about this privacy policy, please contact us at [Info@Dllylas.com].'),
               ],
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -163,7 +163,7 @@ class _successScreenState extends State<successScreen> {
                                   Provider.of<productProvider>(context,
                                       listen: false);
                               productrovider
-                                  .getDataUser(userdata["id"].toString());
+                                  .getuserdata(userdata["id"].toString());
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
