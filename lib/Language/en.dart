@@ -173,10 +173,10 @@ const Map<String, String> en = {
   "Confirm": "Confirm",
   "Account range out": "Sorry....",
   "Account range out content":
-      "at this time, subscriber registration is unavailable .we kindly request you to attempt registration within 24hr. ",
+      "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   "Account Pendding": "Wait...",
   "Account npt approved by admin yet":
-      "Dear subscriber, please wait utile you get approvement by our admin",
+      "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",
@@ -189,7 +189,7 @@ const Map<String, String> en = {
   "Verify": "Verify",
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin":
-      "Account is disable please contact athome admin", // check
+      "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
   "the code is un correct": "the code is wrong",
 
   // map
@@ -247,7 +247,7 @@ const Map<String, String> en = {
   "Similar item": "Related items",
   //
   "Privacy Poilcy": "Privacy policy",
-  "Terms Of Use": "Terms Of Use",
+  "Terms Of Use": "Terms and Condition",
   "Male": "Male",
   "Female": "Female",
   "Erbil": "Erbil",
@@ -270,4 +270,161 @@ const Map<String, String> en = {
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "By continuing, you agree to get Dlly Las's Privacy Policy",
   "Delete Account": "Delete Account",
+  "Account recovery opportunity":
+      "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
+
+  //Privacy Policy
+
+  "Privacy Policy Title": "Privacy Policy for Dlly Las Grocery App",
+  "Privacy Policy intoduction":
+      """This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your
+information when You use the Service and tells You about Your privacy
+rights and how the law protects You. We use Your Personal data to provide and
+improve the Service. By using the Service, You agree to the collection and use of
+information in accordance with this Privacy Policy.""",
+
+  "collection and using personal data - types of data collected ":
+      "collection and using personal data - types of data collected ",
+  "personal data": "personal data",
+  "personal data content":
+      """While using Our Service, We may ask You to provide Us with certain personally
+identifiable information that can be used to contact or identify You. Personally
+identifiable information may include, but is not limited to:
+• First name and last name
+• Phone number
+• Address, Province
+• Usage Data""",
+
+  "Usage Data": "Usage Data",
+  "Usage Data content":
+      """Usage Data is collected automatically when using the Service.
+Usage Data may include information such as your device type, operating system, pages of our Service
+that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers """,
+  "How We Use Your Information": "How We Use Your Information",
+  "How We Use Your Information content":
+      """We use your personal information for the following purposes:
+• Processing and fulfilling your grocery orders
+• Providing customer support
+• Improving our app and services
+• Sending you notifications about offers and order status""",
+  "Sharing Your Information & Your Privacy Choices and Data Retention":
+      "Sharing Your Information & Your Privacy Choices and Data Retention",
+
+  "Sharing Your Information": "Sharing Your Information",
+  "Sharing Your Information content":
+      """We may share your information with the following third parties:
+• Delivery Personnel: We may share your name and phone number with our employed delivery
+personnel for the sole purpose of delivering your groceries. These personnel are prohibited from
+using your information for any other purpose and are subject to our strict data security and
+privacy policies. Please note that these personnel are not affiliated with any other companies
+and are solely dedicated to fulfilling your orders through our service..
+• Legal authorities: We may disclose your information to legal authorities if we are required to do
+so by law or if we believe that such disclosure is necessary to protect our rights or the rights of
+others""",
+
+  "Your Privacy Choices": "Your Privacy Choices",
+  "Your Privacy Choices content":
+      """You have the following choices regarding your personal information:
+• You can access and update your personal information by logging into your account on the App.
+• Withdraw your consent to certain uses of your information
+• delete your information: you can easily delete all your personal information.""",
+
+  "Data Security": "Data Security",
+  "Data Security content":
+      """We take security measures to protect your information from unauthorized access, use, or disclosure.
+These measures include encryption, access controls, and data security practices.""",
+
+  "Data Retention": "Data Retention",
+  "Data Retention content":
+      """We retain your name and phone number for one month after you delete your account to facilitate order
+inquiries, fulfil legal obligations, and allow you to log back into the app without re-registering. All other
+information, such as gender, age, and location, is automatically deleted upon account deletion.""",
+
+  "additional information & Permissions and Compliance with Laws":
+      "additional information & Permissions and Compliance with Laws",
+  "additional information": "additional information",
+  "additional information content": """ We do not sell any personal data.
+• We only use location information with your consent and for the purpose of delivering your
+groceries.
+• We only disclose personal data when necessary to provide the service or when required by
+applicable laws.""",
+
+  "Permissions": "Permissions",
+  "Permissions content":
+      """• Location permission: We request your location permission to provide features like store locator
+and delivery tracking. You can disable location permission in your device settings.
+• Storage permission: we request your permission to access your device storage in order to
+upload your optional profile picture to your account.
+• Notification permission: We request notification permission to send you order updates and
+delivery notifications. You can manage notification settings in your device settings""",
+
+  "Compliance with Laws": "Compliance with Laws",
+  "Compliance with Laws content":
+      """This Privacy Policy is designed to comply with applicable data privacy laws and regulations, such as the
+General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA).""",
+
+  "Effective Date": "Effective Date",
+  "Effective Date content":
+      "This privacy policy is effective as of [4.jan.2024].",
+  "Changes to Privacy Policy": "Changes to Privacy Policy",
+  "Changes to Privacy Policy content":
+      """We may update this privacy policy from time to time. If we make any material changes, we will notify
+you through the app.""",
+  "Contact Us": "Contact Us",
+  "Contact Us content":
+      """If you have any questions about this privacy policy, please contact us at [Info@Dllylas.com] or using this
+phone number (+964 750 958 3333)""",
+
+  //Terms and Condition
+
+  "Terms and Condition for Dlly Las Grocery App title":
+      "Terms and Condition for Dlly Las Grocery App",
+
+  "Terms and Condition for Dlly Las Grocery App content":
+      """These terms and conditions govern your access and use of the dlly las application.
+note: By accessing or using dlly las app constitutes your agreement to be bound by all the following terms and conditions. if you disagree with these terms and conditions, please refrain from using the app or website.""",
+
+  "General:": "General:",
+  "General: content": """• You must be at least 14 years old to use the app.
+• You agree to use the app only for its intended purpose.
+• to register or log in to the app, customers must utilize the one-time password (OTP) system for verification.
+• We reserve the right to cancel or modify orders at any time.""",
+
+  "Delivery:": "Delivery:",
+  "Delivery: content": """• Delivering all the items will be free.
+• We will deliver your groceries to the address you provide.
+• You are responsible for being available to receive your delivery.
+• the minimum order to qualify for free delivery is 10000 IQD.""",
+
+  "Returns and Refunds:": "Returns and Refunds:",
+  "Returns and Refunds: content":
+      """• upon receiving your order, you can request to return any items from your order list before the driver leaves.
+• Once you submit a return request for any items from your order list, we'll give you a full refund when the driver delivers your order.""",
+
+  "Payment:": "Payment:",
+  "Payment:content":
+      "• we'll expand our payment options soon to include most major credit cards.",
+
+  "Privacy:": "Privacy:",
+  "Privacy:content":
+      """• We collect certain information about you when you use the app.
+• We use this information to provide you with a better experience.
+• We will not share your information with third parties without your consent.""",
+
+  "Content Protection:": "Content Protection:",
+  "Content Protection:content":
+      """Republishing or redistributing any content or item descriptions found within dlly las is strictly prohibited without our express written permission. This includes product listings, images, and any other information we provide on the platform.""",
+
+  "Changes to Terms and Conditions:": "Changes to Terms and Conditions:",
+  "Changes to Terms and Conditions:content":
+      """To stay current with evolving services and legal requirements, we may periodically update our Terms and Conditions. Rest assured, you will be directly notified through a pop-up message within the app whenever there are updates. If you have any questions, you can refer to our dedicated Terms and Conditions page or reach out to our support team.
+""",
+
+  "Governing Law:": "Governing Law:",
+  "Governing Law:content":
+      "These terms and conditions are governed by the iraqy laws .",
+
+  "Contact Us:TC": "Contact Us:",
+  "Contact Us:TC content":
+      """If you have any questions about these terms and conditions, please contact us at [Info@Dllylas.com]. or using this phone number (+964 750 958 3333).""",
 };

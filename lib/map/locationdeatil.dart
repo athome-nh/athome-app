@@ -66,7 +66,7 @@ class _location_DeatilState extends State<location_Deatil> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
               )),
         ),
@@ -601,14 +601,14 @@ class _location_DeatilState extends State<location_Deatil> {
                           ),
                         ),
                         labelText: lang == "en"
-                            ? type.tr + " " + "number".tr
+                            ? "${type.tr} ${"number".tr}"
                             : "number".tr + type.tr,
                         labelStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.8),
                             fontSize: 16,
                             fontFamily: mainFontnormal),
                         hintText: lang == "en"
-                            ? type.tr + " " + "number".tr
+                            ? "${type.tr} ${"number".tr}"
                             : "number".tr + type.tr,
                         hintStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.5),
@@ -700,7 +700,7 @@ class _location_DeatilState extends State<location_Deatil> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
+                          SizedBox(
                             width: getWidth(context, 40),
                             child: TextButton(
                               onPressed: () {
@@ -714,7 +714,7 @@ class _location_DeatilState extends State<location_Deatil> {
                               ),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             width: getWidth(context, 40),
                             child: TextButton(
                               onPressed: waiting

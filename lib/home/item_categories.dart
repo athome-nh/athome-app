@@ -5,16 +5,16 @@ import 'package:dllylas/Config/property.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
-import 'nav_switch.dart';
 
 class itemCategories extends StatefulWidget {
-  itemCategories();
+  const itemCategories({super.key});
 
   @override
   State<itemCategories> createState() => _itemCategoriesState();
 }
 
 class _itemCategoriesState extends State<itemCategories> {
+  @override
   void initState() {
     super.initState();
   }
@@ -43,7 +43,7 @@ class _itemCategoriesState extends State<itemCategories> {
                 productPro.setsubcateSelect(0);
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
               )),
           actions: [
@@ -53,7 +53,7 @@ class _itemCategoriesState extends State<itemCategories> {
                     onPressed: () {
                       productPro.setsubcateSelect(0);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.close,
                     ))
           ],
@@ -143,16 +143,16 @@ class _itemCategoriesState extends State<itemCategories> {
                                       ),
                                     ),
                                   )
-                                : SizedBox();
+                                : const SizedBox();
                           },
                         ),
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 productPro.getsubcateById(productPro.cateType).isNotEmpty
                     ? SizedBox(
                         height: getHeight(context, 2),
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 SizedBox(
                   height: getHeight(
                       context,

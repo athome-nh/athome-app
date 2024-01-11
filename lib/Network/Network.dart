@@ -144,6 +144,43 @@ class Network {
         });
       }
     } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(
+            duration: const Duration(seconds: 4),
+            content: Text(
+              'An error occurred, Please try again later.'.tr,
+              style: TextStyle(color: mainColorWhite),
+            ),
+            backgroundColor: mainColorGrey,
+          ))
+          .closed
+          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+
+      return "";
+    }
+    return data2;
+  }
+
+  Future updateUserTemp(
+      String rout, Map data, BuildContext context, String User_token) async {
+    Map<String, dynamic> data2 = {};
+    try {
+      await dio.get(serverUrl + "time").then((time) async {
+        datetimeS = DateTime.parse(time.data["data"]);
+        dio.options.headers["Authorization"] =
+            "Bearer " + decryptAES(User_token);
+        dio.options.headers["aToken"] =
+            encryptAES(generateRandomText(time.data["data"]));
+        Response response = await dio.post(
+          serverUrl + rout,
+          data: data,
+        );
+
+        data2 = response.data;
+      });
+    } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
             duration: const Duration(seconds: 4),

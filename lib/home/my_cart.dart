@@ -72,7 +72,7 @@ class _MyCartState extends State<MyCart> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back_ios,
                         ))
                     : const SizedBox(),
@@ -180,7 +180,7 @@ class _MyCartState extends State<MyCart> {
                               },
                             );
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.delete_outline,
                           ),
                         ),
@@ -304,8 +304,10 @@ class _MyCartState extends State<MyCart> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(
-                                                  decoration: BoxDecoration(),
-                                                  child: Text("546646444")),
+                                                  decoration:
+                                                      const BoxDecoration(),
+                                                  child:
+                                                      const Text("546646444")),
                                             ],
                                           ),
                                         ),

@@ -98,7 +98,7 @@ class _HomeSreenState extends State<HomeSreen> {
               "A newer version of dlly las application is available, please download the latest version ."
                   .tr,
               "Update".tr,
-              "error");
+              "update");
         }
       }
     });
@@ -127,7 +127,6 @@ class _HomeSreenState extends State<HomeSreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
     return productrovider.nointernetCheck
@@ -873,7 +872,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       const SizedBox(height: 30),
                       TextButton(
                         onPressed: () async {
-                          if (type == "error1") {
+                          if (type == "error") {
                             exit(0);
                           } else {
                             if (Platform.isAndroid) {

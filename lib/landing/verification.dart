@@ -4,12 +4,13 @@ import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Landing/singin_up.dart';
 import 'package:dllylas/Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
-import 'package:dllylas/landing/login_page.dart';
+
 import 'package:dllylas/main.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -17,10 +18,10 @@ import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../home/nav_switch.dart';
-import 'singin_up.dart';
 
 class Verificatoin extends StatefulWidget {
   String phone_number;
+
   Verificatoin(this.phone_number, {Key? key}) : super(key: key);
 
   @override
@@ -28,16 +29,14 @@ class Verificatoin extends StatefulWidget {
 }
 
 class _VerificatoinState extends State<Verificatoin> {
-  bool _isResendAgain = false;
-  bool _isVerified = false;
   bool _isLoading = false;
 
   String _code = '';
   int timecode = 60;
   late Timer _codeTimer;
   String token2 = "";
-  int _currentIndex = 0;
 
+  @override
   void initState() {
     verfyphone();
     FirebaseMessaging.instance
@@ -152,8 +151,8 @@ class _VerificatoinState extends State<Verificatoin> {
                                 RQStrtic();
                                 return;
                               }
-                              print("object");
-                              verifySmsCode();
+
+                              RQverify();
                             },
                             onEditing: (value) {},
                           ),
@@ -183,7 +182,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                   onPressed: () {
                                     if (timecode == 0) {
                                       _codeTimer.cancel();
-                                      verfyphone();
+                                      Navigator.pop(context);
                                     } else {
                                       toastShort(
                                           "Hold till the waiting time ends".tr);
@@ -214,22 +213,25 @@ class _VerificatoinState extends State<Verificatoin> {
                         child: TextButton(
                           onPressed: _code.length < 6
                               ? () => {toastLong("Please enter code".tr)}
-                              : () async {
-                                  if (await noInternet(context)) {
-                                    return;
-                                  }
+                              : _isLoading
+                                  ? null
+                                  : () async {
+                                      if (await noInternet(context)) {
+                                        return;
+                                      }
 
-                                  if (widget.phone_number == "+9647503248438" &&
-                                      _code == "941424") {
-                                    setState(() {
-                                      _isLoading = true;
-                                    });
-                                    RQStrtic();
-                                    return;
-                                  }
-                                  print("object");
-                                  verifySmsCode();
-                                },
+                                      if (widget.phone_number ==
+                                              "+9647503248438" &&
+                                          _code == "941424") {
+                                        setState(() {
+                                          _isLoading = true;
+                                        });
+                                        RQStrtic();
+                                        return;
+                                      }
+
+                                      RQverify();
+                                    },
                           style: TextButton.styleFrom(
                               fixedSize: Size(getHeight(context, 100),
                                   getHeight(context, 6))),
@@ -255,10 +257,8 @@ class _VerificatoinState extends State<Verificatoin> {
     );
   }
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
-  String _verificationId = '';
-  Future<void> verfyphone() async {
-    timecode = 60;
+  void verfyphone() async {
+    timecode = 90;
 
     _codeTimer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       setState(() {
@@ -269,55 +269,6 @@ class _VerificatoinState extends State<Verificatoin> {
         }
       });
     });
-    try {
-      await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: widget.phone_number,
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          setState(() {
-            _isLoading = true;
-          });
-
-          try {
-            await _auth.signInWithCredential(credential);
-            RQ();
-          } catch (e) {
-            toastLong("the code is un correct".tr);
-            setState(() {
-              _isLoading = false;
-              _isVerified = false;
-            });
-          }
-        },
-        verificationFailed: (FirebaseAuthException e) {},
-        codeSent: (String verificationId, int? resendToken) {
-          setState(() {
-            _verificationId = verificationId;
-          });
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {},
-      );
-    } catch (e) {}
-  }
-
-  Future<void> verifySmsCode() async {
-    try {
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: _verificationId,
-        smsCode: _code,
-      );
-
-      setState(() {
-        _isLoading = true;
-      });
-      await _auth.signInWithCredential(credential);
-      RQ();
-    } catch (e) {
-      toastLong("the code is un correct".tr);
-      setState(() {
-        _isLoading = false;
-        _isVerified = false;
-      });
-    }
   }
 
   void RQStrtic() {
@@ -341,7 +292,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     alignment:
                         lang == "en" ? Alignment.topLeft : Alignment.topRight,
                     children: [
-                      Container(
+                      SizedBox(
                         width: getWidth(context, 70),
                         height: getHeight(context, 50),
                         child: Column(
@@ -354,7 +305,7 @@ class _VerificatoinState extends State<Verificatoin> {
                               width: getWidth(context, 40),
                               height: getWidth(context, 40),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -367,7 +318,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                 fontSize: 25,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "Account npt approved by admin yet".tr,
                               textAlign: TextAlign.center,
@@ -400,7 +351,7 @@ class _VerificatoinState extends State<Verificatoin> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(Icons.close))
+                          icon: const Icon(Icons.close))
                     ],
                   ),
                 );
@@ -412,7 +363,6 @@ class _VerificatoinState extends State<Verificatoin> {
             _codeTimer.cancel();
             setState(() {
               _isLoading = false;
-              _isVerified = true;
               isLogin = true;
               loaddata = false;
               token = decryptAES(value["token"]);
@@ -443,7 +393,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     alignment:
                         lang == "en" ? Alignment.topLeft : Alignment.topRight,
                     children: [
-                      Container(
+                      SizedBox(
                         width: getWidth(context, 70),
                         height: getHeight(context, 50),
                         child: Column(
@@ -455,7 +405,7 @@ class _VerificatoinState extends State<Verificatoin> {
                               width: getWidth(context, 40),
                               height: getWidth(context, 40),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -468,7 +418,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                 fontSize: 25,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "Account is disable please contact athome admin"
                                   .tr,
@@ -502,7 +452,7 @@ class _VerificatoinState extends State<Verificatoin> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(Icons.close))
+                          icon: const Icon(Icons.close))
                     ],
                   ),
                 );
@@ -512,13 +462,12 @@ class _VerificatoinState extends State<Verificatoin> {
         } else if (value["code"] == "422") {
           setState(() {
             _isLoading = false;
-            _isVerified = true;
           });
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      SingInUp(widget.phone_number, _auth.currentUser!.uid)));
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //         builder: (context) =>
+          //             SingInUp(widget.phone_number, _auth.currentUser!.uid)));
         }
       } else {
         // toastShort("unknown occurred error please try again later");
@@ -529,107 +478,41 @@ class _VerificatoinState extends State<Verificatoin> {
     });
   }
 
-  void RQ() {
+  void RQverify() {
+    setState(() {
+      _isLoading = true;
+    });
     var data = {
-      "token": token2,
       "phone": widget.phone_number,
-      "password": _auth.currentUser!.uid.toString(),
+      "code": _code,
     };
-    Network(false).postData("login", data, context).then((value) async {
+    Network(false).postData("verifyPhone", data, context).then((value) async {
+      setState(() {
+        _isLoading = false;
+      });
       if (value != "") {
         if (value["code"] == "200") {
-          if (value["isApprove"] == 0) {
+          if (value["data"] == "register") {
             setState(() {
               _isLoading = false;
             });
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  content: Stack(
-                    alignment:
-                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
-                    children: [
-                      Container(
-                        width: getWidth(context, 70),
-                        height: getHeight(context, 50),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            //textcheck
-                            Image.asset(
-                              "assets/Victors/pendding.png",
-                              width: getWidth(context, 40),
-                              height: getWidth(context, 40),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Account Pendding".tr,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontbold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              "Account npt approved by admin yet".tr,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
-                                );
-                              },
-                              style: TextButton.styleFrom(
-                                fixedSize: Size(getWidth(context, 70),
-                                    getHeight(context, 5)),
-                              ),
-                              child: Text(
-                                "OK".tr,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(Icons.close))
-                    ],
-                  ),
-                );
-              },
-            );
-            return;
-          }
-          if (value["isActive"] == 1) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SingInUp(widget.phone_number,
+                        value["isNotApprove"], value["token"])));
+          } else {
             _codeTimer.cancel();
             setState(() {
               _isLoading = false;
-              _isVerified = true;
               isLogin = true;
               loaddata = false;
               token = decryptAES(value["token"]);
             });
-            getStringPrefs("data").then((map) {
+            getStringPrefs("token").then((map) {
               Map<String, dynamic> myMap = json.decode(map);
               myMap["islogin"] = true;
-              myMap["token"] = value["token"];
+              myMap["token"] = value["data"];
               setStringPrefs("data", json.encode(myMap));
             });
 
@@ -640,94 +523,7 @@ class _VerificatoinState extends State<Verificatoin> {
               context,
               MaterialPageRoute(builder: (context) => const NavSwitch()),
             );
-          } else {
-            setState(() {
-              _isLoading = false;
-            });
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  content: Stack(
-                    alignment:
-                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
-                    children: [
-                      Container(
-                        width: getWidth(context, 70),
-                        height: getHeight(context, 50),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.asset(
-                              "assets/Victors/disabled.png",
-                              width: getWidth(context, 40),
-                              height: getWidth(context, 40),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Account Disabled".tr,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontbold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              "Account is disable please contact athome admin"
-                                  .tr,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
-                                );
-                              },
-                              style: TextButton.styleFrom(
-                                fixedSize: Size(getWidth(context, 70),
-                                    getHeight(context, 5)),
-                              ),
-                              child: Text(
-                                "OK".tr,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(Icons.close))
-                    ],
-                  ),
-                );
-              },
-            );
           }
-        } else if (value["code"] == "422") {
-          setState(() {
-            _isLoading = false;
-            _isVerified = true;
-          });
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      SingInUp(widget.phone_number, _auth.currentUser!.uid)));
         }
       } else {
         // toastShort("unknown occurred error please try again later");

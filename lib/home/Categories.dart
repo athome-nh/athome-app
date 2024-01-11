@@ -1,9 +1,7 @@
 import 'package:dllylas/Config/value.dart';
-import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/main.dart';
-import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -26,8 +24,6 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
-    final cartProvider = Provider.of<CartProvider>(context, listen: true);
-    late List<ProductModel> products = productPro.products;
 
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
@@ -42,7 +38,7 @@ class _CategoriesState extends State<Categories> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
               )),
 

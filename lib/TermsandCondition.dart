@@ -2,21 +2,21 @@ import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PrivacyScreen extends StatefulWidget {
-  const PrivacyScreen({super.key});
+class TermsandCondition extends StatefulWidget {
+  const TermsandCondition({super.key});
 
   @override
-  State<PrivacyScreen> createState() => _PrivacyScreenState();
+  State<TermsandCondition> createState() => _TermsandConditionState();
 }
 
-class _PrivacyScreenState extends State<PrivacyScreen> {
+class _TermsandConditionState extends State<TermsandCondition> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
         textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Privacy Poilcy".tr),
+            title: Text("Terms Of Use".tr),
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(16.0),
@@ -24,144 +24,102 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Privacy Policy Title".tr,
+                  "Terms and Condition for Dlly Las Grocery App title".tr,
                   style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "Privacy Policy intoduction".tr,
+                  "Terms and Condition for Dlly Las Grocery App content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "collection and using personal data - types of data collected "
-                      .tr,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  "personal data".tr,
+                  "General:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "personal data content".tr,
+                  "General: content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Usage Data".tr,
+                  "Delivery:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Usage Data content".tr,
+                  "Delivery: content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "How We Use Your Information".tr,
+                  "Returns and Refunds:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "How We Use Your Information content".tr,
+                  "Returns and Refunds: content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "Sharing Your Information".tr,
+                  "Payment:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Sharing Your Information content".tr,
+                  "Payment:content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "Your Privacy Choices".tr,
+                  "Privacy:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Your Privacy Choices content".tr,
+                  "Privacy:content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "Data Security".tr,
+                  "Content Protection:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Data Security content".tr,
+                  "Content Protection:content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "Data Retention".tr,
+                  "Changes to Terms and Conditions:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Data Retention content".tr,
+                  "Changes to Terms and Conditions:content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "additional information & Permissions and Compliance with Laws"
-                      .tr,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  "Permissions".tr,
+                  "Governing Law:".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Permissions content".tr,
+                  "Governing Law:content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  "Compliance with Laws".tr,
+                  "Contact Us:TC".tr,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  "Compliance with Laws content".tr,
-                  style: TextStyle(fontSize: 14.0),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  "Effective Date".tr,
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  "Effective Date content".tr,
-                  style: TextStyle(fontSize: 14.0),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  "Changes to Privacy Policy".tr,
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  "Changes to Privacy Policy content".tr,
-                  style: TextStyle(fontSize: 14.0),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  "Contact Us".tr,
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  "Contact Us content".tr,
+                  "Contact Us:TC content".tr,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),

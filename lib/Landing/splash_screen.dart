@@ -8,7 +8,7 @@ import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:provider/provider.dart';
 import '../Config/property.dart';
 import '../home/nav_switch.dart';

@@ -1,5 +1,4 @@
 import 'package:dllylas/Config/my_widget.dart';
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
@@ -15,11 +14,10 @@ import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
 import '../main.dart';
 import 'nav_switch.dart';
-import 'track_order.dart';
 
 class CheckOut extends StatefulWidget {
   int total = 0;
-  CheckOut(this.total);
+  CheckOut(this.total, {super.key});
 
   @override
   State<CheckOut> createState() => _CheckOutState();
@@ -51,7 +49,7 @@ class _CheckOutState extends State<CheckOut> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
               )),
         ),
@@ -171,23 +169,32 @@ class _CheckOutState extends State<CheckOut> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Text(
-                                                        location.name!,
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                mainFontbold,
-                                                            color:
-                                                                mainColorBlack,
-                                                            fontSize: 16),
+                                                      SizedBox(
+                                                        width: getWidth(
+                                                            context, 40),
+                                                        child: Text(
+                                                          location.name!,
+                                                          maxLines: 1,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  mainFontbold,
+                                                              color:
+                                                                  mainColorBlack,
+                                                              fontSize: 16),
+                                                        ),
                                                       ),
-                                                      Text(
-                                                        location.area!,
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                mainFontnormal,
-                                                            color:
-                                                                mainColorGrey,
-                                                            fontSize: 12),
+                                                      SizedBox(
+                                                        width: getWidth(
+                                                            context, 40),
+                                                        child: Text(
+                                                          location.area!,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  mainFontnormal,
+                                                              color:
+                                                                  mainColorGrey,
+                                                              fontSize: 12),
+                                                        ),
                                                       ),
                                                       Row(
                                                         children: [
@@ -460,7 +467,7 @@ class _CheckOutState extends State<CheckOut> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
-                child: Divider(thickness: 1),
+                child: const Divider(thickness: 1),
               ),
               SizedBox(
                 height: getHeight(context, 1),

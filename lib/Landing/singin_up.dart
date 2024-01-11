@@ -22,8 +22,10 @@ import '../home/nav_switch.dart';
 
 class SingInUp extends StatefulWidget {
   String phone_number;
-  String uid;
-  SingInUp(this.phone_number, this.uid, {super.key});
+  String isNotApprove;
+  String token_user;
+
+  SingInUp(this.phone_number, this.isNotApprove, this.token_user, {super.key});
 
   @override
   State<SingInUp> createState() => _SingInUpState();
@@ -336,15 +338,17 @@ class _SingInUpState extends State<SingInUp> {
                               : _readIosDeviceInfo(
                                   await deviceInfoPlugin.iosInfo),
                           "platform": Platform.isAndroid ? "android" : "ios",
-                          "password": widget.uid,
+                          "password": "jhiji",
                         };
+
                         try {
                           Network(false)
-                              .postData("register", data, context)
+                              .updateUserTemp("updateUserTempData", data,
+                                  context, widget.token_user)
                               .then((value) {
                             if (value != "") {
                               if (value["code"] == "200") {
-                                if (value["isApprove"] == 0) {
+                                if (widget.isNotApprove == "true") {
                                   setState(() {
                                     _isLoading = false;
                                   });
@@ -450,12 +454,12 @@ class _SingInUpState extends State<SingInUp> {
                                   _isLoading = false;
                                   isLogin = true;
                                   loaddata = false;
-                                  token = decryptAES(value["token"]);
+                                  token = decryptAES(widget.token_user);
                                 });
                                 getStringPrefs("data").then((map) {
                                   Map<String, dynamic> myMap = json.decode(map);
                                   myMap["islogin"] = true;
-                                  myMap["token"] = value["token"];
+                                  myMap["token"] = widget.token_user;
                                   setStringPrefs("data", json.encode(myMap));
                                 });
 
@@ -468,104 +472,8 @@ class _SingInUpState extends State<SingInUp> {
                                   MaterialPageRoute(
                                       builder: (context) => const NavSwitch()),
                                 );
-                              } else {
-                                setState(() {
-                                  _isLoading = false;
-                                });
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      content: Directionality(
-                                        textDirection: lang == "en"
-                                            ? TextDirection.ltr
-                                            : TextDirection.rtl,
-                                        child: Stack(
-                                          alignment: lang == "en"
-                                              ? Alignment.topLeft
-                                              : Alignment.topRight,
-                                          children: [
-                                            SizedBox(
-                                              width: getWidth(context, 70),
-                                              height: getHeight(context, 50),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  //textcheck
-                                                  Image.asset(
-                                                    "assets/Victors/pendding.png",
-                                                    width:
-                                                        getWidth(context, 40),
-                                                    height:
-                                                        getWidth(context, 40),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Text(
-                                                    "Account range out".tr,
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 1,
-                                                    style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily: mainFontbold,
-                                                      fontSize: 25,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 10),
-                                                  Text(
-                                                    "Account range out content"
-                                                        .tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      color: mainColorGrey,
-                                                      fontFamily:
-                                                          mainFontnormal,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const NavSwitch()),
-                                                      );
-                                                    },
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      fixedSize: Size(
-                                                          getWidth(context, 70),
-                                                          getHeight(
-                                                              context, 5)),
-                                                    ),
-                                                    child: Text(
-                                                      "OK".tr,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            IconButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                icon: const Icon(Icons.close))
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                                setState(() {
-                                  _isLoading = false;
-                                });
-                                return;
                               }
+                         
                             } else {
                               toastShort(
                                   "unknown occurred error please try again later"

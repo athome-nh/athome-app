@@ -14,7 +14,7 @@ class successScreen extends StatefulWidget {
   String id = "";
   String time = "";
   bool outrange = false;
-  successScreen(this.total, this.id, this.time, this.outrange);
+  successScreen(this.total, this.id, this.time, this.outrange, {super.key});
 
   @override
   State<successScreen> createState() => _successScreenState();

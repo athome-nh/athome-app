@@ -8,14 +8,14 @@ import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Privacy.dart';
-import 'package:dllylas/Privacy_Arabic.dart';
-import 'package:dllylas/Privacy_Kurdish.dart';
+import 'package:dllylas/TermsandCondition.dart';
+
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -95,7 +95,7 @@ class _SettingState extends State<Setting> {
             : "Kurdish";
     if (isLogin && userdata.isNotEmpty) {
       nameController.text = userdata["name"];
-      ageController.text = userdata["age"].toString() ?? "0";
+      ageController.text = userdata["age"].toString();
       gender = userdata["gender"] ?? "Gender";
       image = userdata["img"];
     }
@@ -350,7 +350,8 @@ class _SettingState extends State<Setting> {
                                               ),
                                               TextButton(
                                                   onPressed: () {},
-                                                  child: Text("Deletion"))
+                                                  child:
+                                                      Text("Delete Account".tr))
                                             ],
                                           ),
                                         ),
@@ -399,7 +400,7 @@ class _SettingState extends State<Setting> {
                                                         height: getHeight(
                                                             context, 2),
                                                       )
-                                                    : SizedBox(),
+                                                    : const SizedBox(),
                                                 Row(
                                                   children: [
                                                     Icon(
@@ -1182,7 +1183,7 @@ class _SettingState extends State<Setting> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(5)),
-                                              avatar: Icon(Icons.call),
+                                              avatar: const Icon(Icons.call),
                                               label: Text(
                                                 userdata["phone"]
                                                     .toString()
@@ -1195,6 +1196,9 @@ class _SettingState extends State<Setting> {
                                             ),
                                             TextButton(
                                                 onPressed: () {
+                                                  DateTime now = DateTime.now();
+                                                  now = now.add(
+                                                      const Duration(days: 14));
                                                   showDialog(
                                                     context: context,
                                                     builder:
@@ -1267,8 +1271,9 @@ class _SettingState extends State<Setting> {
                                                                         height:
                                                                             10),
                                                                     Text(
-                                                                      "Are you sure you want to continue?"
-                                                                          .tr,
+                                                                      ("Account recovery opportunity".tr).replaceAll(
+                                                                          "@date@",
+                                                                          "(${now.toString().substring(0, 10)})"),
                                                                       textAlign:
                                                                           TextAlign
                                                                               .center,
@@ -1315,7 +1320,7 @@ class _SettingState extends State<Setting> {
                                                                                     product.Orders.clear();
                                                                                     cartProvider.cartItems.clear();
                                                                                     cartProvider.FavItems.clear();
-                                                                                    await FirebaseAuth.instance.currentUser!.delete();
+
                                                                                     Navigator.pop(context);
                                                                                     Navigator.pushReplacement(
                                                                                       context,
@@ -1445,7 +1450,7 @@ class _SettingState extends State<Setting> {
                                                       height:
                                                           getHeight(context, 2),
                                                     )
-                                                  : SizedBox(),
+                                                  : const SizedBox(),
                                               Row(
                                                 children: [
                                                   Icon(
@@ -2005,11 +2010,8 @@ class _SettingState extends State<Setting> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => lang == "en"
-                                              ? PrivacyScreen()
-                                              : lang == "ar"
-                                                  ? PrivacyScreen_AR()
-                                                  : PrivacyScreen_KU()));
+                                          builder: (context) =>
+                                              const PrivacyScreen()));
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
@@ -2055,64 +2057,6 @@ class _SettingState extends State<Setting> {
                                   ),
                                 ),
                               ),
-
-                              // SizedBox(
-                              //   height: getHeight(context, 2),
-                              // ),
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) =>
-                              //               const AboutScreen()),
-                              //     );
-                              //   },
-                              //   child: Padding(
-                              //     padding: EdgeInsets.symmetric(
-                              //       horizontal: getWidth(context, 5),
-                              //     ),
-                              //     child: Container(
-                              //       height: getHeight(context, 6),
-                              //       decoration: BoxDecoration(
-                              //           border: Border.all(
-                              //             color:
-                              //                 mainColorBlack.withOpacity(0.2),
-                              //           ),
-                              //           borderRadius: BorderRadius.circular(5)),
-                              //       child: Padding(
-                              //         padding: const EdgeInsets.symmetric(
-                              //             horizontal: 12),
-                              //         child: Row(
-                              //           children: [
-                              //             Icon(
-                              //               color: mainColorBlack,
-                              //               Ionicons.document_text_outline,
-                              //               size: 20,
-                              //             ),
-                              //             const SizedBox(
-                              //               width: 10,
-                              //             ),
-                              //             Text(
-                              //               "Terms Of Use".tr,
-                              //               style: TextStyle(
-                              //                   color: mainColorBlack,
-                              //                   fontFamily: mainFontnormal,
-                              //                   fontSize: 16),
-                              //             ),
-                              //             const Spacer(),
-                              //             Icon(lang == "en"
-                              //                 ? Icons
-                              //                     .keyboard_arrow_right_outlined
-                              //                 : Icons
-                              //                     .keyboard_arrow_left_outlined)
-                              //           ],
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
@@ -2123,6 +2067,62 @@ class _SettingState extends State<Setting> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             const AboutScreen()),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            color: mainColorBlack,
+                                            Ionicons.document_text_outline,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Terms Of Use".tr,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
+                                          const Spacer(),
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const TermsandCondition()),
                                   );
                                 },
                                 child: Padding(

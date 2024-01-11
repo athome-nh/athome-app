@@ -1,5 +1,4 @@
 import 'package:dllylas/Config/my_widget.dart';
-import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class _AllItemState extends State<AllItem> {
   @override
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
-    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     String type = productPro.allitemType;
     String name = type == "brand"
         ? lang == "en"
@@ -63,7 +61,7 @@ class _AllItemState extends State<AllItem> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
               )),
 

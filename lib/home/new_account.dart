@@ -8,7 +8,6 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -54,6 +53,7 @@ class _Account_newState extends State<Account_new> {
     } else {}
   }
 
+  @override
   void initState() {
     // selectedItem = lang == "en"
     //     ? "English"
@@ -87,90 +87,88 @@ class _Account_newState extends State<Account_new> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Container(
-                    child: Column(children: [
-                      // image
-                      _image != null
-                          ? Stack(
-                              alignment: Alignment.bottomRight,
-                              children: [
-                                Container(
-                                  width: getWidth(context, 40),
-                                  height: getWidth(context, 40),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
+                  child: Column(children: [
+                    // image
+                    _image != null
+                        ? Stack(
+                            alignment: Alignment.bottomRight,
+                            children: [
+                              Container(
+                                width: getWidth(context, 40),
+                                height: getWidth(context, 40),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Image.file(
+                                    File(_image!.path),
+                                    width: getWidth(context, 40),
+                                    height: getWidth(context, 40),
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(50),
-                                    child: Image.file(
-                                      File(_image!.path),
-                                      width: getWidth(context, 40),
-                                      height: getWidth(context, 40),
+                                ),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    _getImage();
+                                  },
+                                  icon: Container(
+                                    width: getWidth(context, 15),
+                                    height: getWidth(context, 15),
+                                    decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: BorderRadius.circular(50),
                                     ),
-                                  ),
+                                    child: waitingImage
+                                        ? Padding(
+                                            padding:
+                                                const EdgeInsets.all(4.0),
+                                            child: waitingWiget2(context),
+                                          )
+                                        : Icon(
+                                            Icons.edit_outlined,
+                                            color: mainColorWhite,
+                                          ),
+                                  )),
+                            ],
+                          )
+                        : Stack(
+                            alignment: Alignment.bottomRight,
+                            children: [
+                              ClipOval(
+                                child: Image.network(
+                                  imageUrlServer + image,
+                                  fit: BoxFit
+                                      .fill, // Customize the BoxFit property
+                                  width: 75,
+                                  height: 75,
                                 ),
-                                IconButton(
-                                    onPressed: () {
-                                      _getImage();
-                                    },
-                                    icon: Container(
-                                      width: getWidth(context, 15),
-                                      height: getWidth(context, 15),
-                                      decoration: BoxDecoration(
-                                        color: mainColorGrey,
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: waitingImage
-                                          ? Padding(
-                                              padding:
-                                                  const EdgeInsets.all(4.0),
-                                              child: waitingWiget2(context),
-                                            )
-                                          : Icon(
-                                              Icons.edit_outlined,
-                                              color: mainColorWhite,
-                                            ),
-                                    )),
-                              ],
-                            )
-                          : Stack(
-                              alignment: Alignment.bottomRight,
-                              children: [
-                                ClipOval(
-                                  child: Image.network(
-                                    imageUrlServer + image,
-                                    fit: BoxFit
-                                        .fill, // Customize the BoxFit property
-                                    width: 75,
-                                    height: 75,
-                                  ),
-                                ),
-                                IconButton(
-                                    onPressed: () {
-                                      _getImage();
-                                    },
-                                    icon: Container(
-                                      width: getWidth(context, 8),
-                                      height: getWidth(context, 8),
-                                      decoration: BoxDecoration(
-                                        color: mainColorGrey,
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: waitingImage
-                                          ? Padding(
-                                              padding:
-                                                  const EdgeInsets.all(4.0),
-                                              child: waitingWiget2(context),
-                                            )
-                                          : Icon(
-                                              Icons.edit_outlined,
-                                              color: mainColorWhite,
-                                            ),
-                                    )),
-                              ],
-                            ),
-                    ]),
-                  ),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    _getImage();
+                                  },
+                                  icon: Container(
+                                    width: getWidth(context, 8),
+                                    height: getWidth(context, 8),
+                                    decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: waitingImage
+                                        ? Padding(
+                                            padding:
+                                                const EdgeInsets.all(4.0),
+                                            child: waitingWiget2(context),
+                                          )
+                                        : Icon(
+                                            Icons.edit_outlined,
+                                            color: mainColorWhite,
+                                          ),
+                                  )),
+                            ],
+                          ),
+                  ]),
                 )
               ]),
         ),

@@ -1,10 +1,11 @@
 import 'package:animate_do/animate_do.dart';
+
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Landing/verification.dart';
+import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Privacy.dart';
-import 'package:dllylas/Privacy_Arabic.dart';
-import 'package:dllylas/Privacy_Kurdish.dart';
-import 'package:dllylas/landing/verification.dart';
+
 import 'package:dllylas/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
     super.dispose();
   }
 
+  bool _isLoading = false;
   int max = 11;
   @override
   Widget build(BuildContext context) {
@@ -212,11 +214,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => lang == "en"
-                                    ? PrivacyScreen()
-                                    : lang == "ar"
-                                        ? PrivacyScreen_AR()
-                                        : PrivacyScreen_KU()));
+                                builder: (context) => PrivacyScreen()));
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.transparent,
@@ -235,41 +233,52 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   FadeInDown(
                     delay: const Duration(milliseconds: 600),
                     child: TextButton(
-                      onPressed: () async {
-                        if (await noInternet(context)) {
-                          return;
-                        }
-                        if (controller.text.isEmpty) {
-                          toastLong('Please enter your phone number'.tr);
-                          return;
-                        }
+                      onPressed: _isLoading
+                          ? null
+                          : () async {
+                              if (await noInternet(context)) {
+                                return;
+                              }
+                              if (controller.text.isEmpty) {
+                                toastLong('Please enter your phone number'.tr);
+                                return;
+                              }
 
-                        if (controller.text.length < max) {
-                          toastLong('Please enter your phone number'.tr);
-                          return;
-                        }
-                        String ph = controller.text.trim();
-                        if (controller.text.startsWith("0")) {
-                          ph = ph.substring(1);
-                        }
+                              if (controller.text.length < max) {
+                                toastLong('Please enter your phone number'.tr);
+                                return;
+                              }
+                              String ph = controller.text.trim();
+                              if (controller.text.startsWith("0")) {
+                                ph = ph.substring(1);
+                              }
+                              setState(() {
+                                _isLoading = true;
+                              });
 
-                        ph = "+964$ph";
-
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Verificatoin(ph)));
-                      },
+                              ph = "+964$ph";
+                              RQsms(ph);
+                            },
                       style: TextButton.styleFrom(
                           fixedSize: Size(
                               getWidth(context, 100), getHeight(context, 6))),
-                      child: Text(
-                        "Get Start".tr,
-                        style: TextStyle(
-                          color: mainColorWhite,
-                          fontFamily: mainFontbold,
-                        ),
-                      ),
+                      child: _isLoading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                backgroundColor: Colors.white,
+                                strokeWidth: 3,
+                                color: Colors.black,
+                              ),
+                            )
+                          : Text(
+                              "Get Start".tr,
+                              style: TextStyle(
+                                color: mainColorWhite,
+                                fontFamily: mainFontbold,
+                              ),
+                            ),
                     ),
                   ),
                   SizedBox(
@@ -298,5 +307,270 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
         ),
       ),
     );
+  }
+
+  void RQsms(String phone_number) {
+    var data = {
+      "phone": phone_number,
+    };
+    Network(false).postData("dllylaslogo", data, context).then((value) async {
+      print(value);
+      setState(() {
+        _isLoading = false;
+      });
+      if (value != "") {
+        if (value["code"] == "200") {
+          if (value["isNotApprove"] == "true") {
+            setState(() {
+              _isLoading = false;
+            });
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Stack(
+                    alignment:
+                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                    children: [
+                      Container(
+                        width: getWidth(context, 70),
+                        height: getHeight(context, 50),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            //textcheck
+                            Image.asset(
+                              "assets/Victors/pendding.png",
+                              width: getWidth(context, 40),
+                              height: getWidth(context, 40),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Account Pendding".tr,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              style: TextStyle(
+                                color: mainColorGrey,
+                                fontFamily: mainFontbold,
+                                fontSize: 25,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              "Account npt approved by admin yet".tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: mainColorGrey,
+                                fontFamily: mainFontnormal,
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: TextButton.styleFrom(
+                                fixedSize: Size(getWidth(context, 70),
+                                    getHeight(context, 5)),
+                              ),
+                              child: Text(
+                                "OK".tr,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(Icons.close))
+                    ],
+                  ),
+                );
+              },
+            );
+            return;
+          }
+          if (value["isNotActive"] == "true") {
+            setState(() {
+              _isLoading = false;
+            });
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Stack(
+                    alignment:
+                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                    children: [
+                      Container(
+                        width: getWidth(context, 70),
+                        height: getHeight(context, 50),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/Victors/disabled.png",
+                              width: getWidth(context, 40),
+                              height: getWidth(context, 40),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Account Disabled".tr,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              style: TextStyle(
+                                color: mainColorGrey,
+                                fontFamily: mainFontbold,
+                                fontSize: 25,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              "Account is disable please contact athome admin"
+                                  .tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: mainColorGrey,
+                                fontFamily: mainFontnormal,
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: TextButton.styleFrom(
+                                fixedSize: Size(getWidth(context, 70),
+                                    getHeight(context, 5)),
+                              ),
+                              child: Text(
+                                "OK".tr,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(Icons.close))
+                    ],
+                  ),
+                );
+              },
+            );
+
+            return;
+          }
+          if ('isSendSms' == "true") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Verificatoin(
+                          phone_number,
+                        )));
+          } else {
+            toastShort("unknown occurred error please try again later");
+            setState(() {
+              _isLoading = false;
+            });
+          }
+        } else {
+          setState(() {
+            _isLoading = false;
+          });
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Directionality(
+                  textDirection:
+                      lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+                  child: Stack(
+                    alignment:
+                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                    children: [
+                      SizedBox(
+                        width: getWidth(context, 70),
+                        height: getHeight(context, 50),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            //textcheck
+                            Image.asset(
+                              "assets/Victors/pendding.png",
+                              width: getWidth(context, 40),
+                              height: getWidth(context, 40),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Account range out".tr,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              style: TextStyle(
+                                color: mainColorGrey,
+                                fontFamily: mainFontbold,
+                                fontSize: 25,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              "Account range out content".tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: mainColorGrey,
+                                fontFamily: mainFontnormal,
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: Size(getWidth(context, 70),
+                                    getHeight(context, 5)),
+                              ),
+                              child: Text(
+                                "OK".tr,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.close))
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      } else {
+        toastShort("unknown occurred error please try again later");
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    });
   }
 }

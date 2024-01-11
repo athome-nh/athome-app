@@ -13,7 +13,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:loading_indicator/loading_indicator.dart';
+
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../home/oneitem.dart';
@@ -1337,7 +1337,7 @@ SnackBar noInternetSnackBar = SnackBar(
 SnackBar internetBackSnackBar = SnackBar(
   duration: const Duration(seconds: 3),
   content: Text(
-    "You\'re online ✅".tr,
+    "You're online ✅".tr,
     style: TextStyle(fontFamily: mainFontnormal),
   ),
   backgroundColor: Colors.green,
