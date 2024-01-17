@@ -144,7 +144,6 @@ class Network {
         });
       }
     } catch (e) {
-      print(e);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
             duration: const Duration(seconds: 4),
@@ -180,7 +179,6 @@ class Network {
         data2 = response.data;
       });
     } catch (e) {
-      print(e);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
             duration: const Duration(seconds: 4),

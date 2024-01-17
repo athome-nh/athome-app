@@ -52,6 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
           getStringPrefs("data").then((map) {
             if (map.isNotEmpty) {
               Map<String, dynamic> myMap = json.decode(map);
+
               seen = myMap["onbord"];
               isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
               token =
@@ -101,6 +102,7 @@ class _SplashScreenState extends State<SplashScreen> {
     getStringPrefs("data").then((map) {
       if (map.isNotEmpty) {
         Map<String, dynamic> myMap = json.decode(map);
+
         seen = myMap["onbord"];
         isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
         token = myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";

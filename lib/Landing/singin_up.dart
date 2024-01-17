@@ -473,7 +473,6 @@ class _SingInUpState extends State<SingInUp> {
                                       builder: (context) => const NavSwitch()),
                                 );
                               }
-                         
                             } else {
                               toastShort(
                                   "unknown occurred error please try again later"
@@ -546,7 +545,12 @@ class _SingInUpState extends State<SingInUp> {
           final split = value.toString().split('.');
           gender = split[1];
         },
-
+        selectedGenderTextStyle: TextStyle(
+          fontFamily: mainFontnormal,
+        ),
+        unSelectedGenderTextStyle: TextStyle(
+          fontFamily: mainFontnormal,
+        ),
         maleText: "Male".tr,
         femaleText: "Female".tr,
         selectedGender: gender == "Male"

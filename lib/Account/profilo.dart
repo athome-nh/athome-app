@@ -1061,8 +1061,8 @@ class _SettingState extends State<Setting> {
                                               alignment: Alignment.bottomRight,
                                               children: [
                                                 Container(
-                                                  width: getWidth(context, 30),
-                                                  height: getWidth(context, 30),
+                                                  width: getWidth(context, 25),
+                                                  height: getWidth(context, 25),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1115,9 +1115,9 @@ class _SettingState extends State<Setting> {
                                               children: [
                                                 Container(
                                                     width:
-                                                        getWidth(context, 30),
+                                                        getWidth(context, 25),
                                                     height:
-                                                        getWidth(context, 30),
+                                                        getWidth(context, 25),
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -2066,7 +2066,7 @@ class _SettingState extends State<Setting> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const AboutScreen()),
+                                            const TermsandCondition()),
                                   );
                                 },
                                 child: Padding(
@@ -2122,7 +2122,7 @@ class _SettingState extends State<Setting> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const TermsandCondition()),
+                                            const AboutScreen()),
                                   );
                                 },
                                 child: Padding(

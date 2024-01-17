@@ -509,10 +509,10 @@ class _VerificatoinState extends State<Verificatoin> {
               loaddata = false;
               token = decryptAES(value["token"]);
             });
-            getStringPrefs("token").then((map) {
+            getStringPrefs("data").then((map) {
               Map<String, dynamic> myMap = json.decode(map);
               myMap["islogin"] = true;
-              myMap["token"] = value["data"];
+              myMap["token"] = value["token"];
               setStringPrefs("data", json.encode(myMap));
             });
 

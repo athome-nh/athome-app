@@ -588,11 +588,15 @@ class _CheckOutState extends State<CheckOut> {
                                   setState(() {
                                     waitingcheckout = false;
                                   });
+                                  toastShort(
+                                      "unknown occurred error please try again later");
                                 }
                               } else {
                                 setState(() {
                                   waitingcheckout = false;
                                 });
+                                toastShort(
+                                    "unknown occurred error please try again later");
                               }
                             });
                           } else {

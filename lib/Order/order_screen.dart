@@ -93,7 +93,8 @@ class _OrderScreenState extends State<OrderScreen> {
                         ? loginFirstContainer(context)
                         : productrovider.Orders.isNotEmpty
                             ? ListView.builder(
-                                itemCount: productrovider.getOrderOngoing().length,
+                                itemCount:
+                                    productrovider.getOrderOngoing().length,
                                 itemBuilder: (BuildContext context, int index) {
                                   OrderModel order = productrovider
                                       .getOrderOngoing()
@@ -188,7 +189,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               )),
                     !isLogin
                         ? loginFirstContainer(context)
-                        : productrovider.Orders.isNotEmpty
+                        : productrovider.getOrderHistory().isNotEmpty
                             ? ListView.builder(
                                 itemCount:
                                     productrovider.getOrderHistory().length,

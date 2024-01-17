@@ -160,9 +160,9 @@ const Map<String, String> en = {
   "Delete location success": "Delete location success",
 
   // singin_up
-  "Complete Account": "Account created",
+  "Complete Account": "Enter your personal information",
   "Enter your account information to complete your account":
-      "Enter your information to complete your account",
+      "Please enter the required information for registration",
   "Enter your Name": "Enter your Name",
   "Enter your age": "Enter your age",
   "Enter your full name": "Enter your full name",

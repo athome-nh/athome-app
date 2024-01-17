@@ -314,7 +314,6 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
       "phone": phone_number,
     };
     Network(false).postData("dllylaslogo", data, context).then((value) async {
-      print(value);
       setState(() {
         _isLoading = false;
       });
@@ -471,7 +470,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
 
             return;
           }
-          if ('isSendSms' == "true") {
+          if (value["isSendSms"] == "true") {
             Navigator.push(
                 context,
                 MaterialPageRoute(

@@ -282,6 +282,7 @@ class _Map_screenState extends State<Map_screen> {
                                         : Text(
                                             "Delivery To:".tr,
                                             style: TextStyle(
+                                                fontFamily: mainFontnormal,
                                                 color: mainColorWhite,
                                                 fontSize: 16),
                                           ),
@@ -293,7 +294,9 @@ class _Map_screenState extends State<Map_screen> {
                                     Text(
                                       nameloc,
                                       style: TextStyle(
-                                          color: mainColorWhite, fontSize: 16),
+                                          fontFamily: mainFontnormal,
+                                          color: mainColorWhite,
+                                          fontSize: 16),
                                     ),
                                   ],
                                 ),
