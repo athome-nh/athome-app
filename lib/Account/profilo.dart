@@ -55,7 +55,7 @@ class _SettingState extends State<Setting> {
         waitingImage = true;
       });
       Map<String, String> body = {
-        "id": userdata["id"].toString(),
+        "id": userdata["id"],
       };
       Network(false).addImage(body, _image!.path).then((value) {
         setState(() {
@@ -962,39 +962,47 @@ class _SettingState extends State<Setting> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    getStringPrefs("data").then((map) {
-                                      Map<String, dynamic> myMap =
-                                          json.decode(map);
-                                      myMap["islogin"] = false;
-                                      myMap["token"] = "";
-                                      setStringPrefs(
-                                          "data", json.encode(myMap));
-                                    });
+                                    // var data = {
+                                    //   "id": userdata["id"].toString()
+                                    // };
+                                    // Network(false)
+                                    //     .postData("logout", data, context)
+                                    //     .then((value) {
+                                    //   print(value);
+                                    // });
+                                    // getStringPrefs("data").then((map) {
+                                    //   Map<String, dynamic> myMap =
+                                    //       json.decode(map);
+                                    //   myMap["islogin"] = false;
+                                    //   myMap["token"] = "";
+                                    //   setStringPrefs(
+                                    //       "data", json.encode(myMap));
+                                    // });
 
-                                    final cartProvider =
-                                        Provider.of<CartProvider>(context,
-                                            listen: false);
-                                    final product =
-                                        Provider.of<productProvider>(context,
-                                            listen: false);
+                                    // final cartProvider =
+                                    //     Provider.of<CartProvider>(context,
+                                    //         listen: false);
+                                    // final product =
+                                    //     Provider.of<productProvider>(context,
+                                    //         listen: false);
 
-                                    setState(() {
-                                      userdata = {};
-                                      token = "";
-                                      isLogin = false;
-                                    });
-                                    product.Orderitems.clear();
-                                    product.location.clear();
-                                    product.Orders.clear();
-                                    cartProvider.cartItems.clear();
-                                    cartProvider.FavItems.clear();
+                                    // setState(() {
+                                    //   userdata = {};
+                                    //   token = "";
+                                    //   isLogin = false;
+                                    // });
+                                    // product.Orderitems.clear();
+                                    // product.location.clear();
+                                    // product.Orders.clear();
+                                    // cartProvider.cartItems.clear();
+                                    // cartProvider.FavItems.clear();
 
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const NavSwitch()),
-                                    );
+                                    // Navigator.pushReplacement(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //       builder: (context) =>
+                                    //           const NavSwitch()),
+                                    // );
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
@@ -2174,38 +2182,44 @@ class _SettingState extends State<Setting> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  getStringPrefs("data").then((map) {
-                                    Map<String, dynamic> myMap =
-                                        json.decode(map);
-                                    myMap["islogin"] = false;
-                                    myMap["token"] = "";
-                                    setStringPrefs("data", json.encode(myMap));
-                                  });
+                                  var data = {"id": userdata["id"].toString()};
+                                  Network(false)
+                                      .postData("logout", data, context)
+                                      .then((value) {
+                                    getStringPrefs("data").then((map) {
+                                      Map<String, dynamic> myMap =
+                                          json.decode(map);
+                                      myMap["islogin"] = false;
+                                      myMap["token"] = "";
+                                      setStringPrefs(
+                                          "data", json.encode(myMap));
+                                    });
 
-                                  final cartProvider =
-                                      Provider.of<CartProvider>(context,
-                                          listen: false);
-                                  final product = Provider.of<productProvider>(
+                                    final cartProvider =
+                                        Provider.of<CartProvider>(context,
+                                            listen: false);
+                                    final product =
+                                        Provider.of<productProvider>(context,
+                                            listen: false);
+
+                                    setState(() {
+                                      userdata = {};
+                                      token = "";
+                                      isLogin = false;
+                                    });
+                                    product.Orderitems.clear();
+                                    product.location.clear();
+                                    product.Orders.clear();
+                                    cartProvider.cartItems.clear();
+                                    cartProvider.FavItems.clear();
+
+                                    Navigator.pushReplacement(
                                       context,
-                                      listen: false);
-
-                                  setState(() {
-                                    userdata = {};
-                                    token = "";
-                                    isLogin = false;
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const NavSwitch()),
+                                    );
                                   });
-                                  product.Orderitems.clear();
-                                  product.location.clear();
-                                  product.Orders.clear();
-                                  cartProvider.cartItems.clear();
-                                  cartProvider.FavItems.clear();
-
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const NavSwitch()),
-                                  );
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(

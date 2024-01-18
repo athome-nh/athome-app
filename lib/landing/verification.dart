@@ -143,14 +143,6 @@ class _VerificatoinState extends State<Verificatoin> {
                               if (await noInternet(context)) {
                                 return;
                               }
-                              if (widget.phone_number == "+9647503248438" &&
-                                  _code == "941424") {
-                                setState(() {
-                                  _isLoading = true;
-                                });
-                                RQStrtic();
-                                return;
-                              }
 
                               RQverify();
                             },
@@ -220,16 +212,6 @@ class _VerificatoinState extends State<Verificatoin> {
                                         return;
                                       }
 
-                                      if (widget.phone_number ==
-                                              "+9647503248438" &&
-                                          _code == "941424") {
-                                        setState(() {
-                                          _isLoading = true;
-                                        });
-                                        RQStrtic();
-                                        return;
-                                      }
-
                                       RQverify();
                                     },
                           style: TextButton.styleFrom(
@@ -271,213 +253,6 @@ class _VerificatoinState extends State<Verificatoin> {
     });
   }
 
-  void RQStrtic() {
-    var data = {
-      "token": token2,
-      "phone": widget.phone_number,
-      "password": "hspeY3489IZRtR3nCgnidI0ASr32",
-    };
-    Network(false).postData("login", data, context).then((value) async {
-      if (value != "") {
-        if (value["code"] == "200") {
-          if (value["isApprove"] == 0) {
-            setState(() {
-              _isLoading = false;
-            });
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  content: Stack(
-                    alignment:
-                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
-                    children: [
-                      SizedBox(
-                        width: getWidth(context, 70),
-                        height: getHeight(context, 50),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            //textcheck
-                            Image.asset(
-                              "assets/Victors/pendding.png",
-                              width: getWidth(context, 40),
-                              height: getWidth(context, 40),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Account Pendding".tr,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontbold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              "Account npt approved by admin yet".tr,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
-                                );
-                              },
-                              style: TextButton.styleFrom(
-                                fixedSize: Size(getWidth(context, 70),
-                                    getHeight(context, 5)),
-                              ),
-                              child: Text(
-                                "OK".tr,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.close))
-                    ],
-                  ),
-                );
-              },
-            );
-            return;
-          }
-          if (value["isActive"] == 1) {
-            _codeTimer.cancel();
-            setState(() {
-              _isLoading = false;
-              isLogin = true;
-              loaddata = false;
-              token = decryptAES(value["token"]);
-            });
-            getStringPrefs("data").then((map) {
-              Map<String, dynamic> myMap = json.decode(map);
-              myMap["islogin"] = true;
-              myMap["token"] = value["token"];
-              setStringPrefs("data", json.encode(myMap));
-            });
-
-            final productrovider =
-                Provider.of<productProvider>(context, listen: false);
-            productrovider.updatePost(true);
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const NavSwitch()),
-            );
-          } else {
-            setState(() {
-              _isLoading = false;
-            });
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  content: Stack(
-                    alignment:
-                        lang == "en" ? Alignment.topLeft : Alignment.topRight,
-                    children: [
-                      SizedBox(
-                        width: getWidth(context, 70),
-                        height: getHeight(context, 50),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.asset(
-                              "assets/Victors/disabled.png",
-                              width: getWidth(context, 40),
-                              height: getWidth(context, 40),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Account Disabled".tr,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontbold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              "Account is disable please contact athome admin"
-                                  .tr,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorGrey,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
-                                );
-                              },
-                              style: TextButton.styleFrom(
-                                fixedSize: Size(getWidth(context, 70),
-                                    getHeight(context, 5)),
-                              ),
-                              child: Text(
-                                "OK".tr,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.close))
-                    ],
-                  ),
-                );
-              },
-            );
-          }
-        } else if (value["code"] == "422") {
-          setState(() {
-            _isLoading = false;
-          });
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) =>
-          //             SingInUp(widget.phone_number, _auth.currentUser!.uid)));
-        }
-      } else {
-        // toastShort("unknown occurred error please try again later");
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    });
-  }
-
   void RQverify() {
     setState(() {
       _isLoading = true;
@@ -485,6 +260,7 @@ class _VerificatoinState extends State<Verificatoin> {
     var data = {
       "phone": widget.phone_number,
       "code": _code,
+      "token": token2,
     };
     Network(false).postData("verifyPhone", data, context).then((value) async {
       setState(() {

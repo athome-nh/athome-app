@@ -15,6 +15,7 @@ import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -102,6 +103,7 @@ class _HomeSreenState extends State<HomeSreen> {
         }
       }
     });
+
     checkinternet();
     subscription = Connectivity()
         .onConnectivityChanged
@@ -165,7 +167,7 @@ class _HomeSreenState extends State<HomeSreen> {
                             child: Stack(
                               children: [
                                 CachedNetworkImage(
-                                  imageUrl: "assets/images/Logo-Type-2.png",
+                                  imageUrl: "",
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/Logo-Type-2.png"),
                                   errorWidget: (context, url, error) =>
@@ -884,7 +886,7 @@ class _HomeSreenState extends State<HomeSreen> {
                               }
                             } else {
                               Uri url = Uri.parse(
-                                  'https://apps.apple.com/app/com.market.dllylas');
+                                  'https://apps.apple.com/iq/app/dlly-las-market/id6474247014');
                               if (!await launchUrl(url,
                                   mode: LaunchMode.externalApplication)) {
                                 throw Exception('Could not launch $url');

@@ -28,16 +28,6 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
 
   @override
   void initState() {
-    FirebaseMessaging.instance
-        .getAPNSToken(
-            // vapidKey: firebaseCloudvapidKey
-            )
-        .then((val) async {});
-    FirebaseMessaging.instance
-        .getToken(
-            // vapidKey: firebaseCloudvapidKey
-            )
-        .then((val) async {});
     super.initState();
   }
 
