@@ -7,6 +7,7 @@ import 'package:dllylas/model/product_model/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -42,21 +43,7 @@ String code_3(String code_2, String randomText) {
   List<String> charactersArray = randomText.split('');
   List<String> charactersArray2 = code_2.split('');
 
-  List<int> listOfNum = [
-    27,
-    14,
-    49,
-    3,
-    60,
-    8,
-    35,
-    22,
-    42,
-    18,
-    55,
-    7,
-    31,
-  ];
+  List<int> listOfNum =(dotenv.env['tokenkey']?.split(',') ?? []).map((value) => int.tryParse(value) ?? 0).toList();
 
   for (int i = 0; i < 13; i++) {
     charactersArray[listOfNum[i]] = charactersArray2[i];
@@ -119,7 +106,7 @@ String encryptAES(String plainText) {
   if (plainText.isEmpty) {
     return "";
   }
-  final key = encryption.Key.fromUtf8("12345678901234567890123456789012");
+  final key = encryption.Key.fromUtf8(dotenv.env["encryptionkey"]!);
   final iv = encryption.IV.fromUtf8("0000000000000000");
 
   final encrypter =
@@ -134,7 +121,7 @@ String decryptAES(String ciphertext) {
   if (ciphertext.isEmpty) {
     return "";
   }
-  final key = encryption.Key.fromUtf8("12345678901234567890123456789012");
+  final key = encryption.Key.fromUtf8(dotenv.env["encryptionkey"]!);
   final iv = encryption.IV.fromUtf8("0000000000000000");
   final encrypter =
       encryption.Encrypter(encryption.AES(key, mode: encryption.AESMode.cbc));
