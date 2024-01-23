@@ -2,13 +2,14 @@ import 'dart:io';
 
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Config/value.dart';
+
 
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -137,7 +138,7 @@ class _Account_newState extends State<Account_new> {
                             children: [
                               ClipOval(
                                 child: Image.network(
-                                  imageUrlServer + image,
+                                  dotenv.env['imageUrlServer']! + image,
                                   fit: BoxFit
                                       .fill, // Customize the BoxFit property
                                   width: 75,

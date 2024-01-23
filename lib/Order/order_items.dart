@@ -1,5 +1,5 @@
 import 'package:dllylas/Config/my_widget.dart';
-import 'package:dllylas/Config/value.dart';
+
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/check_out.dart';
@@ -8,6 +8,7 @@ import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/athome_functions.dart';
@@ -111,7 +112,7 @@ class _OrederItemsState extends State<OrederItems> {
                                     child: Center(
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            imageUrlServer + cartitem.coverImg!,
+                                            dotenv.env['imageUrlServer']! + cartitem.coverImg!,
                                         filterQuality: FilterQuality.low,
                                         width: getWidth(context, 15),
                                         height: getWidth(context, 15),

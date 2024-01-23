@@ -1,8 +1,8 @@
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Config/property.dart';
@@ -85,7 +85,7 @@ class _CategoriesState extends State<Categories> {
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
                               child: CachedNetworkImage(
-                                imageUrl: imageUrlServer + cateItem.img!,
+                                imageUrl: dotenv.env['imageUrlServer']! + cateItem.img!,
                                 placeholder: (context, url) => Image.asset(
                                     "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>

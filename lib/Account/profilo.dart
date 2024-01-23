@@ -5,7 +5,6 @@ import 'package:dllylas/Order/order_screen.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Privacy.dart';
 import 'package:dllylas/TermsandCondition.dart';
@@ -17,6 +16,7 @@ import 'package:dllylas/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -284,7 +284,7 @@ class _SettingState extends State<Setting> {
                                                 child: CachedNetworkImage(
                                                   width: getWidth(context, 40),
                                                   height: getWidth(context, 40),
-                                                  imageUrl: imageUrlServer,
+                                                  imageUrl: dotenv.env['imageUrlServer']!,
                                                   filterQuality:
                                                       FilterQuality.low,
                                                   placeholder: (context, url) =>
@@ -1136,7 +1136,7 @@ class _SettingState extends State<Setting> {
                                                           mainColorGrey,
                                                       backgroundImage:
                                                           CachedNetworkImageProvider(
-                                                        imageUrlServer + image,
+                                                        dotenv.env['imageUrlServer']! + image,
                                                       ),
                                                     )),
                                                 IconButton(

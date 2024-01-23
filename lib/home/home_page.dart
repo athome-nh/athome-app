@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dllylas/Config/my_widget.dart';
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
@@ -15,8 +14,8 @@ import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -92,7 +91,7 @@ class _HomeSreenState extends State<HomeSreen> {
                 documentSnapshot.get("contentku"), "OK".tr, "error");
           }
         }
-        if (currentVersion != documentSnapshot.get("newversion")) {
+        if (dotenv.env['currentVersion']! != documentSnapshot.get("newversion")) {
           ShowInfo(
               context,
               "New update is available".tr,
@@ -212,12 +211,12 @@ class _HomeSreenState extends State<HomeSreen> {
                               CachedNetworkImage(
                                 imageUrl: productrovider.show
                                     ? lang == "en"
-                                        ? imageUrlServer +
+                                        ? dotenv.env['imageUrlServer']! +
                                             productrovider.tops[0].imgEn!
                                         : lang == "ar"
-                                            ? imageUrlServer +
+                                            ? dotenv.env['imageUrlServer']! +
                                                 productrovider.tops[0].imgAr!
-                                            : imageUrlServer +
+                                            : dotenv.env['imageUrlServer']! +
                                                 productrovider.tops[0].imgKur!
                                     : "",
                                 placeholder: (context, url) => Image.asset(
@@ -435,7 +434,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     BorderRadius.circular(50)),
                                             child: Center(
                                               child: CachedNetworkImage(
-                                                imageUrl: imageUrlServer +
+                                                imageUrl: dotenv.env['imageUrlServer']! +
                                                     cateItem.img!,
                                                 placeholder: (context, url) =>
                                                     Image.asset(
@@ -718,7 +717,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                             child: ClipRRect(
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    imageUrlServer + item.img!,
+                                                    dotenv.env['imageUrlServer']! + item.img!,
                                                 placeholder: (context, url) =>
                                                     Image.asset(
                                                         "assets/images/Logo-Type-2.png"),

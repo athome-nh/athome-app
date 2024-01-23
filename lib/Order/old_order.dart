@@ -1,12 +1,13 @@
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Config/value.dart';
+
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/order_items/order_items.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -71,7 +72,7 @@ class _OldOrderState extends State<OldOrder> {
                                       ),
                                       child: Center(
                                         child: CachedNetworkImage(
-                                          imageUrl: imageUrlServer +
+                                          imageUrl: dotenv.env['imageUrlServer']! +
                                               productrovider
                                                   .getoneProductItemsById(
                                                       items[index].productId!)

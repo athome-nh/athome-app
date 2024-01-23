@@ -1,6 +1,5 @@
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/login_page.dart';
@@ -9,6 +8,7 @@ import 'package:dllylas/model/cart.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -346,7 +346,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     );
                                   },
                                   child: CachedNetworkImage(
-                                    imageUrl: imageUrlServer + product.coverImg,
+                                    imageUrl: dotenv.env['imageUrlServer']! + product.coverImg,
                                     placeholder: (context, url) => Image.asset(
                                         "assets/images/Logo-Type-2.png"),
                                     errorWidget: (context, url, error) =>
@@ -681,7 +681,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   );
                                 },
                                 child: CachedNetworkImage(
-                                  imageUrl: imageUrlServer + product.coverImg,
+                                  imageUrl: dotenv.env['imageUrlServer']! + product.coverImg,
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/Logo-Type-2.png"),
                                   errorWidget: (context, url, error) =>
@@ -1016,7 +1016,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   );
                                 },
                                 child: CachedNetworkImage(
-                                  imageUrl: imageUrlServer + product.coverImg,
+                                  imageUrl: dotenv.env['imageUrlServer']! + product.coverImg,
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/Logo-Type-2.png"),
                                   errorWidget: (context, url, error) =>

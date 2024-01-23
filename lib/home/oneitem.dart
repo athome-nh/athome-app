@@ -1,5 +1,5 @@
 import 'package:dllylas/Config/athome_functions.dart';
-import 'package:dllylas/Config/value.dart';
+
 
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
@@ -11,6 +11,7 @@ import 'package:dllylas/model/products_image/products_image.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -93,7 +94,7 @@ class _OneitemState extends State<Oneitem> {
                                           builder: (BuildContext context) {
                                             return ClipRRect(
                                               child: CachedNetworkImage(
-                                                imageUrl: imageUrlServer +
+                                                imageUrl: dotenv.env['imageUrlServer']! +
                                                     imageUrl.img!,
                                                 width: getWidth(context, 100),
                                                 height: getHeight(context, 25),
@@ -123,8 +124,8 @@ class _OneitemState extends State<Oneitem> {
                                       borderRadius: BorderRadius.circular(100)),
                                   child: Center(
                                     child: CachedNetworkImage(
-                                      imageUrl: imageUrlServer + Item.coverImg!,
-                                      // imageUrlServer + Item.coverImg!,
+                                      imageUrl: dotenv.env['imageUrlServer']! + Item.coverImg!,
+                                      // dotenv.env['imageUrlServer']! + Item.coverImg!,
                                       placeholder: (context, url) =>
                                           Image.asset(
                                               "assets/images/Logo-Type-2.png"),

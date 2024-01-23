@@ -5,10 +5,10 @@ import 'dart:math';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/main.dart';
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/map/geolocator.dart';
 import 'package:dllylas/map/locationdeatil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -203,7 +203,7 @@ class _Map_screenState extends State<Map_screen> {
                   });
                 },
                 resourceOptions:
-                    ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
+                    ResourceOptions(accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN']!),
                 onMapCreated: _onMapCreated),
             Padding(
               padding: const EdgeInsets.only(bottom: 40),

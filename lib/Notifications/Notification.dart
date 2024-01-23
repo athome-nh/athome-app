@@ -3,9 +3,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Config/value.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -179,7 +180,7 @@ class FCMNotification {
         Uri.parse('https://fcm.googleapis.com/fcm/send'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': fcmKey,
+          'Authorization': dotenv.env['fcmKey']!,
         },
         body: jsonEncode(
           <String, dynamic>{
@@ -218,7 +219,7 @@ class FCMNotification {
         Uri.parse('https://fcm.googleapis.com/fcm/send'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': fcmKey,
+          'Authorization': dotenv.env['fcmKey']!,
         },
         body: jsonEncode(
           <String, dynamic>{

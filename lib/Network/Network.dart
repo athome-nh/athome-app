@@ -3,13 +3,13 @@
 import 'dart:convert';
 
 import 'package:dllylas/Config/athome_functions.dart';
-import 'package:dllylas/Config/value.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
 import 'dio_connectivity_request_retrier.dart';
@@ -35,11 +35,11 @@ class Network {
     Map<String, dynamic> data = {};
     try {
       if (token.isNotEmpty) {
-        await dio.get(serverUrl + "time").then((time) async {
+        await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
           dio.options.headers["Authorization"] = "Bearer " + token;
           dio.options.headers["aToken"] =
               encryptAES(generateRandomText(time.data["data"]));
-          Response response = await dio.get(serverUrl + apiRout);
+          Response response = await dio.get(dotenv.env['serverUrl']! + apiRout);
           data = response.data;
         });
       } else {
@@ -56,14 +56,14 @@ class Network {
   Future getData(String apiRout) async {
     Map<String, dynamic> data = {};
     try {
-      await dio.get(serverUrl + "time").then((time) async {
+      await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
         datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] = "Bearer " + token;
 
         dio.options.headers["aToken"] =
             encryptAES(generateRandomText(time.data["data"]));
 
-        Response response = await dio.get(serverUrl + apiRout);
+        Response response = await dio.get(dotenv.env['serverUrl']! + apiRout);
 
         data = response.data;
       });
@@ -84,10 +84,10 @@ class Network {
   }
 
   Future addImage(Map<String, String> body, String filepath) async {
-    String addimageUrl = serverUrl + "profileImg";
+    String addimageUrl = dotenv.env['serverUrl']! + "profileImg";
 
     try {
-      await dio.get(serverUrl + "time").then((time) async {
+      await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
         Map<String, String> headers = {
           'Content-Type': 'multipart/form-data',
           'Authorization': "Bearer " + token,
@@ -119,25 +119,25 @@ class Network {
     Map<String, dynamic> data2 = {};
     try {
       if (isLogin) {
-        await dio.get(serverUrl + "time").then((time) async {
+        await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
           datetimeS = DateTime.parse(time.data["data"]);
           dio.options.headers["Authorization"] = "Bearer " + token;
           dio.options.headers["aToken"] =
               encryptAES(generateRandomText(time.data["data"]));
           Response response = await dio.post(
-            serverUrl + rout,
+            dotenv.env['serverUrl']! + rout,
             data: data,
           );
 
           data2 = response.data;
         });
       } else {
-        await dio.get(serverUrl + "time").then((time) async {
+        await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
           datetimeS = DateTime.parse(time.data["data"]);
           dio.options.headers["aToken"] =
               encryptAES(generateRandomText(time.data["data"]));
           Response response = await dio.post(
-            serverUrl + rout,
+            dotenv.env['serverUrl']! + rout,
             data: data,
           );
           data2 = response.data;
@@ -165,14 +165,14 @@ class Network {
       String rout, Map data, BuildContext context, String User_token) async {
     Map<String, dynamic> data2 = {};
     try {
-      await dio.get(serverUrl + "time").then((time) async {
+      await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
         datetimeS = DateTime.parse(time.data["data"]);
         dio.options.headers["Authorization"] =
             "Bearer " + decryptAES(User_token);
         dio.options.headers["aToken"] =
             encryptAES(generateRandomText(time.data["data"]));
         Response response = await dio.post(
-          serverUrl + rout,
+          dotenv.env['serverUrl']! + rout,
           data: data,
         );
 

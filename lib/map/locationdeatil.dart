@@ -1,12 +1,13 @@
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Config/value.dart';
+
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/location/location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
@@ -87,7 +88,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         child: MapWidget(
                           key: const ValueKey("mapWidget"),
                           resourceOptions:
-                              ResourceOptions(accessToken: MAPBOX_ACCESS_TOKEN),
+                              ResourceOptions(accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN']!),
                           onMapCreated: (controller) {
                             controller.gestures.updateSettings(GesturesSettings(
                                 rotateEnabled: false,

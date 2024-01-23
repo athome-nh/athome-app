@@ -1,5 +1,5 @@
 import 'package:dllylas/Config/my_widget.dart';
-import 'package:dllylas/Config/value.dart';
+
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/model/cart.dart';
@@ -8,6 +8,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -220,7 +221,7 @@ class _MyCartState extends State<MyCart> {
                                           ),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl: imageUrlServer,
+                                              imageUrl: dotenv.env['imageUrlServer']!,
                                               placeholder: (context, url) =>
                                                   Image.asset(
                                                       "assets/images/home.png"),
@@ -399,7 +400,7 @@ class _MyCartState extends State<MyCart> {
                                                     child: Center(
                                                       child: CachedNetworkImage(
                                                         imageUrl:
-                                                            imageUrlServer +
+                                                            dotenv.env['imageUrlServer']! +
                                                                 cartitem
                                                                     .coverImg!,
                                                         filterQuality:
