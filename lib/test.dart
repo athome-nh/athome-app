@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/main.dart';
@@ -22,6 +23,17 @@ class _Test_ScreenState extends State<Test_Screen> {
             : "Kurdish";
 
     super.initState();
+  }
+
+  AudioPlayer audioPlayer = AudioPlayer();
+
+  void playSound() async {
+    try {
+      // Additional configuration or setup if needed
+      audioPlayer.play(AssetSource('images/dllylas.wav'));
+    } catch (e) {
+      print('Error initializing AudioPlayer: $e');
+    }
   }
 
   @override
@@ -156,105 +168,106 @@ class _Test_ScreenState extends State<Test_Screen> {
         body: Center(
           child: IconButton(
               onPressed: () {
-                DateTime now = DateTime.now();
-                now = now.add(Duration(days: 14));
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      content: Directionality(
-                        textDirection: lang == "en"
-                            ? TextDirection.ltr
-                            : TextDirection.rtl,
-                        child: Stack(
-                          alignment: lang == "en"
-                              ? Alignment.topLeft
-                              : Alignment.topRight,
-                          children: [
-                            SizedBox(
-                              width: getWidth(context, 70),
-                              height: getHeight(context, 50),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                //textcheck
-                                children: <Widget>[
-                                  Image.asset(
-                                    "assets/Victors/sure.png",
-                                    width: getWidth(context, 40),
-                                    height: getWidth(context, 40),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Delete Account".tr,
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 25,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    ("Account recovery opportunity".tr)
-                                        .replaceAll(
-                                            "@date@",
-                                            "(" +
-                                                now
-                                                    .toString()
-                                                    .substring(0, 10) +
-                                                ")"),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {},
-                                    style: TextButton.styleFrom(
-                                      fixedSize: Size(getWidth(context, 70),
-                                          getHeight(context, 5)),
-                                      backgroundColor: mainColorRed,
-                                    ),
-                                    child: Text(
-                                      "Delete".tr,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    style: TextButton.styleFrom(
-                                      fixedSize: Size(getWidth(context, 70),
-                                          getHeight(context, 5)),
-                                    ),
-                                    child: Text(
-                                      "Cancel".tr,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(
-                                  Icons.close,
-                                  color: mainColorBlack,
-                                ))
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
+                playSound();
+                // DateTime now = DateTime.now();
+                // now = now.add(Duration(days: 14));
+                // showDialog(
+                //   context: context,
+                //   builder: (BuildContext context) {
+                //     return AlertDialog(
+                //       content: Directionality(
+                //         textDirection: lang == "en"
+                //             ? TextDirection.ltr
+                //             : TextDirection.rtl,
+                //         child: Stack(
+                //           alignment: lang == "en"
+                //               ? Alignment.topLeft
+                //               : Alignment.topRight,
+                //           children: [
+                //             SizedBox(
+                //               width: getWidth(context, 70),
+                //               height: getHeight(context, 50),
+                //               child: Column(
+                //                 crossAxisAlignment: CrossAxisAlignment.center,
+                //                 mainAxisAlignment: MainAxisAlignment.center,
+                //                 //textcheck
+                //                 children: <Widget>[
+                //                   Image.asset(
+                //                     "assets/Victors/sure.png",
+                //                     width: getWidth(context, 40),
+                //                     height: getWidth(context, 40),
+                //                   ),
+                //                   const SizedBox(
+                //                     height: 10,
+                //                   ),
+                //                   Text(
+                //                     "Delete Account".tr,
+                //                     textAlign: TextAlign.center,
+                //                     maxLines: 1,
+                //                     style: TextStyle(
+                //                       color: mainColorBlack,
+                //                       fontFamily: mainFontbold,
+                //                       fontSize: 25,
+                //                     ),
+                //                   ),
+                //                   const SizedBox(height: 10),
+                //                   Text(
+                //                     ("Account recovery opportunity".tr)
+                //                         .replaceAll(
+                //                             "@date@",
+                //                             "(" +
+                //                                 now
+                //                                     .toString()
+                //                                     .substring(0, 10) +
+                //                                 ")"),
+                //                     textAlign: TextAlign.center,
+                //                     style: TextStyle(
+                //                       color: mainColorBlack,
+                //                       fontFamily: mainFontnormal,
+                //                       fontSize: 16,
+                //                     ),
+                //                   ),
+                //                   TextButton(
+                //                     onPressed: () {},
+                //                     style: TextButton.styleFrom(
+                //                       fixedSize: Size(getWidth(context, 70),
+                //                           getHeight(context, 5)),
+                //                       backgroundColor: mainColorRed,
+                //                     ),
+                //                     child: Text(
+                //                       "Delete".tr,
+                //                     ),
+                //                   ),
+                //                   const SizedBox(height: 5),
+                //                   TextButton(
+                //                     onPressed: () {
+                //                       Navigator.pop(context);
+                //                     },
+                //                     style: TextButton.styleFrom(
+                //                       fixedSize: Size(getWidth(context, 70),
+                //                           getHeight(context, 5)),
+                //                     ),
+                //                     child: Text(
+                //                       "Cancel".tr,
+                //                     ),
+                //                   ),
+                //                 ],
+                //               ),
+                //             ),
+                //             IconButton(
+                //                 onPressed: () {
+                //                   Navigator.pop(context);
+                //                 },
+                //                 icon: Icon(
+                //                   Icons.close,
+                //                   color: mainColorBlack,
+                //                 ))
+                //           ],
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // );
               },
               icon: Icon(
                 Icons.call,

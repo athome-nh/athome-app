@@ -1,5 +1,6 @@
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
@@ -24,7 +25,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
- await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env");
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -58,6 +59,8 @@ class AtHomeApp extends StatefulWidget {
 class _AtHomeAppState extends State<AtHomeApp> {
   @override
   void initState() {
+    FCMNotification(context).config();
+
     getStringPrefs("lang").then((value) {
       setState(() {
         if (value != "") {

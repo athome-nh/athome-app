@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:dllylas/Config/property.dart';
 
 import 'package:flutter/foundation.dart';
@@ -24,8 +25,32 @@ class FCMNotification {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
+  AudioPlayer audioPlayer = AudioPlayer();
+
+  void playSound() async {
+    try {
+      // Additional configuration or setup if needed
+      audioPlayer.play(AssetSource('images/dllylas.wav'));
+    } catch (e) {
+      print('Error initializing AudioPlayer: $e');
+    }
+  }
+
+  void puaseSound() {
+    audioPlayer.pause();
+  }
 
   config() async {
+    NotificationSettings settings =
+        await FirebaseMessaging.instance.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) async {
@@ -45,23 +70,17 @@ class FCMNotification {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
+        playSound();
         Get.snackbar(message.notification!.title.toString(),
             message.notification!.body.toString(),
             backgroundColor: mainColorWhite,
-            colorText: mainColorGrey,
+            colorText: mainColorBlack,
             duration: Duration(seconds: 5),
             forwardAnimationCurve: Curves.easeOutBack,
             icon: Icon(
               Icons.notifications_active_outlined,
               color: mainColorRed,
-            )
-
-            // Image.asset(
-            //   "assets/images/1.jpg",
-            //   alignment: Alignment.center,
-            // )
-
-            );
+            ));
 
         // flutterLocalNotificationsPlugin.show(
         //     notification.hashCode,
@@ -93,11 +112,12 @@ class FCMNotification {
     // Set the background messaging handler early on, as a named top-level function
 
     channel = const AndroidNotificationChannel(
-      'high_importance_channel', // id
-      'High Importance Notifications', // title
-      // 'This channel is used for important notifications.', // description
-      importance: Importance.high,
-    );
+        'high_importance_channel', // id
+        'High Importance Notifications', // title
+        // 'This channel is used for important notifications.', // description
+        importance: Importance.high,
+        sound: RawResourceAndroidNotificationSound('dllylas.wav'),
+        playSound: true);
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 

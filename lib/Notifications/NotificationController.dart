@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-
 class NotificationController {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
@@ -32,25 +31,20 @@ class NotificationController {
         sound: true,
       );
 
-      if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-        saveUerTokenToSharedPreference();
-        // ignore: avoid_print
-      
-      } else if (settings.authorizationStatus ==
-          AuthorizationStatus.provisional) {
-        saveUerTokenToSharedPreference();
-        // ignore: avoid_print
-       } else {
-        // ignore: avoid_print
-       }
-
-      
+      // if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      //   saveUerTokenToSharedPreference();
+      //   // ignore: avoid_print
+      // } else if (settings.authorizationStatus ==
+      //     AuthorizationStatus.provisional) {
+      //   saveUerTokenToSharedPreference();
+      //   // ignore: avoid_print
+      // } else {
+      //   // ignore: avoid_print
+      // }
     } catch (e) {
       //
     }
   }
-  
-
 
   Future<void> saveUerTokenToSharedPreference() async {
     _firebaseMessaging.getToken().then((val) async {});
@@ -59,10 +53,11 @@ class NotificationController {
   Future initLocalNotification() async {
     if (Platform.isIOS) {
       var initializationSettingsAndroid =
-      const AndroidInitializationSettings('app_icon');
+          const AndroidInitializationSettings('app_icon');
       var initializationSettingsIOS = const DarwinInitializationSettings(
         requestSoundPermission: true,
         requestBadgePermission: true,
+
         requestAlertPermission: true,
         //onDidReceiveLocalNotification: _onDidReceiveLocalNotification,
       );
@@ -77,8 +72,12 @@ class NotificationController {
       var initializationSettingsAndroid =
           const AndroidInitializationSettings('icon_notification');
       var initializationSettingsIOS = const DarwinInitializationSettings(
-          //  onDidReceiveLocalNotification: _onDidReceiveLocalNotification
-          );
+        //  onDidReceiveLocalNotification: _onDidReceiveLocalNotification
+        requestSoundPermission: true,
+        requestBadgePermission: true,
+        requestAlertPermission: true,
+      );
+
       var initializationSettings = InitializationSettings(
           android: initializationSettingsAndroid,
           iOS: initializationSettingsIOS);
@@ -95,6 +94,4 @@ class NotificationController {
 
   // ignore: unused_element
   Future _selectNotification(String payload) async {}
-
-  
 }
