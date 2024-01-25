@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/main.dart';
@@ -34,6 +35,24 @@ class _Test_ScreenState extends State<Test_Screen> {
     } catch (e) {
       print('Error initializing AudioPlayer: $e');
     }
+  }
+
+  void showSnackBar(
+    String text, {
+    Color color = Colors.blue,
+  }) {
+    final SnackBar snackBar = SnackBar(
+      content: Text(text),
+      backgroundColor: color,
+      action: SnackBarAction(
+        label: 'Close',
+        textColor: Colors.white,
+        onPressed: () {
+          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -167,8 +186,12 @@ class _Test_ScreenState extends State<Test_Screen> {
         ),
         body: Center(
           child: IconButton(
-              onPressed: () {
-                playSound();
+              onPressed: () async {
+                DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+                AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+                print('Running on ${androidInfo.manufacturer}');
+                showSnackBar('Running on ${androidInfo.manufacturer}');
+                // playSound();
                 // DateTime now = DateTime.now();
                 // now = now.add(Duration(days: 14));
                 // showDialog(

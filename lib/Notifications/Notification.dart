@@ -68,31 +68,33 @@ class FCMNotification {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
-        playSound();
-        Get.snackbar(message.notification!.title.toString(),
-            message.notification!.body.toString(),
-            backgroundColor: mainColorWhite,
-            colorText: mainColorBlack,
-            duration: Duration(seconds: 5),
-            forwardAnimationCurve: Curves.easeOutBack,
-            icon: Icon(
-              Icons.notifications_active_outlined,
-              color: mainColorRed,
-            ));
-
-        // flutterLocalNotificationsPlugin.show(
-        //     notification.hashCode,
-        //     notification.title,
-        //     notification.body,
-        //     NotificationDetails(
-        //       android: AndroidNotificationDetails(
-        //         channel.id,
-        //         channel.name,
-        //         // channel.description,
-        //         //      one that already exists in example app.
-        //         icon: 'launch_background',
-        //       ),
+        // playSound();
+        // Get.snackbar(message.notification!.title.toString(),
+        //     message.notification!.body.toString(),
+        //     backgroundColor: mainColorWhite,
+        //     colorText: mainColorBlack,
+        //     duration: Duration(seconds: 5),
+        //     forwardAnimationCurve: Curves.easeOutBack,
+        //     icon: Icon(
+        //       Icons.notifications_active_outlined,
+        //       color: mainColorRed,
         //     ));
+
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                'high_importance_channel',
+                channel.name,
+                autoCancel: true,
+                importance: Importance.high,
+                // channel.description,
+                //      one that already exists in example app.
+                icon: 'launcher_icon2',
+              ),
+            ));
       }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {

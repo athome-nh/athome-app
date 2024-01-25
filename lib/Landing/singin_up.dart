@@ -517,7 +517,7 @@ class _SingInUpState extends State<SingInUp> {
   }
 
   _readAndroidBuildData(AndroidDeviceInfo build) {
-    return build.device;
+    return build.manufacturer;
   }
 
   _readIosDeviceInfo(IosDeviceInfo data) {
