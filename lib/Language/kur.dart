@@ -190,6 +190,7 @@ const Map<String, String> kur = {
   "Account is disable please contact athome admin":
       "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
   "the code is un correct": "کۆدەکە هەڵەیە",
+  "please, Enter the number only": "تکایە بەس ژمارە داخل بکە",
 
   // map
   "Map": "نەخشە",

@@ -217,7 +217,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         style: TextStyle(),
                       )),
                   SizedBox(
-                    height: getHeight(context, 12),
+                    height: getHeight(context, 10),
                   ),
 
                   FadeInDown(

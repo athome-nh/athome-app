@@ -174,6 +174,7 @@ const Map<String, String> ar = {
   "Account Pendding": "...انتظر",
   "Account npt approved by admin yet":
       "عزيزي المشترك، سوف تحصل على موافقة المشرف قريبا. للاستفسار الاتصال على (07509583333)",
+  "please, Enter the number only": "يُرجى إدخال الرقم فقط",
   // verification
   "Hold till the waiting time ends": "انتظر حتى ينتهي وقت الانتظار", //
   "Please enter code": "الرجاء إدخال الرمز التحقق",
