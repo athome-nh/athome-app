@@ -86,18 +86,15 @@ class FCMNotification {
             notification.body,
             NotificationDetails(
               android: AndroidNotificationDetails(
-                'high_importance_channel',
+                channel.id,
                 channel.name,
-                autoCancel: true,
-                importance: Importance.high,
-                // channel.description,
-                //      one that already exists in example app.
                 icon: 'launcher_icon2',
               ),
             ));
       }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("jegreeeeee");
       if (message.data["screen"] == "userBooking") {
         // userdateselect = message.data["date"];
       } else if (message.data["screen"] == "barberBooking") {
@@ -116,7 +113,7 @@ class FCMNotification {
         'High Importance Notifications', // title
         // 'This channel is used for important notifications.', // description
         importance: Importance.high,
-        sound: RawResourceAndroidNotificationSound('dllylas.wav'),
+        sound: RawResourceAndroidNotificationSound('dllylas'),
         playSound: true);
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
