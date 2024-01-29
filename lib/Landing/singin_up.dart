@@ -11,11 +11,13 @@ import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gender_picker/gender_picker.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:gender_picker/source/enums.dart';
 import 'package:get/get.dart';
+import 'package:huawei_push/huawei_push.dart';
 import 'package:provider/provider.dart';
 
 import '../home/nav_switch.dart';
@@ -56,6 +58,41 @@ class _SingInUpState extends State<SingInUp> {
       token2 = val.toString();
     });
     super.initState();
+    Push.enableLogger();
+    Push.disableLogger();
+    initPlatformState();
+    Push.getToken('');
+  }
+
+  Future<void> initPlatformState() async {
+    if (!mounted) return;
+    // If you want auto init enabled, after getting user agreement call this method.
+    await Push.setAutoInitEnabled(true);
+
+    Push.getTokenStream.listen(
+      _onTokenEvent,
+      onError: _onTokenError,
+    );
+
+    // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
+    //   backgroundMessageCallback,
+    // );
+    // debugPrint(
+    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
+    // );
+  }
+
+  String huaweiToken = '';
+
+  void _onTokenEvent(String event) {
+    huaweiToken = event;
+    print(huaweiToken);
+    print('TokenEvent' + huaweiToken);
+  }
+
+  void _onTokenError(Object error) {
+    PlatformException e = error as PlatformException;
+    print('TokenErrorEvent:' + e.message!);
   }
 
   @override

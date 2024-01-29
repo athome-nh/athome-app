@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:animate_do/animate_do.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
@@ -32,33 +34,41 @@ class Verificatoin extends StatefulWidget {
 
 class _VerificatoinState extends State<Verificatoin> {
   bool _isLoading = false;
-
+  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   String _code = '';
   int timecode = 60;
   late Timer _codeTimer;
   String token2 = "";
 
-
- 
-
-
   @override
   void initState() {
     verfyphone();
-    FirebaseMessaging.instance
-        .getToken(
-            // vapidKey: firebaseCloudvapidKey
-            )
-        .then((val) async {
-      token2 = val.toString();
-    });
+    gettokenDevices();
     super.initState();
-      Push.enableLogger();
-    Push.disableLogger();
-    initPlatformState();
-     Push.getToken('');
   }
- Future<void> initPlatformState() async {
+
+  Future<void> gettokenDevices() async {
+    if (Platform.isAndroid &&
+        _readAndroidBuildData(await deviceInfoPlugin.androidInfo)
+                .toString()
+                .toLowerCase() ==
+            "HUAWEI".toLowerCase()) {
+      Push.enableLogger();
+      Push.disableLogger();
+      initPlatformState();
+      Push.getToken('');
+    } else {
+      FirebaseMessaging.instance
+          .getToken(
+              // vapidKey: firebaseCloudvapidKey
+              )
+          .then((val) async {
+        token2 = val.toString();
+      });
+    }
+  }
+
+  Future<void> initPlatformState() async {
     if (!mounted) return;
     // If you want auto init enabled, after getting user agreement call this method.
     await Push.setAutoInitEnabled(true);
@@ -67,7 +77,7 @@ class _VerificatoinState extends State<Verificatoin> {
       _onTokenEvent,
       onError: _onTokenError,
     );
-    
+
     // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
     //   backgroundMessageCallback,
     // );
@@ -76,20 +86,15 @@ class _VerificatoinState extends State<Verificatoin> {
     // );
   }
 
-  String huaweiToken = '';
-
   void _onTokenEvent(String event) {
-    huaweiToken = event;
-    print(huaweiToken);
-    print('TokenEvent'+huaweiToken);
+    token2 = event;
+    print(token2);
   }
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-    print('TokenErrorEvent:'+ e.message!);
+    print('TokenErrorEvent:' + e.message!);
   }
- 
-  
 
   @override
   void dispose() {
@@ -350,6 +355,10 @@ class _VerificatoinState extends State<Verificatoin> {
         });
       }
     });
+  }
+
+  _readAndroidBuildData(AndroidDeviceInfo build) {
+    return build.manufacturer;
   }
 
   formatedTime({required int timeInSecond}) {

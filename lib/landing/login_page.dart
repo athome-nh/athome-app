@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';

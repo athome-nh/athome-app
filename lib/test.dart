@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/local_data.dart';
@@ -5,7 +7,9 @@ import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:huawei_push/huawei_push.dart';
 
 class Test_Screen extends StatefulWidget {
   const Test_Screen({super.key});
@@ -19,20 +23,71 @@ String token2 = "";
 
 class _Test_ScreenState extends State<Test_Screen> {
   void initState() {
-    FirebaseMessaging.instance
-        .getToken(
-            // vapidKey: firebaseCloudvapidKey
-            )
-        .then((val) async {
-      token2 = val.toString();
-    });
-    selectedItem = lang == "en"
-        ? "English"
-        : lang == "ar"
-            ? "Arabic"
-            : "Kurdish";
+    gettokenDevices();
+    // FirebaseMessaging.instance
+    //     .getToken(
+    //         // vapidKey: firebaseCloudvapidKey
+    //         )
+    //     .then((val) async {
+    //   token2 = val.toString();
+    // });
+    // selectedItem = lang == "en"
+    //     ? "English"
+    //     : lang == "ar"
+    //         ? "Arabic"
+    //         : "Kurdish";
 
     super.initState();
+  }
+
+  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  Future<void> gettokenDevices() async {
+    if (Platform.isAndroid &&
+        _readAndroidBuildData(await deviceInfoPlugin.androidInfo)
+                .toString()
+                .toLowerCase() ==
+            "HUAWEI".toLowerCase()) {
+      Push.enableLogger();
+      Push.disableLogger();
+      initPlatformState();
+      Push.getToken('');
+    } else {
+      FirebaseMessaging.instance
+          .getToken(
+              // vapidKey: firebaseCloudvapidKey
+              )
+          .then((val) async {
+        token2 = val.toString();
+      });
+    }
+  }
+
+  Future<void> initPlatformState() async {
+    if (!mounted) return;
+    // If you want auto init enabled, after getting user agreement call this method.
+    await Push.setAutoInitEnabled(true);
+
+    Push.getTokenStream.listen(
+      _onTokenEvent,
+      onError: _onTokenError,
+    );
+
+    // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
+    //   backgroundMessageCallback,
+    // );
+    // debugPrint(
+    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
+    // );
+  }
+
+  void _onTokenEvent(String event) {
+    token2 = event;
+    print(token2);
+  }
+
+  void _onTokenError(Object error) {
+    PlatformException e = error as PlatformException;
+    print('TokenErrorEvent:' + e.message!);
   }
 
   AudioPlayer audioPlayer = AudioPlayer();
@@ -309,5 +364,9 @@ class _Test_ScreenState extends State<Test_Screen> {
         ),
       ),
     );
+  }
+
+  _readAndroidBuildData(AndroidDeviceInfo build) {
+    return build.manufacturer;
   }
 }

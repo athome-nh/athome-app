@@ -58,10 +58,6 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
-
-
-
-  
   @override
   void initState() {
     FCMNotification(context).config();
@@ -158,7 +154,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: Test_Screen(),
         navigatorKey: navigatorKey,
       ),
     );
