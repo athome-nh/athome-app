@@ -177,6 +177,7 @@ const Map<String, String> en = {
   "Account Pendding": "Wait...",
   "Account npt approved by admin yet":
       "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
+  "please, Enter the number only": "please, Enter the number only",
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",

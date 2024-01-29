@@ -70,7 +70,7 @@ class NotificationController {
       );
     } else {
       var initializationSettingsAndroid =
-          const AndroidInitializationSettings('icon_notification');
+          const AndroidInitializationSettings('launcher_icon2');
       var initializationSettingsIOS = const DarwinInitializationSettings(
         //  onDidReceiveLocalNotification: _onDidReceiveLocalNotification
         requestSoundPermission: true,

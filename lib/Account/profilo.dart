@@ -284,7 +284,8 @@ class _SettingState extends State<Setting> {
                                                 child: CachedNetworkImage(
                                                   width: getWidth(context, 40),
                                                   height: getWidth(context, 40),
-                                                  imageUrl: dotenv.env['imageUrlServer']!,
+                                                  imageUrl: dotenv
+                                                      .env['imageUrlServer']!,
                                                   filterQuality:
                                                       FilterQuality.low,
                                                   placeholder: (context, url) =>
@@ -1136,7 +1137,9 @@ class _SettingState extends State<Setting> {
                                                           mainColorGrey,
                                                       backgroundImage:
                                                           CachedNetworkImageProvider(
-                                                        dotenv.env['imageUrlServer']! + image,
+                                                        dotenv.env[
+                                                                'imageUrlServer']! +
+                                                            image,
                                                       ),
                                                     )),
                                                 IconButton(
@@ -1292,7 +1295,7 @@ class _SettingState extends State<Setting> {
                                                                         fontFamily:
                                                                             mainFontnormal,
                                                                         fontSize:
-                                                                            16,
+                                                                            14,
                                                                       ),
                                                                     ),
                                                                     TextButton(

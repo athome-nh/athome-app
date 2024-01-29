@@ -247,7 +247,7 @@ class _SingInUpState extends State<SingInUp> {
                     child: TextFormField(
                       controller: age,
                       cursorColor: mainColorGrey,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
                       onChanged: (value) {
                         setState(() {
                           ageE = false;
@@ -287,6 +287,32 @@ class _SingInUpState extends State<SingInUp> {
                       ),
                     ),
                   ),
+                  ageE
+                      ? Padding(
+                          padding: EdgeInsets.only(
+                            top: getHeight(context, 0.5),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.circleInfo,
+                                color: mainColorRed.withOpacity(0.7),
+                                size: 15,
+                              ),
+                              SizedBox(
+                                width: getWidth(context, 1),
+                              ),
+                              Text(
+                                "please, Enter the number only".tr,
+                                style: TextStyle(
+                                  fontFamily: mainFontbold,
+                                  color: mainColorRed.withOpacity(0.8),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : const SizedBox(),
                   SizedBox(
                     height: getHeight(context, 2),
                   ),
@@ -309,16 +335,24 @@ class _SingInUpState extends State<SingInUp> {
                           });
                           return;
                         }
-                        setState(() {
-                          _isLoading = true;
-                        });
 
                         if (gender == "") {
                           gender = "Gender";
                         }
                         if (age.text == "") {
                           age.text = 0.toString();
+                        } else {
+                          if (!containsOnlyNumbers(age.text)) {
+                            setState(() {
+                              ageE = true;
+                            });
+                            return;
+                          }
                         }
+
+                        setState(() {
+                          _isLoading = true;
+                        });
                         var data = {
                           "phone": widget.phone_number,
                           "name": nameController.text,
@@ -517,7 +551,7 @@ class _SingInUpState extends State<SingInUp> {
   }
 
   _readAndroidBuildData(AndroidDeviceInfo build) {
-    return build.device;
+    return build.manufacturer;
   }
 
   _readIosDeviceInfo(IosDeviceInfo data) {
@@ -534,6 +568,11 @@ class _SingInUpState extends State<SingInUp> {
     // 'utsname.release:': data.utsname.release,
     // 'utsname.version:': data.utsname.version,
     // 'utsname.machine:': data.utsname.machine,
+  }
+
+  bool containsOnlyNumbers(String text) {
+    final RegExp numberRegex = RegExp(r'^[0-9]+$');
+    return numberRegex.hasMatch(text);
   }
 
   Widget _genderWidget(bool showOther, bool alignment) {
