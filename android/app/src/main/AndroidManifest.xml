@@ -4,7 +4,9 @@
      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
      <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
+ 
     <application
         android:label="Dlly Las"
         android:name="${applicationName}"
@@ -71,5 +73,38 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
+  <!-- Set push kit auto enable to true (for obtaining the token on initialize)-->
+        <meta-data
+            android:name="push_kit_auto_init_enabled"
+            android:value="true" />
+
+        <!-- These receivers are for sending scheduled local notifications -->
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationBootEventReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationScheduledPublisher"
+            android:exported="false" />
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.BackgroundMessageBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.hms.flutter.push.receiver.BACKGROUND_REMOTE_MESSAGE" />
+            </intent-filter>
+        </receiver>
+
+
+
     </application>
+ <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
+
+
 </manifest>

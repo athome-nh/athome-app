@@ -13,9 +13,11 @@ import 'package:dllylas/main.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:get/get.dart';
+import 'package:huawei_push/huawei_push.dart';
 import 'package:provider/provider.dart';
 import '../home/nav_switch.dart';
 
@@ -36,6 +38,10 @@ class _VerificatoinState extends State<Verificatoin> {
   late Timer _codeTimer;
   String token2 = "";
 
+
+ 
+
+
   @override
   void initState() {
     verfyphone();
@@ -47,7 +53,43 @@ class _VerificatoinState extends State<Verificatoin> {
       token2 = val.toString();
     });
     super.initState();
+      Push.enableLogger();
+    Push.disableLogger();
+    initPlatformState();
+     Push.getToken('');
   }
+ Future<void> initPlatformState() async {
+    if (!mounted) return;
+    // If you want auto init enabled, after getting user agreement call this method.
+    await Push.setAutoInitEnabled(true);
+
+    Push.getTokenStream.listen(
+      _onTokenEvent,
+      onError: _onTokenError,
+    );
+    
+    // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
+    //   backgroundMessageCallback,
+    // );
+    // debugPrint(
+    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
+    // );
+  }
+
+  String huaweiToken = '';
+
+  void _onTokenEvent(String event) {
+    huaweiToken = event;
+    print(huaweiToken);
+    print('TokenEvent'+huaweiToken);
+  }
+
+  void _onTokenError(Object error) {
+    PlatformException e = error as PlatformException;
+    print('TokenErrorEvent:'+ e.message!);
+  }
+ 
+  
 
   @override
   void dispose() {
