@@ -48,15 +48,22 @@ class _VerificatoinState extends State<Verificatoin> {
   }
 
   Future<void> gettokenDevices() async {
-    if (Platform.isAndroid &&
-        _readAndroidBuildData(await deviceInfoPlugin.androidInfo)
-                .toString()
-                .toLowerCase() ==
-            "HUAWEI".toLowerCase()) {
-      Push.enableLogger();
-      Push.disableLogger();
-      initPlatformState();
-      Push.getToken('');
+    if (Platform.isAndroid) {
+      String check = _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
+      if (check.toLowerCase() == "HUAWEI".toLowerCase()) {
+        Push.enableLogger();
+        Push.disableLogger();
+        initPlatformState();
+        Push.getToken('');
+      } else {
+        FirebaseMessaging.instance
+            .getToken(
+                // vapidKey: firebaseCloudvapidKey
+                )
+            .then((val) async {
+          token2 = val.toString();
+        });
+      }
     } else {
       FirebaseMessaging.instance
           .getToken(
@@ -88,13 +95,11 @@ class _VerificatoinState extends State<Verificatoin> {
 
   void _onTokenEvent(String event) {
     token2 = event;
-    print(token2);
-  }
+   }
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-    print('TokenErrorEvent:' + e.message!);
-  }
+   }
 
   @override
   void dispose() {

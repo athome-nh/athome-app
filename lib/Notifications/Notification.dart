@@ -30,8 +30,7 @@ class FCMNotification {
       // Additional configuration or setup if needed
       audioPlayer.play(AssetSource('images/dllylas.wav'));
     } catch (e) {
-      print('Error initializing AudioPlayer: $e');
-    }
+     }
   }
 
   void puaseSound() {
@@ -94,8 +93,7 @@ class FCMNotification {
       }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print("jegreeeeee");
-      if (message.data["screen"] == "userBooking") {
+       if (message.data["screen"] == "userBooking") {
         // userdateselect = message.data["date"];
       } else if (message.data["screen"] == "barberBooking") {
         //  dateselectd = message.data["date"];
