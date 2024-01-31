@@ -154,7 +154,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        home: Test_Screen(),
+        home: SplashScreen(),
         navigatorKey: navigatorKey,
       ),
     );
