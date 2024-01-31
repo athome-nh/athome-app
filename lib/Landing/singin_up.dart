@@ -50,18 +50,36 @@ class _SingInUpState extends State<SingInUp> {
 
   @override
   void initState() {
-    FirebaseMessaging.instance
-        .getToken(
-            // vapidKey: firebaseCloudvapidKey
-            )
-        .then((val) async {
-      token2 = val.toString();
-    });
+    gettokenDevices();
     super.initState();
-    Push.enableLogger();
-    Push.disableLogger();
-    initPlatformState();
-    Push.getToken('');
+  }
+
+  Future<void> gettokenDevices() async {
+    if (Platform.isAndroid) {
+      String check = _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
+      if (check.toLowerCase() == "HUAWEI".toLowerCase()) {
+        Push.enableLogger();
+        Push.disableLogger();
+        initPlatformState();
+        Push.getToken('');
+      } else {
+        FirebaseMessaging.instance
+            .getToken(
+                // vapidKey: firebaseCloudvapidKey
+                )
+            .then((val) async {
+          token2 = val.toString();
+        });
+      }
+    } else {
+      FirebaseMessaging.instance
+          .getToken(
+              // vapidKey: firebaseCloudvapidKey
+              )
+          .then((val) async {
+        token2 = val.toString();
+      });
+    }
   }
 
   Future<void> initPlatformState() async {
@@ -82,18 +100,13 @@ class _SingInUpState extends State<SingInUp> {
     // );
   }
 
-  String huaweiToken = '';
-
   void _onTokenEvent(String event) {
-    huaweiToken = event;
-    print(huaweiToken);
-    print('TokenEvent' + huaweiToken);
+    token2 = event;
   }
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-    print('TokenErrorEvent:' + e.message!);
-  }
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -593,18 +606,6 @@ class _SingInUpState extends State<SingInUp> {
 
   _readIosDeviceInfo(IosDeviceInfo data) {
     return data.name;
-    // 'name': data.name,
-    // 'systemName': data.systemName,
-    // 'systemVersion': data.systemVersion,
-    // 'model': data.model,
-    // 'localizedModel': data.localizedModel,
-    // 'identifierForVendor': data.identifierForVendor,
-    // 'isPhysicalDevice': data.isPhysicalDevice,
-    // 'utsname.sysname:': data.utsname.sysname,
-    // 'utsname.nodename:': data.utsname.nodename,
-    // 'utsname.release:': data.utsname.release,
-    // 'utsname.version:': data.utsname.version,
-    // 'utsname.machine:': data.utsname.machine,
   }
 
   bool containsOnlyNumbers(String text) {
