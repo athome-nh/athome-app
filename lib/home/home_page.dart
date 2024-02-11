@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -34,6 +35,11 @@ class _HomeSreenState extends State<HomeSreen> {
     productrovider.updatePost(false);
   }
 
+  _readAndroidBuildData(AndroidDeviceInfo build) {
+    return build.manufacturer;
+  }
+
+  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   // Check Internet
   Future<void> checkinternet() async {
     // if (await noInternet(context)) {
@@ -84,14 +90,15 @@ class _HomeSreenState extends State<HomeSreen> {
             ShowInfo(context, documentSnapshot.get("titleen"),
                 documentSnapshot.get("contenten"), "OK".tr, "error");
           } else if (lang == "ar") {
-            ShowInfo(context, documentSnapshot.get("titler"),
+            ShowInfo(context, documentSnapshot.get("titlear"),
                 documentSnapshot.get("contentar"), "OK".tr, "error");
           } else {
             ShowInfo(context, documentSnapshot.get("titleku"),
                 documentSnapshot.get("contentku"), "OK".tr, "error");
           }
         }
-        if (dotenv.env['currentVersion']! != documentSnapshot.get("newversion")) {
+        if (dotenv.env['currentVersion']! !=
+            documentSnapshot.get("newversion")) {
           ShowInfo(
               context,
               "New update is available".tr,
@@ -434,7 +441,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                     BorderRadius.circular(50)),
                                             child: Center(
                                               child: CachedNetworkImage(
-                                                imageUrl: dotenv.env['imageUrlServer']! +
+                                                imageUrl: dotenv.env[
+                                                        'imageUrlServer']! +
                                                     cateItem.img!,
                                                 placeholder: (context, url) =>
                                                     Image.asset(
@@ -716,8 +724,9 @@ class _HomeSreenState extends State<HomeSreen> {
                                             },
                                             child: ClipRRect(
                                               child: CachedNetworkImage(
-                                                imageUrl:
-                                                    dotenv.env['imageUrlServer']! + item.img!,
+                                                imageUrl: dotenv.env[
+                                                        'imageUrlServer']! +
+                                                    item.img!,
                                                 placeholder: (context, url) =>
                                                     Image.asset(
                                                         "assets/images/Logo-Type-2.png"),
@@ -877,11 +886,24 @@ class _HomeSreenState extends State<HomeSreen> {
                             exit(0);
                           } else {
                             if (Platform.isAndroid) {
-                              Uri url = Uri.parse(
-                                  'https://play.google.com/store/apps/details?id=com.market.dllylas');
-                              if (!await launchUrl(url,
-                                  mode: LaunchMode.externalApplication)) {
-                                throw Exception('Could not launch $url');
+                              String check = _readAndroidBuildData(
+                                  await deviceInfoPlugin.androidInfo);
+
+                              if (check.toLowerCase() ==
+                                  "HUAWEI".toLowerCase()) {
+                                Uri url = Uri.parse(
+                                    'https://appgallery.huawei.com/app/C109952685');
+                                if (!await launchUrl(url,
+                                    mode: LaunchMode.externalApplication)) {
+                                  throw Exception('Could not launch $url');
+                                }
+                              } else {
+                                Uri url = Uri.parse(
+                                    'https://play.google.com/store/apps/details?id=com.market.dllylas');
+                                if (!await launchUrl(url,
+                                    mode: LaunchMode.externalApplication)) {
+                                  throw Exception('Could not launch $url');
+                                }
                               }
                             } else {
                               Uri url = Uri.parse(
@@ -904,11 +926,6 @@ class _HomeSreenState extends State<HomeSreen> {
                     ],
                   ),
                 ),
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.close))
               ],
             ),
           ),
