@@ -1,5 +1,6 @@
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Landing/verification.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -153,7 +154,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: Verificatoin(""),
         navigatorKey: navigatorKey,
       ),
     );
