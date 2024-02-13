@@ -51,7 +51,6 @@ class _VerificatoinState extends State<Verificatoin> {
     if (Platform.isAndroid) {
       String check = _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
       if (check.toLowerCase() == "HUAWEI".toLowerCase()) {
-        print("object");
         Push.enableLogger();
         Push.disableLogger();
         initPlatformState();
@@ -96,11 +95,11 @@ class _VerificatoinState extends State<Verificatoin> {
 
   void _onTokenEvent(String event) {
     token2 = event;
-  }
+   }
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-  }
+   }
 
   @override
   void dispose() {
@@ -203,12 +202,7 @@ class _VerificatoinState extends State<Verificatoin> {
                           ),
                         ),
                       ),
-                      TextButton(
-                          onPressed: () {
-                            print("jegr");
-                            print(token2);
-                          },
-                          child: Text("   print(token2)")),
+
                       SizedBox(
                         height: getHeight(context, 2),
                       ),

@@ -79,20 +79,6 @@
 	"configuration_version":"3.0",
 	"appInfos":[
 		{
-			"package_name":"com.dllylas.internal",
-			"client":{
-				"app_id":"110301567"
-			},
-			"app_info":{
-				"package_name":"com.dllylas.internal",
-				"app_id":"110301567"
-			},
-			"oauth_client":{
-				"client_type":1,
-				"client_id":"110301567"
-			}
-		},
-		{
 			"package_name":"com.market.dllylas",
 			"client":{
 				"app_id":"109952685"
