@@ -71,7 +71,8 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
-          setMinimumOrder(value['minimum_order']);
+          setMinimumOrder(
+              value['minimum_order'], value['startTime'], value['endTime']);
 
           setshow(true);
         } else {}
@@ -232,6 +233,8 @@ class productProvider extends ChangeNotifier {
   String _allitemType = "";
   int _cateType = 0;
   int _minimumOrder = 0;
+  int _startTime = 0;
+  int _endTime = 0;
   int _idItem = 0;
   int _idBrand = 0;
   int _subcateSelect = 0;
@@ -259,6 +262,8 @@ class productProvider extends ChangeNotifier {
   String get allitemType => _allitemType;
   int get cateType => _cateType;
   int get minimumOrder => _minimumOrder;
+  int get startTime => _startTime;
+  int get endTime => _endTime;
   int get idItem => _idItem;
   int get idBrand => _idBrand;
   int get subcateSelect => _subcateSelect;
@@ -628,8 +633,10 @@ class productProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setMinimumOrder(int value) {
+  void setMinimumOrder(int value, int start, int end) {
     _minimumOrder = value;
+    _startTime = start;
+    _endTime = end;
     notifyListeners();
   }
 }

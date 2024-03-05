@@ -548,8 +548,9 @@ class _CheckOutState extends State<CheckOut> {
                                   DateTime timecheck =
                                       DateTime.parse(value["now"].toString());
 
-                                  if (timecheck.hour > 7 &&
-                                      timecheck.hour < 23) {
+                                  if (timecheck.hour >
+                                          productrovider.startTime &&
+                                      timecheck.hour < productrovider.endTime) {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
