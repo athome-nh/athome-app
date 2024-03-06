@@ -77,7 +77,8 @@
     <string>UIInterfaceOrientationLandscapeRight</string>
 </array>
 
-
+<key>MinimumOSVersion</key>
+<string>14.0</string>
  
 
 

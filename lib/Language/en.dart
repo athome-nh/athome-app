@@ -128,7 +128,8 @@ const Map<String, String> en = {
   "Please Delivery Address": "Please Add Delivery Address",
   "Send Order": "Send Order",
   "sorryWeDoNotHaveDelivery":
-      "Dear customer, our delivery time has ended. would you like to receive the order tomorrow ?",
+      "We are soory our delivery service is close .\nWould you like your order to be delivered after",
+      "am": "am?",
   "OK": "OK",
 
   // login_page

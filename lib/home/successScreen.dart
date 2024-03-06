@@ -23,6 +23,9 @@ class successScreen extends StatefulWidget {
 class _successScreenState extends State<successScreen> {
   @override
   Widget build(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: true);
+
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -85,7 +88,7 @@ class _successScreenState extends State<successScreen> {
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
                 child: Text(
                   widget.outrange
-                      ? "sorryWeDoNotHaveDelivery".tr
+                      ? "sorryWeDoNotHaveDelivery".tr+" "+productrovider.startTime.toString()+" "+"am".tr
                       : "YourOrderIsNowBeingProcessed".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
