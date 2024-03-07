@@ -221,7 +221,8 @@ class _MyCartState extends State<MyCart> {
                                           ),
                                           child: Center(
                                             child: CachedNetworkImage(
-                                              imageUrl: dotenv.env['imageUrlServer']!,
+                                              imageUrl:
+                                                  dotenv.env['imageUrlServer']!,
                                               placeholder: (context, url) =>
                                                   Image.asset(
                                                       "assets/images/home.png"),
@@ -399,10 +400,9 @@ class _MyCartState extends State<MyCart> {
                                                     ),
                                                     child: Center(
                                                       child: CachedNetworkImage(
-                                                        imageUrl:
-                                                            dotenv.env['imageUrlServer']! +
-                                                                cartitem
-                                                                    .coverImg!,
+                                                        imageUrl: dotenv.env[
+                                                                'imageUrlServer']! +
+                                                            cartitem.coverImg!,
                                                         filterQuality:
                                                             FilterQuality.low,
                                                         width: getWidth(
@@ -995,10 +995,17 @@ class _MyCartState extends State<MyCart> {
                                                             Text(
                                                               // "minium order is "
                                                               //         .tr +
-                                                              //     productrovider
-                                                              //         .minimumOrder
-                                                              //         .toString(),
-                                                              "min deatil".tr,
+                                                              // productrovider
+                                                              //     .minimumOrder
+                                                              //     .toString(),
+                                                              "min deatil".tr.toString().replaceAll(
+                                                                  "temp",
+                                                                  addCommasToPrice(
+                                                                          productrovider
+                                                                              .minimumOrder)
+                                                                      .replaceAll(
+                                                                          "IQD",
+                                                                          "")),
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,

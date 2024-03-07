@@ -129,7 +129,7 @@ const Map<String, String> en = {
   "Send Order": "Send Order",
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
-      "am": "am?",
+  "am": "am?",
   "OK": "OK",
 
   // login_page
@@ -238,8 +238,7 @@ const Map<String, String> en = {
 
   //
   "min title": "Minimum Order required",
-  "min deatil": "Dear Customer, The minimum acceptable order is 10,000 IQD",
-  //"min deatil":"You're almost there! Add more items to reach the minimum order amount.", // old
+  "min deatil": "Dear Customer, The minimum acceptable order is temp IQD",
 
   // item_categories
   "You not have any item": "You do not have any items",

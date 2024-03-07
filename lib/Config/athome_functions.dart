@@ -43,7 +43,9 @@ String code_3(String code_2, String randomText) {
   List<String> charactersArray = randomText.split('');
   List<String> charactersArray2 = code_2.split('');
 
-  List<int> listOfNum =(dotenv.env['tokenkey']?.split(',') ?? []).map((value) => int.tryParse(value) ?? 0).toList();
+  List<int> listOfNum = (dotenv.env['tokenkey']?.split(',') ?? [])
+      .map((value) => int.tryParse(value) ?? 0)
+      .toList();
 
   for (int i = 0; i < 13; i++) {
     charactersArray[listOfNum[i]] = charactersArray2[i];
