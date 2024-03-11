@@ -23,6 +23,7 @@ class ProductModel {
   final int? offerPrice;
   final int? orderLimit;
   final int? stock;
+  final String? barcode;
   final int? highlight;
   final int? bestSell;
   final String? endOffer;
@@ -48,6 +49,7 @@ class ProductModel {
     this.offerPrice,
     this.orderLimit,
     this.stock,
+    this.barcode,
     this.highlight,
     this.bestSell,
     this.endOffer,
@@ -79,6 +81,7 @@ class ProductModel {
         offerPrice: data['offer_price'] as int?,
         orderLimit: data['order_limit'] as int?,
         stock: data['stock'] as int?,
+        barcode: data['barcode'] as String?,
         highlight: data['highlight'] as int?,
         bestSell: data['bestSell'] as int?,
         endOffer: data['end_offer'] as String?,
@@ -105,6 +108,7 @@ class ProductModel {
         'offer_price': offerPrice,
         'order_limit': orderLimit,
         'stock': stock,
+        'barcode': barcode,
         'highlight': highlight,
         'bestSell': bestSell,
         'end_offer': endOffer,
@@ -143,6 +147,7 @@ class ProductModel {
     int? offerPrice,
     int? orderLimit,
     int? stock,
+    String? barcode,
     int? highlight,
     int? bestSell,
     String? endOffer,
@@ -168,6 +173,7 @@ class ProductModel {
       offerPrice: offerPrice ?? this.offerPrice,
       orderLimit: orderLimit ?? this.orderLimit,
       stock: stock ?? this.stock,
+      barcode: barcode ?? this.barcode,
       highlight: highlight ?? this.highlight,
       bestSell: bestSell ?? this.bestSell,
       endOffer: endOffer ?? this.endOffer,
@@ -204,6 +210,7 @@ class ProductModel {
       offerPrice.hashCode ^
       orderLimit.hashCode ^
       stock.hashCode ^
+      barcode.hashCode ^
       highlight.hashCode ^
       bestSell.hashCode ^
       endOffer.hashCode;
