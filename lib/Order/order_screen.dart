@@ -91,7 +91,8 @@ class _OrderScreenState extends State<OrderScreen> {
                   children: [
                     !isLogin
                         ? loginFirstContainer(context)
-                        : productrovider.Orders.isNotEmpty
+                        : productrovider.Orders.any(
+                                (order) => order.status! < 5)
                             ? ListView.builder(
                                 itemCount:
                                     productrovider.getOrderOngoing().length,

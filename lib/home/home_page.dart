@@ -483,7 +483,12 @@ class _HomeSreenState extends State<HomeSreen> {
                             ),
                           ),
 
-                          productrovider.Orderitems.isNotEmpty
+                          productrovider.Orderitems.isNotEmpty &&
+                                  productrovider
+                                      .getProductsByIds2(
+                                        productrovider.listOrderProductIds(),
+                                      )
+                                      .isNotEmpty
                               ? Column(
                                   children: [
                                     // Recent Order

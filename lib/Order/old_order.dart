@@ -72,7 +72,8 @@ class _OldOrderState extends State<OldOrder> {
                                       ),
                                       child: Center(
                                         child: CachedNetworkImage(
-                                          imageUrl: dotenv.env['imageUrlServer']! +
+                                          imageUrl: dotenv
+                                                  .env['imageUrlServer']! +
                                               productrovider
                                                   .getoneProductItemsById(
                                                       items[index].productId!)
@@ -177,7 +178,9 @@ class _OldOrderState extends State<OldOrder> {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      addCommasToPrice(item.sellPrice!),
+                                      addCommasToPrice(item.offerPrice! > -1
+                                          ? item.offerPrice!
+                                          : item.sellPrice!),
                                       maxLines: 1,
                                       style: TextStyle(
                                           decoration: TextDecoration.none,
