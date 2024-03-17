@@ -98,7 +98,8 @@ class _HomeSreenState extends State<HomeSreen> {
           }
         }
         if (dotenv.env['currentVersion']! !=
-            documentSnapshot.get("newversion")) {
+                documentSnapshot.get("newversion") &&
+            documentSnapshot.get("isAccpet")) {
           ShowInfo(
               context,
               "New update is available".tr,
