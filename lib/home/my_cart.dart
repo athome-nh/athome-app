@@ -334,9 +334,10 @@ class _MyCartState extends State<MyCart> {
                                     itemCount: cartProvider.cartItems.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
-                                      final cartitem = CardItemshow[index];
                                       final cartitemQ =
                                           cartProvider.cartItems[index];
+                                      final cartitem = productrovider
+                                          .getoneProductById(cartitemQ.product);
                                       return Dismissible(
                                         key: Key(cartitem.id.toString()),
                                         direction: DismissDirection.startToEnd,
@@ -356,7 +357,7 @@ class _MyCartState extends State<MyCart> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                "Delete".tr + name,
+                                                "${"Delete".tr}  $name",
                                               ),
                                             ),
                                           );
@@ -567,6 +568,7 @@ class _MyCartState extends State<MyCart> {
                                                                       CartItem(
                                                                           product:
                                                                               cartitemQ.product);
+
                                                                   cartProvider
                                                                       .addToCart(
                                                                           cartItem);
@@ -993,11 +995,6 @@ class _MyCartState extends State<MyCart> {
                                                               ),
                                                             ),
                                                             Text(
-                                                              // "minium order is "
-                                                              //         .tr +
-                                                              // productrovider
-                                                              //     .minimumOrder
-                                                              //     .toString(),
                                                               "min deatil".tr.toString().replaceAll(
                                                                   "temp",
                                                                   addCommasToPrice(

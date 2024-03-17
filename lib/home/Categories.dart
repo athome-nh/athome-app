@@ -52,7 +52,7 @@ class _CategoriesState extends State<Categories> {
                 width: getWidth(context, 100),
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: getWidth(context, 0.25),
+                    childAspectRatio: getWidth(context, 0.20),
 
                     crossAxisCount: 3, // Number of columns
                   ),
@@ -76,8 +76,8 @@ class _CategoriesState extends State<Categories> {
                             });
                           },
                           child: Container(
-                            width: getHeight(context, 10),
-                            height: getHeight(context, 10),
+                            width: getHeight(context, 12),
+                            height: getHeight(context, 12),
                             decoration: BoxDecoration(
                                 border: Border.all(
                                     color: mainColorBlack.withOpacity(0.1)),
@@ -85,15 +85,16 @@ class _CategoriesState extends State<Categories> {
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
                               child: CachedNetworkImage(
-                                imageUrl: dotenv.env['imageUrlServer']! + cateItem.img!,
+                                imageUrl: dotenv.env['imageUrlServer']! +
+                                    cateItem.img!,
                                 placeholder: (context, url) => Image.asset(
                                     "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
                                     Image.asset(
                                         "assets/images/Logo-Type-2.png"),
                                 filterQuality: FilterQuality.low,
-                                width: getHeight(context, 6),
-                                height: getHeight(context, 6),
+                                width: getHeight(context, 9),
+                                height: getHeight(context, 9),
                               ),
                             ),
                           ),

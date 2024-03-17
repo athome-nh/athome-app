@@ -431,8 +431,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                             });
                                           },
                                           child: Container(
-                                            width: getHeight(context, 8),
-                                            height: getHeight(context, 8),
+                                            width: getHeight(context, 9),
+                                            height: getHeight(context, 9),
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: mainColorBlack
@@ -453,8 +453,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         "assets/images/Logo-Type-2.png"),
                                                 filterQuality:
                                                     FilterQuality.low,
-                                                width: getHeight(context, 5),
-                                                height: getHeight(context, 5),
+                                                width: getHeight(context, 7),
+                                                height: getHeight(context, 7),
                                               ),
                                             ),
                                           ),

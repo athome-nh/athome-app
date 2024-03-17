@@ -547,10 +547,17 @@ class _CheckOutState extends State<CheckOut> {
 
                                   DateTime timecheck =
                                       DateTime.parse(value["now"].toString());
+                                  DateTime ST = DateTime.parse(
+                                      "2023-11-09 ${productrovider.startTime}:00");
 
-                                  if (timecheck.hour >
-                                          productrovider.startTime &&
-                                      timecheck.hour < productrovider.endTime) {
+                                  DateTime DT = DateTime.parse(
+                                      "2023-11-09 ${productrovider.endTime}:00");
+
+                                  DateTime NW = DateTime.parse(
+                                      "2023-11-09 ${timecheck.hour}:00");
+
+                                  if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
+                                      NW.isAtSameMomentAs(ST)) {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
