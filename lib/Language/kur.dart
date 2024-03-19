@@ -1,4 +1,12 @@
 const Map<String, String> kur = {
+  // Help
+  "Help": "یارمه‌تی",
+  "DearCustomers": "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
+  "Call": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
+
   // choose_lan
   "Language": "زمان",
   "Kurdish": "کوردی",

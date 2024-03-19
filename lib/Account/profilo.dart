@@ -2275,7 +2275,7 @@ class _SettingState extends State<Setting> {
                                             width: 10,
                                           ),
                                           Text(
-                                            "help".tr,
+                                            "Help".tr,
                                             style: TextStyle(
                                                 color: mainColorBlack,
                                                 fontFamily: mainFontnormal,

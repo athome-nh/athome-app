@@ -1,4 +1,12 @@
 const Map<String, String> ar = {
+  // Help
+  "Help": "مساعده‌",
+  "DearCustomers": "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
+  "Call": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
+
   // choose_lan
   "Language": "اللغة",
   "Kurdish": "كردي",
