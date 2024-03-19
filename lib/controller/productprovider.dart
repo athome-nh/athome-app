@@ -382,7 +382,7 @@ class productProvider extends ChangeNotifier {
   }
 
   ProductModel getoneProductById(int itemId) {
-    final ProductModel? item = _products.firstWhere(
+    final item = _products.firstWhere(
       (element) => element.id == itemId,
     );
 

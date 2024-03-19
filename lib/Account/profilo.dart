@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:dllylas/Account/about_screen.dart';
+import 'package:dllylas/Account/help_screen.dart';
 import 'package:dllylas/Order/order_screen.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
@@ -944,6 +945,62 @@ class _SettingState extends State<Setting> {
                                             ),
                                             Text(
                                               "About us".tr,
+                                              style: TextStyle(
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 18),
+                                            ),
+                                            const Spacer(),
+                                            const Icon(Icons
+                                                .keyboard_arrow_right_outlined)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AboutScreen()),
+                                    );
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: getWidth(context, 5),
+                                    ),
+                                    child: Container(
+                                      height: getHeight(context, 6),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: mainColorBlack,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              color: mainColorBlack,
+                                              Ionicons.information_outline,
+                                              size: 30,
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              "Help".tr,
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,
@@ -2163,6 +2220,62 @@ class _SettingState extends State<Setting> {
                                           ),
                                           Text(
                                             "About us".tr,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
+                                          const Spacer(),
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HelpScreen()),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            color: mainColorBlack,
+                                            Ionicons.help_outline,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "help".tr,
                                             style: TextStyle(
                                                 color: mainColorBlack,
                                                 fontFamily: mainFontnormal,
