@@ -1,5 +1,6 @@
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Config/test.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -86,7 +87,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
       child: GetMaterialApp(
         theme: ThemeData(
           dialogTheme: DialogTheme(
-            backgroundColor:mainColorWhite, // Set the background color of AlertDialog
+            backgroundColor:
+                mainColorWhite, // Set the background color of AlertDialog
           ),
           popupMenuTheme: PopupMenuThemeData(color: mainColorWhite),
           dividerTheme:
