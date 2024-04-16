@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
@@ -91,15 +91,15 @@ class _Test_ScreenState extends State<Test_Screen> {
     print('TokenErrorEvent:' + e.message!);
   }
 
-  AudioPlayer audioPlayer = AudioPlayer();
+  // AudioPlayer audioPlayer = AudioPlayer();
 
   void playSound() async {
-    try {
-      // Additional configuration or setup if needed
-      audioPlayer.play(AssetSource('images/dllylas.wav'));
-    } catch (e) {
-      print('Error initializing AudioPlayer: $e');
-    }
+    // try {
+    //   // Additional configuration or setup if needed
+    //   audioPlayer.play(AssetSource('images/dllylas.wav'));
+    // } catch (e) {
+    //   print('Error initializing AudioPlayer: $e');
+    // }
   }
 
   void showSnackBar(

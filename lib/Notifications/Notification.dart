@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, avoid_print
 import 'dart:async';
 import 'dart:convert';
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,18 +23,17 @@ class FCMNotification {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  AudioPlayer audioPlayer = AudioPlayer();
+  // AudioPlayer audioPlayer = AudioPlayer();
 
   void playSound() async {
     try {
       // Additional configuration or setup if needed
-      audioPlayer.play(AssetSource('images/dllylas.wav'));
-    } catch (e) {
-     }
+      // audioPlayer.play(AssetSource('images/dllylas.wav'));
+    } catch (e) {}
   }
 
   void puaseSound() {
-    audioPlayer.pause();
+    // audioPlayer.pause();
   }
 
   config() async {
@@ -93,7 +92,7 @@ class FCMNotification {
       }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-       if (message.data["screen"] == "userBooking") {
+      if (message.data["screen"] == "userBooking") {
         // userdateselect = message.data["date"];
       } else if (message.data["screen"] == "barberBooking") {
         //  dateselectd = message.data["date"];

@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 
@@ -7,6 +10,7 @@ import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/location/location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
@@ -87,9 +91,28 @@ class _location_DeatilState extends State<location_Deatil> {
                         width: getWidth(context, 100),
                         child: MapWidget(
                           key: const ValueKey("mapWidget"),
-                          resourceOptions:
-                              ResourceOptions(accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN']!),
+                          onTapListener: (coordinate) {
+                            Navigator.pop(context);
+                          },
                           onMapCreated: (controller) {
+                            controller.annotations
+                                .createPointAnnotationManager()
+                                .then((pointAnnotationManager) async {
+                              final ByteData bytes = await rootBundle
+                                  .load('assets/images/PIN@2x.png');
+                              final Uint8List list = bytes.buffer.asUint8List();
+                              var options = <PointAnnotationOptions>[];
+                              // for (var i = 0; i < 5; i++) {
+                              options.add(PointAnnotationOptions(
+                                  geometry: createRandomPoint2(
+                                          widget.longitude, widget.latitude)
+                                      .toJson(),
+                                  image: list,
+                                  iconSize: 0.5));
+                              // }
+                              pointAnnotationManager.createMulti(options);
+                            });
+
                             controller.gestures.updateSettings(GesturesSettings(
                                 rotateEnabled: false,
                                 quickZoomEnabled: false,
@@ -815,5 +838,14 @@ class _location_DeatilState extends State<location_Deatil> {
         ),
       ),
     );
+  }
+
+  Point createRandomPoint2(double x, double y) {
+    return Point(coordinates: createRandomPosition2(x, y));
+  }
+
+  Position createRandomPosition2(double x, double y) {
+    var random = Random();
+    return Position(x, y);
   }
 }
