@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:io';
 
 // import 'package:audioplayers/audioplayers.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
@@ -22,23 +24,41 @@ String selectedItem = 'English';
 String token2 = "";
 
 class _Test_ScreenState extends State<Test_Screen> {
+  List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   void initState() {
-    // gettokenDevices();
-    FirebaseMessaging.instance
-        .getToken(
-            // vapidKey: firebaseCloudvapidKey
-            )
-        .then((val) async {
-      token2 = val.toString();
-      print(token2);
-    });
-    selectedItem = lang == "en"
-        ? "English"
-        : lang == "ar"
-            ? "Arabic"
-            : "Kurdish";
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    // // gettokenDevices();
+    // FirebaseMessaging.instance
+    //     .getToken(
+    //         // vapidKey: firebaseCloudvapidKey
+    //         )
+    //     .then((val) async {
+    //   token2 = val.toString();
+    //   print(token2);
+    // });
+    // selectedItem = lang == "en"
+    //     ? "English"
+    //     : lang == "ar"
+    //         ? "Arabic"
+    //         : "Kurdish";
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _connectivitySubscription.cancel();
+    super.dispose();
+  }
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    setState(() {
+      print(result);
+      _connectionStatus = result;
+      print(_connectionStatus);
+    });
   }
 
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();

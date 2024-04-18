@@ -303,38 +303,7 @@ String fontNormalChoose() {
 //   return retrive;
 // }
 
-// ///// here we check for internet availability
-// Future<bool> checkInternet(BuildContext context) async {
-//   bool retrive = false;
-//   var connectivityResult = await (Connectivity().checkConnectivity());
-//   if (connectivityResult == ConnectivityResult.mobile) {
-//     retrive = false;
-//   } else if (connectivityResult == ConnectivityResult.wifi) {
-//     retrive = false;
-//   } else {
-//     retrive = true;
-//     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-//     ScaffoldMessenger.of(context).showSnackBar(
-//       SnackBar(
-//         content: Container(
-//           child: Text(
-//             'No internet connection, check your connection',
-//             style: TextStyle(
-//               color: textcolor,
-//               fontFamily: "RK",
-//             ),
-//           ),
-//         ),
-//         backgroundColor: buttonGrey,
-//       ),
-//     );
-//   }
-//   return retrive;
-// }
 
-// Future noInternet(BuildContext context) {
-//   return checkInternet(context);
-// }
 
 // Future timestamp(BuildContext context) {
 //   return checktime(context);

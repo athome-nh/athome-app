@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Order/old_order.dart';
 import 'package:dllylas/Order/order_items.dart';
@@ -24,28 +26,31 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  var subscription;
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+
   @override
   void initState() {
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.none) {
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(true);
-      } else {
-        Provider.of<productProvider>(context, listen: false).updatePost(false);
-
-        Provider.of<productProvider>(context, listen: false)
-            .setnointernetcheck(false);
-      }
-    });
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    final pro = Provider.of<productProvider>(context, listen: false);
+    if (result[0] == ConnectivityResult.none) {
+      pro.setnointernetcheck(true);
+    } else {
+      if (pro.nointernetCheck) {
+        pro.updatePost(false);
+        pro.setnointernetcheck(false);
+      }
+    }
   }
 
   @override
   void dispose() {
-    subscription.cancel();
+    _connectivitySubscription.cancel();
     super.dispose();
   }
 

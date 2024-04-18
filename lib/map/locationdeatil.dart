@@ -90,6 +90,12 @@ class _location_DeatilState extends State<location_Deatil> {
                         height: getHeight(context, 15),
                         width: getWidth(context, 100),
                         child: MapWidget(
+                          cameraOptions: CameraOptions(
+                              center: Point(
+                                      coordinates: Position(
+                                          widget.longitude, widget.latitude))
+                                  .toJson(),
+                              zoom: 18.0),
                           key: const ValueKey("mapWidget"),
                           onTapListener: (coordinate) {
                             Navigator.pop(context);
@@ -123,21 +129,6 @@ class _location_DeatilState extends State<location_Deatil> {
                                 scrollEnabled: false,
                                 focalPoint: ScreenCoordinate(
                                     x: widget.latitude, y: widget.longitude)));
-                            controller.location.updateSettings(
-                                LocationComponentSettings(
-                                    enabled: true, pulsingEnabled: true));
-                            controller.flyTo(
-                                CameraOptions(
-                                    center: Point(
-                                            coordinates: Position(
-                                                widget.longitude,
-                                                widget.latitude))
-                                        .toJson(),
-                                    zoom: 18,
-                                    bearing: 0,
-                                    pitch: 15),
-                                MapAnimationOptions(
-                                    duration: 1000, startDelay: 0));
                           },
                         ),
                       ),

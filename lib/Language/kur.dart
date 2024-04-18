@@ -1,7 +1,8 @@
 const Map<String, String> kur = {
   // Help
   "Help": "یارمه‌تی",
-  "DearCustomers": "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
+  "DearCustomers":
+      "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
   "Call": "07509583333 - 07802320717",
   "Email": "Info@dllylas.com",
   "WebSite": "www.dllylas.com",
@@ -54,7 +55,7 @@ const Map<String, String> kur = {
 
   // categories
   "All Categories": "گشت پۆلێنەکان",
-
+  'All Items': 'هەموو شتەکان',
   // all_item >> shtakan dobar boo
 
   // Search_page

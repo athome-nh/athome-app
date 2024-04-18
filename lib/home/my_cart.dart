@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dllylas/Config/my_widget.dart';
 
 import 'package:dllylas/controller/cartprovider.dart';
@@ -25,29 +27,31 @@ class MyCart extends StatefulWidget {
 }
 
 class _MyCartState extends State<MyCart> {
-  var subscription;
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+
   @override
   void initState() {
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      final pro = Provider.of<productProvider>(context, listen: false);
-      if (result == ConnectivityResult.none) {
-        pro.setnointernetcheck(true);
-      } else {
-        if (pro.nointernetCheck) {
-          pro.updatePost(false);
-          pro.setnointernetcheck(false);
-        }
-      }
-    });
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    final pro = Provider.of<productProvider>(context, listen: false);
+    if (result[0] == ConnectivityResult.none) {
+      pro.setnointernetcheck(true);
+    } else {
+      if (pro.nointernetCheck) {
+        pro.updatePost(false);
+        pro.setnointernetcheck(false);
+      }
+    }
   }
 
   @override
   void dispose() {
-    subscription.cancel();
-
+    _connectivitySubscription.cancel();
     super.dispose();
   }
 
@@ -103,7 +107,6 @@ class _MyCartState extends State<MyCart> {
                                                 CrossAxisAlignment.center,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            //textcheck
                                             children: <Widget>[
                                               Image.asset(
                                                 "assets/Victors/sure.png",
