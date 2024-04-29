@@ -53,11 +53,11 @@ class _Test_ScreenState extends State<Test_Screen> {
     _connectivitySubscription.cancel();
     super.dispose();
   }
+
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     setState(() {
       print(result);
       _connectionStatus = result;
-      print(_connectionStatus);
     });
   }
 
@@ -103,7 +103,6 @@ class _Test_ScreenState extends State<Test_Screen> {
 
   void _onTokenEvent(String event) {
     token2 = event;
-    print(token2);
   }
 
   void _onTokenError(Object error) {
@@ -272,7 +271,6 @@ class _Test_ScreenState extends State<Test_Screen> {
         body: Center(
           child: IconButton(
               onPressed: () async {
-                print(token2);
                 // DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
                 // AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
                 // print('Running on ${androidInfo.manufacturer}');

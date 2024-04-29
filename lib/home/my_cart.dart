@@ -341,6 +341,7 @@ class _MyCartState extends State<MyCart> {
                                           cartProvider.cartItems[index];
                                       final cartitem = productrovider
                                           .getoneProductById(cartitemQ.product);
+
                                       return Dismissible(
                                         key: Key(cartitem.id.toString()),
                                         direction: DismissDirection.startToEnd,
@@ -355,7 +356,8 @@ class _MyCartState extends State<MyCart> {
                                           CardItemshow =
                                               productrovider.getProductsByIds(
                                                   cartProvider.ListId());
-
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(

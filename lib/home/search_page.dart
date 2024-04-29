@@ -39,9 +39,7 @@ class _SearchState extends State<Search> {
       }
     }
     setState(() {
-      print(result);
       _connectionStatus = result;
-      print(_connectionStatus);
     });
   }
 

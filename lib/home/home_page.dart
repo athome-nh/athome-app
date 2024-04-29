@@ -121,8 +121,6 @@ class _HomeSreenState extends State<HomeSreen> {
   }
 
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
-    print(result.toString() + " ddd");
-    print(result[0] == ConnectivityResult.none);
     final pro = Provider.of<productProvider>(context, listen: false);
     if (result[0] == ConnectivityResult.none) {
       pro.setnointernetcheck(true);
@@ -133,9 +131,7 @@ class _HomeSreenState extends State<HomeSreen> {
       }
     }
     setState(() {
-      print(result);
       _connectionStatus = result;
-      print(_connectionStatus);
     });
   }
 

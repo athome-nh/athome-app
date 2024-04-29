@@ -150,7 +150,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     builder: (context) =>
                                                         TrackOrder(
                                                             order.id.toString(),
-                                                            order.totalPrice
+                                                            order
+                                                                .returnTotalPrice
                                                                 .toString(),
                                                             order.createdAt
                                                                 .toString())),
@@ -286,6 +287,10 @@ class _OrderScreenState extends State<OrderScreen> {
                                                           element.returnedQt!);
                                                     } else {
                                                       count = element.qt!;
+                                                    }
+
+                                                    if (count == 0) {
+                                                      return;
                                                     }
 
                                                     if (checkOferPrice(

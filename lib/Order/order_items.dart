@@ -32,7 +32,7 @@ class _OrederItemsState extends State<OrederItems> {
     // ignore: non_constant_identifier_names
     List<ProductModel> CardItemshow =
         productrovider.getProductsByIds(cartProvider.ListIdPast());
-    int total = cartProvider.calculateTotalPricePast(CardItemshow);
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -55,8 +55,9 @@ class _OrederItemsState extends State<OrederItems> {
                 child: ListView.builder(
                     itemCount: cartProvider.cartItemsPast.length,
                     itemBuilder: (BuildContext context, int index) {
-                      final cartitem = CardItemshow[index];
                       final cartitemQ = cartProvider.cartItemsPast[index];
+                      final cartitem =
+                          productrovider.getoneProductById(cartitemQ.product);
 
                       return Dismissible(
                         key: Key(cartitem.id.toString()),
@@ -70,7 +71,7 @@ class _OrederItemsState extends State<OrederItems> {
                           cartProvider.deleteitemPast(cartitemQ.product);
                           CardItemshow = productrovider
                               .getProductsByIds(cartProvider.ListIdPast());
-
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -112,7 +113,8 @@ class _OrederItemsState extends State<OrederItems> {
                                     child: Center(
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            dotenv.env['imageUrlServer']! + cartitem.coverImg!,
+                                            dotenv.env['imageUrlServer']! +
+                                                cartitem.coverImg!,
                                         filterQuality: FilterQuality.low,
                                         width: getWidth(context, 15),
                                         height: getWidth(context, 15),
@@ -308,7 +310,7 @@ class _OrederItemsState extends State<OrederItems> {
                     SizedBox(
                       width: getWidth(context, 60),
                       height: getWidth(context, 50),
-                      child: Image.asset("assets/images/gif_favorite.gif"),
+                      child: Image.asset("assets/Victors/cart_empty.png"),
                     ),
                     Text(
                       "Your cart is empty".tr,
