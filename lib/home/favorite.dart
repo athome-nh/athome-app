@@ -31,36 +31,38 @@ class _FavoriteState extends State<Favorite> {
                   "Favorite".tr,
                 ),
               ),
-              body: cartProvider.ListFavId().isEmpty
-                  ? !productPro.show
-                      ? listItemsBigShimer(context)
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: getWidth(context, 100),
-                              height: getWidth(context, 100),
-                              child:
-                                  Image.asset("assets/Victors/fav_empty.png"),
-                            ),
-                            SizedBox(
-                              height: getHeight(context, 2),
-                            ),
-                            Text(
-                              "No have any favorite".tr,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        )
-                  : listItemsShow(
-                      context,
-                      productPro.getProductsByIds(cartProvider.ListFavId()),
-                    ),
+              body: !isLogin
+                  ? loginFirstContainer(context)
+                  : cartProvider.ListFavId().isEmpty
+                      ? !productPro.show
+                          ? listItemsBigShimer(context)
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: getWidth(context, 100),
+                                  height: getWidth(context, 100),
+                                  child: Image.asset(
+                                      "assets/Victors/fav_empty.png"),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+                                Text(
+                                  "No have any favorite".tr,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            )
+                      : listItemsShow(
+                          context,
+                          productPro.getProductsByIds(cartProvider.ListFavId()),
+                        ),
             ),
           );
   }

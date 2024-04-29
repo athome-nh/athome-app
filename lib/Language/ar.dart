@@ -1,7 +1,8 @@
 const Map<String, String> ar = {
   // Help
   "Help": "مساعده‌",
-  "DearCustomers": "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
+  "DearCustomers":
+      "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
   "Call": "07509583333 - 07802320717",
   "Email": "Info@dllylas.com",
   "WebSite": "www.dllylas.com",
@@ -248,6 +249,7 @@ const Map<String, String> ar = {
 
   // item_categories
   "You not have any item": "لا تملك أي عنصر",
+  'All Items': 'جميع المواد',
 
   // oneitem --> labir kraboo
   "Add to cart": "أضف إلى السلة",

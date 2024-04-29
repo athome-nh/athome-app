@@ -346,7 +346,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     );
                                   },
                                   child: CachedNetworkImage(
-                                    imageUrl: dotenv.env['imageUrlServer']! + product.coverImg,
+                                    imageUrl: dotenv.env['imageUrlServer']! +
+                                        product.coverImg,
                                     placeholder: (context, url) => Image.asset(
                                         "assets/images/Logo-Type-2.png"),
                                     errorWidget: (context, url, error) =>
@@ -681,7 +682,8 @@ Widget listItemsShow(BuildContext context, var data) {
                                   );
                                 },
                                 child: CachedNetworkImage(
-                                  imageUrl: dotenv.env['imageUrlServer']! + product.coverImg,
+                                  imageUrl: dotenv.env['imageUrlServer']! +
+                                      product.coverImg,
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/Logo-Type-2.png"),
                                   errorWidget: (context, url, error) =>
@@ -1016,7 +1018,8 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   );
                                 },
                                 child: CachedNetworkImage(
-                                  imageUrl: dotenv.env['imageUrlServer']! + product.coverImg,
+                                  imageUrl: dotenv.env['imageUrlServer']! +
+                                      product.coverImg,
                                   placeholder: (context, url) => Image.asset(
                                       "assets/images/Logo-Type-2.png"),
                                   errorWidget: (context, url, error) =>
@@ -1294,27 +1297,26 @@ Widget listItemsShowSearch(BuildContext context, var data) {
 Future<bool> checkInternet(BuildContext context) async {
   bool retrive = false;
   var connectivityResult = await (Connectivity().checkConnectivity());
-  if (connectivityResult == ConnectivityResult.mobile) {
-    retrive = false;
-  } else if (connectivityResult == ConnectivityResult.wifi) {
-    retrive = false;
-  } else {
+
+  if (connectivityResult[0] == ConnectivityResult.none) {
     retrive = true;
-    // ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    // ScaffoldMessenger.of(context).showSnackBar(
-    //   SnackBar(
-    //     content: Container(
-    //       child: Text(
-    //         'No internet connection, check your connection',
-    //         style: TextStyle(
-    //           color: mainColorWhite,
-    //           fontFamily: "RK",
-    //         ),
-    //       ),
-    //     ),
-    //     backgroundColor: mainColorGrey,
-    //   ),
-    // );
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Container(
+          child: Text(
+            'No internet connection, check your connection',
+            style: TextStyle(
+              color: mainColorWhite,
+              fontFamily: "RK",
+            ),
+          ),
+        ),
+        backgroundColor: mainColorGrey,
+      ),
+    );
+  } else {
+    retrive = false;
   }
   return retrive;
 }
@@ -1495,7 +1497,6 @@ Future<void> loiginPopup(BuildContext context) {
       );
     },
   );
-
 }
 
 // Page --> No Internet

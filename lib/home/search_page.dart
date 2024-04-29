@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
@@ -15,28 +17,35 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  var subscription;
+  List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+
   @override
   void initState() {
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      final pro = Provider.of<productProvider>(context, listen: false);
-      if (result == ConnectivityResult.none) {
-        pro.setnointernetcheck(true);
-      } else {
-        if (pro.nointernetCheck) {
-          pro.updatePost(false);
-          pro.setnointernetcheck(false);
-        }
-      }
-    });
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    final pro = Provider.of<productProvider>(context, listen: false);
+    if (result[0] == ConnectivityResult.none) {
+      pro.setnointernetcheck(true);
+    } else {
+      if (pro.nointernetCheck) {
+        pro.updatePost(false);
+        pro.setnointernetcheck(false);
+      }
+    }
+    setState(() {
+      _connectionStatus = result;
+    });
   }
 
   @override
   void dispose() {
-    subscription.cancel();
+    _connectivitySubscription.cancel();
     super.dispose();
   }
 
@@ -105,7 +114,6 @@ class _SearchState extends State<Search> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                
                                 SizedBox(
                                   width: getWidth(context, 80),
                                   height: getWidth(context, 80),
@@ -128,8 +136,8 @@ class _SearchState extends State<Search> {
                         // if have item
                         : listItemsShowSearch(
                             context,
-                            productPro.getProductsBySearch(
-                                productPro.searchproduct),
+                            productPro
+                                .getProductsBySearch(productPro.searchproduct),
                           ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Config/test.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
@@ -11,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
@@ -40,7 +42,8 @@ Future<void> main() async {
     badge: true,
   );
   NotificationController.instance.initLocalNotification();
-
+  MapboxOptions.setAccessToken(
+      "sk.eyJ1IjoiYXRob21lYXBwIiwiYSI6ImNsbnZwZ2pucTAxZWQya24waWxseXJqbnUifQ.9U5OBq8TQGof3Jnop22Tsw");
   runApp(const AtHomeApp());
 }
 
@@ -87,7 +90,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
       child: GetMaterialApp(
         theme: ThemeData(
           dialogTheme: DialogTheme(
-            backgroundColor:mainColorWhite, // Set the background color of AlertDialog
+            backgroundColor:
+                mainColorWhite, // Set the background color of AlertDialog
           ),
           popupMenuTheme: PopupMenuThemeData(color: mainColorWhite),
           dividerTheme:

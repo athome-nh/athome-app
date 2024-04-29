@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -39,6 +40,9 @@ class _HomeSreenState extends State<HomeSreen> {
     return build.manufacturer;
   }
 
+  List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   // Check Internet
   Future<void> checkinternet() async {
@@ -76,7 +80,6 @@ class _HomeSreenState extends State<HomeSreen> {
     }
   }
 
-  var subscription;
   @override
   void initState() {
     FirebaseFirestore.instance
@@ -112,25 +115,29 @@ class _HomeSreenState extends State<HomeSreen> {
     });
 
     checkinternet();
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      final pro = Provider.of<productProvider>(context, listen: false);
-      if (result == ConnectivityResult.none) {
-        pro.setnointernetcheck(true);
-      } else {
-        if (pro.nointernetCheck) {
-          pro.updatePost(false);
-          pro.setnointernetcheck(false);
-        }
-      }
-    });
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    final pro = Provider.of<productProvider>(context, listen: false);
+    if (result[0] == ConnectivityResult.none) {
+      pro.setnointernetcheck(true);
+    } else {
+      if (pro.nointernetCheck) {
+        pro.updatePost(false);
+        pro.setnointernetcheck(false);
+      }
+    }
+    setState(() {
+      _connectionStatus = result;
+    });
   }
 
   @override
   void dispose() {
-    subscription.cancel();
+    _connectivitySubscription.cancel();
     super.dispose();
   }
 

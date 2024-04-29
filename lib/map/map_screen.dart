@@ -8,7 +8,6 @@ import 'package:dllylas/main.dart';
 import 'package:dllylas/map/geolocator.dart';
 import 'package:dllylas/map/locationdeatil.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -120,7 +119,7 @@ class _Map_screenState extends State<Map_screen> {
   PolygonAnnotation? polygonAnnotation;
   PolygonAnnotationManager? polygonAnnotationManager;
   int styleIndex = 1;
-  late MapboxMap _mapController;
+  MapboxMap? _mapController;
   String nameloc = "";
   String housenumber = "";
   double selectLat = 0.0;
@@ -129,7 +128,8 @@ class _Map_screenState extends State<Map_screen> {
   bool zoom = false;
   _onMapCreated(MapboxMap mapboxMap) {
     _mapController = mapboxMap;
-    _mapController.location.updateSettings(
+
+    _mapController!.location.updateSettings(
         LocationComponentSettings(enabled: true, pulsingEnabled: true));
     mapboxMap.annotations.createPolygonAnnotationManager().then((value) {
       polygonAnnotationManager = value;
@@ -162,6 +162,12 @@ class _Map_screenState extends State<Map_screen> {
         body: Stack(
           children: [
             MapWidget(
+                cameraOptions: CameraOptions(
+                    center: Point(coordinates: Position(44.009167, 36.191113))
+                        .toJson(),
+                    zoom: 10.0),
+                onTapListener: (coordinate) {},
+                styleUri: MapboxStyles.STANDARD,
                 key: const ValueKey("mapWidget"),
                 onCameraChangeListener: (cameraChangedEventData) {
                   setState(() {
@@ -171,7 +177,7 @@ class _Map_screenState extends State<Map_screen> {
                     scrollTimer!.cancel();
                   }
                   scrollTimer = Timer(const Duration(milliseconds: 500), () {
-                    _mapController.getCameraState().then((value) {
+                    _mapController!.getCameraState().then((value) {
                       final split = value.center["coordinates"]
                           .toString()
                           .substring(1)
@@ -202,8 +208,6 @@ class _Map_screenState extends State<Map_screen> {
                     });
                   });
                 },
-                resourceOptions:
-                    ResourceOptions(accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN']!),
                 onMapCreated: _onMapCreated),
             Padding(
               padding: const EdgeInsets.only(bottom: 40),
@@ -372,7 +376,7 @@ class _Map_screenState extends State<Map_screen> {
     final myLocationData = await getCurrentLatLng();
 
     getLocationName(myLocationData.longitude, myLocationData.latitude);
-    _mapController.flyTo(
+    _mapController!.flyTo(
         CameraOptions(
             center: Point(
                     coordinates: Position(
@@ -381,7 +385,7 @@ class _Map_screenState extends State<Map_screen> {
             zoom: 18,
             bearing: 0,
             pitch: 15),
-        MapAnimationOptions(duration: 2000, startDelay: 0));
+        MapAnimationOptions(duration: 3000, startDelay: 0));
 
     setState(() {});
   }

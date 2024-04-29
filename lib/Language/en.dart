@@ -1,12 +1,13 @@
 const Map<String, String> en = {
   // Help
   "Help": "Help",
-  "DearCustomers": "Dear customers In case of any problems or any issues please contact us at via",
+  "DearCustomers":
+      "Dear customers In case of any problems or any issues please contact us at via",
   "Call": "07509583333 - 07802320717",
   "Email": "Info@dllylas.com",
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
-  
+
   // choose_lan
   "Language": "Language",
   "Kurdish": "Kurdish",
@@ -55,7 +56,7 @@ const Map<String, String> en = {
 
   // categories
   "All Categories": "All Categories",
-
+  'All Items': 'All Items',
   // all_item >> shtakan dobar boo
 
   // Search_page

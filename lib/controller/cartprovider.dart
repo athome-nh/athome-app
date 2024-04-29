@@ -217,7 +217,7 @@ class CartProvider extends ChangeNotifier {
 
     if (existingItemIndex != -1) {
       // If the item exists, update the quantity
-      _cartItemsPast[existingItemIndex].quantity = cartItem.quantity;
+      _cartItemsPast[existingItemIndex].quantity += cartItem.quantity;
     } else {
       // If the item doesn't exist, add it to the cart
       _cartItemsPast.add(cartItem);
@@ -292,19 +292,35 @@ class CartProvider extends ChangeNotifier {
 
   int calculateTotalPricePast(List<ProductModel> product) {
     int totalPrice = 0;
-    int i = 0;
-    for (var cartItem in cartItemsPast) {
-      if (checkOferPrice(product[i])) {
-        totalPrice += product[i].offerPrice! * cartItem.quantity;
-      } else if (product[i].price2! > -1) {
-        totalPrice += product[i].price2! * cartItem.quantity;
+
+    for (var element in product) {
+      final item =
+          cartItemsPast.firstWhere((cart) => cart.product == element.id);
+
+      if (checkOferPrice(element)) {
+        totalPrice += element.offerPrice! * item.quantity;
+      } else if (element.price2! > -1) {
+        totalPrice += element.price2! * item.quantity;
       } else {
-        totalPrice += product[i].price! * cartItem.quantity;
+        totalPrice += element.price! * item.quantity;
       }
-      i++;
     }
 
     return totalPrice;
+    // int totalPrice = 0;
+    // int i = 0;
+    // for (var cartItem in cartItemsPast) {
+    //   if (checkOferPrice(product[i])) {
+    //     totalPrice += product[i].offerPrice! * cartItem.quantity;
+    //   } else if (product[i].price2! > -1) {
+    //     totalPrice += product[i].price2! * cartItem.quantity;
+    //   } else {
+    //     totalPrice += product[i].price! * cartItem.quantity;
+    //   }
+    //   i++;
+    // }
+
+    // return totalPrice;
   }
 
   List<int> ListIdPast() {

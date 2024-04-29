@@ -26,62 +26,67 @@ bool loaddata = false;
 class _SplashScreenState extends State<SplashScreen> {
   bool seen = false;
   bool textshow = false;
-  var subscription;
+
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+
   @override
   void initState() {
     checkinternet();
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      final pro = Provider.of<productProvider>(context, listen: false);
-      if (result == ConnectivityResult.none) {
-        pro.setnointernetcheck(true);
-        setState(() {
-          textshow = true;
-        });
-      } else {
-        Provider.of<productProvider>(context, listen: false).getDataAll(false);
-        if (pro.nointernetCheck) {
-          setState(() {
-            pro.setnointernetcheck(false);
-            setState(() {
-              textshow = false;
-            });
-          });
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
 
-          getStringPrefs("data").then((map) {
-            if (map.isNotEmpty) {
-              Map<String, dynamic> myMap = json.decode(map);
-
-              seen = myMap["onbord"];
-              isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
-              token =
-                  myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";
-            }
-
-            pro.updatePost(isLogin);
-          });
-
-          Timer(
-            const Duration(seconds: 6),
-            () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) =>
-                      seen ? const NavSwitch() : const ChooseLang(),
-                ),
-              );
-            },
-          );
-        }
-      }
-    });
     super.initState();
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    final pro = Provider.of<productProvider>(context, listen: false);
+    if (result[0] == ConnectivityResult.none) {
+      pro.setnointernetcheck(true);
+      setState(() {
+        textshow = true;
+      });
+    } else {
+      Provider.of<productProvider>(context, listen: false).getDataAll(false);
+      if (pro.nointernetCheck) {
+        setState(() {
+          pro.setnointernetcheck(false);
+          setState(() {
+            textshow = false;
+          });
+        });
+
+        getStringPrefs("data").then((map) {
+          if (map.isNotEmpty) {
+            Map<String, dynamic> myMap = json.decode(map);
+
+            seen = myMap["onbord"];
+            isLogin = myMap.containsKey("islogin") ? myMap["islogin"] : false;
+            token =
+                myMap.containsKey("token") ? decryptAES(myMap["token"]) : "";
+          }
+
+          pro.updatePost(isLogin);
+        });
+
+        Timer(
+          const Duration(seconds: 6),
+          () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) =>
+                    seen ? const NavSwitch() : const ChooseLang(),
+              ),
+            );
+          },
+        );
+      }
+    }
   }
 
   @override
   void dispose() {
-    subscription.cancel();
+    _connectivitySubscription.cancel();
     super.dispose();
   }
 
