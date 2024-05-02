@@ -34,12 +34,12 @@ class _itemCategoriesState extends State<itemCategories>
         initialIndex: productPro.categores
             .indexWhere((category) => category.id == productPro.cateType),
         vsync: this,
-        animationDuration: Duration(seconds: 1));
+        animationDuration: Duration(milliseconds: 300));
 
     _subcategoryTabController = TabController(
         length: productPro.getsubcateById(productPro.cateType).length + 1,
         vsync: this,
-        animationDuration: Duration(seconds: 1));
+        animationDuration: Duration(milliseconds: 300));
 
     _categoryTabController.addListener(() {
       setState(() {
