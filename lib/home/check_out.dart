@@ -802,10 +802,10 @@ class _CheckOutState extends State<CheckOut> {
                                                                     );
                                                                   }
                                                                 : () {
-                                                                    Navigator.pop(
-                                                                        context);
                                                                     if (locationID !=
                                                                         0) {
+                                                                      Navigator.pop(
+                                                                          context);
                                                                       setState(
                                                                           () {
                                                                         waitingcheckout =
