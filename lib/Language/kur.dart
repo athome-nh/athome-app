@@ -133,11 +133,13 @@ const Map<String, String> kur = {
   "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
   "Back to Home": "گەڕانەوە بۆ پەرەی سەرەکی",
   "Please Delivery Address": "تکایە ناونیشانی گەیاندن زیاد بکە",
+  "Please select Address": "تکایە ناونیشانی گەیاندن هەڵبژێرە",
   "Send Order": "داواکاریەکەت بنێرە",
   "sorryWeDoNotHaveDelivery":
       "ببورن خزمەت گوزاری گەیاندن داخراوە لەم کاتەدا.\nئارەزوو دەکەیت داوەکاریەکەت بگەیەنین پاش",
   "am": "بەیانی؟",
   "OK": "دڵنیام",
+  "Add location": "ناونیشان زیاد بکە",
 
   // login_page
   "Wellcome back": "بەخێر بێیتەوە",

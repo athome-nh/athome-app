@@ -135,11 +135,13 @@ const Map<String, String> en = {
   "Track My Order": "Track My Order",
   "Back to Home": "Back to Home",
   "Please Delivery Address": "Please Add Delivery Address",
+  "Please select Address": "Please Select Delivery Address",
   "Send Order": "Send Order",
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
   "OK": "OK",
+  "Add location": "Add location",
 
   // login_page
   "Wellcome back": "Welcome back",

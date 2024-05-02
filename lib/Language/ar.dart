@@ -133,13 +133,13 @@ const Map<String, String> ar = {
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
   "Please Delivery Address": "يرجى إضافة الموقع",
+  "Please select Address": "الرجاء تحديد عنوان التسليم",
   "Send Order": "ارسال الطلبیة",
   "sorryWeDoNotHaveDelivery":
       "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
-
   "OK": "موافق",
-
+  "Add location": "إضافة موقع",
   // login_page
   "Wellcome back": "مرحبا بك",
   "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك للتسوق بشكل أكثر ذكاء وأسهل",

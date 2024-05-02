@@ -100,7 +100,7 @@ class _CheckOutState extends State<CheckOut> {
                     SizedBox(
                       width: getWidth(context, 100),
                       height: getHeight(context, 15),
-                      child: productrovider.location.isNotEmpty
+                      child: productrovider.location.isEmpty
                           ? GestureDetector(
                               onTap: () async {
                                 LocationPermission permission =
@@ -640,8 +640,12 @@ class _CheckOutState extends State<CheckOut> {
                                                             .center,
                                                     children: <Widget>[
                                                       Text(
-                                                        "Please Delivery Address"
-                                                            .tr,
+                                                        productrovider.location
+                                                                .isEmpty
+                                                            ? "Please Delivery Address"
+                                                                .tr
+                                                            : "Please select Address"
+                                                                .tr,
                                                         textAlign:
                                                             TextAlign.center,
                                                         maxLines: 1,
@@ -660,7 +664,7 @@ class _CheckOutState extends State<CheckOut> {
                                                             context, 30),
                                                         child: productrovider
                                                                 .location
-                                                                .isNotEmpty
+                                                                .isEmpty
                                                             ? GestureDetector(
                                                                 onTap:
                                                                     () async {
@@ -780,7 +784,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         onPressed:
                                                             productrovider
                                                                     .location
-                                                                    .isNotEmpty
+                                                                    .isEmpty
                                                                 ? () async {
                                                                     Navigator.pop(
                                                                         context);
@@ -936,7 +940,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         child: Text(
                                                           productrovider
                                                                   .location
-                                                                  .isNotEmpty
+                                                                  .isEmpty
                                                               ? "Add location"
                                                                   .tr
                                                               : "Send Order".tr,
