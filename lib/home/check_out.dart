@@ -6,6 +6,7 @@ import 'package:dllylas/home/successScreen.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:geolocator/geolocator.dart';
@@ -33,6 +34,7 @@ class _CheckOutState extends State<CheckOut> {
   bool waitingcheckout = false;
   int locationID = 0;
   String orderCode = "";
+
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
@@ -98,7 +100,7 @@ class _CheckOutState extends State<CheckOut> {
                     SizedBox(
                       width: getWidth(context, 100),
                       height: getHeight(context, 15),
-                      child: productrovider.location.isEmpty
+                      child: productrovider.location.isNotEmpty
                           ? GestureDetector(
                               onTap: () async {
                                 LocationPermission permission =
@@ -115,8 +117,11 @@ class _CheckOutState extends State<CheckOut> {
                               child: SizedBox(
                                 width: getWidth(context, 100),
                                 height: getHeight(context, 15),
-                                child:
-                                    Image.asset("assets/Victors/location.png"),
+                                child: Image.asset(lang == "en"
+                                    ? "assets/Victors/location.png"
+                                    : lang == "ar"
+                                        ? "assets/Victors/locationAr.png"
+                                        : "assets/Victors/locationKu.png"),
                               ),
                             )
                           : ListView.builder(
@@ -608,7 +613,350 @@ class _CheckOutState extends State<CheckOut> {
                               }
                             });
                           } else {
-                            toastLong("Please Delivery Address".tr);
+                            showDialog(
+                                context: context,
+                                builder: (ctx) => StatefulBuilder(
+                                      builder: (context, setState1) {
+                                        return AlertDialog(
+                                          content: Directionality(
+                                            textDirection: lang == "en"
+                                                ? TextDirection.ltr
+                                                : TextDirection.rtl,
+                                            child: Stack(
+                                              alignment: lang == "en"
+                                                  ? Alignment.topLeft
+                                                  : Alignment.topRight,
+                                              children: [
+                                                SizedBox(
+                                                  width: getWidth(context, 70),
+                                                  height:
+                                                      getHeight(context, 50),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        "Please Delivery Address"
+                                                            .tr,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 1,
+                                                        style: TextStyle(
+                                                          color: mainColorBlack,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 15,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                      Container(
+                                                        width: getWidth(
+                                                            context, 60),
+                                                        height: getHeight(
+                                                            context, 30),
+                                                        child: productrovider
+                                                                .location
+                                                                .isNotEmpty
+                                                            ? GestureDetector(
+                                                                onTap:
+                                                                    () async {
+                                                                  LocationPermission
+                                                                      permission =
+                                                                      await Geolocator
+                                                                          .requestPermission();
+                                                                  if (permission ==
+                                                                      LocationPermission
+                                                                          .denied) {
+                                                                    // Handle case where the user denied access to their location
+                                                                  }
+                                                                  Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                const Map_screen()),
+                                                                  );
+                                                                },
+                                                                child: SizedBox(
+                                                                  width: getWidth(
+                                                                      context,
+                                                                      100),
+                                                                  height:
+                                                                      getHeight(
+                                                                          context,
+                                                                          15),
+                                                                  child: Image.asset(lang ==
+                                                                          "en"
+                                                                      ? "assets/Victors/location.png"
+                                                                      : lang ==
+                                                                              "ar"
+                                                                          ? "assets/Victors/locationAr.png"
+                                                                          : "assets/Victors/locationKu.png"),
+                                                                ),
+                                                              )
+                                                            : ListView.builder(
+                                                                itemCount:
+                                                                    productrovider
+                                                                        .location
+                                                                        .length,
+                                                                itemBuilder:
+                                                                    (BuildContext
+                                                                            context,
+                                                                        int index) {
+                                                                  final location =
+                                                                      productrovider
+                                                                          .location
+                                                                          .reversed
+                                                                          .toList()[index];
+
+                                                                  return Column(
+                                                                    children: [
+                                                                      ListTile(
+                                                                        onTap:
+                                                                            () {
+                                                                          if (locationID ==
+                                                                              location.id!) {
+                                                                            setState1(() {
+                                                                              locationID = 0;
+                                                                            });
+                                                                          } else {
+                                                                            setState1(() {
+                                                                              locationID = location.id!;
+                                                                            });
+                                                                          }
+                                                                          setState(
+                                                                              () {});
+                                                                        },
+                                                                        title:
+                                                                            Text(
+                                                                          location
+                                                                              .name!,
+                                                                          maxLines:
+                                                                              1,
+                                                                          style: TextStyle(
+                                                                              fontFamily: mainFontbold,
+                                                                              color: mainColorBlack,
+                                                                              fontSize: 16),
+                                                                        ),
+                                                                        subtitle:
+                                                                            Text(
+                                                                          location
+                                                                              .area!,
+                                                                          style: TextStyle(
+                                                                              fontFamily: mainFontnormal,
+                                                                              color: mainColorGrey,
+                                                                              fontSize: 12),
+                                                                        ),
+                                                                        trailing:
+                                                                            Icon(
+                                                                          locationID == location.id!
+                                                                              ? Icons.check_circle
+                                                                              : Icons.check_circle_outline,
+                                                                          color: locationID == location.id!
+                                                                              ? mainColorRed
+                                                                              : mainColorGrey,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width: getWidth(
+                                                                            context,
+                                                                            45),
+                                                                        child:
+                                                                            Divider(
+                                                                          color:
+                                                                              mainColorGrey.withOpacity(0.1),
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  );
+                                                                }),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed:
+                                                            productrovider
+                                                                    .location
+                                                                    .isNotEmpty
+                                                                ? () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    LocationPermission
+                                                                        permission =
+                                                                        await Geolocator
+                                                                            .requestPermission();
+                                                                    if (permission ==
+                                                                        LocationPermission
+                                                                            .denied) {
+                                                                      // Handle case where the user denied access to their location
+                                                                    }
+                                                                    Navigator
+                                                                        .push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              const Map_screen()),
+                                                                    );
+                                                                  }
+                                                                : () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    if (locationID !=
+                                                                        0) {
+                                                                      setState(
+                                                                          () {
+                                                                        waitingcheckout =
+                                                                            true;
+                                                                      });
+
+                                                                      String
+                                                                          data =
+                                                                          "";
+                                                                      for (var element
+                                                                          in cartProvider
+                                                                              .cartItems) {
+                                                                        ProductModel
+                                                                            Item =
+                                                                            productrovider.getoneProductById(element.product);
+                                                                        String price = Item.price2! >
+                                                                                -1
+                                                                            ? Item.price2!.toString()
+                                                                            : Item.price.toString();
+                                                                        data +=
+                                                                            "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
+                                                                      }
+
+                                                                      var data2 =
+                                                                          {
+                                                                        "customerid":
+                                                                            userdata["id"],
+                                                                        "total":
+                                                                            widget.total,
+                                                                        "location":
+                                                                            locationID,
+                                                                        "order_data":
+                                                                            data.substring(2),
+                                                                        "note":
+                                                                            NoteController.text,
+                                                                      };
+
+                                                                      Network(false)
+                                                                          .postData(
+                                                                              "order",
+                                                                              data2,
+                                                                              context)
+                                                                          .then(
+                                                                              (value) {
+                                                                        if (value !=
+                                                                            "") {
+                                                                          if (value["code"] ==
+                                                                              "201") {
+                                                                            setState(() {
+                                                                              waitingcheckout = false;
+                                                                            });
+                                                                            cartProvider.clearCart();
+                                                                            final productrovider =
+                                                                                Provider.of<productProvider>(context, listen: false);
+
+                                                                            productrovider.getuserdata(userdata["id"].toString());
+
+                                                                            DateTime
+                                                                                timecheck =
+                                                                                DateTime.parse(value["now"].toString());
+                                                                            DateTime
+                                                                                ST =
+                                                                                DateTime.parse("2023-11-09 ${productrovider.startTime}:00");
+
+                                                                            DateTime
+                                                                                DT =
+                                                                                DateTime.parse("2023-11-09 ${productrovider.endTime}:00");
+
+                                                                            DateTime
+                                                                                NW =
+                                                                                DateTime.parse("2023-11-09 ${timecheck.hour}:00");
+
+                                                                            if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
+                                                                                NW.isAtSameMomentAs(ST)) {
+                                                                              Navigator.push(
+                                                                                context,
+                                                                                MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), false)),
+                                                                              ).then((value) {
+                                                                                Navigator.pushReplacement(
+                                                                                  context,
+                                                                                  MaterialPageRoute(builder: (context) => const NavSwitch()),
+                                                                                );
+                                                                              });
+                                                                            } else {
+                                                                              Navigator.push(
+                                                                                context,
+                                                                                MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), true)),
+                                                                              ).then((value) {
+                                                                                Navigator.pushReplacement(
+                                                                                  context,
+                                                                                  MaterialPageRoute(builder: (context) => const NavSwitch()),
+                                                                                );
+                                                                              });
+                                                                            }
+                                                                          } else {
+                                                                            setState(() {
+                                                                              waitingcheckout = false;
+                                                                            });
+                                                                            toastShort("unknown occurred error please try again later");
+                                                                          }
+                                                                        } else {
+                                                                          setState(
+                                                                              () {
+                                                                            waitingcheckout =
+                                                                                false;
+                                                                          });
+                                                                          toastShort(
+                                                                              "unknown occurred error please try again later");
+                                                                        }
+                                                                      });
+                                                                    }
+                                                                  },
+                                                        style: TextButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              productrovider
+                                                                          .location
+                                                                          .length >
+                                                                      0
+                                                                  ? mainColorGrey
+                                                                  : mainColorRed,
+                                                          fixedSize: Size(
+                                                              getWidth(
+                                                                  context, 70),
+                                                              getHeight(
+                                                                  context, 5)),
+                                                        ),
+                                                        child: Text(
+                                                          productrovider
+                                                                  .location
+                                                                  .isNotEmpty
+                                                              ? "Add location"
+                                                                  .tr
+                                                              : "Send Order".tr,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon:
+                                                        const Icon(Icons.close))
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ));
                           }
                         },
                   style: TextButton.styleFrom(
