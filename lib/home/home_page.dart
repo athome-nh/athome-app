@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -8,6 +9,8 @@ import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
+import 'package:dllylas/home/nav_switch.dart';
+import 'package:dllylas/home/search_page.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/cart.dart';
@@ -16,9 +19,12 @@ import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -31,9 +37,10 @@ class HomeSreen extends StatefulWidget {
 }
 
 class _HomeSreenState extends State<HomeSreen> {
-  update(BuildContext context) {
+  update(BuildContext context) async {
     final productrovider = Provider.of<productProvider>(context, listen: false);
-    productrovider.updatePost(false);
+    await Isolate.run(productrovider.updatePost(false));
+    // productrovider.updatePost(false);
   }
 
   _readAndroidBuildData(AndroidDeviceInfo build) {
@@ -151,658 +158,474 @@ class _HomeSreenState extends State<HomeSreen> {
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: SafeArea(
               child: Scaffold(
-                body: CustomScrollView(slivers: <Widget>[
-                  // top
-                  SliverAppBar(
-                    title: Image.asset(
-                      "assets/images/dlly_Logo.png",
-                      width: getWidth(context, 30),
+                  body:
+                      // body
+                      SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListTile(
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: getWidth(context, 4)),
+                      title: Text(
+                        "Wellcome to",
+                        style:
+                            TextStyle(fontSize: 12, fontFamily: mainFontnormal),
+                      ),
+                      subtitle: RichText(
+                        text: new TextSpan(
+                          // Note: Styles for TextSpans must be explicitly defined.
+                          // Child text spans will inherit styles from parent
+                          style: new TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            new TextSpan(
+                              text: 'Dlly Las ',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: mainColorGrey,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: mainFontnormal),
+                            ),
+                            new TextSpan(
+                              text: 'Supermarket',
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: mainColorRed,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: mainFontnormal),
+                            ),
+                          ],
+                        ),
+                      ),
+                      trailing: Icon(
+                        Icons.notifications_none_outlined,
+                        size: 30,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Search()),
+                        );
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(context, 4)),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  color: mainColorBlack.withOpacity(0.1))),
+                          height: 50,
+                          child: Row(
+                            children: [
+                              Icon(
+                                Ionicons.search_outline,
+                                color: mainColorBlack,
+                                size: 22,
+                              ),
+                              SizedBox(
+                                width: getWidth(context, 1),
+                              ),
+                              Text(
+                                "Search".tr,
+                                style: TextStyle(
+                                    fontFamily: mainFontnormal,
+                                    color: mainColorBlack.withOpacity(0.8),
+                                    fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
 
-                    //
-                    automaticallyImplyLeading: false,
-                    backgroundColor: Colors.transparent,
-                    centerTitle: false,
-                    expandedHeight: getHeight(context, 25),
-                    floating: false,
-                    pinned: false,
+                    // Space
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
 
-                    flexibleSpace: Visibility(
-                      visible: productrovider.show,
-                      replacement: Skeletonizer(
-                        effect: ShimmerEffect.raw(colors: [
-                          mainColorGrey.withOpacity(0.1),
-                          mainColorWhite,
-                          // mainColorRed.withOpacity(0.1),
-                        ]),
-                        enabled: true,
-                        child: FlexibleSpaceBar(
-                          background: Center(
-                            child: Stack(
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl: "",
-                                  placeholder: (context, url) => Image.asset(
-                                      "assets/images/Logo-Type-2.png"),
-                                  errorWidget: (context, url, error) =>
-                                      Image.asset(
-                                          "assets/images/Logo-Type-2.png"),
-                                  filterQuality: FilterQuality.low,
-                                  width: getWidth(context, 100),
-                                  height: getHeight(context, 100),
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.all(getHeight(context, 1.5)),
-                                  child: Align(
-                                    alignment: lang == "en"
-                                        ? Alignment.bottomLeft
-                                        : Alignment.bottomRight,
-                                    child: Container(
-                                      width: getWidth(context, 25),
-                                      height: getWidth(context, 9),
-                                      decoration: BoxDecoration(
-                                          color: mainColorGrey,
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Text(
-                                        "",
-                                        style: TextStyle(
-                                            color: mainColorGrey, fontSize: 14),
-                                      ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getWidth(context, 4)),
+                      child: Visibility(
+                        visible: productrovider.show,
+                        replacement: Skeletonizer(
+                          effect: ShimmerEffect.raw(colors: [
+                            mainColorGrey.withOpacity(0.1),
+                            mainColorWhite,
+                            //  mainColorRed.withOpacity(0.1),
+                          ]),
+                          enabled: true,
+                          child: SizedBox(
+                            width: getWidth(context, 100),
+                            height: getHeight(context, 25),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                              child: CarouselSlider(
+                                items: [
+                                  ClipRRect(
+                                    child: Image.asset(
+                                      "assets/images/Logo-Type-2.png",
+                                      width: getWidth(context, 100),
+                                      height: getHeight(context, 20),
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
+                                ],
+                                options: CarouselOptions(
+                                  autoPlay: true,
+                                  aspectRatio: 16 / 9,
+                                  viewportFraction: 1.0,
+                                  enlargeCenterPage: true,
+                                  autoPlayInterval: const Duration(seconds: 5),
+                                  autoPlayAnimationDuration:
+                                      const Duration(milliseconds: 3000),
                                 ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        child: SizedBox(
+                          width: getWidth(context, 100),
+                          height: getHeight(context, 25),
+                          child: CarouselSlider.builder(
+                            itemCount: productrovider.slides.length,
+                            options: CarouselOptions(
+                              autoPlay: true,
+                              aspectRatio: 16 / 9,
+                              viewportFraction: 1.0,
+                              enlargeCenterPage: true,
+                              autoPlayInterval: const Duration(seconds: 5),
+                              autoPlayAnimationDuration:
+                                  const Duration(milliseconds: 3000),
+                              enableInfiniteScroll:
+                                  true, // if you don't want infinite loop
+                              onPageChanged: (index, reason) {
+                                // Do something when page changes
+                              },
+                            ),
+                            itemBuilder: (BuildContext context, int index, _) {
+                              var item = productrovider.slides[index];
+                              return GestureDetector(
+                                onTap: () {
+                                  productrovider.settype("brand");
+                                  productrovider.setidbrand(item.brandId!);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const AllItem()),
+                                  );
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: CachedNetworkImage(
+                                    imageUrl: dotenv.env['imageUrlServer']! +
+                                        item.img!,
+                                    placeholder: (context, url) => Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
+                                    errorWidget: (context, url, error) =>
+                                        Image.asset(
+                                            "assets/images/Logo-Type-2.png"),
+                                    filterQuality: FilterQuality.low,
+                                    width: getWidth(context, 100),
+                                    height: getHeight(context, 20),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Categories
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: Text(
+                            "Categories".tr,
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontSize: 16,
+                                fontFamily: mainFontbold),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: TextButton(
+                            onPressed: () {
+                              !productrovider.show
+                                  ? const SizedBox()
+                                  : Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Categories()),
+                                    );
+                            },
+                            style: TextButton.styleFrom(
+                                foregroundColor: mainColorRed,
+                                backgroundColor: Colors.transparent),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "View All".tr,
+                                ),
+                                // SizedBox(
+                                //   width: getWidth(context, 2),
+                                // ),
+                                // Icon(
+                                //   Icons.arrow_forward_ios_outlined,
+                                //   color: mainColorRed,
+                                //   size: 14,
+                                // ),
                               ],
                             ),
                           ),
                         ),
-                      ),
-                      child: FlexibleSpaceBar(
-                        background: Center(
-                          child: Stack(
-                            // alignment: Alignment.bottomRight,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: productrovider.show
-                                    ? lang == "en"
-                                        ? dotenv.env['imageUrlServer']! +
-                                            productrovider.tops[0].imgEn!
-                                        : lang == "ar"
-                                            ? dotenv.env['imageUrlServer']! +
-                                                productrovider.tops[0].imgAr!
-                                            : dotenv.env['imageUrlServer']! +
-                                                productrovider.tops[0].imgKur!
-                                    : "",
-                                placeholder: (context, url) => Image.asset(
-                                    "assets/images/Logo-Type-2.png"),
-                                errorWidget: (context, url, error) =>
-                                    Image.asset(
-                                        "assets/images/Logo-Type-2.png"),
-                                filterQuality: FilterQuality.low,
-                                width: getWidth(context, 100),
-                                height: getHeight(context, 100),
-                                fit: BoxFit.fill,
-                              ),
-                              productrovider.show
-                                  ? productrovider.tops[0].brandId! > 0
-                                      ? Padding(
-                                          padding: EdgeInsets.all(
-                                              getHeight(context, 1.5)),
-                                          child: Align(
-                                            alignment: lang == "en"
-                                                ? Alignment.bottomLeft
-                                                : Alignment.bottomRight,
-                                            child: Container(
-                                              width: getWidth(context, 30),
-                                              height: getWidth(context, 9),
-                                              decoration: BoxDecoration(
-                                                  color: mainColorRed,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              child: TextButton(
-                                                  onPressed: () {
-                                                    productrovider
-                                                        .settype("brand");
-                                                    productrovider.setidbrand(
-                                                        productrovider
-                                                            .tops[0].brandId!);
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const AllItem()),
-                                                    );
-                                                  },
-                                                  child: Text(
-                                                    "Order now".tr,
-                                                  )),
-                                            ),
-                                          ),
-                                        )
-                                      : const SizedBox()
-                                  : const SizedBox(),
-                            ],
+                      ],
+                    ),
+
+                    // Shimmer Effect
+                    SizedBox(
+                      height: getHeight(context, 14),
+                      child: Visibility(
+                        visible: productrovider.show,
+                        replacement: Skeletonizer(
+                          effect: ShimmerEffect.raw(colors: [
+                            mainColorGrey.withOpacity(0.1),
+                            mainColorWhite,
+                            //   mainColorRed.withOpacity(0.1),
+                          ]),
+                          enabled: true,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 10,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 4)),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      width: getHeight(context, 8),
+                                      height: getHeight(context, 8),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: mainColorBlack
+                                                  .withOpacity(0.1)),
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      child: Center(
+                                          child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              "https://www.dllylas.com/assets/img/logo/logo.png",
+                                          placeholder: (context, url) =>
+                                              Image.asset(
+                                                  "assets/images/home.png"),
+                                          errorWidget: (context, url, error) =>
+                                              Image.asset(
+                                                  "assets/images/home.png"),
+                                          fit: BoxFit.fill,
+                                          width: getHeight(context, 5),
+                                          height: getHeight(context, 5),
+                                        ),
+                                      )),
+                                    ),
+                                    SizedBox(
+                                      height: getHeight(context, 1),
+                                    ),
+                                    Text(
+                                      "cateItem",
+                                      style: TextStyle(
+                                          color: mainColorGrey,
+                                          fontFamily: mainFontnormal,
+                                          fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-
-                  // body
-                  SliverToBoxAdapter(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          // Categories
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: Text(
-                                  "Categories".tr,
-                                  style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontSize: 16,
-                                      fontFamily: mainFontbold),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: TextButton(
-                                  onPressed: () {
-                                    !productrovider.show
-                                        ? const SizedBox()
-                                        : Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const Categories()),
-                                          );
-                                  },
-                                  style: TextButton.styleFrom(
-                                      foregroundColor: mainColorRed,
-                                      backgroundColor: Colors.transparent),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "View All".tr,
-                                      ),
-                                      // SizedBox(
-                                      //   width: getWidth(context, 2),
-                                      // ),
-                                      // Icon(
-                                      //   Icons.arrow_forward_ios_outlined,
-                                      //   color: mainColorRed,
-                                      //   size: 14,
-                                      // ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          // Shimmer Effect
-                          SizedBox(
-                            height: getHeight(context, 14),
-                            child: Visibility(
-                              visible: productrovider.show,
-                              replacement: Skeletonizer(
-                                effect: ShimmerEffect.raw(colors: [
-                                  mainColorGrey.withOpacity(0.1),
-                                  mainColorWhite,
-                                  //   mainColorRed.withOpacity(0.1),
-                                ]),
-                                enabled: true,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 10,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: getWidth(context, 2)),
-                                      child: Column(
-                                        children: <Widget>[
-                                          Container(
-                                            width: getHeight(context, 8),
-                                            height: getHeight(context, 8),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: mainColorBlack
-                                                        .withOpacity(0.1)),
-                                                borderRadius:
-                                                    BorderRadius.circular(100)),
-                                            child: Center(
-                                                child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(100),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    "assets/images/home.png",
-                                                placeholder: (context, url) =>
-                                                    Image.asset(
-                                                        "assets/images/home.png"),
-                                                errorWidget: (context, url,
-                                                        error) =>
-                                                    Image.asset(
-                                                        "assets/images/home.png"),
-                                                fit: BoxFit.fill,
-                                                width: getHeight(context, 5),
-                                                height: getHeight(context, 5),
-                                              ),
-                                            )),
-                                          ),
-                                          SizedBox(
-                                            height: getHeight(context, 1),
-                                          ),
-                                          Text(
-                                            "cateItem",
-                                            style: TextStyle(
-                                                color: mainColorGrey,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 14),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: productrovider.categores.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final cateItem =
-                                      productrovider.categores[index];
-                                  return Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 2)),
-                                    child: Column(
-                                      children: <Widget>[
-                                        GestureDetector(
-                                          onTap: () {
-                                            productrovider
-                                                .setcatetype(cateItem.id!);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      itemCategories()),
-                                            ).then((value) {
-                                              productrovider
-                                                  .setsubcateSelect(0);
-                                            });
-                                          },
-                                          child: Container(
-                                            width: getHeight(context, 9),
-                                            height: getHeight(context, 9),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: mainColorBlack
-                                                        .withOpacity(0.1)),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: Center(
-                                              child: CachedNetworkImage(
-                                                imageUrl: dotenv.env[
-                                                        'imageUrlServer']! +
-                                                    cateItem.img!,
-                                                placeholder: (context, url) =>
-                                                    Image.asset(
-                                                        "assets/images/Logo-Type-2.png"),
-                                                errorWidget: (context, url,
-                                                        error) =>
-                                                    Image.asset(
-                                                        "assets/images/Logo-Type-2.png"),
-                                                filterQuality:
-                                                    FilterQuality.low,
-                                                width: getHeight(context, 7),
-                                                height: getHeight(context, 7),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: getHeight(context, 1),
-                                        ),
-                                        Text(
-                                          lang == "en"
-                                              ? cateItem.nameEn!
-                                              : lang == "ar"
-                                                  ? cateItem.nameAr!
-                                                  : cateItem.nameKu!,
-                                          maxLines: 1,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 12),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-
-                          productrovider.Orderitems.isNotEmpty &&
-                                  productrovider
-                                      .getProductsByIds2(
-                                        productrovider.listOrderProductIds(),
-                                      )
-                                      .isNotEmpty
-                              ? Column(
-                                  children: [
-                                    // Recent Order
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: getWidth(context, 2)),
-                                          child: Text(
-                                            "Recent Order".tr,
-                                            style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontSize: 16,
-                                                fontFamily: mainFontbold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: getWidth(context, 2)),
-                                          child: Row(
-                                            children: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  if (productrovider.show) {
-                                                    productrovider
-                                                        .settype("orders");
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const AllItem()),
-                                                    );
-                                                  }
-                                                },
-                                                style: TextButton.styleFrom(
-                                                    foregroundColor:
-                                                        mainColorRed,
-                                                    backgroundColor:
-                                                        Colors.transparent),
-                                                child: Text(
-                                                  "View All".tr,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    listItemsSmall(
-                                      context,
-                                      productrovider.getProductsByIds2(
-                                        productrovider.listOrderProductIds(),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              : const SizedBox(),
-
-                          productrovider.getProductsByDiscount().isNotEmpty
-                              ? Column(
-                                  children: [
-                                    // Discount
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: getWidth(context, 2)),
-                                          child: Text(
-                                            "Discount".tr,
-                                            style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontSize: 16,
-                                                fontFamily: mainFontbold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: getWidth(context, 2)),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              if (productrovider.show) {
-                                                productrovider
-                                                    .settype("discount");
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const AllItem()),
-                                                );
-                                              }
-                                            },
-                                            style: TextButton.styleFrom(
-                                                foregroundColor: mainColorRed,
-                                                backgroundColor:
-                                                    Colors.transparent),
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  "View All".tr,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    listItemsSmall(
-                                      context,
-                                      productrovider.getProductsByDiscount(),
-                                    ),
-                                  ],
-                                )
-                              : const SizedBox(),
-
-                          // Highlight
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: Text(
-                                  "Highlight".tr,
-                                  style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontSize: 16,
-                                      fontFamily: mainFontbold),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: TextButton(
-                                  onPressed: () {
-                                    if (productrovider.show) {
-                                      productrovider.settype("Highlight");
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: productrovider.categores.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final cateItem = productrovider.categores[index];
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 4)),
+                              child: Column(
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      productrovider.setcatetype(cateItem.id!);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const AllItem()),
-                                      );
-                                    }
-                                  },
-                                  style: TextButton.styleFrom(
-                                      foregroundColor: mainColorRed,
-                                      backgroundColor: Colors.transparent),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "View All".tr,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          listItemsSmall(
-                            context,
-                            productrovider.getProductsByHighlight(),
-                          ),
-
-                          // Space
-                          SizedBox(
-                            height: getHeight(context, 1),
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: getWidth(context, 2)),
-                            child: Visibility(
-                              visible: productrovider.show,
-                              replacement: Skeletonizer(
-                                effect: ShimmerEffect.raw(colors: [
-                                  mainColorGrey.withOpacity(0.1),
-                                  mainColorWhite,
-                                  //  mainColorRed.withOpacity(0.1),
-                                ]),
-                                enabled: true,
-                                child: SizedBox(
-                                  width: getWidth(context, 100),
-                                  height: getHeight(context, 20),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    child: CarouselSlider(
-                                      items: [
-                                        ClipRRect(
-                                          child: Image.asset(
-                                            "assets/images/Logo-Type-2.png",
-                                            width: getWidth(context, 100),
-                                            height: getHeight(context, 20),
-                                            fit: BoxFit.fill,
-                                          ),
+                                                itemCategories()),
+                                      ).then((value) {
+                                        productrovider.setsubcateSelect(0);
+                                      });
+                                    },
+                                    child: Container(
+                                      width: getHeight(context, 9),
+                                      height: getHeight(context, 9),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: mainColorBlack
+                                                  .withOpacity(0.1)),
+                                          borderRadius:
+                                              BorderRadius.circular(50)),
+                                      child: Center(
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              dotenv.env['imageUrlServer']! +
+                                                  cateItem.img!,
+                                          placeholder: (context, url) =>
+                                              Image.asset(
+                                                  "assets/images/Logo-Type-2.png"),
+                                          errorWidget: (context, url, error) =>
+                                              Image.asset(
+                                                  "assets/images/Logo-Type-2.png"),
+                                          filterQuality: FilterQuality.low,
+                                          width: getHeight(context, 7),
+                                          height: getHeight(context, 7),
                                         ),
-                                      ],
-                                      options: CarouselOptions(
-                                        autoPlay: true,
-                                        aspectRatio: 16 / 9,
-                                        viewportFraction: 1.0,
-                                        enlargeCenterPage: true,
-                                        autoPlayInterval:
-                                            const Duration(seconds: 5),
-                                        autoPlayAnimationDuration:
-                                            const Duration(milliseconds: 3000),
                                       ),
                                     ),
                                   ),
-                                ),
+                                  SizedBox(
+                                    height: getHeight(context, 1),
+                                  ),
+                                  Text(
+                                    lang == "en"
+                                        ? cateItem.nameEn!
+                                        : lang == "ar"
+                                            ? cateItem.nameAr!
+                                            : cateItem.nameKu!,
+                                    maxLines: 1,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: mainColorBlack,
+                                        fontFamily: mainFontnormal,
+                                        fontSize: 12),
+                                  ),
+                                ],
                               ),
-                              child: SizedBox(
-                                width: getWidth(context, 100),
-                                height: getHeight(context, 25),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: CarouselSlider(
-                                    items: productrovider.slides.map((item) {
-                                      return Builder(
-                                        builder: (BuildContext context) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              productrovider.settype("brand");
-                                              productrovider
-                                                  .setidbrand(item.brandId!);
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+
+                    productrovider.Orderitems.isNotEmpty &&
+                            productrovider
+                                .getProductsByIds2(
+                                  productrovider.listOrderProductIds(),
+                                )
+                                .isNotEmpty
+                        ? Column(
+                            children: [
+                              // Recent Order
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 4)),
+                                    child: Text(
+                                      "Recent Order".tr,
+                                      style: TextStyle(
+                                          color: mainColorBlack,
+                                          fontSize: 16,
+                                          fontFamily: mainFontbold),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 4)),
+                                    child: Row(
+                                      children: [
+                                        TextButton(
+                                          onPressed: () {
+                                            if (productrovider.show) {
+                                              productrovider.settype("orders");
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         const AllItem()),
                                               );
-                                            },
-                                            child: ClipRRect(
-                                              child: CachedNetworkImage(
-                                                imageUrl: dotenv.env[
-                                                        'imageUrlServer']! +
-                                                    item.img!,
-                                                placeholder: (context, url) =>
-                                                    Image.asset(
-                                                        "assets/images/Logo-Type-2.png"),
-                                                errorWidget: (context, url,
-                                                        error) =>
-                                                    Image.asset(
-                                                        "assets/images/Logo-Type-2.png"),
-                                                filterQuality:
-                                                    FilterQuality.low,
-                                                width: getWidth(context, 100),
-                                                height: getHeight(context, 20),
-                                                fit: BoxFit.fill,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    }).toList(),
-                                    options: CarouselOptions(
-                                      autoPlay: true,
-                                      aspectRatio: 16 / 9,
-                                      viewportFraction: 1.0,
-                                      enlargeCenterPage: true,
-                                      autoPlayInterval:
-                                          const Duration(seconds: 5),
-                                      autoPlayAnimationDuration:
-                                          const Duration(milliseconds: 3000),
+                                            }
+                                          },
+                                          style: TextButton.styleFrom(
+                                              foregroundColor: mainColorRed,
+                                              backgroundColor:
+                                                  Colors.transparent),
+                                          child: Text(
+                                            "View All".tr,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
+                                ],
+                              ),
+
+                              listItemsSmall(
+                                context,
+                                productrovider.getProductsByIds2(
+                                  productrovider.listOrderProductIds(),
                                 ),
                               ),
-                            ),
-                          ),
+                            ],
+                          )
+                        : const SizedBox(),
 
-                          // Space
-                          SizedBox(
-                            height: getHeight(context, 1),
-                          ),
-
-                          // Best Seller
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    productrovider.getProductsByDiscount().isNotEmpty
+                        ? Column(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: Text(
-                                  "Best Sell".tr,
-                                  style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontSize: 16,
-                                      fontFamily: mainFontbold),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 2)),
-                                child: Row(
-                                  children: [
-                                    TextButton(
+                              // Discount
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 4)),
+                                    child: Text(
+                                      "Discount".tr,
+                                      style: TextStyle(
+                                          color: mainColorBlack,
+                                          fontSize: 16,
+                                          fontFamily: mainFontbold),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 4)),
+                                    child: TextButton(
                                       onPressed: () {
                                         if (productrovider.show) {
-                                          productrovider.settype("best");
+                                          productrovider.settype("discount");
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -822,25 +645,131 @@ class _HomeSreenState extends State<HomeSreen> {
                                         ],
                                       ),
                                     ),
+                                  ),
+                                ],
+                              ),
+
+                              listItemsSmall(
+                                context,
+                                productrovider.getProductsByDiscount(),
+                              ),
+                            ],
+                          )
+                        : const SizedBox(),
+
+                    // Highlight
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: Text(
+                            "Highlight".tr,
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontSize: 16,
+                                fontFamily: mainFontbold),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: TextButton(
+                            onPressed: () {
+                              if (productrovider.show) {
+                                productrovider.settype("Highlight");
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const AllItem()),
+                                );
+                              }
+                            },
+                            style: TextButton.styleFrom(
+                                foregroundColor: mainColorRed,
+                                backgroundColor: Colors.transparent),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "View All".tr,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    listItemsSmall(
+                      context,
+                      productrovider.getProductsByHighlight(),
+                    ),
+
+                    // Space
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
+
+                    // Best Seller
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: Text(
+                            "Best Sell".tr,
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontSize: 16,
+                                fontFamily: mainFontbold),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: Row(
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  if (productrovider.show) {
+                                    productrovider.settype("best");
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AllItem()),
+                                    );
+                                  }
+                                },
+                                style: TextButton.styleFrom(
+                                    foregroundColor: mainColorRed,
+                                    backgroundColor: Colors.transparent),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "View All".tr,
+                                    ),
                                   ],
                                 ),
                               ),
                             ],
                           ),
-
-                          listItemsSmall(
-                              context, productrovider.getProductsByBestsell()),
-
-                          // Space
-                          SizedBox(
-                            height: getHeight(context, 2),
-                          )
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  )
-                ]),
-              ),
+
+                    listItemsSmall(
+                        context, productrovider.getProductsByBestsell()),
+
+                    // Space
+                    SizedBox(
+                      height: getHeight(context, 2),
+                    )
+                  ],
+                ),
+              )),
             ),
           );
   }

@@ -1,6 +1,5 @@
 import 'package:dllylas/Config/athome_functions.dart';
 
-
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/my_cart.dart';
@@ -94,7 +93,8 @@ class _OneitemState extends State<Oneitem> {
                                           builder: (BuildContext context) {
                                             return ClipRRect(
                                               child: CachedNetworkImage(
-                                                imageUrl: dotenv.env['imageUrlServer']! +
+                                                imageUrl: dotenv.env[
+                                                        'imageUrlServer']! +
                                                     imageUrl.img!,
                                                 width: getWidth(context, 100),
                                                 height: getHeight(context, 25),
@@ -123,17 +123,22 @@ class _OneitemState extends State<Oneitem> {
                                       //       color: Color(0xffF2F2F2),
                                       borderRadius: BorderRadius.circular(100)),
                                   child: Center(
-                                    child: CachedNetworkImage(
-                                      imageUrl: dotenv.env['imageUrlServer']! + Item.coverImg!,
-                                      // dotenv.env['imageUrlServer']! + Item.coverImg!,
-                                      placeholder: (context, url) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      width: getWidth(context, 100),
-                                      height: getHeight(context, 20),
+                                    child: Hero(
+                                      tag: Item.coverImg!,
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            dotenv.env['imageUrlServer']! +
+                                                Item.coverImg!,
+                                        // dotenv.env['imageUrlServer']! + Item.coverImg!,
+                                        placeholder: (context, url) =>
+                                            Image.asset(
+                                                "assets/images/Logo-Type-2.png"),
+                                        errorWidget: (context, url, error) =>
+                                            Image.asset(
+                                                "assets/images/Logo-Type-2.png"),
+                                        width: getWidth(context, 100),
+                                        height: getHeight(context, 20),
+                                      ),
                                     ),
                                   ),
                                 ),

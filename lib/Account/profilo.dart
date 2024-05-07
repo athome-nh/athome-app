@@ -115,129 +115,239 @@ class _SettingState extends State<Setting> {
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
-              backgroundColor: mainColorWhite,
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 title: Text(
                   "Account".tr,
                 ),
                 actions: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: DropdownButton<String>(
-                      underline: Container(),
-                      value: selectedItem,
-                      icon: const SizedBox(),
-                      dropdownColor: mainColorGrey,
-                      style: TextStyle(
-                        color: mainColorWhite,
-                        fontFamily: mainFontbold,
-                        fontSize: 16, // Text size
-                      ),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedItem = newValue!;
-                          if (newValue == 'English') {
-                            lang = "en";
-                            Get.updateLocale(const Locale("en"));
-                            setStringPrefs("lang", "en");
-                          } else if (newValue == 'Arabic') {
-                            lang = "ar";
-                            Get.updateLocale(const Locale("ar"));
-                            setStringPrefs("lang", "ar");
-                          } else {
-                            lang = "kur";
-                            Get.updateLocale(const Locale("kur"));
-                            setStringPrefs("lang", "kur");
-                          }
-                        });
-                      },
-                      items: [
-                        // English
-                        DropdownMenuItem(
-                          value: 'English',
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                "assets/images/uk.png",
-                                width: 35,
-                                height: 35,
+                  PopupMenuButton(
+                      icon: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Image.asset(
+                              "assets/images/uk.png",
+                              width: 35,
+                              height: 35,
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                top: getWidth(context, 2),
+                                left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  top: getWidth(context, 2),
-                                  left: getWidth(context, 2),
-                                  right: getWidth(context, 2),
-                                  bottom: getWidth(context, 1),
+                              child: Text(
+                                "English".tr,
+                              ),
+                            ),
+                          ]),
+                      // add icon, by default "3 dot" icon
+                      // icon: Icon(Icons.book)
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem<int>(
+                            value: 0,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  "assets/images/uk.png",
+                                  width: 35,
+                                  height: 35,
                                 ),
-                                child: Text(
-                                  "English".tr,
-                                  style: TextStyle(
-                                    fontFamily: mainFontnormal,
+                                Container(
+                                  padding: EdgeInsets.only(
+                                    top: getWidth(context, 2),
+                                    left: getWidth(context, 2),
+                                    right: getWidth(context, 2),
+                                    bottom: getWidth(context, 1),
+                                  ),
+                                  child: Text(
+                                    "English".tr,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
+                          PopupMenuItem<int>(
+                            value: 1,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  "assets/images/iraq.png",
+                                  width: 35,
+                                  height: 35,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(
+                                    top: getWidth(context, 2),
+                                    left: getWidth(context, 2),
+                                    right: getWidth(context, 2),
+                                    bottom: getWidth(context, 1),
+                                  ),
+                                  child: Text(
+                                    "Arabic".tr,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem<int>(
+                            value: 2,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  "assets/images/flag.png",
+                                  width: 35,
+                                  height: 35,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(
+                                    top: getWidth(context, 2),
+                                    left: getWidth(context, 2),
+                                    right: getWidth(context, 2),
+                                    bottom: getWidth(context, 1),
+                                  ),
+                                  child: Text(
+                                    "Kurdish".tr,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ];
+                      },
+                      onSelected: (value) {
+                        selectedItem = value == 0
+                            ? 'English'
+                            : value == 1
+                                ? 'Arabic'
+                                : 'Kurdish';
+                        if (selectedItem == 'English') {
+                          lang = "en";
+                          Get.updateLocale(const Locale("en"));
+                          setStringPrefs("lang", "en");
+                        } else if (selectedItem == 'Arabic') {
+                          lang = "ar";
+                          Get.updateLocale(const Locale("ar"));
+                          setStringPrefs("lang", "ar");
+                        } else {
+                          lang = "kur";
+                          Get.updateLocale(const Locale("kur"));
+                          setStringPrefs("lang", "kur");
+                        }
+                      }),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  //   child: DropdownButton<String>(
+                  //     underline: Container(),
+                  //     value: selectedItem,
+                  //     icon: const SizedBox(),
+                  //     dropdownColor: mainColorWhite,
+                  //     style: TextStyle(
+                  //       color: mainColorBlack,
+                  //       fontFamily: mainFontnormal,
+                  //       fontSize: 16, // Text size
+                  //     ),
+                  //     onChanged: (String? newValue) {
+                  //       setState(() {
+                  //         selectedItem = newValue!;
+                  //         if (newValue == 'English') {
+                  //           lang = "en";
+                  //           Get.updateLocale(const Locale("en"));
+                  //           setStringPrefs("lang", "en");
+                  //         } else if (newValue == 'Arabic') {
+                  //           lang = "ar";
+                  //           Get.updateLocale(const Locale("ar"));
+                  //           setStringPrefs("lang", "ar");
+                  //         } else {
+                  //           lang = "kur";
+                  //           Get.updateLocale(const Locale("kur"));
+                  //           setStringPrefs("lang", "kur");
+                  //         }
+                  //       });
+                  //     },
+                  //     items: [
+                  //       // English
+                  //       DropdownMenuItem(
+                  //         value: 'English',
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //           children: [
+                  //             Image.asset(
+                  //               "assets/images/uk.png",
+                  //               width: 35,
+                  //               height: 35,
+                  //             ),
+                  //             Container(
+                  //               padding: EdgeInsets.only(
+                  //                 top: getWidth(context, 2),
+                  //                 left: getWidth(context, 2),
+                  //                 right: getWidth(context, 2),
+                  //                 bottom: getWidth(context, 1),
+                  //               ),
+                  //               child: Text(
+                  //                 "English".tr,
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
 
-                        // Arabic
-                        DropdownMenuItem(
-                          value: "Arabic",
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                "assets/images/iraq.png",
-                                width: 35,
-                                height: 35,
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  top: getWidth(context, 2),
-                                  left: getWidth(context, 2),
-                                  right: getWidth(context, 2),
-                                  bottom: getWidth(context, 1),
-                                ),
-                                child: Text(
-                                  "Arabic".tr,
-                                  style: TextStyle(fontFamily: mainFontnormal),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                  //       // Arabic
+                  //       DropdownMenuItem(
+                  //         value: "Arabic",
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //           children: [
+                  //             Image.asset(
+                  //               "assets/images/iraq.png",
+                  //               width: 35,
+                  //               height: 35,
+                  //             ),
+                  //             Container(
+                  //               padding: EdgeInsets.only(
+                  //                 top: getWidth(context, 2),
+                  //                 left: getWidth(context, 2),
+                  //                 right: getWidth(context, 2),
+                  //                 bottom: getWidth(context, 1),
+                  //               ),
+                  //               child: Text(
+                  //                 "Arabic".tr,
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
 
-                        // Kurdish
-                        DropdownMenuItem(
-                          value: 'Kurdish',
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                "assets/images/flag.png",
-                                width: 35,
-                                height: 35,
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  top: getWidth(context, 2),
-                                  left: getWidth(context, 2),
-                                  right: getWidth(context, 2),
-                                  bottom: getWidth(context, 1),
-                                ),
-                                child: Text(
-                                  "Kurdish".tr,
-                                  style: TextStyle(fontFamily: mainFontnormal),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  //       // Kurdish
+                  //       DropdownMenuItem(
+                  //         value: 'Kurdish',
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //           children: [
+                  //             Image.asset(
+                  //               "assets/images/flag.png",
+                  //               width: 35,
+                  //               height: 35,
+                  //             ),
+                  //             Container(
+                  //               padding: EdgeInsets.only(
+                  //                 top: getWidth(context, 2),
+                  //                 left: getWidth(context, 2),
+                  //                 right: getWidth(context, 2),
+                  //                 bottom: getWidth(context, 1),
+                  //               ),
+                  //               child: Text(
+                  //                 "Kurdish".tr,
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
               body: !isLogin
@@ -1059,7 +1169,7 @@ class _SettingState extends State<Setting> {
                                     //   context,
                                     //   MaterialPageRoute(
                                     //       builder: (context) =>
-                                    //           const NavSwitch()),
+                                    //           NavSwitch()),
                                     // );
                                   },
                                   child: Padding(
@@ -1392,7 +1502,7 @@ class _SettingState extends State<Setting> {
                                                                                     Navigator.pop(context);
                                                                                     Navigator.pushReplacement(
                                                                                       context,
-                                                                                      MaterialPageRoute(builder: (context) => const NavSwitch()),
+                                                                                      MaterialPageRoute(builder: (context) => NavSwitch()),
                                                                                     );
                                                                                   } else {
                                                                                     setState(() {
@@ -2332,8 +2442,7 @@ class _SettingState extends State<Setting> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              const NavSwitch()),
+                                          builder: (context) => NavSwitch()),
                                     );
                                   });
                                 },

@@ -7,14 +7,17 @@ import 'package:dllylas/home/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import 'home_page.dart';
+import 'package:line_icons/line_icons.dart';
 
 class NavSwitch extends StatefulWidget {
-  const NavSwitch({super.key});
+  int pageNum = 0;
+  NavSwitch({this.pageNum = 0, Key? key}) : super(key: key);
 
   @override
   State<NavSwitch> createState() => _NavSwitchState();
@@ -53,24 +56,30 @@ class NavSwitch extends StatefulWidget {
 // }
 
 class _NavSwitchState extends State<NavSwitch> {
-  int _selectedIndex = 0;
-
+  int selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeSreen(),
-    const Search(),
+    // const Search(),
     MyCart(false),
     const Favorite(),
     const Setting(),
   ];
 
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
   @override
   void initState() {
+    setState(() {
+      selectedIndex = widget.pageNum;
+    });
+
     super.initState();
   }
 
@@ -86,86 +95,88 @@ class _NavSwitchState extends State<NavSwitch> {
         },
         child: Scaffold(
           body: Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
+            child: _widgetOptions.elementAt(selectedIndex),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              // Home
-              BottomNavigationBarItem(
-                  activeIcon: const Icon(
-                    Ionicons.home,
-                  ),
-                  icon: const Icon(
-                    Ionicons.home_outline,
-                  ),
-                  label: "Home".tr),
-
-              // Search
-              BottomNavigationBarItem(
-                icon: const Icon(
-                  Ionicons.search_outline,
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Colors.black.withOpacity(.1),
+                )
+              ],
+            ),
+            child: SafeArea(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+                child: GNav(
+                  rippleColor: mainColorGrey,
+                  hoverColor: mainColorGrey,
+                  gap: 6,
+                  activeColor: mainColorWhite,
+                  iconSize: 24,
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  duration: Duration(milliseconds: 400),
+                  tabBackgroundColor: mainColorGrey,
+                  color: mainColorGrey,
+                  tabs: [
+                    GButton(
+                      icon: LineIcons.home,
+                      text: "Home".tr,
+                    ),
+                    GButton(
+                      iconColor: mainColorGrey,
+                      textColor: mainColorWhite,
+                      rippleColor: mainColorGrey,
+                      hoverColor: mainColorGrey,
+                      backgroundColor: mainColorGrey,
+                      gap: 6,
+                      iconSize: 24,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      icon: LineIcons.shoppingCart,
+                      text: 'Cart'.tr,
+                      duration: Duration(milliseconds: 400),
+                      leading: cartProvider.cartItems.isNotEmpty
+                          ? Badge(
+                              label: Text(
+                                cartProvider.cartItems.length.toString(),
+                              ),
+                              backgroundColor: mainColorRed,
+                              child: Icon(
+                                LineIcons.shoppingCart,
+                                color: selectedIndex == 1
+                                    ? mainColorWhite
+                                    : mainColorGrey,
+                              ),
+                            )
+                          : Icon(
+                              LineIcons.shoppingCart,
+                              color: selectedIndex == 1
+                                  ? mainColorWhite
+                                  : mainColorGrey,
+                            ),
+                    ),
+                    GButton(
+                      icon: LineIcons.heart,
+                      text: 'Likes',
+                    ),
+                    GButton(
+                      icon: LineIcons.user,
+                      text: 'Profile',
+                    ),
+                  ],
+                  selectedIndex: selectedIndex,
+                  onTabChange: (index) {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
                 ),
-                activeIcon: const Icon(
-                  Ionicons.search,
-                ),
-                label: 'Search'.tr,
               ),
-
-              // Cart
-              BottomNavigationBarItem(
-                icon: cartProvider.cartItems.isNotEmpty
-                    ? Badge(
-                        label: Text(
-                          cartProvider.cartItems.length.toString(),
-                        ),
-                        backgroundColor: mainColorRed,
-                        child: const Icon(
-                          Ionicons.cart_outline,
-                        ),
-                      )
-                    : const Icon(
-                        Ionicons.cart_outline,
-                      ),
-                activeIcon: cartProvider.cartItems.isNotEmpty
-                    ? Badge(
-                        label: Text(
-                          cartProvider.cartItems.length.toString(),
-                        ),
-                        backgroundColor: mainColorRed,
-                        child: const Icon(
-                          Ionicons.cart_sharp,
-                        ),
-                      )
-                    : const Icon(
-                        Ionicons.cart_sharp,
-                      ),
-                label: 'Cart'.tr,
-              ),
-
-              // Favorite
-              BottomNavigationBarItem(
-                icon: const Icon(
-                  FontAwesomeIcons.heart,
-                ),
-                activeIcon: const Icon(
-                  FontAwesomeIcons.solidHeart,
-                ),
-                label: 'Favorite'.tr,
-              ),
-
-              // Account
-              BottomNavigationBarItem(
-                icon: const Icon(
-                  Ionicons.person_outline,
-                ),
-                activeIcon: const Icon(
-                  Ionicons.person,
-                ),
-                label: 'Account'.tr,
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
+            ),
           ),
         ),
       ),

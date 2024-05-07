@@ -25,7 +25,6 @@ class _successScreenState extends State<successScreen> {
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
-
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -88,7 +87,11 @@ class _successScreenState extends State<successScreen> {
                 padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
                 child: Text(
                   widget.outrange
-                      ? "sorryWeDoNotHaveDelivery".tr+" "+productrovider.startTime.toString()+" "+"am".tr
+                      ? "sorryWeDoNotHaveDelivery".tr +
+                          " " +
+                          productrovider.startTime.toString() +
+                          " " +
+                          "am".tr
                       : "YourOrderIsNowBeingProcessed".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -111,7 +114,7 @@ class _successScreenState extends State<successScreen> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const NavSwitch()),
+                                builder: (context) => NavSwitch()),
                           );
                         },
                         style: TextButton.styleFrom(
@@ -138,7 +141,7 @@ class _successScreenState extends State<successScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const NavSwitch()),
+                                  builder: (context) => NavSwitch()),
                             );
                           });
                         },
@@ -170,7 +173,7 @@ class _successScreenState extends State<successScreen> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const NavSwitch()),
+                                    builder: (context) => NavSwitch()),
                               );
                             }
                           }
@@ -189,8 +192,7 @@ class _successScreenState extends State<successScreen> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const NavSwitch()),
+                          MaterialPageRoute(builder: (context) => NavSwitch()),
                         );
                       },
                       style: TextButton.styleFrom(

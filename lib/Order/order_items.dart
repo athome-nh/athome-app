@@ -471,8 +471,7 @@ class _OrederItemsState extends State<OrederItems> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const NavSwitch()),
+                                        builder: (context) => NavSwitch()),
                                   );
                                   cartProvider.clearCartPast();
                                 },

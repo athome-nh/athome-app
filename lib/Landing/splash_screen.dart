@@ -74,8 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
           () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) =>
-                    seen ? const NavSwitch() : const ChooseLang(),
+                builder: (context) => seen ? NavSwitch() : const ChooseLang(),
               ),
             );
           },
@@ -121,7 +120,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => seen ? const NavSwitch() : const ChooseLang(),
+            builder: (context) => seen ? NavSwitch() : const ChooseLang(),
           ),
         );
       },

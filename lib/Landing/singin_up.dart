@@ -106,7 +106,7 @@ class _SingInUpState extends State<SingInUp> {
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-   }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -500,7 +500,7 @@ class _SingInUpState extends State<SingInUp> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                                  const NavSwitch()),
+                                                                  NavSwitch()),
                                                         );
                                                       },
                                                       style: ElevatedButton
@@ -554,7 +554,7 @@ class _SingInUpState extends State<SingInUp> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const NavSwitch()),
+                                      builder: (context) => NavSwitch()),
                                 );
                               }
                             } else {

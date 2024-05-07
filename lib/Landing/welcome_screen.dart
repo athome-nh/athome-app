@@ -91,7 +91,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const NavSwitch()),
+                                builder: (context) => NavSwitch()),
                           );
                         },
                         child: Text(
@@ -117,7 +117,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                         //       context,
                         //       MaterialPageRoute(
                         //           builder: (context) =>
-                        //               const NavSwitch()),
+                        //               NavSwitch()),
                         //     );
                         //   },
                         //   style: ElevatedButton.styleFrom(

@@ -575,8 +575,7 @@ class _CheckOutState extends State<CheckOut> {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                const NavSwitch()),
+                                            builder: (context) => NavSwitch()),
                                       );
                                     });
                                   } else {
@@ -592,8 +591,7 @@ class _CheckOutState extends State<CheckOut> {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                const NavSwitch()),
+                                            builder: (context) => NavSwitch()),
                                       );
                                     });
                                   }
@@ -806,121 +804,123 @@ class _CheckOutState extends State<CheckOut> {
                                                                     );
                                                                   }
                                                                 : () {
-                                                                    if (locationID !=
-                                                                        0) {
-                                                                      Navigator.pop(
-                                                                          context);
-                                                                      setState(
-                                                                          () {
-                                                                        waitingcheckout =
-                                                                            true;
-                                                                      });
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    // if (locationID !=
+                                                                    //     0) {
+                                                                    //   Navigator.pop(
+                                                                    //       context);
+                                                                    //   setState(
+                                                                    //       () {
+                                                                    //     waitingcheckout =
+                                                                    //         true;
+                                                                    //   });
 
-                                                                      String
-                                                                          data =
-                                                                          "";
-                                                                      for (var element
-                                                                          in cartProvider
-                                                                              .cartItems) {
-                                                                        ProductModel
-                                                                            Item =
-                                                                            productrovider.getoneProductById(element.product);
-                                                                        String price = Item.price2! >
-                                                                                -1
-                                                                            ? Item.price2!.toString()
-                                                                            : Item.price.toString();
-                                                                        data +=
-                                                                            "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
-                                                                      }
+                                                                    //   String
+                                                                    //       data =
+                                                                    //       "";
+                                                                    //   for (var element
+                                                                    //       in cartProvider
+                                                                    //           .cartItems) {
+                                                                    //     ProductModel
+                                                                    //         Item =
+                                                                    //         productrovider.getoneProductById(element.product);
+                                                                    //     String price = Item.price2! >
+                                                                    //             -1
+                                                                    //         ? Item.price2!.toString()
+                                                                    //         : Item.price.toString();
+                                                                    //     data +=
+                                                                    //         "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
+                                                                    //   }
 
-                                                                      var data2 =
-                                                                          {
-                                                                        "customerid":
-                                                                            userdata["id"],
-                                                                        "total":
-                                                                            widget.total,
-                                                                        "location":
-                                                                            locationID,
-                                                                        "order_data":
-                                                                            data.substring(2),
-                                                                        "note":
-                                                                            NoteController.text,
-                                                                      };
+                                                                    //   var data2 =
+                                                                    //       {
+                                                                    //     "customerid":
+                                                                    //         userdata["id"],
+                                                                    //     "total":
+                                                                    //         widget.total,
+                                                                    //     "location":
+                                                                    //         locationID,
+                                                                    //     "order_data":
+                                                                    //         data.substring(2),
+                                                                    //     "note":
+                                                                    //         NoteController.text,
+                                                                    //   };
 
-                                                                      Network(false)
-                                                                          .postData(
-                                                                              "order",
-                                                                              data2,
-                                                                              context)
-                                                                          .then(
-                                                                              (value) {
-                                                                        if (value !=
-                                                                            "") {
-                                                                          if (value["code"] ==
-                                                                              "201") {
-                                                                            setState(() {
-                                                                              waitingcheckout = false;
-                                                                            });
-                                                                            cartProvider.clearCart();
-                                                                            final productrovider =
-                                                                                Provider.of<productProvider>(context, listen: false);
+                                                                    //   Network(false)
+                                                                    //       .postData(
+                                                                    //           "order",
+                                                                    //           data2,
+                                                                    //           context)
+                                                                    //       .then(
+                                                                    //           (value) {
+                                                                    //     if (value !=
+                                                                    //         "") {
+                                                                    //       if (value["code"] ==
+                                                                    //           "201") {
+                                                                    //         setState(() {
+                                                                    //           waitingcheckout = false;
+                                                                    //         });
+                                                                    //         cartProvider.clearCart();
+                                                                    //         final productrovider =
+                                                                    //             Provider.of<productProvider>(context, listen: false);
 
-                                                                            productrovider.getuserdata(userdata["id"].toString());
+                                                                    //         productrovider.getuserdata(userdata["id"].toString());
 
-                                                                            DateTime
-                                                                                timecheck =
-                                                                                DateTime.parse(value["now"].toString());
-                                                                            DateTime
-                                                                                ST =
-                                                                                DateTime.parse("2023-11-09 ${productrovider.startTime}:00");
+                                                                    //         DateTime
+                                                                    //             timecheck =
+                                                                    //             DateTime.parse(value["now"].toString());
+                                                                    //         DateTime
+                                                                    //             ST =
+                                                                    //             DateTime.parse("2023-11-09 ${productrovider.startTime}:00");
 
-                                                                            DateTime
-                                                                                DT =
-                                                                                DateTime.parse("2023-11-09 ${productrovider.endTime}:00");
+                                                                    //         DateTime
+                                                                    //             DT =
+                                                                    //             DateTime.parse("2023-11-09 ${productrovider.endTime}:00");
 
-                                                                            DateTime
-                                                                                NW =
-                                                                                DateTime.parse("2023-11-09 ${timecheck.hour}:00");
+                                                                    //         DateTime
+                                                                    //             NW =
+                                                                    //             DateTime.parse("2023-11-09 ${timecheck.hour}:00");
 
-                                                                            if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
-                                                                                NW.isAtSameMomentAs(ST)) {
-                                                                              Navigator.push(
-                                                                                context,
-                                                                                MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), false)),
-                                                                              ).then((value) {
-                                                                                Navigator.pushReplacement(
-                                                                                  context,
-                                                                                  MaterialPageRoute(builder: (context) => const NavSwitch()),
-                                                                                );
-                                                                              });
-                                                                            } else {
-                                                                              Navigator.push(
-                                                                                context,
-                                                                                MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), true)),
-                                                                              ).then((value) {
-                                                                                Navigator.pushReplacement(
-                                                                                  context,
-                                                                                  MaterialPageRoute(builder: (context) => const NavSwitch()),
-                                                                                );
-                                                                              });
-                                                                            }
-                                                                          } else {
-                                                                            setState(() {
-                                                                              waitingcheckout = false;
-                                                                            });
-                                                                            toastShort("unknown occurred error please try again later");
-                                                                          }
-                                                                        } else {
-                                                                          setState(
-                                                                              () {
-                                                                            waitingcheckout =
-                                                                                false;
-                                                                          });
-                                                                          toastShort(
-                                                                              "unknown occurred error please try again later");
-                                                                        }
-                                                                      });
-                                                                    }
+                                                                    //         if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
+                                                                    //             NW.isAtSameMomentAs(ST)) {
+                                                                    //           Navigator.push(
+                                                                    //             context,
+                                                                    //             MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), false)),
+                                                                    //           ).then((value) {
+                                                                    //             Navigator.pushReplacement(
+                                                                    //               context,
+                                                                    //               MaterialPageRoute(builder: (context) => NavSwitch()),
+                                                                    //             );
+                                                                    //           });
+                                                                    //         } else {
+                                                                    //           Navigator.push(
+                                                                    //             context,
+                                                                    //             MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), true)),
+                                                                    //           ).then((value) {
+                                                                    //             Navigator.pushReplacement(
+                                                                    //               context,
+                                                                    //               MaterialPageRoute(builder: (context) => NavSwitch()),
+                                                                    //             );
+                                                                    //           });
+                                                                    //         }
+                                                                    //       } else {
+                                                                    //         setState(() {
+                                                                    //           waitingcheckout = false;
+                                                                    //         });
+                                                                    //         toastShort("unknown occurred error please try again later");
+                                                                    //       }
+                                                                    //     } else {
+                                                                    //       setState(
+                                                                    //           () {
+                                                                    //         waitingcheckout =
+                                                                    //             false;
+                                                                    //       });
+                                                                    //       toastShort(
+                                                                    //           "unknown occurred error please try again later");
+                                                                    //     }
+                                                                    //   });
+                                                                    // }
                                                                   },
                                                         style: TextButton
                                                             .styleFrom(

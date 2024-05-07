@@ -95,11 +95,11 @@ class _VerificatoinState extends State<Verificatoin> {
 
   void _onTokenEvent(String event) {
     token2 = event;
-   }
+  }
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-   }
+  }
 
   @override
   void dispose() {
@@ -349,7 +349,7 @@ class _VerificatoinState extends State<Verificatoin> {
             productrovider.updatePost(true);
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const NavSwitch()),
+              MaterialPageRoute(builder: (context) => NavSwitch()),
             );
           }
         }
