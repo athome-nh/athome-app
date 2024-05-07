@@ -10,7 +10,7 @@ import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/Notfication.dart';
 import 'package:dllylas/home/item_categories.dart';
-import 'package:dllylas/home/nav_switch.dart';
+
 import 'package:dllylas/home/search_page.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
@@ -20,9 +20,9 @@ import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';

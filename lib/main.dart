@@ -131,6 +131,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
               secondary: mainColorRed,
               background: mainColorWhite,
               brightness: Brightness.light,
+              surfaceTint: mainColorWhite,
               seedColor: mainColorGrey),
           scaffoldBackgroundColor: mainColorWhite,
           appBarTheme: AppBarTheme(

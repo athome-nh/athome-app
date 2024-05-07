@@ -77,9 +77,9 @@ class _OrderScreenState extends State<OrderScreen> {
                     "My Orders".tr,
                   ),
                   bottom: TabBar(
-                    unselectedLabelColor: mainColorWhite,
-                    labelColor: mainColorWhite,
-                    indicatorColor: mainColorWhite,
+                    unselectedLabelColor: mainColorGrey,
+                    labelColor: mainColorGrey,
+                    indicatorColor: mainColorGrey,
                     labelStyle:
                         TextStyle(fontFamily: mainFontnormal, fontSize: 14),
                     unselectedLabelStyle:
@@ -206,231 +206,205 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .reversed
                                       .toList()[index];
 
-                                  return Column(
-                                    children: [
-                                      ListTile(
-                                        leading: Container(
-                                            width: getWidth(context, 15),
-                                            height: getHeight(context, 18),
-                                            decoration: BoxDecoration(
-                                              color: mainColorGrey
-                                                  .withOpacity(0.1),
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                            ),
-                                            child: order.status == 5
-                                                ? Image.asset(
-                                                    "assets/Victors/delivered.png",
-                                                  )
-                                                : Image.asset(
-                                                    "assets/Victors/undelivered.png",
-                                                  )),
-                                        title: Row(
-                                          children: [
-                                            Text(
-                                              "Order number:".tr,
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorGrey),
-                                            ),
-                                            Text(
-                                              order.id.toString(),
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorRed),
-                                            ),
-                                          ],
+                                  return Card(
+                                    elevation: 4,
+                                    margin: EdgeInsets.all(8),
+                                    color: mainColorWhite,
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Container(
+                                              width: getWidth(context, 15),
+                                              height: getHeight(context, 18),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              child: order.status == 5
+                                                  ? Image.asset(
+                                                      "assets/Victors/delivered.png",
+                                                    )
+                                                  : Image.asset(
+                                                      "assets/Victors/undelivered.png",
+                                                    )),
+                                          title: Row(
+                                            children: [
+                                              Text(
+                                                "Order number:".tr,
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorGrey),
+                                              ),
+                                              Text(
+                                                order.id.toString(),
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorRed),
+                                              ),
+                                            ],
+                                          ),
+                                          subtitle: Text(
+                                            "Date:".tr +
+                                                order.createdAt
+                                                    .toString()
+                                                    .substring(0, 16),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: mainFontnormal,
+                                                color: mainColorGrey),
+                                          ),
                                         ),
-                                        subtitle: Text(
-                                          "Date:".tr +
-                                              order.createdAt
-                                                  .toString()
-                                                  .substring(0, 16),
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: mainFontnormal,
-                                              color: mainColorGrey),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(context, 4)),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            TextButton(
-                                              onPressed: () {
-                                                productrovider
-                                                    .getordersbyOrderId(
-                                                        order.id.toString())
-                                                    .forEach((element) {
-                                                  final existingItemIndex =
-                                                      productrovider.products
-                                                          .indexWhere(
-                                                    (pro) =>
-                                                        pro.id ==
-                                                        element.productId,
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: getWidth(context, 4)),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              TextButton.icon(
+                                                onPressed: () {
+                                                  productrovider
+                                                      .getordersbyOrderId(
+                                                          order.id.toString())
+                                                      .forEach((element) {
+                                                    final existingItemIndex =
+                                                        productrovider.products
+                                                            .indexWhere(
+                                                      (pro) =>
+                                                          pro.id ==
+                                                          element.productId,
+                                                    );
+
+                                                    if (existingItemIndex !=
+                                                        -1) {
+                                                      //count order
+                                                      final productitem =
+                                                          productrovider
+                                                                  .products[
+                                                              existingItemIndex];
+                                                      int count = element.qt!;
+                                                      if (order.status == 5) {
+                                                        count = (element
+                                                                .pickedQt! -
+                                                            element
+                                                                .returnedQt!);
+                                                      } else {
+                                                        count = element.qt!;
+                                                      }
+
+                                                      if (count == 0) {
+                                                        return;
+                                                      }
+
+                                                      if (checkOferPrice(
+                                                              productitem) &&
+                                                          productitem
+                                                                  .orderLimit! <
+                                                              count) {
+                                                        final cartItem =
+                                                            CartItemPast(
+                                                          product:
+                                                              productitem.id!,
+                                                          quantity: productitem
+                                                              .orderLimit!,
+                                                        );
+                                                        cartProvider
+                                                            .addToCartPast(
+                                                                cartItem);
+                                                      } else if (count >
+                                                          productitem.stock!) {
+                                                        final cartItem =
+                                                            CartItemPast(
+                                                          product:
+                                                              productitem.id!,
+                                                          quantity: productitem
+                                                              .stock!,
+                                                        );
+                                                        cartProvider
+                                                            .addToCartPast(
+                                                                cartItem);
+                                                      } else {
+                                                        final cartItem =
+                                                            CartItemPast(
+                                                          product: element
+                                                              .productId!,
+                                                          quantity: count,
+                                                        );
+                                                        cartProvider
+                                                            .addToCartPast(
+                                                                cartItem);
+                                                      }
+                                                    } else {}
+                                                  });
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const OrederItems()),
+                                                  ).then((value) {
+                                                    cartProvider
+                                                        .clearCartPast();
+                                                  });
+                                                },
+                                                icon: Icon(
+                                                  Icons.repeat,
+                                                  color: mainColorGrey,
+                                                ), // Add your desired icon
+                                                style: TextButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    fixedSize: Size(
+                                                        getWidth(context, 30),
+                                                        getHeight(context, 3))),
+                                                label: Text(
+                                                  "Re order".tr,
+                                                  style: TextStyle(
+                                                      color: mainColorGrey),
+                                                ),
+                                              ),
+                                              TextButton.icon(
+                                                onPressed: () {
+                                                  productrovider
+                                                      .getproductitems(
+                                                          order.id!);
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            OldOrder(
+                                                                order.id
+                                                                    .toString(),
+                                                                order
+                                                                    .returnTotalPrice
+                                                                    .toString(),
+                                                                order.createdAt
+                                                                    .toString(),
+                                                                order.status!)),
                                                   );
-
-                                                  if (existingItemIndex != -1) {
-                                                    //count order
-                                                    final productitem =
-                                                        productrovider.products[
-                                                            existingItemIndex];
-                                                    int count = element.qt!;
-                                                    if (order.status == 5) {
-                                                      count = (element
-                                                              .pickedQt! -
-                                                          element.returnedQt!);
-                                                    } else {
-                                                      count = element.qt!;
-                                                    }
-
-                                                    if (count == 0) {
-                                                      return;
-                                                    }
-
-                                                    if (checkOferPrice(
-                                                            productitem) &&
-                                                        productitem
-                                                                .orderLimit! <
-                                                            count) {
-                                                      final cartItem =
-                                                          CartItemPast(
-                                                        product:
-                                                            productitem.id!,
-                                                        quantity: productitem
-                                                            .orderLimit!,
-                                                      );
-                                                      cartProvider
-                                                          .addToCartPast(
-                                                              cartItem);
-                                                    } else if (count >
-                                                        productitem.stock!) {
-                                                      final cartItem =
-                                                          CartItemPast(
-                                                        product:
-                                                            productitem.id!,
-                                                        quantity:
-                                                            productitem.stock!,
-                                                      );
-                                                      cartProvider
-                                                          .addToCartPast(
-                                                              cartItem);
-                                                    } else {
-                                                      final cartItem =
-                                                          CartItemPast(
-                                                        product:
-                                                            element.productId!,
-                                                        quantity: count,
-                                                      );
-                                                      cartProvider
-                                                          .addToCartPast(
-                                                              cartItem);
-                                                    }
-                                                  } else {}
-                                                });
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const OrederItems()),
-                                                ).then((value) {
-                                                  cartProvider.clearCartPast();
-                                                });
-                                              },
-                                              style: TextButton.styleFrom(
-                                                  backgroundColor: mainColorRed,
-                                                  fixedSize: Size(
-                                                      getWidth(context, 30),
-                                                      getHeight(context, 3))),
-                                              child: Text(
-                                                "Re order".tr,
-                                              ),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                productrovider
-                                                    .getproductitems(order.id!);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          OldOrder(
-                                                              order.id
-                                                                  .toString(),
-                                                              order
-                                                                  .returnTotalPrice
-                                                                  .toString(),
-                                                              order.createdAt
-                                                                  .toString(),
-                                                              order.status!)),
-                                                );
-                                              },
-                                              style: TextButton.styleFrom(
-                                                  fixedSize: Size(
-                                                      getWidth(context, 30),
-                                                      getHeight(context, 3))),
-                                              child: Text(
-                                                "View".tr,
-                                              ),
-                                            )
-                                            // Container(
-                                            //   height: getHeight(context, 4),
-                                            //   decoration: BoxDecoration(
-                                            //       border: Border.all(
-                                            //           color: mainColorGrey),
-                                            //       borderRadius:
-                                            //           BorderRadius.circular(5)),
-                                            //   child: TextButton(
-                                            //       onPressed: () {
-                                            //         productrovider
-                                            //             .getproductitems(
-                                            //                 order.id!);
-                                            //         Navigator.push(
-                                            //           context,
-                                            //           MaterialPageRoute(
-                                            //               builder: (context) =>
-                                            //                   OldOrder(
-                                            //                       order.id
-                                            //                           .toString(),
-                                            //                       order
-                                            //                           .returnTotalPrice
-                                            //                           .toString(),
-                                            //                       order.createdAt
-                                            //                           .toString(),
-                                            //                       order.status!)),
-                                            //         );
-                                            //       },
-                                            //       child: Row(
-                                            //         children: [
-                                            //           Text(
-                                            //             "View".tr,
-                                            //             style: TextStyle(
-                                            //                 color: mainColorGrey,
-                                            //                 fontFamily:
-                                            //                     mainFontnormal,
-                                            //                 fontSize: 14),
-                                            //           ),
-                                            //           const SizedBox(
-                                            //             width: 5,
-                                            //           ),
-                                            //           Icon(
-                                            //             Ionicons.eye_outline,
-                                            //             color: mainColorRed,
-                                            //             size: 20,
-                                            //           ),
-                                            //         ],
-                                            //       )),
-                                            // ),
-                                          ],
+                                                },
+                                                icon: Icon(
+                                                  Icons.visibility_outlined,
+                                                  color: mainColorGrey,
+                                                ), // Add your desired icon
+                                                style: TextButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    fixedSize: Size(
+                                                        getWidth(context, 30),
+                                                        getHeight(context, 3))),
+                                                label: Text(
+                                                  "View".tr,
+                                                  style: TextStyle(
+                                                      color: mainColorGrey),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      const Divider()
-                                    ],
+                                      ],
+                                    ),
                                   );
                                 })
                             : Center(
