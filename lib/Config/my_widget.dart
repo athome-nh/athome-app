@@ -1341,7 +1341,7 @@ Widget waitingWiget(BuildContext context) {
 Widget waitingWiget2(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
-    child: Image.asset("LogoLoading.gif"),
+    child: Image.asset("assets/images/LogoLoading.gif"),
     // LoadingIndicator(
     //   indicatorType: Indicator.ballRotateChase,
     //   colors: [
