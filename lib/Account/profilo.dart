@@ -78,6 +78,7 @@ class _SettingState extends State<Setting> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   String gender = "Male";
 
   String selectedItem = 'English';
@@ -97,6 +98,7 @@ class _SettingState extends State<Setting> {
     if (isLogin && userdata.isNotEmpty) {
       nameController.text = userdata["name"];
       ageController.text = userdata["age"].toString();
+      phoneController.text = userdata["phone"].toString();
       gender = userdata["gender"] ?? "Gender";
       image = userdata["img"];
     }
@@ -417,7 +419,8 @@ class _SettingState extends State<Setting> {
                                         border: Border.all(
                                           color: mainColorBlack,
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(1-5)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -489,7 +492,7 @@ class _SettingState extends State<Setting> {
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          5),
+                                                                          15),
                                                               color:
                                                                   mainColorWhite,
                                                             ),
@@ -841,7 +844,8 @@ class _SettingState extends State<Setting> {
                                         border: Border.all(
                                           color: mainColorBlack,
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -907,7 +911,7 @@ class _SettingState extends State<Setting> {
                                             color: mainColorBlack,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(5)),
+                                              BorderRadius.circular(15)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 12),
@@ -970,7 +974,7 @@ class _SettingState extends State<Setting> {
                                             color: mainColorBlack,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(5)),
+                                              BorderRadius.circular(15)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 12),
@@ -1026,7 +1030,7 @@ class _SettingState extends State<Setting> {
                                             color: mainColorBlack,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(5)),
+                                              BorderRadius.circular(15)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 12),
@@ -1060,49 +1064,7 @@ class _SettingState extends State<Setting> {
                                   height: getHeight(context, 2),
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    // var data = {
-                                    //   "id": userdata["id"].toString()
-                                    // };
-                                    // Network(false)
-                                    //     .postData("logout", data, context)
-                                    //     .then((value) {
-                                    //   print(value);
-                                    // });
-                                    // getStringPrefs("data").then((map) {
-                                    //   Map<String, dynamic> myMap =
-                                    //       json.decode(map);
-                                    //   myMap["islogin"] = false;
-                                    //   myMap["token"] = "";
-                                    //   setStringPrefs(
-                                    //       "data", json.encode(myMap));
-                                    // });
-
-                                    // final cartProvider =
-                                    //     Provider.of<CartProvider>(context,
-                                    //         listen: false);
-                                    // final product =
-                                    //     Provider.of<productProvider>(context,
-                                    //         listen: false);
-
-                                    // setState(() {
-                                    //   userdata = {};
-                                    //   token = "";
-                                    //   isLogin = false;
-                                    // });
-                                    // product.Orderitems.clear();
-                                    // product.location.clear();
-                                    // product.Orders.clear();
-                                    // cartProvider.cartItems.clear();
-                                    // cartProvider.FavItems.clear();
-
-                                    // Navigator.pushReplacement(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //       builder: (context) =>
-                                    //           NavSwitch()),
-                                    // );
-                                  },
+                                  onTap: () {},
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: getWidth(context, 5),
@@ -1113,7 +1075,49 @@ class _SettingState extends State<Setting> {
                                           border:
                                               Border.all(color: mainColorRed),
                                           borderRadius:
-                                              BorderRadius.circular(5)),
+                                              BorderRadius.circular(15)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              Ionicons.log_out_outline,
+                                              color: mainColorRed,
+                                              size: 30,
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              "Log out".tr,
+                                              style: TextStyle(
+                                                  color: mainColorRed,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 18),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 2),
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: getWidth(context, 5),
+                                    ),
+                                    child: Container(
+                                      height: getHeight(context, 6),
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: mainColorRed),
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 12),
@@ -1285,235 +1289,24 @@ class _SettingState extends State<Setting> {
                                               userdata["name"].toString(),
                                               style: TextStyle(
                                                   fontFamily: mainFontbold,
-                                                  fontSize: 22,
+                                                  fontSize: 20,
                                                   color: mainColorBlack),
                                             ),
-                                            Chip(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              avatar: const Icon(Icons.call),
-                                              label: Text(
-                                                userdata["phone"]
-                                                    .toString()
-                                                    .substring(4),
-                                                style: TextStyle(
-                                                    fontFamily: mainFontbold,
-                                                    fontSize: 12,
-                                                    color: mainColorBlack),
-                                              ),
-                                            ),
-                                            TextButton(
-                                                onPressed: () {
-                                                  DateTime now = DateTime.now();
-                                                  now = now.add(
-                                                      const Duration(days: 14));
-                                                  showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog(
-                                                        content: Directionality(
-                                                          textDirection: lang ==
-                                                                  "en"
-                                                              ? TextDirection
-                                                                  .ltr
-                                                              : TextDirection
-                                                                  .rtl,
-                                                          child: Stack(
-                                                            alignment:
-                                                                lang == "en"
-                                                                    ? Alignment
-                                                                        .topLeft
-                                                                    : Alignment
-                                                                        .topRight,
-                                                            children: [
-                                                              SizedBox(
-                                                                width: getWidth(
-                                                                    context,
-                                                                    70),
-                                                                height:
-                                                                    getHeight(
-                                                                        context,
-                                                                        50),
-                                                                child: Column(
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .center,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  //textcheck
-                                                                  children: <Widget>[
-                                                                    Image.asset(
-                                                                      "assets/Victors/sure.png",
-                                                                      width: getWidth(
-                                                                          context,
-                                                                          40),
-                                                                      height: getWidth(
-                                                                          context,
-                                                                          40),
-                                                                    ),
-                                                                    const SizedBox(
-                                                                      height:
-                                                                          10,
-                                                                    ),
-                                                                    Text(
-                                                                      "Delete Account"
-                                                                          .tr,
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                      maxLines:
-                                                                          1,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color:
-                                                                            mainColorBlack,
-                                                                        fontFamily:
-                                                                            mainFontbold,
-                                                                        fontSize:
-                                                                            25,
-                                                                      ),
-                                                                    ),
-                                                                    const SizedBox(
-                                                                        height:
-                                                                            10),
-                                                                    Text(
-                                                                      ("Account recovery opportunity".tr).replaceAll(
-                                                                          "@date@",
-                                                                          "(${now.toString().substring(0, 10)})"),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color:
-                                                                            mainColorBlack,
-                                                                        fontFamily:
-                                                                            mainFontnormal,
-                                                                        fontSize:
-                                                                            14,
-                                                                      ),
-                                                                    ),
-                                                                    TextButton(
-                                                                      onPressed: waiting
-                                                                          ? null
-                                                                          : () {
-                                                                              setState(() {
-                                                                                waiting = true;
-                                                                              });
-                                                                              var data = {
-                                                                                "id": userdata["id"].toString(),
-                                                                              };
-                                                                              Network(false).postData("delete", data, context).then((value) async {
-                                                                                if (value != "") {
-                                                                                  if (value["code"] == "201") {
-                                                                                    getStringPrefs("data").then((map) {
-                                                                                      Map<String, dynamic> myMap = json.decode(map);
-                                                                                      myMap["islogin"] = false;
-                                                                                      myMap["token"] = "";
-                                                                                      setStringPrefs("data", json.encode(myMap));
-                                                                                    });
-
-                                                                                    final cartProvider = Provider.of<CartProvider>(context, listen: false);
-                                                                                    final product = Provider.of<productProvider>(context, listen: false);
-
-                                                                                    setState(() {
-                                                                                      userdata = {};
-                                                                                      token = "";
-                                                                                      isLogin = false;
-                                                                                    });
-                                                                                    product.Orderitems.clear();
-                                                                                    product.location.clear();
-                                                                                    product.Orders.clear();
-                                                                                    cartProvider.cartItems.clear();
-                                                                                    cartProvider.FavItems.clear();
-
-                                                                                    Navigator.pop(context);
-                                                                                    Navigator.pushReplacement(
-                                                                                      context,
-                                                                                      MaterialPageRoute(builder: (context) => NavSwitch()),
-                                                                                    );
-                                                                                  } else {
-                                                                                    setState(() {
-                                                                                      waiting = false;
-                                                                                    });
-                                                                                  }
-                                                                                } else {
-                                                                                  setState(() {
-                                                                                    waiting = false;
-                                                                                  });
-                                                                                }
-                                                                              });
-                                                                            },
-                                                                      style: TextButton
-                                                                          .styleFrom(
-                                                                        fixedSize: Size(
-                                                                            getWidth(context,
-                                                                                70),
-                                                                            getHeight(context,
-                                                                                5)),
-                                                                        backgroundColor:
-                                                                            mainColorRed,
-                                                                      ),
-                                                                      child:
-                                                                          Text(
-                                                                        "Delete"
-                                                                            .tr,
-                                                                      ),
-                                                                    ),
-                                                                    const SizedBox(
-                                                                        height:
-                                                                            5),
-                                                                    TextButton(
-                                                                      onPressed: waiting
-                                                                          ? null
-                                                                          : () {
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                      style: TextButton
-                                                                          .styleFrom(
-                                                                        fixedSize: Size(
-                                                                            getWidth(context,
-                                                                                70),
-                                                                            getHeight(context,
-                                                                                5)),
-                                                                      ),
-                                                                      child:
-                                                                          Text(
-                                                                        "Cancel"
-                                                                            .tr,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              IconButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                                  icon: Icon(
-                                                                    Icons.close,
-                                                                    color:
-                                                                        mainColorBlack,
-                                                                  ))
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                                style: TextButton.styleFrom(
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  foregroundColor: mainColorRed,
-                                                ),
-                                                child:
-                                                    Text("Delete Account".tr))
+                                            // Chip(
+                                            //   shape: RoundedRectangleBorder(
+                                            //       borderRadius:
+                                            //           BorderRadius.circular(1-5)),
+                                            //   avatar: const Icon(Icons.call),
+                                            //   label: Text(
+                                            //     userdata["phone"]
+                                            //         .toString()
+                                            //         .substring(4),
+                                            //     style: TextStyle(
+                                            //         fontFamily: mainFontbold,
+                                            //         fontSize: 12,
+                                            //         color: mainColorBlack),
+                                            //   ),
+                                            // ),
                                           ],
                                         ),
                                       ),
@@ -1533,7 +1326,7 @@ class _SettingState extends State<Setting> {
                                       border: Border.all(
                                         color: mainColorBlack.withOpacity(0.2),
                                       ),
-                                      borderRadius: BorderRadius.circular(5)),
+                                      borderRadius: BorderRadius.circular(15)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12),
@@ -1605,7 +1398,7 @@ class _SettingState extends State<Setting> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        5),
+                                                                        15),
                                                             color:
                                                                 mainColorWhite,
                                                           ),
@@ -1769,6 +1562,58 @@ class _SettingState extends State<Setting> {
                                                                         isEdit
                                                                             ? Icons.edit
                                                                             : Icons.calendar_month,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        15),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    border:
+                                                                        Border(
+                                                                      bottom:
+                                                                          BorderSide(
+                                                                        color:
+                                                                            mainColorBlack,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  child:
+                                                                      TextField(
+                                                                    controller:
+                                                                        phoneController,
+                                                                    readOnly:
+                                                                        true,
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            mainColorBlack,
+                                                                        fontFamily:
+                                                                            mainFontnormal),
+                                                                    enabled:
+                                                                        false,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                      border:
+                                                                          UnderlineInputBorder(
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              mainColorBlack,
+                                                                        ),
+                                                                      ),
+                                                                      suffixIconColor:
+                                                                          mainColorBlack,
+                                                                      suffixIcon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .phone,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -2004,7 +1849,7 @@ class _SettingState extends State<Setting> {
                                       border: Border.all(
                                         color: mainColorBlack.withOpacity(0.2),
                                       ),
-                                      borderRadius: BorderRadius.circular(5)),
+                                      borderRadius: BorderRadius.circular(15)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12),
@@ -2068,7 +1913,8 @@ class _SettingState extends State<Setting> {
                                           color:
                                               mainColorBlack.withOpacity(0.2),
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(1-5)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -2133,7 +1979,8 @@ class _SettingState extends State<Setting> {
                                           color:
                                               mainColorBlack.withOpacity(0.2),
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -2189,7 +2036,8 @@ class _SettingState extends State<Setting> {
                                           color:
                                               mainColorBlack.withOpacity(0.2),
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(1-5)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -2245,7 +2093,8 @@ class _SettingState extends State<Setting> {
                                           color:
                                               mainColorBlack.withOpacity(0.2),
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -2301,7 +2150,8 @@ class _SettingState extends State<Setting> {
                                           color:
                                               mainColorBlack.withOpacity(0.2),
                                         ),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -2328,6 +2178,264 @@ class _SettingState extends State<Setting> {
                                                   .keyboard_arrow_right_outlined
                                               : Icons
                                                   .keyboard_arrow_left_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  DateTime now = DateTime.now();
+                                  now = now.add(const Duration(days: 14));
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        content: Directionality(
+                                          textDirection: lang == "en"
+                                              ? TextDirection.ltr
+                                              : TextDirection.rtl,
+                                          child: Stack(
+                                            alignment: lang == "en"
+                                                ? Alignment.topLeft
+                                                : Alignment.topRight,
+                                            children: [
+                                              SizedBox(
+                                                width: getWidth(context, 70),
+                                                height: getHeight(context, 50),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  //textcheck
+                                                  children: <Widget>[
+                                                    Image.asset(
+                                                      "assets/Victors/sure.png",
+                                                      width:
+                                                          getWidth(context, 40),
+                                                      height:
+                                                          getWidth(context, 40),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Text(
+                                                      "Delete Account".tr,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                        color: mainColorBlack,
+                                                        fontFamily:
+                                                            mainFontbold,
+                                                        fontSize: 25,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 10),
+                                                    Text(
+                                                      ("Account recovery opportunity"
+                                                              .tr)
+                                                          .replaceAll("@date@",
+                                                              "(${now.toString().substring(0, 10)})"),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        color: mainColorBlack,
+                                                        fontFamily:
+                                                            mainFontnormal,
+                                                        fontSize: 14,
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: waiting
+                                                          ? null
+                                                          : () {
+                                                              setState(() {
+                                                                waiting = true;
+                                                              });
+                                                              var data = {
+                                                                "id": userdata[
+                                                                        "id"]
+                                                                    .toString(),
+                                                              };
+                                                              Network(false)
+                                                                  .postData(
+                                                                      "delete",
+                                                                      data,
+                                                                      context)
+                                                                  .then(
+                                                                      (value) async {
+                                                                if (value !=
+                                                                    "") {
+                                                                  if (value[
+                                                                          "code"] ==
+                                                                      "201") {
+                                                                    getStringPrefs(
+                                                                            "data")
+                                                                        .then(
+                                                                            (map) {
+                                                                      Map<String,
+                                                                              dynamic>
+                                                                          myMap =
+                                                                          json.decode(
+                                                                              map);
+                                                                      myMap["islogin"] =
+                                                                          false;
+                                                                      myMap["token"] =
+                                                                          "";
+                                                                      setStringPrefs(
+                                                                          "data",
+                                                                          json.encode(
+                                                                              myMap));
+                                                                    });
+
+                                                                    final cartProvider = Provider.of<
+                                                                            CartProvider>(
+                                                                        context,
+                                                                        listen:
+                                                                            false);
+                                                                    final product = Provider.of<
+                                                                            productProvider>(
+                                                                        context,
+                                                                        listen:
+                                                                            false);
+
+                                                                    setState(
+                                                                        () {
+                                                                      userdata =
+                                                                          {};
+                                                                      token =
+                                                                          "";
+                                                                      isLogin =
+                                                                          false;
+                                                                    });
+                                                                    product.Orderitems
+                                                                        .clear();
+                                                                    product
+                                                                        .location
+                                                                        .clear();
+                                                                    product.Orders
+                                                                        .clear();
+                                                                    cartProvider
+                                                                        .cartItems
+                                                                        .clear();
+                                                                    cartProvider
+                                                                            .FavItems
+                                                                        .clear();
+
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    Navigator
+                                                                        .pushReplacement(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              NavSwitch()),
+                                                                    );
+                                                                  } else {
+                                                                    setState(
+                                                                        () {
+                                                                      waiting =
+                                                                          false;
+                                                                    });
+                                                                  }
+                                                                } else {
+                                                                  setState(() {
+                                                                    waiting =
+                                                                        false;
+                                                                  });
+                                                                }
+                                                              });
+                                                            },
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        fixedSize: Size(
+                                                            getWidth(
+                                                                context, 70),
+                                                            getHeight(
+                                                                context, 5)),
+                                                        backgroundColor:
+                                                            mainColorRed,
+                                                      ),
+                                                      child: Text(
+                                                        "Delete".tr,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 5),
+                                                    TextButton(
+                                                      onPressed: waiting
+                                                          ? null
+                                                          : () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        fixedSize: Size(
+                                                            getWidth(
+                                                                context, 70),
+                                                            getHeight(
+                                                                context, 5)),
+                                                      ),
+                                                      child: Text(
+                                                        "Cancel".tr,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              IconButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.close,
+                                                    color: mainColorBlack,
+                                                  ))
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color:
+                                                mainColorRed.withOpacity(0.5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Ionicons.trash_outline,
+                                            color: mainColorRed,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Delete Account".tr,
+                                            style: TextStyle(
+                                                color: mainColorRed,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -2387,7 +2495,8 @@ class _SettingState extends State<Setting> {
                                         border: Border.all(
                                             color:
                                                 mainColorRed.withOpacity(0.5)),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),

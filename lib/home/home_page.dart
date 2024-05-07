@@ -229,7 +229,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 4)),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(15),
                               border: Border.all(
                                   color: mainColorBlack.withOpacity(0.1))),
                           height: 50,
@@ -334,7 +334,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   );
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderRadius: BorderRadius.circular(15.0),
                                   child: CachedNetworkImage(
                                     imageUrl: dotenv.env['imageUrlServer']! +
                                         item.img!,

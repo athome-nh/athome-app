@@ -161,7 +161,7 @@ class _CheckOutState extends State<CheckOut> {
                                               color: mainColorGrey
                                                   .withOpacity(0.1),
                                               borderRadius:
-                                                  BorderRadius.circular(5)),
+                                                  BorderRadius.circular(15)),
                                           child: Padding(
                                             padding: const EdgeInsets.all(12),
                                             child: Row(
@@ -284,7 +284,7 @@ class _CheckOutState extends State<CheckOut> {
                       child: Container(
                         height: getHeight(context, 5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),
                           color: const Color(0xffF2F2F2),
                         ),
                         child: Padding(
@@ -319,7 +319,7 @@ class _CheckOutState extends State<CheckOut> {
                       child: Container(
                         height: getHeight(context, 5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),
                           color: const Color(0xffF2F2F2),
                         ),
                         child: Padding(
@@ -348,7 +348,7 @@ class _CheckOutState extends State<CheckOut> {
                       child: Container(
                         height: getHeight(context, 5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),
                           color: const Color(0xffF2F2F2),
                         ),
                         child: Padding(
@@ -381,7 +381,7 @@ class _CheckOutState extends State<CheckOut> {
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey, // Customize border color
                             width: 1.0, // Customize border width

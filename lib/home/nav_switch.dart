@@ -195,13 +195,13 @@ class _NavSwitchState extends State<NavSwitch> {
           return AlertDialog(
             contentPadding: const EdgeInsets.all(0),
             content: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(15),
               child: ClipRect(
                 child: Container(
                   width: getWidth(context, 90),
                   height: getHeight(context, 20),
                   decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                      BoxDecoration(borderRadius: BorderRadius.circular(15)),
                   padding: const EdgeInsets.all(10),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(

@@ -68,7 +68,7 @@ class _OldOrderState extends State<OldOrder> {
                                         border: Border.all(
                                             color: mainColorBlack
                                                 .withOpacity(0.1)),
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                       ),
                                       child: Center(
                                         child: CachedNetworkImage(

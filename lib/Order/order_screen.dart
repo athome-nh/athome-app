@@ -117,7 +117,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                               color: mainColorGrey
                                                   .withOpacity(0.1),
                                               borderRadius:
-                                                  BorderRadius.circular(5),
+                                                  BorderRadius.circular(15),
                                             ),
                                             child: Image.asset(
                                               "assets/Victors/ongoing.png",
@@ -207,7 +207,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .toList()[index];
 
                                   return Card(
-                                    elevation: 4,
+                                    elevation: 2,
                                     margin: EdgeInsets.all(8),
                                     color: mainColorWhite,
                                     child: Column(
@@ -218,7 +218,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                               height: getHeight(context, 18),
                                               decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(5),
+                                                    BorderRadius.circular(15),
                                               ),
                                               child: order.status == 5
                                                   ? Image.asset(

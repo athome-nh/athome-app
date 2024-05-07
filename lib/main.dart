@@ -107,7 +107,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
               backgroundColor: mainColorGrey, // Background color of the button
               shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.circular(5.0), // Border radius of the button
+                    BorderRadius.circular(15.0), // Border radius of the button
               ),
             ),
           ),
@@ -121,7 +121,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
               backgroundColor: mainColorGrey, // Background color of the button
               shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.circular(5.0), // Border radius of the button
+                    BorderRadius.circular(15.0), // Border radius of the button
               ),
             ),
           ),

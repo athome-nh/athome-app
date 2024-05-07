@@ -183,7 +183,7 @@ class _SingInUpState extends State<SingInUp> {
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey
                                 .withOpacity(0.5), // Customize border color
@@ -247,7 +247,7 @@ class _SingInUpState extends State<SingInUp> {
                                         0.5), // Customize border color
                                     width: 1.0, // Customize border width
                                   ),
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
                                 labelText: "City".tr,
                                 labelStyle: TextStyle(
@@ -260,7 +260,7 @@ class _SingInUpState extends State<SingInUp> {
                                           0.5), // Customize border color
                                       width: 1.0, // Customize border width
                                     ),
-                                    borderRadius: BorderRadius.circular(5.0))),
+                                    borderRadius: BorderRadius.circular(15.0))),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButton<String>(
                                 value: city,
@@ -308,14 +308,14 @@ class _SingInUpState extends State<SingInUp> {
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey, // Customize border color
                             width: 1.0, // Customize border width
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey
                                 .withOpacity(0.5), // Customize border color

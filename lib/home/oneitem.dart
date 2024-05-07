@@ -76,7 +76,7 @@ class _OneitemState extends State<Oneitem> {
                           // color: Colors.white,
                           // border: Border.all(
                           //     color: mainColorBlack.withOpacity(0.1)),
-                          borderRadius: BorderRadius.circular(5)),
+                          borderRadius: BorderRadius.circular(15)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -348,7 +348,7 @@ class _OneitemState extends State<Oneitem> {
                             width: getWidth(context, 30),
                             height: getHeight(context, 4),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
+                              borderRadius: BorderRadius.circular(15),
                               color: mainColorWhite,
                             ),
                             child: Row(
@@ -365,7 +365,7 @@ class _OneitemState extends State<Oneitem> {
                                         },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                         border: Border.all(
                                             color: checkProductStock(
                                                         Item, count) ||
@@ -396,7 +396,7 @@ class _OneitemState extends State<Oneitem> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                         border:
                                             Border.all(color: mainColorRed)),
                                     child: Icon(Icons.remove,

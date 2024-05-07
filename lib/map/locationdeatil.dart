@@ -151,14 +151,14 @@ class _location_DeatilState extends State<location_Deatil> {
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack, // Customize border color
                             width: 1.0, // Customize border width
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack
                                 .withOpacity(0.5), // Customize border color
@@ -208,14 +208,14 @@ class _location_DeatilState extends State<location_Deatil> {
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack, // Customize border color
                             width: 1.0, // Customize border width
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack
                                 .withOpacity(0.5), // Customize border color
@@ -252,7 +252,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                       0.5), // Customize border color
                                   width: 1.0, // Customize border width
                                 ),
-                                borderRadius: BorderRadius.circular(5),
+                                borderRadius: BorderRadius.circular(15),
                               ),
                               labelText: "Type Building".tr,
                               labelStyle: TextStyle(
@@ -313,7 +313,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                 },
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
+                                    borderRadius: BorderRadius.circular(15),
                                     borderSide: BorderSide(
                                       color:
                                           mainColorBlack, // Customize border color
@@ -321,7 +321,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                     ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
+                                    borderRadius: BorderRadius.circular(15),
                                     borderSide: BorderSide(
                                       color: mainColorBlack.withOpacity(
                                           0.5), // Customize border color
@@ -382,7 +382,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                 },
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
+                                    borderRadius: BorderRadius.circular(15),
                                     borderSide: BorderSide(
                                       color:
                                           mainColorBlack, // Customize border color
@@ -390,7 +390,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                     ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
+                                    borderRadius: BorderRadius.circular(15),
                                     borderSide: BorderSide(
                                       color: mainColorBlack.withOpacity(
                                           0.5), // Customize border color
@@ -456,7 +456,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                     },
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
                                           color:
                                               mainColorBlack, // Customize border color
@@ -464,7 +464,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
                                           color: mainColorBlack.withOpacity(
                                               0.5), // Customize border color
@@ -527,7 +527,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                     },
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
                                           color:
                                               mainColorBlack, // Customize border color
@@ -535,7 +535,7 @@ class _location_DeatilState extends State<location_Deatil> {
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
                                           color: mainColorBlack.withOpacity(
                                               0.5), // Customize border color
@@ -601,14 +601,14 @@ class _location_DeatilState extends State<location_Deatil> {
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack, // Customize border color
                             width: 1.0, // Customize border width
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack
                                 .withOpacity(0.5), // Customize border color
@@ -670,14 +670,14 @@ class _location_DeatilState extends State<location_Deatil> {
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack, // Customize border color
                             width: 1.0, // Customize border width
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorBlack
                                 .withOpacity(0.5), // Customize border color

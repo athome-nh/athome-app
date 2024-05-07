@@ -82,7 +82,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                       height: getHeight(context, 6),
                       decoration: BoxDecoration(
                           color: mainColorRed,
-                          borderRadius: BorderRadius.circular(5)),
+                          borderRadius: BorderRadius.circular(15)),
                       child: TextButton(
                         onPressed: () {
                           Map<String, dynamic> myMap = {};

@@ -220,7 +220,7 @@ class _MyCartState extends State<MyCart> {
                                                 color: mainColorBlack
                                                     .withOpacity(0.1)),
                                             borderRadius:
-                                                BorderRadius.circular(5),
+                                                BorderRadius.circular(15),
                                           ),
                                           child: Center(
                                             child: CachedNetworkImage(
@@ -301,7 +301,7 @@ class _MyCartState extends State<MyCart> {
                                           height: getHeight(context, 4),
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(5),
+                                                BorderRadius.circular(15),
                                             color: mainColorWhite,
                                           ),
                                           child: Row(
@@ -402,7 +402,7 @@ class _MyCartState extends State<MyCart> {
                                                                   0.1)),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              5),
+                                                              15),
                                                     ),
                                                     child: Center(
                                                       child: CachedNetworkImage(
@@ -550,7 +550,7 @@ class _MyCartState extends State<MyCart> {
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              5),
+                                                              15),
                                                       color: mainColorWhite,
                                                     ),
                                                     child: Row(
@@ -583,7 +583,7 @@ class _MyCartState extends State<MyCart> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            5),
+                                                                            15),
                                                                 border: Border.all(
                                                                     color: checkProductStock(cartitem, cartitemQ.quantity) ||
                                                                             checkProductLimit(
@@ -640,7 +640,7 @@ class _MyCartState extends State<MyCart> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            5),
+                                                                            15),
                                                                 border: Border.all(
                                                                     color:
                                                                         mainColorRed)),

@@ -75,83 +75,115 @@ class _LocationScreenState extends State<LocationScreen> {
                         itemCount: productrovider.location.length,
                         itemBuilder: (BuildContext context, int index) {
                           final location = productrovider.location[index];
-                          return Padding(
-                            padding:
-                                EdgeInsets.only(bottom: getHeight(context, 2)),
+                          return Card(
+                            elevation: 2,
+                            margin: EdgeInsets.all(8),
+                            color: mainColorWhite,
                             child: Column(
                               children: [
-                                Container(
-                                  child: Row(children: [
-                                    location.type.toString().contains("House")
-                                        ? Icon(
-                                            Ionicons.home_outline,
-                                            color: mainColorGrey,
-                                            size: 35,
-                                          )
-                                        : Icon(
-                                            Ionicons.business_outline,
-                                            color: mainColorGrey,
-                                            size: 35,
-                                          ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          location.name!,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontSize: 22,
-                                              fontFamily: mainFontnormal),
-                                        ),
-                                        Text(
-                                          location.area!,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontSize: 12,
-                                              fontFamily: mainFontnormal),
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    TextButton(
-                                        onPressed: () {
-                                          var data = {"id": location.id!};
-                                          Network(false)
-                                              .postData("delete_location", data,
-                                                  context)
-                                              .then((value) {
-                                            if (value != "") {
-                                              if (value["code"] == "201") {
-                                                Provider.of<productProvider>(
-                                                        context,
-                                                        listen: false)
-                                                    .deletelocation(
-                                                        location.id!);
-                                                toastShort(
-                                                    "Delete location success"
-                                                        .tr);
-                                              }
+                                ListTile(
+                                  trailing: TextButton(
+                                      onPressed: () {
+                                        var data = {"id": location.id!};
+                                        Network(false)
+                                            .postData("delete_location", data,
+                                                context)
+                                            .then((value) {
+                                          if (value != "") {
+                                            if (value["code"] == "201") {
+                                              Provider.of<productProvider>(
+                                                      context,
+                                                      listen: false)
+                                                  .deletelocation(location.id!);
+                                              toastShort(
+                                                  "Delete location success".tr);
                                             }
-                                          });
-                                        },
-                                        style: TextButton.styleFrom(
-                                            backgroundColor:
-                                                Colors.transparent),
-                                        child: Text(
-                                          "Delete".tr,
-                                          style: TextStyle(
-                                              color: mainColorRed,
-                                              fontFamily: mainFontnormal),
-                                        )),
-                                  ]),
+                                          }
+                                        });
+                                      },
+                                      style: TextButton.styleFrom(
+                                          backgroundColor: Colors.transparent),
+                                      child: Text(
+                                        "Delete".tr,
+                                        style: TextStyle(
+                                            color: mainColorRed,
+                                            fontFamily: mainFontnormal),
+                                      )),
+                                  leading:
+                                      location.type.toString().contains("House")
+                                          ? Icon(
+                                              Ionicons.home_outline,
+                                              color: mainColorGrey,
+                                              size: 35,
+                                            )
+                                          : Icon(
+                                              Ionicons.business_outline,
+                                              color: mainColorGrey,
+                                              size: 35,
+                                            ),
+                                  title: Text(
+                                    location.name!,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: mainFontbold,
+                                        color: mainColorBlack),
+                                  ),
+                                  subtitle: Text(
+                                    location.area!,
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: mainFontnormal,
+                                        color: mainColorBlack),
+                                  ),
                                 ),
-                                const Divider()
+                                // Padding(
+                                //   padding: EdgeInsets.symmetric(
+                                //       horizontal: getWidth(context, 4)),
+                                //   child: Row(
+                                //     mainAxisAlignment:
+                                //         MainAxisAlignment.spaceBetween,
+                                //     children: [
+                                //       TextButton.icon(
+                                //         onPressed: () {
+
+                                //         },
+                                //         icon: Icon(
+                                //           Icons.repeat,
+                                //           color: mainColorGrey,
+                                //         ), // Add your desired icon
+                                //         style: TextButton.styleFrom(
+                                //             backgroundColor: Colors.transparent,
+                                //             fixedSize: Size(
+                                //                 getWidth(context, 30),
+                                //                 getHeight(context, 3))),
+                                //         label: Text(
+                                //           "Re order".tr,
+                                //           style:
+                                //               TextStyle(color: mainColorGrey),
+                                //         ),
+                                //       ),
+                                //       TextButton.icon(
+                                //         onPressed: () {
+
+                                //         },
+                                //         icon: Icon(
+                                //           Icons.visibility_outlined,
+                                //           color: mainColorGrey,
+                                //         ), // Add your desired icon
+                                //         style: TextButton.styleFrom(
+                                //             backgroundColor: Colors.transparent,
+                                //             fixedSize: Size(
+                                //                 getWidth(context, 30),
+                                //                 getHeight(context, 3))),
+                                //         label: Text(
+                                //           "View".tr,
+                                //           style:
+                                //               TextStyle(color: mainColorGrey),
+                                //         ),
+                                //       )
+                                //     ],
+                                //   ),
+                                // ),
                               ],
                             ),
                           );

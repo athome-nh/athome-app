@@ -52,7 +52,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: mainColorGrey)),
                   width: getWidth(context, 80),
                   height: getWidth(context, 12),
@@ -92,7 +92,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: mainColorGrey)),
                   width: getWidth(context, 80),
                   height: getWidth(context, 12),
@@ -132,7 +132,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: mainColorGrey)),
                   width: getWidth(context, 80),
                   height: getWidth(context, 12),
@@ -180,7 +180,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     bottom: getWidth(context, 1),
                   ),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: mainColorGrey)),
                   width: getWidth(context, 35),
                   height: getWidth(context, 12),

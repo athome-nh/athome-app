@@ -153,7 +153,7 @@ class _itemCategoriesState extends State<itemCategories>
                     labelColor: mainColorWhite,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                         color: mainColorGrey),
                     tabAlignment: TabAlignment.start,
                     isScrollable: true,
@@ -165,7 +165,7 @@ class _itemCategoriesState extends State<itemCategories>
                       Container(
                           height: 60,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(15),
                               border: Border.all(
                                   color: mainColorGrey.withOpacity(0.3),
                                   width: 1)),
@@ -181,7 +181,7 @@ class _itemCategoriesState extends State<itemCategories>
                         return Container(
                           height: 60,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(15),
                               border: Border.all(
                                   color: mainColorGrey.withOpacity(0.3),
                                   width: 1)),

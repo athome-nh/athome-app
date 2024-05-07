@@ -115,7 +115,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           vertical: 5, horizontal: 15),
                       decoration: BoxDecoration(
                         color: mainColorWhite,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(15),
                         border:
                             Border.all(color: mainColorGrey.withOpacity(0.5)),
                         boxShadow: [

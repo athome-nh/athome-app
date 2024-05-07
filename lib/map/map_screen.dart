@@ -245,7 +245,7 @@ class _Map_screenState extends State<Map_screen> {
                     width: getWidth(context, 100),
                     height: getHeight(context, 6),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(15),
                         shape: BoxShape.rectangle,
                         color: zoom ? mainColorRed : mainColorGrey),
                     child: Center(

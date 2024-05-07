@@ -108,7 +108,7 @@ class _OrederItemsState extends State<OrederItems> {
                                       border: Border.all(
                                           color:
                                               mainColorBlack.withOpacity(0.1)),
-                                      borderRadius: BorderRadius.circular(5),
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: Center(
                                       child: CachedNetworkImage(
@@ -239,7 +239,7 @@ class _OrederItemsState extends State<OrederItems> {
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(5),
+                                                    BorderRadius.circular(15),
                                                 border: Border.all(
                                                     color: checkProductStock(
                                                                 cartitem,
@@ -283,7 +283,7 @@ class _OrederItemsState extends State<OrederItems> {
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(5),
+                                                    BorderRadius.circular(15),
                                                 border: Border.all(
                                                     color: mainColorRed)),
                                             child: Icon(Icons.remove,
