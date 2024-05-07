@@ -28,19 +28,19 @@ class _NotificationPageState extends State<NotificationPage> {
   final List<NotificationItem> notifications = [
     NotificationItem(
       icon: Icons.notifications,
-      title: 'Notification 1',
+      title: 'Title 1',
       description: 'This is the first notification.',
       date: '2024-04-29',
     ),
     NotificationItem(
       icon: Icons.notifications,
-      title: 'Notification 2',
+      title: 'Title 2',
       description: 'This is the second notification.',
       date: '2024-04-28',
     ),
     NotificationItem(
       icon: Icons.notifications,
-      title: 'Notification 3',
+      title: 'Title 3',
       description: 'This is the third notification.',
       date: '2024-04-27',
     ),
@@ -52,6 +52,11 @@ class _NotificationPageState extends State<NotificationPage> {
       appBar: AppBar(
         title: Text(
           "Notification".tr,
+          style: TextStyle(
+                      fontFamily: mainFontnormal,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold),
+
         ),
         leading: IconButton(
           onPressed: () {
@@ -66,41 +71,42 @@ class _NotificationPageState extends State<NotificationPage> {
         itemCount: notifications.length,
         itemBuilder: (context, index) {
           final notification = notifications[index];
-          return Column(
-            children: <Widget>[
-              ListTile(
-                leading: Icon(
-                  Ionicons.notifications_outline,
-                  color: mainColorGrey,
-                  size: 35,
+          return Card(
+            elevation: 2,
+            margin: EdgeInsets.all(8),
+            color: mainColorWhite,
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(
+                    Ionicons.notifications_outline,
+                    color: mainColorRed,
+                    size: 35,
+                  ),
+                  title: Text(
+                    notification.title,
+                    style: TextStyle(
+                        color: mainColorGrey,
+                        fontSize: 16,
+                        fontFamily: mainFontbold),
+                  ),
+                  subtitle: Text(
+                    notification.description,
+                    style: TextStyle(
+                        color: mainColorBlack,
+                        fontSize: 12,
+                        fontFamily: mainFontnormal),
+                  ),
+                  trailing: Text(
+                    notification.date,
+                    style: TextStyle(
+                        color: mainColorGrey,
+                        fontSize: 12,
+                        fontFamily: mainFontbold),
+                  ),
                 ),
-                title: Text(
-                  notification.title,
-                  style: TextStyle(
-                      color: mainColorBlack,
-                      fontSize: 22,
-                      fontFamily: mainFontnormal),
-                ),
-                subtitle: Text(
-                  notification.description,
-                  style: TextStyle(
-                      color: mainColorBlack,
-                      fontSize: 12,
-                      fontFamily: mainFontnormal),
-                ),
-                trailing: Text(
-                  notification.date,
-                  style: TextStyle(
-                      color: mainColorBlack,
-                      fontSize: 12,
-                      fontFamily: mainFontnormal),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Divider(),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
