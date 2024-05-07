@@ -28,7 +28,7 @@ const Map<String, String> ar = {
   // nav_switch
   "Home": "الرئیسیة",
   "Search": "البحث",
-  "Cart": "السلةالتسوق",
+  "Cart": "السلة",
   "Favorite": "مفضلاتي",
   "Account": "الحساب",
 
@@ -45,6 +45,9 @@ const Map<String, String> ar = {
   "Highlight": "المنتجات المميزة",
   "Best Sell": "المنتجات الاکثر مبیعا",
   "View All": "عرض الکل",
+  "Wellcome to": "مرحبا بك في",
+  'Dlly Las ': 'دلی لاس ',
+  'Supermarket': 'سوبر ماركت',
 
   // Dialogbox ( Register ) --> my_widget
   "Register First": "تسجيل اولا",

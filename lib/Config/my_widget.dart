@@ -64,13 +64,8 @@ Widget listItemsShimer(BuildContext context) {
                                     height: 15,
                                   ),
                                   // rectangle
-                                  CachedNetworkImage(
-                                    imageUrl:
-                                        "https://www.dllylas.com/assets/img/logo/logo.png",
-                                    placeholder: (context, url) =>
-                                        Image.asset("assets/images/home.png"),
-                                    errorWidget: (context, url, error) =>
-                                        Image.asset("assets/images/home.png"),
+                                  Image.asset(
+                                    "assets/images/home.png",
                                     width: getWidth(context, 30),
                                     height: getWidth(context, 30),
                                   ),
@@ -223,12 +218,8 @@ Widget listItemsBigShimer(BuildContext context) {
                                   const SizedBox(
                                     height: 15,
                                   ),
-                                  CachedNetworkImage(
-                                    imageUrl: "assets/images/home.png",
-                                    placeholder: (context, url) =>
-                                        Image.asset("assets/images/home.png"),
-                                    errorWidget: (context, url, error) =>
-                                        Image.asset("assets/images/home.png"),
+                                  Image.asset(
+                                    "assets/images/home.png",
                                     width: getWidth(context, 30),
                                     height: getWidth(context, 30),
                                   ),

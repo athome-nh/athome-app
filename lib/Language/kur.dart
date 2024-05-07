@@ -46,6 +46,9 @@ const Map<String, String> kur = {
   "Highlight": "دیارترینەکان",
   "Best Sell": "باشترین فرۆش",
   "View All": "بینینی هەموو",
+  "Wellcome to": "بەخێربێیت بۆ",
+  'Dlly Las ': 'دڵی لاس ',
+  'Supermarket': 'سوپەرمارکێت',
 
   // Dialogbox ( Register ) --> my_widget
   "Register First": "خۆت تۆمار بکە",

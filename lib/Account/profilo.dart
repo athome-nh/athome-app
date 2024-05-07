@@ -56,7 +56,7 @@ class _SettingState extends State<Setting> {
         waitingImage = true;
       });
       Map<String, String> body = {
-        "id": userdata["id"],
+        "id": userdata["id"].toString(),
       };
       Network(false).addImage(body, _image!.path).then((value) {
         setState(() {
@@ -122,26 +122,68 @@ class _SettingState extends State<Setting> {
                 ),
                 actions: [
                   PopupMenuButton(
-                      icon: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              "assets/images/uk.png",
-                              width: 35,
-                              height: 35,
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: getWidth(context, 2),
-                                left: getWidth(context, 2),
-                                right: getWidth(context, 2),
-                                bottom: getWidth(context, 1),
-                              ),
-                              child: Text(
-                                "English".tr,
-                              ),
-                            ),
-                          ]),
+                      icon: selectedItem == 'English'
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  Image.asset(
+                                    "assets/images/uk.png",
+                                    width: 35,
+                                    height: 35,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      top: getWidth(context, 2),
+                                      left: getWidth(context, 2),
+                                      right: getWidth(context, 2),
+                                      bottom: getWidth(context, 1),
+                                    ),
+                                    child: Text(
+                                      "English".tr,
+                                    ),
+                                  ),
+                                ])
+                          : selectedItem == 'Arabic'
+                              ? Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/iraq.png",
+                                      width: 35,
+                                      height: 35,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        top: getWidth(context, 2),
+                                        left: getWidth(context, 2),
+                                        right: getWidth(context, 2),
+                                        bottom: getWidth(context, 1),
+                                      ),
+                                      child: Text(
+                                        "Arabic".tr,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/flag.png",
+                                      width: 35,
+                                      height: 35,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        top: getWidth(context, 2),
+                                        left: getWidth(context, 2),
+                                        right: getWidth(context, 2),
+                                        bottom: getWidth(context, 1),
+                                      ),
+                                      child: Text(
+                                        "Kurdish".tr,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                       // add icon, by default "3 dot" icon
                       // icon: Icon(Icons.book)
                       itemBuilder: (context) {
@@ -237,117 +279,6 @@ class _SettingState extends State<Setting> {
                           setStringPrefs("lang", "kur");
                         }
                       }),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  //   child: DropdownButton<String>(
-                  //     underline: Container(),
-                  //     value: selectedItem,
-                  //     icon: const SizedBox(),
-                  //     dropdownColor: mainColorWhite,
-                  //     style: TextStyle(
-                  //       color: mainColorBlack,
-                  //       fontFamily: mainFontnormal,
-                  //       fontSize: 16, // Text size
-                  //     ),
-                  //     onChanged: (String? newValue) {
-                  //       setState(() {
-                  //         selectedItem = newValue!;
-                  //         if (newValue == 'English') {
-                  //           lang = "en";
-                  //           Get.updateLocale(const Locale("en"));
-                  //           setStringPrefs("lang", "en");
-                  //         } else if (newValue == 'Arabic') {
-                  //           lang = "ar";
-                  //           Get.updateLocale(const Locale("ar"));
-                  //           setStringPrefs("lang", "ar");
-                  //         } else {
-                  //           lang = "kur";
-                  //           Get.updateLocale(const Locale("kur"));
-                  //           setStringPrefs("lang", "kur");
-                  //         }
-                  //       });
-                  //     },
-                  //     items: [
-                  //       // English
-                  //       DropdownMenuItem(
-                  //         value: 'English',
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //           children: [
-                  //             Image.asset(
-                  //               "assets/images/uk.png",
-                  //               width: 35,
-                  //               height: 35,
-                  //             ),
-                  //             Container(
-                  //               padding: EdgeInsets.only(
-                  //                 top: getWidth(context, 2),
-                  //                 left: getWidth(context, 2),
-                  //                 right: getWidth(context, 2),
-                  //                 bottom: getWidth(context, 1),
-                  //               ),
-                  //               child: Text(
-                  //                 "English".tr,
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-
-                  //       // Arabic
-                  //       DropdownMenuItem(
-                  //         value: "Arabic",
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //           children: [
-                  //             Image.asset(
-                  //               "assets/images/iraq.png",
-                  //               width: 35,
-                  //               height: 35,
-                  //             ),
-                  //             Container(
-                  //               padding: EdgeInsets.only(
-                  //                 top: getWidth(context, 2),
-                  //                 left: getWidth(context, 2),
-                  //                 right: getWidth(context, 2),
-                  //                 bottom: getWidth(context, 1),
-                  //               ),
-                  //               child: Text(
-                  //                 "Arabic".tr,
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-
-                  //       // Kurdish
-                  //       DropdownMenuItem(
-                  //         value: 'Kurdish',
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //           children: [
-                  //             Image.asset(
-                  //               "assets/images/flag.png",
-                  //               width: 35,
-                  //               height: 35,
-                  //             ),
-                  //             Container(
-                  //               padding: EdgeInsets.only(
-                  //                 top: getWidth(context, 2),
-                  //                 left: getWidth(context, 2),
-                  //                 right: getWidth(context, 2),
-                  //                 bottom: getWidth(context, 1),
-                  //               ),
-                  //               child: Text(
-                  //                 "Kurdish".tr,
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
               body: !isLogin

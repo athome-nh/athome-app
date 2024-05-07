@@ -8,6 +8,7 @@ import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/Notfication.dart';
 import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/home/search_page.dart';
@@ -167,7 +168,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: getWidth(context, 4)),
                       title: Text(
-                        "Wellcome to",
+                        "Wellcome to".tr,
                         style:
                             TextStyle(fontSize: 12, fontFamily: mainFontnormal),
                       ),
@@ -181,7 +182,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           ),
                           children: <TextSpan>[
                             new TextSpan(
-                              text: 'Dlly Las ',
+                              text: 'Dlly Las '.tr,
                               style: TextStyle(
                                   fontSize: 16,
                                   color: mainColorGrey,
@@ -189,7 +190,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   fontFamily: mainFontnormal),
                             ),
                             new TextSpan(
-                              text: 'Supermarket',
+                              text: 'Supermarket'.tr,
                               style: TextStyle(
                                   fontSize: 11,
                                   color: mainColorRed,
@@ -199,9 +200,19 @@ class _HomeSreenState extends State<HomeSreen> {
                           ],
                         ),
                       ),
-                      trailing: Icon(
-                        Icons.notifications_none_outlined,
-                        size: 30,
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.notifications_none_outlined,
+                          color: mainColorGrey,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotficationScreen()),
+                          );
+                        },
                       ),
                     ),
                     GestureDetector(

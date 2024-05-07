@@ -161,11 +161,11 @@ class _NavSwitchState extends State<NavSwitch> {
                     ),
                     GButton(
                       icon: LineIcons.heart,
-                      text: 'Likes',
+                      text: 'Favorite'.tr,
                     ),
                     GButton(
                       icon: LineIcons.user,
-                      text: 'Profile',
+                      text: 'Account'.tr,
                     ),
                   ],
                   selectedIndex: selectedIndex,

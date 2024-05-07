@@ -943,7 +943,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                   .isEmpty
                                                               ? "Add location"
                                                                   .tr
-                                                              : "Send Order".tr,
+                                                              : "Confirm",
+                                                          //textcheck
                                                         ),
                                                       ),
                                                     ],

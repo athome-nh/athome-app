@@ -47,7 +47,9 @@ const Map<String, String> en = {
   "Highlight": "Highlight",
   "Best Sell": "Best Sell",
   "View All": "View All",
-
+  "Wellcome to": "Wellcome to",
+  'Dlly Las ': 'Dlly Las ',
+  'Supermarket': 'Supermarket',
   // Dialogbox ( Register ) --> my_widget
   "Register First": "Register First",
   "You need login": "You have to register first",
@@ -141,6 +143,7 @@ const Map<String, String> en = {
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
   "OK": "OK",
+
   "Add location": "Add location",
 
   // login_page
