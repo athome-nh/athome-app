@@ -504,8 +504,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                               padding: EdgeInsets.all(6),
                               child: AnimatedContainer(
                                 padding: EdgeInsets.all(4),
-                                width: isItemInCart ? 120 : 35,
-                                height: isItemInCart ? 35 : 35,
+                                width: isItemInCart ? 110 : 30,
+                                height: isItemInCart ? 30 : 30,
                                 duration: Duration(milliseconds: 600),
                                 decoration: BoxDecoration(
                                     color: mainColorGrey.withOpacity(0.1),
@@ -813,8 +813,8 @@ Widget listItemsShow(BuildContext context, var data) {
                             padding: EdgeInsets.all(6),
                             child: AnimatedContainer(
                               padding: EdgeInsets.all(4),
-                              width: isItemInCart ? 120 : 35,
-                              height: isItemInCart ? 35 : 35,
+                              width: isItemInCart ? 110 : 30,
+                              height: isItemInCart ? 30 : 30,
                               duration: Duration(milliseconds: 600),
                               decoration: BoxDecoration(
                                   color: mainColorGrey.withOpacity(0.1),
@@ -1119,8 +1119,8 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                             padding: EdgeInsets.all(6),
                             child: AnimatedContainer(
                               padding: EdgeInsets.all(4),
-                              width: isItemInCart ? 120 : 35,
-                              height: isItemInCart ? 35 : 35,
+                              width: isItemInCart ? 110 : 30,
+                              height: isItemInCart ? 30 : 30,
                               duration: Duration(milliseconds: 600),
                               decoration: BoxDecoration(
                                   color: mainColorGrey.withOpacity(0.1),

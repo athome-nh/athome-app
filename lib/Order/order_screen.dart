@@ -107,73 +107,77 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .reversed
                                       .toList()[index];
 
-                                  return Column(
-                                    children: [
-                                      ListTile(
-                                        leading: Container(
-                                            width: getWidth(context, 15),
-                                            height: getHeight(context, 18),
-                                            decoration: BoxDecoration(
-                                              color: mainColorGrey
-                                                  .withOpacity(0.1),
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                            ),
-                                            child: Image.asset(
-                                              "assets/Victors/ongoing.png",
+                                  return Card(
+                                    elevation: 2,
+                                    margin: EdgeInsets.all(8),
+                                    color: mainColorWhite,
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Container(
                                               width: getWidth(context, 15),
                                               height: getHeight(context, 18),
-                                            )),
-                                        title: Row(
-                                          children: [
-                                            Text(
-                                              "Order number:".tr,
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorBlack),
-                                            ),
-                                            Text(
-                                              order.id.toString(),
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorRed),
-                                            ),
-                                          ],
+                                              decoration: BoxDecoration(
+                                                color: mainColorGrey
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              child: Image.asset(
+                                                "assets/Victors/ongoing.png",
+                                                width: getWidth(context, 15),
+                                                height: getHeight(context, 18),
+                                              )),
+                                          title: Row(
+                                            children: [
+                                              Text(
+                                                "Order number:".tr,
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorBlack),
+                                              ),
+                                              Text(
+                                                order.id.toString(),
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorRed),
+                                              ),
+                                            ],
+                                          ),
+                                          trailing: IconButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          TrackOrder(
+                                                              order.id.toString(),
+                                                              order
+                                                                  .returnTotalPrice
+                                                                  .toString(),
+                                                              order.createdAt
+                                                                  .toString())),
+                                                );
+                                              },
+                                              icon: Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: mainColorGrey,
+                                              )),
+                                          subtitle: Text(
+                                            "Date:".tr +
+                                                order.createdAt
+                                                    .toString()
+                                                    .substring(0, 16),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: mainFontnormal,
+                                                color: mainColorBlack),
+                                          ),
                                         ),
-                                        trailing: IconButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        TrackOrder(
-                                                            order.id.toString(),
-                                                            order
-                                                                .returnTotalPrice
-                                                                .toString(),
-                                                            order.createdAt
-                                                                .toString())),
-                                              );
-                                            },
-                                            icon: Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: mainColorGrey,
-                                            )),
-                                        subtitle: Text(
-                                          "Date:".tr +
-                                              order.createdAt
-                                                  .toString()
-                                                  .substring(0, 16),
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: mainFontnormal,
-                                              color: mainColorBlack),
-                                        ),
-                                      ),
-                                      const Divider()
-                                    ],
+                                      ],
+                                    ),
                                   );
                                 })
                             : Center(
