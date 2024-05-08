@@ -2144,7 +2144,7 @@ class _SettingState extends State<Setting> {
                                         children: [
                                           Icon(
                                             color: mainColorBlack,
-                                            Ionicons.help_outline,
+                                            Ionicons.shield_checkmark_outline,
                                             size: 20,
                                           ),
                                           const SizedBox(
