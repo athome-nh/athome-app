@@ -1,6 +1,6 @@
 const Map<String, String> en = {
   // Help
-  "Help": "Help",
+  "Help": "Support",
   "DearCustomers":
       "Dear customers In case of any problems or any issues please contact us at via",
   "Call": "07509583333 - 07802320717",

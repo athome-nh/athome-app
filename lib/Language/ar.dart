@@ -1,6 +1,6 @@
 const Map<String, String> ar = {
   // Help
-  "Help": "مساعده‌",
+  "Help": "يدعم",
   "DearCustomers":
       "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
   "Call": "07509583333 - 07802320717",
@@ -181,7 +181,7 @@ const Map<String, String> ar = {
   "Age": "عمر",
   "unknown occurred error please try again later":
       "حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
-  "Confirm": "التاکید",
+  "Confirm": "تثبيت",
   "Account range out": "...آسف",
   "Account range out content":
       "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
