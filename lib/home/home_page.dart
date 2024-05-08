@@ -203,7 +203,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       trailing: IconButton(
                         icon: Icon(
                           Icons.notifications_none_outlined,
-                          color: mainColorGrey,
+                          color: mainColorRed,
                           size: 30,
                         ),
                         onPressed: () {

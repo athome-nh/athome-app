@@ -420,7 +420,7 @@ class _SettingState extends State<Setting> {
                                           color: mainColorBlack,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(1-5)),
+                                            BorderRadius.circular(1 - 5)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -1292,21 +1292,6 @@ class _SettingState extends State<Setting> {
                                                   fontSize: 20,
                                                   color: mainColorBlack),
                                             ),
-                                            // Chip(
-                                            //   shape: RoundedRectangleBorder(
-                                            //       borderRadius:
-                                            //           BorderRadius.circular(1-5)),
-                                            //   avatar: const Icon(Icons.call),
-                                            //   label: Text(
-                                            //     userdata["phone"]
-                                            //         .toString()
-                                            //         .substring(4),
-                                            //     style: TextStyle(
-                                            //         fontFamily: mainFontbold,
-                                            //         fontSize: 12,
-                                            //         color: mainColorBlack),
-                                            //   ),
-                                            // ),
                                           ],
                                         ),
                                       ),
@@ -1320,7 +1305,7 @@ class _SettingState extends State<Setting> {
                                 ),
                                 child: Container(
                                   height: colapse
-                                      ? getHeight(context, 40)
+                                      ? getHeight(context, 45)
                                       : getHeight(context, 6),
                                   decoration: BoxDecoration(
                                       border: Border.all(
@@ -1392,7 +1377,7 @@ class _SettingState extends State<Setting> {
                                                           width: getWidth(
                                                               context, 100),
                                                           height: getHeight(
-                                                              context, 25),
+                                                              context, 30),
                                                           decoration:
                                                               BoxDecoration(
                                                             borderRadius:
@@ -1914,7 +1899,7 @@ class _SettingState extends State<Setting> {
                                               mainColorBlack.withOpacity(0.2),
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(1-5)),
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
@@ -2037,7 +2022,7 @@ class _SettingState extends State<Setting> {
                                               mainColorBlack.withOpacity(0.2),
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(1-5)),
+                                            BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12),
