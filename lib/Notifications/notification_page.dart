@@ -76,7 +76,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       );
                     } else if ('category' == notification.type) {
                       if (productrovider.categores.indexWhere((category) =>
-                              category.id == productrovider.cateType) ==
+                              category.id == notification.relationId!) ==
                           -1) {
                         return;
                       }
@@ -89,14 +89,13 @@ class _NotificationPageState extends State<NotificationPage> {
                         productrovider.setsubcateSelect(0);
                       });
                     } else if ('subcategory' == notification.type) {
-                      if (productrovider
-                                  .getsubcateById(notification.relationId!)
-                                  .indexWhere((subCategory) =>
-                                      subCategory.id ==
-                                      notification.barcode!) ==
+                      if (productrovider.categores.indexWhere((category) =>
+                                  category.id == notification.relationId!) ==
                               -1 ||
-                          productrovider.categores.indexWhere((category) =>
-                                  category.id == productrovider.cateType) ==
+                          productrovider.subCategores.indexWhere(
+                                  (subCategory) =>
+                                      subCategory.id ==
+                                      int.parse(notification.barcode!)) ==
                               -1) {
                         return;
                       }
