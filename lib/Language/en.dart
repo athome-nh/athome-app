@@ -1,4 +1,8 @@
 const Map<String, String> en = {
+  // Notification
+  "Notification": "Notification",
+  
+  
   // Help
   "Help": "Support",
   "DearCustomers":

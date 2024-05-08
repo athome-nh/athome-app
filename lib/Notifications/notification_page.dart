@@ -3,7 +3,7 @@ import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/oneitem.dart';
-import 'package:dllylas/model/product_model/product_model.dart';
+import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -20,129 +20,160 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Notification".tr,
-          style: TextStyle(
-              fontFamily: mainFontnormal,
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
+    return Directionality(
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Notification".tr,
+            style: TextStyle(
+                fontFamily: mainFontnormal,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+            ),
           ),
         ),
-      ),
-      body: ListView.builder(
-        itemCount: productrovider.Notfication.length,
-        itemBuilder: (context, index) {
-          final notification = productrovider.Notfication[index];
-          return Card(
-            elevation: 2,
-            margin: EdgeInsets.all(8),
-            color: mainColorWhite,
-            child: Column(
-              children: <Widget>[
-                ListTile(
-                  onTap: () {
-                    if ('onItem' == notification.type) {
-                      productrovider.setidItem(productrovider
-                          .getoneProductByBarcode(notification.barcode!)
-                          .id!);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Oneitem()),
-                      );
-                    } else if ('discount' == notification.type) {
-                      productrovider.settype("discount");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AllItem()),
-                      );
-                    } else if ('brand' == notification.type) {
-                      productrovider.settype("brand");
-                      productrovider.setidbrand(notification.relationId!);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AllItem()),
-                      );
-                    } else if ('category' == notification.type) {
-                      if (productrovider.categores.indexWhere((category) =>
-                              category.id == notification.relationId!) ==
-                          -1) {
-                        return;
-                      }
-                      productrovider.setcatetype(notification.relationId!);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => itemCategories()),
-                      ).then((value) {
-                        productrovider.setsubcateSelect(0);
-                      });
-                    } else if ('subcategory' == notification.type) {
-                      if (productrovider.categores.indexWhere((category) =>
-                                  category.id == notification.relationId!) ==
-                              -1 ||
-                          productrovider.subCategores.indexWhere(
-                                  (subCategory) =>
-                                      subCategory.id ==
-                                      int.parse(notification.barcode!)) ==
-                              -1) {
-                        return;
-                      }
-                      productrovider.setcatetype(notification.relationId!);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => itemCategories(
-                                  subcateID: int.parse(notification.barcode!),
-                                )),
-                      ).then((value) {
-                        productrovider.setsubcateSelect(0);
-                      });
-                    } else if ('order' == notification.type) {
-                    } else if ('attention' == notification.type) {}
-                  },
-                  leading: Icon(
-                    Ionicons.notifications_outline,
-                    color: mainColorRed,
-                    size: 35,
+        body: productrovider.Notfication.isEmpty
+            ? Column(
+                children: [
+                  SizedBox(height: getHeight(context, 15),),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Center(
+                      child: Image.asset("assets/Victors/empty.png"),
+                    ),
                   ),
-                  title: Text(
-                    notification.title!,
+                  Text(
+                    "Text for Empity Notification".tr,
                     style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 16,
-                        fontFamily: mainFontbold),
+                        fontFamily: mainFontnormal,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text(
-                    notification.content!,
-                    style: TextStyle(
-                        color: mainColorBlack,
-                        fontSize: 12,
-                        fontFamily: mainFontnormal),
-                  ),
-                  trailing: Text(
-                    timeAgo(notification.createdAt!),
-                    style: TextStyle(
-                        color: mainColorGrey,
-                        fontSize: 12,
-                        fontFamily: mainFontbold),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              )
+            : ListView.builder(
+                itemCount: productrovider.Notfication.length,
+                itemBuilder: (context, index) {
+                  final notification = productrovider.Notfication[index];
+                  return Card(
+                    elevation: 2,
+                    margin: EdgeInsets.all(8),
+                    color: mainColorWhite,
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          onTap: () {
+                            if ('onItem' == notification.type) {
+                              productrovider.setidItem(productrovider
+                                  .getoneProductByBarcode(notification.barcode!)
+                                  .id!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Oneitem()),
+                              );
+                            } else if ('discount' == notification.type) {
+                              productrovider.settype("discount");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AllItem()),
+                              );
+                            } else if ('brand' == notification.type) {
+                              productrovider.settype("brand");
+                              productrovider
+                                  .setidbrand(notification.relationId!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AllItem()),
+                              );
+                            } else if ('category' == notification.type) {
+                              if (productrovider.categores.indexWhere(
+                                      (category) =>
+                                          category.id ==
+                                          notification.relationId!) ==
+                                  -1) {
+                                return;
+                              }
+                              productrovider
+                                  .setcatetype(notification.relationId!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => itemCategories()),
+                              ).then((value) {
+                                productrovider.setsubcateSelect(0);
+                              });
+                            } else if ('subcategory' == notification.type) {
+                              if (productrovider.categores.indexWhere(
+                                          (category) =>
+                                              category.id ==
+                                              notification.relationId!) ==
+                                      -1 ||
+                                  productrovider.subCategores.indexWhere(
+                                          (subCategory) =>
+                                              subCategory.id ==
+                                              int.parse(
+                                                  notification.barcode!)) ==
+                                      -1) {
+                                return;
+                              }
+                              productrovider
+                                  .setcatetype(notification.relationId!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => itemCategories(
+                                          subcateID:
+                                              int.parse(notification.barcode!),
+                                        )),
+                              ).then((value) {
+                                productrovider.setsubcateSelect(0);
+                              });
+                            } else if ('order' == notification.type) {
+                            } else if ('attention' == notification.type) {}
+                          },
+                          leading: Icon(
+                            Ionicons.notifications_outline,
+                            color: mainColorRed,
+                            size: 35,
+                          ),
+                          title: Text(
+                            notification.title!,
+                            style: TextStyle(
+                                color: mainColorGrey,
+                                fontSize: 16,
+                                fontFamily: mainFontbold),
+                          ),
+                          subtitle: Text(
+                            notification.content!,
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontSize: 12,
+                                fontFamily: mainFontnormal),
+                          ),
+                          trailing: Text(
+                            timeAgo(notification.createdAt!),
+                            style: TextStyle(
+                                color: mainColorGrey,
+                                fontSize: 12,
+                                fontFamily: mainFontbold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
       ),
     );
   }
@@ -152,7 +183,7 @@ class _NotificationPageState extends State<NotificationPage> {
     final date2 = DateTime.now();
     DateTime date = DateTime.parse(datetime);
     final difference = date2.difference(date);
-
+    // check text bawar
     if ((difference.inDays / 7).floor() >= 1) {
       return (numericDates) ? '1 week ago' : 'Last week';
     } else if (difference.inDays >= 2) {
