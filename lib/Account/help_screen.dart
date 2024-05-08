@@ -34,7 +34,6 @@ class _HelpScreenState extends State<HelpScreen> {
           child: Center(
             child: Column(
               children: [
-
                 Padding(
                   padding: EdgeInsets.only(
                     top: getHeight(context, 5),
@@ -44,11 +43,9 @@ class _HelpScreenState extends State<HelpScreen> {
                     width: getWidth(context, 80),
                   ),
                 ),
-
                 SizedBox(
                   height: getHeight(context, 5),
                 ),
-
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
@@ -62,20 +59,18 @@ class _HelpScreenState extends State<HelpScreen> {
                     textAlign: TextAlign.justify,
                   ),
                 ),
-
                 SizedBox(
                   height: getHeight(context, 5),
                 ),
-
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
-
                   child: Row(
                     children: [
-
                       Icon(Icons.call),
-                      SizedBox(width: getHeight(context, 2),),
+                      SizedBox(
+                        width: getHeight(context, 2),
+                      ),
                       Text(
                         "Call".tr,
                         style: TextStyle(
@@ -86,46 +81,40 @@ class _HelpScreenState extends State<HelpScreen> {
                         textAlign: TextAlign.justify,
                       ),
                     ],
-
                   ),
-
                 ),
-
                 SizedBox(
                   height: getHeight(context, 2),
                 ),
-
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                   child: Row(
                     children: [
                       Icon(Icons.email_outlined),
-                      SizedBox(width: getHeight(context, 2),),
+                      SizedBox(
+                        width: getHeight(context, 2),
+                      ),
                       GestureDetector(
                         onTap: () async {
+                          // const email = 'info@dllylas.com'; // Specify the recipient email address
+                          //   const subject = 'Subject'; // Specify the subject
+                          //   const body = 'Body'; // Specify the email body
+                          //   final Uri _emailLaunchUri = Uri(
+                          //     scheme: 'mailto',
+                          //     path: email,
+                          //     queryParameters: {
+                          //       'subject': subject,
+                          //       'body': body,
+                          //     },
+                          //   );
 
-  // const email = 'info@dllylas.com'; // Specify the recipient email address
-  //   const subject = 'Subject'; // Specify the subject
-  //   const body = 'Body'; // Specify the email body
-  //   final Uri _emailLaunchUri = Uri(
-  //     scheme: 'mailto',
-  //     path: email,
-  //     queryParameters: {
-  //       'subject': subject,
-  //       'body': body,
-  //     },
-  //   );
-   
-  //                               if (!await launchUrl(_emailLaunchUri,
-  //                                   mode: LaunchMode.inAppBrowserView)) {
-  //                                 throw Exception('Could not launch $_emailLaunchUri');
-  //                               }
-                           
-  //                           // Replace <page_id> with your Facebook Page ID
-         
-                         
+                          //                               if (!await launchUrl(_emailLaunchUri,
+                          //                                   mode: LaunchMode.inAppBrowserView)) {
+                          //                                 throw Exception('Could not launch $_emailLaunchUri');
+                          //                               }
 
+                          //                           // Replace <page_id> with your Facebook Page ID
                         },
                         child: Text(
                           "Email".tr,
@@ -143,25 +132,23 @@ class _HelpScreenState extends State<HelpScreen> {
                 SizedBox(
                   height: getHeight(context, 2),
                 ),
-
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                   child: Row(
                     children: [
                       Icon(Icons.language),
-                      SizedBox(width: getHeight(context, 2),),
+                      SizedBox(
+                        width: getHeight(context, 2),
+                      ),
                       GestureDetector(
-     onTap: () async {
-
-         Uri url = Uri.parse(
-                                    'https://dllylas.com');
-                                if (!await launchUrl(url,
-                                    mode: LaunchMode.inAppBrowserView)) {
-                                  throw Exception('Could not launch $url');
-                                }
-     },
-                        
+                        onTap: () async {
+                          Uri url = Uri.parse('https://dllylas.com');
+                          if (!await launchUrl(url,
+                              mode: LaunchMode.inAppBrowserView)) {
+                            throw Exception('Could not launch $url');
+                          }
+                        },
                         child: Text(
                           "WebSite".tr,
                           style: TextStyle(
@@ -175,30 +162,28 @@ class _HelpScreenState extends State<HelpScreen> {
                     ],
                   ),
                 ),
-
                 SizedBox(
                   height: getHeight(context, 2),
                 ),
-
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                   child: Row(
                     children: [
                       Icon(Icons.facebook),
-                      SizedBox(width: getHeight(context, 2),),
+                      SizedBox(
+                        width: getHeight(context, 2),
+                      ),
                       GestureDetector(
                         onTap: () async {
+                          Uri url = Uri.parse(
+                              'https://mobile.facebook.com/DLLY.LAS.24');
+                          if (!await launchUrl(url,
+                              mode: LaunchMode.inAppBrowserView)) {
+                            throw Exception('Could not launch $url');
+                          }
 
-                    Uri url = Uri.parse(
-                                    'https://mobile.facebook.com/DLLY.LAS.24');
-                                if (!await launchUrl(url,
-                                    mode: LaunchMode.inAppBrowserView)) {
-                                  throw Exception('Could not launch $url');
-                                }
-                           
-                            // Replace <page_id> with your Facebook Page ID
-         
+                          // Replace <page_id> with your Facebook Page ID
                         },
                         child: Text(
                           "Facebook".tr,

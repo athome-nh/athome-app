@@ -10,8 +10,8 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 
 class itemCategories extends StatefulWidget {
-  const itemCategories({Key? key}) : super(key: key);
-
+  int subcateID = 0;
+  itemCategories({this.subcateID = 0, Key? key}) : super(key: key);
   @override
   State<itemCategories> createState() => _itemCategoriesState();
 }
@@ -27,8 +27,10 @@ class _itemCategoriesState extends State<itemCategories>
   @override
   void initState() {
     super.initState();
-    final productPro = Provider.of<productProvider>(context, listen: false);
 
+    final productPro = Provider.of<productProvider>(context, listen: false);
+    print(productPro.subCategores
+        .indexWhere((subCategory) => subCategory.id == widget.subcateID));
     _categoryTabController = TabController(
         length: productPro.categores.length,
         initialIndex: productPro.categores
@@ -38,6 +40,11 @@ class _itemCategoriesState extends State<itemCategories>
 
     _subcategoryTabController = TabController(
         length: productPro.getsubcateById(productPro.cateType).length + 1,
+        initialIndex: widget.subcateID != 0
+            ? productPro.getsubcateById(productPro.cateType).indexWhere(
+                    (subCategory) => subCategory.id == widget.subcateID) +
+                1
+            : 0,
         vsync: this,
         animationDuration: Duration(milliseconds: 300));
 
@@ -103,7 +110,7 @@ class _itemCategoriesState extends State<itemCategories>
             children: [
               TabBar(
                 splashFactory: NoSplash.splashFactory,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 padding: EdgeInsets.symmetric(vertical: 10),
                 unselectedLabelColor: mainColorGrey,
 
@@ -147,7 +154,7 @@ class _itemCategoriesState extends State<itemCategories>
                   height: 60,
                   color: Colors.white,
                   child: TabBar(
-                    physics: const NeverScrollableScrollPhysics(),
+                    physics: const ClampingScrollPhysics(),
                     padding: EdgeInsets.symmetric(vertical: 10),
                     unselectedLabelColor: mainColorGrey,
                     labelColor: mainColorWhite,

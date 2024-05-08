@@ -153,7 +153,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           TrackOrder(
-                                                              order.id.toString(),
+                                                              order.id
+                                                                  .toString(),
                                                               order
                                                                   .returnTotalPrice
                                                                   .toString(),
@@ -269,7 +270,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                             children: [
                                               TextButton.icon(
                                                 onPressed: () {
-                                                  productrovider.getordersbyOrderId(
+                                                  productrovider
+                                                      .getordersbyOrderId(
                                                           order.id.toString())
                                                       .forEach((element) {
                                                     final existingItemIndex =
@@ -367,7 +369,6 @@ class _OrderScreenState extends State<OrderScreen> {
                                                       color: mainColorGrey),
                                                 ),
                                               ),
-                                              
                                               TextButton.icon(
                                                 onPressed: () {
                                                   productrovider

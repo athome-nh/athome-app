@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1089291202108',
     projectId: 'dllylas-ec27d',
     storageBucket: 'dllylas-ec27d.appspot.com',
-    iosClientId: '1089291202108-dmf8fkom8bb7i105pef3ububtr8rcnu3.apps.googleusercontent.com',
+    iosClientId:
+        '1089291202108-dmf8fkom8bb7i105pef3ububtr8rcnu3.apps.googleusercontent.com',
     iosBundleId: 'com.market.dllylas',
   );
 }

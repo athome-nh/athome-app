@@ -1,21 +1,13 @@
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Home/all_item.dart';
+import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/item_categories.dart';
+import 'package:dllylas/home/oneitem.dart';
+import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-
-class NotificationItem {
-  final IconData icon;
-  final String title;
-  final String description;
-  final String date;
-
-  NotificationItem({
-    required this.icon,
-    required this.title,
-    required this.description,
-    required this.date,
-  });
-}
+import 'package:provider/provider.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -25,38 +17,17 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  final List<NotificationItem> notifications = [
-    NotificationItem(
-      icon: Icons.notifications,
-      title: 'Title 1',
-      description: 'This is the first notification.',
-      date: '2024-04-29',
-    ),
-    NotificationItem(
-      icon: Icons.notifications,
-      title: 'Title 2',
-      description: 'This is the second notification.',
-      date: '2024-04-28',
-    ),
-    NotificationItem(
-      icon: Icons.notifications,
-      title: 'Title 3',
-      description: 'This is the third notification.',
-      date: '2024-04-27',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Notification".tr,
           style: TextStyle(
-                      fontFamily: mainFontnormal,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-
+              fontFamily: mainFontnormal,
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {
@@ -68,9 +39,9 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: notifications.length,
+        itemCount: productrovider.Notfication.length,
         itemBuilder: (context, index) {
-          final notification = notifications[index];
+          final notification = productrovider.Notfication[index];
           return Card(
             elevation: 2,
             margin: EdgeInsets.all(8),
@@ -78,27 +49,91 @@ class _NotificationPageState extends State<NotificationPage> {
             child: Column(
               children: <Widget>[
                 ListTile(
+                  onTap: () {
+                    if ('onItem' == notification.type) {
+                      productrovider.setidItem(productrovider
+                          .getoneProductByBarcode(notification.barcode!)
+                          .id!);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Oneitem()),
+                      );
+                    } else if ('discount' == notification.type) {
+                      productrovider.settype("discount");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AllItem()),
+                      );
+                    } else if ('brand' == notification.type) {
+                      productrovider.settype("brand");
+                      productrovider.setidbrand(notification.relationId!);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AllItem()),
+                      );
+                    } else if ('category' == notification.type) {
+                      if (productrovider.categores.indexWhere((category) =>
+                              category.id == productrovider.cateType) ==
+                          -1) {
+                        return;
+                      }
+                      productrovider.setcatetype(notification.relationId!);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => itemCategories()),
+                      ).then((value) {
+                        productrovider.setsubcateSelect(0);
+                      });
+                    } else if ('subcategory' == notification.type) {
+                      if (productrovider
+                                  .getsubcateById(notification.relationId!)
+                                  .indexWhere((subCategory) =>
+                                      subCategory.id ==
+                                      notification.barcode!) ==
+                              -1 ||
+                          productrovider.categores.indexWhere((category) =>
+                                  category.id == productrovider.cateType) ==
+                              -1) {
+                        return;
+                      }
+                      productrovider.setcatetype(notification.relationId!);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => itemCategories(
+                                  subcateID: int.parse(notification.barcode!),
+                                )),
+                      ).then((value) {
+                        productrovider.setsubcateSelect(0);
+                      });
+                    } else if ('order' == notification.type) {
+                    } else if ('attention' == notification.type) {}
+                  },
                   leading: Icon(
                     Ionicons.notifications_outline,
                     color: mainColorRed,
                     size: 35,
                   ),
                   title: Text(
-                    notification.title,
+                    notification.title!,
                     style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 16,
                         fontFamily: mainFontbold),
                   ),
                   subtitle: Text(
-                    notification.description,
+                    notification.content!,
                     style: TextStyle(
                         color: mainColorBlack,
                         fontSize: 12,
                         fontFamily: mainFontnormal),
                   ),
                   trailing: Text(
-                    notification.date,
+                    timeAgo(notification.createdAt!),
                     style: TextStyle(
                         color: mainColorGrey,
                         fontSize: 12,
@@ -111,5 +146,32 @@ class _NotificationPageState extends State<NotificationPage> {
         },
       ),
     );
+  }
+
+  String timeAgo(String datetime) {
+    bool numericDates = false;
+    final date2 = DateTime.now();
+    DateTime date = DateTime.parse(datetime);
+    final difference = date2.difference(date);
+
+    if ((difference.inDays / 7).floor() >= 1) {
+      return (numericDates) ? '1 week ago' : 'Last week';
+    } else if (difference.inDays >= 2) {
+      return '${difference.inDays} days ago';
+    } else if (difference.inDays >= 1) {
+      return (numericDates) ? '1 day ago' : 'Yesterday';
+    } else if (difference.inHours >= 2) {
+      return '${difference.inHours} hours ago';
+    } else if (difference.inHours >= 1) {
+      return (numericDates) ? '1 hour ago' : 'An hour ago';
+    } else if (difference.inMinutes >= 2) {
+      return '${difference.inMinutes} minutes ago';
+    } else if (difference.inMinutes >= 1) {
+      return (numericDates) ? '1 minute ago' : 'A minute ago';
+    } else if (difference.inSeconds >= 3) {
+      return '${difference.inSeconds} seconds ago';
+    } else {
+      return 'Just now';
+    }
   }
 }

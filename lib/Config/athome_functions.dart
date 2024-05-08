@@ -303,8 +303,6 @@ String fontNormalChoose() {
 //   return retrive;
 // }
 
-
-
 // Future timestamp(BuildContext context) {
 //   return checktime(context);
 // }

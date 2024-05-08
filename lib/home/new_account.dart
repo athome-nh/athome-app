@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 
-
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/splash_screen.dart';
@@ -122,8 +121,7 @@ class _Account_newState extends State<Account_new> {
                                     ),
                                     child: waitingImage
                                         ? Padding(
-                                            padding:
-                                                const EdgeInsets.all(4.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: waitingWiget2(context),
                                           )
                                         : Icon(
@@ -158,8 +156,7 @@ class _Account_newState extends State<Account_new> {
                                     ),
                                     child: waitingImage
                                         ? Padding(
-                                            padding:
-                                                const EdgeInsets.all(4.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: waitingWiget2(context),
                                           )
                                         : Icon(

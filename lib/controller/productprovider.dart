@@ -9,6 +9,7 @@ import 'package:dllylas/main.dart';
 import 'package:dllylas/model/brandmodel/brandmodel.dart';
 import 'package:dllylas/model/category_model/category_model.dart';
 import 'package:dllylas/model/location/location.dart';
+
 import 'package:dllylas/model/order_items/order_items.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
@@ -19,6 +20,8 @@ import 'package:dllylas/model/sub_category/sub_category.dart';
 import 'package:dllylas/model/topmodel/topmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../model/notficaion_model/notficaion_model.dart';
 
 class productProvider extends ChangeNotifier {
   productProvider() {
@@ -71,6 +74,7 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
+
           setMinimumOrder(
               value['minimum_order'], value['startTime'], value['endTime']);
 
@@ -92,6 +96,9 @@ class productProvider extends ChangeNotifier {
               .toList());
           setOrderItems((value['orders_item'] as List)
               .map((x) => OrderItems.fromMap(x))
+              .toList());
+          setNotfications((value['notfications'] as List)
+              .map((x) => NotficaionModel.fromMap(x))
               .toList());
           setshowuser(true);
         } else {}
@@ -225,6 +232,7 @@ class productProvider extends ChangeNotifier {
   List<CategoryModel> _categores = [];
   List<SubCategory> _subCategores = [];
   List<ProductsImage> _productimages = [];
+  List<NotficaionModel> _Notfication = [];
   List<OrderModel> _Orders = [];
   List<OrderItems> _Orderitems = [];
   List<Locationuser> _location = [];
@@ -257,6 +265,7 @@ class productProvider extends ChangeNotifier {
   List<CategoryModel> get categores => _categores;
   List<SubCategory> get subCategores => _subCategores;
   List<ProductsImage> get productimages => _productimages;
+  List<NotficaionModel> get Notfication => _Notfication;
   String get searchproduct => _searchproduct;
 
   String get allitemType => _allitemType;
@@ -393,6 +402,18 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
+  ProductModel getoneProductByBarcode(String itembarcode) {
+    final item = _products.firstWhere(
+      (element) => element.barcode == itembarcode,
+    );
+
+    if (item == null) {
+      throw Exception('Item with ID $itembarcode not found');
+    }
+
+    return item;
+  }
+
   Productitems getoneProductItemsById(int itemId) {
     final Productitems? item = _productitems.firstWhere(
       (element) => element.id == itemId,
@@ -490,6 +511,12 @@ class productProvider extends ChangeNotifier {
   // Add a product to the list
   void setProducts(List<ProductModel> products) {
     _products = products;
+
+    notifyListeners();
+  }
+
+  void setNotfications(List<NotficaionModel> notfications) {
+    _Notfication = notfications;
 
     notifyListeners();
   }
