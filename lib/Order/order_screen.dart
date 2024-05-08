@@ -269,8 +269,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                             children: [
                                               TextButton.icon(
                                                 onPressed: () {
-                                                  productrovider
-                                                      .getordersbyOrderId(
+                                                  productrovider.getordersbyOrderId(
                                                           order.id.toString())
                                                       .forEach((element) {
                                                     final existingItemIndex =
@@ -360,7 +359,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     backgroundColor:
                                                         Colors.transparent,
                                                     fixedSize: Size(
-                                                        getWidth(context, 30),
+                                                        getWidth(context, 45),
                                                         getHeight(context, 3))),
                                                 label: Text(
                                                   "Re order".tr,
@@ -368,6 +367,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                       color: mainColorGrey),
                                                 ),
                                               ),
+                                              
                                               TextButton.icon(
                                                 onPressed: () {
                                                   productrovider
