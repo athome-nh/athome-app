@@ -6,9 +6,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Home/all_item.dart';
+import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
-import 'package:dllylas/home/Notfication.dart';
 import 'package:dllylas/home/item_categories.dart';
 
 import 'package:dllylas/home/search_page.dart';
@@ -210,7 +210,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NotficationScreen()),
+                                builder: (context) => NotificationPage()),
                           );
                         },
                       ),
