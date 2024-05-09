@@ -79,7 +79,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
       });
     });
 
-
     super.initState();
   }
 
@@ -163,7 +162,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
         // home: const NotificationPage(),
-        home: const SplashScreen(),
+        home: SplashScreen(),
         navigatorKey: navigatorKey,
       ),
     );
