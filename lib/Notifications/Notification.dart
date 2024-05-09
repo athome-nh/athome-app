@@ -133,83 +133,12 @@ class FCMNotification {
   }
 
   Future<void> _handleMessage(RemoteMessage message) async {
-    // final productrovider = Provider.of<productProvider>(context, listen: true);
-    // if ('onItem' == message.data["type"]) {
-    //   productrovider.setidItem(
-    //       productrovider.getoneProductByBarcode(message.data["barcode"]).id!);
-    //   await navigatorKey.currentState?.push(
-    //     MaterialPageRoute(builder: (context) => const Oneitem()),
-    //   );
-    // } else if ('discount' == message.data["type"]) {
-    //   productrovider.settype("discount");
-    //   await navigatorKey.currentState?.push(
-    //     MaterialPageRoute(builder: (context) => const AllItem()),
-    //   );
-    // } else if ('brand' == message.data["type"]) {
-    //   productrovider.settype("brand");
-    //   var notification;
-    //   productrovider.setidbrand(notification.relationId!);
-    //   await navigatorKey.currentState?.push(
-    //     MaterialPageRoute(builder: (context) => const AllItem()),
-    //   );
-    // } else if ('category' == message.data["type"]) {
-    //   if (productrovider.categores.indexWhere(
-    //           (category) => category.id == message.data["relationId"]) ==
-    //       -1) {
-    //     return;
-    //   }
-    //   productrovider.setcatetype(message.data["relationId"]);
-    //   await navigatorKey.currentState
-    //       ?.push(
-    //     MaterialPageRoute(builder: (context) => itemCategories()),
-    //   )
-    //       .then((value) {
-    //     productrovider.setsubcateSelect(0);
-    //   });
-    // } else if ('subcategory' == message.data["type"]) {
-    //   if (productrovider.categores.indexWhere(
-    //               (category) => category.id == message.data["relationId"]) ==
-    //           -1 ||
-    //       productrovider.subCategores.indexWhere((subCategory) =>
-    //               subCategory.id == int.parse(message.data["barcode"])) ==
-    //           -1) {
-    //     return;
-    //   }
-    //   productrovider.setcatetype(message.data["relationId"]);
-    //   await navigatorKey.currentState
-    //       ?.push(
-    //     MaterialPageRoute(
-    //         builder: (context) => itemCategories(
-    //               subcateID: int.parse(message.data["barcode"]),
-    //             )),
-    //   )
-    //       .then((value) {
-    //     productrovider.setsubcateSelect(0);
-    //   });
-    // } else if ('order' == message.data["type"]) {
-    // } else if ('attention' == message.data["type"]) {}
     await navigatorKey.currentState
         ?.push(MaterialPageRoute(
             builder: (context) => SplashScreen(
                   message: message,
                 )))
-        .then((value) {
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => NavSwitch()),
-      // );
-    });
-    // await navigatorKey.currentState
-    //     ?.push(MaterialPageRoute(
-    //         builder: (context) => NotificationPage(
-    //               notID: int.parse(message.data["id"]),
-    //             )))
-    //     .then((value) {
-    //   // Navigator.pushReplacement(
-    //   //   context,
-    //   //   MaterialPageRoute(builder: (context) => NavSwitch()),
-    //   // );
-    // });
+        .then((value) {});
   }
 
 // Crude counter to make messages unique

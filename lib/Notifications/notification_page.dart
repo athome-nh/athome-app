@@ -304,7 +304,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                           (element) =>
                                               element.id ==
                                               notification.relationId!);
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                         builder: (context) => TrackOrder(
                                             order.id.toString(),
