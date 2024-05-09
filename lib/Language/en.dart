@@ -1,7 +1,24 @@
 const Map<String, String> en = {
+  //
+  "New": "New",
+
   // Notification
   "Notification": "Notification",
-  
+  "You don't have any notification": "You don't have any notification.",
+  "1 week ago": "1 week ago",
+  "Last week": "Last week",
+  "days ago": "days ago",
+  "1 day ago": "One day ago",
+  "Yesterday": "Yesterday",
+  "hours ago": "hours ago",
+  "1 hour ago": "One hour ago",
+  "An hour ago": "An hour ago",
+  "minutes ago": "minutes ago",
+  "1 minute ago": "One minute ago",
+  "A minute ago": "A minute ago",
+  "seconds ago": "seconds ago",
+  "Just now": "Just now",
+   
   
   // Help
   "Help": "Support",
