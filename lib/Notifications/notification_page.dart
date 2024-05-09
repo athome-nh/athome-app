@@ -65,7 +65,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     children: <Widget>[
                       Badge(
                         label: widget.notID == notification.id
-                            ? Text("New")
+                            ? Text("New".tr)
                             : SizedBox(),
                         alignment: Alignment.topLeft,
                         backgroundColor: widget.notID == notification.id
@@ -196,7 +196,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       ),
                     ),
                     Text(
-                      "Text for Empity Notification".tr,
+                      "You don't have any notification".tr,
                       style: TextStyle(
                           fontFamily: mainFontnormal,
                           fontSize: 20.0,
@@ -216,7 +216,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         children: <Widget>[
                           Badge(
                             label: widget.notID == notification.id
-                                ? Text("New")
+                                ? Text("New".tr)
                                 : SizedBox(),
                             alignment: Alignment.topLeft,
                             backgroundColor: widget.notID == notification.id
@@ -363,23 +363,23 @@ class _NotificationPageState extends State<NotificationPage> {
     final difference = date2.difference(date);
     // check text bawar
     if ((difference.inDays / 7).floor() >= 1) {
-      return (numericDates) ? '1 week ago' : 'Last week';
+      return 'Last week'.tr;
     } else if (difference.inDays >= 2) {
-      return '${difference.inDays} days ago';
+      return '${difference.inDays}'+'days ago'.tr;
     } else if (difference.inDays >= 1) {
-      return (numericDates) ? '1 day ago' : 'Yesterday';
+      return 'Yesterday'.tr;
     } else if (difference.inHours >= 2) {
-      return '${difference.inHours} hours ago';
+      return '${difference.inHours}'+'hours ago'.tr;
     } else if (difference.inHours >= 1) {
-      return (numericDates) ? '1 hour ago' : 'An hour ago';
+      return '1 hour ago'.tr;
     } else if (difference.inMinutes >= 2) {
-      return '${difference.inMinutes} minutes ago';
+      return '${difference.inMinutes}'+'minutes ago'.tr;
     } else if (difference.inMinutes >= 1) {
-      return (numericDates) ? '1 minute ago' : 'A minute ago';
+      return '1 minute ago'.tr;
     } else if (difference.inSeconds >= 3) {
-      return '${difference.inSeconds} seconds ago';
+      return '${difference.inSeconds}'+'seconds ago'.tr;
     } else {
-      return 'Just now';
+      return 'Just now'.tr;
     }
   }
 }
