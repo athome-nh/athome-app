@@ -1,6 +1,27 @@
 const Map<String, String> ar = {
+  //
+  "New": "جديد",
+
+  // Notification
+  "Notification": "إشعار",
+  "You don't have any notification": "هیليس لديك أي إشعار",
+  //"1 week ago": "1 week ago",
+  "Last week": "الأسبوع الماضي",
+  "days ago": "منذ أيام",
+  //"1 day ago": "One day ago",
+  "Yesterday": "الأمس",
+  "hours ago": "بضع ساعات مضت",
+  "1 hour ago": "منذ ساعة واحدة",
+  //"An hour ago": "An hour ago",
+  "minutes ago": "منذ دقائق",
+  "1 minute ago": "قبل دقيقة واحدة",
+  //"A minute ago": "A minute ago",
+  "seconds ago": "منذ ثوان",
+  "Just now": "الآن",
+  
+  
   // Help
-  "Help": "يدعم",
+  "Help": "الدعم",
   "DearCustomers":
       "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
   "Call": "07509583333 - 07802320717",
