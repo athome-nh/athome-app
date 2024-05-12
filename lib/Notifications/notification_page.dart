@@ -80,7 +80,8 @@ class _NotificationPageState extends State<NotificationPage> {
                           onTap: () {
                             if ('onItem' == notification.type) {
                               productrovider.setidItem(productrovider
-                                  .getoneProductByBarcode(notification.barcode!)
+                                  .getoneProductByBarcode(
+                                      notification.subrelation!)
                                   .id!);
                               Navigator.push(
                                 context,
@@ -130,7 +131,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                           (subCategory) =>
                                               subCategory.id ==
                                               int.parse(
-                                                  notification.barcode!)) ==
+                                                  notification.subrelation!)) ==
                                       -1) {
                                 return;
                               }
@@ -140,8 +141,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => itemCategories(
-                                          subcateID:
-                                              int.parse(notification.barcode!),
+                                          subcateID: int.parse(
+                                              notification.subrelation!),
                                         )),
                               ).then((value) {
                                 productrovider.setsubcateSelect(0);
@@ -232,7 +233,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 if ('onItem' == notification.type) {
                                   productrovider.setidItem(productrovider
                                       .getoneProductByBarcode(
-                                          notification.barcode!)
+                                          notification.subrelation!)
                                       .id!);
                                   Navigator.push(
                                     context,
@@ -281,8 +282,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                       productrovider.subCategores.indexWhere(
                                               (subCategory) =>
                                                   subCategory.id ==
-                                                  int.parse(
-                                                      notification.barcode!)) ==
+                                                  int.parse(notification
+                                                      .subrelation!)) ==
                                           -1) {
                                     return;
                                   }
@@ -293,7 +294,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                     MaterialPageRoute(
                                         builder: (context) => itemCategories(
                                               subcateID: int.parse(
-                                                  notification.barcode!),
+                                                  notification.subrelation!),
                                             )),
                                   ).then((value) {
                                     productrovider.setsubcateSelect(0);
@@ -365,19 +366,19 @@ class _NotificationPageState extends State<NotificationPage> {
     if ((difference.inDays / 7).floor() >= 1) {
       return 'Last week'.tr;
     } else if (difference.inDays >= 2) {
-      return '${difference.inDays}'+'days ago'.tr;
+      return '${difference.inDays}' + 'days ago'.tr;
     } else if (difference.inDays >= 1) {
       return 'Yesterday'.tr;
     } else if (difference.inHours >= 2) {
-      return '${difference.inHours}'+'hours ago'.tr;
+      return '${difference.inHours}' + 'hours ago'.tr;
     } else if (difference.inHours >= 1) {
       return '1 hour ago'.tr;
     } else if (difference.inMinutes >= 2) {
-      return '${difference.inMinutes}'+'minutes ago'.tr;
+      return '${difference.inMinutes}' + 'minutes ago'.tr;
     } else if (difference.inMinutes >= 1) {
       return '1 minute ago'.tr;
     } else if (difference.inSeconds >= 3) {
-      return '${difference.inSeconds}'+'seconds ago'.tr;
+      return '${difference.inSeconds}' + 'seconds ago'.tr;
     } else {
       return 'Just now'.tr;
     }

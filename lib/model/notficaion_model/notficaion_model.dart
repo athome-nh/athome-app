@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
-
 class NotficaionModel {
   final int? id;
   final String? title;
@@ -10,7 +9,7 @@ class NotficaionModel {
   final int? customerId;
   final String? type;
   final int? relationId;
-  final String? barcode;
+  final String? subrelation;
   final int? createBy;
   final dynamic updatedBy;
   final String? createdAt;
@@ -23,7 +22,7 @@ class NotficaionModel {
     this.customerId,
     this.type,
     this.relationId,
-    this.barcode,
+    this.subrelation,
     this.createBy,
     this.updatedBy,
     this.createdAt,
@@ -32,7 +31,7 @@ class NotficaionModel {
 
   @override
   String toString() {
-    return 'NotficaionModel(id: $id, title: $title, content: $content, customerId: $customerId, type: $type, relationId: $relationId, barcode: $barcode, createBy: $createBy, updatedBy: $updatedBy, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'NotficaionModel(id: $id, title: $title, content: $content, customerId: $customerId, type: $type, relationId: $relationId, subrelation: $subrelation, createBy: $createBy, updatedBy: $updatedBy, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   factory NotficaionModel.fromMap(Map<String, dynamic> data) {
@@ -43,7 +42,7 @@ class NotficaionModel {
       customerId: data['customerId'] as int?,
       type: data['type'] as String?,
       relationId: data['relationID'] as int?,
-      barcode: data['barcode'] as String?,
+      subrelation: data['subrelation'] as String?,
       createBy: data['createBy'] as int?,
       updatedBy: data['updatedBy'] as dynamic,
       createdAt: data['created_at'] as String?,
@@ -58,7 +57,7 @@ class NotficaionModel {
         'customerId': customerId,
         'type': type,
         'relationID': relationId,
-        'barcode': barcode,
+        'subrelation': subrelation,
         'createBy': createBy,
         'updatedBy': updatedBy,
         'created_at': createdAt,
@@ -84,7 +83,7 @@ class NotficaionModel {
     int? customerId,
     String? type,
     int? relationId,
-    String? barcode,
+    String? subrelation,
     int? createBy,
     dynamic updatedBy,
     String? createdAt,
@@ -97,7 +96,7 @@ class NotficaionModel {
       customerId: customerId ?? this.customerId,
       type: type ?? this.type,
       relationId: relationId ?? this.relationId,
-      barcode: barcode ?? this.barcode,
+      subrelation: subrelation ?? this.subrelation,
       createBy: createBy ?? this.createBy,
       updatedBy: updatedBy ?? this.updatedBy,
       createdAt: createdAt ?? this.createdAt,
@@ -121,7 +120,7 @@ class NotficaionModel {
       customerId.hashCode ^
       type.hashCode ^
       relationId.hashCode ^
-      barcode.hashCode ^
+      subrelation.hashCode ^
       createBy.hashCode ^
       updatedBy.hashCode ^
       createdAt.hashCode ^

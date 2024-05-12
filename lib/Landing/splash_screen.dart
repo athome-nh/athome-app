@@ -100,7 +100,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }
     if ('onItem' == widget.message!.data["type"]) {
       productrovider.setidItem(productrovider
-          .getoneProductByBarcode(widget.message!.data["barcode"])
+          .getoneProductByBarcode(widget.message!.data["subrelation"])
           .id!);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const Oneitem()),
@@ -141,7 +141,7 @@ class _SplashScreenState extends State<SplashScreen> {
               -1 ||
           productrovider.subCategores.indexWhere((subCategory) =>
                   subCategory.id ==
-                  int.parse(widget.message!.data["barcode"])) ==
+                  int.parse(widget.message!.data["subrelation"])) ==
               -1) {
         return;
       }
@@ -151,7 +151,7 @@ class _SplashScreenState extends State<SplashScreen> {
           .pushReplacement(
         MaterialPageRoute(
             builder: (context) => itemCategories(
-                  subcateID: int.parse(widget.message!.data["barcode"]),
+                  subcateID: int.parse(widget.message!.data["subrelation"]),
                 )),
       )
           .then((value) {
