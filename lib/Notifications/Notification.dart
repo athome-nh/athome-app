@@ -61,14 +61,20 @@ class FCMNotification {
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) async {
-      // if (message!.data.isNotEmpty) {
-      //   // _handleMessage(message);
-      // }
+      if (message != null && message.data.isNotEmpty) {
+        _handleMessage(message);
+      }
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
+      print(message.notification!.title.toString());
+      print(message.data.toString());
+      print(message.data["type"]);
+      print(message.data["relationId"]);
+      print(message.data["subrelation"]);
       AndroidNotification? android = message.notification?.android;
+
       if (notification != null && android != null) {
         // playSound();
         // Get.snackbar(message.notification!.title.toString(),

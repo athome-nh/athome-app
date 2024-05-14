@@ -320,19 +320,14 @@ class _NotificationPageState extends State<NotificationPage> {
                                 size: 35,
                               ),
                               title: Text(
-                                textCount(notification.title!, 30),
+                                textCount(notification.title!, 35),
                                 style: TextStyle(
                                     color: mainColorGrey,
                                     fontSize: 14,
                                     fontFamily: mainFontbold),
                               ),
                               subtitle: Text(
-                                textCount(
-                                    notification.content! +
-                                        notification.content! +
-                                        notification.content! +
-                                        notification.content!,
-                                    70),
+                                textCount(notification.content!, 70),
                                 style: TextStyle(
                                     color: mainColorBlack,
                                     fontSize: 12,

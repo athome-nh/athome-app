@@ -30,15 +30,15 @@ class _Test_ScreenState extends State<Test_Screen> {
   void initState() {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
-    // // gettokenDevices();
-    // FirebaseMessaging.instance
-    //     .getToken(
-    //         // vapidKey: firebaseCloudvapidKey
-    //         )
-    //     .then((val) async {
-    //   token2 = val.toString();
-    //   print(token2);
-    // });
+    // gettokenDevices();
+    FirebaseMessaging.instance
+        .getToken(
+            // vapidKey: firebaseCloudvapidKey
+            )
+        .then((val) async {
+      token2 = val.toString();
+      print(token2);
+    });
     // selectedItem = lang == "en"
     //     ? "English"
     //     : lang == "ar"
@@ -92,13 +92,6 @@ class _Test_ScreenState extends State<Test_Screen> {
       _onTokenEvent,
       onError: _onTokenError,
     );
-
-    // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
-    //   backgroundMessageCallback,
-    // );
-    // debugPrint(
-    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
-    // );
   }
 
   void _onTokenEvent(String event) {
@@ -107,7 +100,6 @@ class _Test_ScreenState extends State<Test_Screen> {
 
   void _onTokenError(Object error) {
     PlatformException e = error as PlatformException;
-    print('TokenErrorEvent:' + e.message!);
   }
 
   // AudioPlayer audioPlayer = AudioPlayer();

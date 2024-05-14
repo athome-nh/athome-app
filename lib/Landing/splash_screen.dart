@@ -102,22 +102,43 @@ class _SplashScreenState extends State<SplashScreen> {
       productrovider.setidItem(productrovider
           .getoneProductByBarcode(widget.message!.data["subrelation"])
           .id!);
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .push(
         MaterialPageRoute(builder: (context) => const Oneitem()),
-      );
+      )
+          .then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavSwitch()),
+        );
+      });
     } else if ('discount' == widget.message!.data["type"]) {
       productrovider.settype("discount");
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .push(
         MaterialPageRoute(builder: (context) => const AllItem()),
-      );
+      )
+          .then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavSwitch()),
+        );
+      });
     } else if ('brand' == widget.message!.data["type"]) {
       productrovider.settype("brand");
 
       productrovider
           .setidbrand(int.parse(widget.message!.data["relationId"].toString()));
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .push(
         MaterialPageRoute(builder: (context) => const AllItem()),
-      );
+      )
+          .then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavSwitch()),
+        );
+      });
     } else if ('category' == widget.message!.data["type"]) {
       if (productrovider.categores.indexWhere((category) =>
               category.id ==
@@ -128,11 +149,16 @@ class _SplashScreenState extends State<SplashScreen> {
       productrovider.setcatetype(
           int.parse(widget.message!.data["relationId"].toString()));
       Navigator.of(context)
-          .pushReplacement(
+          .push(
         MaterialPageRoute(builder: (context) => itemCategories()),
       )
           .then((value) {
         productrovider.setsubcateSelect(0);
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavSwitch()),
+        );
       });
     } else if ('subcategory' == widget.message!.data["type"]) {
       if (productrovider.categores.indexWhere((category) =>
@@ -148,7 +174,7 @@ class _SplashScreenState extends State<SplashScreen> {
       productrovider.setcatetype(
           int.parse(widget.message!.data["relationId"].toString()));
       Navigator.of(context)
-          .pushReplacement(
+          .push(
         MaterialPageRoute(
             builder: (context) => itemCategories(
                   subcateID: int.parse(widget.message!.data["subrelation"]),
@@ -156,16 +182,27 @@ class _SplashScreenState extends State<SplashScreen> {
       )
           .then((value) {
         productrovider.setsubcateSelect(0);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavSwitch()),
+        );
       });
     } else if ('order' == widget.message!.data["type"]) {
       OrderModel order = productrovider.Orders.firstWhere((element) =>
           element.id ==
           int.parse(widget.message!.data["relationId"].toString()));
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .push(
         MaterialPageRoute(
             builder: (context) => TrackOrder(order.id.toString(),
                 order.returnTotalPrice.toString(), order.createdAt.toString())),
-      );
+      )
+          .then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavSwitch()),
+        );
+      });
     } else if ('attention' == widget.message!.data["type"]) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(

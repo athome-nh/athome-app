@@ -95,9 +95,6 @@ class _SingInUpState extends State<SingInUp> {
     // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
     //   backgroundMessageCallback,
     // );
-    // debugPrint(
-    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
-    // );
   }
 
   void _onTokenEvent(String event) {

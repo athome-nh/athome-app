@@ -29,8 +29,7 @@ class _itemCategoriesState extends State<itemCategories>
     super.initState();
 
     final productPro = Provider.of<productProvider>(context, listen: false);
-    print(productPro.subCategores
-        .indexWhere((subCategory) => subCategory.id == widget.subcateID));
+
     _categoryTabController = TabController(
         length: productPro.categores.length,
         initialIndex: productPro.categores
