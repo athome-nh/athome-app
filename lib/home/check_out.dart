@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -25,15 +26,63 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  final PageController controller = PageController(initialPage: 0);
   TextEditingController NoteController = TextEditingController();
   bool waitingcheckout = false;
   int locationID = 0;
   String orderCode = "";
+  int deleveryType = 1;
+  List<String> listOfMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+  List<String> listOfDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  late DateTime selectedDate; // TO tracking date
+
+  late DateTime Datetimenow; // TO tracking date
+  bool showDateTime = false;
+  final List<String> slotTimes = [
+    "9:00 AM",
+    "11:00 PM",
+    "1:00 PM",
+    "3:00 PM",
+    "5:00 PM",
+    "7:00 PM",
+  ];
+  int a = 6;
+  int currentDateSelectedIndex = 0; //For Horizontal Date
+  int currentTimeSelectedIndex = -1; //For Horizontal Date
+  ScrollController scrollController =
+      ScrollController(); //To Track Scroll of ListView
+  @override
+  void initState() {
+    getServerTime().then((value) {
+      Datetimenow = DateTime.parse(value);
+      setState(() {
+        showDateTime = true;
+      });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +124,7 @@ class _CheckOutState extends State<CheckOut> {
                           style: TextStyle(
                               color: mainColorBlack,
                               fontFamily: mainFontnormal,
-                              fontSize: 20),
+                              fontSize: 16),
                         ),
                         IconButton(
                             onPressed: () async {
@@ -99,7 +148,7 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     SizedBox(
                       width: getWidth(context, 100),
-                      height: getHeight(context, 15),
+                      height: getHeight(context, 10),
                       child: productrovider.location.isEmpty
                           ? GestureDetector(
                               onTap: () async {
@@ -124,7 +173,12 @@ class _CheckOutState extends State<CheckOut> {
                                         : "assets/Victors/locationKu.png"),
                               ),
                             )
-                          : ListView.builder(
+                          : ListView.separated(
+                              separatorBuilder: (context, index) {
+                                return SizedBox(
+                                  width: 10,
+                                );
+                              },
                               scrollDirection: Axis.horizontal,
                               itemCount: productrovider.location.length,
                               itemBuilder: (BuildContext context, int index) {
@@ -132,139 +186,375 @@ class _CheckOutState extends State<CheckOut> {
                                     .location.reversed
                                     .toList()[index];
 
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 1)),
-                                  child: Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          if (locationID == location.id!) {
-                                            setState(() {
-                                              locationID = 0;
-                                            });
-                                          } else {
-                                            setState(() {
-                                              locationID = location.id!;
-                                            });
-                                          }
-                                        },
-                                        child: Container(
-                                          width: getWidth(context, 55),
-                                          height: getHeight(context, 15),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color:
-                                                      locationID == location.id!
-                                                          ? mainColorRed
-                                                          : mainColorGrey),
-                                              color: mainColorGrey
-                                                  .withOpacity(0.1),
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(12),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      SizedBox(
-                                                        width: getWidth(
-                                                            context, 40),
-                                                        child: Text(
-                                                          location.name!,
-                                                          maxLines: 1,
-                                                          style: TextStyle(
-                                                              fontFamily:
-                                                                  mainFontbold,
-                                                              color:
-                                                                  mainColorBlack,
-                                                              fontSize: 16),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: getWidth(
-                                                            context, 40),
-                                                        child: Text(
-                                                          location.area!,
-                                                          style: TextStyle(
-                                                              fontFamily:
-                                                                  mainFontnormal,
-                                                              color:
-                                                                  mainColorGrey,
-                                                              fontSize: 12),
-                                                        ),
-                                                      ),
-                                                      Row(
+                                return Container(
+                                    width: getWidth(context, 55),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: locationID == location.id!
+                                                ? mainColorRed
+                                                : mainColorGrey
+                                                    .withOpacity(0.5)),
+                                        color: locationID == location.id!
+                                            ? mainColorGrey.withOpacity(0.1)
+                                            : Colors.transparent,
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: ListTile(
+                                      onTap: () {
+                                        if (locationID == location.id!) {
+                                          setState(() {
+                                            locationID = 0;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            locationID = location.id!;
+                                          });
+                                        }
+                                      },
+                                      title: Text(
+                                        location.name!,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            fontFamily: mainFontbold,
+                                            color: mainColorBlack,
+                                            fontSize: 14),
+                                      ),
+                                      subtitle: Text(
+                                        location.area!,
+                                        style: TextStyle(
+                                            fontFamily: mainFontnormal,
+                                            color: mainColorGrey,
+                                            fontSize: 11),
+                                      ),
+                                      trailing: Icon(
+                                        locationID == location.id!
+                                            ? Icons.check_circle
+                                            : Icons.check_circle_outline,
+                                        color: locationID == location.id!
+                                            ? mainColorRed
+                                            : mainColorGrey,
+                                      ),
+                                    ));
+                              }),
+                    ),
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Delivery Type".tr,
+                          style: TextStyle(
+                              color: mainColorBlack,
+                              fontFamily: mainFontnormal,
+                              fontSize: 16),
+                        ),
+                        IconButton(
+                            onPressed: () async {},
+                            icon: Icon(
+                              Icons.calendar_today_outlined,
+                              color: mainColorRed,
+                              size: 25,
+                            )),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                                color: mainColorGrey.withOpacity(0.5)),
+                          ),
+                          child: RadioMenuButton(
+                              value: deleveryType,
+                              groupValue: 1,
+                              onChanged: (value) {
+                                setState(() {
+                                  currentDateSelectedIndex = 0;
+                                  currentTimeSelectedIndex = -1;
+                                  deleveryType = 1;
+                                });
+                              },
+                              child: Text(
+                                "Delevery now",
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 14),
+                              )),
+                        ),
+                        Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                                color: mainColorGrey.withOpacity(0.5)),
+                          ),
+                          child: RadioMenuButton(
+                              value: deleveryType,
+                              groupValue: 2,
+                              onChanged: (value) {
+                                setState(() {
+                                  currentDateSelectedIndex = 0;
+                                  currentTimeSelectedIndex = 0;
+                                  deleveryType = 2;
+                                });
+                                showModalBottomSheet(
+                                  // enableDrag: false,
+                                  // isDismissible: false,
+                                  isScrollControlled: true,
+                                  context: context,
+                                  backgroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadiusDirectional.only(
+                                      topEnd: Radius.circular(25),
+                                      topStart: Radius.circular(25),
+                                    ),
+                                  ),
+                                  builder: (context) => Container(
+                                    padding: EdgeInsetsDirectional.only(
+                                      start: 20,
+                                      end: 20,
+                                      bottom: 30,
+                                      top: 8,
+                                    ),
+                                    child: StatefulBuilder(builder:
+                                        (BuildContext context,
+                                            StateSetter mystate) {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          SizedBox(
+                                            height: getHeight(context, 4),
+                                          ),
+                                          !showDateTime && deleveryType == 2
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 20.0),
+                                                  child: Center(
+                                                      child: waitingWiget2(
+                                                          context)),
+                                                )
+                                              : deleveryType == 1
+                                                  ? SizedBox()
+                                                  : FadeInUp(
+                                                      delay: const Duration(
+                                                          milliseconds: 200),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
-                                                          Text(
-                                                            "${location.type.toString().tr} - ${location.number ?? ""}",
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    mainFontnormal,
-                                                                color:
-                                                                    mainColorGrey,
-                                                                fontSize: 12),
+                                                          Center(
+                                                            child: Container(
+                                                              width: getWidth(
+                                                                  context, 100),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            15),
+                                                                border: Border.all(
+                                                                    color: deleveryType ==
+                                                                            1
+                                                                        ? mainColorBlack.withOpacity(
+                                                                            0.2)
+                                                                        : mainColorGrey
+                                                                            .withOpacity(0.5)),
+                                                              ),
+                                                              child: Center(
+                                                                child:
+                                                                    DropdownButtonFormField<
+                                                                        int>(
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    border:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide
+                                                                              .none,
+                                                                    ),
+                                                                  ),
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .calendar_today_outlined,
+                                                                    color: deleveryType ==
+                                                                            1
+                                                                        ? mainColorBlack.withOpacity(
+                                                                            0.2)
+                                                                        : mainColorGrey
+                                                                            .withOpacity(0.5),
+                                                                  ),
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          horizontal:
+                                                                              15),
+                                                                  value:
+                                                                      currentDateSelectedIndex,
+                                                                  onChanged:
+                                                                      deleveryType ==
+                                                                              1
+                                                                          ? null
+                                                                          : (newIndex) {
+                                                                              setState(() {
+                                                                                // currentDateSelectedIndex =
+                                                                                //     newIndex;
+                                                                                // selectedDate = Datetimenow.add(
+                                                                                //     Duration(days: newIndex));
+                                                                              });
+                                                                            },
+                                                                  items: List
+                                                                      .generate(
+                                                                          7,
+                                                                          (index) {
+                                                                    return DropdownMenuItem<
+                                                                            int>(
+                                                                        value:
+                                                                            index,
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
+                                                                            Text(Datetimenow.add(Duration(days: index)).toString().substring(0,
+                                                                                10)),
+                                                                            SizedBox(
+                                                                              width: 15,
+                                                                            ),
+                                                                            Text(Datetimenow.add(Duration(days: index)).day == Datetimenow.day
+                                                                                ? "Today"
+                                                                                : listOfDays[Datetimenow.add(Duration(days: index)).weekday - 1].toString()),
+                                                                          ],
+                                                                        ));
+                                                                  }),
+                                                                ),
+                                                              ),
+                                                            ),
                                                           ),
                                                           SizedBox(
-                                                            width: getWidth(
-                                                                context, 1),
+                                                            height: getHeight(
+                                                                context, 2),
                                                           ),
-                                                          location.floor
-                                                                      .toString() ==
-                                                                  "null"
-                                                              ? const SizedBox()
-                                                              : Text(
-                                                                  ", Floor: ${location.floor}",
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          mainFontnormal,
-                                                                      color:
-                                                                          mainColorGrey,
-                                                                      fontSize:
-                                                                          12),
-                                                                ),
+                                                          SizedBox(
+                                                            height: getHeight(
+                                                                context, 20),
+                                                            child: GridView
+                                                                .builder(
+                                                              gridDelegate:
+                                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                                crossAxisCount:
+                                                                    2,
+                                                                mainAxisSpacing:
+                                                                    10,
+                                                                crossAxisSpacing:
+                                                                    10,
+                                                                childAspectRatio:
+                                                                    4,
+                                                              ),
+                                                              itemCount:
+                                                                  slotTimes
+                                                                      .length,
+                                                              scrollDirection:
+                                                                  Axis.vertical,
+                                                              itemBuilder:
+                                                                  (context,
+                                                                      index) {
+                                                                return OutlinedButton(
+                                                                    onPressed:
+                                                                        deleveryType ==
+                                                                                1
+                                                                            ? null
+                                                                            : () {
+                                                                                mystate(() {
+                                                                                  currentTimeSelectedIndex = index;
+                                                                                });
+                                                                              },
+                                                                    style: TextButton
+                                                                        .styleFrom(
+                                                                      shape: RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10)),
+                                                                      backgroundColor: currentTimeSelectedIndex ==
+                                                                              index
+                                                                          ? mainColorGrey
+                                                                          : mainColorWhite,
+                                                                    ),
+                                                                    child: Text(
+                                                                      slotTimes[
+                                                                              index] +
+                                                                          " - " +
+                                                                          slotTimes[
+                                                                              index],
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            mainFontnormal,
+                                                                        fontSize:
+                                                                            12,
+                                                                        color: deleveryType ==
+                                                                                1
+                                                                            ? mainColorBlack.withOpacity(0.5)
+                                                                            : currentTimeSelectedIndex == index
+                                                                                ? mainColorWhite
+                                                                                : mainColorBlack,
+                                                                      ),
+                                                                    ));
+                                                              },
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: getHeight(
+                                                                context, 2),
+                                                          ),
+                                                          Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    horizontal:
+                                                                        getWidth(
+                                                                            context,
+                                                                            4)),
+                                                            child: TextButton(
+                                                              onPressed:
+                                                                  waitingcheckout
+                                                                      ? null
+                                                                      : () {},
+                                                              style: TextButton
+                                                                  .styleFrom(
+                                                                fixedSize: Size(
+                                                                    getWidth(
+                                                                        context,
+                                                                        85),
+                                                                    getHeight(
+                                                                        context,
+                                                                        6)),
+                                                              ),
+                                                              child: Text(
+                                                                "Select".tr,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ],
                                                       ),
-                                                      location.buildingName
-                                                                  .toString() ==
-                                                              "null"
-                                                          ? const SizedBox()
-                                                          : Text(
-                                                              "${"Building".tr}: ${location.buildingName}",
-                                                              style: TextStyle(
-                                                                  fontFamily:
-                                                                      mainFontnormal,
-                                                                  color:
-                                                                      mainColorGrey,
-                                                                  fontSize: 12),
-                                                            ),
-                                                    ]),
-                                                Icon(
-                                                  locationID == location.id!
-                                                      ? Icons.check_circle
-                                                      : Icons
-                                                          .check_circle_outline,
-                                                  color:
-                                                      locationID == location.id!
-                                                          ? mainColorRed
-                                                          : mainColorGrey,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                                    ),
+                                        ],
+                                      );
+                                    }),
                                   ),
                                 );
-                              }),
+                              },
+                              child: Text(
+                                "Delevery schedule",
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 14),
+                              )),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: getHeight(context, 2),
@@ -274,10 +564,10 @@ class _CheckOutState extends State<CheckOut> {
                       style: TextStyle(
                           color: mainColorBlack,
                           fontFamily: mainFontnormal,
-                          fontSize: 20),
+                          fontSize: 16),
                     ),
                     SizedBox(
-                      height: getHeight(context, 2),
+                      height: getHeight(context, 1),
                     ),
                     GestureDetector(
                       onTap: () {},
@@ -297,11 +587,11 @@ class _CheckOutState extends State<CheckOut> {
                                 style: TextStyle(
                                     color: mainColorBlack,
                                     fontFamily: mainFontnormal,
-                                    fontSize: 12),
+                                    fontSize: 14),
                               ),
                               Icon(
-                                Icons.circle,
-                                color: mainColorRed,
+                                Icons.check_circle_sharp,
+                                color: Colors.green,
                                 size: 20,
                               ),
                             ],
@@ -310,7 +600,7 @@ class _CheckOutState extends State<CheckOut> {
                       ),
                     ),
                     SizedBox(
-                      height: getHeight(context, 2),
+                      height: getHeight(context, 1),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -328,10 +618,12 @@ class _CheckOutState extends State<CheckOut> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset("assets/images/fib.png"),
-                              Icon(
-                                Icons.circle_outlined,
-                                color: mainColorRed,
-                                size: 20,
+                              Text(
+                                "Coming soon".tr,
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 14),
                               ),
                             ],
                           ),
@@ -339,7 +631,7 @@ class _CheckOutState extends State<CheckOut> {
                       ),
                     ),
                     SizedBox(
-                      height: getHeight(context, 2),
+                      height: getHeight(context, 1),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -357,10 +649,12 @@ class _CheckOutState extends State<CheckOut> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset("assets/images/fast.png"),
-                              Icon(
-                                Icons.circle_outlined,
-                                color: mainColorRed,
-                                size: 20,
+                              Text(
+                                "Coming soon".tr,
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontFamily: mainFontnormal,
+                                    fontSize: 14),
                               ),
                             ],
                           ),
@@ -368,10 +662,10 @@ class _CheckOutState extends State<CheckOut> {
                       ),
                     ),
                     SizedBox(
-                      height: getHeight(context, 4),
+                      height: getHeight(context, 3),
                     ),
                     TextFormField(
-                      maxLines: 4,
+                      maxLines: 2,
                       controller: NoteController,
                       cursorColor: mainColorGrey,
                       keyboardType: TextInputType.text,
@@ -388,7 +682,7 @@ class _CheckOutState extends State<CheckOut> {
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey
                                 .withOpacity(0.5), // Customize border color
@@ -398,10 +692,13 @@ class _CheckOutState extends State<CheckOut> {
                         labelText: "Note".tr,
                         labelStyle: TextStyle(
                             color: mainColorGrey.withOpacity(0.8),
-                            fontSize: 24,
+                            fontSize: 20,
                             fontFamily: mainFontbold),
                         hintText: "Add your note".tr,
-
+                        hintStyle: TextStyle(
+                            color: mainColorBlack.withOpacity(0.5),
+                            fontSize: 14,
+                            fontFamily: mainFontnormal),
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                       ),

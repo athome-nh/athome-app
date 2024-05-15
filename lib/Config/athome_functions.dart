@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:dio/dio.dart';
+import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
 
@@ -139,6 +141,19 @@ String decryptAES(String ciphertext) {
 Future<int> getOnlineTimestamp() async {
   DateTime startDate = await NTP.now();
   return startDate.hour;
+}
+
+Future<String> getServerTime() async {
+  String startDate = await NTP.now().toString();
+  try {
+    var dio = Dio();
+    await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {
+      startDate = time.data["data"];
+    });
+    return startDate;
+  } catch (e) {
+    return startDate;
+  }
 }
 
 /// Main {}
