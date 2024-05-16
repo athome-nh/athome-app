@@ -15,6 +15,7 @@ import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:dllylas/model/productitems/productitems.dart';
 import 'package:dllylas/model/products_image/products_image.dart';
+import 'package:dllylas/model/schedule_model/schedule_model.dart';
 import 'package:dllylas/model/slidemodel/slidemodel.dart';
 import 'package:dllylas/model/sub_category/sub_category.dart';
 import 'package:dllylas/model/topmodel/topmodel.dart';
@@ -74,9 +75,16 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
+          setSchedules((value['timeList'] as List)
+              .map((x) => ScheduleModel.fromMap(x))
+              .toList());
 
           setMinimumOrder(
-              value['minimum_order'], value['startTime'], value['endTime']);
+            value['minimum_order'],
+            value['startTime'],
+            value['endTime'],
+            value['deliveryCost'],
+          );
 
           setshow(true);
         } else {}
@@ -228,6 +236,7 @@ class productProvider extends ChangeNotifier {
   List<Brandmodel> _brands = [];
   List<ProductModel> _products = [];
   List<Productitems> _productitems = [];
+  List<ScheduleModel> _scheduleData = [];
 
   List<CategoryModel> _categores = [];
   List<SubCategory> _subCategores = [];
@@ -241,6 +250,7 @@ class productProvider extends ChangeNotifier {
   String _allitemType = "";
   int _cateType = 0;
   int _minimumOrder = 0;
+  int _deleveryCost = 0;
   int _startTime = 0;
   int _endTime = 0;
   int _idItem = 0;
@@ -261,6 +271,7 @@ class productProvider extends ChangeNotifier {
   List<OrderModel> get Orders => _Orders;
   List<ProductModel> get products => _products;
   List<Productitems> get productitems => _productitems;
+  List<ScheduleModel> get scheduleData => _scheduleData;
 
   List<CategoryModel> get categores => _categores;
   List<SubCategory> get subCategores => _subCategores;
@@ -271,6 +282,7 @@ class productProvider extends ChangeNotifier {
   String get allitemType => _allitemType;
   int get cateType => _cateType;
   int get minimumOrder => _minimumOrder;
+  int get deleveryCost => _deleveryCost;
   int get startTime => _startTime;
   int get endTime => _endTime;
   int get idItem => _idItem;
@@ -521,6 +533,12 @@ class productProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setSchedules(List<ScheduleModel> Schedule) {
+    _scheduleData = Schedule;
+
+    notifyListeners();
+  }
+
   void setProductitems(List<Productitems> products) {
     _productitems = products;
 
@@ -660,10 +678,11 @@ class productProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setMinimumOrder(int value, int start, int end) {
+  void setMinimumOrder(int value, int start, int end, int cost) {
     _minimumOrder = value;
     _startTime = start;
     _endTime = end;
+    _deleveryCost = cost;
     notifyListeners();
   }
 }

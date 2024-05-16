@@ -27,8 +27,7 @@ const Map<String, String> kur = {
   //"A minute ago": "A minute ago",
   "seconds ago": "چەند چرکەیەک لەمەوبەر",
   "Just now": "ئێستا",
-  
-  
+
   // Help
   "Help": "پشتیوانی",
   "DearCustomers":

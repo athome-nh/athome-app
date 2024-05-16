@@ -27,8 +27,7 @@ const Map<String, String> ar = {
   //"A minute ago": "A minute ago",
   "seconds ago": "منذ ثوان",
   "Just now": "الآن",
-  
-  
+
   // Help
   "Help": "الدعم",
   "DearCustomers":

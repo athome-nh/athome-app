@@ -889,7 +889,10 @@ class _MyCartState extends State<MyCart> {
                                         ),
                                         Text(
                                           textAlign: TextAlign.end,
-                                          "Free Delivery".tr,
+
+                                          addCommasToPrice(
+                                              productrovider.deleveryCost),
+                                          // "Free Delivery".tr,
                                           style: TextStyle(
                                               color: Colors.green,
                                               fontFamily: mainFontnormal,

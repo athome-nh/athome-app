@@ -7,6 +7,7 @@ import 'package:dllylas/home/successScreen.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
+import 'package:dllylas/model/schedule_model/schedule_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dllylas/Config/property.dart';
@@ -32,20 +33,7 @@ class _CheckOutState extends State<CheckOut> {
   int locationID = 0;
   String orderCode = "";
   int deleveryType = 1;
-  List<String> listOfMonths = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
+
   List<String> listOfDays = [
     "Monday",
     "Tuesday",
@@ -55,27 +43,21 @@ class _CheckOutState extends State<CheckOut> {
     "Saturday",
     "Sunday"
   ];
-  late DateTime selectedDate; // TO tracking date
+  bool Etime = false;
+  late DateTime selectedDate;
+  String selectedTime = "";
 
-  late DateTime Datetimenow; // TO tracking date
+  late DateTime Datetimenow;
   bool showDateTime = false;
-  final List<String> slotTimes = [
-    "9:00 AM",
-    "11:00 PM",
-    "1:00 PM",
-    "3:00 PM",
-    "5:00 PM",
-    "7:00 PM",
-  ];
-  int a = 6;
-  int currentDateSelectedIndex = 0; //For Horizontal Date
-  int currentTimeSelectedIndex = -1; //For Horizontal Date
-  ScrollController scrollController =
-      ScrollController(); //To Track Scroll of ListView
+
+  int currentDateSelectedIndex = 0;
+  int currentTimeSelectedIndex = -1;
   @override
   void initState() {
     getServerTime().then((value) {
       Datetimenow = DateTime.parse(value);
+      selectedDate = Datetimenow;
+
       setState(() {
         showDateTime = true;
       });
@@ -274,8 +256,6 @@ class _CheckOutState extends State<CheckOut> {
                               groupValue: 1,
                               onChanged: (value) {
                                 setState(() {
-                                  currentDateSelectedIndex = 0;
-                                  currentTimeSelectedIndex = -1;
                                   deleveryType = 1;
                                 });
                               },
@@ -299,8 +279,6 @@ class _CheckOutState extends State<CheckOut> {
                               groupValue: 2,
                               onChanged: (value) {
                                 setState(() {
-                                  currentDateSelectedIndex = 0;
-                                  currentTimeSelectedIndex = 0;
                                   deleveryType = 2;
                                 });
                                 showModalBottomSheet(
@@ -331,7 +309,7 @@ class _CheckOutState extends State<CheckOut> {
                                           SizedBox(
                                             height: getHeight(context, 4),
                                           ),
-                                          !showDateTime && deleveryType == 2
+                                          !showDateTime
                                               ? Padding(
                                                   padding:
                                                       const EdgeInsets.only(
@@ -340,206 +318,262 @@ class _CheckOutState extends State<CheckOut> {
                                                       child: waitingWiget2(
                                                           context)),
                                                 )
-                                              : deleveryType == 1
-                                                  ? SizedBox()
-                                                  : FadeInUp(
-                                                      delay: const Duration(
-                                                          milliseconds: 200),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Center(
-                                                            child: Container(
-                                                              width: getWidth(
-                                                                  context, 100),
+                                              : FadeInUp(
+                                                  delay: const Duration(
+                                                      milliseconds: 200),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Center(
+                                                        child: Container(
+                                                          width: getWidth(
+                                                              context, 100),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15),
+                                                            border: Border.all(
+                                                                color: deleveryType ==
+                                                                        1
+                                                                    ? mainColorBlack
+                                                                        .withOpacity(
+                                                                            0.2)
+                                                                    : mainColorGrey
+                                                                        .withOpacity(
+                                                                            0.5)),
+                                                          ),
+                                                          child: Center(
+                                                            child:
+                                                                DropdownButtonFormField<
+                                                                    int>(
                                                               decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            15),
-                                                                border: Border.all(
-                                                                    color: deleveryType ==
-                                                                            1
-                                                                        ? mainColorBlack.withOpacity(
-                                                                            0.2)
-                                                                        : mainColorGrey
-                                                                            .withOpacity(0.5)),
-                                                              ),
-                                                              child: Center(
-                                                                child:
-                                                                    DropdownButtonFormField<
-                                                                        int>(
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    border:
-                                                                        UnderlineInputBorder(
-                                                                      borderSide:
-                                                                          BorderSide
-                                                                              .none,
-                                                                    ),
-                                                                  ),
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .calendar_today_outlined,
-                                                                    color: deleveryType ==
-                                                                            1
-                                                                        ? mainColorBlack.withOpacity(
-                                                                            0.2)
-                                                                        : mainColorGrey
-                                                                            .withOpacity(0.5),
-                                                                  ),
-                                                                  padding: EdgeInsets
-                                                                      .symmetric(
-                                                                          horizontal:
-                                                                              15),
-                                                                  value:
-                                                                      currentDateSelectedIndex,
-                                                                  onChanged:
-                                                                      deleveryType ==
-                                                                              1
-                                                                          ? null
-                                                                          : (newIndex) {
-                                                                              setState(() {
-                                                                                // currentDateSelectedIndex =
-                                                                                //     newIndex;
-                                                                                // selectedDate = Datetimenow.add(
-                                                                                //     Duration(days: newIndex));
-                                                                              });
-                                                                            },
-                                                                  items: List
-                                                                      .generate(
-                                                                          7,
-                                                                          (index) {
-                                                                    return DropdownMenuItem<
-                                                                            int>(
-                                                                        value:
-                                                                            index,
-                                                                        child:
-                                                                            Row(
-                                                                          children: [
-                                                                            Text(Datetimenow.add(Duration(days: index)).toString().substring(0,
-                                                                                10)),
-                                                                            SizedBox(
-                                                                              width: 15,
-                                                                            ),
-                                                                            Text(Datetimenow.add(Duration(days: index)).day == Datetimenow.day
-                                                                                ? "Today"
-                                                                                : listOfDays[Datetimenow.add(Duration(days: index)).weekday - 1].toString()),
-                                                                          ],
-                                                                        ));
-                                                                  }),
+                                                                  InputDecoration(
+                                                                border:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide
+                                                                          .none,
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height: getHeight(
-                                                                context, 2),
-                                                          ),
-                                                          SizedBox(
-                                                            height: getHeight(
-                                                                context, 20),
-                                                            child: GridView
-                                                                .builder(
-                                                              gridDelegate:
-                                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                                crossAxisCount:
-                                                                    2,
-                                                                mainAxisSpacing:
-                                                                    10,
-                                                                crossAxisSpacing:
-                                                                    10,
-                                                                childAspectRatio:
-                                                                    4,
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .calendar_today_outlined,
+                                                                color: deleveryType ==
+                                                                        1
+                                                                    ? mainColorBlack
+                                                                        .withOpacity(
+                                                                            0.2)
+                                                                    : mainColorGrey
+                                                                        .withOpacity(
+                                                                            0.5),
                                                               ),
-                                                              itemCount:
-                                                                  slotTimes
-                                                                      .length,
-                                                              scrollDirection:
-                                                                  Axis.vertical,
-                                                              itemBuilder:
-                                                                  (context,
-                                                                      index) {
-                                                                return OutlinedButton(
-                                                                    onPressed:
-                                                                        deleveryType ==
-                                                                                1
-                                                                            ? null
-                                                                            : () {
-                                                                                mystate(() {
-                                                                                  currentTimeSelectedIndex = index;
-                                                                                });
-                                                                              },
-                                                                    style: TextButton
-                                                                        .styleFrom(
-                                                                      shape: RoundedRectangleBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(10)),
-                                                                      backgroundColor: currentTimeSelectedIndex ==
-                                                                              index
-                                                                          ? mainColorGrey
-                                                                          : mainColorWhite,
-                                                                    ),
-                                                                    child: Text(
-                                                                      slotTimes[
-                                                                              index] +
-                                                                          " - " +
-                                                                          slotTimes[
-                                                                              index],
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontFamily:
-                                                                            mainFontnormal,
-                                                                        fontSize:
-                                                                            12,
-                                                                        color: deleveryType ==
-                                                                                1
-                                                                            ? mainColorBlack.withOpacity(0.5)
-                                                                            : currentTimeSelectedIndex == index
-                                                                                ? mainColorWhite
-                                                                                : mainColorBlack,
-                                                                      ),
-                                                                    ));
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          15),
+                                                              value:
+                                                                  currentDateSelectedIndex,
+                                                              onChanged:
+                                                                  (newIndex) {
+                                                                mystate(() {
+                                                                  currentTimeSelectedIndex =
+                                                                      -1;
+                                                                  currentDateSelectedIndex =
+                                                                      newIndex!;
+                                                                  selectedDate =
+                                                                      Datetimenow.add(
+                                                                          Duration(
+                                                                              days: newIndex));
+                                                                });
                                                               },
+                                                              items:
+                                                                  List.generate(
+                                                                      listOfDays
+                                                                          .length,
+                                                                      (index) {
+                                                                return DropdownMenuItem<
+                                                                        int>(
+                                                                    value:
+                                                                        index,
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Text(Datetimenow.add(Duration(days: index))
+                                                                            .toString()
+                                                                            .substring(0,
+                                                                                10)),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              15,
+                                                                        ),
+                                                                        Text(Datetimenow.add(Duration(days: index)).day ==
+                                                                                Datetimenow.day
+                                                                            ? "Today"
+                                                                            : listOfDays[Datetimenow.add(Duration(days: index)).weekday - 1].toString()),
+                                                                      ],
+                                                                    ));
+                                                              }),
                                                             ),
                                                           ),
-                                                          SizedBox(
-                                                            height: getHeight(
-                                                                context, 2),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: getHeight(
+                                                            context, 2),
+                                                      ),
+                                                      // Assuming productrovider.scheduleData is a List<ScheduleModel>
+
+                                                      SizedBox(
+                                                        height: getHeight(
+                                                            context, 20),
+                                                        child: GridView.builder(
+                                                          shrinkWrap: true,
+                                                          gridDelegate:
+                                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                            crossAxisCount: 2,
+                                                            mainAxisSpacing: 10,
+                                                            crossAxisSpacing:
+                                                                10,
+                                                            childAspectRatio: 4,
                                                           ),
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    horizontal:
-                                                                        getWidth(
-                                                                            context,
-                                                                            4)),
-                                                            child: TextButton(
-                                                              onPressed:
-                                                                  waitingcheckout
-                                                                      ? null
-                                                                      : () {},
+                                                          itemCount: productrovider
+                                                              .scheduleData
+                                                              .where((time) =>
+                                                                  time.weekId ==
+                                                                      getWeekdayName(
+                                                                          selectedDate
+                                                                              .weekday) &&
+                                                                  Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate
+                                                                          .toString()
+                                                                          .substring(
+                                                                              0,
+                                                                              10) +
+                                                                      " " +
+                                                                      time.from
+                                                                          .toString())))
+                                                              .length,
+                                                          scrollDirection:
+                                                              Axis.vertical,
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            ScheduleModel time = productrovider
+                                                                .scheduleData
+                                                                .where((time) =>
+                                                                    time.weekId ==
+                                                                        getWeekdayName(selectedDate
+                                                                            .weekday) &&
+                                                                    Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate
+                                                                            .toString()
+                                                                            .substring(0,
+                                                                                10) +
+                                                                        " " +
+                                                                        time.from
+                                                                            .toString())))
+                                                                .toList()[index];
+
+                                                            return OutlinedButton(
+                                                              onPressed: () {
+                                                                mystate(() {
+                                                                  Etime = false;
+                                                                  selectedTime = time
+                                                                          .from
+                                                                          .toString() +
+                                                                      ":" +
+                                                                      time.to
+                                                                          .toString();
+                                                                  currentTimeSelectedIndex =
+                                                                      index;
+                                                                });
+                                                              },
                                                               style: TextButton
                                                                   .styleFrom(
-                                                                fixedSize: Size(
-                                                                    getWidth(
-                                                                        context,
-                                                                        85),
-                                                                    getHeight(
-                                                                        context,
-                                                                        6)),
+                                                                shape: RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10)),
+                                                                backgroundColor:
+                                                                    currentTimeSelectedIndex ==
+                                                                            index
+                                                                        ? mainColorGrey
+                                                                        : mainColorWhite,
                                                               ),
                                                               child: Text(
-                                                                "Select".tr,
+                                                                convertTo12HourFormat(time
+                                                                        .from
+                                                                        .toString()) +
+                                                                    " - " +
+                                                                    convertTo12HourFormat(time
+                                                                        .to
+                                                                        .toString()),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      mainFontnormal,
+                                                                  fontSize: 12,
+                                                                  color: currentTimeSelectedIndex ==
+                                                                          index
+                                                                      ? mainColorWhite
+                                                                      : mainColorBlack,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                        ],
+                                                            );
+                                                          },
+                                                        ),
                                                       ),
-                                                    ),
+
+                                                      Etime
+                                                          ? Center(
+                                                              child: Text(
+                                                                "*Select the Time please",
+                                                                style: TextStyle(
+                                                                    color:
+                                                                        mainColorRed,
+                                                                    fontFamily:
+                                                                        mainFontnormal),
+                                                              ),
+                                                            )
+                                                          : SizedBox(),
+                                                      SizedBox(
+                                                        height: getHeight(
+                                                            context, 2),
+                                                      ),
+                                                      Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal:
+                                                                    getWidth(
+                                                                        context,
+                                                                        4)),
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            if (selectedTime
+                                                                .isEmpty) {
+                                                              mystate(() {
+                                                                Etime = true;
+                                                              });
+                                                            }
+                                                          },
+                                                          style: TextButton
+                                                              .styleFrom(
+                                                            fixedSize: Size(
+                                                                getWidth(
+                                                                    context,
+                                                                    85),
+                                                                getHeight(
+                                                                    context,
+                                                                    6)),
+                                                          ),
+                                                          child: Text(
+                                                            "Select".tr,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                         ],
                                       );
                                     }),
@@ -699,7 +733,7 @@ class _CheckOutState extends State<CheckOut> {
                             color: mainColorBlack.withOpacity(0.5),
                             fontSize: 14,
                             fontFamily: mainFontnormal),
-                           floatingLabelBehavior: FloatingLabelBehavior.always,
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                         //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                       ),
                     ),
@@ -758,9 +792,12 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     Text(
                       textAlign: TextAlign.end,
-                      "Free Delivery".tr,
+                      deleveryType == 1
+                          ? addCommasToPrice(productrovider.deleveryCost)
+                          : "Free Delivery".tr,
                       style: TextStyle(
-                          color: Colors.green,
+                          color:
+                              deleveryType == 1 ? mainColorBlack : Colors.green,
                           fontFamily: mainFontnormal,
                           fontSize: 16),
                     ),
@@ -1274,6 +1311,48 @@ class _CheckOutState extends State<CheckOut> {
         ),
       ),
     );
+  }
+
+  String convertTo12HourFormat(String time24) {
+    // Splitting the time string into hours and minutes
+    List<String> parts = time24.split(":");
+    int hour = int.parse(parts[0]);
+    int minute = int.parse(parts[1]);
+
+    // Determining AM or PM
+    String period = hour < 12 ? 'AM' : 'PM';
+
+    // Converting hour to 12-hour format
+    hour = hour > 12 ? hour - 12 : hour;
+
+    // If hour becomes 0, convert it to 12
+    hour = hour == 0 ? 12 : hour;
+
+    // Constructing the 12-hour format time string
+    String time12 = '$hour:$minute $period';
+
+    return time12;
+  }
+
+  String getWeekdayName(int weekday) {
+    switch (weekday) {
+      case DateTime.monday:
+        return 'Monday';
+      case DateTime.tuesday:
+        return 'Tuesday';
+      case DateTime.wednesday:
+        return 'Wednesday';
+      case DateTime.thursday:
+        return 'Thursday';
+      case DateTime.friday:
+        return 'Friday';
+      case DateTime.saturday:
+        return 'Saturday';
+      case DateTime.sunday:
+        return 'Sunday';
+      default:
+        return '';
+    }
   }
 
 //   Future<void> alert(
