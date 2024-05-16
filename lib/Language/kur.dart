@@ -2,6 +2,15 @@ const Map<String, String> kur = {
   //
   "New": "نوێ",
 
+  "Saturday": "شەمە",
+  "Sunday": "یەک شەمە",  
+  "Monday": "دوو شەمە",
+  "Tuesday": "سێ شەمە",
+  "Wednesday": "چوار شەمە",
+  "Thursday": "پێنج شەمە",
+  "Friday": "هەینی",
+
+
   // Notification
   "Notification": "ئاگادارکردنەوە",
   "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",

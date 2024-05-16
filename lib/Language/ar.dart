@@ -2,6 +2,15 @@ const Map<String, String> ar = {
   //
   "New": "جديد",
 
+  "Saturday": "السبت",
+  "Sunday": "الأحد",  
+  "Monday": "الاثنين",
+  "Tuesday": "الثلاثاء",
+  "Wednesday": "الأربعاء",
+  "Thursday": "الخميس",
+  "Friday": "جمعة",
+
+
   // Notification
   "Notification": "إشعار",
   "You don't have any notification": "هیليس لديك أي إشعار",

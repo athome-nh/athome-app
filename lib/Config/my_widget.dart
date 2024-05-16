@@ -151,7 +151,7 @@ Widget listItemsShimer(BuildContext context) {
                                   onTap: () {},
                                   child: Icon(LineIcons.plus,
                                       color: mainColorBlack,
-                                      size: getHeight(context, 2.5)),
+                                      size: getHeight(context, 2)),
                                 ),
                               ))
                             ],
@@ -307,7 +307,7 @@ Widget listItemsBigShimer(BuildContext context) {
                                   onTap: () {},
                                   child: Icon(LineIcons.plus,
                                       color: mainColorBlack,
-                                      size: getHeight(context, 2.5)),
+                                      size: getHeight(context, 2)),
                                 ),
                               ))
                             ],
@@ -577,7 +577,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                         },
                                         child: Icon(LineIcons.plus,
                                             color: mainColorBlack,
-                                            size: getHeight(context, 2.5)),
+                                            size: getHeight(context, 2)),
                                       ),
                               ),
                             )
@@ -883,7 +883,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       },
                                       child: Icon(LineIcons.plus,
                                           color: mainColorBlack,
-                                          size: getHeight(context, 2.5)),
+                                          size: getHeight(context, 2)),
                                     ),
                             ),
                           )
@@ -1189,7 +1189,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                       },
                                       child: Icon(LineIcons.plus,
                                           color: mainColorBlack,
-                                          size: getHeight(context, 2.5)),
+                                          size: getHeight(context, 2)),
                                     ),
                             ),
                           )

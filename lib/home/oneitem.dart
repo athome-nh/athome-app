@@ -287,7 +287,7 @@ class _OneitemState extends State<Oneitem> {
           children: [
             Container(
               width: getWidth(context, 100),
-              height: getHeight(context, 8),
+              height: getHeight(context, 10),
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(width: 1.0, color: mainColorGrey),

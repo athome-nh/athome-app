@@ -2,6 +2,15 @@ const Map<String, String> en = {
   //
   "New": "New",
 
+  "Saturday": "Saturday",
+  "Sunday": "Sunday",  
+  "Monday": "Monday",
+  "Tuesday": "Tuesday",
+  "Wednesday": "Wednesday",
+  "Thursday": "Thursday",
+  "Friday": "Friday",
+
+
   // Notification
   "Notification": "Notification",
   "You don't have any notification": "You don't have any notification.",
