@@ -699,7 +699,7 @@ class _CheckOutState extends State<CheckOut> {
                             color: mainColorBlack.withOpacity(0.5),
                             fontSize: 14,
                             fontFamily: mainFontnormal),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                           floatingLabelBehavior: FloatingLabelBehavior.always,
                         //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                       ),
                     ),
