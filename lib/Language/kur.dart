@@ -112,7 +112,7 @@ const Map<String, String> kur = {
   "Delivery Cost": "تێچوی گەیاندن",
   "Free Delivery": "گەیاندنی خۆڕایی",
   "Total": "کۆی گشتی",
-  "Checkout": "دوپاتکردنەوە",
+  "Checkout": "پارەدان و گەیاندن",
   "Clear cart": "لابردنی هەموو",
   "Are you sure you want to continue?": "دڵنیای لە بەردەوامبوون؟",
 
