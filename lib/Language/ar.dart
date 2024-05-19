@@ -111,7 +111,7 @@ const Map<String, String> ar = {
   "Delivery Cost": "کلفة التوصیل",
   "Free Delivery": "توصیل المجاني",
   "Total": "المجموع الكلي",
-  "Checkout": "تاکید",
+  "Checkout": "الدفع و توصيل",
   "Clear cart": "إزالة الكل",
   "Are you sure you want to continue?": "هل انت مأكد من الاستمرار ؟",
 
