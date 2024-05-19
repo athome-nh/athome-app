@@ -10,14 +10,14 @@ const Map<String, String> en = {
   "Thursday": "Thursday",
   "Friday": "Friday",
 
-  "Select Day": "Select Day",
-  "Delivery Type": "Delivery Type",
-  "Delevery now": "Delevery now",
+  "Select Day": "Pick a delivery day",
+  "Delivery Type": "Delivery Methods",
+  "Delevery now": "Deliver Now",
   "Today": "Today",
-  "Select Day to show time deleverys": "Select Day to show time deleverys",
-  "Select the Time please": "Select the Time please",
+  "Select Day to show time deleverys": "Choose a delivery date",
+  "Select the Time please": "Choose a delivery time",
   "Select": "Select",
-  "Delevery schedule": "Delevery schedule",
+  "Delevery schedule": "Schedule for Later",
 
 
 
@@ -114,7 +114,7 @@ const Map<String, String> en = {
   "Delivery Cost": "Delivery Cost",
   "Free Delivery": "Free Delivery",
   "Total": "Total",
-  "Checkout": "Checkout",
+  "Checkout": "Payment & Delivery",
   "Clear cart": "Clear cart",
   "Are you sure you want to continue?": "Are you sure about continuing?",
 

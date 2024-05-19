@@ -10,6 +10,15 @@ const Map<String, String> ar = {
   "Thursday": "الخميس",
   "Friday": "جمعة",
 
+  "Select Day": "اختر يوما للتوصيل",
+  "Delivery Type": "خيارات التوصيل",
+  "Delevery now": "توصيل الآن",
+  "Today": "اليوم",
+  "Select Day to show time deleverys": "اختر تاريخ التوصيل",
+  "Select the Time please": "اختر وقت الاستلام",
+  "Select": "اختر",
+  "Delevery schedule": "تحديد موعد للتوصيل",
+
 
   // Notification
   "Notification": "إشعار",

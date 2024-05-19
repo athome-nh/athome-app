@@ -10,6 +10,15 @@ const Map<String, String> kur = {
   "Thursday": "پێنج شەمە",
   "Friday": "هەینی",
 
+  "Select Day": "کاتی گەیاندن هەڵبژێرە",
+  "Delivery Type": "شێوازی گەیاندن",
+  "Delevery now": "گەیاندنی ڕاستوخۆ",
+  "Today": "ئەمڕۆ",
+  "Select Day to show time deleverys": "ڕۆژی گەیاندن  دیاری  بکە",
+  "Select the Time please": "کاتی گەیاندن دیاری بکە ",
+  "Select": "دیاریکردن",
+  "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
+
 
   // Notification
   "Notification": "ئاگادارکردنەوە",
