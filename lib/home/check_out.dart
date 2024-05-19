@@ -35,7 +35,7 @@ class _CheckOutState extends State<CheckOut> {
   int deleveryType = 1;
 
   List<String> listOfDays = [
-    "select Day",
+    "Select Day".tr,
     "Monday".tr,
     "Tuesday".tr,
     "Wednesday".tr,
@@ -260,7 +260,7 @@ class _CheckOutState extends State<CheckOut> {
                                 });
                               },
                               child: Text(
-                                "Delevery now",
+                                "Delevery now".tr,
                                 style: TextStyle(
                                     color: mainColorBlack,
                                     fontFamily: mainFontnormal,
@@ -447,7 +447,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                                   width: 15,
                                                                                 ),
                                                                                 Text(
-                                                                                  Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today" : listOfDays[Datetimenow.add(Duration(days: index)).weekday - 1].toString(),
+                                                                                  Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : listOfDays[Datetimenow.add(Duration(days: index)).weekday - 1].toString(),
                                                                                   style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
                                                                                 ),
                                                                               ],
@@ -472,7 +472,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                             20.0),
                                                                 child: Center(
                                                                     child: Text(
-                                                                        "Select Day to show time deleverys")),
+                                                                        "Select Day to show time deleverys".tr)),
                                                               )
                                                             : SizedBox(
                                                                 height:
@@ -566,7 +566,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         Etime
                                                             ? Center(
                                                                 child: Text(
-                                                                  "*Select the Time please",
+                                                                  "Select the Time please".tr,
                                                                   style: TextStyle(
                                                                       color:
                                                                           mainColorRed,
@@ -621,7 +621,7 @@ class _CheckOutState extends State<CheckOut> {
                                       );
                                     },
                               child: Text(
-                                "Delevery schedule",
+                                "Delevery schedule".tr,
                                 style: TextStyle(
                                     color: mainColorBlack,
                                     fontFamily: mainFontnormal,
@@ -974,14 +974,14 @@ class _CheckOutState extends State<CheckOut> {
                                     waitingcheckout = false;
                                   });
                                   toastShort(
-                                      "unknown occurred error please try again later");
+                                      "unknown occurred error please try again later".tr);
                                 }
                               } else {
                                 setState(() {
                                   waitingcheckout = false;
                                 });
                                 toastShort(
-                                    "unknown occurred error please try again later");
+                                    "unknown occurred error please try again later".tr);
                               }
                             });
                           } else {

@@ -10,6 +10,17 @@ const Map<String, String> en = {
   "Thursday": "Thursday",
   "Friday": "Friday",
 
+  "Select Day": "Select Day",
+  "Delivery Type": "Delivery Type",
+  "Delevery now": "Delevery now",
+  "Today": "Today",
+  "Select Day to show time deleverys": "Select Day to show time deleverys",
+  "Select the Time please": "Select the Time please",
+  "Select": "Select",
+  "Delevery schedule": "Delevery schedule",
+
+
+
 
   // Notification
   "Notification": "Notification",
