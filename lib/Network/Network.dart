@@ -68,6 +68,7 @@ class Network {
         data = response.data;
       });
     } catch (e) {
+      print(e);
       return "";
     }
     return data;
@@ -141,10 +142,12 @@ class Network {
             dotenv.env['serverUrl']! + rout,
             data: data,
           );
+
           data2 = response.data;
         });
       }
     } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
             duration: const Duration(seconds: 4),

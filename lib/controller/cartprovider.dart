@@ -150,6 +150,22 @@ class CartProvider extends ChangeNotifier {
     return totalPrice;
   }
 
+  // int calculateTotalPriceWithOutDiscount(List<ProductModel> product) {
+  //   int totalPrice = 0;
+
+  //   for (var element in product) {
+  //     final item = cartItems.firstWhere((cart) => cart.product == element.id);
+
+  //     if (element.price2! > -1) {
+  //       totalPrice += element.price2! * item.quantity;
+  //     } else {
+  //       totalPrice += element.price! * item.quantity;
+  //     }
+  //   }
+
+  //   return totalPrice;
+  // }
+
   void clearCart() {
     cartItems.clear();
     String id = userdata["id"].toString();

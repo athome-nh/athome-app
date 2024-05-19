@@ -826,7 +826,7 @@ class _MyCartState extends State<MyCart> {
                         )
                       : cartProvider.cartItems.isNotEmpty && isLogin
                           ? Container(
-                              height: getHeight(context, 29),
+                              height: getHeight(context, 18),
                               decoration: BoxDecoration(
                                 color: mainColorWhite,
                                 // borderRadius: const BorderRadius.only(
@@ -838,69 +838,71 @@ class _MyCartState extends State<MyCart> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    height: getHeight(context, 3),
+                                    height: getHeight(context, 2),
                                   ),
-                                  SizedBox(
-                                    height: getHeight(context, 1),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Sub Total".tr,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16),
-                                        ),
-                                        Text(
-                                          textAlign: TextAlign.end,
-                                          addCommasToPrice(
-                                              cartProvider.calculateTotalPrice(
-                                                  CardItemshow)),
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: getHeight(context, 1),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Delivery Cost".tr,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16),
-                                        ),
-                                        Text(
-                                          textAlign: TextAlign.end,
+                                  // SizedBox(
+                                  //   height: getHeight(context, 1),
+                                  // ),
+                                  // Padding(
+                                  //   padding: EdgeInsets.symmetric(
+                                  //       horizontal: getWidth(context, 4)),
+                                  //   child: Row(
+                                  //     mainAxisAlignment:
+                                  //         MainAxisAlignment.spaceBetween,
+                                  //     children: [
+                                  //       Text(
+                                  //         "Sub Total".tr,
+                                  //         style: TextStyle(
+                                  //             color: mainColorBlack,
+                                  //             fontFamily: mainFontnormal,
+                                  //             fontSize: 16),
+                                  //       ),
+                                  //       Text(
+                                  //         textAlign: TextAlign.end,
+                                  //         addCommasToPrice(cartProvider
+                                  //             .calculateTotalPriceWithOutDiscount(
+                                  //                 CardItemshow)),
+                                  //         style: TextStyle(
+                                  //             color: mainColorBlack,
+                                  //             fontFamily: mainFontnormal,
+                                  //             fontSize: 16),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
+                                  // SizedBox(
+                                  //   height: getHeight(context, 1),
+                                  // ),
+                                  // Padding(
+                                  //   padding: EdgeInsets.symmetric(
+                                  //       horizontal: getWidth(context, 4)),
+                                  //   child: Row(
+                                  //     mainAxisAlignment:
+                                  //         MainAxisAlignment.spaceBetween,
+                                  //     children: [
+                                  //       Text(
+                                  //         "Save".tr,
+                                  //         style: TextStyle(
+                                  //             color: mainColorBlack,
+                                  //             fontFamily: mainFontnormal,
+                                  //             fontSize: 16),
+                                  //       ),
+                                  //       Text(
+                                  //         textAlign: TextAlign.end,
+                                  //         addCommasToPrice(cartProvider
+                                  //                 .calculateTotalPriceWithOutDiscount(
+                                  //                     CardItemshow) -
+                                  //             cartProvider.calculateTotalPrice(
+                                  //                 CardItemshow)),
+                                  //         style: TextStyle(
+                                  //             color: mainColorRed,
+                                  //             fontFamily: mainFontnormal,
+                                  //             fontSize: 16),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
 
-                                          addCommasToPrice(
-                                              productrovider.deleveryCost),
-                                          // "Free Delivery".tr,
-                                          style: TextStyle(
-                                              color: Colors.green,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 4)),

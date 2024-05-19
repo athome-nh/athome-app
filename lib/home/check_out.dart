@@ -47,10 +47,12 @@ class _CheckOutState extends State<CheckOut> {
   bool Etime = false;
   late DateTime selectedDate;
   String selectedTime = "";
+  String selectedDateorder = "";
 
   late DateTime Datetimenow;
   bool showTime = false;
   bool showDate = false;
+  bool isSchedule = false;
 
   int currentDateSelectedIndex = 0;
   int currentTimeSelectedIndex = -1;
@@ -256,7 +258,14 @@ class _CheckOutState extends State<CheckOut> {
                               groupValue: 1,
                               onChanged: (value) {
                                 setState(() {
+                                  isSchedule = false;
+                                  currentDateSelectedIndex = 0;
+                                  currentTimeSelectedIndex = -1;
+                                  showTime = false;
                                   deleveryType = 1;
+                                  selectedDate = Datetimenow;
+                                  selectedDateorder = "";
+                                  selectedTime = "";
                                 });
                               },
                               child: Text(
@@ -383,10 +392,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                         -1;
                                                                     currentDateSelectedIndex =
                                                                         newIndex!;
-                                                                    selectedDate =
-                                                                        Datetimenow.add(Duration(
-                                                                            days:
-                                                                                newIndex));
+
                                                                     if (newIndex ==
                                                                         0) {
                                                                       mystate(
@@ -395,8 +401,22 @@ class _CheckOutState extends State<CheckOut> {
                                                                             false;
                                                                       });
                                                                     } else {
+                                                                      selectedDateorder = Datetimenow.add(Duration(
+                                                                              days:
+                                                                                  newIndex))
+                                                                          .toString()
+                                                                          .substring(
+                                                                              0,
+                                                                              10);
+                                                                      selectedDate =
+                                                                          Datetimenow.add(
+                                                                              Duration(days: newIndex));
                                                                       mystate(
                                                                           () {
+                                                                        selectedTime =
+                                                                            "";
+                                                                        Etime =
+                                                                            false;
                                                                         showTime =
                                                                             true;
                                                                       });
@@ -472,7 +492,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                             20.0),
                                                                 child: Center(
                                                                     child: Text(
-                                                                        "Select Day to show time deleverys".tr)),
+                                                                        "Select Day to show time deleverys"
+                                                                            .tr)),
                                                               )
                                                             : SizedBox(
                                                                 height:
@@ -526,7 +547,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                           Etime =
                                                                               false;
                                                                           selectedTime = time.from.toString() +
-                                                                              ":" +
+                                                                              "||" +
                                                                               time.to.toString();
                                                                           currentTimeSelectedIndex =
                                                                               index;
@@ -566,7 +587,8 @@ class _CheckOutState extends State<CheckOut> {
                                                         Etime
                                                             ? Center(
                                                                 child: Text(
-                                                                  "Select the Time please".tr,
+                                                                  "Select the Time please"
+                                                                      .tr,
                                                                   style: TextStyle(
                                                                       color:
                                                                           mainColorRed,
@@ -593,6 +615,13 @@ class _CheckOutState extends State<CheckOut> {
                                                                 mystate(() {
                                                                   Etime = true;
                                                                 });
+                                                              } else {
+                                                                mystate(() {
+                                                                  isSchedule =
+                                                                      true;
+                                                                });
+                                                                Navigator.pop(
+                                                                    context);
                                                               }
                                                             },
                                                             style: TextButton
@@ -618,7 +647,24 @@ class _CheckOutState extends State<CheckOut> {
                                             }),
                                           ),
                                         ),
-                                      );
+                                      ).then((value) {
+                                        if (isSchedule) {
+                                          setState(() {
+                                            isSchedule = true;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            isSchedule = false;
+                                            currentDateSelectedIndex = 0;
+                                            currentTimeSelectedIndex = -1;
+                                            showTime = false;
+                                            deleveryType = 1;
+                                            selectedDate = Datetimenow;
+                                            selectedDateorder = "";
+                                            selectedTime = "";
+                                          });
+                                        }
+                                      });
                                     },
                               child: Text(
                                 "Delevery schedule".tr,
@@ -832,8 +878,10 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     Text(
                       textAlign: TextAlign.end,
-                      deleveryType == 1
-                          ? addCommasToPrice(productrovider.deleveryCost)
+                      !isSchedule
+                          ? productrovider.deleveryCost == 0
+                              ? "Free Delivery".tr
+                              : addCommasToPrice(productrovider.deleveryCost)
                           : "Free Delivery".tr,
                       style: TextStyle(
                           color:
@@ -906,11 +954,18 @@ class _CheckOutState extends State<CheckOut> {
                               "location": locationID,
                               "order_data": data.substring(2),
                               "note": NoteController.text,
+                              "cost": deleveryType == 1
+                                  ? productrovider.deleveryCost
+                                  : 0,
+                              "schedule": deleveryType == 1
+                                  ? ""
+                                  : selectedDateorder + "||" + selectedTime,
                             };
 
                             Network(false)
                                 .postData("order", data2, context)
                                 .then((value) {
+                              print(value);
                               if (value != "") {
                                 if (value["code"] == "201") {
                                   setState(() {
@@ -936,7 +991,8 @@ class _CheckOutState extends State<CheckOut> {
                                       "2023-11-09 ${timecheck.hour}:00");
 
                                   if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
-                                      NW.isAtSameMomentAs(ST)) {
+                                      NW.isAtSameMomentAs(ST) ||
+                                      isSchedule) {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -944,7 +1000,11 @@ class _CheckOutState extends State<CheckOut> {
                                               value["total"].toString(),
                                               value["id"].toString(),
                                               value["time"].toString(),
-                                              false)),
+                                              false,
+                                              isSchedule,
+                                              selectedDateorder +
+                                                  "" +
+                                                  selectedTime)),
                                     ).then((value) {
                                       Navigator.pushReplacement(
                                         context,
@@ -960,7 +1020,11 @@ class _CheckOutState extends State<CheckOut> {
                                               value["total"].toString(),
                                               value["id"].toString(),
                                               value["time"].toString(),
-                                              true)),
+                                              true,
+                                              isSchedule,
+                                              selectedDateorder +
+                                                  "" +
+                                                  selectedTime)),
                                     ).then((value) {
                                       Navigator.pushReplacement(
                                         context,
@@ -974,14 +1038,16 @@ class _CheckOutState extends State<CheckOut> {
                                     waitingcheckout = false;
                                   });
                                   toastShort(
-                                      "unknown occurred error please try again later".tr);
+                                      "unknown occurred error please try again later"
+                                          .tr);
                                 }
                               } else {
                                 setState(() {
                                   waitingcheckout = false;
                                 });
                                 toastShort(
-                                    "unknown occurred error please try again later".tr);
+                                    "unknown occurred error please try again later"
+                                        .tr);
                               }
                             });
                           } else {
@@ -1180,121 +1246,6 @@ class _CheckOutState extends State<CheckOut> {
                                                                 : () {
                                                                     Navigator.pop(
                                                                         context);
-                                                                    // if (locationID !=
-                                                                    //     0) {
-                                                                    //   Navigator.pop(
-                                                                    //       context);
-                                                                    //   setState(
-                                                                    //       () {
-                                                                    //     waitingcheckout =
-                                                                    //         true;
-                                                                    //   });
-
-                                                                    //   String
-                                                                    //       data =
-                                                                    //       "";
-                                                                    //   for (var element
-                                                                    //       in cartProvider
-                                                                    //           .cartItems) {
-                                                                    //     ProductModel
-                                                                    //         Item =
-                                                                    //         productrovider.getoneProductById(element.product);
-                                                                    //     String price = Item.price2! >
-                                                                    //             -1
-                                                                    //         ? Item.price2!.toString()
-                                                                    //         : Item.price.toString();
-                                                                    //     data +=
-                                                                    //         "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
-                                                                    //   }
-
-                                                                    //   var data2 =
-                                                                    //       {
-                                                                    //     "customerid":
-                                                                    //         userdata["id"],
-                                                                    //     "total":
-                                                                    //         widget.total,
-                                                                    //     "location":
-                                                                    //         locationID,
-                                                                    //     "order_data":
-                                                                    //         data.substring(2),
-                                                                    //     "note":
-                                                                    //         NoteController.text,
-                                                                    //   };
-
-                                                                    //   Network(false)
-                                                                    //       .postData(
-                                                                    //           "order",
-                                                                    //           data2,
-                                                                    //           context)
-                                                                    //       .then(
-                                                                    //           (value) {
-                                                                    //     if (value !=
-                                                                    //         "") {
-                                                                    //       if (value["code"] ==
-                                                                    //           "201") {
-                                                                    //         setState(() {
-                                                                    //           waitingcheckout = false;
-                                                                    //         });
-                                                                    //         cartProvider.clearCart();
-                                                                    //         final productrovider =
-                                                                    //             Provider.of<productProvider>(context, listen: false);
-
-                                                                    //         productrovider.getuserdata(userdata["id"].toString());
-
-                                                                    //         DateTime
-                                                                    //             timecheck =
-                                                                    //             DateTime.parse(value["now"].toString());
-                                                                    //         DateTime
-                                                                    //             ST =
-                                                                    //             DateTime.parse("2023-11-09 ${productrovider.startTime}:00");
-
-                                                                    //         DateTime
-                                                                    //             DT =
-                                                                    //             DateTime.parse("2023-11-09 ${productrovider.endTime}:00");
-
-                                                                    //         DateTime
-                                                                    //             NW =
-                                                                    //             DateTime.parse("2023-11-09 ${timecheck.hour}:00");
-
-                                                                    //         if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
-                                                                    //             NW.isAtSameMomentAs(ST)) {
-                                                                    //           Navigator.push(
-                                                                    //             context,
-                                                                    //             MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), false)),
-                                                                    //           ).then((value) {
-                                                                    //             Navigator.pushReplacement(
-                                                                    //               context,
-                                                                    //               MaterialPageRoute(builder: (context) => NavSwitch()),
-                                                                    //             );
-                                                                    //           });
-                                                                    //         } else {
-                                                                    //           Navigator.push(
-                                                                    //             context,
-                                                                    //             MaterialPageRoute(builder: (context) => successScreen(value["total"].toString(), value["id"].toString(), value["time"].toString(), true)),
-                                                                    //           ).then((value) {
-                                                                    //             Navigator.pushReplacement(
-                                                                    //               context,
-                                                                    //               MaterialPageRoute(builder: (context) => NavSwitch()),
-                                                                    //             );
-                                                                    //           });
-                                                                    //         }
-                                                                    //       } else {
-                                                                    //         setState(() {
-                                                                    //           waitingcheckout = false;
-                                                                    //         });
-                                                                    //         toastShort("unknown occurred error please try again later");
-                                                                    //       }
-                                                                    //     } else {
-                                                                    //       setState(
-                                                                    //           () {
-                                                                    //         waitingcheckout =
-                                                                    //             false;
-                                                                    //       });
-                                                                    //       toastShort(
-                                                                    //           "unknown occurred error please try again later");
-                                                                    //     }
-                                                                    //   });
-                                                                    // }
                                                                   },
                                                         style: TextButton
                                                             .styleFrom(
