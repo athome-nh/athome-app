@@ -402,15 +402,15 @@ class _CheckOutState extends State<CheckOut> {
                                                                       });
                                                                     } else {
                                                                       selectedDateorder = Datetimenow.add(Duration(
-                                                                              days:
-                                                                                  newIndex))
+                                                                              days: newIndex -
+                                                                                  1))
                                                                           .toString()
                                                                           .substring(
                                                                               0,
                                                                               10);
                                                                       selectedDate =
                                                                           Datetimenow.add(
-                                                                              Duration(days: newIndex));
+                                                                              Duration(days: newIndex - 1));
                                                                       mystate(
                                                                           () {
                                                                         selectedTime =
@@ -425,25 +425,19 @@ class _CheckOutState extends State<CheckOut> {
                                                                 },
                                                                 items: List.generate(
                                                                     listOfDays
-                                                                        .length,
+                                                                            .length -
+                                                                        1,
                                                                     (index) {
                                                                   bool hasAvailableSchedule = productrovider
                                                                       .scheduleData
                                                                       .where((time) =>
                                                                           time.weekId ==
-                                                                              getWeekdayName(Datetimenow.add(Duration(days: index))
+                                                                              getWeekdayName(Datetimenow.add(Duration(days: index - 1))
                                                                                   .weekday) &&
-                                                                          Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(Datetimenow.toString().substring(0, 10) +
+                                                                          Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(Datetimenow.add(Duration(days: index - 1)).toString().substring(0, 10) +
                                                                               " " +
                                                                               time.from.toString())))
                                                                       .isNotEmpty;
-                                                                  if (!hasAvailableSchedule &&
-                                                                      currentDateSelectedIndex ==
-                                                                          index) {
-                                                                    mystate(() {
-                                                                      currentDateSelectedIndex++;
-                                                                    });
-                                                                  }
 
                                                                   return DropdownMenuItem<
                                                                           int>(
@@ -532,11 +526,11 @@ class _CheckOutState extends State<CheckOut> {
                                                                           index) {
                                                                     ScheduleModel time = productrovider
                                                                         .scheduleData
-                                                                        .where((time) =>
-                                                                            time.weekId == getWeekdayName(selectedDate.weekday) &&
+                                                                        .where((time2) =>
+                                                                            time2.weekId == getWeekdayName(selectedDate.weekday) &&
                                                                             Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate.toString().substring(0, 10) +
                                                                                 " " +
-                                                                                time.from.toString())))
+                                                                                time2.from.toString())))
                                                                         .toList()[index];
 
                                                                     return OutlinedButton(
@@ -958,7 +952,7 @@ class _CheckOutState extends State<CheckOut> {
                                   ? productrovider.deleveryCost
                                   : 0,
                               "schedule": deleveryType == 1
-                                  ? ""
+                                  ? "now"
                                   : selectedDateorder + "||" + selectedTime,
                             };
 
