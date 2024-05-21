@@ -45,6 +45,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         backgroundColor: mainColorWhite,
+
+        // AppBar
         appBar: AppBar(
           elevation: 0,
           backgroundColor: mainColorWhite,
@@ -57,6 +59,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                 color: mainColorGrey,
               )),
         ),
+        
+        // Body
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(FocusNode());
@@ -66,7 +70,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
               padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
               child: Column(
                 children: [
-                  // place of gif image
+
+                  // Image or Gif
                   SizedBox(
                     height: getHeight(context, 25),
                     child: Image.asset(
@@ -74,11 +79,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       width: getWidth(context, 100),
                     ),
                   ),
+                  
                   // space
                   SizedBox(
                     height: getHeight(context, 6),
                   ),
 
+                  // Text
                   FadeInDown(
                     child: Text(
                       'Wellcome back'.tr,
@@ -89,6 +96,8 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           color: mainColorBlack),
                     ),
                   ),
+                  
+                  // Text
                   FadeInDown(
                     delay: const Duration(milliseconds: 200),
                     child: Padding(
@@ -105,9 +114,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       ),
                     ),
                   ),
+                  
+                  // space
                   SizedBox(
                     height: getHeight(context, 4),
                   ),
+                  
+                  // Container of Phone Number
                   FadeInDown(
                     delay: const Duration(milliseconds: 400),
                     child: Container(
@@ -197,9 +210,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       ),
                     ),
                   ),
+                  
+                  // space
                   SizedBox(
                     height: getHeight(context, 1),
                   ),
+                  
+                  // Text
                   TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -217,10 +234,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         textAlign: TextAlign.center,
                         style: TextStyle(),
                       )),
+                  
+                  // space
                   SizedBox(
-                    height: getHeight(context, 10),
+                    height: getHeight(context, 8),
                   ),
 
+                  // Button
                   FadeInDown(
                     delay: const Duration(milliseconds: 600),
                     child: TextButton(
@@ -272,10 +292,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             ),
                     ),
                   ),
+                  
+                  // space
                   SizedBox(
                     height: getHeight(context, 2),
                   ),
 
+                  // Text
                   FadeInDown(
                     delay: const Duration(milliseconds: 800),
                     child: Padding(
@@ -290,7 +313,13 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+
+                  // space
+                  SizedBox(
+                    height: getHeight(context, 2),
+                  ),
+
                 ],
               ),
             ),
@@ -563,4 +592,5 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
       }
     });
   }
+
 }
