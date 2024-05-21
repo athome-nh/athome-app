@@ -326,7 +326,7 @@ class _OrederItemsState extends State<OrederItems> {
             ? noInternetWidget(context)
             : cartProvider.cartItemsPast.isNotEmpty
                 ? Container(
-                    height: getHeight(context, 26),
+                    height: getHeight(context, 20),
                     decoration: BoxDecoration(
                       color: mainColorWhite,
                     ),
@@ -335,58 +335,58 @@ class _OrederItemsState extends State<OrederItems> {
                         SizedBox(
                           height: getHeight(context, 3),
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Sub Total".tr,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                addCommasToPrice(cartProvider
-                                    .calculateTotalPricePast(CardItemshow)),
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Delivery Cost".tr,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                "Free Delivery".tr,
-                                style: TextStyle(
-                                    color: Colors.green,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal: getWidth(context, 4)),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       Text(
+                        //         "Sub Total".tr,
+                        //         style: TextStyle(
+                        //             color: mainColorBlack,
+                        //             fontFamily: mainFontnormal,
+                        //             fontSize: 16),
+                        //       ),
+                        //       Text(
+                        //         textAlign: TextAlign.end,
+                        //         addCommasToPrice(cartProvider
+                        //             .calculateTotalPricePast(CardItemshow)),
+                        //         style: TextStyle(
+                        //             color: mainColorBlack,
+                        //             fontFamily: mainFontnormal,
+                        //             fontSize: 16),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: getHeight(context, 1),
+                        // ),
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal: getWidth(context, 4)),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       Text(
+                        //         "Delivery Cost".tr,
+                        //         style: TextStyle(
+                        //             color: mainColorBlack,
+                        //             fontFamily: mainFontnormal,
+                        //             fontSize: 16),
+                        //       ),
+                        //       Text(
+                        //         textAlign: TextAlign.end,
+                        //         "Free Delivery".tr,
+                        //         style: TextStyle(
+                        //             color: Colors.green,
+                        //             fontFamily: mainFontnormal,
+                        //             fontSize: 16),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 4)),

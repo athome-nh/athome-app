@@ -425,8 +425,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                 },
                                                                 items: List.generate(
                                                                     listOfDays
-                                                                            .length -
-                                                                        1,
+                                                                        .length,
                                                                     (index) {
                                                                   bool hasAvailableSchedule = productrovider
                                                                       .scheduleData
@@ -461,7 +460,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                                   width: 15,
                                                                                 ),
                                                                                 Text(
-                                                                                  Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : listOfDays[Datetimenow.add(Duration(days: index)).weekday - 1].toString(),
+                                                                                  Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday),
                                                                                   style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
                                                                                 ),
                                                                               ],
@@ -998,7 +997,10 @@ class _CheckOutState extends State<CheckOut> {
                                               isSchedule,
                                               selectedDateorder +
                                                   "" +
-                                                  selectedTime)),
+                                                  selectedTime,
+                                              deleveryType == 1
+                                                  ? productrovider.deleveryCost
+                                                  : 0)),
                                     ).then((value) {
                                       Navigator.pushReplacement(
                                         context,
@@ -1018,7 +1020,10 @@ class _CheckOutState extends State<CheckOut> {
                                               isSchedule,
                                               selectedDateorder +
                                                   "" +
-                                                  selectedTime)),
+                                                  selectedTime,
+                                              deleveryType == 1
+                                                  ? productrovider.deleveryCost
+                                                  : 0)),
                                     ).then((value) {
                                       Navigator.pushReplacement(
                                         context,

@@ -16,8 +16,9 @@ class successScreen extends StatefulWidget {
   bool outrange = false;
   bool isSchedule = false;
   String schedule = "";
+  int deleverycost = 0;
   successScreen(this.total, this.id, this.time, this.outrange, this.isSchedule,
-      this.schedule,
+      this.schedule, this.deleverycost,
       {super.key});
 
   @override
@@ -140,7 +141,10 @@ class _successScreenState extends State<successScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => TrackOrder(
-                                    widget.id, widget.total, widget.time)),
+                                    widget.id,
+                                    widget.total,
+                                    widget.time,
+                                    widget.deleverycost)),
                           ).then((value) {
                             Navigator.pushReplacement(
                               context,

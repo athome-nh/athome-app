@@ -16,7 +16,8 @@ class TrackOrder extends StatefulWidget {
   String id = "";
   String total = "";
   String time = "";
-  TrackOrder(this.id, this.total, this.time, {super.key});
+  int deleverycost = 0;
+  TrackOrder(this.id, this.total, this.time, this.deleverycost, {super.key});
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
@@ -379,8 +380,13 @@ class _TrackOrderState extends State<TrackOrder> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => OldOrder(widget.id,
-                                      widget.total, widget.time, status)),
+                                  builder: (context) => OldOrder(
+                                      widget.id,
+                                      widget.total,
+                                      widget.time,
+                                      status,
+                                      widget.deleverycost,
+                                      true)),
                             );
                           },
                           style: TextButton.styleFrom(
