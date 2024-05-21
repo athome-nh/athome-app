@@ -176,6 +176,7 @@ class _VerificatoinState extends State<Verificatoin> {
                         height: getHeight(context, 4),
                       ),
 
+                      // Todo: (Jeger and Bawar) Am basha dabe bgordret / Paniyakay nagonje
                       // Verification Code Input
                       FadeInDown(
                         delay: const Duration(milliseconds: 600),
@@ -206,6 +207,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       SizedBox(
                         height: getHeight(context, 2),
                       ),
+                      
                       FadeInDown(
                         delay: const Duration(milliseconds: 700),
                         duration: const Duration(milliseconds: 500),

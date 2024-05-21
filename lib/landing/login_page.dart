@@ -59,269 +59,282 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                 color: mainColorGrey,
               )),
         ),
-        
+
         // Body
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(FocusNode());
           },
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
-              child: Column(
-                children: [
-
-                  // Image or Gif
-                  SizedBox(
-                    height: getHeight(context, 25),
-                    child: Image.asset(
-                      "assets/Victors/login.png",
-                      width: getWidth(context, 100),
-                    ),
-                  ),
-                  
-                  // space
-                  SizedBox(
-                    height: getHeight(context, 6),
-                  ),
-
-                  // Text
-                  FadeInDown(
-                    child: Text(
-                      'Wellcome back'.tr,
-                      style: TextStyle(
-                          fontFamily: mainFontbold,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: mainColorBlack),
-                    ),
-                  ),
-                  
-                  // Text
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 200),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15.0, horizontal: 20),
-                      child: Text(
-                        "EnterYourPhoneNumberToShop".tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: mainColorBlack,
-                          fontFamily: mainFontnormal,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 10,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        
+                        // Image or Gif
+                        SizedBox(
+                          height: getHeight(context, 25),
+                          child: Image.asset(
+                            "assets/Victors/login.png",
+                            width: getWidth(context, 100),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  
-                  // space
-                  SizedBox(
-                    height: getHeight(context, 4),
-                  ),
-                  
-                  // Container of Phone Number
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 400),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 15),
-                      decoration: BoxDecoration(
-                        color: mainColorWhite,
-                        borderRadius: BorderRadius.circular(15),
-                        border:
-                            Border.all(color: mainColorGrey.withOpacity(0.5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: mainColorWhite,
-                            blurRadius: 10,
-                            offset: Offset(0, 4),
+                              
+                        // space
+                        SizedBox(
+                          height: getHeight(context, 6),
+                        ),
+                              
+                        // Text
+                        FadeInDown(
+                          child: Text(
+                            'Wellcome back'.tr,
+                            style: TextStyle(
+                                fontFamily: mainFontbold,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                                color: mainColorBlack),
                           ),
-                        ],
-                      ),
-                      child: Stack(
-                        children: [
-                          Directionality(
-                            textDirection: TextDirection.ltr,
-                            child: InternationalPhoneNumberInput(
-                              countries: const ["IQ"],
-                              initialValue: initialPhoneNumber,
-                              focusNode: null,
-                              onInputChanged: (PhoneNumber number) {
-                                if (controller.text.startsWith("0")) {
-                                  setState(() {
-                                    max = 11;
-                                  });
-                                } else {
-                                  setState(() {
-                                    max = 10;
-                                  });
-                                }
-                              },
-                              onInputValidated: (bool value) {},
-                              selectorConfig: const SelectorConfig(
-                                selectorType:
-                                    PhoneInputSelectorType.BOTTOM_SHEET,
-                              ),
-                              ignoreBlank: false,
-                              autoValidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              selectorTextStyle:
-                                  TextStyle(color: mainColorBlack),
-                              textFieldController: controller,
-                              formatInput: false,
-                              validator: (userInput) {
-                                if (userInput!.isEmpty) {
-                                  return 'Please enter your phone number'.tr;
-                                }
-                                if (userInput.length < max) {
-                                  return 'Please enter your phone number correct'
-                                      .tr;
-                                }
-
-                                if (userInput.length == max) {}
-                                return null; // Return null when the input is valid
-                              },
-                              maxLength: max,
-                              keyboardType: TextInputType.number,
-                              cursorColor: mainColorRed,
-                              inputDecoration: InputDecoration(
-                                contentPadding:
-                                    const EdgeInsets.only(bottom: 15, left: 0),
-                                border: InputBorder.none,
-                                hintText: 'Phone Number'.tr,
-                                hintStyle: TextStyle(
-                                    color: mainColorBlack, fontSize: 16),
-                              ),
-                              onSaved: (PhoneNumber number) {},
-                            ),
-                          ),
-                          Positioned(
-                            left: 90,
-                            top: 8,
-                            bottom: 8,
-                            child: Container(
-                              height: 40,
-                              width: 1,
-                              color: mainColorGrey.withOpacity(0.2),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  
-                  // space
-                  SizedBox(
-                    height: getHeight(context, 1),
-                  ),
-                  
-                  // Text
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PrivacyScreen()));
-                      },
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        foregroundColor: mainColorGrey,
-                      ),
-                      child: Text(
-                        "By continuing, you agree to get Dlly Las's Privacy Policy"
-                            .tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(),
-                      )),
-                  
-                  // space
-                  SizedBox(
-                    height: getHeight(context, 8),
-                  ),
-
-                  // Button
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 600),
-                    child: TextButton(
-                      onPressed: _isLoading
-                          ? null
-                          : () async {
-                              if (await noInternet(context)) {
-                                return;
-                              }
-                              if (controller.text.isEmpty) {
-                                toastLong('Please enter your phone number'.tr);
-                                return;
-                              }
-
-                              if (controller.text.length < max) {
-                                toastLong('Please enter your phone number'.tr);
-                                return;
-                              }
-                              String ph = controller.text.trim();
-                              if (controller.text.startsWith("0")) {
-                                ph = ph.substring(1);
-                              }
-                              setState(() {
-                                _isLoading = true;
-                              });
-
-                              ph = "+964$ph";
-                              RQsms(ph);
-                            },
-                      style: TextButton.styleFrom(
-                          fixedSize: Size(
-                              getWidth(context, 100), getHeight(context, 6))),
-                      child: _isLoading
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                backgroundColor: Colors.white,
-                                strokeWidth: 3,
-                                color: Colors.black,
-                              ),
-                            )
-                          : Text(
-                              "Get Start".tr,
+                        ),
+                              
+                        // Text
+                        FadeInDown(
+                          delay: const Duration(milliseconds: 200),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15.0, horizontal: 20),
+                            child: Text(
+                              "EnterYourPhoneNumberToShop".tr,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: mainColorWhite,
+                                fontSize: 14,
+                                color: mainColorBlack,
+                                fontFamily: mainFontnormal,
+                              ),
+                            ),
+                          ),
+                        ),
+                              
+                        // space
+                        SizedBox(
+                          height: getHeight(context, 4),
+                        ),
+                              
+                        // Container of Phone Number
+                        FadeInDown(
+                          delay: const Duration(milliseconds: 400),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 15),
+                            decoration: BoxDecoration(
+                              color: mainColorWhite,
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                  color: mainColorGrey.withOpacity(0.5)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: mainColorWhite,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: Stack(
+                              children: [
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: InternationalPhoneNumberInput(
+                                    countries: const ["IQ"],
+                                    initialValue: initialPhoneNumber,
+                                    focusNode: null,
+                                    onInputChanged: (PhoneNumber number) {
+                                      if (controller.text.startsWith("0")) {
+                                        setState(() {
+                                          max = 11;
+                                        });
+                                      } else {
+                                        setState(() {
+                                          max = 10;
+                                        });
+                                      }
+                                    },
+                                    onInputValidated: (bool value) {},
+                                    selectorConfig: const SelectorConfig(
+                                      selectorType:
+                                          PhoneInputSelectorType.BOTTOM_SHEET,
+                                    ),
+                                    ignoreBlank: false,
+                                    autoValidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    selectorTextStyle:
+                                        TextStyle(color: mainColorBlack),
+                                    textFieldController: controller,
+                                    formatInput: false,
+                                    validator: (userInput) {
+                                      if (userInput!.isEmpty) {
+                                        return 'Please enter your phone number'
+                                            .tr;
+                                      }
+                                      if (userInput.length < max) {
+                                        return 'Please enter your phone number correct'
+                                            .tr;
+                                      }
+                              
+                                      if (userInput.length == max) {}
+                                      return null; // Return null when the input is valid
+                                    },
+                                    maxLength: max,
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: mainColorRed,
+                                    inputDecoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.only(
+                                          bottom: 15, left: 0),
+                                      border: InputBorder.none,
+                                      hintText: 'Phone Number'.tr,
+                                      hintStyle: TextStyle(
+                                          color: mainColorBlack, fontSize: 16),
+                                    ),
+                                    onSaved: (PhoneNumber number) {},
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 90,
+                                  top: 8,
+                                  bottom: 8,
+                                  child: Container(
+                                    height: 40,
+                                    width: 1,
+                                    color: mainColorGrey.withOpacity(0.2),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                              
+                        // space
+                        SizedBox(
+                          height: getHeight(context, 1),
+                        ),
+                              
+                        // Text
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PrivacyScreen()));
+                            },
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              foregroundColor: mainColorGrey,
+                            ),
+                            child: Text(
+                              "By continuing, you agree to get Dlly Las's Privacy Policy"
+                                  .tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(),
+                            )),
+                              
+                        // space
+                        SizedBox(
+                          height: getHeight(context, 8),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        
+                        // Button
+                        FadeInDown(
+                          delay: const Duration(milliseconds: 600),
+                          child: TextButton(
+                            onPressed: _isLoading
+                                ? null
+                                : () async {
+                                    if (await noInternet(context)) {
+                                      return;
+                                    }
+                                    if (controller.text.isEmpty) {
+                                      toastLong(
+                                          'Please enter your phone number'.tr);
+                                      return;
+                                    }
+                              
+                                    if (controller.text.length < max) {
+                                      toastLong(
+                                          'Please enter your phone number'.tr);
+                                      return;
+                                    }
+                                    String ph = controller.text.trim();
+                                    if (controller.text.startsWith("0")) {
+                                      ph = ph.substring(1);
+                                    }
+                                    setState(() {
+                                      _isLoading = true;
+                                    });
+                              
+                                    ph = "+964$ph";
+                                    RQsms(ph);
+                                  },
+                            style: TextButton.styleFrom(
+                                fixedSize: Size(getWidth(context, 100),
+                                    getHeight(context, 6))),
+                            child: _isLoading
+                                ? const SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      backgroundColor: Colors.white,
+                                      strokeWidth: 3,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                : Text(
+                                    "Get Start".tr,
+                                    style: TextStyle(
+                                      color: mainColorWhite,
+                                      fontFamily: mainFontbold,
+                                    ),
+                                  ),
+                          ),
+                        ),
+                              
+                        // space
+                        SizedBox(
+                          height: getHeight(context, 2),
+                        ),
+                              
+                        // Text
+                        FadeInDown(
+                          delay: const Duration(milliseconds: 800),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              "WeWillSendYouOTP".tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: mainColorBlack.withOpacity(0.7),
                                 fontFamily: mainFontbold,
                               ),
                             ),
-                    ),
-                  ),
-                  
-                  // space
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
-
-                  // Text
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 800),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        "WeWillSendYouOTP".tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: mainColorBlack.withOpacity(0.7),
-                          fontFamily: mainFontbold,
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
-
-                  // space
-                  SizedBox(
-                    height: getHeight(context, 2),
-                  ),
-
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -592,5 +605,4 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
       }
     });
   }
-
 }
