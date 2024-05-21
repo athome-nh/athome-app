@@ -99,26 +99,32 @@ class _HomeSreenState extends State<HomeSreen> {
         if (documentSnapshot.get("show") == false) {
           if (lang == "en") {
             ShowInfo(context, documentSnapshot.get("titleen"),
-                documentSnapshot.get("contenten"), "OK".tr, "error");
+                documentSnapshot.get("contenten"), "OK".tr, "error", "");
           } else if (lang == "ar") {
             ShowInfo(context, documentSnapshot.get("titlear"),
-                documentSnapshot.get("contentar"), "OK".tr, "error");
+                documentSnapshot.get("contentar"), "OK".tr, "error", "");
           } else {
             ShowInfo(context, documentSnapshot.get("titleku"),
-                documentSnapshot.get("contentku"), "OK".tr, "error");
+                documentSnapshot.get("contentku"), "OK".tr, "error", "");
           }
         }
-        if (dotenv.env['currentVersion']! !=
-                documentSnapshot.get("newversion") &&
-            documentSnapshot.get("isAccpet")) {
-          ShowInfo(
-              context,
-              "New update is available".tr,
-              "A newer version of dlly las application is available, please download the latest version ."
-                  .tr,
-              "Update".tr,
-              "update");
-        }
+        checkPlatformAndLaunchUrl().then((value) {
+          if (dotenv.env['currentVersion']! !=
+              documentSnapshot.get("newversion")) {
+            if ((value == "huawei" && documentSnapshot.get("isAccpetHuawei")) ||
+                (value == "android" &&
+                    documentSnapshot.get("isAccpetAndroid")) ||
+                (value == "ios" && documentSnapshot.get("isAccpetApple")))
+              ShowInfo(
+                  context,
+                  "New update is available".tr,
+                  "A newer version of dlly las application is available, please download the latest version ."
+                      .tr,
+                  "Update".tr,
+                  "update",
+                  value);
+          }
+        });
       }
     });
 
@@ -126,6 +132,23 @@ class _HomeSreenState extends State<HomeSreen> {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
+  }
+
+  Future<String> checkPlatformAndLaunchUrl() async {
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+    if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
+      String manufacturer = androidInfo.manufacturer;
+
+      if (manufacturer.toLowerCase() == "huawei") {
+        return "huawei";
+      } else {
+        return "android";
+      }
+    } else {
+      return "ios";
+    }
   }
 
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
@@ -785,8 +808,14 @@ class _HomeSreenState extends State<HomeSreen> {
           );
   }
 
-  Future<void> ShowInfo(BuildContext context, String title, String content,
-      String buttontxt, String type) {
+  Future<void> ShowInfo(
+    BuildContext context,
+    String title,
+    String content,
+    String buttontxt,
+    String type,
+    String platform,
+  ) {
     return showDialog(
       barrierDismissible: false,
       context: context,
@@ -838,25 +867,19 @@ class _HomeSreenState extends State<HomeSreen> {
                           if (type == "error") {
                             exit(0);
                           } else {
-                            if (Platform.isAndroid) {
-                              String check = _readAndroidBuildData(
-                                  await deviceInfoPlugin.androidInfo);
-
-                              if (check.toLowerCase() ==
-                                  "HUAWEI".toLowerCase()) {
-                                Uri url = Uri.parse(
-                                    'https://appgallery.huawei.com/app/C109952685');
-                                if (!await launchUrl(url,
-                                    mode: LaunchMode.externalApplication)) {
-                                  throw Exception('Could not launch $url');
-                                }
-                              } else {
-                                Uri url = Uri.parse(
-                                    'https://play.google.com/store/apps/details?id=com.market.dllylas');
-                                if (!await launchUrl(url,
-                                    mode: LaunchMode.externalApplication)) {
-                                  throw Exception('Could not launch $url');
-                                }
+                            if (platform == "huawei") {
+                              Uri url = Uri.parse(
+                                  'https://appgallery.huawei.com/app/C109952685');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception('Could not launch $url');
+                              }
+                            } else if (platform == "android") {
+                              Uri url = Uri.parse(
+                                  'https://play.google.com/store/apps/details?id=com.market.dllylas');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception('Could not launch $url');
                               }
                             } else {
                               Uri url = Uri.parse(

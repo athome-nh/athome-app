@@ -1,7 +1,6 @@
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
-
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/order_items/order_items.dart';
@@ -16,8 +15,12 @@ class OldOrder extends StatefulWidget {
   String total = "";
   String time = "";
   int status = 0;
+  int deleverycost = 0;
+  bool ongoing = false;
 
-  OldOrder(this.id, this.total, this.time, this.status, {super.key});
+  OldOrder(this.id, this.total, this.time, this.status, this.deleverycost,
+      this.ongoing,
+      {super.key});
   @override
   State<OldOrder> createState() => _OldOrderState();
 }
@@ -307,7 +310,10 @@ class _OldOrderState extends State<OldOrder> {
                           ),
                           Text(
                             textAlign: TextAlign.end,
-                            addCommasToPrice(int.parse(widget.total)),
+                            widget.ongoing
+                                ? addCommasToPrice(int.parse(widget.total))
+                                : addCommasToPrice(int.parse(widget.total) -
+                                    widget.deleverycost),
                             style: TextStyle(
                                 color: mainColorBlack,
                                 fontFamily: mainFontnormal,
@@ -334,7 +340,9 @@ class _OldOrderState extends State<OldOrder> {
                           ),
                           Text(
                             textAlign: TextAlign.end,
-                            "Free Delivery".tr,
+                            widget.deleverycost == 0
+                                ? "Free Delivery".tr
+                                : addCommasToPrice(productrovider.deleveryCost),
                             style: TextStyle(
                                 color: Colors.green,
                                 fontFamily: mainFontnormal,
@@ -367,7 +375,10 @@ class _OldOrderState extends State<OldOrder> {
                           ),
                           Text(
                             textAlign: TextAlign.end,
-                            addCommasToPrice(int.parse(widget.total)),
+                            widget.ongoing
+                                ? addCommasToPrice(int.parse(widget.total) +
+                                    widget.deleverycost)
+                                : addCommasToPrice(int.parse(widget.total)),
                             style: TextStyle(
                                 color: mainColorBlack,
                                 fontFamily: mainFontbold,

@@ -159,7 +159,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                                                   .returnTotalPrice
                                                                   .toString(),
                                                               order.createdAt
-                                                                  .toString())),
+                                                                  .toString(),
+                                                              order
+                                                                  .deliveryCost!)),
                                                 );
                                               },
                                               icon: Icon(
@@ -377,16 +379,16 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            OldOrder(
-                                                                order.id
-                                                                    .toString(),
-                                                                order
-                                                                    .returnTotalPrice
-                                                                    .toString(),
-                                                                order.createdAt
-                                                                    .toString(),
-                                                                order.status!)),
+                                                        builder: (context) => OldOrder(
+                                                            order.id.toString(),
+                                                            order
+                                                                .returnTotalPrice
+                                                                .toString(),
+                                                            order.createdAt
+                                                                .toString(),
+                                                            order.status!,
+                                                            order.deliveryCost!,
+                                                            false)),
                                                   );
                                                 },
                                                 icon: Icon(

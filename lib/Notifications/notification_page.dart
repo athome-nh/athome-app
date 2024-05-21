@@ -310,7 +310,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                         builder: (context) => TrackOrder(
                                             order.id.toString(),
                                             order.returnTotalPrice.toString(),
-                                            order.createdAt.toString())),
+                                            order.createdAt.toString(),
+                                            order.deliveryCost!)),
                                   );
                                 } else if ('attention' == notification.type) {}
                               },

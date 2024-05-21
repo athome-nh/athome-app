@@ -163,8 +163,11 @@ class _SplashScreenState extends State<SplashScreen> {
           int.parse(widget.message!.data["relationId"].toString()));
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-            builder: (context) => TrackOrder(order.id.toString(),
-                order.returnTotalPrice.toString(), order.createdAt.toString())),
+            builder: (context) => TrackOrder(
+                order.id.toString(),
+                order.returnTotalPrice.toString(),
+                order.createdAt.toString(),
+                order.deliveryCost!)),
       );
     } else if ('attention' == widget.message!.data["type"]) {
       Navigator.of(context).pushReplacement(
