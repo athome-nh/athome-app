@@ -1223,8 +1223,6 @@ class _CheckOutState extends State<CheckOut> {
                                                                     .location
                                                                     .isEmpty
                                                                 ? () async {
-                                                                    Navigator.pop(
-                                                                        context);
                                                                     LocationPermission
                                                                         permission =
                                                                         await Geolocator
@@ -1234,6 +1232,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                             .denied) {
                                                                       // Handle case where the user denied access to their location
                                                                     }
+                                                                    Navigator.pop(
+                                                                        context);
                                                                     Navigator
                                                                         .push(
                                                                       context,
