@@ -387,6 +387,8 @@ class _OrederItemsState extends State<OrederItems> {
                         //     ],
                         //   ),
                         // ),
+                       
+                       // Line (Divider)
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 4)),
@@ -394,9 +396,11 @@ class _OrederItemsState extends State<OrederItems> {
                               color: mainColorGrey.withOpacity(0.2),
                               thickness: 1),
                         ),
+                        
                         SizedBox(
                           height: getHeight(context, 1),
                         ),
+                        
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 4)),
@@ -423,9 +427,11 @@ class _OrederItemsState extends State<OrederItems> {
                             ],
                           ),
                         ),
+                        
                         SizedBox(
                           height: getHeight(context, 2),
                         ),
+                        
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 4)),
@@ -486,9 +492,11 @@ class _OrederItemsState extends State<OrederItems> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: getWidth(context, 2),
-                        )
+                        
+                        // SizedBox(
+                        //   height: getWidth(context, 2),
+                        // )
+
                       ],
                     ),
                   )

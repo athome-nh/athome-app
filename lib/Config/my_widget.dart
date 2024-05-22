@@ -11,14 +11,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:get/get.dart';
-
 import 'package:line_icons/line_icons.dart';
-
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../home/oneitem.dart';
+
 
 Widget listItemsShimer(BuildContext context) {
   return SizedBox(
@@ -331,7 +329,7 @@ Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
   return SizedBox(
-    height: getHeight(context, 28),
+    height: getHeight(context, 30),
     //  decoration: BoxDecoration(border: Border.all()),
     child: Visibility(
       visible: productrovider.show,
@@ -810,7 +808,7 @@ Widget listItemsShow(BuildContext context, var data) {
                           // isItemInCart
                           //     ? // button
                           Padding(
-                            padding: EdgeInsets.all(6),
+                            padding: EdgeInsets.all(4),
                             child: AnimatedContainer(
                               padding: EdgeInsets.all(4),
                               width: isItemInCart ? 110 : 30,
