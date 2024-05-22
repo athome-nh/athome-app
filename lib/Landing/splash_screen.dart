@@ -32,6 +32,7 @@ class SplashScreen extends StatefulWidget {
 var userdata = {};
 var homePopupData = {};
 bool loaddata = false;
+bool seenHomepopup = false;
 
 class _SplashScreenState extends State<SplashScreen> {
   bool seen = false;

@@ -127,7 +127,9 @@ class _HomeSreenState extends State<HomeSreen> {
                     "update",
                     value);
             } else {
-              showhompopup();
+              if (!seenHomepopup) {
+                showhompopup();
+              }
             }
           });
         }
@@ -171,7 +173,8 @@ class _HomeSreenState extends State<HomeSreen> {
           homePopupData["type"],
         );
       }
-      if (homePopupData["id"] != userdata["popupID"]) {
+
+      if (homePopupData["id"] != userdata["popupID"] && userdata.isNotEmpty) {
         var data = {"id": userdata["id"], "popId": homePopupData["id"]};
         Network(false).postData("seen", data, context).then((value) {
           if (value != "") {
@@ -181,6 +184,7 @@ class _HomeSreenState extends State<HomeSreen> {
           }
         });
       }
+      seenHomepopup = true;
     }
   }
 
