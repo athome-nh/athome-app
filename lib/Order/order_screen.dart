@@ -1,14 +1,11 @@
 import 'dart:async';
-
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Order/old_order.dart';
 import 'package:dllylas/Order/order_items.dart';
-
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/cartpast.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,6 +62,7 @@ class _OrderScreenState extends State<OrderScreen> {
             child: DefaultTabController(
               length: 2,
               child: Scaffold(
+                // AppBar
                 appBar: AppBar(
                   leading: IconButton(
                       onPressed: () {
@@ -92,6 +90,8 @@ class _OrderScreenState extends State<OrderScreen> {
                     ],
                   ),
                 ),
+
+                // Body
                 body: TabBarView(
                   children: [
                     !isLogin
@@ -99,14 +99,10 @@ class _OrderScreenState extends State<OrderScreen> {
                         : productrovider.Orders.any(
                                 (order) => order.status! < 5)
                             ? ListView.builder(
-                                itemCount:
-                                    productrovider.getOrderOngoing().length,
+                                itemCount: productrovider.getOrderOngoing().length,
                                 itemBuilder: (BuildContext context, int index) {
                                   OrderModel order = productrovider
-                                      .getOrderOngoing()
-                                      .reversed
-                                      .toList()[index];
-
+                                      .getOrderOngoing().reversed.toList()[index];
                                   return Card(
                                     elevation: 2,
                                     margin: EdgeInsets.all(8),
@@ -133,41 +129,41 @@ class _OrderScreenState extends State<OrderScreen> {
                                               Text(
                                                 "Order number:".tr,
                                                 style: TextStyle(
-                                                    fontSize: 18,
+                                                    fontSize: 16,
                                                     fontFamily: mainFontbold,
                                                     color: mainColorBlack),
                                               ),
                                               Text(
                                                 order.id.toString(),
                                                 style: TextStyle(
-                                                    fontSize: 18,
+                                                    fontSize: 16,
                                                     fontFamily: mainFontbold,
                                                     color: mainColorRed),
                                               ),
                                             ],
                                           ),
                                           trailing: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          TrackOrder(
-                                                              order.id
-                                                                  .toString(),
-                                                              order
-                                                                  .returnTotalPrice
-                                                                  .toString(),
-                                                              order.createdAt
-                                                                  .toString(),
-                                                              order
-                                                                  .deliveryCost!)),
-                                                );
-                                              },
-                                              icon: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color: mainColorGrey,
-                                              )),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        TrackOrder(
+                                                            order.id.toString(),
+                                                            order
+                                                                .returnTotalPrice
+                                                                .toString(),
+                                                            order.createdAt
+                                                                .toString(),
+                                                            order
+                                                                .deliveryCost!)),
+                                              );
+                                            },
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: mainColorGrey,
+                                            ),
+                                          ),
                                           subtitle: Text(
                                             "Date:".tr +
                                                 order.createdAt

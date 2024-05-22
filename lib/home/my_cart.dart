@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:dllylas/Config/my_widget.dart';
-
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/model/cart.dart';
@@ -68,6 +66,8 @@ class _MyCartState extends State<MyCart> {
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
+
+              // AppBar
               appBar: AppBar(
                 title: Text(
                   "My Cart".tr,
@@ -190,6 +190,8 @@ class _MyCartState extends State<MyCart> {
                         ),
                 ],
               ),
+              
+              // Body
               body: !productrovider.show
                   ? Padding(
                       padding: const EdgeInsets.only(top: 5),
@@ -691,6 +693,8 @@ class _MyCartState extends State<MyCart> {
               bottomNavigationBar: productrovider.nointernetCheck
                   ? noInternetWidget(context)
                   : !productrovider.show
+
+                      // Shimmer
                       ? Skeletonizer(
                           effect: ShimmerEffect.raw(colors: [
                             mainColorGrey.withOpacity(0.1),
@@ -826,7 +830,7 @@ class _MyCartState extends State<MyCart> {
                         )
                       : cartProvider.cartItems.isNotEmpty && isLogin
                           ? Container(
-                              height: getHeight(context, 18),
+                              height: getHeight(context, 20),
                               decoration: BoxDecoration(
                                 color: mainColorWhite,
                                 // borderRadius: const BorderRadius.only(
@@ -840,6 +844,7 @@ class _MyCartState extends State<MyCart> {
                                   SizedBox(
                                     height: getHeight(context, 2),
                                   ),
+
                                   // SizedBox(
                                   //   height: getHeight(context, 1),
                                   // ),
@@ -910,9 +915,13 @@ class _MyCartState extends State<MyCart> {
                                         color: mainColorGrey.withOpacity(0.2),
                                         thickness: 1),
                                   ),
+
+
                                   SizedBox(
                                     height: getHeight(context, 1),
                                   ),
+                                  
+                                  // Text --> ToTal
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 4)),
@@ -941,9 +950,12 @@ class _MyCartState extends State<MyCart> {
                                       ],
                                     ),
                                   ),
+                                  
                                   SizedBox(
                                     height: getHeight(context, 2),
                                   ),
+                                  
+                                  // Button
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 4)),
@@ -1082,9 +1094,11 @@ class _MyCartState extends State<MyCart> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: getWidth(context, 2),
-                                  )
+                                  
+                                  // SizedBox(
+                                  //   height: getWidth(context, 10),
+                                  // ),
+
                                 ],
                               ),
                             )
