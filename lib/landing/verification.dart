@@ -207,7 +207,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       SizedBox(
                         height: getHeight(context, 2),
                       ),
-                      
+
                       FadeInDown(
                         delay: const Duration(milliseconds: 700),
                         duration: const Duration(milliseconds: 500),

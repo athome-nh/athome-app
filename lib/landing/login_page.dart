@@ -74,7 +74,6 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        
                         // Image or Gif
                         SizedBox(
                           height: getHeight(context, 25),
@@ -83,12 +82,12 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             width: getWidth(context, 100),
                           ),
                         ),
-                              
+
                         // space
                         SizedBox(
                           height: getHeight(context, 6),
                         ),
-                              
+
                         // Text
                         FadeInDown(
                           child: Text(
@@ -100,7 +99,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 color: mainColorBlack),
                           ),
                         ),
-                              
+
                         // Text
                         FadeInDown(
                           delay: const Duration(milliseconds: 200),
@@ -118,12 +117,12 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             ),
                           ),
                         ),
-                              
+
                         // space
                         SizedBox(
                           height: getHeight(context, 4),
                         ),
-                              
+
                         // Container of Phone Number
                         FadeInDown(
                           delay: const Duration(milliseconds: 400),
@@ -183,7 +182,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                         return 'Please enter your phone number correct'
                                             .tr;
                                       }
-                              
+
                                       if (userInput.length == max) {}
                                       return null; // Return null when the input is valid
                                     },
@@ -215,12 +214,12 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             ),
                           ),
                         ),
-                              
+
                         // space
                         SizedBox(
                           height: getHeight(context, 1),
                         ),
-                              
+
                         // Text
                         TextButton(
                             onPressed: () {
@@ -239,7 +238,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                               textAlign: TextAlign.center,
                               style: TextStyle(),
                             )),
-                              
+
                         // space
                         SizedBox(
                           height: getHeight(context, 8),
@@ -253,7 +252,6 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        
                         // Button
                         FadeInDown(
                           delay: const Duration(milliseconds: 600),
@@ -269,7 +267,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                           'Please enter your phone number'.tr);
                                       return;
                                     }
-                              
+
                                     if (controller.text.length < max) {
                                       toastLong(
                                           'Please enter your phone number'.tr);
@@ -282,7 +280,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                     setState(() {
                                       _isLoading = true;
                                     });
-                              
+
                                     ph = "+964$ph";
                                     RQsms(ph);
                                   },
@@ -308,12 +306,12 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                   ),
                           ),
                         ),
-                              
+
                         // space
                         SizedBox(
                           height: getHeight(context, 2),
                         ),
-                              
+
                         // Text
                         FadeInDown(
                           delay: const Duration(milliseconds: 800),

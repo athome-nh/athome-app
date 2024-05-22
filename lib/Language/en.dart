@@ -3,7 +3,7 @@ const Map<String, String> en = {
   "New": "New",
 
   "Saturday": "Saturday",
-  "Sunday": "Sunday",  
+  "Sunday": "Sunday",
   "Monday": "Monday",
   "Tuesday": "Tuesday",
   "Wednesday": "Wednesday",
@@ -18,9 +18,6 @@ const Map<String, String> en = {
   "Select the Time please": "Choose a delivery time",
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
-
-
-
 
   // Notification
   "Notification": "Notification",

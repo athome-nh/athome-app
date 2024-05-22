@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Home/all_item.dart';
+import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
@@ -66,6 +67,7 @@ class _HomeSreenState extends State<HomeSreen> {
       final productrovider =
           Provider.of<productProvider>(context, listen: false);
       final cartprovider = Provider.of<CartProvider>(context, listen: false);
+
       List<CartItem> mycart = cartprovider.cartItems;
       for (var item in mycart) {
         final existingItemIndex = productrovider.products.indexWhere(
@@ -107,31 +109,79 @@ class _HomeSreenState extends State<HomeSreen> {
             ShowInfo(context, documentSnapshot.get("titleku"),
                 documentSnapshot.get("contentku"), "OK".tr, "error", "");
           }
+        } else {
+          checkPlatformAndLaunchUrl().then((value) {
+            if (dotenv.env['currentVersion']! !=
+                documentSnapshot.get("newversion")) {
+              if ((value == "huawei" &&
+                      documentSnapshot.get("isAccpetHuawei")) ||
+                  (value == "android" &&
+                      documentSnapshot.get("isAccpetAndroid")) ||
+                  (value == "ios" && documentSnapshot.get("isAccpetApple")))
+                ShowInfo(
+                    context,
+                    "New update is available".tr,
+                    "A newer version of dlly las application is available, please download the latest version ."
+                        .tr,
+                    "Update".tr,
+                    "update",
+                    value);
+            } else {
+              showhompopup();
+            }
+          });
         }
-        checkPlatformAndLaunchUrl().then((value) {
-          if (dotenv.env['currentVersion']! !=
-              documentSnapshot.get("newversion")) {
-            if ((value == "huawei" && documentSnapshot.get("isAccpetHuawei")) ||
-                (value == "android" &&
-                    documentSnapshot.get("isAccpetAndroid")) ||
-                (value == "ios" && documentSnapshot.get("isAccpetApple")))
-              ShowInfo(
-                  context,
-                  "New update is available".tr,
-                  "A newer version of dlly las application is available, please download the latest version ."
-                      .tr,
-                  "Update".tr,
-                  "update",
-                  value);
-          }
-        });
       }
     });
 
     checkinternet();
+
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
-    super.initState();
+  }
+
+  void showhompopup() {
+    if (homePopupData["id"] != userdata["popupID"] ||
+        homePopupData["isAlwaysShow"] == 1) {
+      if (lang == "en") {
+        _homePopup(
+          context,
+          homePopupData["titleEN"],
+          homePopupData["contentEN"],
+          homePopupData["img"],
+          "OK".tr,
+          homePopupData["type"],
+        );
+      } else if (lang == "ar") {
+        _homePopup(
+          context,
+          homePopupData["titleAR"],
+          homePopupData["contentAR"],
+          homePopupData["img"],
+          "OK".tr,
+          homePopupData["type"],
+        );
+      } else {
+        _homePopup(
+          context,
+          homePopupData["titleKU"],
+          homePopupData["contentKU"],
+          homePopupData["img"],
+          "OK".tr,
+          homePopupData["type"],
+        );
+      }
+      if (homePopupData["id"] != userdata["popupID"]) {
+        var data = {"id": userdata["id"], "popId": homePopupData["id"]};
+        Network(false).postData("seen", data, context).then((value) {
+          if (value != "") {
+            if (value["code"] == "201") {
+              userdata["popupID"] = homePopupData["id"];
+            }
+          }
+        });
+      }
+    }
   }
 
   Future<String> checkPlatformAndLaunchUrl() async {
@@ -890,6 +940,85 @@ class _HomeSreenState extends State<HomeSreen> {
                               }
                             }
                           }
+                        },
+                        style: TextButton.styleFrom(
+                          fixedSize: Size(
+                              getWidth(context, 70), getHeight(context, 5)),
+                        ),
+                        child: Text(
+                          buttontxt,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _homePopup(
+    BuildContext context,
+    String title,
+    String content,
+    String img,
+    String buttontxt,
+    String type,
+  ) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Directionality(
+            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            child: Stack(
+              alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
+              children: [
+                SizedBox(
+                  width: getWidth(context, 100),
+                  height: getHeight(context, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.network(
+                        "https://dllylas.app/storage/topImg/LJY0XuG3XuYkiwiQRFgQmhUGr7HRUVAtSXmaG9Y3.jpg",
+                        width: getWidth(context, 100),
+                        height: getWidth(context, 60),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        title.tr,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        style: TextStyle(
+                          color: mainColorBlack,
+                          fontFamily: mainFontbold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        content,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: mainColorBlack,
+                          fontFamily: mainFontnormal,
+                          fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      TextButton(
+                        onPressed: () async {
+                          if (type == "error") {
+                            exit(0);
+                          } else {}
                         },
                         style: TextButton.styleFrom(
                           fixedSize: Size(

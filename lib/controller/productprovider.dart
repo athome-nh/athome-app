@@ -8,6 +8,7 @@ import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/brandmodel/brandmodel.dart';
 import 'package:dllylas/model/category_model/category_model.dart';
+
 import 'package:dllylas/model/location/location.dart';
 
 import 'package:dllylas/model/order_items/order_items.dart';
@@ -78,6 +79,8 @@ class productProvider extends ChangeNotifier {
           setSchedules((value['timeList'] as List)
               .map((x) => ScheduleModel.fromMap(x))
               .toList());
+
+          homePopupData = value['homePopup'];
 
           setMinimumOrder(
             value['minimum_order'],
@@ -237,7 +240,6 @@ class productProvider extends ChangeNotifier {
   List<ProductModel> _products = [];
   List<Productitems> _productitems = [];
   List<ScheduleModel> _scheduleData = [];
-
   List<CategoryModel> _categores = [];
   List<SubCategory> _subCategores = [];
   List<ProductsImage> _productimages = [];
@@ -245,6 +247,8 @@ class productProvider extends ChangeNotifier {
   List<OrderModel> _Orders = [];
   List<OrderItems> _Orderitems = [];
   List<Locationuser> _location = [];
+
+  // Map<String, dynamic> _homePopup = {};
   int _defultlocation = 0;
   String _searchproduct = "";
   String _allitemType = "";
@@ -264,6 +268,7 @@ class productProvider extends ChangeNotifier {
   // Getter to access the list of products
   List<Topmodel> get tops => _tops;
 
+  // Map<String, dynamic> get homePopup => _homePopup;
   List<Slidemodel> get slides => _slides;
   List<Brandmodel> get brands => _brands;
   List<OrderItems> get Orderitems => _Orderitems;

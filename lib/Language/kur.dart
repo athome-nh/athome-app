@@ -3,7 +3,7 @@ const Map<String, String> kur = {
   "New": "نوێ",
 
   "Saturday": "شەمە",
-  "Sunday": "یەک شەمە",  
+  "Sunday": "یەک شەمە",
   "Monday": "دوو شەمە",
   "Tuesday": "سێ شەمە",
   "Wednesday": "چوار شەمە",
@@ -18,7 +18,6 @@ const Map<String, String> kur = {
   "Select the Time please": "کاتی گەیاندن دیاری بکە ",
   "Select": "دیاریکردن",
   "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
-
 
   // Notification
   "Notification": "ئاگادارکردنەوە",

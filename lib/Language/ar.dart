@@ -3,7 +3,7 @@ const Map<String, String> ar = {
   "New": "جديد",
 
   "Saturday": "السبت",
-  "Sunday": "الأحد",  
+  "Sunday": "الأحد",
   "Monday": "الاثنين",
   "Tuesday": "الثلاثاء",
   "Wednesday": "الأربعاء",
@@ -18,7 +18,6 @@ const Map<String, String> ar = {
   "Select the Time please": "اختر وقت الاستلام",
   "Select": "اختر",
   "Delevery schedule": "تحديد موعد للتوصيل",
-
 
   // Notification
   "Notification": "إشعار",

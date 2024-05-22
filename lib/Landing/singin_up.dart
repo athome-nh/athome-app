@@ -132,7 +132,6 @@ class _SingInUpState extends State<SingInUp> {
               width: getWidth(context, 100),
               child: Column(
                 children: [
-
                   FadeInDown(
                     duration: const Duration(milliseconds: 500),
                     child: Text(
@@ -143,11 +142,9 @@ class _SingInUpState extends State<SingInUp> {
                           fontFamily: mainFontbold),
                     ),
                   ),
-                  
                   SizedBox(
                     height: getHeight(context, 1),
                   ),
-                  
                   FadeInDown(
                     duration: const Duration(milliseconds: 500),
                     child: Text(
@@ -159,11 +156,9 @@ class _SingInUpState extends State<SingInUp> {
                           fontFamily: mainFontnormal,
                         )),
                   ),
-                  
                   SizedBox(
                     height: getHeight(context, 4),
                   ),
-                 
                   FadeInDown(
                     delay: const Duration(milliseconds: 500),
                     duration: const Duration(milliseconds: 500),
