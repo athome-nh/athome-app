@@ -215,7 +215,7 @@ const Map<String, String> en = {
   "Delete location success": "Delete location success",
 
   // singin_up
-  "Complete Account": "Enter your personal information",
+  "Complete Account": "Personal Information", // Aram English Gorayaa
   "Enter your account information to complete your account":
       "Please enter the required information for registration",
   "Enter your Name": "Enter your Name",

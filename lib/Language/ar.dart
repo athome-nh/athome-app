@@ -209,7 +209,7 @@ const Map<String, String> ar = {
   "Delete location success": "تم إزالة الموقع بنجاح",
 
   // singin_up
-  "Complete Account": "أدخل المعلومات الخاصة بك",
+  "Complete Account": "أدخل المعلومات الخاصة بك", // Aram English Gorayaa
   "Enter your account information to complete your account":
       "الرجاء إدخال المعلومات المطلوبة للتسجيل",
   "Enter your Name": "ادخال الاسم",

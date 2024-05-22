@@ -212,7 +212,7 @@ const Map<String, String> kur = {
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
 
   // singin_up
-  "Complete Account": "زانیاریەکانت داخڵ بکە",
+  "Complete Account": "زانیاریەکانت داخڵ بکە", // Aram English Gorayaa
   "Enter your account information to complete your account":
       "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
   "Enter your Name": "ناوت تۆمار بکە",
