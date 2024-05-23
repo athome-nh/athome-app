@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
@@ -11,6 +12,7 @@ import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
+import 'package:dllylas/home/oneitem.dart';
 
 import 'package:dllylas/home/search_page.dart';
 import 'package:dllylas/landing/splash_screen.dart';
@@ -150,27 +152,18 @@ class _HomeSreenState extends State<HomeSreen> {
           context,
           homePopupData["titleEN"],
           homePopupData["contentEN"],
-          homePopupData["img"],
-          "OK".tr,
-          homePopupData["type"],
         );
       } else if (lang == "ar") {
         _homePopup(
           context,
           homePopupData["titleAR"],
           homePopupData["contentAR"],
-          homePopupData["img"],
-          "OK".tr,
-          homePopupData["type"],
         );
       } else {
         _homePopup(
           context,
           homePopupData["titleKU"],
           homePopupData["contentKU"],
-          homePopupData["img"],
-          "OK".tr,
-          homePopupData["type"],
         );
       }
 
@@ -184,7 +177,7 @@ class _HomeSreenState extends State<HomeSreen> {
           }
         });
       }
-      seenHomepopup = true;
+      // seenHomepopup = true;
     }
   }
 
@@ -968,73 +961,104 @@ class _HomeSreenState extends State<HomeSreen> {
     BuildContext context,
     String title,
     String content,
-    String img,
-    String buttontxt,
-    String type,
   ) {
     return showDialog(
-      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
+        final productrovider =
+            Provider.of<productProvider>(context, listen: false);
         return AlertDialog(
+          actionsPadding: EdgeInsets.all(0),
+          contentPadding: EdgeInsets.all(0),
           content: Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Stack(
-              alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
+              alignment: lang == "en" ? Alignment.topRight : Alignment.topLeft,
               children: [
-                SizedBox(
-                  width: getWidth(context, 100),
-                  height: getHeight(context, 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.network(
-                        "https://dllylas.app/storage/topImg/LJY0XuG3XuYkiwiQRFgQmhUGr7HRUVAtSXmaG9Y3.jpg",
-                        width: getWidth(context, 100),
-                        height: getWidth(context, 60),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        title.tr,
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontFamily: mainFontbold,
-                          fontSize: 20,
+                Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    SizedBox(
+                      width: getWidth(context, 100),
+                      height: getHeight(context, 45),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: CachedNetworkImage(
+                          // imageUrl: dotenv.env['imageUrlServer']! ,
+                          imageUrl:
+                              "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
+                          placeholder: (context, url) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          errorWidget: (context, url, error) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          filterQuality: FilterQuality.low,
+
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(height: 15),
-                      Text(
-                        content,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontFamily: mainFontnormal,
-                          fontSize: 14,
+                    ),
+                    FadeInUp(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: TextButton(
+                          onPressed: () async {
+                            if (homePopupData["type"] == "attention") {
+                              Navigator.pop(context);
+                            } else if (homePopupData["type"] == "brand") {
+                              productrovider.settype("brand");
+                              productrovider
+                                  .setidbrand(homePopupData["brand_id"]);
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AllItem()),
+                              );
+                            } else if (homePopupData["type"] == "discount") {
+                              productrovider.settype("discount");
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AllItem()),
+                              );
+                            } else if (homePopupData["type"] == "onItem") {
+                              productrovider.setidItem(productrovider
+                                  .getoneProductByBarcode(
+                                      homePopupData["barcode"])
+                                  .id!);
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Oneitem()),
+                              );
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(
+                                getWidth(context, 45), getHeight(context, 5)),
+                          ),
+                          //checkText
+                          child: Text(
+                            homePopupData["type"] == "attention"
+                                ? "OK".tr
+                                : "tap View",
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 30),
-                      TextButton(
-                        onPressed: () async {
-                          if (type == "error") {
-                            exit(0);
-                          } else {}
-                        },
-                        style: TextButton.styleFrom(
-                          fixedSize: Size(
-                              getWidth(context, 70), getHeight(context, 5)),
-                        ),
-                        child: Text(
-                          buttontxt,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.close,
+                      color: mainColorRed,
+                      size: 35,
+                    ))
               ],
             ),
           ),
