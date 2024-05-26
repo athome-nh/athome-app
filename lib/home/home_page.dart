@@ -177,7 +177,7 @@ class _HomeSreenState extends State<HomeSreen> {
           }
         });
       }
-      // seenHomepopup = true;
+      seenHomepopup = true;
     }
   }
 

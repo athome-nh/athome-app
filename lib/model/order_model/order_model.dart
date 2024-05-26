@@ -14,6 +14,7 @@ class OrderModel {
   final dynamic adminPriceId;
   final dynamic adminId;
   final int? deliveryCost;
+  final int? rating;
   final dynamic deliverySchedule;
   final int? totalPrice;
 
@@ -37,6 +38,7 @@ class OrderModel {
     this.adminPriceId,
     this.adminId,
     this.deliveryCost,
+    this.rating,
     this.deliverySchedule,
     this.totalPrice,
     this.returnTotalPrice,
@@ -59,6 +61,7 @@ class OrderModel {
         adminPriceId: data['admin_price_id'] as dynamic,
         adminId: data['admin_id'] as dynamic,
         deliveryCost: data['delivery_cost'] as int?,
+        rating: data['rating'] as int?,
         deliverySchedule: data['delivery_schedule'] as dynamic,
         totalPrice: data['total_price'] as int?,
 
@@ -85,6 +88,7 @@ class OrderModel {
         'admin_price_id': adminPriceId,
         'admin_id': adminId,
         'delivery_cost': deliveryCost,
+        'rating': rating,
         'delivery_schedule': deliverySchedule,
         'total_price': totalPrice,
 
@@ -121,6 +125,7 @@ class OrderModel {
     dynamic adminPriceId,
     dynamic adminId,
     int? deliveryCost,
+    int? rating,
     dynamic deliverySchedule,
     int? totalPrice,
     int? returnTotalPrice,
@@ -152,6 +157,7 @@ class OrderModel {
       adminPriceId: adminPriceId ?? this.adminPriceId,
       adminId: adminId ?? this.adminId,
       deliveryCost: deliveryCost ?? this.deliveryCost,
+      rating: rating ?? this.rating,
       deliverySchedule: deliverySchedule ?? this.deliverySchedule,
       totalPrice: totalPrice ?? this.totalPrice,
       returnTotalPrice: returnTotalPrice ?? this.returnTotalPrice,
@@ -185,6 +191,7 @@ class OrderModel {
       adminPriceId.hashCode ^
       adminId.hashCode ^
       deliveryCost.hashCode ^
+      rating.hashCode ^
       deliverySchedule.hashCode ^
       totalPrice.hashCode ^
       returnTotalPrice.hashCode ^
