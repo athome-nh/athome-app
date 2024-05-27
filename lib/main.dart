@@ -6,6 +6,7 @@ import 'package:dllylas/Config/test.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
+import 'package:dllylas/Order/rate.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -162,7 +163,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
         // home: const NotificationPage(),
-        home: SplashScreen(),
+        // home: SplashScreen(),
+        home: RatePage(),
         navigatorKey: navigatorKey,
       ),
     );
