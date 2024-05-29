@@ -4,6 +4,7 @@ import 'dart:isolate';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Home/all_item.dart';
@@ -12,6 +13,7 @@ import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
+import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/home/oneitem.dart';
 
 import 'package:dllylas/home/search_page.dart';
@@ -25,10 +27,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -120,17 +124,18 @@ class _HomeSreenState extends State<HomeSreen> {
                   (value == "android" &&
                       documentSnapshot.get("isAccpetAndroid")) ||
                   (value == "ios" && documentSnapshot.get("isAccpetApple")))
-                ShowInfo(
-                    context,
-                    "New update is available".tr,
-                    "A newer version of dlly las application is available, please download the latest version ."
-                        .tr,
-                    "Update".tr,
-                    "update",
-                    value);
+                _homePopup(context, value);
             } else {
-              if (!seenHomepopup) {
-                showhompopup();
+              final productrovider =
+                  Provider.of<productProvider>(context, listen: false);
+              if (isLogin &&
+                  productrovider.Orders.last.status == 5 &&
+                  productrovider.Orders.last.rating == null) {
+                feedbackmMdal(context, productrovider);
+              } else {
+                if (!seenHomepopup) {
+                  showhompopup();
+                }
               }
             }
           });
@@ -148,23 +153,11 @@ class _HomeSreenState extends State<HomeSreen> {
     if (homePopupData["id"] != userdata["popupID"] ||
         homePopupData["isAlwaysShow"] == 1) {
       if (lang == "en") {
-        _homePopup(
-          context,
-          homePopupData["titleEN"],
-          homePopupData["contentEN"],
-        );
+        _homePopup(context, "pop");
       } else if (lang == "ar") {
-        _homePopup(
-          context,
-          homePopupData["titleAR"],
-          homePopupData["contentAR"],
-        );
+        _homePopup(context, "pop");
       } else {
-        _homePopup(
-          context,
-          homePopupData["titleKU"],
-          homePopupData["contentKU"],
-        );
+        _homePopup(context, "pop");
       }
 
       if (homePopupData["id"] != userdata["popupID"] && userdata.isNotEmpty) {
@@ -179,6 +172,437 @@ class _HomeSreenState extends State<HomeSreen> {
       }
       seenHomepopup = true;
     }
+  }
+
+  bool isExpanded = false;
+  bool waitingFeedback = false;
+
+  List<String> ratestar = [
+    'Poor',
+    'Terrible',
+    'Awful',
+    'Unacceptable',
+    'Dismal'
+  ];
+  // List<String> oneStar = [
+  //   'Poor',
+  //   'Terrible',
+  //   'Awful',
+  //   'Unacceptable',
+  //   'Dismal'
+  // ];
+  // List<String> twoStar = [
+  //   'Below Average',
+  //   'Mediocre',
+  //   'Subpar',
+  //   'Disappointing',
+  //   'Unsatisfactory'
+  // ];
+  // List<String> threeStar = [
+  //   'Average',
+  //   'Decent',
+  //   'Fair',
+  //   'Okay',
+  //   'Satisfactory'
+  // ];
+  // List<String> fourStar = [
+  //   'Good',
+  //   'Great',
+  //   'Very Good',
+  //   'Impressive',
+  //   'Praiseworthy'
+  // ];
+  // List<String> fiveStar = [
+  //   'Excellent',
+  //   'Outstanding',
+  //   'Exceptional',
+  //   'Superb',
+  //   'Flawless'
+  // ];
+  // List<String> getDisplayedWords(double i) {
+  //   switch (i) {
+  //     case 1:
+  //       return oneStar;
+  //     case 2:
+  //       return twoStar;
+  //     case 3:
+  //       return threeStar;
+  //     case 4:
+  //       return fourStar;
+  //     case 5:
+  //       return fiveStar;
+  //     default:
+  //       return [];
+  //   }
+  // }
+
+  // List<Widget> elem(StateSetter setState) {
+  //   List<Widget> txt = [];
+
+  //   for (var element in displayedWords) {
+  //     bool isSelected = selectedWords.contains(element);
+  //     txt.add(GestureDetector(
+  //       onTap: () {
+  //         setState(() {
+  //           if (isSelected) {
+  //             isSelected = !isSelected;
+  //             selectedWords.remove(element);
+  //           } else {
+  //             isSelected = !isSelected;
+  //             selectedWords.add(element);
+  //           }
+  //         });
+  //       },
+  //       child: Container(
+  //         decoration: BoxDecoration(
+  //             color: isSelected ? mainColorGrey : Colors.transparent,
+  //             border:
+  //                 Border.all(width: 1, color: mainColorBlack.withOpacity(0.5)),
+  //             borderRadius: BorderRadius.circular(15)),
+  //         margin: const EdgeInsets.only(
+  //           top: 6,
+  //           bottom: 6,
+  //           left: 10,
+  //           right: 10,
+  //         ),
+  //         padding: const EdgeInsets.only(
+  //           left: 15,
+  //           right: 15,
+  //           bottom: 10,
+  //           top: 10,
+  //         ),
+  //         child: Text(
+  //           element,
+  //           style: TextStyle(
+  //             fontFamily: mainFontnormal,
+  //             color:
+  //                 isSelected ? mainColorWhite : mainColorBlack.withOpacity(0.5),
+  //             fontSize: 12,
+  //           ),
+  //         ),
+  //       ),
+  //     ));
+  //   }
+  //   return txt;
+  // }
+
+  TextEditingController feedbackController = TextEditingController();
+  // List<String> selectedWords = [];
+  int? selectedRating;
+  // List<String> displayedWords = [];
+  void feedbackmMdal(BuildContext context, productProvider pro) {
+    showModalBottomSheet(
+      backgroundColor: mainColorWhite,
+      context: context,
+      isScrollControlled: true,
+      enableDrag: true,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return GestureDetector(
+              onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+              },
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 400),
+                height: isExpanded
+                    ? MediaQuery.of(context).size.height - 150
+                    : MediaQuery.of(context).size.height * 0.35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    SingleChildScrollView(
+                      child: Directionality(
+                        textDirection: lang == "en"
+                            ? TextDirection.ltr
+                            : TextDirection.rtl,
+                        child: Stack(
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Stack(
+                              alignment: lang == "en"
+                                  ? Alignment.topRight
+                                  : Alignment.topLeft,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: getHeight(context, 4),
+                                    ),
+                                    Image.asset(
+                                      'assets/images/Dlly Las Main.png',
+                                      width: getWidth(context, 35),
+                                    ),
+
+                                    SizedBox(
+                                      height: getHeight(context, 2),
+                                    ),
+
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: getWidth(context, 6)),
+                                      child: Text(
+                                        isExpanded
+                                            ? "Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more."
+                                                .tr
+                                            : "Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more."
+                                                .tr,
+                                        style: TextStyle(
+                                          color: mainColorBlack,
+                                          fontFamily: mainFontnormal,
+                                          fontSize: 14,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+
+                                    SizedBox(
+                                      height: getHeight(context, 2),
+                                    ),
+
+                                    // Rating
+                                    RatingBar(
+                                      filledIcon: LineIcons.starAlt,
+                                      emptyIcon: LineIcons.star,
+                                      key: Key(
+                                          'rating_bar'), // Adding the key here
+                                      onRatingChanged: (value) {
+                                        setState(() {
+                                          selectedRating = int.parse(
+                                              value.toString().substring(0, 1));
+                                          isExpanded = true;
+                                          // selectedWords.clear();
+                                          // displayedWords = getDisplayedWords(value);
+                                        });
+                                      },
+
+                                      initialRating: 0,
+                                      alignment: Alignment.center,
+                                      // filledColor: mainColorRed,
+                                      // emptyColor: mainColorRed,
+                                      size: 50,
+                                    ),
+                                    SizedBox(
+                                      height: getHeight(context, 2),
+                                    ),
+                                    isExpanded
+                                        ? Text(
+                                            ratestar[selectedRating! - 1],
+                                            style: TextStyle(
+                                              color: mainColorBlack,
+                                              fontFamily: mainFontnormal,
+                                              fontSize: 14,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          )
+                                        : SizedBox(),
+                                    isExpanded
+                                        ? Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                height: getHeight(context, 3),
+                                              ),
+                                              // Wrap(
+                                              //   alignment: WrapAlignment.center,
+                                              //   children: elem(setState),
+                                              // ),
+                                              // SizedBox(
+                                              //   height: getHeight(context, 4),
+                                              // ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 16.0),
+                                                child: TextFormField(
+                                                  maxLines: 5,
+                                                  controller:
+                                                      feedbackController,
+                                                  cursorColor: mainColorGrey,
+                                                  keyboardType:
+                                                      TextInputType.text,
+                                                  onChanged: (value) {},
+                                                  validator: (value) {
+                                                    return null;
+                                                  },
+                                                  decoration: InputDecoration(
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15),
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            mainColorGrey, // Customize border color
+                                                        width:
+                                                            1.0, // Customize border width
+                                                      ),
+                                                    ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15),
+                                                      borderSide: BorderSide(
+                                                        color: mainColorGrey
+                                                            .withOpacity(
+                                                                0.5), // Customize border color
+                                                        width:
+                                                            1.0, // Customize border width
+                                                      ),
+                                                    ),
+                                                    labelText: "Feedback",
+                                                    labelStyle: TextStyle(
+                                                        color: mainColorGrey
+                                                            .withOpacity(0.8),
+                                                        fontSize: 20,
+                                                        fontFamily:
+                                                            mainFontbold),
+                                                    hintText:
+                                                        "Add your Feedback",
+                                                    hintStyle: TextStyle(
+                                                        color: mainColorBlack
+                                                            .withOpacity(0.5),
+                                                        fontSize: 14,
+                                                        fontFamily:
+                                                            mainFontnormal),
+                                                    floatingLabelBehavior:
+                                                        FloatingLabelBehavior
+                                                            .always,
+                                                    //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: getHeight(context, 20),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        getWidth(context, 4)),
+                                                child: TextButton(
+                                                  onPressed: () async {
+                                                    var data = {
+                                                      "oid": pro.Orders.last.id,
+                                                      "feedback":
+                                                          feedbackController
+                                                              .text,
+                                                      "rating": selectedRating
+                                                    };
+                                                    Network(false)
+                                                        .postData(
+                                                            "orderFeedback",
+                                                            data,
+                                                            context)
+                                                        .then((value) {
+                                                      if (value != "") {
+                                                        if (value["code"] ==
+                                                            "201") {
+                                                          setState(() {
+                                                            waitingFeedback =
+                                                                true;
+                                                            pro.Orders.last
+                                                                    .rating =
+                                                                selectedRating;
+                                                            Navigator.pop(
+                                                                context);
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            waitingFeedback =
+                                                                false;
+                                                          });
+                                                        }
+                                                      } else {
+                                                        setState(() {
+                                                          waitingFeedback =
+                                                              false;
+                                                        });
+                                                      }
+                                                    });
+                                                  },
+                                                  style: TextButton.styleFrom(
+                                                    fixedSize: Size(
+                                                        getWidth(context, 90),
+                                                        getHeight(context, 6)),
+                                                  ),
+                                                  child: Text(
+                                                    "Send Feedback",
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        : SizedBox(),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: IconButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: mainColorGrey,
+                                        size: 30,
+                                      )),
+                                )
+                              ],
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Container(
+                                  width: 65,
+                                  height: 5,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: mainColorGrey,
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ),
+                    ),
+                    waitingFeedback
+                        ? Center(child: waitingWiget(context))
+                        : SizedBox(),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ).then((value) {
+      if (!waitingFeedback) {
+        var data = {"oid": pro.Orders.last.id, "feedback": "", "rating": -1};
+        Network(false).postData("orderFeedback", data, context).then((value) {
+          if (value != "") {
+            if (value["code"] == "201") {
+              setState(() {
+                pro.Orders.last.rating = -1;
+              });
+            }
+          }
+        });
+      }
+      setState(() {
+        isExpanded = false;
+        feedbackController.clear();
+        // selectedWords.clear();
+        selectedRating = 0;
+        // displayedWords.clear();
+      });
+    });
   }
 
   Future<String> checkPlatformAndLaunchUrl() async {
@@ -911,32 +1335,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       const SizedBox(height: 30),
                       TextButton(
                         onPressed: () async {
-                          if (type == "error") {
-                            exit(0);
-                          } else {
-                            if (platform == "huawei") {
-                              Uri url = Uri.parse(
-                                  'https://appgallery.huawei.com/app/C109952685');
-                              if (!await launchUrl(url,
-                                  mode: LaunchMode.externalApplication)) {
-                                throw Exception('Could not launch $url');
-                              }
-                            } else if (platform == "android") {
-                              Uri url = Uri.parse(
-                                  'https://play.google.com/store/apps/details?id=com.market.dllylas');
-                              if (!await launchUrl(url,
-                                  mode: LaunchMode.externalApplication)) {
-                                throw Exception('Could not launch $url');
-                              }
-                            } else {
-                              Uri url = Uri.parse(
-                                  'https://apps.apple.com/iq/app/dlly-las-market/id6474247014');
-                              if (!await launchUrl(url,
-                                  mode: LaunchMode.externalApplication)) {
-                                throw Exception('Could not launch $url');
-                              }
-                            }
-                          }
+                          exit(0);
                         },
                         style: TextButton.styleFrom(
                           fixedSize: Size(
@@ -959,10 +1358,10 @@ class _HomeSreenState extends State<HomeSreen> {
 
   Future<void> _homePopup(
     BuildContext context,
-    String title,
-    String content,
+    String type,
   ) {
     return showDialog(
+      barrierDismissible: type == "pop",
       context: context,
       builder: (BuildContext context) {
         final productrovider =
@@ -983,82 +1382,123 @@ class _HomeSreenState extends State<HomeSreen> {
                       height: getHeight(context, 45),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15.0),
-                        child: CachedNetworkImage(
-                          // imageUrl: dotenv.env['imageUrlServer']! ,
-                          imageUrl:
-                              "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
-                          placeholder: (context, url) =>
-                              Image.asset("assets/images/Logo-Type-2.png"),
-                          errorWidget: (context, url, error) =>
-                              Image.asset("assets/images/Logo-Type-2.png"),
-                          filterQuality: FilterQuality.low,
+                        child: type != "pop"
+                            ? lang == "en"
+                                ? Image.asset("assets/Victors/updateEN.png")
+                                : lang == "ar"
+                                    ? Image.asset("assets/Victors/updateAR.png")
+                                    : Image.asset("assets/Victors/updateKU.png")
+                            : CachedNetworkImage(
+                                // imageUrl: dotenv.env['imageUrlServer']! ,
+                                imageUrl:
+                                    "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
 
-                          fit: BoxFit.cover,
-                        ),
+                                fit: BoxFit.cover,
+                              ),
                       ),
                     ),
                     FadeInUp(
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 5),
                         child: TextButton(
-                          onPressed: () async {
-                            if (homePopupData["type"] == "attention") {
-                              Navigator.pop(context);
-                            } else if (homePopupData["type"] == "brand") {
-                              productrovider.settype("brand");
-                              productrovider
-                                  .setidbrand(homePopupData["brand_id"]);
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const AllItem()),
-                              );
-                            } else if (homePopupData["type"] == "discount") {
-                              productrovider.settype("discount");
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const AllItem()),
-                              );
-                            } else if (homePopupData["type"] == "onItem") {
-                              productrovider.setidItem(productrovider
-                                  .getoneProductByBarcode(
-                                      homePopupData["barcode"])
-                                  .id!);
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Oneitem()),
-                              );
-                            }
-                          },
+                          onPressed: type != "pop"
+                              ? () async {
+                                  if (type == "huawei") {
+                                    Uri url = Uri.parse(
+                                        'https://appgallery.huawei.com/app/C109952685');
+                                    if (!await launchUrl(url,
+                                        mode: LaunchMode.externalApplication)) {
+                                      throw Exception('Could not launch $url');
+                                    }
+                                  } else if (type == "android") {
+                                    Uri url = Uri.parse(
+                                        'https://play.google.com/store/apps/details?id=com.market.dllylas');
+                                    if (!await launchUrl(url,
+                                        mode: LaunchMode.externalApplication)) {
+                                      throw Exception('Could not launch $url');
+                                    }
+                                  } else {
+                                    Uri url = Uri.parse(
+                                        'https://apps.apple.com/iq/app/dlly-las-market/id6474247014');
+                                    if (!await launchUrl(url,
+                                        mode: LaunchMode.externalApplication)) {
+                                      throw Exception('Could not launch $url');
+                                    }
+                                  }
+                                }
+                              : () async {
+                                  if (homePopupData["type"] == "attention") {
+                                    Navigator.pop(context);
+                                  } else if (homePopupData["type"] == "brand") {
+                                    productrovider.settype("brand");
+                                    productrovider
+                                        .setidbrand(homePopupData["brand_id"]);
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AllItem()),
+                                    );
+                                  } else if (homePopupData["type"] ==
+                                      "discount") {
+                                    productrovider.settype("discount");
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AllItem()),
+                                    );
+                                  } else if (homePopupData["type"] ==
+                                      "onItem") {
+                                    productrovider.setidItem(productrovider
+                                        .getoneProductByBarcode(
+                                            homePopupData["barcode"])
+                                        .id!);
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Oneitem()),
+                                    );
+                                  }
+                                },
                           style: TextButton.styleFrom(
                             fixedSize: Size(
                                 getWidth(context, 45), getHeight(context, 5)),
                           ),
                           //checkText
                           child: Text(
-                            homePopupData["type"] == "attention"
-                                ? "OK".tr
-                                : "tap View",
+                            type != "pop"
+                                ? "Update".tr
+                                : homePopupData["type"] == "attention"
+                                    ? "OK".tr
+                                    : "tap View",
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.close,
-                      color: mainColorRed,
-                      size: 35,
-                    ))
+                type != "pop"
+                    ? SizedBox()
+                    : IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.close,
+                          color: mainColorRed,
+                          size: 35,
+                        ))
               ],
             ),
           ),

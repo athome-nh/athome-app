@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:dllylas/Account/about_screen.dart';
+import 'package:dllylas/Account/feedback.dart';
 import 'package:dllylas/Account/help_screen.dart';
 import 'package:dllylas/Order/order_screen.dart';
 import 'package:dllylas/Config/local_data.dart';
@@ -1924,6 +1925,74 @@ class _SettingState extends State<Setting> {
                                             ),
                                             Text(
                                               "Address".tr,
+                                              style: TextStyle(
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 16),
+                                            ),
+                                            const Spacer(),
+                                            Icon(lang == "en"
+                                                ? Icons
+                                                    .keyboard_arrow_right_outlined
+                                                : Icons
+                                                    .keyboard_arrow_left_outlined)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const FeedbackScreen()),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    FeedbackScreen()),
+                                          );
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              color: mainColorBlack,
+                                              Icons.feedback_outlined,
+                                              size: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            //checktext
+                                            Text(
+                                              "Feedback",
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,

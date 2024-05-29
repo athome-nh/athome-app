@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:dllylas/Account/profilo.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/home/favorite.dart';

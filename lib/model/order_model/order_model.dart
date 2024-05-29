@@ -14,7 +14,7 @@ class OrderModel {
   final dynamic adminPriceId;
   final dynamic adminId;
   final int? deliveryCost;
-  final int? rating;
+  int? rating;
   final dynamic deliverySchedule;
   final int? totalPrice;
 

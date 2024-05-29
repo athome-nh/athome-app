@@ -717,7 +717,7 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        toastShort("Coming soon".tr);
+                        // toastShort("Coming soon".tr);
                       },
                       child: Container(
                         height: getHeight(context, 5),
@@ -730,7 +730,9 @@ class _CheckOutState extends State<CheckOut> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Image.asset("assets/images/fib.png"),
+                              Image.asset(
+                                "assets/images/fib.png",
+                              ),
                               Text(
                                 "Coming soon".tr,
                                 style: TextStyle(
@@ -748,7 +750,7 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        toastShort("Coming soon".tr);
+                        // toastShort("Coming soon".tr);
                       },
                       child: Container(
                         height: getHeight(context, 5),
