@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dllylas/Account/all_gudide.dart';
+import 'package:dllylas/Account/profile.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Notifications/Notification.dart';
@@ -158,9 +161,8 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        // home: const NotificationPage(),
-        // home: SplashScreen(),
-        home: GudidePage(),
+        home: SplashScreen(),
+        // home: ProfileScreen(),
         navigatorKey: navigatorKey,
       ),
     );

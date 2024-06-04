@@ -1,7 +1,6 @@
-import 'package:dllylas/Config/property.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:dllylas/Config/property.dart';
 
 class FAQScreen extends StatefulWidget {
   @override
@@ -26,7 +25,7 @@ class _FAQScreenState extends State<FAQScreen> {
       'title': 'General',
       'question': 'Is Flutter free to use?',
       'answer':
-          'Yes, Flutter is free and open-source lutter supports hot reload, which allows you to instantly see  lutter supports hot reload, which allows you to instantly see .'
+          'Yes, Flutter is free and open-source. Flutter supports hot reload, which allows you to instantly see changes.'
     },
     {
       'title': 'Installation',
@@ -80,14 +79,14 @@ class _FAQScreenState extends State<FAQScreen> {
 
   late List<Map<String, String>> filteredFaqs;
   TextEditingController searchController = TextEditingController();
+  late List<bool> _isTileExpanded;
 
   @override
   void initState() {
     super.initState();
     filteredFaqs = faqs;
-    searchController.addListener(() {
-      filterFaqs();
-    });
+    searchController.addListener(filterFaqs);
+    _isTileExpanded = List<bool>.filled(faqs.length, false);
   }
 
   void filterFaqs() {
@@ -97,47 +96,32 @@ class _FAQScreenState extends State<FAQScreen> {
         return faq['question']!.toLowerCase().contains(query) ||
             faq['answer']!.toLowerCase().contains(query);
       }).toList();
+      _isTileExpanded = List<bool>.filled(filteredFaqs.length, false);
     });
+  }
+
+  double getHeight(BuildContext context, double percentage) {
+    return MediaQuery.of(context).size.height * (percentage / 100);
+  }
+
+  double getWidth(BuildContext context, double percentage) {
+    return MediaQuery.of(context).size.width * (percentage / 100);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // AppBar
-      // appBar: AppBar(
-      //   title: Text(
-      //     "FAQs".tr,
-      //     style: TextStyle(
-      //         color: mainColorBlack, fontSize: 16, fontFamily: mainFontbold),
-      //   ),
-      //   leading: IconButton(
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //     icon: const Icon(
-      //       Icons.arrow_back_ios,
-      //     ),
-      //   ),
-      // ),
-
-      // Body
       body: Column(
         children: [
-          // Space
-          SizedBox(
-            height: getHeight(context, 4),
-          ),
-
-          // Search
+          SizedBox(height: getHeight(context, 4)),
           Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: getWidth(context, 4),
-            ),
+            padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
             child: Container(
               height: 50,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: mainColorBlack.withOpacity(0.1))),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: mainColorBlack.withOpacity(0.1)),
+              ),
               child: TextField(
                 controller: searchController,
                 decoration: InputDecoration(
@@ -159,18 +143,10 @@ class _FAQScreenState extends State<FAQScreen> {
               ),
             ),
           ),
-
-          // Space
-          SizedBox(
-            height: getHeight(context, 4),
-          ),
-
-          // Title & Question & Answer
+          SizedBox(height: getHeight(context, 4)),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: getWidth(context, 4),
-              ),
+              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 4)),
               child: ListView.builder(
                 itemCount: filteredFaqs.length,
                 itemBuilder: (context, index) {
@@ -183,7 +159,6 @@ class _FAQScreenState extends State<FAQScreen> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Title
                       if (showTitle)
                         Text(
                           filteredFaqs[index]['title']!,
@@ -193,9 +168,12 @@ class _FAQScreenState extends State<FAQScreen> {
                             fontFamily: mainFontbold,
                           ),
                         ),
-
-                      // Question
                       ExpansionTile(
+                        leading: Icon(
+                          Ionicons.shield_checkmark_outline,
+                          color: mainColorBlack,
+                          size: 22,
+                        ),
                         childrenPadding: EdgeInsets.symmetric(
                             vertical: getHeight(context, 2)),
                         backgroundColor: mainColorGrey.withOpacity(0.05),
@@ -208,7 +186,6 @@ class _FAQScreenState extends State<FAQScreen> {
                           ),
                         ),
                         children: <Widget>[
-                          // Answer
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -221,11 +198,19 @@ class _FAQScreenState extends State<FAQScreen> {
                             ),
                           ),
                         ],
+                        onExpansionChanged: (bool expanded) {
+                          setState(() {
+                            _isTileExpanded[index] = expanded;
+                          });
+                        },
                       ),
-                      // Space
-                      SizedBox(
-                        height: getHeight(context, 2),
-                      ),
+                      if (!_isTileExpanded[index])
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth(context, 4)),
+                          child: const Divider(thickness: 1),
+                        ),
+                      SizedBox(height: getHeight(context, 2)),
                     ],
                   );
                 },

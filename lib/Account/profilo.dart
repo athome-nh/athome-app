@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:dllylas/Account/about_screen.dart';
+import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/feedback.dart';
 import 'package:dllylas/Account/help_screen.dart';
 import 'package:dllylas/Order/order_screen.dart';
@@ -10,13 +11,11 @@ import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Privacy.dart';
 import 'package:dllylas/TermsandCondition.dart';
-
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,7 +24,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-
 import '../controller/cartprovider.dart';
 import '../main.dart';
 
@@ -118,6 +116,7 @@ class _SettingState extends State<Setting> {
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
+              // appbar
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 title: Text(
@@ -284,6 +283,8 @@ class _SettingState extends State<Setting> {
                       }),
                 ],
               ),
+
+              // body
               body: !isLogin
                   ? loginFirstContainer(context)
                   : !Provider.of<productProvider>(context, listen: true)
@@ -1157,6 +1158,7 @@ class _SettingState extends State<Setting> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              // Image and Username
                               Padding(
                                 padding: EdgeInsets.only(
                                   left: getWidth(context, 5),
@@ -1300,6 +1302,8 @@ class _SettingState extends State<Setting> {
                                   ),
                                 ),
                               ),
+
+                              // Informaion
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: getWidth(context, 5),
@@ -1825,6 +1829,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Orders
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: getWidth(context, 5),
@@ -1879,6 +1885,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Address
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -1946,6 +1954,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Feedback
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -2014,6 +2024,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Privacy policy
                               GestureDetector(
                                 onTap: () async {
                                   Navigator.push(
@@ -2070,6 +2082,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Terms and Condition
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -2127,6 +2141,66 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Guide
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => GudidePage()),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth(context, 5),
+                                  ),
+                                  child: Container(
+                                    height: getHeight(context, 6),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            color: mainColorBlack,
+                                            Ionicons.help_outline,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Guide".tr, //BawarText
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 16),
+                                          ),
+                                          const Spacer(),
+                                          Icon(lang == "en"
+                                              ? Icons
+                                                  .keyboard_arrow_right_outlined
+                                              : Icons
+                                                  .keyboard_arrow_left_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: getHeight(context, 2),
+                              ),
+
+                              // About us
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -2184,6 +2258,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Support
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -2241,6 +2317,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Delete Account
                               GestureDetector(
                                 onTap: () {
                                   DateTime now = DateTime.now();
@@ -2499,6 +2577,8 @@ class _SettingState extends State<Setting> {
                               SizedBox(
                                 height: getHeight(context, 2),
                               ),
+
+                              // Log out
                               GestureDetector(
                                 onTap: () {
                                   var data = {"id": userdata["id"].toString()};

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
+import 'package:dllylas/Account/profile.dart';
 import 'package:dllylas/Account/profilo.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/home/favorite.dart';
@@ -63,7 +64,7 @@ class _NavSwitchState extends State<NavSwitch> {
     // const Search(),
     MyCart(false),
     const Favorite(),
-    const Setting(),
+    ProfileScreen(),
   ];
 
   static const TextStyle optionStyle =
