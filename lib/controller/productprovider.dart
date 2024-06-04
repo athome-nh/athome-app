@@ -79,8 +79,8 @@ class productProvider extends ChangeNotifier {
           setSchedules((value['timeList'] as List)
               .map((x) => ScheduleModel.fromMap(x))
               .toList());
-
-          homePopupData = value['homePopup'];
+          // print(value['homePopup'].toString());
+          homePopupData = value['homePopup'] ?? {};
 
           setMinimumOrder(
             value['minimum_order'],

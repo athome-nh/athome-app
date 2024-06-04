@@ -1389,9 +1389,10 @@ class _HomeSreenState extends State<HomeSreen> {
                                     ? Image.asset("assets/Victors/updateAR.png")
                                     : Image.asset("assets/Victors/updateKU.png")
                             : CachedNetworkImage(
-                                // imageUrl: dotenv.env['imageUrlServer']! ,
-                                imageUrl:
-                                    "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
+                                imageUrl: dotenv.env['imageUrlServer']! +
+                                    homePopupData["img"],
+                                // imageUrl:
+                                //     "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
                                 placeholder: (context, url) => Image.asset(
                                     "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
