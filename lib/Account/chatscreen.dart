@@ -1,9 +1,18 @@
+import 'dart:async';
+
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Network/Network.dart';
+import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/landing/splash_screen.dart';
+import 'package:dllylas/model/chatmodel/chatmodel.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+
+import 'package:provider/provider.dart';
 // import 'message_model.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -12,29 +21,53 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
-  final List<Message> _messages = [];
   final TextEditingController _controller = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   bool issue = false;
 
   final _formKey = GlobalKey<FormState>();
+  void updateChat() {
+    final productrovider = Provider.of<productProvider>(context, listen: false);
+    if (productrovider.chats.isNotEmpty) {
+      Network(false).getData("chatupdate/${userdata["phone"]}").then((value) {
+        if (value != "") {
+          if (value["code"] == "200") {
+            setState(() {
+              productrovider.setChats((value['chats'] as List)
+                  .map((x) => Chatmodel.fromMap(x))
+                  .toList());
+            });
+          }
+        }
+      });
+    } else {
+      _timer?.cancel();
+    }
+  }
 
   String _phoneNumber = '';
   String _name = '';
   String _issueType = 'Select Bug';
   String _language = 'Select Language';
   String _description = '';
+  int issueId = 0;
   void _sendMessage({String? text, String? imagePath}) {
     if (text != null || imagePath != null) {
+      var data = {
+        "issue_id": issueId,
+        "msg": text,
+        "type": "text",
+        "customer_phone": userdata["phone"],
+      };
+      Network(false).postData("sendChat", data, context).then((value) {
+        print(value);
+        if (value != "") {
+          if (value["code"] == "201") {
+            updateChat();
+          }
+        }
+      });
       setState(() {
-        _messages.insert(
-            0,
-            Message(
-              text: text,
-              imagePath: imagePath,
-              isSentByMe: true,
-              timestamp: DateTime.now(),
-            ));
         _controller.clear();
       });
     }
@@ -49,11 +82,27 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    updateChat();
+    _startTimer();
     super.initState();
+  }
+
+  Timer? _timer;
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      updateChat();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final productrovider = Provider.of<productProvider>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
           title: Row(
@@ -78,7 +127,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           ),
         ),
         body: Visibility(
-          visible: issue,
+          visible: productrovider.chats.isNotEmpty,
           replacement: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -488,9 +537,9 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               Expanded(
                 child: ListView.builder(
                   reverse: true,
-                  itemCount: _messages.length,
+                  itemCount: productrovider.chats.length,
                   itemBuilder: (context, index) {
-                    final message = _messages[index];
+                    final message = productrovider.chats[index];
                     return _buildMessage(message);
                   },
                 ),
@@ -533,12 +582,19 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildMessage(Message message) {
+  Widget _buildMessage(Chatmodel message) {
+    issueId = message.issueId!;
+    bool isSentByMe = message.adminId == null ? true : false;
+    bool isText = message.type == "text" ? true : false;
+
     final alignment =
-        message.isSentByMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
-    final color = message.isSentByMe ? Colors.blue[100] : Colors.grey[300];
-    final textColor = message.isSentByMe ? Colors.black : Colors.black87;
-    final radius = message.isSentByMe
+        isSentByMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
+
+    final color = isSentByMe ? Colors.blue[100] : Colors.grey[300];
+
+    final textColor = isSentByMe ? Colors.black : Colors.black87;
+
+    final radius = isSentByMe
         ? BorderRadius.only(
             topLeft: Radius.circular(16),
             bottomLeft: Radius.circular(16),
@@ -556,26 +612,25 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         crossAxisAlignment: alignment,
         children: [
           Row(
-            mainAxisAlignment: message.isSentByMe
-                ? MainAxisAlignment.end
-                : MainAxisAlignment.start,
+            mainAxisAlignment:
+                isSentByMe ? MainAxisAlignment.end : MainAxisAlignment.start,
             children: [
-              if (!message.isSentByMe)
+              if (!isSentByMe)
                 CircleAvatar(
                   backgroundColor: Colors.grey,
                   backgroundImage: AssetImage("assets/images/App-Icon.png"),
                   radius: 16,
                 ),
-              if (!message.isSentByMe) SizedBox(width: 8),
+              if (!isSentByMe) SizedBox(width: 8),
               Flexible(
                 child: GestureDetector(
                   onTap: () {
-                    if (message.imagePath != null) {
+                    if (!isText) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              FullScreenImage(imagePath: message.imagePath!),
+                              FullScreenImage(imagePath: message.content!),
                         ),
                       );
                     }
@@ -597,15 +652,15 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (message.text != null)
+                        if (isText)
                           Text(
-                            message.text!,
+                            message.content!,
                             style: TextStyle(color: textColor),
                           ),
-                        if (message.imagePath != null) ...[
-                          if (message.text != null) SizedBox(height: 5),
+                        if (!isText) ...[
+                          if (message.content != null) SizedBox(height: 5),
                           Image.file(
-                            File(message.imagePath!),
+                            File(message.content!),
                             width: 150,
                             height: 150,
                             fit: BoxFit.cover,
@@ -613,7 +668,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         ],
                         SizedBox(height: 5),
                         Text(
-                          DateFormat('h:mm a').format(message.timestamp),
+                          timeAgo(message.createdAt!),
                           style: TextStyle(fontSize: 10, color: Colors.black54),
                         ),
                       ],
@@ -621,8 +676,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              if (message.isSentByMe) SizedBox(width: 8),
-              if (message.isSentByMe)
+              if (isSentByMe) SizedBox(width: 8),
+              if (isSentByMe)
                 CircleAvatar(
                   backgroundColor: mainColorGrey,
                   backgroundImage: NetworkImage(
@@ -634,6 +689,32 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         ],
       ),
     );
+  }
+
+  String timeAgo(String datetime) {
+    final date2 = DateTime.now();
+    DateTime date = DateTime.parse(datetime);
+    final difference = date2.difference(date);
+    // check text bawar
+    if ((difference.inDays / 7).floor() >= 1) {
+      return 'Last week'.tr;
+    } else if (difference.inDays >= 2) {
+      return '${difference.inDays}' + 'days ago'.tr;
+    } else if (difference.inDays >= 1) {
+      return 'Yesterday'.tr;
+    } else if (difference.inHours >= 2) {
+      return '${difference.inHours}' + 'hours ago'.tr;
+    } else if (difference.inHours >= 1) {
+      return '1 hour ago'.tr;
+    } else if (difference.inMinutes >= 2) {
+      return '${difference.inMinutes}' + 'minutes ago'.tr;
+    } else if (difference.inMinutes >= 1) {
+      return '1 minute ago'.tr;
+    } else if (difference.inSeconds >= 3) {
+      return '${difference.inSeconds}' + 'seconds ago'.tr;
+    } else {
+      return 'Just now'.tr;
+    }
   }
 }
 
@@ -668,17 +749,4 @@ class FullScreenImage extends StatelessWidget {
       ),
     );
   }
-}
-
-class Message {
-  final String? text;
-  final String? imagePath;
-  final bool isSentByMe;
-  final DateTime timestamp;
-
-  Message(
-      {this.text,
-      this.imagePath,
-      required this.isSentByMe,
-      required this.timestamp});
 }
