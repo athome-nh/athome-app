@@ -43,7 +43,7 @@ class _Account_newState extends State<Account_new> {
       Map<String, String> body = {
         "id": userdata["id"].toString(),
       };
-      Network(false).addImage(body, _image!.path).then((value) {
+      Network(false).addImage("profileImg", body, _image!.path).then((value) {
         setState(() {
           waitingImage = false;
         });

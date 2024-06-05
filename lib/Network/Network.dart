@@ -84,8 +84,9 @@ class Network {
     }
   }
 
-  Future addImage(Map<String, String> body, String filepath) async {
-    String addimageUrl = dotenv.env['serverUrl']! + "profileImg";
+  Future addImage(
+      String route, Map<String, String> body, String filepath) async {
+    String addimageUrl = dotenv.env['serverUrl']! + route;
 
     try {
       await dio.get(dotenv.env['serverUrl']! + "time").then((time) async {

@@ -57,7 +57,7 @@ class _SettingState extends State<Setting> {
       Map<String, String> body = {
         "id": userdata["id"].toString(),
       };
-      Network(false).addImage(body, _image!.path).then((value) {
+      Network(false).addImage("profileImg", body, _image!.path).then((value) {
         setState(() {
           waitingImage = false;
         });
@@ -281,7 +281,6 @@ class _SettingState extends State<Setting> {
                           setStringPrefs("lang", "kur");
                         }
                       }),
-                
                 ],
               ),
 

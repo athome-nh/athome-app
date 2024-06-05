@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Map<String, String> body = {
         "id": userdata["id"].toString(),
       };
-      Network(false).addImage(body, _image!.path).then((value) {
+      Network(false).addImage("profileImg", body, _image!.path).then((value) {
         setState(() {
           waitingImage = false;
         });
@@ -166,8 +166,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 child: CachedNetworkImage(
                                                   width: getWidth(context, 40),
                                                   height: getWidth(context, 40),
-                                                  imageUrl: dotenv
-                                                      .env['imageUrlServer']!+image,
+                                                  imageUrl: dotenv.env[
+                                                          'imageUrlServer']! +
+                                                      image,
                                                   filterQuality:
                                                       FilterQuality.low,
                                                   placeholder: (context, url) =>
@@ -992,7 +993,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       : SingleChildScrollView(
                           child: Column(
                             children: [
-
                               // Image and Username
                               Container(
                                 color: mainColorGrey,
@@ -1153,24 +1153,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   'Account Information', Setting()),
 
                               // Orders
-                              _listTiles(Ionicons.bag_outline, 'Orders', OrderScreen()),
+                              _listTiles(Ionicons.bag_outline, 'Orders',
+                                  OrderScreen()),
 
                               // Refer a friend
                               _listTiles(Icons.person_add_outlined,
                                   'Refer a friend', TermsandCondition()),
 
                               // Coin & Reward
-                              _listTiles(
-                                  Icons.monetization_on_outlined,
+                              _listTiles(Icons.monetization_on_outlined,
                                   'Coin & Reward', TermsandCondition()),
 
                               // My Voucher
-                              _listTiles(
-                                  Icons.card_giftcard, 'My Voucher', TermsandCondition()),
+                              _listTiles(Icons.card_giftcard, 'My Voucher',
+                                  TermsandCondition()),
 
                               // Account Settings
                               _listTiles(Icons.settings_outlined,
-                                  'Account Settings', AccountSetting() ),
+                                  'Account Settings', AccountSetting()),
 
                               // Title 2
                               SizedBox(height: getHeight(context, 2)),
@@ -1185,8 +1185,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   'Privacy Policy', PrivacyScreen()),
 
                               // Customer Services
-                              _listTiles(
-                                  Icons.support_agent, 'Customer Services', ChatScreen()),
+                              _listTiles(Icons.support_agent,
+                                  'Customer Services', ChatScreen()),
 
                               // Logout
                               Padding(
@@ -1242,7 +1242,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: Text('Logout'),
                                 ),
                               ),
-                            
                             ],
                           ),
                         ),
@@ -1259,7 +1258,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             padding: const EdgeInsets.only(top: 5),
             child: Text(
               title,
-              style: TextStyle(                
+              style: TextStyle(
                 fontFamily: mainFontnormal,
                 color: mainColorGrey,
                 fontSize: 16,

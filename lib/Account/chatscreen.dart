@@ -4,6 +4,7 @@ import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/splash_screen.dart';
+import 'package:dllylas/main.dart';
 import 'package:dllylas/model/chatmodel/chatmodel.dart';
 
 import 'package:flutter/material.dart';
@@ -52,13 +53,14 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   String _description = '';
   int issueId = 0;
   void _sendMessage({String? text, String? imagePath}) {
-    if (text != null || imagePath != null) {
+    if (text != null) {
       var data = {
         "issue_id": issueId,
         "msg": text,
         "type": "text",
         "customer_phone": userdata["phone"],
       };
+
       Network(false).postData("sendChat", data, context).then((value) {
         print(value);
         if (value != "") {
@@ -69,6 +71,15 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       });
       setState(() {
         _controller.clear();
+      });
+    } else {
+      Map<String, String> body = {
+        "issue_id": issueId.toString(),
+        "type": "image",
+        "customer_phone": userdata["phone"],
+      };
+      Network(false).addImage("",body, imagePath!).then((value) {
+        Provider.of<productProvider>(context, listen: false).updateUser();
       });
     }
   }
