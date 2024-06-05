@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
+import 'package:dllylas/Account/chatscreen.dart';
 import 'package:dllylas/Account/profilo.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
@@ -1185,7 +1186,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Customer Services
                               _listTiles(
-                                  Icons.support_agent, 'Customer Services', TermsandCondition()),
+                                  Icons.support_agent, 'Customer Services', ChatScreen()),
 
                               // Logout
                               Padding(
