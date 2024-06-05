@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
@@ -8,6 +9,7 @@ import 'package:dllylas/main.dart';
 import 'package:dllylas/model/chatmodel/chatmodel.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,6 +39,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               productrovider.setChats((value['chats'] as List)
                   .map((x) => Chatmodel.fromMap(x))
                   .toList());
+              loading = false;
             });
           }
         }
@@ -51,8 +54,12 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   String _issueType = 'Select Bug';
   String _language = 'Select Language';
   String _description = '';
+  bool loading = false;
   int issueId = 0;
-  void _sendMessage({String? text, String? imagePath}) {
+  void _sendMessage({String? text, XFile? imagePath}) {
+    setState(() {
+      loading = true;
+    });
     if (text != null) {
       var data = {
         "issue_id": issueId,
@@ -66,7 +73,15 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         if (value != "") {
           if (value["code"] == "201") {
             updateChat();
+          } else {
+            setState(() {
+              loading = false;
+            });
           }
+        } else {
+          setState(() {
+            loading = false;
+          });
         }
       });
       setState(() {
@@ -78,8 +93,21 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         "type": "image",
         "customer_phone": userdata["phone"],
       };
-      Network(false).addImage("",body, imagePath!).then((value) {
-        Provider.of<productProvider>(context, listen: false).updateUser();
+      Network(false).addImage("sendChat", body, imagePath!.path).then((value) {
+        print(value);
+        if (value != "") {
+          if (value["code"] == "201") {
+            updateChat();
+          } else {
+            setState(() {
+              loading = false;
+            });
+          }
+        } else {
+          setState(() {
+            loading = false;
+          });
+        }
       });
     }
   }
@@ -87,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   Future<void> _pickImage() async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      _sendMessage(imagePath: pickedFile.path);
+      _sendMessage(imagePath: pickedFile);
     }
   }
 
@@ -585,7 +613,10 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.send, color: Colors.blue),
+            icon: loading
+                ? Container(
+                    height: 30, width: 30, child: CircularProgressIndicator())
+                : Icon(Icons.send, color: Colors.blue),
             onPressed: () => _sendMessage(text: _controller.text),
           ),
         ],
@@ -670,12 +701,21 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                           ),
                         if (!isText) ...[
                           if (message.content != null) SizedBox(height: 5),
-                          Image.file(
-                            File(message.content!),
+                          CachedNetworkImage(
+                            imageUrl: dotenv.env['imageUrlServer']! +
+                                message.content!,
+                            // imageUrl:
+                            //     "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
+                            placeholder: (context, url) =>
+                                Image.asset("assets/images/Logo-Type-2.png"),
+                            errorWidget: (context, url, error) =>
+                                Image.asset("assets/images/Logo-Type-2.png"),
+                            filterQuality: FilterQuality.low,
+
                             width: 150,
                             height: 150,
                             fit: BoxFit.cover,
-                          ),
+                          )
                         ],
                         SizedBox(height: 5),
                         Text(
@@ -742,11 +782,18 @@ class FullScreenImage extends StatelessWidget {
         children: [
           Center(
             child: InteractiveViewer(
-              child: Image.file(
-                File(imagePath),
-                fit: BoxFit.contain,
-              ),
-            ),
+                child: CachedNetworkImage(
+              imageUrl: dotenv.env['imageUrlServer']! + imagePath,
+              // imageUrl:
+              //     "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
+              placeholder: (context, url) =>
+                  Image.asset("assets/images/Logo-Type-2.png"),
+              errorWidget: (context, url, error) =>
+                  Image.asset("assets/images/Logo-Type-2.png"),
+              filterQuality: FilterQuality.low,
+
+              fit: BoxFit.contain,
+            )),
           ),
           Positioned(
             top: 40,
