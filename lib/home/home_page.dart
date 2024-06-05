@@ -129,6 +129,7 @@ class _HomeSreenState extends State<HomeSreen> {
               final productrovider =
                   Provider.of<productProvider>(context, listen: false);
               if (isLogin &&
+                  productrovider.Orders.isNotEmpty &&
                   productrovider.Orders.last.status == 5 &&
                   productrovider.Orders.last.rating == null) {
                 feedbackmMdal(context, productrovider);

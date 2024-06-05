@@ -8,6 +8,7 @@ import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/brandmodel/brandmodel.dart';
 import 'package:dllylas/model/category_model/category_model.dart';
+import 'package:dllylas/model/chatmodel/chatmodel.dart';
 
 import 'package:dllylas/model/location/location.dart';
 
@@ -111,6 +112,9 @@ class productProvider extends ChangeNotifier {
           setNotfications((value['notfications'] as List)
               .map((x) => NotficaionModel.fromMap(x))
               .toList());
+          setChats((value['chats'] as List)
+              .map((x) => Chatmodel.fromMap(x))
+              .toList());
           setshowuser(true);
         } else {}
       } else {}
@@ -121,8 +125,6 @@ class productProvider extends ChangeNotifier {
     // getDataAll(false);
     if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
-        print("valueuser");
-        print(valueuser);
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
             userdata = json.decode(decryptAES(valueuser["data"]));
@@ -237,6 +239,7 @@ class productProvider extends ChangeNotifier {
   // List to store your products
 
   List<Topmodel> _tops = [];
+  List<Chatmodel> _chats = [];
   List<Slidemodel> _slides = [];
   List<Brandmodel> _brands = [];
   List<ProductModel> _products = [];
@@ -269,6 +272,7 @@ class productProvider extends ChangeNotifier {
 
   // Getter to access the list of products
   List<Topmodel> get tops => _tops;
+  List<Chatmodel> get chats => _chats;
 
   // Map<String, dynamic> get homePopup => _homePopup;
   List<Slidemodel> get slides => _slides;
@@ -564,6 +568,12 @@ class productProvider extends ChangeNotifier {
 
   void setOrders(List<OrderModel> orders) {
     _Orders = orders;
+
+    notifyListeners();
+  }
+
+  void setChats(List<Chatmodel> chat) {
+    _chats = chat;
 
     notifyListeners();
   }
