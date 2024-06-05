@@ -67,7 +67,7 @@ class _SettingState extends State<Setting> {
     } else {}
   }
 
-  String selectedLanguage = 'English';
+  
 
   List<String> items = [
     "Gender",
@@ -80,13 +80,16 @@ class _SettingState extends State<Setting> {
   TextEditingController phoneController = TextEditingController();
   String gender = "Male";
 
-  String selectedItem = 'English';
+  
   bool isEdit = false;
   bool colapse = false;
   bool waiting = false;
   bool waitingImage = false;
   String image = "";
   bool nameE = false;
+  
+  String selectedLanguage = 'English';
+  String selectedItem = 'English';
   @override
   void initState() {
     selectedItem = lang == "en"

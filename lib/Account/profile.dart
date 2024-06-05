@@ -5,7 +5,6 @@ import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/chatscreen.dart';
 import 'package:dllylas/Account/profilo.dart';
 import 'package:dllylas/Config/local_data.dart';
-import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Order/order_screen.dart';
@@ -25,6 +24,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../Config/my_widget.dart';
 import 'account_setting.dart';
 
 class ProfileScreen extends StatefulWidget {
