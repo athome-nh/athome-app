@@ -1,129 +1,93 @@
-import 'package:dllylas/Config/local_data.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class LanguageSelection extends StatefulWidget {
+import 'package:flutter/material.dart';
+
+class LanguageSelector extends StatefulWidget {
   @override
-  _LanguageSelectionState createState() => _LanguageSelectionState();
+  _LanguageSelectorState createState() => _LanguageSelectorState();
 }
 
-class _LanguageSelectionState extends State<LanguageSelection> {
-  String selectedItem = 'English';
-  String lang = 'en';
+class _LanguageSelectorState extends State<LanguageSelector> {
+  String selectedLanguage = 'English';
 
-  void _showLanguageDialog() {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Language Selector'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            _showLanguageSelectionDialog(context);
+          },
+          child: Text('Select Language'),
+        ),
+      ),
+    );
+  }
+
+  void _showLanguageSelectionDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Select Language".tr),
+          title: Text('Select Language'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: <Widget>[
               RadioListTile<String>(
-                title: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/uk.png",
-                      width: 35,
-                      height: 35,
-                    ),
-                    SizedBox(width: 10),
-                    Text("English".tr),
-                  ],
-                ),
+                title: Text('English'),
                 value: 'English',
-                groupValue: selectedItem,
+                groupValue: selectedLanguage,
                 onChanged: (value) {
                   setState(() {
-                    selectedItem = value!;
-                    lang = 'en';
-                    Get.updateLocale(Locale("en"));
-                    setStringPrefs("lang", "en");
+                    selectedLanguage = value!;
                   });
-                  Navigator.of(context).pop();
+                  // You can add your language change logic here
                 },
               ),
               RadioListTile<String>(
-                title: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/iraq.png",
-                      width: 35,
-                      height: 35,
-                    ),
-                    SizedBox(width: 10),
-                    Text("Arabic".tr),
-                  ],
-                ),
+                title: Text('Arabic'),
                 value: 'Arabic',
-                groupValue: selectedItem,
+                groupValue: selectedLanguage,
                 onChanged: (value) {
                   setState(() {
-                    selectedItem = value!;
-                    lang = 'ar';
-                    Get.updateLocale(Locale("ar"));
-                    setStringPrefs("lang", "ar");
+                    selectedLanguage = value!;
                   });
-                  Navigator.of(context).pop();
+                  // You can add your language change logic here
                 },
               ),
               RadioListTile<String>(
-                title: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/flag.png",
-                      width: 35,
-                      height: 35,
-                    ),
-                    SizedBox(width: 10),
-                    Text("Kurdish".tr),
-                  ],
-                ),
+                title: Text('Kurdish'),
                 value: 'Kurdish',
-                groupValue: selectedItem,
+                groupValue: selectedLanguage,
                 onChanged: (value) {
                   setState(() {
-                    selectedItem = value!;
-                    lang = 'kur';
-                    Get.updateLocale(Locale("kur"));
-                    setStringPrefs("lang", "kur");
+                    selectedLanguage = value!;
                   });
-                  Navigator.of(context).pop();
+                  // You can add your language change logic here
                 },
               ),
             ],
           ),
-          actions: [
+          actions: <Widget>[
             TextButton(
-              child: Text("Cancel".tr),
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Perform any action here, like updating the language
+              },
+              child: Text('OK'),
             ),
           ],
         );
       },
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextButton(
-          onPressed: _showLanguageDialog,
-          child: Text(
-            selectedItem == 'English'
-                ? "English".tr
-                : selectedItem == 'Arabic'
-                    ? "Arabic".tr
-                    : "Kurdish".tr,
-          ),
-        ),
-      ],
-    );
+  
   }
 }
-

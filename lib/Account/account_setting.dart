@@ -1,11 +1,11 @@
 import 'package:dllylas/Account/about_screen.dart';
-import 'package:dllylas/Account/account_info.dart';
 import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/feedback.dart';
 import 'package:dllylas/Account/help_screen.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/TermsandCondition.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
@@ -14,22 +14,40 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
-import '../Notifications/notification_page.dart';
-
 class AccountSetting extends StatefulWidget {
   @override
   _AccountSettingState createState() => _AccountSettingState();
 }
 
 class _AccountSettingState extends State<AccountSetting> {
+  String selectedLanguage = 'English';
   String selectedItem = 'English';
+
+  @override
   void initState() {
     selectedItem = lang == "en"
-        ? "English"
+        ? "English".tr
         : lang == "ar"
-            ? "Arabic"
-            : "Kurdish";
+            ? "Arabic".tr
+            : "Kurdish".tr;
     super.initState();
+  }
+
+  void _updateLanguage(String language) {
+    selectedItem = language;
+    if (selectedItem == 'English') {
+      lang = "en";
+      Get.updateLocale(const Locale("en"));
+      setStringPrefs("lang", "en");
+    } else if (selectedItem == 'Arabic') {
+      lang = "ar";
+      Get.updateLocale(const Locale("ar"));
+      setStringPrefs("lang", "ar");
+    } else if (selectedItem == 'Kurdish') {
+      lang = "kur";
+      Get.updateLocale(const Locale("kur"));
+      setStringPrefs("lang", "kur");
+    }
   }
 
   @override
@@ -68,8 +86,7 @@ class _AccountSettingState extends State<AccountSetting> {
                               'Notification Setting', NotificationPage()),
 
                           // Language
-                          _listTiles(Ionicons.globe_outline, 'Language',
-                              LanguageSelectionTile()),
+                          _listTile2(Ionicons.globe_outline, 'Language'),
 
                           // Title 2
                           SizedBox(height: getHeight(context, 2)),
@@ -188,130 +205,135 @@ class _AccountSettingState extends State<AccountSetting> {
     );
   }
 
-  // Widget _listTile1(IconData icon, String title) {
-  //   return Column(
-  //     children: [
-  //       ListTile(
-  //         leading: Icon(icon, size: 24),
-  //         title: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             PopupMenuButton(
-  //                 icon: selectedItem == 'English'
-  //                     ? Text(
-  //                         "English".tr,
-  //                       )
-  //                     : selectedItem == 'Arabic'
-  //                         ? Text(
-  //                             "Arabic".tr,
-  //                           )
-  //                         : Text(
-  //                             "Kurdish".tr,
-  //                           ),
-  //                 itemBuilder: (context) {
-  //                   return [
-  //                     PopupMenuItem<int>(
-  //                       value: 0,
-  //                       child: Row(
-  //                         children: [
-  //                           Image.asset(
-  //                             "assets/images/uk.png",
-  //                             width: 35,
-  //                             height: 35,
-  //                           ),
-  //                           Container(
-  //                             padding: EdgeInsets.only(
-  //                               top: getWidth(context, 2),
-  //                               left: getWidth(context, 2),
-  //                               right: getWidth(context, 2),
-  //                               bottom: getWidth(context, 1),
-  //                             ),
-  //                             child: Text(
-  //                               "English".tr,
-  //                             ),
-  //                           ),
-  //                         ],
-  //                       ),
-  //                     ),
-  //                     PopupMenuItem<int>(
-  //                       value: 1,
-  //                       child: Row(
-  //                         children: [
-  //                           Image.asset(
-  //                             "assets/images/iraq.png",
-  //                             width: 35,
-  //                             height: 35,
-  //                           ),
-  //                           Container(
-  //                             padding: EdgeInsets.only(
-  //                               top: getWidth(context, 2),
-  //                               left: getWidth(context, 2),
-  //                               right: getWidth(context, 2),
-  //                               bottom: getWidth(context, 1),
-  //                             ),
-  //                             child: Text(
-  //                               "Arabic".tr,
-  //                             ),
-  //                           ),
-  //                         ],
-  //                       ),
-  //                     ),
-  //                     PopupMenuItem<int>(
-  //                       value: 2,
-  //                       child: Row(
-  //                         children: [
-  //                           Image.asset(
-  //                             "assets/images/flag.png",
-  //                             width: 35,
-  //                             height: 35,
-  //                           ),
-  //                           Container(
-  //                             padding: EdgeInsets.only(
-  //                               top: getWidth(context, 2),
-  //                               left: getWidth(context, 2),
-  //                               right: getWidth(context, 2),
-  //                               bottom: getWidth(context, 1),
-  //                             ),
-  //                             child: Text(
-  //                               "Kurdish".tr,
-  //                             ),
-  //                           ),
-  //                         ],
-  //                       ),
-  //                     ),
-  //                   ];
-  //                 },
-  //                 onSelected: (value) {
-  //                   selectedItem = value == 0
-  //                       ? 'English'
-  //                       : value == 1
-  //                           ? 'Arabic'
-  //                           : 'Kurdish';
-  //                   if (selectedItem == 'English') {
-  //                     lang = "en";
-  //                     Get.updateLocale(const Locale("en"));
-  //                     setStringPrefs("lang", "en");
-  //                   } else if (selectedItem == 'Arabic') {
-  //                     lang = "ar";
-  //                     Get.updateLocale(const Locale("ar"));
-  //                     setStringPrefs("lang", "ar");
-  //                   } else {
-  //                     lang = "kur";
-  //                     Get.updateLocale(const Locale("kur"));
-  //                     setStringPrefs("lang", "kur");
-  //                   }
-  //                 }),
-  //           ],
-  //         ),
-  //         trailing: Icon(Icons.keyboard_arrow_right_outlined),
-  //       ),
-  //       Padding(
-  //         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-  //         child: Divider(height: 1, thickness: 1),
-  //       ),
-  //     ],
-  //   );
-  // }
+  Widget _listTile2(IconData icon, String title) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(icon, size: 24),
+          title: Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontFamily: mainFontnormal,
+                color: mainColorGrey,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Select Language'),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      RadioListTile<String>(
+                        title: Row(
+                              children: [
+                                  Image.asset(
+                                    "assets/images/uk.png",
+                                    width: 35,
+                                    height: 35,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      top: getWidth(context, 2),
+                                      left: getWidth(context, 2),
+                                      right: getWidth(context, 2),
+                                      bottom: getWidth(context, 1),
+                                    ),
+                                    child: Text(
+                                      "English".tr,
+                                    ),
+                                  ),
+                                ]),
+                        value: 'English',
+                        groupValue: selectedLanguage,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedLanguage = value!;
+                            _updateLanguage(selectedLanguage);
+                          });
+                        },
+                      ),
+                      RadioListTile<String>(
+                        title: Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/iraq.png",
+                                      width: 35,
+                                      height: 35,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        top: getWidth(context, 2),
+                                        left: getWidth(context, 2),
+                                        right: getWidth(context, 2),
+                                        bottom: getWidth(context, 1),
+                                      ),
+                                      child: Text(
+                                        "Arabic".tr,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                        value: 'Arabic',
+                        groupValue: selectedLanguage,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedLanguage = value!;
+                            _updateLanguage(selectedLanguage);
+                          });
+                        },
+                      ),
+                      RadioListTile<String>(
+                        title: Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/flag.png",
+                                      width: 35,
+                                      height: 35,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        top: getWidth(context, 2),
+                                        left: getWidth(context, 2),
+                                        right: getWidth(context, 2),
+                                        bottom: getWidth(context, 1),
+                                      ),
+                                      child: Text(
+                                        "Kurdish".tr,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                        value: 'Kurdish',
+                        groupValue: selectedLanguage,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedLanguage = value!;
+                            _updateLanguage(selectedLanguage);
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Divider(height: 1, thickness: 1),
+        ),
+      ],
+    );
+  }
 
   Widget _titles(String title) {
     return Container(
@@ -328,137 +350,3 @@ class _AccountSettingState extends State<AccountSetting> {
     );
   }
 }
-
-
-
-
-
-
-class LanguageSelectionTile extends StatefulWidget {
-  @override
-  _LanguageSelectionTileState createState() => _LanguageSelectionTileState();
-}
-
-class _LanguageSelectionTileState extends State<LanguageSelectionTile> {
-  String selectedItem = 'English';
-  String lang = 'en';
-
-  void _showLanguageDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return LanguageSelectionDialog(
-          selectedItem: selectedItem,
-          onSelected: (value) {
-            setState(() {
-              selectedItem = value;
-              lang = value == 'English' ? 'en' : value == 'Arabic' ? 'ar' : 'kur';
-              Get.updateLocale(Locale(lang));
-              setStringPrefs("lang", lang);
-            });
-          },
-        );
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        selectedItem == 'English'
-            ? "English".tr
-            : selectedItem == 'Arabic'
-                ? "Arabic".tr
-                : "Kurdish".tr,
-      ),
-      onTap: _showLanguageDialog,
-    );
-  }
-}
-
-class LanguageSelectionDialog extends StatelessWidget {
-  final String selectedItem;
-  final Function(String) onSelected;
-
-  LanguageSelectionDialog({required this.selectedItem, required this.onSelected});
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Select Language".tr),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          RadioListTile<String>(
-            title: Row(
-              children: [
-                Image.asset(
-                  "assets/images/uk.png",
-                  width: 35,
-                  height: 35,
-                ),
-                SizedBox(width: 10),
-                Text("English".tr),
-              ],
-            ),
-            value: 'English',
-            groupValue: selectedItem,
-            onChanged: (value) {
-              onSelected(value!);
-              Navigator.of(context).pop();
-            },
-          ),
-          RadioListTile<String>(
-            title: Row(
-              children: [
-                Image.asset(
-                  "assets/images/iraq.png",
-                  width: 35,
-                  height: 35,
-                ),
-                SizedBox(width: 10),
-                Text("Arabic".tr),
-              ],
-            ),
-            value: 'Arabic',
-            groupValue: selectedItem,
-            onChanged: (value) {
-              onSelected(value!);
-              Navigator.of(context).pop();
-            },
-          ),
-          RadioListTile<String>(
-            title: Row(
-              children: [
-                Image.asset(
-                  "assets/images/flag.png",
-                  width: 35,
-                  height: 35,
-                ),
-                SizedBox(width: 10),
-                Text("Kurdish".tr),
-              ],
-            ),
-            value: 'Kurdish',
-            groupValue: selectedItem,
-            onChanged: (value) {
-              onSelected(value!);
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      ),
-      actions: [
-        TextButton(
-          child: Text("Cancel".tr),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
-  }
-}
-
-
