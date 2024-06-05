@@ -24,6 +24,8 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import 'account_setting.dart';
+
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -1167,7 +1169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Account Settings
                               _listTiles(Icons.settings_outlined,
-                                  'Account Settings', TermsandCondition() ),
+                                  'Account Settings', AccountSetting() ),
 
                               // Title 2
                               SizedBox(height: getHeight(context, 2)),

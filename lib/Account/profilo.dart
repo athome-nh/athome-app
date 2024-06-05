@@ -281,6 +281,7 @@ class _SettingState extends State<Setting> {
                           setStringPrefs("lang", "kur");
                         }
                       }),
+                
                 ],
               ),
 
