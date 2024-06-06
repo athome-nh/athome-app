@@ -1,11 +1,14 @@
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
+import 'package:dllylas/Network/Network.dart';
+
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/home/oneitem.dart';
 import 'package:dllylas/home/track_order.dart';
+import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
@@ -23,21 +26,33 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  bool _isSwitched = false;
+  bool _isSwitched = true;
+  @override
+  void initState() {
+    if (userdata["SendNotfi"] == 1) {
+      setState(() {
+        _isSwitched = true;
+      });
+    } else {
+      setState(() {
+        _isSwitched = false;
+      });
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
+    final filteredNotifications = productrovider.Notfication.where(
+        (notification) => notification.type != 'chat').toList();
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => NavSwitch()),
-              );
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -49,9 +64,9 @@ class _NotificationPageState extends State<NotificationPage> {
           replacement: Skeletonizer(
             enabled: true,
             child: ListView.builder(
-              itemCount: productrovider.Notfication.length,
+              itemCount: filteredNotifications.length,
               itemBuilder: (context, index) {
-                final notification = productrovider.Notfication[index];
+                final notification = filteredNotifications[index];
                 return Card(
                   elevation: 2,
                   margin: EdgeInsets.all(8),
@@ -179,7 +194,7 @@ class _NotificationPageState extends State<NotificationPage> {
               },
             ),
           ),
-          child: productrovider.Notfication.isEmpty
+          child: filteredNotifications.isEmpty
               ? Column(
                   children: [
                     SizedBox(
@@ -201,9 +216,9 @@ class _NotificationPageState extends State<NotificationPage> {
                   ],
                 )
               : ListView.builder(
-                  itemCount: productrovider.Notfication.length,
+                  itemCount: filteredNotifications.length,
                   itemBuilder: (context, index) {
-                    final notification = productrovider.Notfication[index];
+                    final notification = filteredNotifications[index];
                     return Column(
                       children: <Widget>[
                         index == 0
@@ -225,8 +240,22 @@ class _NotificationPageState extends State<NotificationPage> {
                                     Switch(
                                       value: _isSwitched,
                                       onChanged: (value) {
-                                        setState(() {
-                                          _isSwitched = value;
+                                        var data = {
+                                          "id": userdata["id"],
+                                          "SendNotfi": value
+                                        };
+                                        Network(false)
+                                            .postData("SendNotfi_Change", data,
+                                                context)
+                                            .then((value2) {
+                                          if (value2 != "") {
+                                            if (value2["code"] == "201") {
+                                              setState(() {
+                                                _isSwitched = value;
+                                                userdata["SendNotfi"] = value;
+                                              });
+                                            } else {}
+                                          } else {}
                                         });
                                       },
                                       activeTrackColor: Colors.greenAccent[100],
