@@ -1,19 +1,18 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/landing/splash_screen.dart';
-import 'package:dllylas/main.dart';
 import 'package:dllylas/model/chatmodel/chatmodel.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 import 'package:provider/provider.dart';
 // import 'message_model.dart';
@@ -29,9 +28,9 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   bool issue = false;
 
   final _formKey = GlobalKey<FormState>();
-  void updateChat() {
+  void updateChat(bool check) {
     final productrovider = Provider.of<productProvider>(context, listen: false);
-    if (productrovider.chats.isNotEmpty) {
+    if (productrovider.chats.isNotEmpty || check) {
       Network(false).getData("chatupdate/${userdata["phone"]}").then((value) {
         if (value != "") {
           if (value["code"] == "200") {
@@ -49,18 +48,19 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     }
   }
 
-  String _phoneNumber = '';
-  String _name = '';
+  TextEditingController _name = TextEditingController(text: userdata["name"]);
+  TextEditingController _phoneNumber =
+      TextEditingController(text: userdata["phone"]);
   String _issueType = 'Select Bug';
   String _language = 'Select Language';
   String _description = '';
   bool loading = false;
   int issueId = 0;
   void _sendMessage({String? text, XFile? imagePath}) {
-    setState(() {
-      loading = true;
-    });
     if (text != null) {
+      setState(() {
+        loading = true;
+      });
       var data = {
         "issue_id": issueId,
         "msg": text,
@@ -72,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         print(value);
         if (value != "") {
           if (value["code"] == "201") {
-            updateChat();
+            updateChat(true);
           } else {
             setState(() {
               loading = false;
@@ -87,7 +87,10 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       setState(() {
         _controller.clear();
       });
-    } else {
+    } else if (imagePath != null) {
+      setState(() {
+        loading = true;
+      });
       Map<String, String> body = {
         "issue_id": issueId.toString(),
         "type": "image",
@@ -97,7 +100,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         print(value);
         if (value != "") {
           if (value["code"] == "201") {
-            updateChat();
+            updateChat(true);
           } else {
             setState(() {
               loading = false;
@@ -121,7 +124,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    updateChat();
+    updateChat(false);
     _startTimer();
     super.initState();
   }
@@ -135,7 +138,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      updateChat();
+      updateChat(false);
     });
   }
 
@@ -165,427 +168,357 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             icon: const Icon(Icons.arrow_back_ios),
           ),
         ),
-        body: Visibility(
-          visible: productrovider.chats.isNotEmpty,
-          replacement: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        Text("Customer Support Form",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: mainColorBlack,
-                              fontFamily: mainFontbold,
-                            )),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Text(
-                            "Enter your account information to complete your account",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: mainColorBlack,
-                              fontFamily: mainFontnormal,
-                            )),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey, // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey
-                                    .withOpacity(0.5), // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color:
-                                    Colors.red, // Customize error border color
-                                width: 1.0, // Customize error border width
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .red, // Customize focused error border color
-                                width:
-                                    1.0, // Customize focused error border width
-                              ),
-                            ),
-                            labelText: "Full Name",
-                            labelStyle: TextStyle(
-                                color: mainColorGrey.withOpacity(0.8),
-                                fontSize: 20,
-                                fontFamily: mainFontbold),
-                            hintText: "Add your Name",
-                            hintStyle: TextStyle(
-                                color: mainColorBlack.withOpacity(0.5),
-                                fontSize: 14,
-                                fontFamily: mainFontnormal),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your name';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _name = value!;
-                          },
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.all(15),
-                                child: Text('(+964) 07')),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey, // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey
-                                    .withOpacity(0.5), // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color:
-                                    Colors.red, // Customize error border color
-                                width: 1.0, // Customize error border width
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .red, // Customize focused error border color
-                                width:
-                                    1.0, // Customize focused error border width
-                              ),
-                            ),
-                            labelText: 'Phone Number',
-                            labelStyle: TextStyle(
-                                color: mainColorGrey.withOpacity(0.8),
-                                fontSize: 20,
-                                fontFamily: mainFontbold),
-                            hintText: "-- --- ----",
-                            hintStyle: TextStyle(
-                                color: mainColorBlack.withOpacity(0.5),
-                                fontSize: 14,
-                                fontFamily: mainFontnormal),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                          ),
-                          keyboardType: TextInputType.phone,
-                          validator: (value) {
-                            if (value == null ||
-                                value.isEmpty ||
-                                value.length != 9) {
-                              return 'Please enter your phone number';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            //  _phoneNumber = value!;
-                          },
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        DropdownButtonFormField<String>(
-                          value: _issueType,
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey, // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey
-                                    .withOpacity(0.5), // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color:
-                                    Colors.red, // Customize error border color
-                                width: 1.0, // Customize error border width
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .red, // Customize focused error border color
-                                width:
-                                    1.0, // Customize focused error border width
-                              ),
-                            ),
-                            labelText: "Issue Bug",
-                            labelStyle: TextStyle(
-                                color: mainColorGrey.withOpacity(0.8),
-                                fontSize: 20,
-                                fontFamily: mainFontbold),
-                            hintStyle: TextStyle(
-                                color: mainColorBlack.withOpacity(0.5),
-                                fontSize: 14,
-                                fontFamily: mainFontnormal),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                          ),
-                          validator: (value) {
-                            if (value == "Select Bug") {
-                              return 'Please Select Bug';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _issueType = value!;
-                            });
-                          },
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _issueType = newValue!;
-                            });
-                          },
-                          items: <String>[
-                            'Select Bug',
-                            'Bug',
-                            'Feature Request',
-                            'Other'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontSize: 14,
-                                    fontFamily: mainFontnormal),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        DropdownButtonFormField<String>(
-                          value: _language,
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey, // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey
-                                    .withOpacity(0.5), // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color:
-                                    Colors.red, // Customize error border color
-                                width: 1.0, // Customize error border width
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .red, // Customize focused error border color
-                                width:
-                                    1.0, // Customize focused error border width
-                              ),
-                            ),
-                            labelText: "Language",
-                            labelStyle: TextStyle(
-                                color: mainColorGrey.withOpacity(0.8),
-                                fontSize: 20,
-                                fontFamily: mainFontbold),
-                            hintStyle: TextStyle(
-                                color: mainColorBlack.withOpacity(0.5),
-                                fontSize: 14,
-                                fontFamily: mainFontnormal),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                          ),
-                          validator: (value) {
-                            if (value == 'Select Language') {
-                              return 'Please Select Language';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _language = value!;
-                            });
-                          },
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _language = newValue!;
-                            });
-                          },
-                          items: <String>[
-                            'Select Language',
-                            'Kurdish',
-                            'English',
-                            'Arabic',
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontSize: 14,
-                                    fontFamily: mainFontnormal),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey, // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey
-                                    .withOpacity(0.5), // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color:
-                                    Colors.red, // Customize error border color
-                                width: 1.0, // Customize error border width
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .red, // Customize focused error border color
-                                width:
-                                    1.0, // Customize focused error border width
-                              ),
-                            ),
-                            labelText: "Short Description",
-                            labelStyle: TextStyle(
-                                color: mainColorGrey.withOpacity(0.8),
-                                fontSize: 20,
-                                fontFamily: mainFontbold),
-                            hintText: "Add  Description",
-                            hintStyle: TextStyle(
-                                color: mainColorBlack.withOpacity(0.5),
-                                fontSize: 14,
-                                fontFamily: mainFontnormal),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                          ),
-                          maxLines: 3,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a Description';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _description = value!;
-                          },
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 4),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
-                            }
-                          },
-                          style: TextButton.styleFrom(
-                            fixedSize: Size(
-                                getWidth(context, 100), getHeight(context, 5)),
-                          ),
-                          child: Text(
-                            "Send",
-                          ),
-                        ),
-                      ],
+        body: AnimatedSwitcher(
+          duration: const Duration(seconds: 1),
+          reverseDuration: const Duration(milliseconds: 0),
+          switchInCurve: Curves.easeInCubic,
+          switchOutCurve: Curves.easeInCubic,
+          child: productrovider.chats.isNotEmpty
+              ? Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: ListView.builder(
+                        reverse: true,
+                        itemCount: productrovider.chats.length,
+                        itemBuilder: (context, index) {
+                          final message = productrovider.chats[index];
+                          return _buildMessage(message);
+                        },
+                      ),
                     ),
+                    _buildInputArea(),
+                  ],
+                )
+              : SingleChildScrollView(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Form(
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: getHeight(context, 2),
+                                  ),
+                                  Text("Customer Support Form",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: mainColorBlack,
+                                        fontFamily: mainFontbold,
+                                      )),
+                                  SizedBox(
+                                    height: getHeight(context, 1),
+                                  ),
+                                  Text(
+                                      "Enter your account information to complete your account",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: mainColorBlack,
+                                        fontFamily: mainFontnormal,
+                                      )),
+                                  SizedBox(
+                                    height: getHeight(context, 1),
+                                  ),
+                                  DropdownButtonFormField<String>(
+                                    value: _issueType,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color:
+                                              mainColorGrey, // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(
+                                              0.5), // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: Colors
+                                              .red, // Customize error border color
+                                          width:
+                                              1.0, // Customize error border width
+                                        ),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: Colors
+                                              .red, // Customize focused error border color
+                                          width:
+                                              1.0, // Customize focused error border width
+                                        ),
+                                      ),
+                                      labelText: "Issue Bug",
+                                      labelStyle: TextStyle(
+                                          color: mainColorGrey.withOpacity(0.8),
+                                          fontSize: 20,
+                                          fontFamily: mainFontbold),
+                                      hintStyle: TextStyle(
+                                          color:
+                                              mainColorBlack.withOpacity(0.5),
+                                          fontSize: 14,
+                                          fontFamily: mainFontnormal),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                    ),
+                                    validator: (value) {
+                                      if (value == "Select Bug") {
+                                        return 'Please Select Bug';
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (value) {
+                                      setState(() {
+                                        _issueType = value!;
+                                      });
+                                    },
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        _issueType = newValue!;
+                                      });
+                                    },
+                                    items: <String>[
+                                      'Select Bug',
+                                      'account',
+                                      'order',
+                                      'delivery',
+                                      'other'
+                                    ].map<DropdownMenuItem<String>>(
+                                        (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(
+                                              color: mainColorBlack,
+                                              fontSize: 14,
+                                              fontFamily: mainFontnormal),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                  SizedBox(
+                                    height: getHeight(context, 2),
+                                  ),
+                                  DropdownButtonFormField<String>(
+                                    value: _language,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color:
+                                              mainColorGrey, // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(
+                                              0.5), // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: Colors
+                                              .red, // Customize error border color
+                                          width:
+                                              1.0, // Customize error border width
+                                        ),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: Colors
+                                              .red, // Customize focused error border color
+                                          width:
+                                              1.0, // Customize focused error border width
+                                        ),
+                                      ),
+                                      labelText: "Language",
+                                      labelStyle: TextStyle(
+                                          color: mainColorGrey.withOpacity(0.8),
+                                          fontSize: 20,
+                                          fontFamily: mainFontbold),
+                                      hintStyle: TextStyle(
+                                          color:
+                                              mainColorBlack.withOpacity(0.5),
+                                          fontSize: 14,
+                                          fontFamily: mainFontnormal),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                    ),
+                                    validator: (value) {
+                                      if (value == 'Select Language') {
+                                        return 'Please Select Language';
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (value) {
+                                      setState(() {
+                                        _language = value!;
+                                      });
+                                    },
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        _language = newValue!;
+                                      });
+                                    },
+                                    items: <String>[
+                                      'Select Language',
+                                      'Kurdish',
+                                      'English',
+                                      'Arabic',
+                                    ].map<DropdownMenuItem<String>>(
+                                        (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(
+                                              color: mainColorBlack,
+                                              fontSize: 14,
+                                              fontFamily: mainFontnormal),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                  SizedBox(
+                                    height: getHeight(context, 2),
+                                  ),
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color:
+                                              mainColorGrey, // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(
+                                              0.5), // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: Colors
+                                              .red, // Customize error border color
+                                          width:
+                                              1.0, // Customize error border width
+                                        ),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: Colors
+                                              .red, // Customize focused error border color
+                                          width:
+                                              1.0, // Customize focused error border width
+                                        ),
+                                      ),
+                                      labelText: "Short Description",
+                                      labelStyle: TextStyle(
+                                          color: mainColorGrey.withOpacity(0.8),
+                                          fontSize: 20,
+                                          fontFamily: mainFontbold),
+                                      hintText: "Add  Description",
+                                      hintStyle: TextStyle(
+                                          color:
+                                              mainColorBlack.withOpacity(0.5),
+                                          fontSize: 14,
+                                          fontFamily: mainFontnormal),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                    ),
+                                    maxLines: 3,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter a Description';
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (value) {
+                                      _description = value!;
+                                    },
+                                  ),
+                                  SizedBox(
+                                    height: getHeight(context, 4),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+                                        setState(() {
+                                          loading = true;
+                                        });
+                                        var data = {
+                                          "customer_phone": userdata["phone"],
+                                          "type": _issueType,
+                                          "lang": _language,
+                                          "msg": _description,
+                                        };
+                                        Network(false)
+                                            .postData(
+                                                "createIssue", data, context)
+                                            .then((value) {
+                                          print(value);
+                                          if (value != "") {
+                                            if (value["code"] == "201") {
+                                              updateChat(true);
+                                              setState(() {});
+                                            } else {
+                                              setState(() {
+                                                loading = false;
+                                              });
+                                            }
+                                          } else {
+                                            setState(() {
+                                              loading = false;
+                                            });
+                                          }
+                                        });
+                                      }
+                                    },
+                                    style: TextButton.styleFrom(
+                                      fixedSize: Size(getWidth(context, 100),
+                                          getHeight(context, 5)),
+                                    ),
+                                    child: Text(
+                                      "Start Conversion",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      loading ? waitingWiget(context) : SizedBox(),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ),
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView.builder(
-                  reverse: true,
-                  itemCount: productrovider.chats.length,
-                  itemBuilder: (context, index) {
-                    final message = productrovider.chats[index];
-                    return _buildMessage(message);
-                  },
                 ),
-              ),
-              _buildInputArea(),
-            ],
-          ),
         ));
   }
 
