@@ -294,11 +294,15 @@ class _NotificationPageState extends State<NotificationPage> {
                                 );
                               } else if ('discount' == notification.type) {
                                 productrovider.settype("discount");
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const AllItem()),
-                                );
+                                if (productrovider
+                                    .getProductsByDiscount()
+                                    .isNotEmpty) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const AllItem()),
+                                  );
+                                }
                               } else if ('brand' == notification.type) {
                                 productrovider.settype("brand");
                                 productrovider
