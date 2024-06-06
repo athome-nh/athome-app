@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/feedback.dart';
@@ -6,13 +7,16 @@ import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
-import 'package:dllylas/TermsandCondition.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
+import '../Landing/splash_screen.dart';
+import '../Network/Network.dart';
+import '../controller/cartprovider.dart';
+import '../home/nav_switch.dart';
 
 class AccountSetting extends StatefulWidget {
   @override
@@ -22,6 +26,7 @@ class AccountSetting extends StatefulWidget {
 class _AccountSettingState extends State<AccountSetting> {
   String selectedLanguage = 'English';
   String selectedItem = 'English';
+    bool waiting = false;
 
   @override
   void initState() {
@@ -86,7 +91,7 @@ class _AccountSettingState extends State<AccountSetting> {
                               'Notification Setting', NotificationPage()),
 
                           // Language
-                          _listTile2(Ionicons.globe_outline, 'Language'),
+                          _Language(Ionicons.globe_outline, 'Language'),
 
                           // Title 2
                           SizedBox(height: getHeight(context, 2)),
@@ -108,13 +113,9 @@ class _AccountSettingState extends State<AccountSetting> {
                           _listTiles(Icons.feedback_outlined, 'Feedback',
                               FeedbackScreen()),
 
-                          // Refer a friend
-                          _listTiles(Icons.person_add_outlined,
-                              'Refer a friend', TermsandCondition()),
-
                           // Delete Account
-                          _listTiles(Ionicons.trash_outline, 'Delete Account',
-                              TermsandCondition()),
+                          _DeleteAccount(
+                              Ionicons.trash_outline, 'Delete Account'),
 
                           // Logout
                           // Padding(
@@ -171,6 +172,21 @@ class _AccountSettingState extends State<AccountSetting> {
           );
   }
 
+  Widget _titles(String title) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      alignment: Alignment.centerLeft,
+      child: Text(
+        title,
+        style: TextStyle(
+          fontFamily: mainFontbold,
+          color: mainColorGrey,
+          fontSize: 16,
+        ),
+      ),
+    );
+  }
+
   Widget _listTiles(IconData icon, String title, Widget destination) {
     return Column(
       children: [
@@ -205,7 +221,7 @@ class _AccountSettingState extends State<AccountSetting> {
     );
   }
 
-  Widget _listTile2(IconData icon, String title) {
+  Widget _Language(IconData icon, String title) {
     return Column(
       children: [
         ListTile(
@@ -232,25 +248,24 @@ class _AccountSettingState extends State<AccountSetting> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       RadioListTile<String>(
-                        title: Row(
-                              children: [
-                                  Image.asset(
-                                    "assets/images/uk.png",
-                                    width: 35,
-                                    height: 35,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                      top: getWidth(context, 2),
-                                      left: getWidth(context, 2),
-                                      right: getWidth(context, 2),
-                                      bottom: getWidth(context, 1),
-                                    ),
-                                    child: Text(
-                                      "English".tr,
-                                    ),
-                                  ),
-                                ]),
+                        title: Row(children: [
+                          Image.asset(
+                            "assets/images/uk.png",
+                            width: 35,
+                            height: 35,
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                              top: getWidth(context, 2),
+                              left: getWidth(context, 2),
+                              right: getWidth(context, 2),
+                              bottom: getWidth(context, 1),
+                            ),
+                            child: Text(
+                              "English".tr,
+                            ),
+                          ),
+                        ]),
                         value: 'English',
                         groupValue: selectedLanguage,
                         onChanged: (value) {
@@ -262,25 +277,25 @@ class _AccountSettingState extends State<AccountSetting> {
                       ),
                       RadioListTile<String>(
                         title: Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/iraq.png",
-                                      width: 35,
-                                      height: 35,
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(
-                                        top: getWidth(context, 2),
-                                        left: getWidth(context, 2),
-                                        right: getWidth(context, 2),
-                                        bottom: getWidth(context, 1),
-                                      ),
-                                      child: Text(
-                                        "Arabic".tr,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                          children: [
+                            Image.asset(
+                              "assets/images/iraq.png",
+                              width: 35,
+                              height: 35,
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                top: getWidth(context, 2),
+                                left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                              ),
+                              child: Text(
+                                "Arabic".tr,
+                              ),
+                            ),
+                          ],
+                        ),
                         value: 'Arabic',
                         groupValue: selectedLanguage,
                         onChanged: (value) {
@@ -292,25 +307,25 @@ class _AccountSettingState extends State<AccountSetting> {
                       ),
                       RadioListTile<String>(
                         title: Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/flag.png",
-                                      width: 35,
-                                      height: 35,
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(
-                                        top: getWidth(context, 2),
-                                        left: getWidth(context, 2),
-                                        right: getWidth(context, 2),
-                                        bottom: getWidth(context, 1),
-                                      ),
-                                      child: Text(
-                                        "Kurdish".tr,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                          children: [
+                            Image.asset(
+                              "assets/images/flag.png",
+                              width: 35,
+                              height: 35,
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                top: getWidth(context, 2),
+                                left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                              ),
+                              child: Text(
+                                "Kurdish".tr,
+                              ),
+                            ),
+                          ],
+                        ),
                         value: 'Kurdish',
                         groupValue: selectedLanguage,
                         onChanged: (value) {
@@ -335,18 +350,84 @@ class _AccountSettingState extends State<AccountSetting> {
     );
   }
 
-  Widget _titles(String title) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        title,
-        style: TextStyle(
-          fontFamily: mainFontbold,
-          color: mainColorGrey,
-          fontSize: 16,
+  Widget _DeleteAccount(IconData icon, String title) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(icon, size: 24, color: mainColorRed,),
+          title: Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontFamily: mainFontnormal,
+                color: mainColorRed,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right_outlined, color: mainColorRed),
+          onTap: waiting
+              ? null
+              : () {
+                  setState(() {
+                    waiting = true;
+                  });
+                  var data = {
+                    "id": userdata["id"].toString(),
+                  };
+                  Network(false)
+                      .postData("delete", data, context)
+                      .then((value) async {
+                    if (value != "") {
+                      if (value["code"] == "201") {
+                        getStringPrefs("data").then((map) {
+                          Map<String, dynamic> myMap = json.decode(map);
+                          myMap["islogin"] = false;
+                          myMap["token"] = "";
+                          setStringPrefs("data", json.encode(myMap));
+                        });
+
+                        final cartProvider =
+                            Provider.of<CartProvider>(context, listen: false);
+                        final product = Provider.of<productProvider>(context,
+                            listen: false);
+
+                        setState(() {
+                          userdata = {};
+                          token = "";
+                          isLogin = false;
+                        });
+                        product.Orderitems.clear();
+                        product.location.clear();
+                        product.Orders.clear();
+                        cartProvider.cartItems.clear();
+                        cartProvider.FavItems.clear();
+
+                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => NavSwitch()),
+                        );
+                      } else {
+                        setState(() {
+                          waiting = false;
+                        });
+                      }
+                    } else {
+                      setState(() {
+                        waiting = false;
+                      });
+                    }
+                  });
+                },
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Divider(height: 1, thickness: 1),
+        ),
+      ],
     );
   }
+
 }

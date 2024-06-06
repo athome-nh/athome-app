@@ -1158,7 +1158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Refer a friend
                               _listTiles(Icons.person_add_outlined,
-                                  'Refer a friend', TermsandCondition()),
+                                  'Invite a friend', TermsandCondition()),
 
                               // Coin & Reward
                               _listTiles(Icons.monetization_on_outlined,
