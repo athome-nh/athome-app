@@ -104,7 +104,7 @@ class _HomeSreenState extends State<HomeSreen> {
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        if (documentSnapshot.get("show") == false) {
+        if (documentSnapshot.get("show") == true ) {
           if (lang == "en") {
             ShowInfo(context, documentSnapshot.get("titleen"),
                 documentSnapshot.get("contenten"), "OK".tr, "error", "");
