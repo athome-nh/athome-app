@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Config/property.dart';
+
 class BlankPage extends StatefulWidget {
   const BlankPage({super.key});
 
@@ -10,6 +12,32 @@ class BlankPage extends StatefulWidget {
 class _BlankPageState extends State<BlankPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      // AppBar
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+            )),
+        title: Text(
+          "Under Design",
+        ),
+      ),
+
+      // body
+      body: Center(
+        child: Text(
+          "No Design",
+          style: TextStyle(
+            fontFamily: mainFontbold,
+            color: mainColorGrey,
+            fontSize: 24,
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -25,6 +25,7 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../Config/my_widget.dart';
 import 'account_setting.dart';
+import 'bawar.dart';
 import 'invite_friend.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -1162,11 +1163,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Coin & Reward
                               _listTiles(Icons.monetization_on_outlined,
-                                  'Coin & Reward', TermsandCondition()),
+                                  'Coin & Reward', BlankPage()),
 
                               // My Voucher
                               _listTiles(Icons.card_giftcard, 'My Voucher',
-                                  TermsandCondition()),
+                                  BlankPage()),
 
                               // Account Settings
                               _listTiles(Icons.settings_outlined,

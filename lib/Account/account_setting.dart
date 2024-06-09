@@ -82,6 +82,7 @@ class _AccountSettingState extends State<AccountSetting> {
                   : SingleChildScrollView(
                       child: Column(
                         children: [
+                          
                           // Title 1
                           SizedBox(height: getHeight(context, 2)),
                           _titles("Setting"),
@@ -117,55 +118,7 @@ class _AccountSettingState extends State<AccountSetting> {
                           _DeleteAccount(
                               Ionicons.trash_outline, 'Delete Account'),
 
-                          // Logout
-                          // Padding(
-                          //   padding: const EdgeInsets.all(20.0),
-                          //   child: ElevatedButton(
-                          //     onPressed: () {
-                          //       var data = {"id": userdata["id"].toString()};
-                          //       Network(false)
-                          //           .postData("logout", data, context)
-                          //           .then((value) {
-                          //         getStringPrefs("data").then((map) {
-                          //           Map<String, dynamic> myMap =
-                          //               json.decode(map);
-                          //           myMap["islogin"] = false;
-                          //           myMap["token"] = "";
-                          //           setStringPrefs("data", json.encode(myMap));
-                          //         });
-                          //         final cartProvider =
-                          //             Provider.of<CartProvider>(context,
-                          //                 listen: false);
-                          //         final product = Provider.of<productProvider>(
-                          //             context,
-                          //             listen: false);
-                          //         setState(() {
-                          //           userdata = {};
-                          //           token = "";
-                          //           isLogin = false;
-                          //         });
-                          //         product.Orderitems.clear();
-                          //         product.location.clear();
-                          //         product.Orders.clear();
-                          //         cartProvider.cartItems.clear();
-                          //         cartProvider.FavItems.clear();
-                          //         Navigator.pushReplacement(
-                          //           context,
-                          //           MaterialPageRoute(
-                          //               builder: (context) => NavSwitch()),
-                          //         );
-                          //       });
-                          //     },
-                          //     style: ElevatedButton.styleFrom(
-                          //       foregroundColor: Colors.black,
-                          //       backgroundColor: Colors.white,
-                          //       minimumSize: Size(double.infinity, 50),
-                          //       side: BorderSide(color: Colors.grey),
-                          //     ),
-                          //     child: Text('Logout'),
-                          //   ),
-                          // ),
-                        ],
+                          ],
                       ),
                     ),
             ),
