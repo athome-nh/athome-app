@@ -50,6 +50,38 @@ class _NotificationPageState extends State<NotificationPage> {
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            
+            Switch(
+              value: _isSwitched,
+              onChanged: (value) {
+                var data = {"id": userdata["id"], "SendNotfi": value};
+                Network(false)
+                    .postData("SendNotfi_Change", data, context)
+                    .then((value2) {
+                  if (value2 != "") {
+                    if (value2["code"] == "201") {
+                      setState(() {
+                        _isSwitched = value;
+                        userdata["SendNotfi"] = value;
+                      });
+                    } else {}
+                  } else {}
+                });
+              },
+              activeTrackColor: Colors.greenAccent[100],
+              activeColor: Colors.green,
+              inactiveTrackColor: Colors.white,
+              inactiveThumbColor: Colors.red,
+            ),
+          SizedBox(width: getHeight(context, 1)),
+          ],
+          title: Text(
+            "Notification".tr,
+            style: TextStyle(
+              fontFamily: mainFontnormal,
+            ),
+          ),
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -221,52 +253,6 @@ class _NotificationPageState extends State<NotificationPage> {
                     final notification = filteredNotifications[index];
                     return Column(
                       children: <Widget>[
-                        index == 0
-                            ? Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Notification".tr,
-                                      style: TextStyle(
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 26.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Switch(
-                                      value: _isSwitched,
-                                      onChanged: (value) {
-                                        var data = {
-                                          "id": userdata["id"],
-                                          "SendNotfi": value
-                                        };
-                                        Network(false)
-                                            .postData("SendNotfi_Change", data,
-                                                context)
-                                            .then((value2) {
-                                          if (value2 != "") {
-                                            if (value2["code"] == "201") {
-                                              setState(() {
-                                                _isSwitched = value;
-                                                userdata["SendNotfi"] = value;
-                                              });
-                                            } else {}
-                                          } else {}
-                                        });
-                                      },
-                                      activeTrackColor: Colors.greenAccent[100],
-                                      activeColor: Colors.green,
-                                      inactiveTrackColor: Colors.white,
-                                      inactiveThumbColor: Colors.red,
-                                    ),
-                                  ],
-                                ),
-                              )
-                            : SizedBox(),
                         Badge(
                           label: widget.notID == notification.id
                               ? Text("New".tr)

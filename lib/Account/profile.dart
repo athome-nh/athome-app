@@ -23,9 +23,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-
 import '../Config/my_widget.dart';
 import 'account_setting.dart';
+import 'invite_friend.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -1158,7 +1158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Refer a friend
                               _listTiles(Icons.person_add_outlined,
-                                  'Invite a friend', TermsandCondition()),
+                                  'Invite a friend', InvitePage()),
 
                               // Coin & Reward
                               _listTiles(Icons.monetization_on_outlined,
