@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
+import 'package:dllylas/Account/account_info.dart';
 import 'package:dllylas/Account/chatscreen.dart';
 import 'package:dllylas/Account/profilo.dart';
 import 'package:dllylas/Config/local_data.dart';
@@ -1151,7 +1152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Account Information
                               _listTiles(Icons.person_outline,
-                                  'Account Information', Setting()),
+                                  'Account Information', AccountInfo()),
 
                               // Orders
                               _listTiles(Ionicons.bag_outline, 'Orders',
