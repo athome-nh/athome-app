@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../Config/property.dart';
 import '../main.dart';
+import 'package:share_plus/share_plus.dart';
 
 class InvitePage extends StatefulWidget {
   const InvitePage({super.key});
@@ -28,6 +29,32 @@ class _InvitePageState extends State<InvitePage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Copied to clipboard')),
     );
+  }
+
+  void _onShareWithResult(BuildContext context, String uri, String text) async {
+    // A builder is used to retrieve the context immediately
+    // surrounding the ElevatedButton.
+    //
+    // The context's `findRenderObject` returns the first
+    // RenderObject in its descendent tree when it's not
+    // a RenderObjectWidget. The ElevatedButton's RenderObject
+    // has its position and size after it's built.
+    final box = context.findRenderObject() as RenderBox?;
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    ShareResult shareResult;
+    if (uri.isNotEmpty) {
+      shareResult = await Share.shareUri(
+        Uri.parse(uri),
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+      );
+    } else {
+      shareResult = await Share.share(
+        text,
+        subject: "subject",
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+      );
+    }
+    // scaffoldMessenger.showSnackBar(getResultSnackBar(shareResult));
   }
 
   @override
@@ -75,7 +102,10 @@ class _InvitePageState extends State<InvitePage> {
                     controller: _controller,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.copy, color: mainColorGrey,),
+                        icon: Icon(
+                          Icons.copy,
+                          color: mainColorGrey,
+                        ),
                         onPressed: _copyText,
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -88,24 +118,22 @@ class _InvitePageState extends State<InvitePage> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(
-                          color: mainColorGrey
-                              .withOpacity(0.8), 
-                          width: 1.0, 
+                          color: mainColorGrey.withOpacity(0.8),
+                          width: 1.0,
                         ),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(
-                          color: Colors.red, 
-                          width: 1.0, 
+                          color: Colors.red,
+                          width: 1.0,
                         ),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(
-                          color:
-                              Colors.red, 
-                          width: 1.0, 
+                          color: Colors.red,
+                          width: 1.0,
                         ),
                       ),
                       labelText: "Referral Code",
@@ -118,12 +146,19 @@ class _InvitePageState extends State<InvitePage> {
                     ),
                   ),
                 ),
-                
+
                 SizedBox(height: getHeight(context, 2)),
-                
+
                 // Invite Botton
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    final result = await Share.share(
+                        'check out my website https://dllylas.com');
+
+                    if (result.status == ShareResultStatus.success) {
+                      print('Thank you for sharing my website!');
+                    }
+                  },
                   child: Container(
                     padding: EdgeInsets.only(
                       top: getWidth(context, 2),
@@ -137,11 +172,13 @@ class _InvitePageState extends State<InvitePage> {
                         border: Border.all(color: mainColorGrey)),
                     width: getWidth(context, 90),
                     height: getWidth(context, 13),
-                    
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Icon(Icons.file_upload_outlined,color: mainColorWhite,),
+                        Icon(
+                          Icons.file_upload_outlined,
+                          color: mainColorWhite,
+                        ),
                         Text(
                           "Invite friends now".tr,
                           style: TextStyle(
@@ -168,7 +205,11 @@ class _InvitePageState extends State<InvitePage> {
       child: Column(
         children: [
           ListTile(
-            leading: Icon(icon, size: 24, color: mainColorGrey,),
+            leading: Icon(
+              icon,
+              size: 24,
+              color: mainColorGrey,
+            ),
             title: Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Text(

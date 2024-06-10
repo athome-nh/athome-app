@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:dllylas/Config/local_data.dart';
+import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
@@ -15,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
+import 'package:uni_links/uni_links.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   if (message.data["type"]) {
@@ -47,6 +51,7 @@ Future<void> main() async {
 
 String lang = "";
 String token = "";
+String latestUri = "";
 late DateTime datetimeS;
 bool isLogin = false;
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -59,8 +64,10 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
+  StreamSubscription? _sub;
   @override
   void initState() {
+    initUniLinks();
     FCMNotification(context).config();
 
     getStringPrefs("lang").then((value) {
@@ -76,6 +83,23 @@ class _AtHomeAppState extends State<AtHomeApp> {
     });
 
     super.initState();
+  }
+
+  void initUniLinks() async {
+    _sub = linkStream.listen((String? link) {
+      latestUri = link!;
+      if (link != null) {
+        print('Received deep link: $link');
+      }
+    }, onError: (err) {
+      print('Error: $err');
+    });
+  }
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    super.dispose();
   }
 
   @override
