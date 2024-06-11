@@ -995,6 +995,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       : SingleChildScrollView(
                           child: Column(
                             children: [
+
                               // Image and Username
                               Container(
                                 color: mainColorGrey,
@@ -1002,107 +1003,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     vertical: 20, horizontal: 20),
                                 child: Row(
                                   children: [
+
                                     // image
                                     _image != null
-                                        ? Stack(
-                                            alignment: Alignment.bottomRight,
-                                            children: [
-                                              Container(
-                                                width: getWidth(context, 25),
-                                                height: getWidth(context, 25),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100),
-                                                ),
-                                                child: CircleAvatar(
-                                                    backgroundColor:
-                                                        mainColorGrey,
-                                                    backgroundImage: FileImage(
-                                                      File(_image!.path),
-                                                    )),
-                                              ),
-                                              IconButton(
-                                                onPressed: () {
-                                                  _getImage();
-                                                },
-                                                icon: Container(
-                                                  width: getWidth(context, 8),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                    color: mainColorGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
-                                                  ),
-                                                  child: waitingImage
-                                                      ? Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(4.0),
-                                                          child: waitingWiget2(
-                                                              context),
-                                                        )
-                                                      : Icon(
-                                                          Icons.edit_outlined,
-                                                          size: 15,
-                                                          color: mainColorWhite,
-                                                        ),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        : Stack(
-                                            alignment: Alignment.bottomRight,
-                                            children: [
-                                              Container(
-                                                  width: getWidth(context, 25),
-                                                  height: getWidth(context, 25),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
-                                                  ),
-                                                  child: CircleAvatar(
-                                                    backgroundColor:
-                                                        mainColorGrey,
-                                                    backgroundImage:
-                                                        CachedNetworkImageProvider(
-                                                      dotenv.env[
-                                                              'imageUrlServer']! +
-                                                          image,
-                                                    ),
-                                                  )),
-                                              IconButton(
-                                                onPressed: () {
-                                                  _getImage();
-                                                },
-                                                icon: Container(
-                                                  width: getWidth(context, 8),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                    color: mainColorGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: waitingImage
-                                                      ? Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(4.0),
-                                                          child: waitingWiget2(
-                                                              context),
-                                                        )
-                                                      : Icon(
-                                                          Icons.edit_outlined,
-                                                          size: 15,
-                                                          color: mainColorWhite,
-                                                        ),
-                                                ),
-                                              ),
-                                            ],
+                                        ? Container(
+                                          width: getWidth(context, 25),
+                                          height: getWidth(context, 25),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(
+                                                    100),
                                           ),
+                                          child: CircleAvatar(
+                                              backgroundColor:
+                                                  mainColorGrey,
+                                              backgroundImage: FileImage(
+                                                File(_image!.path),
+                                              )),
+                                        )
+                                        : Container(
+                                            width: getWidth(context, 25),
+                                            height: getWidth(context, 25),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      100),
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  mainColorGrey,
+                                              backgroundImage:
+                                                  CachedNetworkImageProvider(
+                                                dotenv.env[
+                                                        'imageUrlServer']! +
+                                                    image,
+                                              ),
+                                            )),
 
                                     SizedBox(width: getHeight(context, 2)),
 
@@ -1112,7 +1048,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Bawar Wahid Saber",
+                                          userdata["name"].toString(),
                                           //userdata["name"].toString(),
                                           style: TextStyle(
                                               fontFamily: mainFontbold,
@@ -1120,7 +1056,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               color: mainColorWhite),
                                         ),
                                         Text(
-                                          "( +964 ) 750 461 2918",
+                                          userdata["phone"].toString(),
                                           //userdata["phone"].toString(),
                                           style: TextStyle(
                                               fontFamily: mainFontnormal,

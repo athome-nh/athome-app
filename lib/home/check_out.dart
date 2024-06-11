@@ -76,6 +76,7 @@ class _CheckOutState extends State<CheckOut> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
+        // appbar
         appBar: AppBar(
           title: Text(
             "Checkout".tr,
@@ -88,6 +89,8 @@ class _CheckOutState extends State<CheckOut> {
                 Icons.arrow_back_ios,
               )),
         ),
+
+        // body
         body: SingleChildScrollView(
           child: Stack(
             alignment: Alignment.center,
@@ -666,6 +669,264 @@ class _CheckOutState extends State<CheckOut> {
                                     fontFamily: mainFontnormal,
                                     fontSize: 14),
                               )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: getHeight(context, 2),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Your Voucher Code".tr,
+                          style: TextStyle(
+                              color: mainColorBlack,
+                              fontFamily: mainFontnormal,
+                              fontSize: 16),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            showDialog(
+                              context: context,
+                              builder: (ctx) => StatefulBuilder(
+                                builder: (context, setState1) {
+                                  return AlertDialog(
+                                    content: Directionality(
+                                      textDirection: lang == "en"
+                                          ? TextDirection.ltr
+                                          : TextDirection.rtl,
+                                      child: Stack(
+                                        alignment: lang == "en"
+                                            ? Alignment.topLeft
+                                            : Alignment.topRight,
+                                        children: [
+                                          SizedBox(
+                                            width: getWidth(context, 70),
+                                            height: getHeight(context, 50),
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: <Widget>[
+                                                  // Title
+                                                  Text(
+                                                    "Enter Voucher Code",
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 1,
+                                                    style: TextStyle(
+                                                      color: mainColorBlack,
+                                                      fontFamily: mainFontbold,
+                                                      fontSize: 15,
+                                                    ),
+                                                  ),
+
+                                                  SizedBox(
+                                                      height: getHeight(
+                                                          context, 4)),
+
+                                                  // TextField
+                                                  Container(
+                                                    width:
+                                                        getWidth(context, 90),
+                                                    height:
+                                                        getWidth(context, 12),
+                                                    child: TextFormField(
+                                                      controller: null,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color:
+                                                                mainColorGrey,
+                                                            width: 1.0,
+                                                          ),
+                                                        ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: mainColorGrey
+                                                                .withOpacity(
+                                                                    0.8),
+                                                            width: 1.0,
+                                                          ),
+                                                        ),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Colors.red,
+                                                            width: 1.0,
+                                                          ),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Colors.red,
+                                                            width: 1.0,
+                                                          ),
+                                                        ),
+                                                        labelText:
+                                                            "Voucher Code",
+                                                        hintStyle: TextStyle(
+                                                            color: mainColorBlack
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            fontSize: 14,
+                                                            fontFamily:
+                                                                mainFontnormal),
+                                                        floatingLabelBehavior:
+                                                            FloatingLabelBehavior
+                                                                .always,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  SizedBox(
+                                                      height: getHeight(
+                                                          context, 2)),
+
+                                                  // ListView
+                                                  Container(
+                                                    width:
+                                                        getWidth(context, 100),
+                                                    height:
+                                                        getHeight(context, 25),
+                                                    child: ListView.builder(
+                                                        itemCount:
+                                                            productrovider
+                                                                .location
+                                                                .length,
+                                                        itemBuilder:
+                                                            (BuildContextcontext,
+                                                                int index) {
+                                                          final location =
+                                                              productrovider
+                                                                      .location
+                                                                      .reversed
+                                                                      .toList()[
+                                                                  index];
+
+                                                          return Column(
+                                                            children: [
+                                                              ListTile(
+                                                                  onTap: () {},
+                                                                  title: Text(
+                                                                      location
+                                                                          .name!,
+                                                                      maxLines:
+                                                                          1,
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            mainFontbold,
+                                                                        color:
+                                                                            mainColorBlack,
+                                                                        fontSize:
+                                                                            16,
+                                                                      )),
+                                                                  subtitle:
+                                                                      Text(
+                                                                    location
+                                                                        .area!,
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            mainFontnormal,
+                                                                        color:
+                                                                            mainColorGrey,
+                                                                        fontSize:
+                                                                            12),
+                                                                  ),
+                                                                  trailing:
+                                                                      SizedBox(
+                                                                    width: getWidth(
+                                                                        context,
+                                                                        15),
+                                                                    height: getHeight(
+                                                                        context,
+                                                                        4),
+                                                                    child:
+                                                                        TextButton(
+                                                                      style: TextButton
+                                                                          .styleFrom(
+                                                                        foregroundColor:
+                                                                            mainColorWhite,
+                                                                        backgroundColor:
+                                                                            mainColorGrey,
+                                                                        fixedSize:
+                                                                            Size(
+                                                                          getWidth(
+                                                                              context,
+                                                                              5),
+                                                                          getHeight(
+                                                                              context,
+                                                                              2),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                      child:
+                                                                          Text(
+                                                                        "Apply",
+                                                                        style: TextStyle(
+                                                                            fontFamily:
+                                                                                mainFontnormal,
+                                                                            fontSize:
+                                                                                10),
+                                                                      ),
+                                                                    ),
+                                                                  )),
+                                                              SizedBox(
+                                                                width: getWidth( context,
+                                                                    60),
+                                                                child: Divider(
+                                                                  color: mainColorGrey
+                                                                      .withOpacity(
+                                                                          0.1),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          );
+                                                        }),
+                                                  ),
+
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text("Add Voucher"),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          child: Text("Add Voucher"),
                         ),
                       ],
                     ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:dllylas/landing/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,7 +11,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
-import '../Landing/splash_screen.dart';
 import '../Network/Network.dart';
 import '../controller/productprovider.dart';
 import '../main.dart';
@@ -24,6 +24,7 @@ class AccountInfo extends StatefulWidget {
 }
 
 class _AccountInfoState extends State<AccountInfo> {
+  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   final picker = ImagePicker();
   XFile? _image;
 
@@ -59,9 +60,9 @@ class _AccountInfoState extends State<AccountInfo> {
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController age = TextEditingController();
 
   bool isEdit = false;
-  bool colapse = false;
   bool waiting = false;
   bool waitingImage = false;
   String image = "";
@@ -74,11 +75,9 @@ class _AccountInfoState extends State<AccountInfo> {
   bool cityE = false;
   bool genderE = false;
   String token2 = "";
-  TextEditingController age = TextEditingController();
-  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-
   String selectedLanguage = 'English';
   String selectedItem = 'English';
+
   @override
   void initState() {
     selectedItem = lang == "en"
@@ -110,6 +109,49 @@ class _AccountInfoState extends State<AccountInfo> {
             child: Scaffold(
               // AppBar
               appBar: AppBar(
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: isEdit
+                        ? TextButton(
+                            style: TextButton.styleFrom(
+                                backgroundColor: mainColorWhite),
+                            child: Text(
+                              "Cancel".tr,
+                              style: TextStyle(
+                                  fontFamily: mainFontbold,
+                                  fontSize: 18,
+                                  color: mainColorRed),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isEdit = false;
+                                _image = null;
+                                image = userdata["img"];
+                                nameController.text = userdata["name"];
+                                ageController.text = userdata["age"].toString();
+                                gender = userdata["gender"];
+                              });
+                            },
+                          )
+                        : TextButton(
+                            style: TextButton.styleFrom(
+                                backgroundColor: mainColorWhite),
+                            child: Text(
+                              "Edit".tr,
+                              style: TextStyle(
+                                  fontFamily: mainFontbold,
+                                  fontSize: 18,
+                                  color: mainColorGrey),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isEdit = true;
+                              });
+                            },
+                          ),
+                  ),
+                ],
                 leading: IconButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -118,7 +160,7 @@ class _AccountInfoState extends State<AccountInfo> {
                       Icons.arrow_back_ios,
                     )),
                 title: Text(
-                  "Account Information".tr,
+                  "Profile".tr,
                 ),
               ),
 
@@ -130,137 +172,104 @@ class _AccountInfoState extends State<AccountInfo> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          // Image
+                          Container(
+                            padding: const EdgeInsets.all(15),
+                            child: _image != null
+                                ? Stack(
+                                    alignment: Alignment.bottomRight,
+                                    children: [
+                                      // CircleAvatar (Edit)
+                                      CircleAvatar(
+                                        backgroundColor: mainColorGrey,
+                                        backgroundImage: FileImage(
+                                          File(_image!.path),
+                                        ),
+                                      ),
 
-                          // Image and Username
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: getWidth(context, 5),
-                              right: getWidth(context, 5),
-                            ),
-                            child: Container(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  // image
-                                  _image != null
-                                      ? Stack(
-                                          alignment: Alignment.bottomRight,
-                                          children: [
-                                            Container(
-                                              width: getWidth(context, 25),
-                                              height: getWidth(context, 25),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(100),
-                                              ),
-                                              child: CircleAvatar(
-                                                  backgroundColor:
-                                                      mainColorGrey,
-                                                  backgroundImage: FileImage(
-                                                    File(_image!.path),
-                                                  )),
-                                            ),
-                                            IconButton(
-                                                onPressed: () {
-                                                  _getImage();
-                                                },
-                                                icon: Container(
-                                                  width: getWidth(context, 8),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                    color: mainColorGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
-                                                  ),
-                                                  child: waitingImage
-                                                      ? Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(4.0),
-                                                          child: waitingWiget2(
-                                                              context),
-                                                        )
-                                                      : Icon(
-                                                          Icons.edit_outlined,
-                                                          size: 15,
-                                                          color: mainColorWhite,
-                                                        ),
-                                                )),
-                                          ],
-                                        )
-                                      : Stack(
-                                          alignment: Alignment.bottomRight,
-                                          children: [
-                                            Container(
-                                                width: getWidth(context, 25),
-                                                height: getWidth(context, 25),
+                                      // Icon (Edit)
+                                      isEdit
+                                          ? IconButton(
+                                              onPressed: () {
+                                                _getImage();
+                                              },
+                                              icon: Container(
+                                                width: getWidth(context, 8),
+                                                height: getWidth(context, 8),
                                                 decoration: BoxDecoration(
+                                                  color: mainColorGrey,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100),
                                                 ),
-                                                child: CircleAvatar(
-                                                  backgroundColor:
-                                                      mainColorGrey,
-                                                  backgroundImage:
-                                                      CachedNetworkImageProvider(
-                                                    dotenv.env[
-                                                            'imageUrlServer']! +
-                                                        image,
-                                                  ),
-                                                )),
-                                            IconButton(
-                                                onPressed: () {
-                                                  _getImage();
-                                                },
-                                                icon: Container(
-                                                  width: getWidth(context, 8),
-                                                  height: getWidth(context, 8),
-                                                  decoration: BoxDecoration(
-                                                    color: mainColorGrey,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: waitingImage
-                                                      ? Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(4.0),
-                                                          child: waitingWiget2(
-                                                              context),
-                                                        )
-                                                      : Icon(
-                                                          Icons.edit_outlined,
-                                                          size: 15,
-                                                          color: mainColorWhite,
-                                                        ),
-                                                )),
-                                          ],
-                                        ),
-
-                                  // Padding(
-                                  //   padding: const EdgeInsets.all(8),
-                                  //   child: Column(
-                                  //     crossAxisAlignment:
-                                  //         CrossAxisAlignment.center,
-                                  //     children: [
-                                  //       Text(
-                                  //         userdata["name"].toString(),
-                                  //         style: TextStyle(
-                                  //             fontFamily: mainFontbold,
-                                  //             fontSize: 20,
-                                  //             color: mainColorBlack),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
-
-                                ],
-                              ),
-                            ),
+                                                child: waitingImage
+                                                    ? Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(4.0),
+                                                        child: waitingWiget2(
+                                                            context),
+                                                      )
+                                                    : Icon(
+                                                        Icons.edit_outlined,
+                                                        size: 15,
+                                                        color: mainColorWhite,
+                                                      ),
+                                              ),
+                                            )
+                                          : SizedBox(),
+                                    ],
+                                  )
+                                : Stack(
+                                    alignment: Alignment.bottomRight,
+                                    children: [
+                                      // CircleAvatar
+                                      Container(
+                                          width: getWidth(context, 25),
+                                          height: getWidth(context, 25),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                          ),
+                                          child: CircleAvatar(
+                                            backgroundColor: mainColorGrey,
+                                            backgroundImage:
+                                                CachedNetworkImageProvider(
+                                              dotenv.env['imageUrlServer']! +
+                                                  image,
+                                            ),
+                                          )),
+                                      isEdit
+                                          ? IconButton(
+                                              onPressed: () {
+                                                _getImage();
+                                              },
+                                              icon: Container(
+                                                width: getWidth(context, 8),
+                                                height: getWidth(context, 8),
+                                                decoration: BoxDecoration(
+                                                  color: mainColorGrey,
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                ),
+                                                child: waitingImage
+                                                    ? Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(4.0),
+                                                        child: waitingWiget2(
+                                                            context),
+                                                      )
+                                                    : Icon(
+                                                        Icons.edit_outlined,
+                                                        size: 15,
+                                                        color: mainColorWhite,
+                                                      ),
+                                              ),
+                                            )
+                                          : SizedBox(),
+                                    ],
+                                  ),
                           ),
                           SizedBox(
                             height: getHeight(context, 3),
@@ -270,50 +279,75 @@ class _AccountInfoState extends State<AccountInfo> {
                           Container(
                             height: getHeight(context, 7),
                             child: Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: getWidth(context, 5)),
-                              child: TextFormField(
-                                controller: nameController,
-                                cursorColor: mainColorGrey,
-                                keyboardType: TextInputType.text,
-                                onChanged: (value) {
-                                  setState(() {
-                                    nameE = false;
-                                  });
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 5)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (!isEdit) {
+                                    // Marj
+                                  }
                                 },
-                                validator: (value) {
-                                  return null;
-                                },
-                                decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                    borderSide: BorderSide(
-                                      color:
-                                          mainColorGrey, // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color: mainColorGrey.withOpacity(
-                                          0.5), // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                  ),
-                                  labelText: "Name".tr,
-                                  labelStyle: TextStyle(
-                                      color: mainColorBlack.withOpacity(0.8),
+                                child: AbsorbPointer(
+                                  absorbing: !isEdit,
+                                  child: TextFormField(
+                                    controller: nameController,
+                                    cursorColor: mainColorGrey,
+                                    keyboardType: TextInputType.text,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        nameE = false;
+                                      });
+                                    },
+                                    validator: (value) {
+                                      return null;
+                                    },
+                                    readOnly: !isEdit,
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    style: TextStyle(
+                                      color: isEdit
+                                          ? mainColorBlack
+                                          : mainColorBlack.withOpacity(0.7),
                                       fontSize: 16,
-                                      fontFamily: mainFontbold),
-                                  hintText: "Enter your Name".tr,
-                                  hintStyle: TextStyle(
-                                      color: mainColorBlack.withOpacity(0.5),
-                                      fontSize: 14,
-                                      fontFamily: mainFontnormal),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
-                                  //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                                      fontFamily: mainFontnormal,
+                                    ),
+                                    decoration: InputDecoration(
+                                      suffixIcon: isEdit
+                                          ? Icon(
+                                              Icons.edit,
+                                              size: 18,
+                                              color: mainColorGrey,
+                                            )
+                                          : SizedBox(),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey,
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(0.5),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      labelText: "Name".tr,
+                                      labelStyle: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                        fontFamily: mainFontbold,
+                                      ),
+                                      hintText: "Enter your Name".tr,
+                                      hintStyle: TextStyle(
+                                        color: mainColorBlack.withOpacity(0.5),
+                                        fontSize: 14,
+                                        fontFamily: mainFontnormal,
+                                      ),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -352,50 +386,75 @@ class _AccountInfoState extends State<AccountInfo> {
                           Container(
                             height: getHeight(context, 7),
                             child: Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: getWidth(context, 5)),
-                              child: TextFormField(
-                                controller: age,
-                                cursorColor: mainColorGrey,
-                                keyboardType: TextInputType.number,
-                                onChanged: (value) {
-                                  setState(() {
-                                    ageE = false;
-                                  });
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 5)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (!isEdit) {
+                                    // Marj
+                                  }
                                 },
-                                validator: (value) {
-                                  return null;
-                                },
-                                decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color:
-                                          mainColorGrey, // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color: mainColorGrey.withOpacity(
-                                          0.5), // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                  ),
-                                  labelText: "Age".tr,
-                                  labelStyle: TextStyle(
-                                      color: mainColorBlack.withOpacity(0.8),
+                                child: AbsorbPointer(
+                                  absorbing: !isEdit,
+                                  child: TextFormField(
+                                    controller: ageController,
+                                    cursorColor: mainColorGrey,
+                                    keyboardType: TextInputType.number,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        ageE = false;
+                                      });
+                                    },
+                                    validator: (value) {
+                                      return null;
+                                    },
+                                    readOnly: !isEdit,
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    style: TextStyle(
+                                      color: isEdit
+                                          ? mainColorBlack
+                                          : mainColorBlack.withOpacity(0.7),
                                       fontSize: 16,
-                                      fontFamily: mainFontbold),
-                                  hintText: "Enter your age".tr,
-                                  hintStyle: TextStyle(
-                                      color: mainColorBlack.withOpacity(0.5),
-                                      fontSize: 14,
-                                      fontFamily: mainFontnormal),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
-                                  //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                                      fontFamily: mainFontnormal,
+                                    ),
+                                    decoration: InputDecoration(
+                                      suffixIcon: isEdit
+                                          ? Icon(
+                                              Icons.edit,
+                                              size: 18,
+                                              color: mainColorGrey,
+                                            )
+                                          : SizedBox(),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey,
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(0.5),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      labelText: "Age".tr,
+                                      labelStyle: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                        fontFamily: mainFontbold,
+                                      ),
+                                      hintText: "Enter your age".tr,
+                                      hintStyle: TextStyle(
+                                        color: mainColorBlack.withOpacity(0.5),
+                                        fontSize: 14,
+                                        fontFamily: mainFontnormal,
+                                      ),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -434,49 +493,72 @@ class _AccountInfoState extends State<AccountInfo> {
                           Container(
                             height: getHeight(context, 7),
                             child: Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: getWidth(context, 5)),
-                              child: TextFormField(
-                                // controller: Phone,
-                                cursorColor: mainColorGrey,
-                                keyboardType: TextInputType.number,
-                                onChanged: (value) {
-                                  setState(() {
-                                    // ageE = false;
-                                  });
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                                decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color:
-                                          mainColorGrey, // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color: mainColorGrey.withOpacity(
-                                          0.5), // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                  ),
-                                  labelText: "Phone".tr,
-                                  labelStyle: TextStyle(
-                                      color: mainColorBlack.withOpacity(0.8),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 5)),
+                              child: GestureDetector(
+                                onTap:
+                                    () {}, // Intercept taps to make the field non-interactive
+                                child: AbsorbPointer(
+                                  child: TextFormField(
+                                    controller: phoneController,
+                                    cursorColor: mainColorGrey,
+                                    keyboardType: TextInputType.number,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        ageE = false;
+                                      });
+                                    },
+                                    validator: (value) {
+                                      return null;
+                                    },
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    style: TextStyle(
+                                      color: isEdit
+                                          ? mainColorBlack
+                                          : mainColorBlack.withOpacity(0.7),
                                       fontSize: 16,
-                                      fontFamily: mainFontbold),
-                                  hintText: " ".tr,
-                                  hintStyle: TextStyle(
-                                      color: mainColorBlack.withOpacity(0.5),
-                                      fontSize: 14,
-                                      fontFamily: mainFontnormal),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                      fontFamily: mainFontnormal,
+                                    ),
+                                    decoration: InputDecoration(
+                                      suffixIcon: isEdit
+                                          ? Icon(
+                                              Icons.edit,
+                                              size: 18,
+                                              color: mainColorGrey,
+                                            )
+                                          : SizedBox(),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color:
+                                              mainColorGrey, // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(
+                                              0.5), // Customize border color
+                                          width: 1.0, // Customize border width
+                                        ),
+                                      ),
+                                      labelText: "Phone".tr,
+                                      labelStyle: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                        fontFamily: mainFontbold,
+                                      ),
+                                      hintText: " ".tr,
+                                      hintStyle: TextStyle(
+                                        color: mainColorBlack.withOpacity(0.5),
+                                        fontSize: 14,
+                                        fontFamily: mainFontnormal,
+                                      ),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -489,29 +571,31 @@ class _AccountInfoState extends State<AccountInfo> {
                           Container(
                             height: getHeight(context, 7),
                             child: Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: getWidth(context, 5)),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 5)),
                               child: FormField<String>(
                                 builder: (FormFieldState<String> state) {
                                   return InputDecorator(
                                     decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: mainColorGrey.withOpacity(
-                                                0.5),
+                                            color:
+                                                mainColorGrey.withOpacity(0.5),
                                             width: 1.0,
                                           ),
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                         ),
                                         labelText: "City".tr,
                                         labelStyle: TextStyle(
-                                            color: mainColorBlack,
-                                            fontSize: 16,
-                                            fontFamily: mainFontbold),
+                                          color: mainColorGrey,
+                                          fontSize: 16,
+                                          fontFamily: mainFontbold,
+                                        ),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: mainColorBlack.withOpacity(
-                                                  0.5),
+                                              color: mainColorBlack
+                                                  .withOpacity(0.5),
                                               width: 1.0,
                                             ),
                                             borderRadius:
@@ -520,19 +604,23 @@ class _AccountInfoState extends State<AccountInfo> {
                                       child: DropdownButton<String>(
                                         value: city,
                                         isDense: false,
-                                        onChanged:(value) {
+                                        onChanged: isEdit
+                                            ? (value) {
                                                 setState(() {
                                                   city = value.toString();
                                                 });
-                                              },
+                                              }
+                                            : null,
                                         items: items.map((String value) {
                                           return DropdownMenuItem<String>(
                                             value: value,
                                             child: Text(
                                               value.tr,
                                               style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontFamily: mainFontnormal),
+                                                fontSize: 12,
+                                                fontFamily: mainFontnormal,
+                                                // color: mainColorBlack,
+                                              ),
                                             ),
                                           );
                                         }).toList(),
@@ -551,50 +639,55 @@ class _AccountInfoState extends State<AccountInfo> {
                           Container(
                             height: getHeight(context, 7),
                             child: Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: getWidth(context, 5)),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 5)),
                               child: FormField<String>(
                                 builder: (FormFieldState<String> state) {
                                   return InputDecorator(
                                     decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: mainColorGrey.withOpacity(
-                                                0.5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius: BorderRadius.circular(15),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(0.5),
+                                          width: 1.0,
                                         ),
-                                        labelText: "Gender".tr,
-                                        labelStyle: TextStyle(
-                                            color: mainColorBlack,
-                                            fontSize: 16,
-                                            fontFamily: mainFontbold),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: mainColorBlack.withOpacity(
-                                                  0.5),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(15.0))),
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      labelText: "Gender".tr,
+                                      labelStyle: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                        fontFamily: mainFontbold,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              mainColorBlack.withOpacity(0.5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                      ),
+                                    ),
                                     child: DropdownButtonHideUnderline(
                                       child: DropdownButton<String>(
                                         value: gender,
                                         isDense: false,
-                                        onChanged:(value) {
+                                        onChanged: isEdit
+                                            ? (value) {
                                                 setState(() {
                                                   gender = value.toString();
                                                 });
-                                              },
+                                              }
+                                            : null,
                                         items: GenderType.map((String value) {
                                           return DropdownMenuItem<String>(
                                             value: value,
                                             child: Text(
                                               value.tr,
                                               style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontFamily: mainFontnormal),
+                                                fontSize: 12,
+                                                fontFamily: mainFontnormal,
+                                              ),
                                             ),
                                           );
                                         }).toList(),
@@ -609,7 +702,7 @@ class _AccountInfoState extends State<AccountInfo> {
                             height: getHeight(context, 3),
                           ),
 
-                          // Address
+                          // Locations
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -624,7 +717,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                 horizontal: getWidth(context, 5),
                               ),
                               child: Container(
-                                height: getHeight(context, 6),
+                                height: getHeight(context, 7),
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                       color: mainColorGrey.withOpacity(0.5),
@@ -653,11 +746,12 @@ class _AccountInfoState extends State<AccountInfo> {
                                           width: 10,
                                         ),
                                         Text(
-                                          "Address".tr,
+                                          "Locations".tr,
                                           style: TextStyle(
                                               color: mainColorBlack,
                                               fontFamily: mainFontnormal,
-                                              fontSize: 16),
+                                              fontSize: 16,
+                                              ),
                                         ),
                                         const Spacer(),
                                         Icon(lang == "en"
@@ -675,6 +769,68 @@ class _AccountInfoState extends State<AccountInfo> {
                           SizedBox(
                             height: getHeight(context, 2),
                           ),
+
+                          // Save Botton
+                          isEdit
+                              ? TextButton(
+                                  onPressed: waiting
+                                      ? null
+                                      : () async {
+                                          setState(() {
+                                            waiting = true;
+                                          });
+                                          if (nameController.text.isEmpty) {
+                                            setState(() {
+                                              nameE = true;
+                                              waiting = false;
+                                            });
+                                            return;
+                                          }
+                                          var data = {
+                                            "id": userdata["id"],
+                                            "name": nameController.text,
+                                            "age": ageController.text,
+                                            "gender": gender,
+                                          };
+                                          Network(false)
+                                              .postData(
+                                                  "profile", data, context)
+                                              .then((value) {
+                                            if (value != "") {
+                                              if (value["code"] == "201") {
+                                                userdata = value["data"];
+
+                                                setState(() {
+                                                  waiting = false;
+                                                  isEdit = false;
+                                                });
+                                              }
+                                            }
+                                          });
+                                        },
+                                  style: TextButton.styleFrom(
+                                    fixedSize: Size(
+                                      getWidth(context, 90),
+                                      getHeight(context, 6.8),
+                                    ),
+                                    side: BorderSide(
+                                        color: mainColorGrey.withOpacity(0.5),
+                                        width: 1), // Border
+                                    backgroundColor:
+                                        Colors.transparent, // Background color
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Text(
+                                      "Save".tr,
+                                      style: TextStyle(
+                                          fontFamily: mainFontbold,
+                                          fontSize: 18,
+                                          color: mainColorGrey),
+                                    ),
+                                  ),
+                                )
+                              : SizedBox()
                         ],
                       ),
                     ),
