@@ -489,6 +489,73 @@ class _AccountInfoState extends State<AccountInfo> {
                             height: getHeight(context, 3),
                           ),
 
+                          // Gender
+                          Container(
+                            height: getHeight(context, 7),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 5)),
+                              child: FormField<String>(
+                                builder: (FormFieldState<String> state) {
+                                  return InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: mainColorGrey.withOpacity(0.5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      labelText: "Gender".tr,
+                                      labelStyle: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 16,
+                                        fontFamily: mainFontbold,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              mainColorBlack.withOpacity(0.5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                      ),
+                                    ),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton<String>(
+                                        value: gender,
+                                        isDense: false,
+                                        onChanged: isEdit
+                                            ? (value) {
+                                                setState(() {
+                                                  gender = value.toString();
+                                                });
+                                              }
+                                            : null,
+                                        items: GenderType.map((String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value.tr,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: mainFontnormal,
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 3),
+                          ),
+
                           // Phone
                           Container(
                             height: getHeight(context, 7),
@@ -520,13 +587,6 @@ class _AccountInfoState extends State<AccountInfo> {
                                       fontFamily: mainFontnormal,
                                     ),
                                     decoration: InputDecoration(
-                                      suffixIcon: isEdit
-                                          ? Icon(
-                                              Icons.edit,
-                                              size: 18,
-                                              color: mainColorGrey,
-                                            )
-                                          : SizedBox(),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
@@ -619,7 +679,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 fontFamily: mainFontnormal,
-                                                // color: mainColorBlack,
+                                                color: mainColorBlack,
                                               ),
                                             ),
                                           );
@@ -635,140 +695,75 @@ class _AccountInfoState extends State<AccountInfo> {
                             height: getHeight(context, 3),
                           ),
 
-                          // Gender
-                          Container(
-                            height: getHeight(context, 7),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 5)),
-                              child: FormField<String>(
-                                builder: (FormFieldState<String> state) {
-                                  return InputDecorator(
-                                    decoration: InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: mainColorGrey.withOpacity(0.5),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      labelText: "Gender".tr,
-                                      labelStyle: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                        fontFamily: mainFontbold,
-                                      ),
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color:
-                                              mainColorBlack.withOpacity(0.5),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                      ),
-                                    ),
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton<String>(
-                                        value: gender,
-                                        isDense: false,
-                                        onChanged: isEdit
-                                            ? (value) {
-                                                setState(() {
-                                                  gender = value.toString();
-                                                });
-                                              }
-                                            : null,
-                                        items: GenderType.map((String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(
-                                              value.tr,
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: mainFontnormal,
-                                              ),
-                                            ),
-                                          );
-                                        }).toList(),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getHeight(context, 3),
-                          ),
+                          
 
                           // Locations
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const LocationScreen()),
-                              );
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getWidth(context, 5),
-                              ),
-                              child: Container(
-                                height: getHeight(context, 7),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: mainColorGrey.withOpacity(0.5),
-                                    ),
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const LocationScreen()),
-                                      );
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          color: mainColorBlack,
-                                          Ionicons.location_outline,
-                                          size: 20,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "Locations".tr,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 16,
-                                              ),
-                                        ),
-                                        const Spacer(),
-                                        Icon(lang == "en"
-                                            ? Icons
-                                                .keyboard_arrow_right_outlined
-                                            : Icons
-                                                .keyboard_arrow_left_outlined)
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getHeight(context, 2),
-                          ),
+                          // GestureDetector(
+                          //   onTap: () {
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) =>
+                          //               const LocationScreen()),
+                          //     );
+                          //   },
+                          //   child: Padding(
+                          //     padding: EdgeInsets.symmetric(
+                          //       horizontal: getWidth(context, 5),
+                          //     ),
+                          //     child: Container(
+                          //       height: getHeight(context, 7),
+                          //       decoration: BoxDecoration(
+                          //           border: Border.all(
+                          //             color: mainColorGrey.withOpacity(0.5),
+                          //           ),
+                          //           borderRadius: BorderRadius.circular(15)),
+                          //       child: Padding(
+                          //         padding: const EdgeInsets.symmetric(
+                          //             horizontal: 12),
+                          //         child: GestureDetector(
+                          //           onTap: () {
+                          //             Navigator.push(
+                          //               context,
+                          //               MaterialPageRoute(
+                          //                   builder: (context) =>
+                          //                       const LocationScreen()),
+                          //             );
+                          //           },
+                          //           child: Row(
+                          //             children: [
+                          //               Icon(
+                          //                 color: mainColorBlack,
+                          //                 Ionicons.location_outline,
+                          //                 size: 20,
+                          //               ),
+                          //               const SizedBox(
+                          //                 width: 10,
+                          //               ),
+                          //               Text(
+                          //                 "Locations".tr,
+                          //                 style: TextStyle(
+                          //                     color: mainColorBlack,
+                          //                     fontFamily: mainFontnormal,
+                          //                     fontSize: 16,
+                          //                     ),
+                          //               ),
+                          //               const Spacer(),
+                          //               Icon(lang == "en"
+                          //                   ? Icons
+                          //                       .keyboard_arrow_right_outlined
+                          //                   : Icons
+                          //                       .keyboard_arrow_left_outlined)
+                          //             ],
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: getHeight(context, 2),
+                          // ),
 
                           // Save Botton
                           isEdit
