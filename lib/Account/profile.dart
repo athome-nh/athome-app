@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/account_info.dart';
 import 'package:dllylas/Account/chatscreen.dart';
-import 'package:dllylas/Account/profilo.dart';
+import 'package:dllylas/Account/voucher_code.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
@@ -1094,6 +1094,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               _listTiles(Ionicons.bag_outline, 'Orders',
                                   OrderScreen()),
 
+                              // Locations
+                              _listTiles(Ionicons.location_outline, 'Locations',
+                                  LocationScreen()),
+
                               // Refer a friend
                               _listTiles(Icons.person_add_outlined,
                                   'Invite a friend', InvitePage()),
@@ -1104,7 +1108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // My Voucher
                               _listTiles(Icons.card_giftcard, 'My Voucher',
-                                  BlankPage()),
+                                  MyHomePage()),
 
                               // Account Settings
                               _listTiles(Icons.settings_outlined,
