@@ -41,6 +41,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                         
                 <data
+                     android:pathPrefix="/splash/"
                     android:scheme="https"
                     android:host="app.athome-iraq.com" />
                     

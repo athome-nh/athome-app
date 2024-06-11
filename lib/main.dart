@@ -170,10 +170,10 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+        initialRoute: '/splash',
         navigatorKey: navigatorKey,
         getPages: [
-          GetPage(name: '/', page: () => SplashScreen()),
+          GetPage(name: '/splash', page: () => SplashScreen()),
           GetPage(name: '/home', page: () => NavSwitch()),
         ],
       ),

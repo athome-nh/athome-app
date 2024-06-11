@@ -21,6 +21,7 @@ import 'package:dllylas/model/schedule_model/schedule_model.dart';
 import 'package:dllylas/model/slidemodel/slidemodel.dart';
 import 'package:dllylas/model/sub_category/sub_category.dart';
 import 'package:dllylas/model/topmodel/topmodel.dart';
+import 'package:dllylas/model/voucher/voucher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -115,6 +116,10 @@ class productProvider extends ChangeNotifier {
           setChats((value['chats'] as List)
               .map((x) => Chatmodel.fromMap(x))
               .toList());
+          setvouchers((value['vouchers'] as List)
+              .map((x) => Voucher.fromMap(x))
+              .toList());
+
           setshowuser(true);
         } else {}
       } else {}
@@ -252,6 +257,7 @@ class productProvider extends ChangeNotifier {
   List<OrderModel> _Orders = [];
   List<OrderItems> _Orderitems = [];
   List<Locationuser> _location = [];
+  List<Voucher> _vouchers = [];
 
   // Map<String, dynamic> _homePopup = {};
   int _defultlocation = 0;
@@ -275,6 +281,7 @@ class productProvider extends ChangeNotifier {
   List<Chatmodel> get chats => _chats;
 
   // Map<String, dynamic> get homePopup => _homePopup;
+  List<Voucher> get vouchers => _vouchers;
   List<Slidemodel> get slides => _slides;
   List<Brandmodel> get brands => _brands;
   List<OrderItems> get Orderitems => _Orderitems;
@@ -534,6 +541,12 @@ class productProvider extends ChangeNotifier {
   // Add a product to the list
   void setProducts(List<ProductModel> products) {
     _products = products;
+
+    notifyListeners();
+  }
+
+  void setvouchers(List<Voucher> voucher) {
+    _vouchers = voucher;
 
     notifyListeners();
   }
