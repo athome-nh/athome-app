@@ -61,9 +61,9 @@ class FCMNotification {
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) async {
-      // if (message!.data.isNotEmpty) {
-      //   // _handleMessage(message);
-      // }
+      if (message != null) {
+        _handleMessage(message);
+      }
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -95,6 +95,7 @@ class FCMNotification {
             ));
       }
     });
+
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       _handleMessage(message);
       // Navigator.pushNamed(context, '/message',

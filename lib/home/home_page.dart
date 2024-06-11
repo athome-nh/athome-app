@@ -25,6 +25,7 @@ import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -104,7 +105,7 @@ class _HomeSreenState extends State<HomeSreen> {
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        if (documentSnapshot.get("show") == true ) {
+        if (documentSnapshot.get("show") == true) {
           if (lang == "en") {
             ShowInfo(context, documentSnapshot.get("titleen"),
                 documentSnapshot.get("contenten"), "OK".tr, "error", "");
@@ -1392,15 +1393,12 @@ class _HomeSreenState extends State<HomeSreen> {
                             : CachedNetworkImage(
                                 imageUrl: dotenv.env['imageUrlServer']! +
                                     homePopupData["img"],
-                                // imageUrl:
-                                //     "https://firebasestorage.googleapis.com/v0/b/dllylas-ec27d.appspot.com/o/DLly%20Las%20popo.jpg?alt=media&token=2a5ce41a-d3b6-4eb0-a43c-dff6fae351f6",
                                 placeholder: (context, url) => Image.asset(
                                     "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
                                     Image.asset(
                                         "assets/images/Logo-Type-2.png"),
                                 filterQuality: FilterQuality.low,
-
                                 fit: BoxFit.cover,
                               ),
                       ),

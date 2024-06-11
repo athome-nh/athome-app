@@ -14,6 +14,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:provider/provider.dart';
 import '../Config/property.dart';
@@ -94,32 +95,56 @@ class _SplashScreenState extends State<SplashScreen> {
     final productrovider = Provider.of<productProvider>(context, listen: false);
 
     if (widget.message!.data.isEmpty) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => seen ? NavSwitch() : const ChooseLang(),
-        ),
-      );
+      final String? id = Get.parameters['id'];
+      if (id != null) {
+        productrovider.setidItem(int.parse(id));
+        Navigator.of(context)
+            .pushReplacement(
+          MaterialPageRoute(builder: (context) => const Oneitem()),
+        )
+            .then((value) {
+          Get.toNamed("/home");
+        });
+      } else {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => seen ? NavSwitch() : const ChooseLang(),
+          ),
+        );
+      }
     }
     if ('onItem' == widget.message!.data["type"]) {
       productrovider.setidItem(productrovider
           .getoneProductByBarcode(widget.message!.data["subrelation"])
           .id!);
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .pushReplacement(
         MaterialPageRoute(builder: (context) => const Oneitem()),
-      );
+      )
+          .then((value) {
+        Get.toNamed("/home");
+      });
     } else if ('discount' == widget.message!.data["type"]) {
       productrovider.settype("discount");
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .pushReplacement(
         MaterialPageRoute(builder: (context) => const AllItem()),
-      );
+      )
+          .then((value) {
+        Get.toNamed("/home");
+      });
     } else if ('brand' == widget.message!.data["type"]) {
       productrovider.settype("brand");
 
       productrovider
           .setidbrand(int.parse(widget.message!.data["relationId"].toString()));
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .pushReplacement(
         MaterialPageRoute(builder: (context) => const AllItem()),
-      );
+      )
+          .then((value) {
+        Get.toNamed("/home");
+      });
     } else if ('category' == widget.message!.data["type"]) {
       if (productrovider.categores.indexWhere((category) =>
               category.id ==
@@ -135,6 +160,7 @@ class _SplashScreenState extends State<SplashScreen> {
       )
           .then((value) {
         productrovider.setsubcateSelect(0);
+        Get.toNamed("/home");
       });
     } else if ('subcategory' == widget.message!.data["type"]) {
       if (productrovider.categores.indexWhere((category) =>
@@ -158,19 +184,25 @@ class _SplashScreenState extends State<SplashScreen> {
       )
           .then((value) {
         productrovider.setsubcateSelect(0);
+        Get.toNamed("/home");
       });
     } else if ('order' == widget.message!.data["type"]) {
       OrderModel order = productrovider.Orders.firstWhere((element) =>
           element.id ==
           int.parse(widget.message!.data["relationId"].toString()));
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context)
+          .pushReplacement(
         MaterialPageRoute(
             builder: (context) => TrackOrder(
                 order.id.toString(),
                 order.returnTotalPrice.toString(),
                 order.createdAt.toString(),
                 order.deliveryCost!)),
-      );
+      )
+          .then((value) {
+        productrovider.setsubcateSelect(0);
+        Get.toNamed("/home");
+      });
     } else if ('attention' == widget.message!.data["type"]) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(

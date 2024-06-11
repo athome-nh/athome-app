@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:dllylas/Config/local_data.dart';
+
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/nav_switch.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,6 +52,7 @@ Future<void> main() async {
 
 String lang = "";
 String token = "";
+
 late DateTime datetimeS;
 bool isLogin = false;
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -59,6 +65,7 @@ class AtHomeApp extends StatefulWidget {
 }
 
 class _AtHomeAppState extends State<AtHomeApp> {
+  StreamSubscription? _sub;
   @override
   void initState() {
     FCMNotification(context).config();
@@ -76,6 +83,12 @@ class _AtHomeAppState extends State<AtHomeApp> {
     });
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    super.dispose();
   }
 
   @override
@@ -157,9 +170,12 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-        // home: InvitePage(),
+        initialRoute: '/splash',
         navigatorKey: navigatorKey,
+        getPages: [
+          GetPage(name: '/splash', page: () => SplashScreen()),
+          GetPage(name: '/home', page: () => NavSwitch()),
+        ],
       ),
     );
   }
