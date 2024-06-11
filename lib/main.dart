@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:dllylas/Config/local_data.dart';
-import 'package:dllylas/Config/my_widget.dart';
+
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/nav_switch.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,7 +20,6 @@ import 'package:provider/provider.dart';
 import 'Landing/splash_screen.dart';
 import 'Language/Translation.dart';
 import 'firebase_options.dart';
-import 'package:uni_links/uni_links.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   if (message.data["type"]) {
@@ -51,7 +52,7 @@ Future<void> main() async {
 
 String lang = "";
 String token = "";
-String latestUri = "";
+
 late DateTime datetimeS;
 bool isLogin = false;
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -67,7 +68,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
   StreamSubscription? _sub;
   @override
   void initState() {
-    initUniLinks();
     FCMNotification(context).config();
 
     getStringPrefs("lang").then((value) {
@@ -83,17 +83,6 @@ class _AtHomeAppState extends State<AtHomeApp> {
     });
 
     super.initState();
-  }
-
-  void initUniLinks() async {
-    _sub = linkStream.listen((String? link) {
-      latestUri = link!;
-      if (link != null) {
-        print('Received deep link: $link');
-      }
-    }, onError: (err) {
-      print('Error: $err');
-    });
   }
 
   @override
@@ -181,9 +170,12 @@ class _AtHomeAppState extends State<AtHomeApp> {
         fallbackLocale: const Locale("en"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-        // home: InvitePage(),
+        initialRoute: '/',
         navigatorKey: navigatorKey,
+        getPages: [
+          GetPage(name: '/', page: () => SplashScreen()),
+          GetPage(name: '/home', page: () => NavSwitch()),
+        ],
       ),
     );
   }
