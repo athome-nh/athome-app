@@ -29,6 +29,7 @@ class CheckOut extends StatefulWidget {
 class _CheckOutState extends State<CheckOut> {
   final PageController controller = PageController(initialPage: 0);
   TextEditingController NoteController = TextEditingController();
+  TextEditingController voucherCode = TextEditingController();
   bool waitingcheckout = false;
   int locationID = 0;
   String orderCode = "";
@@ -713,7 +714,7 @@ class _CheckOutState extends State<CheckOut> {
                                                 children: <Widget>[
                                                   // Title
                                                   Text(
-                                                    "Enter Voucher Code",
+                                                    "Voucher Code",
                                                     textAlign: TextAlign.center,
                                                     maxLines: 1,
                                                     style: TextStyle(
@@ -734,7 +735,7 @@ class _CheckOutState extends State<CheckOut> {
                                                     height:
                                                         getWidth(context, 12),
                                                     child: TextFormField(
-                                                      controller: null,
+                                                      controller: voucherCode,
                                                       decoration:
                                                           InputDecoration(
                                                         focusedBorder:
@@ -785,7 +786,7 @@ class _CheckOutState extends State<CheckOut> {
                                                           ),
                                                         ),
                                                         labelText:
-                                                            "Voucher Code",
+                                                            "Enter Voucher Code",
                                                         hintStyle: TextStyle(
                                                             color: mainColorBlack
                                                                 .withOpacity(
@@ -813,14 +814,14 @@ class _CheckOutState extends State<CheckOut> {
                                                     child: ListView.builder(
                                                         itemCount:
                                                             productrovider
-                                                                .location
+                                                                .vouchers
                                                                 .length,
                                                         itemBuilder:
                                                             (BuildContextcontext,
                                                                 int index) {
-                                                          final location =
+                                                          final voucher =
                                                               productrovider
-                                                                      .location
+                                                                      .vouchers
                                                                       .reversed
                                                                       .toList()[
                                                                   index];
@@ -828,10 +829,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           return Column(
                                                             children: [
                                                               ListTile(
-                                                                  onTap: () {},
                                                                   title: Text(
-                                                                      location
-                                                                          .name!,
+                                                                      voucher
+                                                                          .code!,
                                                                       maxLines:
                                                                           1,
                                                                       style:
@@ -844,16 +844,29 @@ class _CheckOutState extends State<CheckOut> {
                                                                             16,
                                                                       )),
                                                                   subtitle:
+                                                                      Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
                                                                       Text(
-                                                                    location
-                                                                        .area!,
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            mainFontnormal,
-                                                                        color:
-                                                                            mainColorGrey,
-                                                                        fontSize:
-                                                                            12),
+                                                                        addCommasToPrice(
+                                                                            voucher.discountAmount!),
+                                                                        style: TextStyle(
+                                                                            fontFamily:
+                                                                                mainFontnormal,
+                                                                            color:
+                                                                                Colors.green,
+                                                                            fontSize: 12),
+                                                                      ),
+                                                                      widget.total <
+                                                                              voucher.mimimumAmount!
+                                                                          ? Text(
+                                                                              "must order by " + voucher.mimimumAmount.toString(),
+                                                                              style: TextStyle(fontFamily: mainFontnormal, color: mainColorRed, fontSize: 12),
+                                                                            )
+                                                                          : SizedBox(),
+                                                                    ],
                                                                   ),
                                                                   trailing:
                                                                       SizedBox(
@@ -867,10 +880,14 @@ class _CheckOutState extends State<CheckOut> {
                                                                         TextButton(
                                                                       style: TextButton
                                                                           .styleFrom(
-                                                                        foregroundColor:
-                                                                            mainColorWhite,
-                                                                        backgroundColor:
-                                                                            mainColorGrey,
+                                                                        foregroundColor: widget.total >=
+                                                                                voucher.mimimumAmount!
+                                                                            ? mainColorWhite
+                                                                            : mainColorBlack,
+                                                                        backgroundColor: widget.total >=
+                                                                                voucher.mimimumAmount!
+                                                                            ? mainColorGrey
+                                                                            : Colors.grey[300],
                                                                         fixedSize:
                                                                             Size(
                                                                           getWidth(
@@ -881,8 +898,12 @@ class _CheckOutState extends State<CheckOut> {
                                                                               2),
                                                                         ),
                                                                       ),
-                                                                      onPressed:
-                                                                          () {},
+                                                                      onPressed: widget.total >=
+                                                                              voucher.mimimumAmount!
+                                                                          ? () {
+                                                                              voucherCode.text = voucher.code!;
+                                                                            }
+                                                                          : null,
                                                                       child:
                                                                           Text(
                                                                         "Apply",
@@ -895,7 +916,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                     ),
                                                                   )),
                                                               SizedBox(
-                                                                width: getWidth( context,
+                                                                width: getWidth(
+                                                                    context,
                                                                     60),
                                                                 child: Divider(
                                                                   color: mainColorGrey
@@ -912,7 +934,7 @@ class _CheckOutState extends State<CheckOut> {
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: Text("Add Voucher"),
+                                                    child: Text("Submit"),
                                                   ),
                                                 ],
                                               ),
@@ -992,7 +1014,7 @@ class _CheckOutState extends State<CheckOut> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset(
-                                "assets/images/fib.png",
+                                "assets/images/FIB.png",
                               ),
                               Text(
                                 "Coming soon".tr,
