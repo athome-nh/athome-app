@@ -1,3 +1,4 @@
+import 'package:dllylas/Config/property.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -31,17 +32,32 @@ class MyHomePage extends StatelessWidget {
 class ActiveTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('No Active Design'),
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Icon(Icons.confirmation_num_outlined),
+          title: Text('Active Title  ${index + 1}'),
+          subtitle: Text('Details or Subtitle ${index + 1}'),
+        );
+      },
     );
   }
 }
 
+
 class UsedTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('No Used Design'),
+    return ListView.builder(
+      itemCount: 10, 
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Icon(Icons.confirmation_num_outlined),
+          title: Text('Used Title ${index + 1}'),
+          subtitle: Text('Details or Subtitle ${index + 1}'),
+        );
+      },
     );
   }
 }
@@ -49,8 +65,15 @@ class UsedTab extends StatelessWidget {
 class ExpiredTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('No Expired Design'),
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Icon(Icons.confirmation_num_outlined),
+          title: Text('Expired Title ${index + 1}'),
+          subtitle: Text('Details or Subtitle ${index + 1}'),
+        );
+      },
     );
   }
 }

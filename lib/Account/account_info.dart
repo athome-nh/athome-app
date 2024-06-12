@@ -172,6 +172,7 @@ class _AccountInfoState extends State<AccountInfo> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          
                           // Image
                           Container(
                             padding: const EdgeInsets.all(15),
@@ -557,145 +558,170 @@ class _AccountInfoState extends State<AccountInfo> {
                           ),
 
                           // Phone
-                          Container(
-                            height: getHeight(context, 7),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 5)),
-                              child: GestureDetector(
-                                onTap:
-                                    () {}, // Intercept taps to make the field non-interactive
-                                child: AbsorbPointer(
-                                  child: TextFormField(
-                                    controller: phoneController,
-                                    cursorColor: mainColorGrey,
-                                    keyboardType: TextInputType.number,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        ageE = false;
-                                      });
-                                    },
-                                    validator: (value) {
-                                      return null;
-                                    },
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                    style: TextStyle(
-                                      color: isEdit
-                                          ? mainColorBlack
-                                          : mainColorBlack.withOpacity(0.7),
-                                      fontSize: 16,
-                                      fontFamily: mainFontnormal,
-                                    ),
-                                    decoration: InputDecoration(
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                        borderSide: BorderSide(
-                                          color:
-                                              mainColorGrey, // Customize border color
-                                          width: 1.0, // Customize border width
+                          isEdit
+                              ? SizedBox()
+                              : Column(
+                            children: [
+                              Container(
+                                height: getHeight(context, 7),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: getWidth(context, 5)),
+                                  child: GestureDetector(
+                                    onTap:
+                                        () {}, // Intercept taps to make the field non-interactive
+                                    child: AbsorbPointer(
+                                      child: TextFormField(
+                                        controller: phoneController,
+                                        cursorColor: mainColorGrey,
+                                        keyboardType: TextInputType.number,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            ageE = false;
+                                          });
+                                        },
+                                        validator: (value) {
+                                          return null;
+                                        },
+                                        textAlignVertical:
+                                            TextAlignVertical.bottom,
+                                        style: TextStyle(
+                                          color: isEdit
+                                              ? mainColorBlack
+                                              : mainColorBlack.withOpacity(0.7),
+                                          fontSize: 16,
+                                          fontFamily: mainFontnormal,
+                                        ),
+                                        decoration: InputDecoration(
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            borderSide: BorderSide(
+                                              color:
+                                                  mainColorGrey, // Customize border color
+                                              width:
+                                                  1.0, // Customize border width
+                                            ),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            borderSide: BorderSide(
+                                              color: mainColorGrey.withOpacity(
+                                                  0.5), // Customize border color
+                                              width:
+                                                  1.0, // Customize border width
+                                            ),
+                                          ),
+                                          labelText: "Phone".tr,
+                                          labelStyle: TextStyle(
+                                            color: mainColorGrey,
+                                            fontSize: 16,
+                                            fontFamily: mainFontbold,
+                                          ),
+                                          hintText: " ".tr,
+                                          hintStyle: TextStyle(
+                                            color:
+                                                mainColorBlack.withOpacity(0.5),
+                                            fontSize: 14,
+                                            fontFamily: mainFontnormal,
+                                          ),
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.always,
                                         ),
                                       ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                        borderSide: BorderSide(
-                                          color: mainColorGrey.withOpacity(
-                                              0.5), // Customize border color
-                                          width: 1.0, // Customize border width
-                                        ),
-                                      ),
-                                      labelText: "Phone".tr,
-                                      labelStyle: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 16,
-                                        fontFamily: mainFontbold,
-                                      ),
-                                      hintText: " ".tr,
-                                      hintStyle: TextStyle(
-                                        color: mainColorBlack.withOpacity(0.5),
-                                        fontSize: 14,
-                                        fontFamily: mainFontnormal,
-                                      ),
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.always,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getHeight(context, 3),
+                              SizedBox(
+                                height: getHeight(context, 3),
+                              ),
+                            ],
                           ),
 
                           // City
-                          Container(
-                            height: getHeight(context, 7),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 5)),
-                              child: FormField<String>(
-                                builder: (FormFieldState<String> state) {
-                                  return InputDecorator(
-                                    decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color:
-                                                mainColorGrey.withOpacity(0.5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                        ),
-                                        labelText: "City".tr,
-                                        labelStyle: TextStyle(
-                                          color: mainColorGrey,
-                                          fontSize: 16,
-                                          fontFamily: mainFontbold,
-                                        ),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: mainColorBlack
-                                                  .withOpacity(0.5),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(15.0))),
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton<String>(
-                                        value: city,
-                                        isDense: false,
-                                        onChanged: isEdit
-                                            ? (value) {
-                                                setState(() {
-                                                  city = value.toString();
-                                                });
-                                              }
-                                            : null,
-                                        items: items.map((String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(
-                                              value.tr,
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: mainFontnormal,
-                                                color: mainColorBlack,
+                          isEdit
+                              ? SizedBox()
+                              : Column(
+                                  children: [
+                                    Container(
+                                      height: getHeight(context, 7),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 5)),
+                                        child: FormField<String>(
+                                          builder:
+                                              (FormFieldState<String> state) {
+                                            return InputDecorator(
+                                              decoration: InputDecoration(
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: mainColorGrey
+                                                          .withOpacity(0.5),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                  ),
+                                                  labelText: "City".tr,
+                                                  labelStyle: TextStyle(
+                                                    color: mainColorGrey,
+                                                    fontSize: 16,
+                                                    fontFamily: mainFontbold,
+                                                  ),
+                                                  border: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: mainColorBlack
+                                                            .withOpacity(0.5),
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0))),
+                                              child:
+                                                  DropdownButtonHideUnderline(
+                                                child: DropdownButton<String>(
+                                                  value: city,
+                                                  isDense: false,
+                                                  onChanged: isEdit
+                                                      ? (value) {
+                                                          setState(() {
+                                                            city = value
+                                                                .toString();
+                                                          });
+                                                        }
+                                                      : null,
+                                                  items:
+                                                      items.map((String value) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: value,
+                                                      child: Text(
+                                                        value.tr,
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          color: mainColorBlack,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }).toList(),
+                                                ),
                                               ),
-                                            ),
-                                          );
-                                        }).toList(),
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getHeight(context, 3),
-                          ),
-
-                          
+                                    SizedBox(
+                                      height: getHeight(context, 3),
+                                    ),
+                                  ],
+                                ),
 
                           // Locations
                           // GestureDetector(
