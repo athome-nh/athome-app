@@ -814,17 +814,16 @@ class _CheckOutState extends State<CheckOut> {
                                                     child: ListView.builder(
                                                         itemCount:
                                                             productrovider
-                                                                .vouchers
+                                                                .unusedVouchers
                                                                 .length,
                                                         itemBuilder:
                                                             (BuildContextcontext,
                                                                 int index) {
                                                           final voucher =
                                                               productrovider
-                                                                      .vouchers
-                                                                      .reversed
-                                                                      .toList()[
-                                                                  index];
+                                                                  .unusedVouchers
+                                                               
+                                                                 [index];
 
                                                           return Column(
                                                             children: [

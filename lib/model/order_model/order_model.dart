@@ -20,6 +20,7 @@ class OrderModel {
 
   final int? returnTotalPrice;
   final int? isCorrect;
+  final int? voucherID;
   final dynamic returnNote;
   final dynamic note;
   int? status;
@@ -43,6 +44,7 @@ class OrderModel {
     this.totalPrice,
     this.returnTotalPrice,
     this.isCorrect,
+    this.voucherID,
     this.returnNote,
     this.note,
     this.status,
@@ -67,6 +69,7 @@ class OrderModel {
 
         returnTotalPrice: data['return_total_price'] as int?,
         isCorrect: data['isCorrect'] as int?,
+        voucherID: data['voucher_id'] as int?,
         returnNote: data['return_note'] as dynamic,
         note: data['note'] as dynamic,
         status: data['status'] as int?,
@@ -94,6 +97,7 @@ class OrderModel {
 
         'return_total_price': returnTotalPrice,
         'isCorrect': isCorrect,
+        'voucher_id': voucherID,
         'return_note': returnNote,
         'note': note,
         'status': status,
@@ -130,6 +134,7 @@ class OrderModel {
     int? totalPrice,
     int? returnTotalPrice,
     int? isCorrect,
+    int? voucherID,
     dynamic returnNote,
     dynamic note,
     int? status,
@@ -162,6 +167,7 @@ class OrderModel {
       totalPrice: totalPrice ?? this.totalPrice,
       returnTotalPrice: returnTotalPrice ?? this.returnTotalPrice,
       isCorrect: isCorrect ?? this.isCorrect,
+      voucherID: voucherID ?? this.voucherID,
       returnNote: returnNote ?? this.returnNote,
       note: note ?? this.note,
       status: status ?? this.status,
@@ -196,6 +202,7 @@ class OrderModel {
       totalPrice.hashCode ^
       returnTotalPrice.hashCode ^
       isCorrect.hashCode ^
+      voucherID.hashCode ^
       returnNote.hashCode ^
       note.hashCode ^
       status.hashCode;

@@ -327,6 +327,29 @@ class productProvider extends ChangeNotifier {
         .toList();
   }
 
+  Set<int> get usedVoucherIds {
+    return _Orders.where((order) => order.voucherID != null)
+        .map((order) => order.voucherID!)
+        .toSet();
+  }
+
+  List<Voucher> get unusedVouchers {
+    var usedIds = usedVoucherIds;
+    return _vouchers.where((voucher) => !usedIds.contains(voucher.id)).toList();
+  }
+
+  List<Voucher> get usedVouchers {
+    var usedIds = usedVoucherIds;
+    return _vouchers.where((voucher) => usedIds.contains(voucher.id)).toList();
+  }
+
+  List<Voucher> get expireVouchers {
+    return _vouchers
+        .where((voucher) =>
+            DateTime.parse(voucher.expireDate!).isBefore(datetimeS))
+        .toList();
+  }
+
   List<ProductModel> getProductsByDiscount() {
     return _products.where((product) => checkOferPrice(product)).toList();
   }
