@@ -14,6 +14,7 @@ class InvitePage extends StatefulWidget {
 }
 
 class _InvitePageState extends State<InvitePage> {
+
   final TextEditingController _controller = TextEditingController();
   void initState() {
     super.initState();
@@ -28,6 +29,112 @@ class _InvitePageState extends State<InvitePage> {
     Clipboard.setData(ClipboardData(text: _controller.text));
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Copied to clipboard')),
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Enter your details',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: getHeight(context, 3)),
+              Container(
+                  width: getWidth(context, 90),
+                  height: getWidth(context, 12),
+                  child: TextFormField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          Icons.copy,
+                          color: mainColorGrey,
+                        ),
+                        onPressed: _copyText,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          color: mainColorGrey, // Customize border color
+                          width: 1.0, // Customize border width
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          color: mainColorGrey.withOpacity(0.8),
+                          width: 1.0,
+                        ),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          color: Colors.red,
+                          width: 1.0,
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          color: Colors.red,
+                          width: 1.0,
+                        ),
+                      ),
+                      labelText: "Referral Code",
+                      // hintText: "Copy",
+                      hintStyle: TextStyle(
+                          color: mainColorBlack.withOpacity(0.5),
+                          fontSize: 14,
+                          fontFamily: mainFontnormal),
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                    ),
+                  ),
+                ),
+
+              SizedBox(height: getHeight(context, 3)),
+
+              GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: getWidth(context, 2),
+                      left: getWidth(context, 2),
+                      right: getWidth(context, 2),
+                      bottom: getWidth(context, 1),
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: mainColorGrey,
+                        border: Border.all(color: mainColorGrey)),
+                    width: getWidth(context, 90),
+                    height: getWidth(context, 13),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Apply".tr,
+                          style: TextStyle(
+                              fontFamily: mainFontbold,
+                              fontSize: 14,
+                              color: mainColorWhite),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -66,7 +173,7 @@ class _InvitePageState extends State<InvitePage> {
                 _listTiles(FontAwesomeIcons.one, 'Share your referral code'),
                 _listTiles(FontAwesomeIcons.two, 'Friends get \$10 on their first gesture'),
                 _listTiles(FontAwesomeIcons.three, 'You get \$10 off coupon'),
-                SizedBox(height: getHeight(context, 8)),
+                SizedBox(height: getHeight(context, 5)),
 
                 Container(
                   width: getWidth(context, 90),
@@ -163,9 +270,38 @@ class _InvitePageState extends State<InvitePage> {
                       ],
                     ),
                   ),
+                ),
+
+                SizedBox(height: getHeight(context, 1)),
+
+                // Invite Botton
+                GestureDetector(
+                  onTap: () => _showBottomSheet(context),
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: getWidth(context, 2),
+                      left: getWidth(context, 2),
+                      right: getWidth(context, 2),
+                      bottom: getWidth(context, 1),
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: mainColorGrey,
+                        border: Border.all(color: mainColorGrey)),
+                    width: getWidth(context, 90),
+                    height: getWidth(context, 13),
+                    child: Center(
+                      child: Text(
+                        "Invite friends now".tr,
+                        style: TextStyle(
+                            fontFamily: mainFontbold,
+                            fontSize: 14,
+                            color: mainColorWhite),
+                      ),
+                    ),
+                  ),
                 )
 
-                
 
               ],
             ),
