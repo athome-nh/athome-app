@@ -65,102 +65,102 @@ class _InvitePageState extends State<InvitePage> {
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (BuildContext context) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Enter your details',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: getHeight(context, 3)),
-              Container(
-                width: getWidth(context, 90),
-                height: getWidth(context, 12),
-                child: TextFormField(
-                  controller: _controllercoderefer,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        Icons.copy,
-                        color: mainColorGrey,
-                      ),
-                      onPressed: _copyText,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: mainColorGrey, // Customize border color
-                        width: 1.0, // Customize border width
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: mainColorGrey.withOpacity(0.8),
-                        width: 1.0,
-                      ),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1.0,
-                      ),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1.0,
-                      ),
-                    ),
-                    labelText: "Referral Code",
-                    // hintText: "Copy",
-                    hintStyle: TextStyle(
-                        color: mainColorBlack.withOpacity(0.5),
-                        fontSize: 14,
-                        fontFamily: mainFontnormal),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter mystate) {
+          return Padding(
+            padding: EdgeInsets.only(
+              left: 16.0,
+              right: 16.0,
+              top: 16.0,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 16.0,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Enter your details',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                ),
-              ),
-              SizedBox(height: getHeight(context, 3)),
-              GestureDetector(
-                onTap: _controllercode.text == userdata["code"] ? null : () {},
-                child: Container(
-                  padding: EdgeInsets.only(
-                    top: getWidth(context, 2),
-                    left: getWidth(context, 2),
-                    right: getWidth(context, 2),
-                    bottom: getWidth(context, 1),
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: mainColorGrey,
-                      border: Border.all(color: mainColorGrey)),
-                  width: getWidth(context, 90),
-                  height: getWidth(context, 13),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Apply".tr,
-                        style: TextStyle(
-                            fontFamily: mainFontbold,
+                  SizedBox(height: getHeight(context, 3)),
+                  Container(
+                    width: getWidth(context, 90),
+                    height: getWidth(context, 12),
+                    child: TextFormField(
+                      onChanged: (value) {
+                        mystate(() {
+                          
+                        });
+                      },
+                      controller: _controllercoderefer,
+                      decoration: InputDecoration(
+                   
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: mainColorGrey,
+                            width: 1.0,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: mainColorGrey.withOpacity(0.8),
+                            width: 1.0,
+                          ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                            width: 1.0,
+                          ),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                            width: 1.0,
+                          ),
+                        ),
+                        labelText: "Referral Code",
+                        hintStyle: TextStyle(
+                            color: mainColorBlack.withOpacity(0.5),
                             fontSize: 14,
-                            color: mainColorWhite),
+                            fontFamily: mainFontnormal),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              )
-            ],
-          ),
-        );
+                  SizedBox(height: getHeight(context, 3)),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                         foregroundColor: _controllercoderefer.text != userdata["code"]
+                                                                            ? mainColorWhite
+                                                                            : mainColorBlack,
+                                                                        backgroundColor: _controllercoderefer.text != userdata["code"]
+                                                                            ? mainColorGrey
+                                                                            : Colors.grey[300],
+                      fixedSize: Size(
+                        getWidth(context, 90),
+                        getHeight(context, 6),
+                      ),
+                    ),
+                    onPressed: _controllercoderefer.text == userdata["code"]
+                        ? null
+                        : () {},
+                    child: Text(
+                      "Apply".tr,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
       },
     );
   }
@@ -189,16 +189,6 @@ class _InvitePageState extends State<InvitePage> {
                 child: SizedBox(
                 height: getWidth(context, 80),
                 child: Image.asset("assets/images/LogoLoading.gif"),
-                // LoadingIndicator(
-                //   indicatorType: Indicator.ballRotateChase,
-                //   colors: [
-                //     mainColorWhite,
-                //     // mainColorRed,
-                //     // mainColorSuger,
-                //   ],
-
-                //   // strokeWidth: 5,
-                // ),
               ))
             : SingleChildScrollView(
                 child: Column(
@@ -275,46 +265,23 @@ class _InvitePageState extends State<InvitePage> {
                     SizedBox(height: getHeight(context, 2)),
 
                     // Invite Botton
-                    GestureDetector(
-                      onTap: () async {
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        fixedSize: Size(
+                          getWidth(context, 90),
+                          getHeight(context, 6),
+                        ),
+                      ),
+                      onPressed: () async {
                         final result = await Share.share(
-                            'Dowanload the app https://dllylas.com\n\n Code: ' +
+                            'Download the app https://dllylas.com\n\n Code: ' +
                                 _controllercode.text);
-
                         if (result.status == ShareResultStatus.success) {
                           print('Thank you for sharing my website!');
                         }
                       },
-                      child: Container(
-                        padding: EdgeInsets.only(
-                          top: getWidth(context, 2),
-                          left: getWidth(context, 2),
-                          right: getWidth(context, 2),
-                          bottom: getWidth(context, 1),
-                        ),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: mainColorGrey,
-                            border: Border.all(color: mainColorGrey)),
-                        width: getWidth(context, 90),
-                        height: getWidth(context, 13),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Icon(
-                              Icons.file_upload_outlined,
-                              color: mainColorWhite,
-                            ),
-                            Text(
-                              "Invite friends now".tr,
-                              style: TextStyle(
-                                  fontFamily: mainFontbold,
-                                  fontSize: 14,
-                                  color: mainColorWhite),
-                            ),
-                            SizedBox(width: getHeight(context, 5)),
-                          ],
-                        ),
+                      child: Text(
+                        "Invite friends now".tr,
                       ),
                     ),
 
@@ -322,32 +289,18 @@ class _InvitePageState extends State<InvitePage> {
                         ? SizedBox(height: getHeight(context, 1))
                         : SizedBox(),
 
-                    // Invite Botton
+                    // Refer Botton
                     userdata["refer"] == null
-                        ? GestureDetector(
-                            onTap: () => _showBottomSheet(context),
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                top: getWidth(context, 2),
-                                left: getWidth(context, 2),
-                                right: getWidth(context, 2),
-                                bottom: getWidth(context, 1),
+                        ? TextButton(
+                            style: TextButton.styleFrom(
+                              fixedSize: Size(
+                                getWidth(context, 90),
+                                getHeight(context, 6),
                               ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: mainColorGrey,
-                                  border: Border.all(color: mainColorGrey)),
-                              width: getWidth(context, 90),
-                              height: getWidth(context, 13),
-                              child: Center(
-                                child: Text(
-                                  "Invite friends now".tr,
-                                  style: TextStyle(
-                                      fontFamily: mainFontbold,
-                                      fontSize: 14,
-                                      color: mainColorWhite),
-                                ),
-                              ),
+                            ),
+                            onPressed: () => _showBottomSheet(context),
+                            child: Text(
+                              "Enter Refer Code".tr,
                             ),
                           )
                         : SizedBox(),
