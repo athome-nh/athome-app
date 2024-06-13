@@ -34,7 +34,9 @@ class _CheckOutState extends State<CheckOut> {
   int locationID = 0;
   String orderCode = "";
   int deleveryType = 1;
-
+  String VoucherE = "";
+  int VoucherID = -1;
+  int VoucherAmount = 0;
   List<String> listOfDays = [
     "Select Day".tr,
     "Monday".tr,
@@ -688,6 +690,10 @@ class _CheckOutState extends State<CheckOut> {
                         ),
                         TextButton(
                           onPressed: () async {
+                            setState(() {
+                              VoucherE = "";
+                              voucherCode.clear();
+                            });
                             showDialog(
                               context: context,
                               builder: (ctx) => StatefulBuilder(
@@ -763,17 +769,6 @@ class _CheckOutState extends State<CheckOut> {
                                                             width: 1.0,
                                                           ),
                                                         ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors.red,
-                                                            width: 1.0,
-                                                          ),
-                                                        ),
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderRadius:
@@ -800,6 +795,20 @@ class _CheckOutState extends State<CheckOut> {
                                                       ),
                                                     ),
                                                   ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  VoucherE.isNotEmpty
+                                                      ? Text(
+                                                          VoucherE,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  mainFontnormal,
+                                                              color:
+                                                                  mainColorRed,
+                                                              fontSize: 14),
+                                                        )
+                                                      : SizedBox(),
 
                                                   SizedBox(
                                                       height: getHeight(
@@ -821,9 +830,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                 int index) {
                                                           final voucher =
                                                               productrovider
-                                                                  .unusedVouchers
-                                                               
-                                                                 [index];
+                                                                      .unusedVouchers[
+                                                                  index];
 
                                                           return Column(
                                                             children: [
@@ -931,7 +939,86 @@ class _CheckOutState extends State<CheckOut> {
 
                                                   TextButton(
                                                     onPressed: () {
-                                                      Navigator.pop(context);
+                                                      var data = {
+                                                        "id": userdata["id"],
+                                                        "amount": widget.total,
+                                                        "code":
+                                                            voucherCode.text,
+                                                      };
+                                                      Network(false)
+                                                          .postData(
+                                                              "checkvoucher",
+                                                              data,
+                                                              context)
+                                                          .then((value) {
+                                                        print(value);
+
+                                                        if (value != "") {
+                                                          if (value["code"] ==
+                                                              "200") {
+                                                            if (value["data"] ==
+                                                                "not_found") {
+                                                              setState1(() {
+                                                                VoucherE = value[
+                                                                        "data"]
+                                                                    .toString();
+                                                              });
+                                                            } else if (value[
+                                                                    "data"] ==
+                                                                "expired") {
+                                                              setState1(() {
+                                                                VoucherE = value[
+                                                                        "data"]
+                                                                    .toString();
+                                                              });
+                                                            } else if (value[
+                                                                    "data"] ==
+                                                                "minimum") {
+                                                              setState1(() {
+                                                                VoucherE = value[
+                                                                        "data"]
+                                                                    .toString();
+                                                              });
+                                                            } else if (value[
+                                                                    "data"] ==
+                                                                "limit") {
+                                                              setState1(() {
+                                                                VoucherE = value[
+                                                                        "data"]
+                                                                    .toString();
+                                                              });
+                                                            } else if (value[
+                                                                    "data"] ==
+                                                                "used") {
+                                                              setState1(() {
+                                                                VoucherE = value[
+                                                                        "data"]
+                                                                    .toString();
+                                                              });
+                                                            } else if (value[
+                                                                    "data"] ==
+                                                                "success") {
+                                                              setState1(() {
+                                                                VoucherE = value[
+                                                                        "data"]
+                                                                    .toString();
+
+                                                                VoucherID =
+                                                                    value["id"];
+                                                                VoucherAmount =
+                                                                    value[
+                                                                        "amount"];
+                                                              });
+                                                              Navigator.pop(
+                                                                  context);
+                                                              productrovider
+                                                                  .notifyListeners();
+                                                            }
+                                                          } else {}
+                                                        } else {
+                                                          setState(() {});
+                                                        }
+                                                      });
                                                     },
                                                     child: Text("Submit"),
                                                   ),
@@ -1108,7 +1195,8 @@ class _CheckOutState extends State<CheckOut> {
           ),
         ),
         bottomNavigationBar: Container(
-          height: getHeight(context, 24),
+          height:
+              VoucherID != -1 ? getHeight(context, 27) : getHeight(context, 24),
           decoration: BoxDecoration(
             color: mainColorWhite,
           ),
@@ -1138,6 +1226,35 @@ class _CheckOutState extends State<CheckOut> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: getHeight(context, 1),
+              ),
+              VoucherID != -1
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getWidth(context, 4)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Voucher Amount".tr,
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontFamily: mainFontnormal,
+                                fontSize: 16),
+                          ),
+                          Text(
+                            textAlign: TextAlign.end,
+                            addCommasToPrice(-VoucherAmount),
+                            style: TextStyle(
+                                color: mainColorRed,
+                                fontFamily: mainFontnormal,
+                                fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    )
+                  : SizedBox(),
               SizedBox(
                 height: getHeight(context, 1),
               ),
@@ -1191,7 +1308,11 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     Text(
                       textAlign: TextAlign.end,
-                      addCommasToPrice(widget.total),
+                      deleveryType == 1
+                          ? addCommasToPrice(widget.total -
+                              VoucherAmount +
+                              productrovider.deleveryCost)
+                          : addCommasToPrice(widget.total - VoucherAmount),
                       style: TextStyle(
                           color: Colors.green,
                           fontFamily: mainFontbold,
@@ -1227,10 +1348,11 @@ class _CheckOutState extends State<CheckOut> {
 
                             var data2 = {
                               "customerid": userdata["id"],
-                              "total": widget.total,
+                              "total": widget.total - VoucherAmount,
                               "location": locationID,
                               "order_data": data.substring(2),
                               "note": NoteController.text,
+                              "voucher_id": VoucherID == -1 ? "" : VoucherID,
                               "cost": deleveryType == 1
                                   ? productrovider.deleveryCost
                                   : 0,

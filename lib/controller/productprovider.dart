@@ -335,7 +335,11 @@ class productProvider extends ChangeNotifier {
 
   List<Voucher> get unusedVouchers {
     var usedIds = usedVoucherIds;
-    return _vouchers.where((voucher) => !usedIds.contains(voucher.id)).toList();
+    return _vouchers
+        .where((voucher) =>
+            !usedIds.contains(voucher.id) &&
+            DateTime.parse(voucher.expireDate!).isAfter(datetimeS))
+        .toList();
   }
 
   List<Voucher> get usedVouchers {
