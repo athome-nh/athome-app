@@ -6,7 +6,14 @@ import 'package:provider/provider.dart';
 
 import '../Config/property.dart';
 
-class MyHomePage extends StatelessWidget {
+class VoucherCodePage extends StatefulWidget {
+  const VoucherCodePage({super.key});
+
+  @override
+  State<VoucherCodePage> createState() => _VoucherCodePageState();
+}
+
+class _VoucherCodePageState extends State<VoucherCodePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

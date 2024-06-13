@@ -25,8 +25,11 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../Config/my_widget.dart';
+import '../Landing/login_page.dart';
 import 'account_setting.dart';
+import 'all_gudide.dart';
 import 'bawar.dart';
+import 'help_screen.dart';
 import 'invite_friend.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -35,6 +38,26 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String selectedLanguage = 'English';
+  String selectedItem = 'English';
+
+  void _updateLanguage(String language) {
+    selectedItem = language;
+    if (selectedItem == 'English') {
+      lang = "en";
+      Get.updateLocale(const Locale("en"));
+      setStringPrefs("lang", "en");
+    } else if (selectedItem == 'Arabic') {
+      lang = "ar";
+      Get.updateLocale(const Locale("ar"));
+      setStringPrefs("lang", "ar");
+    } else if (selectedItem == 'Kurdish') {
+      lang = "kur";
+      Get.updateLocale(const Locale("kur"));
+      setStringPrefs("lang", "kur");
+    }
+  }
+
   final picker = ImagePicker();
   XFile? _image;
 
@@ -67,8 +90,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } else {}
   }
 
-  String selectedLanguage = 'English';
-
   List<String> items = [
     "Gender",
     'Male',
@@ -80,20 +101,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController phoneController = TextEditingController();
   String gender = "Male";
 
-  String selectedItem = 'English';
   bool isEdit = false;
   bool colapse = false;
   bool waiting = false;
   bool waitingImage = false;
   String image = "";
   bool nameE = false;
+
   @override
   void initState() {
     selectedItem = lang == "en"
-        ? "English"
+        ? "English".tr
         : lang == "ar"
-            ? "Arabic"
-            : "Kurdish";
+            ? "Arabic".tr
+            : "Kurdish".tr;
     if (isLogin && userdata.isNotEmpty) {
       nameController.text = userdata["name"];
       ageController.text = userdata["age"].toString();
@@ -124,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               // body
               body: !isLogin
-                  ? loginFirstContainer(context)
+                  ? _guestAccount(context)
                   : !Provider.of<productProvider>(context, listen: true)
                           .showuser
                       ? Skeletonizer(
@@ -995,7 +1016,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       : SingleChildScrollView(
                           child: Column(
                             children: [
-
                               // Image and Username
                               Container(
                                 color: mainColorGrey,
@@ -1003,39 +1023,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     vertical: 20, horizontal: 20),
                                 child: Row(
                                   children: [
-
                                     // image
                                     _image != null
                                         ? Container(
-                                          width: getWidth(context, 25),
-                                          height: getWidth(context, 25),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(
-                                                    100),
-                                          ),
-                                          child: CircleAvatar(
-                                              backgroundColor:
-                                                  mainColorGrey,
-                                              backgroundImage: FileImage(
-                                                File(_image!.path),
-                                              )),
-                                        )
+                                            width: getWidth(context, 25),
+                                            height: getWidth(context, 25),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                            ),
+                                            child: CircleAvatar(
+                                                backgroundColor: mainColorGrey,
+                                                backgroundImage: FileImage(
+                                                  File(_image!.path),
+                                                )),
+                                          )
                                         : Container(
                                             width: getWidth(context, 25),
                                             height: getWidth(context, 25),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(
-                                                      100),
+                                                  BorderRadius.circular(100),
                                             ),
                                             child: CircleAvatar(
-                                              backgroundColor:
-                                                  mainColorGrey,
+                                              backgroundColor: mainColorGrey,
                                               backgroundImage:
                                                   CachedNetworkImageProvider(
-                                                dotenv.env[
-                                                        'imageUrlServer']! +
+                                                dotenv.env['imageUrlServer']! +
                                                     image,
                                               ),
                                             )),
@@ -1108,7 +1122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // My Voucher
                               _listTiles(Icons.card_giftcard, 'My Voucher',
-                                  MyHomePage()),
+                                  VoucherCodePage()),
 
                               // Account Settings
                               _listTiles(Icons.settings_outlined,
@@ -1237,6 +1251,273 @@ class _ProfileScreenState extends State<ProfileScreen> {
           fontSize: 16,
         ),
       ),
+    );
+  }
+
+  Widget _guestAccount(context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          // Image and Username
+          Container(
+            color: mainColorGrey,
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            child: Row(
+              children: [
+                // image
+                Container(
+                  width: getWidth(context, 25),
+                  height: getWidth(context, 25),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: mainColorWhite,
+                    child: Image.asset(
+                      "assets/Victors/first.png",
+                    ),
+                  ),
+                ),
+
+                SizedBox(width: getHeight(context, 2)),
+
+                // Username
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Guest Account",
+                      style: TextStyle(
+                          fontFamily: mainFontbold,
+                          fontSize: 16,
+                          color: mainColorWhite),
+                    ),
+                    Text(
+                      "+964 7-- --- ----",
+                      style: TextStyle(
+                          fontFamily: mainFontnormal,
+                          fontSize: 14,
+                          color: mainColorWhite),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          // Title 1
+          SizedBox(height: getHeight(context, 2)),
+          _titles("General"),
+
+          // Language
+          _Language(Ionicons.globe_outline, 'Language'),
+
+          // Help center
+          _listTiles(Icons.description_outlined, "Help center", HelpScreen()),
+
+          // About us
+          _listTiles(Icons.privacy_tip_outlined, 'About us', AboutScreen()),
+
+          // Guide
+          _listTiles(Icons.support_agent, 'Guide', GudidePage()),
+
+          // Account Information
+          // _listTiles(
+          //     Icons.person_outline, 'Account Information', AccountInfo()),
+
+          // Orders
+          // _listTiles(Ionicons.bag_outline, 'Orders', OrderScreen()),
+
+          // Locations
+          // _listTiles(Ionicons.location_outline, 'Locations', LocationScreen()),
+
+          // Refer a friend
+          // _listTiles(
+          //     Icons.person_add_outlined, 'Invite a friend', InvitePage()),
+
+          // Coin & Reward
+          // _listTiles(
+          //     Icons.monetization_on_outlined, 'Coin & Reward', BlankPage()),
+
+          // My Voucher
+          // _listTiles(Icons.card_giftcard, 'My Voucher', MyHomePage()),
+
+          // Account Settings
+          // _listTiles(
+          //     Icons.settings_outlined, 'Account Settings', AccountSetting()),
+
+          // Title 2
+          // SizedBox(height: getHeight(context, 2)),
+          // _titles("General"),
+
+          // Terms & Conditions
+          _listTiles(Icons.description_outlined, "Terms & Conditions",
+              TermsandCondition()),
+
+          // Privacy Policy
+          _listTiles(
+              Icons.privacy_tip_outlined, 'Privacy Policy', PrivacyScreen()),
+
+          // Customer Services
+          // _listTiles(Icons.support_agent, 'Customer Services', ChatScreen()),
+
+          // Logout
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RegisterWithPhoneNumber()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                minimumSize: Size(double.infinity, 50),
+                side: BorderSide(color: Colors.grey),
+              ),
+              child: Text(
+                "Register".tr,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _Language(IconData icon, String title) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(icon, size: 24),
+          title: Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontFamily: mainFontnormal,
+                color: mainColorGrey,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return Directionality(
+                  textDirection:
+                      lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+                  child: AlertDialog(
+                    title: Text('Select Language'),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        RadioListTile<String>(
+                          title: Row(children: [
+                            Image.asset(
+                              "assets/images/uk.png",
+                              width: 35,
+                              height: 35,
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                top: getWidth(context, 2),
+                                left: getWidth(context, 2),
+                                right: getWidth(context, 2),
+                                bottom: getWidth(context, 1),
+                              ),
+                              child: Text(
+                                "English".tr,
+                              ),
+                            ),
+                          ]),
+                          value: 'English',
+                          groupValue: selectedLanguage,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedLanguage = value!;
+                              _updateLanguage(selectedLanguage);
+                            });
+                          },
+                        ),
+                        RadioListTile<String>(
+                          title: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/iraq.png",
+                                width: 35,
+                                height: 35,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                  top: getWidth(context, 2),
+                                  left: getWidth(context, 2),
+                                  right: getWidth(context, 2),
+                                  bottom: getWidth(context, 1),
+                                ),
+                                child: Text(
+                                  "Arabic".tr,
+                                ),
+                              ),
+                            ],
+                          ),
+                          value: 'Arabic',
+                          groupValue: selectedLanguage,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedLanguage = value!;
+                              _updateLanguage(selectedLanguage);
+                            });
+                          },
+                        ),
+                        RadioListTile<String>(
+                          title: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/flag.png",
+                                width: 35,
+                                height: 35,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                  top: getWidth(context, 2),
+                                  left: getWidth(context, 2),
+                                  right: getWidth(context, 2),
+                                  bottom: getWidth(context, 1),
+                                ),
+                                child: Text(
+                                  "Kurdish".tr,
+                                ),
+                              ),
+                            ],
+                          ),
+                          value: 'Kurdish',
+                          groupValue: selectedLanguage,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedLanguage = value!;
+                              _updateLanguage(selectedLanguage);
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Divider(height: 1, thickness: 1),
+        ),
+      ],
     );
   }
 }

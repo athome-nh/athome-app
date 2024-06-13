@@ -31,32 +31,6 @@ class _InvitePageState extends State<InvitePage> {
     );
   }
 
-  void _onShareWithResult(BuildContext context, String uri, String text) async {
-    // A builder is used to retrieve the context immediately
-    // surrounding the ElevatedButton.
-    //
-    // The context's `findRenderObject` returns the first
-    // RenderObject in its descendent tree when it's not
-    // a RenderObjectWidget. The ElevatedButton's RenderObject
-    // has its position and size after it's built.
-    final box = context.findRenderObject() as RenderBox?;
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
-    ShareResult shareResult;
-    if (uri.isNotEmpty) {
-      shareResult = await Share.shareUri(
-        Uri.parse(uri),
-        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
-      );
-    } else {
-      shareResult = await Share.share(
-        text,
-        subject: "subject",
-        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
-      );
-    }
-    // scaffoldMessenger.showSnackBar(getResultSnackBar(shareResult));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -90,8 +64,7 @@ class _InvitePageState extends State<InvitePage> {
 
                 // Notification Setting
                 _listTiles(FontAwesomeIcons.one, 'Share your referral code'),
-                _listTiles(FontAwesomeIcons.two,
-                    'Friends get \$10 on their first gesture'),
+                _listTiles(FontAwesomeIcons.two, 'Friends get \$10 on their first gesture'),
                 _listTiles(FontAwesomeIcons.three, 'You get \$10 off coupon'),
                 SizedBox(height: getHeight(context, 8)),
 
@@ -191,6 +164,9 @@ class _InvitePageState extends State<InvitePage> {
                     ),
                   ),
                 )
+
+                
+
               ],
             ),
           ),

@@ -24,10 +24,11 @@ class AccountSetting extends StatefulWidget {
 }
 
 class _AccountSettingState extends State<AccountSetting> {
+
+  bool waiting = false;
   String selectedLanguage = 'English';
   String selectedItem = 'English';
-    bool waiting = false;
-
+  
   @override
   void initState() {
     selectedItem = lang == "en"
