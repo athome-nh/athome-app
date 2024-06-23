@@ -91,13 +91,10 @@ class _InvitePageState extends State<InvitePage> {
                     height: getWidth(context, 12),
                     child: TextFormField(
                       onChanged: (value) {
-                        mystate(() {
-                          
-                        });
+                        mystate(() {});
                       },
                       controller: _controllercoderefer,
                       decoration: InputDecoration(
-                   
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
@@ -138,12 +135,14 @@ class _InvitePageState extends State<InvitePage> {
                   SizedBox(height: getHeight(context, 3)),
                   TextButton(
                     style: TextButton.styleFrom(
-                         foregroundColor: _controllercoderefer.text != userdata["code"]
-                                                                            ? mainColorWhite
-                                                                            : mainColorBlack,
-                                                                        backgroundColor: _controllercoderefer.text != userdata["code"]
-                                                                            ? mainColorGrey
-                                                                            : Colors.grey[300],
+                      foregroundColor:
+                          _controllercoderefer.text != userdata["code"]
+                              ? mainColorWhite
+                              : mainColorBlack,
+                      backgroundColor:
+                          _controllercoderefer.text != userdata["code"]
+                              ? mainColorGrey
+                              : Colors.grey[300],
                       fixedSize: Size(
                         getWidth(context, 90),
                         getHeight(context, 6),
@@ -151,7 +150,28 @@ class _InvitePageState extends State<InvitePage> {
                     ),
                     onPressed: _controllercoderefer.text == userdata["code"]
                         ? null
-                        : () {},
+                        : () {
+                            var data = {
+                              "id": userdata["id"],
+                              "code": _controllercoderefer.text.trim()
+                            };
+                            Network(false)
+                                .postData("referUser", data, context)
+                                .then((value) {
+                              print(value);
+                              if (value != "") {
+                                if (value["code"] == "200") {
+                                  if (value["code"] == "full") {
+                                  } else {
+                                    _controllercoderefer.clear();
+                                    mystate(() {
+                                      userdata["refer"] = value["data"];
+                                    });
+                                  }
+                                } else {}
+                              } else {}
+                            });
+                          },
                     child: Text(
                       "Apply".tr,
                     ),
