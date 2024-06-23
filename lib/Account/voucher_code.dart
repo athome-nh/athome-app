@@ -3,7 +3,6 @@ import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../Config/property.dart';
 
 class VoucherCodePage extends StatefulWidget {
@@ -47,7 +46,7 @@ class ActiveTab extends StatelessWidget {
     final productrovider = Provider.of<productProvider>(context, listen: true);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.expireVouchers.isEmpty
+      child: productrovider.unusedVouchers.isEmpty
           ? Center(
               child: Text(
                 "Don\'t have any Voucher Code",
@@ -84,7 +83,7 @@ class UsedTab extends StatelessWidget {
     final productrovider = Provider.of<productProvider>(context, listen: true);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.expireVouchers.isEmpty
+      child: productrovider.usedVouchers.isEmpty
           ? Center(
               child: Text(
                 "Don\'t have any Voucher Code",
