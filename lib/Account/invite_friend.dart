@@ -235,6 +235,7 @@ class _InvitePageState extends State<InvitePage> {
                       height: getWidth(context, 12),
                       child: TextFormField(
                         controller: _controllercode,
+                        readOnly: true,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
                             icon: Icon(
