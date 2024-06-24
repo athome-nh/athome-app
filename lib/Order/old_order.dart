@@ -1,6 +1,7 @@
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Landing/splash_screen.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/order_items/order_items.dart';
@@ -199,197 +200,245 @@ class _OldOrderState extends State<OldOrder> {
                           );
                         }),
               ),
-              bottomNavigationBar: Container(
-                height: getHeight(context, 30),
-                decoration: BoxDecoration(
-                  color: mainColorWhite,
-                  // borderRadius: const BorderRadius.only(
-                  //   topLeft: Radius.circular(25),
-                  //   topRight: Radius.circular(25),
-                  // ),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: getHeight(context, 3),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Text(
-                        widget.status == 0
-                            ? "Order Placed".tr
-                            : (widget.status == 1 || widget.status == 2)
-                                ? "Processing Order".tr
-                                : widget.status == 3
-                                    ? "Order Is On way".tr
-                                    : widget.status == 4
-                                        ? "Order Ready For Pickup".tr
-                                        : widget.status == 5
-                                            ? "Order is delivered".tr
-                                            : "Undelivered".tr,
-                        style: TextStyle(
-                            color: widget.status < 5
-                                ? mainColorBlack
-                                : widget.status > 5
-                                    ? mainColorRed
-                                    : Colors.green,
-                            fontFamily: mainFontbold,
-                            fontSize: 18),
+              bottomNavigationBar: (productrovider.productitems.isEmpty)
+                  ? Center(child: waitingWiget(context))
+                  : Container(
+                      height: getHeight(context,
+                          vouchernow["discount_amount"] == 0 ? 30 : 33),
+                      decoration: BoxDecoration(
+                        color: mainColorWhite,
+                        // borderRadius: const BorderRadius.only(
+                        //   topLeft: Radius.circular(25),
+                        //   topRight: Radius.circular(25),
+                        // ),
                       ),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
                         children: [
-                          Text(
-                            "Date and Time".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
+                          SizedBox(
+                            height: getHeight(context, 3),
                           ),
-                          Text(
-                            textAlign: TextAlign.end,
-                            widget.time.substring(0, 16),
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Text(
+                              widget.status == 0
+                                  ? "Order Placed".tr
+                                  : (widget.status == 1 || widget.status == 2)
+                                      ? "Processing Order".tr
+                                      : widget.status == 3
+                                          ? "Order Is On way".tr
+                                          : widget.status == 4
+                                              ? "Order Ready For Pickup".tr
+                                              : widget.status == 5
+                                                  ? "Order is delivered".tr
+                                                  : "Undelivered".tr,
+                              style: TextStyle(
+                                  color: widget.status < 5
+                                      ? mainColorBlack
+                                      : widget.status > 5
+                                          ? mainColorRed
+                                          : Colors.green,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 18),
+                            ),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Date and Time".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  widget.time.substring(0, 16),
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Order No.".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  widget.id,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Sub Total".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  widget.ongoing
+                                      ? addCommasToPrice(
+                                          int.parse(widget.total))
+                                      : addCommasToPrice(
+                                          int.parse(widget.total) -
+                                              widget.deleverycost),
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          vouchernow["discount_amount"] == 0
+                              ? SizedBox()
+                              : Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: getWidth(context, 4)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Voucher".tr,
+                                        style: TextStyle(
+                                            color: mainColorBlack,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 16),
+                                      ),
+                                      Text(
+                                        textAlign: TextAlign.end,
+                                        addCommasToPrice(-int.parse(
+                                            vouchernow["discount_amount"]
+                                                .toString())),
+                                        style: TextStyle(
+                                            color: mainColorRed,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                          vouchernow["discount_amount"] == 0
+                              ? SizedBox()
+                              : SizedBox(
+                                  height: getHeight(context, 1),
+                                ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Delivery Cost".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  widget.deleverycost == 0
+                                      ? "Free Delivery".tr
+                                      : addCommasToPrice(
+                                          productrovider.deleveryCost),
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 14),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: const Divider(),
+                          ),
+                          SizedBox(
+                            height: getHeight(context, 1),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  textAlign: TextAlign.start,
+                                  "Total".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  widget.ongoing
+                                      ? addCommasToPrice((int.parse(
+                                                  widget.total) -
+                                              int.parse(
+                                                  vouchernow["discount_amount"]
+                                                      .toString())) +
+                                          widget.deleverycost)
+                                      : addCommasToPrice(
+                                          int.parse(widget.total) -
+                                              int.parse(
+                                                  vouchernow["discount_amount"]
+                                                      .toString())),
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 20),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Order No.".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
-                          ),
-                          Text(
-                            textAlign: TextAlign.end,
-                            widget.id,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Sub Total".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
-                          ),
-                          Text(
-                            textAlign: TextAlign.end,
-                            widget.ongoing
-                                ? addCommasToPrice(int.parse(widget.total))
-                                : addCommasToPrice(int.parse(widget.total) -
-                                    widget.deleverycost),
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Delivery Cost".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontnormal,
-                                fontSize: 16),
-                          ),
-                          Text(
-                            textAlign: TextAlign.end,
-                            widget.deleverycost == 0
-                                ? "Free Delivery".tr
-                                : addCommasToPrice(productrovider.deleveryCost),
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontFamily: mainFontnormal,
-                                fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: const Divider(),
-                    ),
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            textAlign: TextAlign.start,
-                            "Total".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontbold,
-                                fontSize: 20),
-                          ),
-                          Text(
-                            textAlign: TextAlign.end,
-                            widget.ongoing
-                                ? addCommasToPrice(int.parse(widget.total) +
-                                    widget.deleverycost)
-                                : addCommasToPrice(int.parse(widget.total)),
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontFamily: mainFontbold,
-                                fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
           );
   }

@@ -8,7 +8,6 @@ import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:dllylas/model/schedule_model/schedule_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:geolocator/geolocator.dart';
@@ -75,7 +74,8 @@ class _CheckOutState extends State<CheckOut> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final productrovider = Provider.of<productProvider>(context, listen: true);
-
+    List<ProductModel> cardItemshow =
+        productrovider.getProductsByIds(cartProvider.ListId());
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -1348,7 +1348,7 @@ class _CheckOutState extends State<CheckOut> {
 
                             var data2 = {
                               "customerid": userdata["id"],
-                              "total": widget.total - VoucherAmount,
+                              "total": widget.total,
                               "location": locationID,
                               "order_data": data.substring(2),
                               "note": NoteController.text,

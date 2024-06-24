@@ -30,8 +30,10 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+var vouchernow = {};
 var userdata = {};
 var homePopupData = {};
+
 bool loaddata = false;
 bool seenHomepopup = false;
 

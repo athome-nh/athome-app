@@ -1092,6 +1092,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(
+                                      width: 50,
+                                    ),
+                                    Text(
+                                      userdata["point"].toString(),
+                                      style: TextStyle(color: mainColorWhite),
+                                    ),
                                   ],
                                 ),
                               ),
