@@ -7,14 +7,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
 import '../Network/Network.dart';
 import '../controller/productprovider.dart';
 import '../main.dart';
-import '../map/loction.dart';
 
 class AccountInfo extends StatefulWidget {
   const AccountInfo({super.key});
@@ -33,7 +31,6 @@ class _AccountInfoState extends State<AccountInfo> {
         await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     setState(() {
       _image = pickedFile;
-
       change();
     });
   }
@@ -172,7 +169,6 @@ class _AccountInfoState extends State<AccountInfo> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          
                           // Image
                           Container(
                             padding: const EdgeInsets.all(15),
@@ -339,7 +335,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                         fontSize: 16,
                                         fontFamily: mainFontbold,
                                       ),
-                                      hintText: "Enter your Name".tr,
+                                      hintText: "Enter Your Name".tr,
                                       hintStyle: TextStyle(
                                         color: mainColorBlack.withOpacity(0.5),
                                         fontSize: 14,
@@ -369,7 +365,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                         width: getWidth(context, 1),
                                       ),
                                       Text(
-                                        "Enter your full name".tr,
+                                        "Enter Your Full Name".tr,
                                         style: TextStyle(
                                           fontFamily: mainFontbold,
                                           color: mainColorRed.withOpacity(0.8),
@@ -561,84 +557,90 @@ class _AccountInfoState extends State<AccountInfo> {
                           isEdit
                               ? SizedBox()
                               : Column(
-                            children: [
-                              Container(
-                                height: getHeight(context, 7),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 5)),
-                                  child: GestureDetector(
-                                    onTap:
-                                        () {}, // Intercept taps to make the field non-interactive
-                                    child: AbsorbPointer(
-                                      child: TextFormField(
-                                        controller: phoneController,
-                                        cursorColor: mainColorGrey,
-                                        keyboardType: TextInputType.number,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            ageE = false;
-                                          });
-                                        },
-                                        validator: (value) {
-                                          return null;
-                                        },
-                                        textAlignVertical:
-                                            TextAlignVertical.bottom,
-                                        style: TextStyle(
-                                          color: isEdit
-                                              ? mainColorBlack
-                                              : mainColorBlack.withOpacity(0.7),
-                                          fontSize: 16,
-                                          fontFamily: mainFontnormal,
-                                        ),
-                                        decoration: InputDecoration(
-                                          focusedBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            borderSide: BorderSide(
-                                              color:
-                                                  mainColorGrey, // Customize border color
-                                              width:
-                                                  1.0, // Customize border width
+                                  children: [
+                                    Container(
+                                      height: getHeight(context, 7),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 5)),
+                                        child: GestureDetector(
+                                          onTap:
+                                              () {}, // Intercept taps to make the field non-interactive
+                                          child: AbsorbPointer(
+                                            child: TextFormField(
+                                              controller: phoneController,
+                                              cursorColor: mainColorGrey,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  ageE = false;
+                                                });
+                                              },
+                                              validator: (value) {
+                                                return null;
+                                              },
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
+                                              style: TextStyle(
+                                                color: isEdit
+                                                    ? mainColorBlack
+                                                    : mainColorBlack
+                                                        .withOpacity(0.7),
+                                                fontSize: 16,
+                                                fontFamily: mainFontnormal,
+                                              ),
+                                              decoration: InputDecoration(
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                  borderSide: BorderSide(
+                                                    color:
+                                                        mainColorGrey, // Customize border color
+                                                    width:
+                                                        1.0, // Customize border width
+                                                  ),
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                  borderSide: BorderSide(
+                                                    color: mainColorGrey
+                                                        .withOpacity(
+                                                            0.5), // Customize border color
+                                                    width:
+                                                        1.0, // Customize border width
+                                                  ),
+                                                ),
+                                                labelText: "Phone".tr,
+                                                labelStyle: TextStyle(
+                                                  color: mainColorGrey,
+                                                  fontSize: 16,
+                                                  fontFamily: mainFontbold,
+                                                ),
+                                                hintText: " ".tr,
+                                                hintStyle: TextStyle(
+                                                  color: mainColorBlack
+                                                      .withOpacity(0.5),
+                                                  fontSize: 14,
+                                                  fontFamily: mainFontnormal,
+                                                ),
+                                                floatingLabelBehavior:
+                                                    FloatingLabelBehavior
+                                                        .always,
+                                              ),
                                             ),
                                           ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            borderSide: BorderSide(
-                                              color: mainColorGrey.withOpacity(
-                                                  0.5), // Customize border color
-                                              width:
-                                                  1.0, // Customize border width
-                                            ),
-                                          ),
-                                          labelText: "Phone".tr,
-                                          labelStyle: TextStyle(
-                                            color: mainColorGrey,
-                                            fontSize: 16,
-                                            fontFamily: mainFontbold,
-                                          ),
-                                          hintText: " ".tr,
-                                          hintStyle: TextStyle(
-                                            color:
-                                                mainColorBlack.withOpacity(0.5),
-                                            fontSize: 14,
-                                            fontFamily: mainFontnormal,
-                                          ),
-                                          floatingLabelBehavior:
-                                              FloatingLabelBehavior.always,
                                         ),
                                       ),
                                     ),
-                                  ),
+                                    SizedBox(
+                                      height: getHeight(context, 3),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              SizedBox(
-                                height: getHeight(context, 3),
-                              ),
-                            ],
-                          ),
 
                           // City
                           isEdit
@@ -722,74 +724,6 @@ class _AccountInfoState extends State<AccountInfo> {
                                     ),
                                   ],
                                 ),
-
-                          // Locations
-                          // GestureDetector(
-                          //   onTap: () {
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) =>
-                          //               const LocationScreen()),
-                          //     );
-                          //   },
-                          //   child: Padding(
-                          //     padding: EdgeInsets.symmetric(
-                          //       horizontal: getWidth(context, 5),
-                          //     ),
-                          //     child: Container(
-                          //       height: getHeight(context, 7),
-                          //       decoration: BoxDecoration(
-                          //           border: Border.all(
-                          //             color: mainColorGrey.withOpacity(0.5),
-                          //           ),
-                          //           borderRadius: BorderRadius.circular(15)),
-                          //       child: Padding(
-                          //         padding: const EdgeInsets.symmetric(
-                          //             horizontal: 12),
-                          //         child: GestureDetector(
-                          //           onTap: () {
-                          //             Navigator.push(
-                          //               context,
-                          //               MaterialPageRoute(
-                          //                   builder: (context) =>
-                          //                       const LocationScreen()),
-                          //             );
-                          //           },
-                          //           child: Row(
-                          //             children: [
-                          //               Icon(
-                          //                 color: mainColorBlack,
-                          //                 Ionicons.location_outline,
-                          //                 size: 20,
-                          //               ),
-                          //               const SizedBox(
-                          //                 width: 10,
-                          //               ),
-                          //               Text(
-                          //                 "Locations".tr,
-                          //                 style: TextStyle(
-                          //                     color: mainColorBlack,
-                          //                     fontFamily: mainFontnormal,
-                          //                     fontSize: 16,
-                          //                     ),
-                          //               ),
-                          //               const Spacer(),
-                          //               Icon(lang == "en"
-                          //                   ? Icons
-                          //                       .keyboard_arrow_right_outlined
-                          //                   : Icons
-                          //                       .keyboard_arrow_left_outlined)
-                          //             ],
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: getHeight(context, 2),
-                          // ),
 
                           // Save Botton
                           isEdit
