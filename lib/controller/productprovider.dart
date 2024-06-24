@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/brandmodel/brandmodel.dart';
 import 'package:dllylas/model/category_model/category_model.dart';
@@ -33,14 +34,14 @@ class productProvider extends ChangeNotifier {
     //  updatePost();
   }
   getproductitems(int id) {
+    vouchernow = {"discount_amount": 0};
     productitems.clear();
     String ids = listOrderitemsId(id).substring(2);
+    final item = Orders.firstWhere(
+      (element) => element.id == id,
+    );
     Network(false)
-        .postData(
-            "getProductInOrder",
-            {
-              "data": ids,
-            },
+        .postData("getProductInOrder", {"data": ids, 'voucher': item.voucherID},
             navigatorKey.currentContext!)
         .then((value) {
       if (value != "") {
@@ -48,6 +49,7 @@ class productProvider extends ChangeNotifier {
           setProductitems((value['products'] as List)
               .map((x) => Productitems.fromMap(x))
               .toList());
+          vouchernow = value["voucher"];
         } else {}
       }
     });

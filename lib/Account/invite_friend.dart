@@ -162,11 +162,16 @@ class _InvitePageState extends State<InvitePage> {
                               if (value != "") {
                                 if (value["code"] == "200") {
                                   if (value["code"] == "full") {
+                                    print("after 3 ");
+                                  }
+                                  if (value["code"] == "used") {
+                                    print("after this persion apply");
                                   } else {
                                     _controllercoderefer.clear();
                                     mystate(() {
                                       userdata["refer"] = value["data"];
                                     });
+                                    Navigator.pop(context);
                                   }
                                 } else {}
                               } else {}

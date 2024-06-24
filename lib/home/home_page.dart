@@ -99,6 +99,7 @@ class _HomeSreenState extends State<HomeSreen> {
 
   @override
   void initState() {
+    super.initState();
     FirebaseFirestore.instance
         .collection("onLoad")
         .doc("1")
