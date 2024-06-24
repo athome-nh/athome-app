@@ -18,7 +18,6 @@ class OldOrder extends StatefulWidget {
   int status = 0;
   int deleverycost = 0;
   bool ongoing = false;
-
   OldOrder(this.id, this.total, this.time, this.status, this.deleverycost,
       this.ongoing,
       {super.key});
@@ -318,8 +317,7 @@ class _OldOrderState extends State<OldOrder> {
                                       ? addCommasToPrice(
                                           int.parse(widget.total))
                                       : addCommasToPrice(
-                                          int.parse(widget.total) -
-                                              widget.deleverycost),
+                                          int.parse(widget.total)),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontnormal,
@@ -423,11 +421,12 @@ class _OldOrderState extends State<OldOrder> {
                                                   vouchernow["discount_amount"]
                                                       .toString())) +
                                           widget.deleverycost)
-                                      : addCommasToPrice(
-                                          int.parse(widget.total) -
+                                      : addCommasToPrice((int.parse(
+                                                  widget.total) -
                                               int.parse(
                                                   vouchernow["discount_amount"]
-                                                      .toString())),
+                                                      .toString())) +
+                                          widget.deleverycost),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontbold,

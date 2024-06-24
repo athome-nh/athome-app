@@ -66,7 +66,6 @@ class _MyCartState extends State<MyCart> {
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
-
               // AppBar
               appBar: AppBar(
                 title: Text(
@@ -183,7 +182,6 @@ class _MyCartState extends State<MyCart> {
                                 );
                               },
                             );
-                         
                           },
                           icon: const Icon(
                             Icons.delete_outline,
@@ -191,7 +189,7 @@ class _MyCartState extends State<MyCart> {
                         ),
                 ],
               ),
-              
+
               // Body
               body: !productrovider.show
                   ? Padding(
@@ -834,10 +832,6 @@ class _MyCartState extends State<MyCart> {
                               height: getHeight(context, 20),
                               decoration: BoxDecoration(
                                 color: mainColorWhite,
-                                // borderRadius: const BorderRadius.only(
-                                //   topLeft: Radius.circular(25),
-                                //   topRight: Radius.circular(25),
-                                // ),
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -845,70 +839,6 @@ class _MyCartState extends State<MyCart> {
                                   SizedBox(
                                     height: getHeight(context, 2),
                                   ),
-
-                                  // SizedBox(
-                                  //   height: getHeight(context, 1),
-                                  // ),
-                                  // Padding(
-                                  //   padding: EdgeInsets.symmetric(
-                                  //       horizontal: getWidth(context, 4)),
-                                  //   child: Row(
-                                  //     mainAxisAlignment:
-                                  //         MainAxisAlignment.spaceBetween,
-                                  //     children: [
-                                  //       Text(
-                                  //         "Sub Total".tr,
-                                  //         style: TextStyle(
-                                  //             color: mainColorBlack,
-                                  //             fontFamily: mainFontnormal,
-                                  //             fontSize: 16),
-                                  //       ),
-                                  //       Text(
-                                  //         textAlign: TextAlign.end,
-                                  //         addCommasToPrice(cartProvider
-                                  //             .calculateTotalPriceWithOutDiscount(
-                                  //                 CardItemshow)),
-                                  //         style: TextStyle(
-                                  //             color: mainColorBlack,
-                                  //             fontFamily: mainFontnormal,
-                                  //             fontSize: 16),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: getHeight(context, 1),
-                                  // ),
-                                  // Padding(
-                                  //   padding: EdgeInsets.symmetric(
-                                  //       horizontal: getWidth(context, 4)),
-                                  //   child: Row(
-                                  //     mainAxisAlignment:
-                                  //         MainAxisAlignment.spaceBetween,
-                                  //     children: [
-                                  //       Text(
-                                  //         "Save".tr,
-                                  //         style: TextStyle(
-                                  //             color: mainColorBlack,
-                                  //             fontFamily: mainFontnormal,
-                                  //             fontSize: 16),
-                                  //       ),
-                                  //       Text(
-                                  //         textAlign: TextAlign.end,
-                                  //         addCommasToPrice(cartProvider
-                                  //                 .calculateTotalPriceWithOutDiscount(
-                                  //                     CardItemshow) -
-                                  //             cartProvider.calculateTotalPrice(
-                                  //                 CardItemshow)),
-                                  //         style: TextStyle(
-                                  //             color: mainColorRed,
-                                  //             fontFamily: mainFontnormal,
-                                  //             fontSize: 16),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
-
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: getWidth(context, 4)),
@@ -917,11 +847,10 @@ class _MyCartState extends State<MyCart> {
                                         thickness: 1),
                                   ),
 
-
                                   SizedBox(
                                     height: getHeight(context, 1),
                                   ),
-                                  
+
                                   // Text --> ToTal
                                   Padding(
                                     padding: EdgeInsets.symmetric(
@@ -951,11 +880,11 @@ class _MyCartState extends State<MyCart> {
                                       ],
                                     ),
                                   ),
-                                  
+
                                   SizedBox(
                                     height: getHeight(context, 2),
                                   ),
-                                  
+
                                   // Button
                                   Padding(
                                     padding: EdgeInsets.symmetric(
@@ -1095,11 +1024,10 @@ class _MyCartState extends State<MyCart> {
                                       ),
                                     ),
                                   ),
-                                  
+
                                   // SizedBox(
                                   //   height: getWidth(context, 10),
                                   // ),
-
                                 ],
                               ),
                             )
