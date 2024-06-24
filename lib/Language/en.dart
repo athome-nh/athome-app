@@ -1,7 +1,55 @@
 const Map<String, String> en = {
+
+  // about_screen
+  "About Us": "About Us",
+  "AboutTextOne":
+      "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
+  "AboutTextTwo":
+      "Wide Selection of Products: Our online market  application offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
+  "AboutTextThree":
+      "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
+  "AboutTextFour":
+      "Secure payment: We prioritize the security of your payment information.Our application utilizes a secure payment gateway to safeguard your transactions, prioritizing the utmost protection of your sensitive financial information",
+  "AboutTextFive":
+      "promotions and deals: keep an eye out for special promotions, discounts, and deals available on our platform. We're committed to helping you save big on your everyday shopping needs. So don't miss out!",
+  "AboutTextSix":
+      "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we will promptly address your concerns.",
+  "AboutTextSeven":
+      "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
+  "AboutTextEight":
+      "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
+  
+  // account_info
+  "Image changed": "Image changed",
+  "Cancel": "Cancel",
+  "Edit": "Edit",
+  "Profile": "Profile",
+  "Name": "Name",
+  "Enter Your Name": "Enter Your Name",
+  "Enter Your Full Name": "Enter Your Full Name",
+  "Age": "Age",
+  "Enter your age": "Enter your age",
+  "please, Enter the number only": "please, Enter the number only",
+  "Gender": "Gender",
+  "Phone": "Phone",
+  "City": "City",
+  "Save": "Save",
+
+
+  
+  // profilo Chenged
+  "Information": "Information",
+  "Enter Name": "Enter Name",
+  "Enter Age": "Enter Age",
+  "Orders": "Orders",
+  "Address": "Address",
+  "About us": "About us",
+  "Log out": "Log out",
+  
+  
+
   //
   "New": "New",
-
   "Saturday": "Saturday",
   "Sunday": "Sunday",
   "Monday": "Monday",
@@ -9,7 +57,6 @@ const Map<String, String> en = {
   "Wednesday": "Wednesday",
   "Thursday": "Thursday",
   "Friday": "Friday",
-
   "Select Day": "Pick a delivery day",
   "Delivery Type": "Delivery Methods",
   "Delevery now": "Deliver Now",
@@ -91,7 +138,6 @@ const Map<String, String> en = {
   "Register First": "Register First",
   "You need login": "You have to register first",
   "Register": "Register",
-  "Cancel": "Cancel",
 
   // categories
   "All Categories": "All Categories",
@@ -125,18 +171,7 @@ const Map<String, String> en = {
   // Page --> Login First --> my_widget
   "Please login first": "Please login first", // nmayaa
 
-  // profilo
-  "Image changed": "Image changed",
-  "Information": "Information",
-  "Enter Name": "Enter Name",
-  "Enter Age": "Enter Age",
-  "Edit": "Edit",
-  "Orders": "Orders",
-  "Address": "Address",
-  "About us": "About us",
-  "Log out": "Log out",
-  "Save": "Save",
-  "Gender": "Gender",
+  
 
   // order_screen
   "My Orders": "My Orders",
@@ -195,7 +230,6 @@ const Map<String, String> en = {
 
   // locationdeatil
   "Locations": "Locations",
-  "Name": "Name",
   "Add name": "Add name",
   "Add name location": "Add name location",
   "Area": "Area",
@@ -216,10 +250,7 @@ const Map<String, String> en = {
   "Enter your account information to complete your account":
       "Please enter the required information for registration",
   "Enter your Name": "Enter your Name",
-  "Enter your age": "Enter your age",
   "Enter your full name": "Enter your full name",
-  "City": "City",
-  "Age": "Age",
   "unknown occurred error please try again later":
       "Error please try again later",
   "Confirm": "Confirm",
@@ -229,7 +260,6 @@ const Map<String, String> en = {
   "Account Pendding": "Wait...",
   "Account npt approved by admin yet":
       "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
-  "please, Enter the number only": "please, Enter the number only",
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",
@@ -259,24 +289,7 @@ const Map<String, String> en = {
   "Cancel order": "Cancel order",
   "View order": "View order",
 
-  // about_screen
-  "WelcomeToAthomeOnlineMarketApplication!":
-      "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
-  "WideSelectionOfProductsOurOnlineSupermarket":
-      "Wide Selection of Products: Our online market  application offers a vast range of products, from fresh produce to pantry essentials, household items, personal care products, and more. You can browse through various categories and find everything you need in one place.",
-  "EasyToUseInterfaceOurUserFriendly":
-      "Easy-to-Use Interface: Our user-friendly interface is designed to make your shopping experience smooth and enjoyable. You can easily search for products, add them to your cart, and proceed to checkout with just a few clicks.",
-  "SecurePaymentWePrioritizeTheSecurity":
-      "Secure payment: We prioritize the security of your payment information.Our application utilizes a secure payment gateway to safeguard your transactions, prioritizing the utmost protection of your sensitive financial information",
-  "PromotionsAndDealsKeep":
-      "promotions and deals: keep an eye out for special promotions, discounts, and deals available on our platform. We're committed to helping you save big on your everyday shopping needs. So don't miss out!",
-  "CustomerSupportIfYouHaveAnyQuestions":
-      "Customer Support: If you have any questions or need assistance, our dedicated customer support team is here to help. You can reach out to us through the application, and we will promptly address your concerns.",
-  "FeedbackAndImprovementWeValueYourFeedback":
-      "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
-  "ThankYouForChoosingOurAthome":
-      "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
-  "About Us": "About Us",
+  
 
   //more old_order
   "Order Placed": "Order Placed",
