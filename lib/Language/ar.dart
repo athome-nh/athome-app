@@ -35,6 +35,26 @@ const Map<String, String> ar = {
   "City": "مدينة",
   "Save": "حفظ",
 
+  // account_setting
+  "Account Settings": "",
+  "Setting": "",
+  "Notification Setting": "",
+  "Language": "اللغة",
+  "Support": "",
+  "Help center": "",
+  "About us": "حول التطبیق",
+  "Guide": "",
+  "Feedback": "",
+  "Delete Account": "حذف الحساب",
+  "Select Language": "",
+  "English": "إنجليزي",
+  "Arabic": "العربية",
+  "Kurdish": "كردي",
+
+
+  // choose_lan
+  "Get Start": "ابدأ",
+
   
   
   // profilo
@@ -43,7 +63,7 @@ const Map<String, String> ar = {
   "Enter Age": "ادخل العمر",
   "Orders": "طلباتي",
   "Address": "الموقع",
-  "About us": "حول التطبیق",
+  
   "Log out": "خروج",
   
   
@@ -94,12 +114,7 @@ const Map<String, String> ar = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // choose_lan
-  "Language": "اللغة",
-  "Kurdish": "كردي",
-  "Arabic": "العربية",
-  "English": "إنجليزي",
-  "Get Start": "ابدأ",
+  
 
   // welcome_screen
   "wst01": "تسوق بذکاء و سهولة",
@@ -330,7 +345,7 @@ const Map<String, String> ar = {
   "Update": "تحديث",
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "من خلال المتابعة، فإنك توافق على الحصول على سياسة الخصوصية الخاصة بـ Dlly Las",
-  "Delete Account": "حذف الحساب",
+  
   "Account recovery opportunity":
       "فرصة استعادة الحساب متاحة حتى @date@، يرجي التواصل معنا:(07509583333)",
 

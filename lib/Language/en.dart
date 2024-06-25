@@ -34,8 +34,30 @@ const Map<String, String> en = {
   "Phone": "Phone",
   "City": "City",
   "Save": "Save",
+  
+  // account_setting
+  "Account Settings": "Account Settings",
+  "Setting": "Setting",
+  "Notification Setting": "Notification Setting",
+  "Language": "Language",
+  "Support": "Support",
+  "Help center": "Help center",
+  "About us": "About us",
+  "Guide": "Guide",
+  "Feedback": "Feedback",
+  "Delete Account": "Delete Account",
+  "Select Language": "Select Language",
+  "English": "English",
+  "Arabic": "Arabic ",
+  "Kurdish": "Kurdish",
 
 
+
+  // choose_lan
+  
+  
+  
+  "Get Start": "Get Start",
   
   // profilo Chenged
   "Information": "Information",
@@ -43,7 +65,7 @@ const Map<String, String> en = {
   "Enter Age": "Enter Age",
   "Orders": "Orders",
   "Address": "Address",
-  "About us": "About us",
+  
   "Log out": "Log out",
   
   
@@ -91,13 +113,6 @@ const Map<String, String> en = {
   "Email": "Info@dllylas.com",
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
-
-  // choose_lan
-  "Language": "Language",
-  "Kurdish": "Kurdish",
-  "Arabic": "Arabic ",
-  "English": "English",
-  "Get Start": "Get Start",
 
   // welcome_screen
   "wst01": "Shop Smarter & Easier",
@@ -334,7 +349,7 @@ const Map<String, String> en = {
   "Update": "Update",
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "By continuing, you agree to get Dlly Las's Privacy Policy",
-  "Delete Account": "Delete Account",
+  
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
 

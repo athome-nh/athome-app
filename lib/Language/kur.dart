@@ -35,7 +35,25 @@ const Map<String, String> kur = {
   "City": "شار",
   "Save": "زەخیرە کردن",
 
-  
+  // account_setting
+  "Account Settings": "",
+  "Setting": "",
+  "Notification Setting": "",
+  "Language": "زمان",
+  "Support": "",
+  "Help center": "",
+  "About us": "دەربارەی ئێمە",
+  "Guide": "",
+  "Feedback": "",
+  "Delete Account": "هەژمارەکە بسڕەوە",
+  "Select Language": "",
+  "English": "ئینگلیزی",
+  "Arabic": "عەرەبی",
+  "Kurdish": "کوردی",
+
+
+  // choose_lan
+  "Get Start": "دەست پێبکە",
   
   
 
@@ -45,7 +63,7 @@ const Map<String, String> kur = {
   "Enter Age": "تۆمارکدنی تەمەن",
   "Orders": "داواکاریەکانم",
   "Address": "ناونیشان",
-  "About us": "دەربارەی ئێمە",
+  
   "Log out": "چوونە دەر",
   
   
@@ -96,12 +114,7 @@ const Map<String, String> kur = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // choose_lan
-  "Language": "زمان",
-  "Kurdish": "کوردی",
-  "Arabic": "عەرەبی",
-  "English": "ئینگلیزی",
-  "Get Start": "دەست پێبکە",
+  
 
   // welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
@@ -340,7 +353,7 @@ const Map<String, String> kur = {
   "Update": "دابەزاندن",
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
-  "Delete Account": "هەژمارەکە بسڕەوە",
+  
   "Account recovery opportunity":
       "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
 

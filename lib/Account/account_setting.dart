@@ -86,38 +86,38 @@ class _AccountSettingState extends State<AccountSetting> {
                           
                           // Title 1
                           SizedBox(height: getHeight(context, 2)),
-                          _titles("Setting"),
+                          _titles("Setting".tr),
 
                           // Notification Setting
                           _listTiles(Ionicons.notifications_outline,
-                              'Notification Setting', NotificationPage()),
+                              'Notification Setting'.tr, NotificationPage()),
 
                           // Language
-                          _Language(Ionicons.globe_outline, 'Language'),
+                          _Language(Ionicons.globe_outline, 'Language'.tr),
 
                           // Title 2
                           SizedBox(height: getHeight(context, 2)),
-                          _titles("Support"),
+                          _titles("Support".tr),
 
                           // Help center
-                          _listTiles(Icons.description_outlined, "Help center",
+                          _listTiles(Icons.description_outlined, "Help center".tr,
                               HelpScreen()),
 
                           // About us
-                          _listTiles(Icons.privacy_tip_outlined, 'About us',
+                          _listTiles(Icons.privacy_tip_outlined, 'About us'.tr,
                               AboutScreen()),
 
                           // Guide
                           _listTiles(
-                              Icons.support_agent, 'Guide', GudidePage()),
+                              Icons.support_agent, 'Guide'.tr, GudidePage()),
 
                           // Feedback
-                          _listTiles(Icons.feedback_outlined, 'Feedback',
+                          _listTiles(Icons.feedback_outlined, 'Feedback'.tr,
                               FeedbackScreen()),
 
                           // Delete Account
                           _DeleteAccount(
-                              Ionicons.trash_outline, 'Delete Account'),
+                              Ionicons.trash_outline, 'Delete Account'.tr),
 
                           ],
                       ),
@@ -197,7 +197,7 @@ class _AccountSettingState extends State<AccountSetting> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text('Select Language'),
+                  title: Text('Select Language'.tr),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
