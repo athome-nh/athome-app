@@ -43,20 +43,23 @@ const Map<String, String> en = {
   "Support": "Support",
   "Help center": "Help center",
   "About us": "About us",
-  "Guide": "Guide",
+  "Guide": "Guide", // all_gudide
   "Feedback": "Feedback",
   "Delete Account": "Delete Account",
   "Select Language": "Select Language",
   "English": "English",
   "Arabic": "Arabic ",
   "Kurdish": "Kurdish",
+  
+  // all_gudide
+  "FAQs": "FAQs",
+  "What\'s New": "What\'s New",
+
+
 
 
 
   // choose_lan
-  
-  
-  
   "Get Start": "Get Start",
   
   // profilo Chenged
