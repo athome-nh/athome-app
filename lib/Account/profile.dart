@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/account_info.dart';
+import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/chatscreen.dart';
 import 'package:dllylas/Account/voucher_code.dart';
 import 'package:dllylas/Config/local_data.dart';
@@ -27,7 +28,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../Config/my_widget.dart';
 import '../Landing/login_page.dart';
 import 'account_setting.dart';
-import 'all_gudide.dart';
 import 'bawar.dart';
 import 'help_screen.dart';
 import 'invite_friend.dart';
@@ -1326,7 +1326,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _listTiles(Icons.privacy_tip_outlined, 'About us', AboutScreen()),
 
           // Guide
-          _listTiles(Icons.support_agent, 'Guide', GudidePage()),
+          _listTiles(Icons.support_agent, 'Guide', GuidePage()),
 
           // Account Information
           // _listTiles(

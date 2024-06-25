@@ -109,7 +109,7 @@ class _AccountSettingState extends State<AccountSetting> {
 
                           // Guide
                           _listTiles(
-                              Icons.support_agent, 'Guide'.tr, GudidePage()),
+                              Icons.support_agent, 'Guide'.tr, GuidePage()),
 
                           // Feedback
                           _listTiles(Icons.feedback_outlined, 'Feedback'.tr,
