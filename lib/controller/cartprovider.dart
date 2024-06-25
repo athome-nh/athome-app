@@ -137,7 +137,6 @@ class CartProvider extends ChangeNotifier {
 
     for (var element in product) {
       final item = cartItems.firstWhere((cart) => cart.product == element.id);
-
       if (checkOferPrice(element)) {
         totalPrice += element.offerPrice! * item.quantity;
       } else if (element.price2! > -1) {
