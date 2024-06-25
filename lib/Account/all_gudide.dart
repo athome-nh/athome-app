@@ -63,56 +63,49 @@ class FAQScreen extends StatefulWidget {
 class _FAQScreenState extends State<FAQScreen> {
   final List<FAQ> faqs = [
     FAQ(
-        title: 'General',
-        question: 'What is Flutter?',
-        answer:
-            'Flutter is an open-source UI software development kit created by Google.'),
+        title: 'Title_FAQ_1'.tr,
+        question: 'Question_FAQ_1'.tr,
+        answer: 'Answer_FAQ_1'.tr),
     FAQ(
-        title: 'General',
-        question: 'What programming language does Flutter use?',
-        answer: 'Flutter uses the Dart programming language.'),
+        title: 'Title_FAQ_1'.tr,
+        question: 'Question_FAQ_2'.tr,
+        answer: 'Answer_FAQ_2'.tr),
     FAQ(
-        title: 'General',
-        question: 'Is Flutter free to use?',
-        answer: 'Yes, Flutter is free and open-source.'),
+        title: 'Title_FAQ_1'.tr,
+        question: 'Question_FAQ_3'.tr,
+        answer: 'Answer_FAQ_3'.tr),
     FAQ(
-        title: 'Installation',
-        question: 'How do I install Flutter?',
-        answer:
-            'You can install Flutter by following the instructions on the official website.'),
+        title: 'Title_FAQ_2'.tr,
+        question: 'Question_FAQ_4'.tr,
+        answer: 'Answer_FAQ_4'.tr),
     FAQ(
-        title: 'Installation',
-        question: 'What are the system requirements for Flutter?',
-        answer:
-            'Refer to the official documentation for detailed requirements.'),
+        title: 'Title_FAQ_2'.tr,
+        question: 'Question_FAQ_5'.tr,
+        answer: 'Answer_FAQ_5'.tr),
     FAQ(
-        title: 'Development',
-        question: 'Can I use Flutter with my existing project?',
-        answer:
-            'You can integrate Flutter into existing applications incrementally.'),
+        title: 'Title_FAQ_3'.tr,
+        question: 'Question_FAQ_6'.tr,
+        answer: 'Answer_FAQ_6'.tr),
     FAQ(
-        title: 'Development',
-        question: 'What IDEs can I use with Flutter?',
-        answer:
-            'You can use Android Studio, IntelliJ IDEA, and Visual Studio Code with Flutter.'),
+        title: 'Title_FAQ_3'.tr,
+        question: 'Question_FAQ_7'.tr,
+        answer: 'Answer_FAQ_7'.tr),
     FAQ(
-        title: 'Performance',
-        question: 'Does Flutter support hot reload?',
-        answer: 'Yes, Flutter supports hot reload.'),
+        title: 'Title_FAQ_4'.tr,
+        question: 'Question_FAQ_8'.tr,
+        answer: 'Answer_FAQ_8'.tr),
     FAQ(
-        title: 'Performance',
-        question: 'How does Flutter perform compared to native apps?',
-        answer: 'Flutter provides high performance on both Android and iOS.'),
+        title: 'Title_FAQ_4'.tr,
+        question: 'Question_FAQ_9'.tr,
+        answer: 'Answer_FAQ_9'.tr),
     FAQ(
-        title: 'Features',
-        question: 'Does Flutter have access to native device features?',
-        answer:
-            'Yes, Flutter provides plugins to access native device features.'),
+        title: 'Title_FAQ_5'.tr,
+        question: 'Question_FAQ_10'.tr,
+        answer: 'Answer_FAQ_10'.tr),
     FAQ(
-        title: 'Learning Resources',
-        question: 'Where can I find Flutter tutorials?',
-        answer:
-            'There are many resources available, including the official documentation.'),
+        title: 'Title_FAQ_6'.tr,
+        question: 'Question_FAQ_11'.tr,
+        answer: 'Answer_FAQ_11'.tr),
   ];
 
   late List<FAQ> filteredFaqs;
@@ -148,7 +141,7 @@ class _FAQScreenState extends State<FAQScreen> {
           child: TextField(
             controller: searchController,
             decoration: InputDecoration(
-              hintText: 'Search',
+              hintText: 'Search'.tr,
               prefixIcon: Icon(Ionicons.search_outline),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
@@ -201,37 +194,32 @@ class _FAQScreenState extends State<FAQScreen> {
 class UpdatesPage extends StatelessWidget {
   final List<Update> updates = [
     Update(
-        title: 'New Feature: Dark Mode',
-        description:
-            'We\'ve added a new dark mode to help reduce eye strain at night.',
+        title: 'Title_Update_1',
+        description: 'Description_Update_1',
         date: DateTime(2024, 5, 20)),
     Update(
-        title: 'Improved Performance',
-        description: 'App startup time is now 50% faster!',
+        title: 'Title_Update_2',
+        description: 'Description_Update_2',
         date: DateTime(2024, 4, 15)),
     Update(
-        title: 'Bug Fixes',
-        description:
-            'Fixed various bugs reported by users to improve stability.',
+        title: 'Title_Update_3',
+        description: 'Description_Update_3',
         date: DateTime(2024, 3, 10)),
     Update(
-        title: 'Enhanced Security',
-        description:
-            'Implemented new security protocols to keep your data safe.',
+        title: 'Title_Update_4',
+        description: 'Description_Update_4',
         date: DateTime(2024, 2, 5)),
     Update(
-        title: 'User Interface Overhaul',
-        description:
-            'Revamped the UI for a more modern and intuitive experience.',
+        title: 'Title_Update_5',
+        description: 'Description_Update_5',
         date: DateTime(2024, 1, 25)),
     Update(
-        title: 'New Language Support',
-        description: 'Added support for Spanish and French languages.',
+        title: 'Title_Update_6',
+        description: 'Description_Update_6',
         date: DateTime(2023, 12, 20)),
     Update(
-        title: 'Social Media Integration',
-        description:
-            'You can now link your social media accounts with the app.',
+        title: 'Title_Update_7',
+        description: 'Description_Update_7',
         date: DateTime(2023, 11, 15)),
   ];
 
@@ -253,7 +241,10 @@ class UpdatesPage extends StatelessWidget {
               Text(updates[index].description,
                   style: TextStyle(fontSize: 16.0)),
               SizedBox(height: 10.0),
-              Text('Date: ${updates[index].date.toLocal()}'.split(' ')[0],
+              Text(
+                  'Date'.tr +
+                      ': ' +
+                      '${updates[index].date.toLocal()}'.split(' ')[0],
                   style: TextStyle(color: Colors.grey[600])),
             ],
           ),

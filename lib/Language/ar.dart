@@ -51,11 +51,57 @@ const Map<String, String> ar = {
   "Arabic": "العربية",
   "Kurdish": "كردي",
 
+  // all_gudide
+  "FAQs": "FAQs",
+  "What\'s New": "",
+  "Title_FAQ_1": "",
+  "Title_FAQ_2": "",
+  "Title_FAQ_3": "",
+  "Title_FAQ_4": "",
+  "Title_FAQ_5": "",
+  "Title_FAQ_6": "",
+  "Question_FAQ_1": "",
+  "Question_FAQ_2": "",
+  "Question_FAQ_3": "",
+  "Question_FAQ_4": "",
+  "Question_FAQ_5": "",
+  "Question_FAQ_6": "",
+  "Question_FAQ_7": "",
+  "Question_FAQ_8": "",
+  "Question_FAQ_9": "",
+  "Question_FAQ_10": "",
+  "Question_FAQ_11": "",
+  "Answer_FAQ_1": "",
+  "Answer_FAQ_2": "",
+  "Answer_FAQ_3": "",
+  "Answer_FAQ_4": "",
+  "Answer_FAQ_5": "",
+  "Answer_FAQ_6": "",
+  "Answer_FAQ_7": "",
+  "Answer_FAQ_8": "",
+  "Answer_FAQ_9": "",
+  "Answer_FAQ_10": "",
+  "Answer_FAQ_11": "",
+  "Search": "البحث",
+  "Title_Update_1": "",
+  "Title_Update_2": "",
+  "Title_Update_3": "",
+  "Title_Update_4": "",
+  "Title_Update_5": "",
+  "Title_Update_6": "",
+  "Title_Update_7": "",
+  "Description_Update_1": "",
+  "Description_Update_2": "",
+  "Description_Update_3": "",
+  "Description_Update_4": "",
+  "Description_Update_5": "",
+  "Description_Update_6": "",
+  "Description_Update_7": "",
+  "Date": "",
+
 
   // choose_lan
   "Get Start": "ابدأ",
-
-  
   
   // profilo
   "Information": "حسابي",
@@ -63,7 +109,6 @@ const Map<String, String> ar = {
   "Enter Age": "ادخل العمر",
   "Orders": "طلباتي",
   "Address": "الموقع",
-  
   "Log out": "خروج",
   
   
@@ -128,7 +173,6 @@ const Map<String, String> ar = {
 
   // nav_switch
   "Home": "الرئیسیة",
-  "Search": "البحث",
   "Cart": "السلة",
   "Favorite": "مفضلاتي",
   "Account": "الحساب",
