@@ -122,6 +122,22 @@ const Map<String, String> kur = {
   "seconds ago": "چەند چرکەیەک لەمەوبەر",
   "Just now": "ئێستا",
 
+  // feedback
+  "Poor": "",
+  "Terrible": "",
+  "Awful": "",
+  "Unacceptable": "",
+  "Dismal": "",
+  "Share your Feedback": "",
+  "Your feedback helps us improve": "",
+  "Please slecte stars": "",
+  "Leave Your Comments": "",
+  "feedback is require": "",
+  "Add your Feedback": "",
+  "Enjoying the app?": "",
+  "Would you mind rating us?": "",
+  "Rate us in": "",
+  "Send Feedback": "",
 
   // Notification
   "Notification": "ئاگادارکردنەوە",
@@ -304,7 +320,6 @@ const Map<String, String> kur = {
 
   // locationdeatil
   "Locations": "ناونیشان",
-  
   "Add name": "زیادکردنی ناو",
   "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",

@@ -7,6 +7,7 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../Config/property.dart';
@@ -65,7 +66,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Feedback",
+            "Feedback".tr,
           ),
           leading: IconButton(
             onPressed: () {
@@ -90,7 +91,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         height: getHeight(context, 4),
                       ),
                       Text(
-                        "Share your Feedback",
+                        "Share your Feedback".tr,
                         style: TextStyle(
                           color: mainColorBlack,
                           fontFamily: mainFontbold,
@@ -109,7 +110,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         height: getHeight(context, 4),
                       ),
                       Text(
-                        "Your feedback helps us improve",
+                        "Your feedback helps us improve".tr,
                         style: TextStyle(
                           color: mainColorBlack,
                           fontFamily: mainFontnormal,
@@ -120,22 +121,17 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       RatingBar(
                         filledIcon: LineIcons.starAlt,
                         emptyIcon: LineIcons.star,
-                        key: Key('rating_bar2'), // Adding the key here
+                        key: Key('rating_bar2'),
                         onRatingChanged: (value) {
                           setState(() {
                             selectedRating =
                                 int.parse(value.toString().substring(0, 1));
                             Erating = false;
-                            // isExpanded = true;
-                            // selectedWords.clear();
-                            // displayedWords = getDisplayedWords(value);
                           });
                         },
 
                         initialRating: 0,
                         alignment: Alignment.center,
-                        // filledColor: mainColorRed,
-                        // emptyColor: mainColorRed,
                         size: 50,
                       ),
                       Erating
@@ -144,7 +140,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 top: getHeight(context, 0.5),
                               ),
                               child: Text(
-                                "Please slecte stars",
+                                "Please slecte stars".tr,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: mainFontnormal,
@@ -157,7 +153,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         height: getHeight(context, 2),
                       ),
                       Text(
-                        ratestar[selectedRating!],
+                        ratestar[selectedRating!].tr,
                         style: TextStyle(
                           color: mainColorBlack,
                           fontFamily: mainFontnormal,
@@ -172,13 +168,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           SizedBox(
                             height: getHeight(context, 3),
                           ),
-                          // Wrap(
-                          //   alignment: WrapAlignment.center,
-                          //   children: elem(setState),
-                          // ),
-                          // SizedBox(
-                          //   height: getHeight(context, 4),
-                          // ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.0),
                             child: TextFormField(
@@ -200,8 +189,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   borderSide: BorderSide(
                                     color: Efeedback
                                         ? mainColorRed
-                                        : mainColorGrey, // Customize border color
-                                    width: 1.0, // Customize border width
+                                        : mainColorGrey, 
+                                    width: 1.0, 
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
@@ -210,11 +199,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                     color: Efeedback
                                         ? mainColorRed
                                         : mainColorGrey.withOpacity(
-                                            0.5), // Customize border color
-                                    width: 1.0, // Customize border width
+                                            0.5), 
+                                    width: 1.0, 
                                   ),
                                 ),
-                                labelText: "Leave Your Comments",
+                                labelText: "Leave Your Comments".tr,
                                 labelStyle: TextStyle(
                                     color: Efeedback
                                         ? mainColorRed
@@ -222,8 +211,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                     fontSize: 20,
                                     fontFamily: mainFontbold),
                                 hintText: Efeedback
-                                    ? "feedback is require"
-                                    : "Add your Feedback",
+                                    ? "feedback is require".tr
+                                    : "Add your Feedback".tr,
                                 hintStyle: TextStyle(
                                     color: mainColorBlack.withOpacity(0.5),
                                     fontSize: 14,
@@ -311,7 +300,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                         height: 10,
                                       ),
                                       Text(
-                                        "Enjoying the app?",
+                                        "Enjoying the app?".tr,
                                         textAlign: TextAlign.center,
                                         maxLines: 1,
                                         style: TextStyle(
@@ -322,7 +311,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        "Would you mind rating us?",
+                                        "Would you mind rating us?".tr,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: mainColorBlack,
@@ -367,7 +356,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                               getHeight(context, 5)),
                                         ),
                                         child: Text(
-                                          "Rate Us in " + typeStore,
+                                          "Rate us in".tr + " " + typeStore,
                                         ),
                                       ),
                                       const SizedBox(height: 5),
@@ -382,7 +371,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                           backgroundColor: mainColorRed,
                                         ),
                                         child: Text(
-                                          "Cancel",
+                                          "Cancel".tr,
                                         ),
                                       ),
                                     ],
@@ -419,7 +408,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               fixedSize: Size(getWidth(context, 90), getHeight(context, 6)),
             ),
             child: Text(
-              "Send Feedback",
+              "Send Feedback".tr,
             ),
           ),
         ),

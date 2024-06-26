@@ -21,7 +21,7 @@ const Map<String, String> en = {
   
   // account_info
   "Image changed": "Image changed",
-  "Cancel": "Cancel",
+  "Cancel": "Cancel", // feedback
   "Edit": "Edit",
   "Profile": "Profile",
   "Name": "Name",
@@ -44,7 +44,7 @@ const Map<String, String> en = {
   "Help center": "Help center",
   "About us": "About us",
   "Guide": "Guide", // all_gudide
-  "Feedback": "Feedback",
+  "Feedback": "Feedback", // feedback
   "Delete Account": "Delete Account",
   "Select Language": "Select Language", // chatscreen
   "English": "English", // chatscreen
@@ -122,6 +122,26 @@ const Map<String, String> en = {
   "seconds ago": "seconds ago",
   "Just now": "Just now",
 
+  // feedback
+  "Poor": "Poor",
+  "Terrible": "Terrible",
+  "Awful": "Awful",
+  "Unacceptable": "Unacceptable",
+  "Dismal": "Dismal",
+  "Share your Feedback": "Share your Feedback",
+  "Your feedback helps us improve": "Your feedback helps us improve",
+  "Please slecte stars": "Please slecte stars",
+  "Leave Your Comments": "Leave Your Comments",
+  "feedback is require": "feedback is require",
+  "Add your Feedback": "Add your Feedback",
+  "Enjoying the app?": "Enjoying the app?",
+  "Would you mind rating us?": "Would you mind rating us?",
+  "Rate us in": "Rate us in",
+  "Send Feedback": "Send Feedback",
+
+
+
+  "": "",
   
   // Notification
   "Notification": "Notification",

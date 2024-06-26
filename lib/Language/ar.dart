@@ -121,7 +121,24 @@ const Map<String, String> ar = {
   "1 minute ago": "قبل دقيقة واحدة",
   "seconds ago": "منذ ثوان",
   "Just now": "الآن",
-  
+
+  // feedback
+  "Poor": "",
+  "Terrible": "",
+  "Awful": "",
+  "Unacceptable": "",
+  "Dismal": "",
+  "Share your Feedback": "",
+  "Your feedback helps us improve": "",
+  "Please slecte stars": "",
+  "Leave Your Comments": "",
+  "feedback is require": "",
+  "Add your Feedback": "",
+  "Enjoying the app?": "",
+  "Would you mind rating us?": "",
+  "Rate us in": "",
+  "Send Feedback": "",
+
 
   // Notification
   "Notification": "إشعار",
