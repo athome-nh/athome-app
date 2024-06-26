@@ -139,11 +139,18 @@ const Map<String, String> ar = {
   "Rate us in": "",
   "Send Feedback": "",
 
+  // help_screen
+  "Help": "الدعم",
+  "DescriptionTextInHelp": "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
+  "PhoneNumber": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
 
+  
   // Notification
   "Notification": "إشعار",
   "You don't have any notification": "هیليس لديك أي إشعار",
-
 
   // choose_lan
   "Get Start": "ابدأ",
@@ -156,8 +163,6 @@ const Map<String, String> ar = {
   "Address": "الموقع",
   "Log out": "خروج",
   
-  
-
   //
   "New": "جديد",
 
@@ -177,19 +182,6 @@ const Map<String, String> ar = {
   "Select the Time please": "اختر وقت الاستلام",
   "Select": "اختر",
   "Delevery schedule": "تحديد موعد للتوصيل",
-
-  
-
-  // Help
-  "Help": "الدعم",
-  "DearCustomers":
-      "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
-  "Call": "07509583333 - 07802320717",
-  "Email": "Info@dllylas.com",
-  "WebSite": "www.dllylas.com",
-  "Facebook": "DLLY.LAS.24",
-
-  
 
   // welcome_screen
   "wst01": "تسوق بذکاء و سهولة",

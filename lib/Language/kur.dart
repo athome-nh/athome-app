@@ -139,6 +139,15 @@ const Map<String, String> kur = {
   "Rate us in": "",
   "Send Feedback": "",
 
+  // help_screen
+  "Help": "پشتیوانی",
+  "DescriptionTextInHelp": "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
+  "PhoneNumber": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
+
+  
   // Notification
   "Notification": "ئاگادارکردنەوە",
   "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
@@ -177,18 +186,6 @@ const Map<String, String> kur = {
   "Select the Time please": "کاتی گەیاندن دیاری بکە ",
   "Select": "دیاریکردن",
   "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
-
-  
-  // Help
-  "Help": "پشتیوانی",
-  "DearCustomers":
-      "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
-  "Call": "07509583333 - 07802320717",
-  "Email": "Info@dllylas.com",
-  "WebSite": "www.dllylas.com",
-  "Facebook": "DLLY.LAS.24",
-
-  
 
   // welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",

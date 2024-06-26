@@ -139,8 +139,15 @@ const Map<String, String> en = {
   "Rate us in": "Rate us in",
   "Send Feedback": "Send Feedback",
 
+  // help_screen
+  "Help": "Support",
+  "DescriptionTextInHelp": "Dear customers In case of any problems or any issues please contact us at via",
+  "PhoneNumber": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
 
-
+  // invite_friend
   "": "",
   
   // Notification
@@ -179,17 +186,6 @@ const Map<String, String> en = {
   "Select the Time please": "Choose a delivery time",
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
-
-
-
-  // Help
-  "Help": "Support",
-  "DearCustomers":
-      "Dear customers In case of any problems or any issues please contact us at via",
-  "Call": "07509583333 - 07802320717",
-  "Email": "Info@dllylas.com",
-  "WebSite": "www.dllylas.com",
-  "Facebook": "DLLY.LAS.24",
 
   // welcome_screen
   "wst01": "Shop Smarter & Easier",

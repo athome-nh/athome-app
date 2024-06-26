@@ -50,9 +50,8 @@ class _HelpScreenState extends State<HelpScreen> {
                   padding:
                       EdgeInsets.symmetric(horizontal: getWidth(context, 6)),
                   child: Text(
-                    "DearCustomers".tr,
+                    "DescriptionTextInHelp".tr,
                     style: TextStyle(
-                        // height: 1.5,
                         color: mainColorBlack,
                         fontFamily: mainFontnormal,
                         fontSize: 20),
@@ -72,9 +71,8 @@ class _HelpScreenState extends State<HelpScreen> {
                         width: getHeight(context, 2),
                       ),
                       Text(
-                        "Call".tr,
+                        "PhoneNumber".tr,
                         style: TextStyle(
-                            // height: 1.5,
                             color: mainColorBlack,
                             fontFamily: mainFontnormal,
                             fontSize: 20),
@@ -96,30 +94,10 @@ class _HelpScreenState extends State<HelpScreen> {
                         width: getHeight(context, 2),
                       ),
                       GestureDetector(
-                        onTap: () async {
-                          // const email = 'info@dllylas.com'; // Specify the recipient email address
-                          //   const subject = 'Subject'; // Specify the subject
-                          //   const body = 'Body'; // Specify the email body
-                          //   final Uri _emailLaunchUri = Uri(
-                          //     scheme: 'mailto',
-                          //     path: email,
-                          //     queryParameters: {
-                          //       'subject': subject,
-                          //       'body': body,
-                          //     },
-                          //   );
-
-                          //                               if (!await launchUrl(_emailLaunchUri,
-                          //                                   mode: LaunchMode.inAppBrowserView)) {
-                          //                                 throw Exception('Could not launch $_emailLaunchUri');
-                          //                               }
-
-                          //                           // Replace <page_id> with your Facebook Page ID
-                        },
+                        onTap: () {},
                         child: Text(
                           "Email".tr,
                           style: TextStyle(
-                              // height: 1.5,
                               color: mainColorBlack,
                               fontFamily: mainFontnormal,
                               fontSize: 20),
@@ -152,7 +130,6 @@ class _HelpScreenState extends State<HelpScreen> {
                         child: Text(
                           "WebSite".tr,
                           style: TextStyle(
-                              // height: 1.5,
                               color: mainColorBlack,
                               fontFamily: mainFontnormal,
                               fontSize: 20),
@@ -188,7 +165,6 @@ class _HelpScreenState extends State<HelpScreen> {
                         child: Text(
                           "Facebook".tr,
                           style: TextStyle(
-                              // height: 1.5,
                               color: mainColorBlack,
                               fontFamily: mainFontnormal,
                               fontSize: 20),
