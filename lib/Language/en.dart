@@ -39,17 +39,17 @@ const Map<String, String> en = {
   "Account Settings": "Account Settings",
   "Setting": "Setting",
   "Notification Setting": "Notification Setting",
-  "Language": "Language",
+  "Language": "Language", // chatscreen
   "Support": "Support",
   "Help center": "Help center",
   "About us": "About us",
   "Guide": "Guide", // all_gudide
   "Feedback": "Feedback",
   "Delete Account": "Delete Account",
-  "Select Language": "Select Language",
-  "English": "English",
-  "Arabic": "Arabic ",
-  "Kurdish": "Kurdish",
+  "Select Language": "Select Language", // chatscreen
+  "English": "English", // chatscreen
+  "Arabic": "Arabic ", // chatscreen
+  "Kurdish": "Kurdish", // chatscreen
   
   // all_gudide
   "FAQs": "FAQs",
@@ -98,8 +98,38 @@ const Map<String, String> en = {
   "Description_Update_6": "Added support for Spanish and French languages.",
   "Description_Update_7": "You can now link your social media accounts with the app.",
   "Date": "Date",
+  
+  // chatscreen
+  "Select Bug": "Select Bug",
+  "Customer Support": "Customer Support",
+  "Customer Support Form": "Customer Support Form",
+  "Enter your account information to contact for chat suport": "Enter your account information to contact for chat suport",
+  "Issue Bug": "Issue Bug",
+  "Please Select Bug": "Please Select Bug",
+  "Please Select Language": "Please Select Language",
+  "Short Description": "Short Description",
+  "Add  Description": "Add  Description",
+  "Please enter a Description": "Please enter a Description",
+  "Start Conversion": "Start Conversion",
+  "Type a message": "Type a message",
+  "Last week": "Last week",
+  "days ago": "days ago",
+  "Yesterday": "Yesterday",
+  "hours ago": "hours ago",
+  "1 hour ago": "One hour ago",
+  "minutes ago": "minutes ago",
+  "1 minute ago": "One minute ago",
+  "seconds ago": "seconds ago",
+  "Just now": "Just now",
 
-
+  
+  // Notification
+  "Notification": "Notification",
+  "You don't have any notification": "You don't have any notification.",
+  "1 week ago": "1 week ago",
+  "1 day ago": "One day ago",
+  "An hour ago": "An hour ago",
+  "A minute ago": "A minute ago",
 
   // choose_lan
   "Get Start": "Get Start",
@@ -110,10 +140,7 @@ const Map<String, String> en = {
   "Enter Age": "Enter Age",
   "Orders": "Orders",
   "Address": "Address",
-  
   "Log out": "Log out",
-  
-  
 
   //
   "New": "New",
@@ -133,22 +160,7 @@ const Map<String, String> en = {
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
 
-  // Notification
-  "Notification": "Notification",
-  "You don't have any notification": "You don't have any notification.",
-  "1 week ago": "1 week ago",
-  "Last week": "Last week",
-  "days ago": "days ago",
-  "1 day ago": "One day ago",
-  "Yesterday": "Yesterday",
-  "hours ago": "hours ago",
-  "1 hour ago": "One hour ago",
-  "An hour ago": "An hour ago",
-  "minutes ago": "minutes ago",
-  "1 minute ago": "One minute ago",
-  "A minute ago": "A minute ago",
-  "seconds ago": "seconds ago",
-  "Just now": "Just now",
+
 
   // Help
   "Help": "Support",

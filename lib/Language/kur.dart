@@ -99,12 +99,36 @@ const Map<String, String> kur = {
   "Description_Update_7": "",
   "Date": "",
 
-  
+  // chatscreen
+  "Select Bug": "",
+  "Customer Support": "",
+  "Customer Support Form": "",
+  "Enter your account information to contact for chat suport": "",
+  "Issue Bug": "",
+  "Please Select Bug": "",
+  "Please Select Language": "",
+  "Short Description": "",
+  "Add  Description": "",
+  "Please enter a Description": "",
+  "Start Conversion": "",
+  "Type a message": "",
+  "Last week": "هەفتەی ڕابردوو",
+  "days ago": "چەند ڕۆژێک لەمەوبەر",
+  "Yesterday": "دوێنێ",
+  "hours ago": "چەند کاتژمێری ڕابردوو",
+  "1 hour ago": "یەک کاتژمێر لەمەوبەر",
+  "minutes ago": "چەند دەقیقەیەک لەمەوبەر",
+  "1 minute ago": "یەک دەقە لەمەوبەر",
+  "seconds ago": "چەند چرکەیەک لەمەوبەر",
+  "Just now": "ئێستا",
 
+
+  // Notification
+  "Notification": "ئاگادارکردنەوە",
+  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
 
   // choose_lan
   "Get Start": "دەست پێبکە",
-  
   
 
   // profilo
@@ -138,23 +162,7 @@ const Map<String, String> kur = {
   "Select": "دیاریکردن",
   "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
 
-  // Notification
-  "Notification": "ئاگادارکردنەوە",
-  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
-  //"1 week ago": "1 week ago",
-  "Last week": "هەفتەی ڕابردوو",
-  "days ago": "چەند ڕۆژێک لەمەوبەر",
-  //"1 day ago": "One day ago",
-  "Yesterday": "دوێنێ",
-  "hours ago": "چەند کاتژمێری ڕابردوو",
-  "1 hour ago": "یەک کاتژمێر لەمەوبەر",
-  //"An hour ago": "An hour ago",
-  "minutes ago": "چەند دەقیقەیەک لەمەوبەر",
-  "1 minute ago": "یەک دەقە لەمەوبەر",
-  //"A minute ago": "A minute ago",
-  "seconds ago": "چەند چرکەیەک لەمەوبەر",
-  "Just now": "ئێستا",
-
+  
   // Help
   "Help": "پشتیوانی",
   "DearCustomers":

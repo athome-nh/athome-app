@@ -99,6 +99,34 @@ const Map<String, String> ar = {
   "Description_Update_7": "",
   "Date": "",
 
+  // chatscreen
+  "Select Bug": "",
+  "Customer Support": "",
+  "Customer Support Form": "",
+  "Enter your account information to contact for chat suport": "",
+  "Issue Bug": "",
+  "Please Select Bug": "",
+  "Please Select Language": "",
+  "Short Description": "",
+  "Add  Description": "",
+  "Please enter a Description": "",
+  "Start Conversion": "",
+  "Type a message": "",
+  "Last week": "الأسبوع الماضي",
+  "days ago": "منذ أيام",
+  "Yesterday": "الأمس",
+  "hours ago": "بضع ساعات مضت",
+  "1 hour ago": "منذ ساعة واحدة",
+  "minutes ago": "منذ دقائق",
+  "1 minute ago": "قبل دقيقة واحدة",
+  "seconds ago": "منذ ثوان",
+  "Just now": "الآن",
+  
+
+  // Notification
+  "Notification": "إشعار",
+  "You don't have any notification": "هیليس لديك أي إشعار",
+
 
   // choose_lan
   "Get Start": "ابدأ",
@@ -133,22 +161,7 @@ const Map<String, String> ar = {
   "Select": "اختر",
   "Delevery schedule": "تحديد موعد للتوصيل",
 
-  // Notification
-  "Notification": "إشعار",
-  "You don't have any notification": "هیليس لديك أي إشعار",
-  //"1 week ago": "1 week ago",
-  "Last week": "الأسبوع الماضي",
-  "days ago": "منذ أيام",
-  //"1 day ago": "One day ago",
-  "Yesterday": "الأمس",
-  "hours ago": "بضع ساعات مضت",
-  "1 hour ago": "منذ ساعة واحدة",
-  //"An hour ago": "An hour ago",
-  "minutes ago": "منذ دقائق",
-  "1 minute ago": "قبل دقيقة واحدة",
-  //"A minute ago": "A minute ago",
-  "seconds ago": "منذ ثوان",
-  "Just now": "الآن",
+  
 
   // Help
   "Help": "الدعم",
