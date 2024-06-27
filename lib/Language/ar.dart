@@ -162,6 +162,13 @@ const Map<String, String> ar = {
   "Guest Account": "",
   "Register": "تسجیل الدخول",
 
+  // voucher_code
+  "Vouchers": "",
+  "Active": "",
+  "Used": "",
+  "Expired": "",
+  "Do not have any Voucher Code": "",
+
   
   // Notification
   "Notification": "إشعار",
@@ -175,6 +182,7 @@ const Map<String, String> ar = {
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
   "Address": "الموقع",
+
   
   //
   "New": "جديد",

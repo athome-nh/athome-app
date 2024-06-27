@@ -164,8 +164,16 @@ const Map<String, String> en = {
   "Guest Account": "Guest Account",
   "Register": "Register",
 
+  // voucher_code
+  "Vouchers": "Vouchers",
+  "Active": "Active",
+  "Used": "Used",
+  "Expired": "Expired",
+  "Do not have any Voucher Code": "Do not have any Voucher Code",
 
 
+
+  
   "": "",
 
   // Notification

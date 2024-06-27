@@ -164,6 +164,14 @@ const Map<String, String> kur = {
   "Guest Account": "",
   "Register": "خۆتۆمارکردن",
 
+  // voucher_code
+  "Vouchers": "",
+  "Active": "",
+  "Used": "",
+  "Expired": "",
+  "Do not have any Voucher Code": "",
+
+
   // Notification
   "Notification": "ئاگادارکردنەوە",
   "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
