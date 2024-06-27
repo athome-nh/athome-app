@@ -1,14 +1,10 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Landing/verification.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Privacy.dart';
-
 import 'package:dllylas/main.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -184,7 +180,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                       }
 
                                       if (userInput.length == max) {}
-                                      return null; // Return null when the input is valid
+                                      return null;
                                     },
                                     maxLength: max,
                                     keyboardType: TextInputType.number,
@@ -509,7 +505,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           phone_number,
                         )));
           } else {
-            toastShort("unknown occurred error please try again later");
+            toastShort("unknown occurred error please try again later".tr);
             setState(() {
               _isLoading = false;
             });
@@ -596,7 +592,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
           });
         }
       } else {
-        toastShort("unknown occurred error please try again later");
+        toastShort("unknown occurred error please try again later".tr);
         setState(() {
           _isLoading = false;
         });

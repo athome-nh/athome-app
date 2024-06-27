@@ -172,11 +172,28 @@ const Map<String, String> en = {
   "Do not have any Voucher Code": "Do not have any Voucher Code",
 
   // Landing --> choose_lan
-  "Get Start": "Get Start",
+  "Get Start": "Get Start", // login_page
 
   // Landing --> disableaccount
   "account is disabled": "account is disabled",
 
+  // Landing --> login_page
+  "Wellcome back": "Welcome back",
+  "EnterYourPhoneNumberToShop": "Enter your phone number to Shop Smarter & Easier.",
+  "Please enter your phone number": "Please enter your phone number",
+  "Please enter your phone number correct": "accurate phone number needed",
+  "Phone Number": "Phone Number",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "By continuing, you agree to get Dlly Las's Privacy Policy",
+  "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
+  "Account Pendding": "Wait...",
+  "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
+  "OK": "OK",
+  "Account Disabled": "Account Disabled",
+  "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
+  "unknown occurred error please try again later": "Error please try again later",
+  "Account range out": "Sorry....",
+  "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
+  
 
   
   "": "",
@@ -324,20 +341,10 @@ const Map<String, String> en = {
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
-  "OK": "OK",
-
+  
   "Add location": "Add location",
 
-  // login_page
-  "Wellcome back": "Welcome back",
-  "EnterYourPhoneNumberToShop":
-      "Enter your phone number to Shop Smarter & Easier.",
-  "Please enter your phone number": "Please enter your phone number",
-  "Please enter your phone number correct": "accurate phone number needed",
-  "Please remove 0 form start": "Please remove 0 form the start",
-  "Phone Number": "Phone Number",
-  "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
-
+  
   // locationdeatil
   "Add name": "Add name",
   "Add name location": "Add name location",
@@ -360,15 +367,9 @@ const Map<String, String> en = {
       "Please enter the required information for registration",
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
-  "unknown occurred error please try again later":
-      "Error please try again later",
+  
   "Confirm": "Confirm",
-  "Account range out": "Sorry....",
-  "Account range out content":
-      "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
-  "Account Pendding": "Wait...",
-  "Account npt approved by admin yet":
-      "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
+
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",
@@ -379,9 +380,8 @@ const Map<String, String> en = {
   "Try again in": "Try again in ",
   "Resend": "Resend",
   "Verify": "Verify",
-  "Account Disabled": "Account Disabled",
-  "Account is disable please contact athome admin":
-      "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
+  
+  
   "the code is un correct": "the code is wrong",
 
   // map
@@ -439,8 +439,7 @@ const Map<String, String> en = {
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",
   "Update": "Update",
-  "By continuing, you agree to get Dlly Las's Privacy Policy":
-      "By continuing, you agree to get Dlly Las's Privacy Policy",
+  
   
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",

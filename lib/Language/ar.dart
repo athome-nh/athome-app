@@ -146,6 +146,8 @@ const Map<String, String> ar = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
+  // Account --> invite_friend
+
   // Account --> profile
   "Account & Security": "",
   "Account Information": "",
@@ -173,7 +175,25 @@ const Map<String, String> ar = {
   "Get Start": "ابدأ",
 
   // Landing --> disableaccount
-  "account is disabled": "account is disabled",
+  "account is disabled": "",
+
+  // Landing --> login_page
+  "Wellcome back": "مرحبا بك",
+  "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك للتسوق بشكل أكثر ذكاء وأسهل",
+  "Please enter your phone number": "یرجی ادخال رقم الهاتف",
+  "Please enter your phone number correct": "یرجی ادخال رقم الهاتفك بشكل صحیح",
+  "Phone Number": "رقم الهاتف",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "من خلال المتابعة، فإنك توافق على الحصول على سياسة الخصوصية الخاصة بـ Dlly Las",
+  "WeWillSendYouOTP": "سنرسل لك رمز التحقق",
+  "Account Pendding": "...انتظر",
+  "Account npt approved by admin yet": "عزيزي المشترك، سوف تحصل على موافقة المشرف قريبا. للاستفسار الاتصال على (07509583333)",
+  "OK": "موافق",
+  "Account Disabled": "الحساب متوقف",
+  "Account is disable please contact athome admin": "تم إيقاف الحساب، يرجى التواصل مع موظفي قسم الاتصالات على الرقم (07509583333)",
+  "unknown occurred error please try again later": "حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
+  "Account range out": "...آسف",
+  "Account range out content": "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
+  
 
   
   // Notification
@@ -317,16 +337,15 @@ const Map<String, String> ar = {
   "sorryWeDoNotHaveDelivery":
       "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
-  "OK": "موافق",
   "Add location": "إضافة موقع",
   // login_page
-  "Wellcome back": "مرحبا بك",
-  "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك للتسوق بشكل أكثر ذكاء وأسهل",
-  "Please enter your phone number": "یرجی ادخال رقم الهاتف",
-  "Please enter your phone number correct": "یرجی ادخال رقم الهاتفك بشكل صحیح",
+  
+  
+  
+  
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",
-  "Phone Number": "رقم الهاتف",
-  "WeWillSendYouOTP": "سنرسل لك رمز التحقق",
+  
+  
 
   // locationdeatil
   
@@ -351,15 +370,12 @@ const Map<String, String> ar = {
       "الرجاء إدخال المعلومات المطلوبة للتسجيل",
   "Enter your Name": "ادخال الاسم",
   "Enter your full name": "یرجی الادخال الاسم الکامل",
-  "unknown occurred error please try again later":
-      "حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
+  
   "Confirm": "تثبيت",
-  "Account range out": "...آسف",
-  "Account range out content":
-      "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
-  "Account Pendding": "...انتظر",
-  "Account npt approved by admin yet":
-      "عزيزي المشترك، سوف تحصل على موافقة المشرف قريبا. للاستفسار الاتصال على (07509583333)",
+  
+  
+  
+  
   // verification
   "Hold till the waiting time ends": "انتظر حتى ينتهي وقت الانتظار", //
   "Please enter code": "الرجاء إدخال الرمز التحقق",
@@ -370,9 +386,8 @@ const Map<String, String> ar = {
   "Try again in": "حاول مری اخری في ",
   "Resend": "اعادة الارسال",
   "Verify": "التحقق",
-  "Account Disabled": "الحساب متوقف",
-  "Account is disable please contact athome admin":
-      "تم إيقاف الحساب، يرجى التواصل مع موظفي قسم الاتصالات على الرقم (07509583333)",
+  
+  
   "the code is un correct": "الرمز غیر صحیع",
 
   // map
@@ -430,8 +445,7 @@ const Map<String, String> ar = {
   "A newer version of dlly las application is available, please download the latest version .":
       "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",
   "Update": "تحديث",
-  "By continuing, you agree to get Dlly Las's Privacy Policy":
-      "من خلال المتابعة، فإنك توافق على الحصول على سياسة الخصوصية الخاصة بـ Dlly Las",
+  
   
   "Account recovery opportunity":
       "فرصة استعادة الحساب متاحة حتى @date@، يرجي التواصل معنا:(07509583333)",

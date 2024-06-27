@@ -1240,7 +1240,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
   );
 }
 
-///// here we check for internet availability
+// here we check for internet availability
 Future<bool> checkInternet(BuildContext context) async {
   bool retrive = false;
   var connectivityResult = await (Connectivity().checkConnectivity());
@@ -1322,16 +1322,6 @@ Widget waitingWiget(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
     child: Image.asset("assets/images/LogoLoading.gif"),
-    // LoadingIndicator(
-    //   indicatorType: Indicator.ballRotateChase,
-    //   colors: [
-    //     mainColorGrey,
-    //     // mainColorRed,
-    //     // mainColorSuger,
-    //   ],
-
-    //   // strokeWidth: 5,
-    // ),
   );
 }
 
@@ -1339,16 +1329,6 @@ Widget waitingWiget2(BuildContext context) {
   return SizedBox(
     height: getWidth(context, 40),
     child: Image.asset("assets/images/LogoLoading.gif"),
-    // LoadingIndicator(
-    //   indicatorType: Indicator.ballRotateChase,
-    //   colors: [
-    //     mainColorWhite,
-    //     // mainColorRed,
-    //     // mainColorSuger,
-    //   ],
-
-    //   // strokeWidth: 5,
-    // ),
   );
 }
 
@@ -1390,15 +1370,6 @@ Future<void> loiginPopup(BuildContext context) {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    // Text(
-                    //   "You need login".tr,
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(
-                    //     color: mainColorGrey,
-                    //     fontFamily: mainFontnormal,
-                    //     fontSize: 16,
-                    //   ),
-                    // ),
                     TextButton(
                       onPressed: () {
                         Navigator.push(

@@ -175,7 +175,25 @@ const Map<String, String> kur = {
   "Get Start": "دەست پێبکە",
 
   // Landing --> disableaccount
-  "account is disabled": "account is disabled",
+  "account is disabled": "",
+
+  // Landing --> login_page
+  "Wellcome back": "بەخێر بێیتەوە",
+  "EnterYourPhoneNumberToShop": "ژمارە مۆبایل تۆمار بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
+  "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت تۆمار بکە ",
+  "Please enter your phone number correct": "ژمارەی مۆبایلەلەکت بە دروستی تۆمار بکە",
+  "Phone Number": "ژمارە مۆبایل",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
+  "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
+  "Account Pendding": "...چاوەڕوانبە",
+  "Account npt approved by admin yet": "بەشداربووی بەڕێز بەم زووانە ڕەزامەندی سەرپەرشتیار وەردەگریت. بۆ زانیاری زیاتر پەیوەندی بکەن بە (07509583333)",
+  "OK": "دڵنیام",
+  "Account Disabled": "هەژمارەکە ڕاگیرا",
+  "Account is disable please contact athome admin": "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
+  "unknown occurred error please try again later": "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
+  "Account range out": "...ببورە",
+  "Account range out content": "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
+  
 
 
   // Notification
@@ -318,19 +336,16 @@ const Map<String, String> kur = {
   "sorryWeDoNotHaveDelivery":
       "ببورن خزمەت گوزاری گەیاندن داخراوە لەم کاتەدا.\nئارەزوو دەکەیت داوەکاریەکەت بگەیەنین پاش",
   "am": "بەیانی؟",
-  "OK": "دڵنیام",
   "Add location": "ناونیشان زیاد بکە",
 
   // login_page
-  "Wellcome back": "بەخێر بێیتەوە",
-  "EnterYourPhoneNumberToShop":
-      "ژمارە مۆبایل تۆمار بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
-  "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت تۆمار بکە ",
-  "Please enter your phone number correct":
-      "ژمارەی مۆبایلەلەکت بە دروستی تۆمار بکە",
+  
+  
+  
+  
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
-  "Phone Number": "ژمارە مۆبایل",
-  "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
+  
+  
 
   // locationdeatil
   "Add name": "زیادکردنی ناو",
@@ -356,15 +371,12 @@ const Map<String, String> kur = {
 
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
 
-  "unknown occurred error please try again later":
-      "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
+  
   "Confirm": "دووپاتکردنەوە",
-  "Account range out": "...ببورە",
-  "Account range out content":
-      "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
-  "Account Pendding": "...چاوەڕوانبە",
-  "Account npt approved by admin yet":
-      "بەشداربووی بەڕێز بەم زووانە ڕەزامەندی سەرپەرشتیار وەردەگریت. بۆ زانیاری زیاتر پەیوەندی بکەن بە (07509583333)",
+  
+  
+  
+  
   // verification
   "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
   "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
@@ -374,9 +386,8 @@ const Map<String, String> kur = {
   "Try again in": "دوبارە داوابکەوە لە ",
   "Resend": "دووبارە ناردنەوە",
   "Verify": "دڵنیا بوونەوە",
-  "Account Disabled": "هەژمارەکە ڕاگیرا",
-  "Account is disable please contact athome admin":
-      "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
+  
+  
   "the code is un correct": "کۆدەکە هەڵەیە",
 
   // map
@@ -434,9 +445,6 @@ const Map<String, String> kur = {
   "A newer version of dlly las application is available, please download the latest version .":
       "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
   "Update": "دابەزاندن",
-  "By continuing, you agree to get Dlly Las's Privacy Policy":
-      "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
-  
   "Account recovery opportunity":
       "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
 
