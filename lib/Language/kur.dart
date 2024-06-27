@@ -146,7 +146,24 @@ const Map<String, String> kur = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  
+  // invite_friend
+
+  // profile
+  "Account & Security": "",
+  "Account Information": "",
+  "Orders": "داواکاریەکانم",
+  "Locations": "ناونیشان",
+  "Invite a friend": "",
+  "Coin & Reward": "",
+  "My Voucher": "",
+  "General": "",
+  "Terms & Conditions": "",
+  "Privacy Policy": "",
+  "Customer Services": "",
+  "Logout": "چوونە دەر",
+  "Guest Account": "",
+  "Register": "خۆتۆمارکردن",
+
   // Notification
   "Notification": "ئاگادارکردنەوە",
   "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
@@ -159,14 +176,10 @@ const Map<String, String> kur = {
   "Information": "زانیاری",
   "Enter Name": "تۆمارکردنی ناو",
   "Enter Age": "تۆمارکدنی تەمەن",
-  "Orders": "داواکاریەکانم",
   "Address": "ناونیشان",
-  
-  "Log out": "چوونە دەر",
 
   //
   "New": "نوێ",
-
   "Saturday": "شەمە",
   "Sunday": "یەک شەمە",
   "Monday": "دوو شەمە",
@@ -174,7 +187,6 @@ const Map<String, String> kur = {
   "Wednesday": "چوار شەمە",
   "Thursday": "پێنج شەمە",
   "Friday": "هەینی",
-
   "Select Day": "کاتی گەیاندن هەڵبژێرە",
   "Delivery Type": "شێوازی گەیاندن",
   "Delevery now": "گەیاندنی ڕاستوخۆ",
@@ -222,7 +234,6 @@ const Map<String, String> kur = {
   // Dialogbox ( Register ) --> my_widget
   "Register First": "خۆت تۆمار بکە",
   "You need login": "پێویستە خۆت تۆمار بکەیت",
-  "Register": "خۆتۆمارکردن",
 
   // categories
   "All Categories": "گشت پۆلێنەکان",
@@ -312,7 +323,6 @@ const Map<String, String> kur = {
   "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
 
   // locationdeatil
-  "Locations": "ناونیشان",
   "Add name": "زیادکردنی ناو",
   "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",

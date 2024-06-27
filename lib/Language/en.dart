@@ -35,20 +35,20 @@ const Map<String, String> en = {
   "Save": "Save",
   
   // account_setting
-  "Account Settings": "Account Settings",
+  "Account Settings": "Account Settings", // profile
   "Setting": "Setting",
   "Notification Setting": "Notification Setting",
-  "Language": "Language", // chatscreen
+  "Language": "Language", // chatscreen, profile
   "Support": "Support",
-  "Help center": "Help center",
-  "About us": "About us",
-  "Guide": "Guide", // all_gudide
+  "Help center": "Help center", // profile
+  "About us": "About us", // profile
+  "Guide": "Guide", // all_gudide, profile
   "Feedback": "Feedback", // feedback
   "Delete Account": "Delete Account",
-  "Select Language": "Select Language", // chatscreen
-  "English": "English", // chatscreen
-  "Arabic": "Arabic ", // chatscreen
-  "Kurdish": "Kurdish", // chatscreen
+  "Select Language": "Select Language", // chatscreen, profile
+  "English": "English", // chatscreen, profile
+  "Arabic": "Arabic ", // chatscreen, profile
+  "Kurdish": "Kurdish", // chatscreen, profile
   
   // all_gudide
   "FAQs": "FAQs",
@@ -147,8 +147,27 @@ const Map<String, String> en = {
   "Facebook": "DLLY.LAS.24",
 
   // invite_friend
+
+  // profile
+  "Account & Security": "Account & Security",
+  "Account Information": "Account Information",
+  "Orders": "Orders",
+  "Locations": "Locations",
+  "Invite a friend": "Invite a friend",
+  "Coin & Reward": "Coin & Reward",
+  "My Voucher": "My Voucher",
+  "General": "General",
+  "Terms & Conditions": "Terms & Conditions",
+  "Privacy Policy": "Privacy Policy",
+  "Customer Services": "Customer Services",
+  "Logout": "Log out",
+  "Guest Account": "Guest Account",
+  "Register": "Register",
+
+
+
   "": "",
-  
+
   // Notification
   "Notification": "Notification",
   "You don't have any notification": "You don't have any notification.",
@@ -164,9 +183,7 @@ const Map<String, String> en = {
   "Information": "Information",
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
-  "Orders": "Orders",
   "Address": "Address",
-  "Log out": "Log out",
 
   //
   "New": "New",
@@ -224,7 +241,6 @@ const Map<String, String> en = {
   // Dialogbox ( Register ) --> my_widget
   "Register First": "Register First",
   "You need login": "You have to register first",
-  "Register": "Register",
 
   // categories
   "All Categories": "All Categories",
@@ -249,8 +265,7 @@ const Map<String, String> en = {
   "Are you sure you want to continue?": "Are you sure about continuing?",
 
   // favorite
-  "No have any favorite":
-      "You haven't set any favorite items.\nMake it your own!",
+  "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
 
   // Page --> No Internet --> my_widget
   "no internet": "You are offline, connect to WIFI",
@@ -314,7 +329,6 @@ const Map<String, String> en = {
   "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
 
   // locationdeatil
-  "Locations": "Locations",
   "Add name": "Add name",
   "Add name location": "Add name location",
   "Area": "Area",

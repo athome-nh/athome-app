@@ -146,6 +146,22 @@ const Map<String, String> ar = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
+  // profile
+  "Account & Security": "",
+  "Account Information": "",
+  "Orders": "طلباتي",
+  "Locations": "الموقع",
+  "Invite a friend": "",
+  "Coin & Reward": "",
+  "My Voucher": "",
+  "General": "",
+  "Terms & Conditions": "",
+  "Privacy Policy": "",
+  "Customer Services": "",
+  "Logout": "خروج",
+  "Guest Account": "",
+  "Register": "تسجیل الدخول",
+
   
   // Notification
   "Notification": "إشعار",
@@ -158,13 +174,10 @@ const Map<String, String> ar = {
   "Information": "حسابي",
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
-  "Orders": "طلباتي",
   "Address": "الموقع",
-  "Log out": "خروج",
   
   //
   "New": "جديد",
-
   "Saturday": "السبت",
   "Sunday": "الأحد",
   "Monday": "الاثنين",
@@ -218,7 +231,7 @@ const Map<String, String> ar = {
   // Dialogbox ( Register ) --> my_widget
   "Register First": "تسجيل اولا",
   "You need login": "یرجی التسجیل أولا",
-  "Register": "تسجیل الدخول",
+  
 
   // categories
   "All Categories": "کل الفئات",
@@ -305,7 +318,7 @@ const Map<String, String> ar = {
   "WeWillSendYouOTP": "سنرسل لك رمز التحقق",
 
   // locationdeatil
-  "Locations": "الموقع",
+  
   "Add name": "اضافة الاسم",
   "Add name location": "اضافة اسم الموقع",
   "Area": "المنطقة",

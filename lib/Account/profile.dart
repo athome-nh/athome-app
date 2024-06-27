@@ -15,7 +15,6 @@ import 'package:dllylas/TermsandCondition.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
-
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/loction.dart';
 import 'package:flutter/material.dart';
@@ -1084,8 +1083,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             Icon(Icons.check_circle,
                                                 color: Colors.yellow, size: 14),
                                             SizedBox(width: 5),
+                                            // todo: ba list daxil dakret w Translate nakraya
                                             Text(
-                                              'Golden Account',
+                                              'Golden Account'.tr,
                                               style: TextStyle(
                                                   color: Colors.white70),
                                             ),
@@ -1106,51 +1106,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Title 1
                               SizedBox(height: getHeight(context, 2)),
-                              _titles("Account & Security"),
+                              _titles("Account & Security".tr),
 
                               // Account Information
                               _listTiles(Icons.person_outline,
-                                  'Account Information', AccountInfo()),
+                                  'Account Information'.tr, AccountInfo()),
 
                               // Orders
-                              _listTiles(Ionicons.bag_outline, 'Orders',
+                              _listTiles(Ionicons.bag_outline, 'Orders'.tr,
                                   OrderScreen()),
 
                               // Locations
-                              _listTiles(Ionicons.location_outline, 'Locations',
+                              _listTiles(Ionicons.location_outline, 'Locations'.tr,
                                   LocationScreen()),
 
                               // Refer a friend
                               _listTiles(Icons.person_add_outlined,
-                                  'Invite a friend', InvitePage()),
+                                  'Invite a friend'.tr, InvitePage()),
 
                               // Coin & Reward
                               _listTiles(Icons.monetization_on_outlined,
-                                  'Coin & Reward', BlankPage()),
+                                  'Coin & Reward'.tr, BlankPage()),
 
                               // My Voucher
-                              _listTiles(Icons.card_giftcard, 'My Voucher',
+                              _listTiles(Icons.card_giftcard, 'My Voucher'.tr,
                                   VoucherCodePage()),
 
                               // Account Settings
                               _listTiles(Icons.settings_outlined,
-                                  'Account Settings', AccountSetting()),
+                                  'Account Settings'.tr, AccountSetting()),
 
                               // Title 2
                               SizedBox(height: getHeight(context, 2)),
-                              _titles("General"),
+                              _titles("General".tr),
 
                               // Terms & Conditions
                               _listTiles(Icons.description_outlined,
-                                  "Terms & Conditions", TermsandCondition()),
+                                  "Terms & Conditions".tr, TermsandCondition()),
 
                               // Privacy Policy
                               _listTiles(Icons.privacy_tip_outlined,
-                                  'Privacy Policy', PrivacyScreen()),
+                                  'Privacy Policy'.tr, PrivacyScreen()),
 
                               // Customer Services
                               _listTiles(Icons.support_agent,
-                                  'Customer Services', ChatScreen()),
+                                  'Customer Services'.tr, ChatScreen()),
 
                               // Logout
                               Padding(
@@ -1203,7 +1203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     minimumSize: Size(double.infinity, 50),
                                     side: BorderSide(color: Colors.grey),
                                   ),
-                                  child: Text('Logout'),
+                                  child: Text('Logout'.tr),
                                 ),
                               ),
                             ],
@@ -1252,7 +1252,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       alignment: Alignment.centerLeft,
       child: Text(
-        title,
+        title.tr,
         style: TextStyle(
           fontFamily: mainFontbold,
           color: mainColorGrey,
@@ -1294,7 +1294,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Guest Account",
+                      "Guest Account".tr,
                       style: TextStyle(
                           fontFamily: mainFontbold,
                           fontSize: 16,
@@ -1315,48 +1315,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
           // Title 1
           SizedBox(height: getHeight(context, 2)),
-          _titles("General"),
+          _titles("General".tr),
 
           // Language
-          _Language(Ionicons.globe_outline, 'Language'),
+          _Language(Ionicons.globe_outline, 'Language'.tr),
 
           // Help center
-          _listTiles(Icons.description_outlined, "Help center", HelpScreen()),
+          _listTiles(Icons.description_outlined, "Help center".tr, HelpScreen()),
 
           // About us
           _listTiles(Icons.privacy_tip_outlined, 'About us', AboutScreen()),
 
           // Guide
           _listTiles(Icons.support_agent, 'Guide', GuidePage()),
-
-          // Account Information
-          // _listTiles(
-          //     Icons.person_outline, 'Account Information', AccountInfo()),
-
-          // Orders
-          // _listTiles(Ionicons.bag_outline, 'Orders', OrderScreen()),
-
-          // Locations
-          // _listTiles(Ionicons.location_outline, 'Locations', LocationScreen()),
-
-          // Refer a friend
-          // _listTiles(
-          //     Icons.person_add_outlined, 'Invite a friend', InvitePage()),
-
-          // Coin & Reward
-          // _listTiles(
-          //     Icons.monetization_on_outlined, 'Coin & Reward', BlankPage()),
-
-          // My Voucher
-          // _listTiles(Icons.card_giftcard, 'My Voucher', MyHomePage()),
-
-          // Account Settings
-          // _listTiles(
-          //     Icons.settings_outlined, 'Account Settings', AccountSetting()),
-
-          // Title 2
-          // SizedBox(height: getHeight(context, 2)),
-          // _titles("General"),
 
           // Terms & Conditions
           _listTiles(Icons.description_outlined, "Terms & Conditions",
@@ -1365,10 +1336,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           // Privacy Policy
           _listTiles(
               Icons.privacy_tip_outlined, 'Privacy Policy', PrivacyScreen()),
-
-          // Customer Services
-          // _listTiles(Icons.support_agent, 'Customer Services', ChatScreen()),
-
+       
           // Logout
           Padding(
             padding: const EdgeInsets.all(20.0),
