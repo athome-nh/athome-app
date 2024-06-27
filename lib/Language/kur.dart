@@ -1,5 +1,5 @@
 const Map<String, String> kur = {
-  // about_screen
+  // Account --> about_screen
   "About Us": "دەربارەی ئاپەکە",
   "AboutTextOne":
       "بەخێربێن بۆ ئەپلیکەیشنی ئۆنلاینی دڵی لاس! ئێمە کاردەکەین  بۆ ئەوەی ڕێگایەکی گونجاو و کاریگەرتان بۆ دابین بکەین بۆ کڕینی کاڵاکانتان و گەیاندنیان بۆ بەردەم دەرگای ماڵەکانتان. ئەپڵیکەیشنەکەمان دیزاین کراوە بۆ باشترکردنی ئەزموونی بازاریکردن و کڕینی کاڵا و سەوزە و میوەکان بێ ماندوبوون . ئەمەش کورتەیەکە  لەسەر ئەو خزمەتگوزاریانەی کە پێشکەش داکرێن",
@@ -18,7 +18,7 @@ const Map<String, String> kur = {
   "AboutTextEight":
       "سوپاس بۆ هەڵبژاردنی ئەپڵیکەیشنی دڵی لاس بۆ دابینکردنی پێداویستیەکانتان.بەردەوامبدەبین لە پێشکەشکردنی خزمەتگوزاری زیاتر بۆ ئەوەی ئەزمونی بازاریکردنەکانتان ئارامتر و چێژبەخشتربێت.",
 
-  // account_info
+  // Account --> account_info
   "Image changed": "وێنەکە گۆڕدرا",
   "Cancel": "پوچەڵ کردنەوە",
   "Edit": "ڕێکخستن",
@@ -34,7 +34,7 @@ const Map<String, String> kur = {
   "City": "شار",
   "Save": "زەخیرە کردن",
 
-  // account_setting
+  // Account --> account_setting
   "Account Settings": "",
   "Setting": "",
   "Notification Setting": "",
@@ -50,7 +50,7 @@ const Map<String, String> kur = {
   "Arabic": "عەرەبی",
   "Kurdish": "کوردی",
 
-  // all_gudide
+  // Account --> all_gudide
   "FAQs": "FAQs",
   "What\'s New": "",
   "Title_FAQ_1": "",
@@ -98,7 +98,7 @@ const Map<String, String> kur = {
   "Description_Update_7": "",
   "Date": "",
 
-  // chatscreen
+  // Account --> chatscreen
   "Select Bug": "",
   "Customer Support": "",
   "Customer Support Form": "",
@@ -121,7 +121,7 @@ const Map<String, String> kur = {
   "seconds ago": "چەند چرکەیەک لەمەوبەر",
   "Just now": "ئێستا",
 
-  // feedback
+  // Account --> feedback
   "Poor": "",
   "Terrible": "",
   "Awful": "",
@@ -138,7 +138,7 @@ const Map<String, String> kur = {
   "Rate us in": "",
   "Send Feedback": "",
 
-  // help_screen
+  // Account --> help_screen
   "Help": "پشتیوانی",
   "DescriptionTextInHelp": "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
   "PhoneNumber": "07509583333 - 07802320717",
@@ -146,9 +146,9 @@ const Map<String, String> kur = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // invite_friend
+  // Account --> invite_friend
 
-  // profile
+  // Account --> profile
   "Account & Security": "",
   "Account Information": "",
   "Orders": "داواکاریەکانم",
@@ -164,21 +164,20 @@ const Map<String, String> kur = {
   "Guest Account": "",
   "Register": "خۆتۆمارکردن",
 
-  // voucher_code
+  // Account --> voucher_code
   "Vouchers": "",
   "Active": "",
   "Used": "",
   "Expired": "",
   "Do not have any Voucher Code": "",
 
+  // Landing --> choose_lan
+  "Get Start": "دەست پێبکە",
+
 
   // Notification
   "Notification": "ئاگادارکردنەوە",
-  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
-
-  // choose_lan
-  "Get Start": "دەست پێبکە",
-  
+  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",  
 
   // profilo
   "Information": "زانیاری",

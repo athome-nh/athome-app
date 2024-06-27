@@ -1,5 +1,5 @@
 const Map<String, String> en = {
-  // about_screen
+  // Account --> about_screen
   "About Us": "About Us",
   "AboutTextOne":
       "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
@@ -18,7 +18,7 @@ const Map<String, String> en = {
   "AboutTextEight":
       "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
 
-  // account_info
+  // Account --> account_info
   "Image changed": "Image changed",
   "Cancel": "Cancel", // feedback
   "Edit": "Edit",
@@ -34,11 +34,11 @@ const Map<String, String> en = {
   "City": "City",
   "Save": "Save",
   
-  // account_setting
+  // Account --> account_setting
   "Account Settings": "Account Settings", // profile
   "Setting": "Setting",
   "Notification Setting": "Notification Setting",
-  "Language": "Language", // chatscreen, profile
+  "Language": "Language", // chatscreen, profile, choose_lan
   "Support": "Support",
   "Help center": "Help center", // profile
   "About us": "About us", // profile
@@ -46,11 +46,11 @@ const Map<String, String> en = {
   "Feedback": "Feedback", // feedback
   "Delete Account": "Delete Account",
   "Select Language": "Select Language", // chatscreen, profile
-  "English": "English", // chatscreen, profile
-  "Arabic": "Arabic ", // chatscreen, profile
-  "Kurdish": "Kurdish", // chatscreen, profile
+  "English": "English", // chatscreen, profile, choose_lan
+  "Arabic": "Arabic ", // chatscreen, profile, choose_lan
+  "Kurdish": "Kurdish", // chatscreen, profile, choose_lan
   
-  // all_gudide
+  // Account --> all_gudide
   "FAQs": "FAQs",
   "What\'s New": "What\'s New",
   "Title_FAQ_1": "General",
@@ -98,7 +98,7 @@ const Map<String, String> en = {
   "Description_Update_7": "You can now link your social media accounts with the app.",
   "Date": "Date",
   
-  // chatscreen
+  // Account --> chatscreen
   "Select Bug": "Select Bug",
   "Customer Support": "Customer Support",
   "Customer Support Form": "Customer Support Form",
@@ -121,7 +121,7 @@ const Map<String, String> en = {
   "seconds ago": "seconds ago",
   "Just now": "Just now",
 
-  // feedback
+  // Account --> feedback
   "Poor": "Poor",
   "Terrible": "Terrible",
   "Awful": "Awful",
@@ -138,7 +138,7 @@ const Map<String, String> en = {
   "Rate us in": "Rate us in",
   "Send Feedback": "Send Feedback",
 
-  // help_screen
+  // Account --> help_screen
   "Help": "Support",
   "DescriptionTextInHelp": "Dear customers In case of any problems or any issues please contact us at via",
   "PhoneNumber": "07509583333 - 07802320717",
@@ -146,9 +146,9 @@ const Map<String, String> en = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // invite_friend
+  // Account --> invite_friend
 
-  // profile
+  // Account --> profile
   "Account & Security": "Account & Security",
   "Account Information": "Account Information",
   "Orders": "Orders",
@@ -164,16 +164,16 @@ const Map<String, String> en = {
   "Guest Account": "Guest Account",
   "Register": "Register",
 
-  // voucher_code
+  // Account --> voucher_code
   "Vouchers": "Vouchers",
   "Active": "Active",
   "Used": "Used",
   "Expired": "Expired",
   "Do not have any Voucher Code": "Do not have any Voucher Code",
 
+  // Landing --> choose_lan
+  "Get Start": "Get Start",
 
-
-  
   "": "",
 
   // Notification
@@ -182,10 +182,7 @@ const Map<String, String> en = {
   "1 week ago": "1 week ago",
   "1 day ago": "One day ago",
   "An hour ago": "An hour ago",
-  "A minute ago": "A minute ago",
-
-  // choose_lan
-  "Get Start": "Get Start",
+  "A minute ago": "A minute ago",  
   
   // profilo Chenged
   "Information": "Information",

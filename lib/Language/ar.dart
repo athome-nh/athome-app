@@ -1,5 +1,5 @@
 const Map<String, String> ar = {
-  // about_screen
+  // Account --> about_screen
   "About Us": "حول التطبیق",
   "AboutTextOne":
       "مرحبا بك في تطبيق دلي لاس للتسوق عبر الإنترنت. دلي لاس یقدم طريقة مريحة وفعالة للتسوق و توصيل مشترياتك مباشرة إلى باب منزلك . دلي لاس مصممة لتعزيز تجربة التسوق الخاصة بكم و جعل تسوق المواد البقالة خاليا من المتاعب. إليك نظرة عامة مختصرة عما يقدمه تطبيقنا",
@@ -18,7 +18,7 @@ const Map<String, String> ar = {
   "AboutTextEight":
       "نشكركم على اختياركم تطبيق دلي لاس لتلبية طلباتكم. نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد!",
 
-  // account_info
+  // Account --> account_info
   "Image changed": "تم التغیر الصورة",
   "Cancel": "الغاء",
   "Edit": " ",
@@ -34,7 +34,7 @@ const Map<String, String> ar = {
   "City": "مدينة",
   "Save": "حفظ",
 
-  // account_setting
+  // Account --> account_setting
   "Account Settings": "",
   "Setting": "",
   "Notification Setting": "",
@@ -50,7 +50,7 @@ const Map<String, String> ar = {
   "Arabic": "العربية",
   "Kurdish": "كردي",
 
-  // all_gudide
+  // Account --> all_gudide
   "FAQs": "FAQs",
   "What\'s New": "",
   "Title_FAQ_1": "",
@@ -98,7 +98,7 @@ const Map<String, String> ar = {
   "Description_Update_7": "",
   "Date": "",
 
-  // chatscreen
+  // Account --> chatscreen
   "Select Bug": "",
   "Customer Support": "",
   "Customer Support Form": "",
@@ -121,7 +121,7 @@ const Map<String, String> ar = {
   "seconds ago": "منذ ثوان",
   "Just now": "الآن",
 
-  // feedback
+  // Account --> feedback
   "Poor": "",
   "Terrible": "",
   "Awful": "",
@@ -138,7 +138,7 @@ const Map<String, String> ar = {
   "Rate us in": "",
   "Send Feedback": "",
 
-  // help_screen
+  // Account --> help_screen
   "Help": "الدعم",
   "DescriptionTextInHelp": "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
   "PhoneNumber": "07509583333 - 07802320717",
@@ -146,7 +146,7 @@ const Map<String, String> ar = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // profile
+  // Account --> profile
   "Account & Security": "",
   "Account Information": "",
   "Orders": "طلباتي",
@@ -162,20 +162,20 @@ const Map<String, String> ar = {
   "Guest Account": "",
   "Register": "تسجیل الدخول",
 
-  // voucher_code
+  // Account --> voucher_code
   "Vouchers": "",
   "Active": "",
   "Used": "",
   "Expired": "",
   "Do not have any Voucher Code": "",
 
+  // Landing --> choose_lan
+  "Get Start": "ابدأ",
+
   
   // Notification
   "Notification": "إشعار",
-  "You don't have any notification": "هیليس لديك أي إشعار",
-
-  // choose_lan
-  "Get Start": "ابدأ",
+  "You don't have any notification": "هیليس لديك أي إشعار", 
   
   // profilo
   "Information": "حسابي",
