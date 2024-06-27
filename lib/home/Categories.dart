@@ -48,75 +48,78 @@ class _CategoriesState extends State<Categories> {
         body: SizedBox(
           height: getHeight(context, 90),
           width: getWidth(context, 100),
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: getWidth(context, 0.25),
-              crossAxisCount: 2, // Number of columns
-            ),
-            itemCount:
-                productPro.categores.length, // Number of items in the grid
-            itemBuilder: (BuildContext context, int index) {
-              final cateItem = productPro.categores[index];
-
-              final randomColor = categoryColors[index % categoryColors.length];
-
-              return GestureDetector(
-                onTap: () {
-                  productPro.setcatetype(cateItem.id!);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => itemCategories()),
-                  ).then((value) {
-                    productPro.setsubcateSelect(0);
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: getHeight(context, 20),
-                    height: getHeight(context, 20),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: mainColorBlack.withOpacity(0.2)),
-                        color: randomColor,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CachedNetworkImage(
-                          imageUrl:
-                              dotenv.env['imageUrlServer']! + cateItem.img!,
-                          placeholder: (context, url) =>
-                              Image.asset("assets/images/Logo-Type-2.png"),
-                          errorWidget: (context, url, error) =>
-                              Image.asset("assets/images/Logo-Type-2.png"),
-                          filterQuality: FilterQuality.low,
-                          width: getHeight(context, 15),
-                          height: getHeight(context, 15),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          lang == "en"
-                              ? cateItem.nameEn!
-                              : lang == "ar"
-                                  ? cateItem.nameAr!
-                                  : cateItem.nameKu!,
-                          maxLines: 1,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: mainColorBlack,
-                              fontFamily: mainFontbold,
-                              fontSize: 14),
-                        ),
-                      ],
+          child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: getWidth(context, 2)),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: getWidth(context, 0.25),
+                crossAxisCount: 2, // Number of columns
+              ),
+              itemCount:
+                  productPro.categores.length, // Number of items in the grid
+              itemBuilder: (BuildContext context, int index) {
+                final cateItem = productPro.categores[index];
+            
+                final randomColor = categoryColors[index % categoryColors.length];
+            
+                return GestureDetector(
+                  onTap: () {
+                    productPro.setcatetype(cateItem.id!);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => itemCategories()),
+                    ).then((value) {
+                      productPro.setsubcateSelect(0);
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: getHeight(context, 20),
+                      height: getHeight(context, 20),
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: mainColorBlack.withOpacity(0.2)),
+                          color: randomColor,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl:
+                                dotenv.env['imageUrlServer']! + cateItem.img!,
+                            placeholder: (context, url) =>
+                                Image.asset("assets/images/Logo-Type-2.png"),
+                            errorWidget: (context, url, error) =>
+                                Image.asset("assets/images/Logo-Type-2.png"),
+                            filterQuality: FilterQuality.low,
+                            width: getHeight(context, 15),
+                            height: getHeight(context, 15),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            lang == "en"
+                                ? cateItem.nameEn!
+                                : lang == "ar"
+                                    ? cateItem.nameAr!
+                                    : cateItem.nameKu!,
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: mainColorBlack,
+                                fontFamily: mainFontbold,
+                                fontSize: 14),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),

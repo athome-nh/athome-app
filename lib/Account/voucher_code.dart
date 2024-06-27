@@ -2,6 +2,7 @@ import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/property.dart';
 
@@ -19,12 +20,12 @@ class _VoucherCodePageState extends State<VoucherCodePage> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Vouchers'),
+          title: Text('Vouchers'.tr),
           bottom: TabBar(
             tabs: [
-              Tab(text: "Active"),
-              Tab(text: "Used"),
-              Tab(text: "Expired"),
+              Tab(text: "Active".tr),
+              Tab(text: "Used".tr),
+              Tab(text: "Expired".tr),
             ],
           ),
         ),
@@ -49,7 +50,7 @@ class ActiveTab extends StatelessWidget {
       child: productrovider.unusedVouchers.isEmpty
           ? Center(
               child: Text(
-                "Don\'t have any Voucher Code",
+                "Do not have any Voucher Code".tr,
                 style: TextStyle(
                   fontFamily: mainFontnormal,
                   fontSize: 20,
@@ -86,7 +87,7 @@ class UsedTab extends StatelessWidget {
       child: productrovider.usedVouchers.isEmpty
           ? Center(
               child: Text(
-                "Don\'t have any Voucher Code",
+                "Do not have any Voucher Code".tr,
                 style: TextStyle(
                   fontFamily: mainFontnormal,
                   fontSize: 20,
@@ -123,7 +124,7 @@ class ExpiredTab extends StatelessWidget {
       child: productrovider.expireVouchers.isEmpty
           ? Center(
               child: Text(
-                "Don\'t have any Voucher Code",
+                "Do not have any Voucher Code".tr,
                 style: TextStyle(
                   fontFamily: mainFontnormal,
                   fontSize: 20,

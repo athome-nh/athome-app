@@ -1,5 +1,5 @@
 const Map<String, String> kur = {
-  // about_screen
+  // Account --> about_screen
   "About Us": "دەربارەی ئاپەکە",
   "AboutTextOne":
       "بەخێربێن بۆ ئەپلیکەیشنی ئۆنلاینی دڵی لاس! ئێمە کاردەکەین  بۆ ئەوەی ڕێگایەکی گونجاو و کاریگەرتان بۆ دابین بکەین بۆ کڕینی کاڵاکانتان و گەیاندنیان بۆ بەردەم دەرگای ماڵەکانتان. ئەپڵیکەیشنەکەمان دیزاین کراوە بۆ باشترکردنی ئەزموونی بازاریکردن و کڕینی کاڵا و سەوزە و میوەکان بێ ماندوبوون . ئەمەش کورتەیەکە  لەسەر ئەو خزمەتگوزاریانەی کە پێشکەش داکرێن",
@@ -18,7 +18,7 @@ const Map<String, String> kur = {
   "AboutTextEight":
       "سوپاس بۆ هەڵبژاردنی ئەپڵیکەیشنی دڵی لاس بۆ دابینکردنی پێداویستیەکانتان.بەردەوامبدەبین لە پێشکەشکردنی خزمەتگوزاری زیاتر بۆ ئەوەی ئەزمونی بازاریکردنەکانتان ئارامتر و چێژبەخشتربێت.",
 
-  // account_info
+  // Account --> account_info
   "Image changed": "وێنەکە گۆڕدرا",
   "Cancel": "پوچەڵ کردنەوە",
   "Edit": "ڕێکخستن",
@@ -34,7 +34,7 @@ const Map<String, String> kur = {
   "City": "شار",
   "Save": "زەخیرە کردن",
 
-  // account_setting
+  // Account --> account_setting
   "Account Settings": "",
   "Setting": "",
   "Notification Setting": "",
@@ -50,7 +50,7 @@ const Map<String, String> kur = {
   "Arabic": "عەرەبی",
   "Kurdish": "کوردی",
 
-  // all_gudide
+  // Account --> all_gudide
   "FAQs": "FAQs",
   "What\'s New": "",
   "Title_FAQ_1": "",
@@ -98,7 +98,7 @@ const Map<String, String> kur = {
   "Description_Update_7": "",
   "Date": "",
 
-  // chatscreen
+  // Account --> chatscreen
   "Select Bug": "",
   "Customer Support": "",
   "Customer Support Form": "",
@@ -121,7 +121,7 @@ const Map<String, String> kur = {
   "seconds ago": "چەند چرکەیەک لەمەوبەر",
   "Just now": "ئێستا",
 
-  // feedback
+  // Account --> feedback
   "Poor": "",
   "Terrible": "",
   "Awful": "",
@@ -138,7 +138,7 @@ const Map<String, String> kur = {
   "Rate us in": "",
   "Send Feedback": "",
 
-  // help_screen
+  // Account --> help_screen
   "Help": "پشتیوانی",
   "DescriptionTextInHelp": "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
   "PhoneNumber": "07509583333 - 07802320717",
@@ -146,27 +146,68 @@ const Map<String, String> kur = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
+  // Account --> invite_friend
+
+  // Account --> profile
+  "Account & Security": "",
+  "Account Information": "",
+  "Orders": "داواکاریەکانم",
+  "Locations": "ناونیشان",
+  "Invite a friend": "",
+  "Coin & Reward": "",
+  "My Voucher": "",
+  "General": "",
+  "Terms & Conditions": "",
+  "Privacy Policy": "",
+  "Customer Services": "",
+  "Logout": "چوونە دەر",
+  "Guest Account": "",
+  "Register": "خۆتۆمارکردن",
+
+  // Account --> voucher_code
+  "Vouchers": "",
+  "Active": "",
+  "Used": "",
+  "Expired": "",
+  "Do not have any Voucher Code": "",
+
+  // Landing --> choose_lan
+  "Get Start": "دەست پێبکە",
+
+  // Landing --> disableaccount
+  "account is disabled": "",
+
+  // Landing --> login_page
+  "Wellcome back": "بەخێر بێیتەوە",
+  "EnterYourPhoneNumberToShop": "ژمارە مۆبایل تۆمار بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
+  "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت تۆمار بکە ",
+  "Please enter your phone number correct": "ژمارەی مۆبایلەلەکت بە دروستی تۆمار بکە",
+  "Phone Number": "ژمارە مۆبایل",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
+  "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
+  "Account Pendding": "...چاوەڕوانبە",
+  "Account npt approved by admin yet": "بەشداربووی بەڕێز بەم زووانە ڕەزامەندی سەرپەرشتیار وەردەگریت. بۆ زانیاری زیاتر پەیوەندی بکەن بە (07509583333)",
+  "OK": "دڵنیام",
+  "Account Disabled": "هەژمارەکە ڕاگیرا",
+  "Account is disable please contact athome admin": "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
+  "unknown occurred error please try again later": "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
+  "Account range out": "...ببورە",
+  "Account range out content": "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
   
+
+
   // Notification
   "Notification": "ئاگادارکردنەوە",
-  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
-
-  // choose_lan
-  "Get Start": "دەست پێبکە",
-  
+  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",  
 
   // profilo
   "Information": "زانیاری",
   "Enter Name": "تۆمارکردنی ناو",
   "Enter Age": "تۆمارکدنی تەمەن",
-  "Orders": "داواکاریەکانم",
   "Address": "ناونیشان",
-  
-  "Log out": "چوونە دەر",
 
   //
   "New": "نوێ",
-
   "Saturday": "شەمە",
   "Sunday": "یەک شەمە",
   "Monday": "دوو شەمە",
@@ -174,7 +215,6 @@ const Map<String, String> kur = {
   "Wednesday": "چوار شەمە",
   "Thursday": "پێنج شەمە",
   "Friday": "هەینی",
-
   "Select Day": "کاتی گەیاندن هەڵبژێرە",
   "Delivery Type": "شێوازی گەیاندن",
   "Delevery now": "گەیاندنی ڕاستوخۆ",
@@ -222,7 +262,6 @@ const Map<String, String> kur = {
   // Dialogbox ( Register ) --> my_widget
   "Register First": "خۆت تۆمار بکە",
   "You need login": "پێویستە خۆت تۆمار بکەیت",
-  "Register": "خۆتۆمارکردن",
 
   // categories
   "All Categories": "گشت پۆلێنەکان",
@@ -297,22 +336,18 @@ const Map<String, String> kur = {
   "sorryWeDoNotHaveDelivery":
       "ببورن خزمەت گوزاری گەیاندن داخراوە لەم کاتەدا.\nئارەزوو دەکەیت داوەکاریەکەت بگەیەنین پاش",
   "am": "بەیانی؟",
-  "OK": "دڵنیام",
   "Add location": "ناونیشان زیاد بکە",
 
   // login_page
-  "Wellcome back": "بەخێر بێیتەوە",
-  "EnterYourPhoneNumberToShop":
-      "ژمارە مۆبایل تۆمار بکە بۆ ئەوەی ئاسانتر و زیرەکانەتر بازاڕ بکەیت.",
-  "Please enter your phone number": "تکایە ژمارەی مۆبایلەکەت تۆمار بکە ",
-  "Please enter your phone number correct":
-      "ژمارەی مۆبایلەلەکت بە دروستی تۆمار بکە",
+  
+  
+  
+  
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
-  "Phone Number": "ژمارە مۆبایل",
-  "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
+  
+  
 
   // locationdeatil
-  "Locations": "ناونیشان",
   "Add name": "زیادکردنی ناو",
   "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",
@@ -336,15 +371,12 @@ const Map<String, String> kur = {
 
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
 
-  "unknown occurred error please try again later":
-      "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
+  
   "Confirm": "دووپاتکردنەوە",
-  "Account range out": "...ببورە",
-  "Account range out content":
-      "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
-  "Account Pendding": "...چاوەڕوانبە",
-  "Account npt approved by admin yet":
-      "بەشداربووی بەڕێز بەم زووانە ڕەزامەندی سەرپەرشتیار وەردەگریت. بۆ زانیاری زیاتر پەیوەندی بکەن بە (07509583333)",
+  
+  
+  
+  
   // verification
   "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
   "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
@@ -354,9 +386,8 @@ const Map<String, String> kur = {
   "Try again in": "دوبارە داوابکەوە لە ",
   "Resend": "دووبارە ناردنەوە",
   "Verify": "دڵنیا بوونەوە",
-  "Account Disabled": "هەژمارەکە ڕاگیرا",
-  "Account is disable please contact athome admin":
-      "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
+  
+  
   "the code is un correct": "کۆدەکە هەڵەیە",
 
   // map
@@ -414,9 +445,6 @@ const Map<String, String> kur = {
   "A newer version of dlly las application is available, please download the latest version .":
       "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
   "Update": "دابەزاندن",
-  "By continuing, you agree to get Dlly Las's Privacy Policy":
-      "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
-  
   "Account recovery opportunity":
       "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
 

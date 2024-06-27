@@ -1,5 +1,5 @@
 const Map<String, String> en = {
-  // about_screen
+  // Account --> about_screen
   "About Us": "About Us",
   "AboutTextOne":
       "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
@@ -18,7 +18,7 @@ const Map<String, String> en = {
   "AboutTextEight":
       "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
 
-  // account_info
+  // Account --> account_info
   "Image changed": "Image changed",
   "Cancel": "Cancel", // feedback
   "Edit": "Edit",
@@ -34,23 +34,23 @@ const Map<String, String> en = {
   "City": "City",
   "Save": "Save",
   
-  // account_setting
-  "Account Settings": "Account Settings",
+  // Account --> account_setting
+  "Account Settings": "Account Settings", // profile
   "Setting": "Setting",
   "Notification Setting": "Notification Setting",
-  "Language": "Language", // chatscreen
+  "Language": "Language", // chatscreen, profile, choose_lan
   "Support": "Support",
-  "Help center": "Help center",
-  "About us": "About us",
-  "Guide": "Guide", // all_gudide
+  "Help center": "Help center", // profile
+  "About us": "About us", // profile
+  "Guide": "Guide", // all_gudide, profile
   "Feedback": "Feedback", // feedback
   "Delete Account": "Delete Account",
-  "Select Language": "Select Language", // chatscreen
-  "English": "English", // chatscreen
-  "Arabic": "Arabic ", // chatscreen
-  "Kurdish": "Kurdish", // chatscreen
+  "Select Language": "Select Language", // chatscreen, profile
+  "English": "English", // chatscreen, profile, choose_lan
+  "Arabic": "Arabic ", // chatscreen, profile, choose_lan
+  "Kurdish": "Kurdish", // chatscreen, profile, choose_lan
   
-  // all_gudide
+  // Account --> all_gudide
   "FAQs": "FAQs",
   "What\'s New": "What\'s New",
   "Title_FAQ_1": "General",
@@ -98,7 +98,7 @@ const Map<String, String> en = {
   "Description_Update_7": "You can now link your social media accounts with the app.",
   "Date": "Date",
   
-  // chatscreen
+  // Account --> chatscreen
   "Select Bug": "Select Bug",
   "Customer Support": "Customer Support",
   "Customer Support Form": "Customer Support Form",
@@ -121,7 +121,7 @@ const Map<String, String> en = {
   "seconds ago": "seconds ago",
   "Just now": "Just now",
 
-  // feedback
+  // Account --> feedback
   "Poor": "Poor",
   "Terrible": "Terrible",
   "Awful": "Awful",
@@ -138,7 +138,7 @@ const Map<String, String> en = {
   "Rate us in": "Rate us in",
   "Send Feedback": "Send Feedback",
 
-  // help_screen
+  // Account --> help_screen
   "Help": "Support",
   "DescriptionTextInHelp": "Dear customers In case of any problems or any issues please contact us at via",
   "PhoneNumber": "07509583333 - 07802320717",
@@ -146,27 +146,71 @@ const Map<String, String> en = {
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // invite_friend
-  "": "",
+  // Account --> invite_friend
+
+  // Account --> profile
+  "Account & Security": "Account & Security",
+  "Account Information": "Account Information",
+  "Orders": "Orders",
+  "Locations": "Locations",
+  "Invite a friend": "Invite a friend",
+  "Coin & Reward": "Coin & Reward",
+  "My Voucher": "My Voucher",
+  "General": "General",
+  "Terms & Conditions": "Terms & Conditions",
+  "Privacy Policy": "Privacy Policy",
+  "Customer Services": "Customer Services",
+  "Logout": "Log out",
+  "Guest Account": "Guest Account",
+  "Register": "Register",
+
+  // Account --> voucher_code
+  "Vouchers": "Vouchers",
+  "Active": "Active",
+  "Used": "Used",
+  "Expired": "Expired",
+  "Do not have any Voucher Code": "Do not have any Voucher Code",
+
+  // Landing --> choose_lan
+  "Get Start": "Get Start", // login_page
+
+  // Landing --> disableaccount
+  "account is disabled": "account is disabled",
+
+  // Landing --> login_page
+  "Wellcome back": "Welcome back",
+  "EnterYourPhoneNumberToShop": "Enter your phone number to Shop Smarter & Easier.",
+  "Please enter your phone number": "Please enter your phone number",
+  "Please enter your phone number correct": "accurate phone number needed",
+  "Phone Number": "Phone Number",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "By continuing, you agree to get Dlly Las's Privacy Policy",
+  "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
+  "Account Pendding": "Wait...",
+  "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
+  "OK": "OK",
+  "Account Disabled": "Account Disabled",
+  "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
+  "unknown occurred error please try again later": "Error please try again later",
+  "Account range out": "Sorry....",
+  "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   
+
+  
+  "": "",
+
   // Notification
   "Notification": "Notification",
   "You don't have any notification": "You don't have any notification.",
   "1 week ago": "1 week ago",
   "1 day ago": "One day ago",
   "An hour ago": "An hour ago",
-  "A minute ago": "A minute ago",
-
-  // choose_lan
-  "Get Start": "Get Start",
+  "A minute ago": "A minute ago",  
   
   // profilo Chenged
   "Information": "Information",
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
-  "Orders": "Orders",
   "Address": "Address",
-  "Log out": "Log out",
 
   //
   "New": "New",
@@ -224,7 +268,6 @@ const Map<String, String> en = {
   // Dialogbox ( Register ) --> my_widget
   "Register First": "Register First",
   "You need login": "You have to register first",
-  "Register": "Register",
 
   // categories
   "All Categories": "All Categories",
@@ -249,8 +292,7 @@ const Map<String, String> en = {
   "Are you sure you want to continue?": "Are you sure about continuing?",
 
   // favorite
-  "No have any favorite":
-      "You haven't set any favorite items.\nMake it your own!",
+  "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
 
   // Page --> No Internet --> my_widget
   "no internet": "You are offline, connect to WIFI",
@@ -299,22 +341,11 @@ const Map<String, String> en = {
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
-  "OK": "OK",
-
+  
   "Add location": "Add location",
 
-  // login_page
-  "Wellcome back": "Welcome back",
-  "EnterYourPhoneNumberToShop":
-      "Enter your phone number to Shop Smarter & Easier.",
-  "Please enter your phone number": "Please enter your phone number",
-  "Please enter your phone number correct": "accurate phone number needed",
-  "Please remove 0 form start": "Please remove 0 form the start",
-  "Phone Number": "Phone Number",
-  "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
-
+  
   // locationdeatil
-  "Locations": "Locations",
   "Add name": "Add name",
   "Add name location": "Add name location",
   "Area": "Area",
@@ -336,15 +367,9 @@ const Map<String, String> en = {
       "Please enter the required information for registration",
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
-  "unknown occurred error please try again later":
-      "Error please try again later",
+  
   "Confirm": "Confirm",
-  "Account range out": "Sorry....",
-  "Account range out content":
-      "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
-  "Account Pendding": "Wait...",
-  "Account npt approved by admin yet":
-      "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
+
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",
@@ -355,9 +380,8 @@ const Map<String, String> en = {
   "Try again in": "Try again in ",
   "Resend": "Resend",
   "Verify": "Verify",
-  "Account Disabled": "Account Disabled",
-  "Account is disable please contact athome admin":
-      "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
+  
+  
   "the code is un correct": "the code is wrong",
 
   // map
@@ -415,8 +439,7 @@ const Map<String, String> en = {
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",
   "Update": "Update",
-  "By continuing, you agree to get Dlly Las's Privacy Policy":
-      "By continuing, you agree to get Dlly Las's Privacy Policy",
+  
   
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
