@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class disableaccount extends StatefulWidget {
   const disableaccount({super.key});
@@ -12,7 +13,7 @@ class _disableaccountState extends State<disableaccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("account is disabled"),
+        child: Text("account is disabled".tr),
       ),
     );
   }

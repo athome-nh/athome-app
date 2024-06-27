@@ -174,6 +174,11 @@ const Map<String, String> en = {
   // Landing --> choose_lan
   "Get Start": "Get Start",
 
+  // Landing --> disableaccount
+  "account is disabled": "account is disabled",
+
+
+  
   "": "",
 
   // Notification

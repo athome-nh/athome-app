@@ -174,6 +174,9 @@ const Map<String, String> kur = {
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
 
+  // Landing --> disableaccount
+  "account is disabled": "account is disabled",
+
 
   // Notification
   "Notification": "ئاگادارکردنەوە",

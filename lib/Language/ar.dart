@@ -172,6 +172,9 @@ const Map<String, String> ar = {
   // Landing --> choose_lan
   "Get Start": "ابدأ",
 
+  // Landing --> disableaccount
+  "account is disabled": "account is disabled",
+
   
   // Notification
   "Notification": "إشعار",
