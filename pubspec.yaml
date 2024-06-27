@@ -95,6 +95,18 @@ flutter:
     - family: nrtN
       fonts:          
         - asset: assets/fonts/NRT-Reg.ttf
+    - family: irani
+      fonts:          
+        - asset: assets/fonts/1.ttf
+        - asset: assets/fonts/2.ttf
+        - asset: assets/fonts/3.ttf
+        - asset: assets/fonts/4.ttf
+        - asset: assets/fonts/5.ttf
+        - asset: assets/fonts/6.ttf
+        - asset: assets/fonts/7.ttf
+        - asset: assets/fonts/8.ttf
+        
+        
 
   
 

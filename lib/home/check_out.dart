@@ -4,6 +4,8 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/successScreen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
@@ -97,1781 +99,1415 @@ class _CheckOutState extends State<CheckOut> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: getWidth(context, 4),
-                        right: getWidth(context, 4),
-                        top: getWidth(context, 1)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          elevation: 3,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: EdgeInsets.only(
+                  left: getWidth(context, 1),
+                  right: getWidth(context, 1),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Delivery to',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: productrovider.location.isEmpty
-                                          ? () async {
-                                              LocationPermission permission =
-                                                  await Geolocator
-                                                      .requestPermission();
-                                              if (permission ==
-                                                  LocationPermission.denied) {
-                                                // Handle case where the user denied access to their location
-                                              }
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const Map_screen()),
-                                              );
-                                            }
-                                          : () {
-                                              showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                context: context,
-                                                backgroundColor: Colors.white,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadiusDirectional
-                                                          .only(
-                                                    topEnd: Radius.circular(25),
-                                                    topStart:
-                                                        Radius.circular(25),
-                                                  ),
-                                                ),
-                                                builder: (context) =>
-                                                    Directionality(
-                                                  textDirection: lang == "en"
-                                                      ? TextDirection.ltr
-                                                      : TextDirection.rtl,
-                                                  child: StatefulBuilder(
-                                                      builder: (BuildContext
-                                                              context,
-                                                          StateSetter mystate) {
-                                                    return Stack(
-                                                      alignment:
-                                                          Alignment.topCenter,
-                                                      children: [
-                                                        SizedBox(
-                                                          width: getWidth(
-                                                              context, 100),
-                                                          height: getHeight(
-                                                              context, 50),
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .center,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: <Widget>[
-                                                              Text(
-                                                                "Please select Address"
-                                                                    .tr,
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                maxLines: 1,
-                                                                style:
-                                                                    TextStyle(
-                                                                  color:
-                                                                      mainColorBlack,
-                                                                  fontFamily:
-                                                                      mainFontbold,
-                                                                  fontSize: 15,
-                                                                ),
-                                                              ),
-                                                              const SizedBox(
-                                                                  height: 5),
-                                                              Container(
-                                                                width: getWidth(
-                                                                    context,
-                                                                    100),
-                                                                height:
-                                                                    getHeight(
-                                                                        context,
-                                                                        30),
-                                                                child: ListView
-                                                                    .builder(
-                                                                        itemCount: productrovider
-                                                                            .location
-                                                                            .length,
-                                                                        itemBuilder:
-                                                                            (BuildContext context,
-                                                                                int index) {
-                                                                          final location = productrovider
-                                                                              .location
-                                                                              .reversed
-                                                                              .toList()[index];
-
-                                                                          return Column(
-                                                                            children: [
-                                                                              ListTile(
-                                                                                onTap: () {
-                                                                                  if (productrovider.defultlocation == location.id!) {
-                                                                                  } else {
-                                                                                    mystate(() {
-                                                                                      productrovider.setdefultlocation(location.id!);
-                                                                                    });
-                                                                                    Navigator.pop(context);
-                                                                                  }
-                                                                                },
-                                                                                title: Text(
-                                                                                  location.name!,
-                                                                                  maxLines: 1,
-                                                                                  style: TextStyle(fontFamily: mainFontbold, color: mainColorBlack, fontSize: 16),
-                                                                                ),
-                                                                                subtitle: Text(
-                                                                                  location.area!,
-                                                                                  style: TextStyle(fontFamily: mainFontnormal, color: mainColorGrey, fontSize: 12),
-                                                                                ),
-                                                                                trailing: Icon(
-                                                                                  productrovider.defultlocation == location.id! ? Icons.check_circle : Icons.check_circle_outline,
-                                                                                  color: productrovider.defultlocation == location.id! ? Colors.green : mainColorGrey,
-                                                                                ),
-                                                                              ),
-                                                                              SizedBox(
-                                                                                width: getWidth(context, 45),
-                                                                                child: Divider(
-                                                                                  color: mainColorGrey.withOpacity(0.1),
-                                                                                ),
-                                                                              )
-                                                                            ],
-                                                                          );
-                                                                        }),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed:
-                                                                    () async {
-                                                                  LocationPermission
-                                                                      permission =
-                                                                      await Geolocator
-                                                                          .requestPermission();
-                                                                  if (permission ==
-                                                                      LocationPermission
-                                                                          .denied) {
-                                                                    // Handle case where the user denied access to their location
-                                                                  }
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                  Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder:
-                                                                            (context) =>
-                                                                                const Map_screen()),
-                                                                  );
-                                                                },
-                                                                style: TextButton
-                                                                    .styleFrom(
-                                                                  backgroundColor: productrovider
-                                                                              .location
-                                                                              .length >
-                                                                          0
-                                                                      ? mainColorGrey
-                                                                      : mainColorRed,
-                                                                  fixedSize: Size(
-                                                                      getWidth(
-                                                                          context,
-                                                                          70),
-                                                                      getHeight(
-                                                                          context,
-                                                                          5)),
-                                                                ),
-                                                                child: Text(
-                                                                  "Add location"
-                                                                      .tr,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    top: 8.0),
-                                                            child: Container(
-                                                              width: 65,
-                                                              height: 5,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            100),
-                                                                color:
-                                                                    mainColorGrey,
-                                                              ),
-                                                            ))
-                                                      ],
-                                                    );
-                                                  }),
-                                                ),
-                                              ).then((value) {});
-                                            },
-                                      child: Text(
-                                        productrovider.location.isEmpty
-                                            ? "Add location"
-                                            : 'Change',
-                                        style: TextStyle(
-                                          color: mainColorRed,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  'Delivery to',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0),
-                                  child: Divider(),
-                                ),
-                                productrovider.location.isEmpty
-                                    ? SizedBox()
-                                    : Row(
-                                        children: [
-                                          Icon(
-                                            Icons.location_pin,
-                                            color: mainColorRed,
-                                          ),
-                                          SizedBox(width: 8),
-                                          RichText(
-                                            text: new TextSpan(
-                                              // Note: Styles for TextSpans must be explicitly defined.
-                                              // Child text spans will inherit styles from parent
-                                              style: new TextStyle(
-                                                fontSize: 14.0,
-                                                color: Colors.black,
-                                              ),
-                                              children: <TextSpan>[
-                                                new TextSpan(
-                                                  text: productrovider
-                                                          .getonelocationById(
-                                                              productrovider
-                                                                  .defultlocation!)
-                                                          .area! +
-                                                      "\n",
-                                                  style: TextStyle(
-                                                      fontSize: 13,
-                                                      fontFamily:
-                                                          mainFontnormal),
-                                                ),
-                                                new TextSpan(
-                                                  text: productrovider
-                                                      .getonelocationById(
-                                                          productrovider
-                                                              .defultlocation!)
-                                                      .name!,
-                                                  style: TextStyle(
-                                                      fontSize: 13,
-                                                      fontFamily:
-                                                          mainFontnormal),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          elevation: 3,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Delivery Schedule",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    Switch(
-                                      value: isSchedule,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          if (value) {
-                                            deleveryType = 2;
-                                          } else {
-                                            currentDateSelectedIndex = 0;
-                                            currentTimeSelectedIndex = -1;
-                                            showTime = false;
-                                            deleveryType = 1;
-                                            selectedDate = Datetimenow;
-                                            selectedDateorder = "";
-                                            selectedTime = "";
+                                GestureDetector(
+                                  onTap: productrovider.location.isEmpty
+                                      ? () async {
+                                          LocationPermission permission =
+                                              await Geolocator
+                                                  .requestPermission();
+                                          if (permission ==
+                                              LocationPermission.denied) {
+                                            // Handle case where the user denied access to their location
                                           }
-                                          isSchedule = !isSchedule;
-                                        });
-                                      },
-                                    )
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0),
-                                  child: Divider(),
-                                ),
-                                Center(
-                                  child: Container(
-                                    width: getWidth(context, 100),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(
-                                          color: deleveryType == 1
-                                              ? mainColorBlack.withOpacity(0.2)
-                                              : mainColorGrey.withOpacity(0.5)),
-                                    ),
-                                    child: Center(
-                                      child: DropdownButtonFormField<int>(
-                                        decoration: InputDecoration(
-                                          border: UnderlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                          ),
-                                        ),
-                                        icon: Icon(
-                                          Icons.calendar_today_outlined,
-                                          color: deleveryType == 1
-                                              ? mainColorBlack.withOpacity(0.2)
-                                              : mainColorGrey.withOpacity(0.5),
-                                        ),
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 15),
-                                        value: currentDateSelectedIndex,
-                                        onChanged: (newIndex) {
-                                          setState(() {
-                                            currentTimeSelectedIndex = -1;
-                                            currentDateSelectedIndex =
-                                                newIndex!;
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Map_screen()),
+                                          );
+                                        }
+                                      : () {
+                                          showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            context: context,
+                                            backgroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadiusDirectional.only(
+                                                topEnd: Radius.circular(25),
+                                                topStart: Radius.circular(25),
+                                              ),
+                                            ),
+                                            builder: (context) =>
+                                                Directionality(
+                                              textDirection: lang == "en"
+                                                  ? TextDirection.ltr
+                                                  : TextDirection.rtl,
+                                              child: StatefulBuilder(builder:
+                                                  (BuildContext context,
+                                                      StateSetter mystate) {
+                                                return Stack(
+                                                  alignment:
+                                                      Alignment.topCenter,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: getWidth(
+                                                          context, 100),
+                                                      height: getHeight(
+                                                          context, 50),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: <Widget>[
+                                                          Text(
+                                                            "Please select Address"
+                                                                .tr,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            maxLines: 1,
+                                                            style: TextStyle(
+                                                              color:
+                                                                  mainColorBlack,
+                                                              fontFamily:
+                                                                  mainFontbold,
+                                                              fontSize: 15,
+                                                            ),
+                                                          ),
+                                                          const SizedBox(
+                                                              height: 5),
+                                                          Container(
+                                                            width: getWidth(
+                                                                context, 100),
+                                                            height: getHeight(
+                                                                context, 35),
+                                                            child: ListView
+                                                                .builder(
+                                                                    itemCount: productrovider
+                                                                        .location
+                                                                        .length,
+                                                                    itemBuilder:
+                                                                        (BuildContext
+                                                                                context,
+                                                                            int index) {
+                                                                      final location = productrovider
+                                                                          .location
+                                                                          .reversed
+                                                                          .toList()[index];
 
-                                            if (newIndex == 0) {
-                                              setState(() {
-                                                showTime = false;
-                                              });
-                                            } else {
-                                              selectedDateorder =
-                                                  Datetimenow.add(Duration(
-                                                          days: newIndex - 1))
-                                                      .toString()
-                                                      .substring(0, 10);
-                                              selectedDate = Datetimenow.add(
-                                                  Duration(days: newIndex - 1));
-                                              setState(() {
-                                                selectedTime = "";
-                                                Etime = false;
-                                                showTime = true;
-                                              });
-                                            }
-                                          });
+                                                                      return Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            8.0),
+                                                                        child:
+                                                                            Container(
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(15),
+                                                                            border:
+                                                                                Border.all(
+                                                                              color: mainColorGrey.withOpacity(0.5),
+                                                                              width: 1,
+                                                                              style: BorderStyle.solid,
+                                                                            ),
+                                                                          ),
+                                                                          child:
+                                                                              ListTile(
+                                                                            onTap:
+                                                                                () {
+                                                                              if (productrovider.defultlocation == location.id!) {
+                                                                              } else {
+                                                                                mystate(() {
+                                                                                  productrovider.setdefultlocation(location.id!);
+                                                                                });
+                                                                                Navigator.pop(context);
+                                                                              }
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              location.name!,
+                                                                              maxLines: 1,
+                                                                              style: TextStyle(fontFamily: mainFontbold, color: mainColorBlack, fontSize: 16),
+                                                                            ),
+                                                                            subtitle:
+                                                                                Text(
+                                                                              location.area!,
+                                                                              style: TextStyle(fontFamily: mainFontnormal, color: mainColorGrey, fontSize: 12),
+                                                                            ),
+                                                                            trailing:
+                                                                                Icon(
+                                                                              productrovider.defultlocation == location.id! ? Icons.check_box : Icons.check_box_outline_blank,
+                                                                              color: mainColorGrey,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed:
+                                                                () async {
+                                                              LocationPermission
+                                                                  permission =
+                                                                  await Geolocator
+                                                                      .requestPermission();
+                                                              if (permission ==
+                                                                  LocationPermission
+                                                                      .denied) {
+                                                                // Handle case where the user denied access to their location
+                                                              }
+                                                              Navigator.pop(
+                                                                  context);
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            const Map_screen()),
+                                                              );
+                                                            },
+                                                            style: TextButton
+                                                                .styleFrom(
+                                                              backgroundColor: productrovider
+                                                                          .location
+                                                                          .length >
+                                                                      0
+                                                                  ? mainColorGrey
+                                                                  : mainColorRed,
+                                                              fixedSize: Size(
+                                                                  getWidth(
+                                                                      context,
+                                                                      70),
+                                                                  getHeight(
+                                                                      context,
+                                                                      5)),
+                                                            ),
+                                                            child: Text(
+                                                              "Add location".tr,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(top: 8.0),
+                                                        child: Container(
+                                                          width: 65,
+                                                          height: 5,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100),
+                                                            color:
+                                                                mainColorGrey,
+                                                          ),
+                                                        ))
+                                                  ],
+                                                );
+                                              }),
+                                            ),
+                                          ).then((value) {});
                                         },
-                                        items: List.generate(listOfDays.length,
-                                            (index) {
-                                          bool hasAvailableSchedule = productrovider
-                                              .scheduleData
-                                              .where((time) =>
-                                                  time.weekId ==
-                                                      getWeekdayName(
-                                                          Datetimenow.add(Duration(days: index - 1))
-                                                              .weekday) &&
-                                                  Datetimenow.add(Duration(hours: 1))
-                                                      .isBefore(DateTime.parse(
-                                                          Datetimenow.add(Duration(days: index - 1))
-                                                                  .toString()
-                                                                  .substring(0, 10) +
-                                                              " " +
-                                                              time.from.toString())))
-                                              .isNotEmpty;
-
-                                          return DropdownMenuItem<int>(
-                                              enabled: hasAvailableSchedule,
-                                              value: index,
-                                              child: index == 0
-                                                  ? Text(
-                                                      listOfDays[index],
-                                                      style: TextStyle(
-                                                          fontFamily:
-                                                              mainFontnormal,
-                                                          color: hasAvailableSchedule
-                                                              ? mainColorBlack
-                                                              : mainColorBlack
-                                                                  .withOpacity(
-                                                                      0.4)),
-                                                    )
-                                                  : Row(
-                                                      children: [
-                                                        Text(
-                                                          Datetimenow.add(
-                                                                  Duration(
-                                                                      days:
-                                                                          index -
-                                                                              1))
-                                                              .toString()
-                                                              .substring(0, 10),
-                                                          style: TextStyle(
-                                                              fontFamily:
-                                                                  mainFontnormal,
-                                                              color: hasAvailableSchedule
-                                                                  ? mainColorBlack
-                                                                  : mainColorBlack
-                                                                      .withOpacity(
-                                                                          0.4)),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 15,
-                                                        ),
-                                                        Text(
-                                                          Datetimenow.add(Duration(
-                                                                          days: index -
-                                                                              1))
-                                                                      .day ==
-                                                                  Datetimenow
-                                                                      .day
-                                                              ? "Today".tr
-                                                              : getWeekdayName(
-                                                                  Datetimenow.add(Duration(
-                                                                          days: index -
-                                                                              1))
-                                                                      .weekday),
-                                                          style: TextStyle(
-                                                              fontFamily:
-                                                                  mainFontnormal,
-                                                              color: hasAvailableSchedule
-                                                                  ? mainColorBlack
-                                                                  : mainColorBlack
-                                                                      .withOpacity(
-                                                                          0.4)),
-                                                        ),
-                                                      ],
-                                                    ));
-                                        }),
-                                      ),
+                                  child: Text(
+                                    productrovider.location.isEmpty
+                                        ? "Add location"
+                                        : 'Change',
+                                    style: TextStyle(
+                                      color: mainColorRed,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                                // Assuming productrovider.scheduleData is a List<ScheduleModel>
-
-                                !showTime
-                                    ? Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 20.0),
-                                        child: Center(
-                                            child: Text(
-                                                "Select Day to show time deleverys"
-                                                    .tr)),
-                                      )
-                                    : SizedBox(
-                                        height: getHeight(context, 20),
-                                        child: GridView.builder(
-                                          shrinkWrap: true,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2,
-                                            mainAxisSpacing: 10,
-                                            crossAxisSpacing: 10,
-                                            childAspectRatio: 4,
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Divider(),
+                            ),
+                            productrovider.location.isEmpty
+                                ? SizedBox()
+                                : Row(
+                                    children: [
+                                      Icon(
+                                        Icons.location_pin,
+                                        color: mainColorRed,
+                                      ),
+                                      SizedBox(width: 8),
+                                      RichText(
+                                        text: new TextSpan(
+                                          // Note: Styles for TextSpans must be explicitly defined.
+                                          // Child text spans will inherit styles from parent
+                                          style: new TextStyle(
+                                            fontSize: 14.0,
+                                            color: Colors.black,
                                           ),
-                                          itemCount: productrovider.scheduleData
-                                              .where((time) =>
-                                                  time.weekId ==
-                                                      getWeekdayName(
-                                                          selectedDate
-                                                              .weekday) &&
-                                                  Datetimenow.add(
-                                                          Duration(hours: 1))
-                                                      .isBefore(DateTime.parse(
-                                                          selectedDate
-                                                                  .toString()
-                                                                  .substring(
-                                                                      0, 10) +
-                                                              " " +
-                                                              time.from
-                                                                  .toString())))
-                                              .length,
-                                          scrollDirection: Axis.vertical,
-                                          itemBuilder: (context, index) {
-                                            ScheduleModel time = productrovider
-                                                .scheduleData
-                                                .where((time2) =>
-                                                    time2.weekId ==
-                                                        getWeekdayName(selectedDate
-                                                            .weekday) &&
-                                                    Datetimenow.add(
-                                                            Duration(hours: 1))
-                                                        .isBefore(DateTime.parse(
-                                                            selectedDate
-                                                                    .toString()
-                                                                    .substring(
-                                                                        0, 10) +
-                                                                " " +
-                                                                time2.from
-                                                                    .toString())))
-                                                .toList()[index];
-
-                                            return OutlinedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  Etime = false;
-                                                  selectedTime =
-                                                      time.from.toString() +
-                                                          "||" +
-                                                          time.to.toString();
-                                                  currentTimeSelectedIndex =
-                                                      index;
-                                                });
-                                              },
-                                              style: TextButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                                backgroundColor:
-                                                    currentTimeSelectedIndex ==
-                                                            index
-                                                        ? mainColorGrey
-                                                        : mainColorWhite,
-                                              ),
-                                              child: Text(
-                                                convertTo12HourFormat(
-                                                        time.from.toString()) +
-                                                    " - " +
-                                                    convertTo12HourFormat(
-                                                        time.to.toString()),
-                                                style: TextStyle(
-                                                  fontFamily: mainFontnormal,
-                                                  fontSize: 12,
-                                                  color:
-                                                      currentTimeSelectedIndex ==
-                                                              index
-                                                          ? mainColorWhite
-                                                          : mainColorBlack,
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                          children: <TextSpan>[
+                                            new TextSpan(
+                                              text: productrovider
+                                                      .getonelocationById(
+                                                          productrovider
+                                                              .defultlocation!)
+                                                      .area! +
+                                                  "\n",
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: mainFontnormal),
+                                            ),
+                                            new TextSpan(
+                                              text: productrovider
+                                                  .getonelocationById(
+                                                      productrovider
+                                                          .defultlocation!)
+                                                  .name!,
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: mainFontnormal),
+                                            ),
+                                          ],
                                         ),
                                       ),
-
-                                Etime
-                                    ? Center(
-                                        child: Text(
-                                          "Select the Time please".tr,
-                                          style: TextStyle(
-                                              color: mainColorRed,
-                                              fontFamily: mainFontnormal),
-                                        ),
-                                      )
-                                    : SizedBox(),
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                              ],
-                            ),
-                          ),
+                                    ],
+                                  ),
+                          ],
                         ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          elevation: 3,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Delivery Type".tr,
-                                      style: TextStyle(
-                                          color: mainColorBlack,
-                                          fontFamily: mainFontnormal,
-                                          fontSize: 16),
-                                    ),
-                                    Icon(
-                                      Icons.calendar_today_outlined,
-                                      color: mainColorRed,
-                                      size: 25,
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0),
-                                  child: Divider(),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        // border: Border.all(
-                                        //     color:
-                                        //         mainColorGrey.withOpacity(0.5)),
-                                      ),
-                                      child: RadioMenuButton(
-                                          value: deleveryType,
-                                          groupValue: 1,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              isSchedule = false;
-                                              currentDateSelectedIndex = 0;
-                                              currentTimeSelectedIndex = -1;
-                                              showTime = false;
-                                              deleveryType = 1;
-                                              selectedDate = Datetimenow;
-                                              selectedDateorder = "";
-                                              selectedTime = "";
-                                            });
-                                          },
-                                          child: Text(
-                                            "Delevery now".tr,
-                                            style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 14),
-                                          )),
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        // border: Border.all(
-                                        //     color:
-                                        //         mainColorGrey.withOpacity(0.5)),
-                                      ),
-                                      child: RadioMenuButton(
-                                          value: deleveryType,
-                                          groupValue: 2,
-                                          onChanged: !showDate
-                                              ? null
-                                              : (value) {
-                                                  setState(() {
-                                                    deleveryType = 2;
-                                                  });
-                                                  showModalBottomSheet(
-                                                    // enableDrag: false,
-                                                    // isDismissible: false,
-                                                    isScrollControlled: true,
-                                                    context: context,
-                                                    backgroundColor:
-                                                        Colors.white,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadiusDirectional
-                                                              .only(
-                                                        topEnd:
-                                                            Radius.circular(25),
-                                                        topStart:
-                                                            Radius.circular(25),
-                                                      ),
-                                                    ),
-                                                    builder: (context) =>
-                                                        Directionality(
-                                                      textDirection: lang ==
-                                                              "en"
-                                                          ? TextDirection.ltr
-                                                          : TextDirection.rtl,
-                                                      child: Container(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .only(
-                                                          start: 20,
-                                                          end: 20,
-                                                          bottom: 30,
-                                                          top: 8,
-                                                        ),
-                                                        child: StatefulBuilder(
-                                                            builder: (BuildContext
-                                                                    context,
-                                                                StateSetter
-                                                                    mystate) {
-                                                          return Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            children: [
-                                                              SizedBox(
-                                                                height:
-                                                                    getHeight(
-                                                                        context,
-                                                                        4),
-                                                              ),
-                                                              FadeInUp(
-                                                                delay: const Duration(
-                                                                    milliseconds:
-                                                                        200),
-                                                                child: Column(
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Center(
-                                                                      child:
-                                                                          Container(
-                                                                        width: getWidth(
-                                                                            context,
-                                                                            100),
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(15),
-                                                                          border:
-                                                                              Border.all(color: deleveryType == 1 ? mainColorBlack.withOpacity(0.2) : mainColorGrey.withOpacity(0.5)),
-                                                                        ),
-                                                                        child:
-                                                                            Center(
-                                                                          child:
-                                                                              DropdownButtonFormField<int>(
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              border: UnderlineInputBorder(
-                                                                                borderSide: BorderSide.none,
-                                                                              ),
-                                                                            ),
-                                                                            icon:
-                                                                                Icon(
-                                                                              Icons.calendar_today_outlined,
-                                                                              color: deleveryType == 1 ? mainColorBlack.withOpacity(0.2) : mainColorGrey.withOpacity(0.5),
-                                                                            ),
-                                                                            padding:
-                                                                                EdgeInsets.symmetric(horizontal: 15),
-                                                                            value:
-                                                                                currentDateSelectedIndex,
-                                                                            onChanged:
-                                                                                (newIndex) {
-                                                                              mystate(() {
-                                                                                currentTimeSelectedIndex = -1;
-                                                                                currentDateSelectedIndex = newIndex!;
-
-                                                                                if (newIndex == 0) {
-                                                                                  mystate(() {
-                                                                                    showTime = false;
-                                                                                  });
-                                                                                } else {
-                                                                                  selectedDateorder = Datetimenow.add(Duration(days: newIndex - 1)).toString().substring(0, 10);
-                                                                                  selectedDate = Datetimenow.add(Duration(days: newIndex - 1));
-                                                                                  mystate(() {
-                                                                                    selectedTime = "";
-                                                                                    Etime = false;
-                                                                                    showTime = true;
-                                                                                  });
-                                                                                }
-                                                                              });
-                                                                            },
-                                                                            items:
-                                                                                List.generate(listOfDays.length, (index) {
-                                                                              bool hasAvailableSchedule = productrovider.scheduleData.where((time) => time.weekId == getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday) && Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(Datetimenow.add(Duration(days: index - 1)).toString().substring(0, 10) + " " + time.from.toString()))).isNotEmpty;
-
-                                                                              return DropdownMenuItem<int>(
-                                                                                  enabled: hasAvailableSchedule,
-                                                                                  value: index,
-                                                                                  child: index == 0
-                                                                                      ? Text(
-                                                                                          listOfDays[index],
-                                                                                          style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
-                                                                                        )
-                                                                                      : Row(
-                                                                                          children: [
-                                                                                            Text(
-                                                                                              Datetimenow.add(Duration(days: index - 1)).toString().substring(0, 10),
-                                                                                              style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
-                                                                                            ),
-                                                                                            SizedBox(
-                                                                                              width: 15,
-                                                                                            ),
-                                                                                            Text(
-                                                                                              Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday),
-                                                                                              style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ));
-                                                                            }),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height: getHeight(
-                                                                          context,
-                                                                          2),
-                                                                    ),
-                                                                    // Assuming productrovider.scheduleData is a List<ScheduleModel>
-
-                                                                    !showTime
-                                                                        ? Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.only(top: 20.0),
-                                                                            child:
-                                                                                Center(child: Text("Select Day to show time deleverys".tr)),
-                                                                          )
-                                                                        : SizedBox(
-                                                                            height:
-                                                                                getHeight(context, 20),
-                                                                            child:
-                                                                                GridView.builder(
-                                                                              shrinkWrap: true,
-                                                                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                crossAxisCount: 2,
-                                                                                mainAxisSpacing: 10,
-                                                                                crossAxisSpacing: 10,
-                                                                                childAspectRatio: 4,
-                                                                              ),
-                                                                              itemCount: productrovider.scheduleData.where((time) => time.weekId == getWeekdayName(selectedDate.weekday) && Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate.toString().substring(0, 10) + " " + time.from.toString()))).length,
-                                                                              scrollDirection: Axis.vertical,
-                                                                              itemBuilder: (context, index) {
-                                                                                ScheduleModel time = productrovider.scheduleData.where((time2) => time2.weekId == getWeekdayName(selectedDate.weekday) && Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate.toString().substring(0, 10) + " " + time2.from.toString()))).toList()[index];
-
-                                                                                return OutlinedButton(
-                                                                                  onPressed: () {
-                                                                                    mystate(() {
-                                                                                      Etime = false;
-                                                                                      selectedTime = time.from.toString() + "||" + time.to.toString();
-                                                                                      currentTimeSelectedIndex = index;
-                                                                                    });
-                                                                                  },
-                                                                                  style: TextButton.styleFrom(
-                                                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                                                                    backgroundColor: currentTimeSelectedIndex == index ? mainColorGrey : mainColorWhite,
-                                                                                  ),
-                                                                                  child: Text(
-                                                                                    convertTo12HourFormat(time.from.toString()) + " - " + convertTo12HourFormat(time.to.toString()),
-                                                                                    style: TextStyle(
-                                                                                      fontFamily: mainFontnormal,
-                                                                                      fontSize: 12,
-                                                                                      color: currentTimeSelectedIndex == index ? mainColorWhite : mainColorBlack,
-                                                                                    ),
-                                                                                  ),
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-
-                                                                    Etime
-                                                                        ? Center(
-                                                                            child:
-                                                                                Text(
-                                                                              "Select the Time please".tr,
-                                                                              style: TextStyle(color: mainColorRed, fontFamily: mainFontnormal),
-                                                                            ),
-                                                                          )
-                                                                        : SizedBox(),
-                                                                    SizedBox(
-                                                                      height: getHeight(
-                                                                          context,
-                                                                          2),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsets.symmetric(
-                                                                          horizontal: getWidth(
-                                                                              context,
-                                                                              4)),
-                                                                      child:
-                                                                          TextButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          if (selectedTime
-                                                                              .isEmpty) {
-                                                                            mystate(() {
-                                                                              Etime = true;
-                                                                            });
-                                                                          } else {
-                                                                            mystate(() {
-                                                                              isSchedule = true;
-                                                                            });
-                                                                            Navigator.pop(context);
-                                                                          }
-                                                                        },
-                                                                        style: TextButton
-                                                                            .styleFrom(
-                                                                          fixedSize: Size(
-                                                                              getWidth(context, 85),
-                                                                              getHeight(context, 6)),
-                                                                        ),
-                                                                        child:
-                                                                            Text(
-                                                                          "Select"
-                                                                              .tr,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        }),
-                                                      ),
-                                                    ),
-                                                  ).then((value) {
-                                                    if (isSchedule) {
-                                                      setState(() {
-                                                        isSchedule = true;
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        isSchedule = false;
-                                                        currentDateSelectedIndex =
-                                                            0;
-                                                        currentTimeSelectedIndex =
-                                                            -1;
-                                                        showTime = false;
-                                                        deleveryType = 1;
-                                                        selectedDate =
-                                                            Datetimenow;
-                                                        selectedDateorder = "";
-                                                        selectedTime = "";
-                                                      });
-                                                    }
-                                                  });
-                                                },
-                                          child: Text(
-                                            "Delevery schedule".tr,
-                                            style: TextStyle(
-                                                color: mainColorBlack,
-                                                fontFamily: mainFontnormal,
-                                                fontSize: 14),
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Your Voucher Code".tr,
+                              "Delivery Type".tr,
                               style: TextStyle(
                                   color: mainColorBlack,
                                   fontFamily: mainFontnormal,
                                   fontSize: 16),
                             ),
-                            TextButton(
-                              onPressed: () async {
-                                setState(() {
-                                  VoucherE = "";
-                                  voucherCode.clear();
-                                });
-                                showDialog(
-                                  context: context,
-                                  builder: (ctx) => StatefulBuilder(
-                                    builder: (context, setState1) {
-                                      return AlertDialog(
-                                        content: Directionality(
-                                          textDirection: lang == "en"
-                                              ? TextDirection.ltr
-                                              : TextDirection.rtl,
-                                          child: Stack(
-                                            alignment: lang == "en"
-                                                ? Alignment.topLeft
-                                                : Alignment.topRight,
-                                            children: [
-                                              SizedBox(
-                                                width: getWidth(context, 70),
-                                                height: getHeight(context, 50),
-                                                child: SingleChildScrollView(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: <Widget>[
-                                                      // Title
-                                                      Text(
-                                                        "Voucher Code",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        maxLines: 1,
-                                                        style: TextStyle(
-                                                          color: mainColorBlack,
-                                                          fontFamily:
-                                                              mainFontbold,
-                                                          fontSize: 15,
-                                                        ),
-                                                      ),
-
-                                                      SizedBox(
-                                                          height: getHeight(
-                                                              context, 4)),
-
-                                                      // TextField
-                                                      Container(
-                                                        width: getWidth(
-                                                            context, 90),
-                                                        height: getWidth(
-                                                            context, 12),
-                                                        child: TextFormField(
-                                                          controller:
-                                                              voucherCode,
-                                                          decoration:
-                                                              InputDecoration(
-                                                            focusedBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          15),
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color:
-                                                                    mainColorGrey,
-                                                                width: 1.0,
-                                                              ),
-                                                            ),
-                                                            enabledBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          15),
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: mainColorGrey
-                                                                    .withOpacity(
-                                                                        0.8),
-                                                                width: 1.0,
-                                                              ),
-                                                            ),
-                                                            focusedErrorBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          15),
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color:
-                                                                    Colors.red,
-                                                                width: 1.0,
-                                                              ),
-                                                            ),
-                                                            labelText:
-                                                                "Enter Voucher Code",
-                                                            hintStyle: TextStyle(
-                                                                color: mainColorBlack
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontSize: 14,
-                                                                fontFamily:
-                                                                    mainFontnormal),
-                                                            floatingLabelBehavior:
-                                                                FloatingLabelBehavior
-                                                                    .always,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 5,
-                                                      ),
-                                                      VoucherE.isNotEmpty
-                                                          ? Text(
-                                                              VoucherE,
-                                                              style: TextStyle(
-                                                                  fontFamily:
-                                                                      mainFontnormal,
-                                                                  color:
-                                                                      mainColorRed,
-                                                                  fontSize: 14),
-                                                            )
-                                                          : SizedBox(),
-
-                                                      SizedBox(
-                                                          height: getHeight(
-                                                              context, 2)),
-
-                                                      // ListView
-                                                      Container(
-                                                        width: getWidth(
-                                                            context, 100),
-                                                        height: getHeight(
-                                                            context, 25),
-                                                        child: ListView.builder(
-                                                            itemCount:
-                                                                productrovider
-                                                                    .unusedVouchers
-                                                                    .length,
-                                                            itemBuilder:
-                                                                (BuildContextcontext,
-                                                                    int index) {
-                                                              final voucher =
-                                                                  productrovider
-                                                                          .unusedVouchers[
-                                                                      index];
-
-                                                              return Column(
-                                                                children: [
-                                                                  ListTile(
-                                                                      title: Text(
-                                                                          voucher
-                                                                              .code!,
-                                                                          maxLines:
-                                                                              1,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            fontFamily:
-                                                                                mainFontbold,
-                                                                            color:
-                                                                                mainColorBlack,
-                                                                            fontSize:
-                                                                                16,
-                                                                          )),
-                                                                      subtitle:
-                                                                          Column(
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Text(
-                                                                            addCommasToPrice(voucher.discountAmount!),
-                                                                            style: TextStyle(
-                                                                                fontFamily: mainFontnormal,
-                                                                                color: Colors.green,
-                                                                                fontSize: 12),
-                                                                          ),
-                                                                          widget.total < voucher.mimimumAmount!
-                                                                              ? Text(
-                                                                                  "must order by " + voucher.mimimumAmount.toString(),
-                                                                                  style: TextStyle(fontFamily: mainFontnormal, color: mainColorRed, fontSize: 12),
-                                                                                )
-                                                                              : SizedBox(),
-                                                                        ],
-                                                                      ),
-                                                                      trailing:
-                                                                          SizedBox(
-                                                                        width: getWidth(
-                                                                            context,
-                                                                            15),
-                                                                        height: getHeight(
-                                                                            context,
-                                                                            4),
-                                                                        child:
-                                                                            TextButton(
-                                                                          style:
-                                                                              TextButton.styleFrom(
-                                                                            foregroundColor: widget.total >= voucher.mimimumAmount!
-                                                                                ? mainColorWhite
-                                                                                : mainColorBlack,
-                                                                            backgroundColor: widget.total >= voucher.mimimumAmount!
-                                                                                ? mainColorGrey
-                                                                                : Colors.grey[300],
-                                                                            fixedSize:
-                                                                                Size(
-                                                                              getWidth(context, 5),
-                                                                              getHeight(context, 2),
-                                                                            ),
-                                                                          ),
-                                                                          onPressed: widget.total >= voucher.mimimumAmount!
-                                                                              ? () {
-                                                                                  voucherCode.text = voucher.code!;
-                                                                                }
-                                                                              : null,
-                                                                          child:
-                                                                              Text(
-                                                                            "Apply",
-                                                                            style:
-                                                                                TextStyle(fontFamily: mainFontnormal, fontSize: 10),
-                                                                          ),
-                                                                        ),
-                                                                      )),
-                                                                  SizedBox(
-                                                                    width: getWidth(
-                                                                        context,
-                                                                        60),
-                                                                    child:
-                                                                        Divider(
-                                                                      color: mainColorGrey
-                                                                          .withOpacity(
-                                                                              0.1),
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              );
-                                                            }),
-                                                      ),
-
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          var data = {
-                                                            "id":
-                                                                userdata["id"],
-                                                            "amount":
-                                                                widget.total,
-                                                            "code": voucherCode
-                                                                .text,
-                                                          };
-                                                          Network(false)
-                                                              .postData(
-                                                                  "checkvoucher",
-                                                                  data,
-                                                                  context)
-                                                              .then((value) {
-                                                            print(value);
-
-                                                            if (value != "") {
-                                                              if (value[
-                                                                      "code"] ==
-                                                                  "200") {
-                                                                if (value[
-                                                                        "data"] ==
-                                                                    "not_found") {
-                                                                  setState1(() {
-                                                                    VoucherE = value[
-                                                                            "data"]
-                                                                        .toString();
-                                                                  });
-                                                                } else if (value[
-                                                                        "data"] ==
-                                                                    "expired") {
-                                                                  setState1(() {
-                                                                    VoucherE = value[
-                                                                            "data"]
-                                                                        .toString();
-                                                                  });
-                                                                } else if (value[
-                                                                        "data"] ==
-                                                                    "minimum") {
-                                                                  setState1(() {
-                                                                    VoucherE = value[
-                                                                            "data"]
-                                                                        .toString();
-                                                                  });
-                                                                } else if (value[
-                                                                        "data"] ==
-                                                                    "limit") {
-                                                                  setState1(() {
-                                                                    VoucherE = value[
-                                                                            "data"]
-                                                                        .toString();
-                                                                  });
-                                                                } else if (value[
-                                                                        "data"] ==
-                                                                    "used") {
-                                                                  setState1(() {
-                                                                    VoucherE = value[
-                                                                            "data"]
-                                                                        .toString();
-                                                                  });
-                                                                } else if (value[
-                                                                        "data"] ==
-                                                                    "success") {
-                                                                  setState1(() {
-                                                                    VoucherE = value[
-                                                                            "data"]
-                                                                        .toString();
-
-                                                                    VoucherID =
-                                                                        value[
-                                                                            "id"];
-                                                                    VoucherAmount =
-                                                                        value[
-                                                                            "amount"];
-                                                                  });
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                  productrovider
-                                                                      .notifyListeners();
-                                                                }
-                                                              } else {}
-                                                            } else {
-                                                              setState(() {});
-                                                            }
-                                                          });
-                                                        },
-                                                        child: Text("Submit"),
-                                                      ),
-                                                    ],
-                                                  ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Divider(),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Delevery now".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 14),
+                                ),
+                                GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        deleveryType = 1;
+                                        currentDateSelectedIndex = 0;
+                                        currentTimeSelectedIndex = -1;
+                                        showTime = false;
+                                        selectedDate = DateTime.now();
+                                        selectedDateorder = "";
+                                        selectedTime = "";
+                                      });
+                                    },
+                                    child: Icon(
+                                      deleveryType == 1
+                                          ? Icons.check_box
+                                          : Icons.check_box_outline_blank,
+                                      color: mainColorGrey,
+                                    )),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Delevery schedule".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 14),
+                                ),
+                                GestureDetector(
+                                    onTap: !showDate
+                                        ? null
+                                        : () {
+                                            setState(() {
+                                              deleveryType = 2;
+                                            });
+                                            showModalBottomSheet(
+                                              // enableDrag: false,
+                                              // isDismissible: false,
+                                              isScrollControlled: true,
+                                              context: context,
+                                              backgroundColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadiusDirectional
+                                                        .only(
+                                                  topEnd: Radius.circular(25),
+                                                  topStart: Radius.circular(25),
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
-                              child: Text("Add Voucher"),
+                                              builder: (context) =>
+                                                  Directionality(
+                                                textDirection: lang == "en"
+                                                    ? TextDirection.ltr
+                                                    : TextDirection.rtl,
+                                                child: Container(
+                                                  padding: EdgeInsetsDirectional
+                                                      .only(
+                                                    start: 20,
+                                                    end: 20,
+                                                    bottom: 30,
+                                                    top: 8,
+                                                  ),
+                                                  child: StatefulBuilder(
+                                                      builder: (BuildContext
+                                                              context,
+                                                          StateSetter mystate) {
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        SizedBox(
+                                                          height: getHeight(
+                                                              context, 4),
+                                                        ),
+                                                        FadeInUp(
+                                                          delay: const Duration(
+                                                              milliseconds:
+                                                                  200),
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Center(
+                                                                child:
+                                                                    Container(
+                                                                  width: getWidth(
+                                                                      context,
+                                                                      100),
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            15),
+                                                                    border: Border.all(
+                                                                        color: deleveryType ==
+                                                                                1
+                                                                            ? mainColorBlack.withOpacity(0.2)
+                                                                            : mainColorGrey.withOpacity(0.5)),
+                                                                  ),
+                                                                  child: Center(
+                                                                    child:
+                                                                        DropdownButtonFormField<
+                                                                            int>(
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        border:
+                                                                            UnderlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide.none,
+                                                                        ),
+                                                                      ),
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .calendar_today_outlined,
+                                                                        color: deleveryType ==
+                                                                                1
+                                                                            ? mainColorBlack.withOpacity(0.2)
+                                                                            : mainColorGrey.withOpacity(0.5),
+                                                                      ),
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal:
+                                                                              15),
+                                                                      value:
+                                                                          currentDateSelectedIndex,
+                                                                      onChanged:
+                                                                          (newIndex) {
+                                                                        mystate(
+                                                                            () {
+                                                                          currentTimeSelectedIndex =
+                                                                              -1;
+                                                                          currentDateSelectedIndex =
+                                                                              newIndex!;
+
+                                                                          if (newIndex ==
+                                                                              0) {
+                                                                            mystate(() {
+                                                                              showTime = false;
+                                                                            });
+                                                                          } else {
+                                                                            selectedDateorder =
+                                                                                Datetimenow.add(Duration(days: newIndex - 1)).toString().substring(0, 10);
+                                                                            selectedDate =
+                                                                                Datetimenow.add(Duration(days: newIndex - 1));
+                                                                            mystate(() {
+                                                                              selectedTime = "";
+                                                                              Etime = false;
+                                                                              showTime = true;
+                                                                            });
+                                                                          }
+                                                                        });
+                                                                      },
+                                                                      items: List.generate(
+                                                                          listOfDays
+                                                                              .length,
+                                                                          (index) {
+                                                                        bool hasAvailableSchedule = productrovider
+                                                                            .scheduleData
+                                                                            .where((time) =>
+                                                                                time.weekId == getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday) &&
+                                                                                Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(Datetimenow.add(Duration(days: index - 1)).toString().substring(0, 10) + " " + time.from.toString())))
+                                                                            .isNotEmpty;
+
+                                                                        return DropdownMenuItem<
+                                                                                int>(
+                                                                            enabled:
+                                                                                hasAvailableSchedule,
+                                                                            value:
+                                                                                index,
+                                                                            child: index == 0
+                                                                                ? Text(
+                                                                                    listOfDays[index],
+                                                                                    style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
+                                                                                  )
+                                                                                : Row(
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        Datetimenow.add(Duration(days: index - 1)).toString().substring(0, 10),
+                                                                                        style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
+                                                                                      ),
+                                                                                      SizedBox(
+                                                                                        width: 15,
+                                                                                      ),
+                                                                                      Text(
+                                                                                        Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday),
+                                                                                        style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ));
+                                                                      }),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                height:
+                                                                    getHeight(
+                                                                        context,
+                                                                        2),
+                                                              ),
+                                                              // Assuming productrovider.scheduleData is a List<ScheduleModel>
+
+                                                              !showTime
+                                                                  ? Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .only(
+                                                                          top:
+                                                                              20.0),
+                                                                      child: Center(
+                                                                          child:
+                                                                              Text("Select Day to show time deleverys".tr)),
+                                                                    )
+                                                                  : SizedBox(
+                                                                      height: getHeight(
+                                                                          context,
+                                                                          20),
+                                                                      child: GridView
+                                                                          .builder(
+                                                                        shrinkWrap:
+                                                                            true,
+                                                                        gridDelegate:
+                                                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                                                          crossAxisCount:
+                                                                              2,
+                                                                          mainAxisSpacing:
+                                                                              10,
+                                                                          crossAxisSpacing:
+                                                                              10,
+                                                                          childAspectRatio:
+                                                                              4,
+                                                                        ),
+                                                                        itemCount: productrovider
+                                                                            .scheduleData
+                                                                            .where((time) =>
+                                                                                time.weekId == getWeekdayName(selectedDate.weekday) &&
+                                                                                Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate.toString().substring(0, 10) + " " + time.from.toString())))
+                                                                            .length,
+                                                                        scrollDirection:
+                                                                            Axis.vertical,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                index) {
+                                                                          ScheduleModel
+                                                                              time =
+                                                                              productrovider.scheduleData.where((time2) => time2.weekId == getWeekdayName(selectedDate.weekday) && Datetimenow.add(Duration(hours: 1)).isBefore(DateTime.parse(selectedDate.toString().substring(0, 10) + " " + time2.from.toString()))).toList()[index];
+
+                                                                          return OutlinedButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                              mystate(() {
+                                                                                Etime = false;
+                                                                                selectedTime = time.from.toString() + "||" + time.to.toString();
+                                                                                currentTimeSelectedIndex = index;
+                                                                              });
+                                                                            },
+                                                                            style:
+                                                                                TextButton.styleFrom(
+                                                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                                                              backgroundColor: currentTimeSelectedIndex == index ? mainColorGrey : mainColorWhite,
+                                                                            ),
+                                                                            child:
+                                                                                Text(
+                                                                              convertTo12HourFormat(time.from.toString()) + " - " + convertTo12HourFormat(time.to.toString()),
+                                                                              style: TextStyle(
+                                                                                fontFamily: mainFontnormal,
+                                                                                fontSize: 12,
+                                                                                color: currentTimeSelectedIndex == index ? mainColorWhite : mainColorBlack,
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      ),
+                                                                    ),
+
+                                                              Etime
+                                                                  ? Center(
+                                                                      child:
+                                                                          Text(
+                                                                        "Select the Time please"
+                                                                            .tr,
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                mainColorRed,
+                                                                            fontFamily:
+                                                                                mainFontnormal),
+                                                                      ),
+                                                                    )
+                                                                  : SizedBox(),
+                                                              SizedBox(
+                                                                height:
+                                                                    getHeight(
+                                                                        context,
+                                                                        2),
+                                                              ),
+                                                              Padding(
+                                                                padding: EdgeInsets.symmetric(
+                                                                    horizontal:
+                                                                        getWidth(
+                                                                            context,
+                                                                            4)),
+                                                                child:
+                                                                    TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    if (selectedTime
+                                                                        .isEmpty) {
+                                                                      mystate(
+                                                                          () {
+                                                                        Etime =
+                                                                            true;
+                                                                      });
+                                                                    } else {
+                                                                      mystate(
+                                                                          () {
+                                                                        isSchedule =
+                                                                            true;
+                                                                      });
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    }
+                                                                  },
+                                                                  style: TextButton
+                                                                      .styleFrom(
+                                                                    fixedSize: Size(
+                                                                        getWidth(
+                                                                            context,
+                                                                            85),
+                                                                        getHeight(
+                                                                            context,
+                                                                            6)),
+                                                                  ),
+                                                                  child: Text(
+                                                                    "Select".tr,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  }),
+                                                ),
+                                              ),
+                                            ).then((value) {
+                                              if (isSchedule) {
+                                                setState(() {
+                                                  isSchedule = true;
+                                                });
+                                              } else {
+                                                setState(() {
+                                                  isSchedule = false;
+                                                  currentDateSelectedIndex = 0;
+                                                  currentTimeSelectedIndex = -1;
+                                                  showTime = false;
+                                                  deleveryType = 1;
+                                                  selectedDate = Datetimenow;
+                                                  selectedDateorder = "";
+                                                  selectedTime = "";
+                                                });
+                                              }
+                                            });
+                                          },
+                                    child: Icon(
+                                      deleveryType == 1
+                                          ? Icons.check_box_outline_blank
+                                          : Icons.check_box,
+                                      color: mainColorGrey,
+                                    )),
+                              ],
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        Text(
-                          "Pyment Method".tr,
-                          style: TextStyle(
-                              color: mainColorBlack,
-                              fontFamily: mainFontnormal,
-                              fontSize: 16),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            height: getHeight(context, 5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: const Color(0xffF2F2F2),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Cash on delivery".tr,
-                                    style: TextStyle(
-                                        color: mainColorBlack,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 14),
-                                  ),
-                                  Icon(
-                                    Icons.check_circle_sharp,
-                                    color: Colors.green,
-                                    size: 20,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // toastShort("Coming soon".tr);
-                          },
-                          child: Container(
-                            height: getHeight(context, 5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: const Color(0xffF2F2F2),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/FIB.png",
-                                  ),
-                                  Text(
-                                    "Coming soon".tr,
-                                    style: TextStyle(
-                                        color: mainColorBlack,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // toastShort("Coming soon".tr);
-                          },
-                          child: Container(
-                            height: getHeight(context, 5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: const Color(0xffF2F2F2),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset("assets/images/fast.png"),
-                                  Text(
-                                    "Coming soon".tr,
-                                    style: TextStyle(
-                                        color: mainColorBlack,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 3),
-                        ),
-                        TextFormField(
-                          maxLines: 2,
-                          controller: NoteController,
-                          cursorColor: mainColorGrey,
-                          keyboardType: TextInputType.text,
-                          onChanged: (value) {},
-                          validator: (value) {
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey, // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                color: mainColorGrey
-                                    .withOpacity(0.5), // Customize border color
-                                width: 1.0, // Customize border width
-                              ),
-                            ),
-                            labelText: "Note".tr,
-                            labelStyle: TextStyle(
-                                color: mainColorGrey.withOpacity(0.8),
-                                fontSize: 20,
-                                fontFamily: mainFontbold),
-                            hintText: "Add your note".tr,
-                            hintStyle: TextStyle(
-                                color: mainColorBlack.withOpacity(0.5),
-                                fontSize: 14,
-                                fontFamily: mainFontnormal),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: VoucherID != -1
-                        ? getHeight(context, 27)
-                        : getHeight(context, 24),
-                    decoration: BoxDecoration(
-                      color: mainColorWhite,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Sub Total".tr,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                addCommasToPrice(widget.total),
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        VoucherID != -1
-                            ? Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 4)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Voucher Amount".tr,
-                                      style: TextStyle(
-                                          color: mainColorBlack,
-                                          fontFamily: mainFontnormal,
-                                          fontSize: 16),
-                                    ),
-                                    Text(
-                                      textAlign: TextAlign.end,
-                                      addCommasToPrice(-VoucherAmount),
-                                      style: TextStyle(
-                                          color: mainColorRed,
-                                          fontFamily: mainFontnormal,
-                                          fontSize: 16),
-                                    ),
-                                  ],
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Voucher Code',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
-                              )
-                            : SizedBox(),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Delivery Cost".tr,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                !isSchedule
-                                    ? productrovider.deleveryCost == 0
-                                        ? "Free Delivery".tr
-                                        : addCommasToPrice(
-                                            productrovider.deleveryCost)
-                                    : "Free Delivery".tr,
-                                style: TextStyle(
-                                    color: deleveryType == 1
-                                        ? mainColorBlack
-                                        : Colors.green,
-                                    fontFamily: mainFontnormal,
-                                    fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: const Divider(thickness: 1),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                textAlign: TextAlign.start,
-                                "Total".tr,
-                                style: TextStyle(
-                                    color: mainColorBlack,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 20),
-                              ),
-                              Text(
-                                textAlign: TextAlign.end,
-                                deleveryType == 1
-                                    ? addCommasToPrice(widget.total -
-                                        VoucherAmount +
-                                        productrovider.deleveryCost)
-                                    : addCommasToPrice(
-                                        widget.total - VoucherAmount),
-                                style: TextStyle(
-                                    color: Colors.green,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: getHeight(context, 2),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: TextButton(
-                            onPressed: waitingcheckout
-                                ? null
-                                : () {
-                                    setState(() {
-                                      waitingcheckout = true;
-                                    });
+                                GestureDetector(
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      context: context,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadiusDirectional.only(
+                                          topEnd: Radius.circular(25),
+                                          topStart: Radius.circular(25),
+                                        ),
+                                      ),
+                                      builder: (context) => Directionality(
+                                        textDirection: lang == "en"
+                                            ? TextDirection.ltr
+                                            : TextDirection.rtl,
+                                        child: StatefulBuilder(builder:
+                                            (BuildContext context,
+                                                StateSetter mystate) {
+                                          return Stack(
+                                            alignment: Alignment.topCenter,
+                                            children: [
+                                              Container(
+                                                width: getWidth(context, 100),
+                                                height: getHeight(context, 40),
+                                                child: Column(
+                                                  children: [
+                                                    const SizedBox(height: 50),
+                                                    Text(
+                                                      "Please select Your Voucher",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                        color: mainColorBlack,
+                                                        fontFamily:
+                                                            mainFontbold,
+                                                        fontSize: 15,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 5),
+                                                    Container(
+                                                      width: getWidth(
+                                                          context, 100),
+                                                      height: getHeight(
+                                                          context, 30),
+                                                      child: ListView.builder(
+                                                          itemCount:
+                                                              productrovider
+                                                                  .usedVouchers
+                                                                  .length,
+                                                          itemBuilder:
+                                                              (BuildContextcontext,
+                                                                  int index) {
+                                                            final voucher =
+                                                                productrovider
+                                                                        .usedVouchers[
+                                                                    index];
 
-                                    String data = "";
-                                    for (var element
-                                        in cartProvider.cartItems) {
-                                      ProductModel Item = productrovider
-                                          .getoneProductById(element.product);
-                                      String price = Item.price2! > -1
-                                          ? Item.price2!.toString()
-                                          : Item.price.toString();
-                                      data +=
-                                          "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
-                                    }
+                                                            return Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              15),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: mainColorGrey
+                                                                        .withOpacity(
+                                                                            0.5),
+                                                                    width: 1,
+                                                                    style: BorderStyle
+                                                                        .solid,
+                                                                  ),
+                                                                ),
+                                                                child: ListTile(
+                                                                    title: Text(
+                                                                        voucher
+                                                                            .code!,
+                                                                        maxLines:
+                                                                            1,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              mainFontbold,
+                                                                          color:
+                                                                              mainColorBlack,
+                                                                          fontSize:
+                                                                              16,
+                                                                        )),
+                                                                    subtitle:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          addCommasToPrice(
+                                                                              voucher.discountAmount!),
+                                                                          style: TextStyle(
+                                                                              fontFamily: mainFontnormal,
+                                                                              color: Colors.green,
+                                                                              fontSize: 12),
+                                                                        ),
+                                                                        widget.total <
+                                                                                voucher.mimimumAmount!
+                                                                            ? Text(
+                                                                                "must order by " + voucher.mimimumAmount.toString(),
+                                                                                style: TextStyle(fontFamily: mainFontnormal, color: mainColorRed, fontSize: 12),
+                                                                              )
+                                                                            : SizedBox(),
+                                                                      ],
+                                                                    ),
+                                                                    trailing:
+                                                                        SizedBox(
+                                                                      width: getWidth(
+                                                                          context,
+                                                                          15),
+                                                                      height: getHeight(
+                                                                          context,
+                                                                          4),
+                                                                      child:
+                                                                          TextButton(
+                                                                        style: TextButton
+                                                                            .styleFrom(
+                                                                          foregroundColor: widget.total >= voucher.mimimumAmount!
+                                                                              ? mainColorWhite
+                                                                              : mainColorBlack,
+                                                                          backgroundColor: widget.total >= voucher.mimimumAmount!
+                                                                              ? mainColorGrey
+                                                                              : Colors.grey[300],
+                                                                          fixedSize:
+                                                                              Size(
+                                                                            getWidth(context,
+                                                                                5),
+                                                                            getHeight(context,
+                                                                                2),
+                                                                          ),
+                                                                        ),
+                                                                        onPressed: widget.total >=
+                                                                                voucher.mimimumAmount!
+                                                                            ? () {
+                                                                                voucherCode.text = voucher.code!;
+                                                                              }
+                                                                            : null,
+                                                                        child:
+                                                                            Text(
+                                                                          "Apply",
+                                                                          style: TextStyle(
+                                                                              fontFamily: mainFontnormal,
+                                                                              fontSize: 10),
+                                                                        ),
+                                                                      ),
+                                                                    )),
+                                                              ),
+                                                            );
+                                                          }),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8.0),
+                                                  child: Container(
+                                                    width: 65,
+                                                    height: 5,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100),
+                                                      color: mainColorGrey,
+                                                    ),
+                                                  ))
+                                            ],
+                                          );
+                                        }),
+                                      ),
+                                    ).then((value) {});
+                                  },
+                                  child: Text(
+                                    'Select',
+                                    style: TextStyle(
+                                      color: mainColorRed,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Divider(),
+                            ),
+                            Container(
+                              height: getHeight(context, 6),
+                              child: TextField(
+                                controller: voucherCode,
+                                onChanged: (value) {
+                                  setState(() {
+                                    VoucherE = "";
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  prefixIcon:
+                                      Icon(Icons.confirmation_num_outlined),
+                                  hintText: "Voucher",
+                                  hintStyle: TextStyle(
+                                      color: mainColorBlack.withOpacity(0.5),
+                                      fontSize: 14,
+                                      fontFamily: mainFontnormal),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      color: mainColorGrey.withOpacity(0.5),
+                                      width: 1,
+                                      style: BorderStyle.solid,
+                                    ),
+                                  ),
+                                  suffixIcon: Container(
+                                    margin: EdgeInsets.all(8),
+                                    child: TextButton(
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.transparent),
+                                      child: Text(
+                                        "Submit",
+                                        style: TextStyle(
+                                            color: voucherCode.text.isEmpty
+                                                ? mainColorGrey.withOpacity(0.5)
+                                                : mainColorGrey),
+                                      ),
+                                      onPressed: voucherCode.text.isEmpty
+                                          ? () {}
+                                          : () {
+                                              var data = {
+                                                "id": userdata["id"],
+                                                "amount": widget.total,
+                                                "code": voucherCode.text,
+                                              };
+                                              Network(false)
+                                                  .postData("checkvoucher",
+                                                      data, context)
+                                                  .then((value) {
+                                                print(value);
 
-                                    var data2 = {
-                                      "customerid": userdata["id"],
-                                      "total": widget.total,
-                                      "location":
-                                          productrovider.defultlocation!,
-                                      "order_data": data.substring(2),
-                                      "note": NoteController.text,
-                                      "voucher_id":
-                                          VoucherID == -1 ? "" : VoucherID,
-                                      "cost": deleveryType == 1
-                                          ? productrovider.deleveryCost
-                                          : 0,
-                                      "schedule": deleveryType == 1
-                                          ? "now"
-                                          : selectedDateorder +
-                                              "||" +
-                                              selectedTime,
-                                    };
+                                                if (value != "") {
+                                                  if (value["code"] == "200") {
+                                                    if (value["data"] ==
+                                                        "not_found") {
+                                                      setState(() {
+                                                        VoucherE = value["data"]
+                                                            .toString();
+                                                      });
+                                                    } else if (value["data"] ==
+                                                        "expired") {
+                                                      setState(() {
+                                                        VoucherE = value["data"]
+                                                            .toString();
+                                                      });
+                                                    } else if (value["data"] ==
+                                                        "minimum") {
+                                                      setState(() {
+                                                        VoucherE = value["data"]
+                                                            .toString();
+                                                      });
+                                                    } else if (value["data"] ==
+                                                        "limit") {
+                                                      setState(() {
+                                                        VoucherE = value["data"]
+                                                            .toString();
+                                                      });
+                                                    } else if (value["data"] ==
+                                                        "used") {
+                                                      setState(() {
+                                                        VoucherE = value["data"]
+                                                            .toString();
+                                                      });
+                                                    } else if (value["data"] ==
+                                                        "success") {
+                                                      setState(() {
+                                                        VoucherE = value["data"]
+                                                            .toString();
 
-                                    Network(false)
-                                        .postData("order", data2, context)
-                                        .then((value) {
-                                      print(value);
-                                      if (value != "") {
-                                        if (value["code"] == "201") {
-                                          setState(() {
-                                            waitingcheckout = false;
-                                          });
-                                          cartProvider.clearCart();
-                                          final productrovider =
-                                              Provider.of<productProvider>(
+                                                        VoucherID = value["id"];
+                                                        VoucherAmount =
+                                                            value["amount"];
+                                                      });
+
+                                                      productrovider
+                                                          .notifyListeners();
+                                                    }
+                                                  } else {}
+                                                } else {
+                                                  setState(() {});
+                                                }
+                                              });
+                                            },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            VoucherE.isNotEmpty
+                                ? Center(
+                                    child: Text(
+                                      VoucherE,
+                                      style: TextStyle(
+                                          fontFamily: mainFontnormal,
+                                          color: mainColorRed,
+                                          fontSize: 14),
+                                    ),
+                                  )
+                                : SizedBox(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFormField(
+                              maxLines: null,
+                              controller: NoteController,
+                              cursorColor: mainColorGrey,
+                              keyboardType: TextInputType.text,
+                              onChanged: (value) {},
+                              validator: (value) {
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(
+                                    color: mainColorGrey.withOpacity(0.5),
+                                    width: 1.0, // Customize border width
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(
+                                    color: mainColorGrey.withOpacity(0.5),
+                                    width: 1.0, // Customize border width
+                                  ),
+                                ),
+                                labelText: "Add your note".tr,
+                                labelStyle: TextStyle(
+                                    color: mainColorGrey.withOpacity(0.8),
+                                    fontSize: 20,
+                                    fontFamily: mainFontbold),
+                                hintText: "Note".tr,
+                                hintStyle: TextStyle(
+                                    color: mainColorBlack.withOpacity(0.5),
+                                    fontSize: 14,
+                                    fontFamily: mainFontnormal),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Payment deatils".tr,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                // Icon(
+                                //   Icons.comment_outlined,
+                                //   color: mainColorRed,
+                                // )
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Divider(),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Sub Total".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  addCommasToPrice(widget.total),
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                            VoucherID != -1
+                                ? Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Voucher Amount".tr,
+                                        style: TextStyle(
+                                            color: mainColorBlack,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 16),
+                                      ),
+                                      Text(
+                                        textAlign: TextAlign.end,
+                                        addCommasToPrice(-VoucherAmount),
+                                        style: TextStyle(
+                                            color: mainColorRed,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 16),
+                                      ),
+                                    ],
+                                  )
+                                : SizedBox(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Delivery Cost".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  !isSchedule
+                                      ? productrovider.deleveryCost == 0
+                                          ? "Free Delivery".tr
+                                          : addCommasToPrice(
+                                              productrovider.deleveryCost)
+                                      : "Free Delivery".tr,
+                                  style: TextStyle(
+                                      color: deleveryType == 1
+                                          ? mainColorBlack
+                                          : Colors.green,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Pyment Method".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  "Cash",
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontnormal,
+                                      fontSize: 16),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Divider(),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  textAlign: TextAlign.start,
+                                  "Total".tr,
+                                  style: TextStyle(
+                                      color: mainColorBlack,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.end,
+                                  deleveryType == 1
+                                      ? addCommasToPrice(widget.total -
+                                          VoucherAmount +
+                                          productrovider.deleveryCost)
+                                      : addCommasToPrice(
+                                          widget.total - VoucherAmount),
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 20),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextButton(
+                              onPressed: waitingcheckout
+                                  ? null
+                                  : () {
+                                      setState(() {
+                                        waitingcheckout = true;
+                                      });
+
+                                      String data = "";
+                                      for (var element
+                                          in cartProvider.cartItems) {
+                                        ProductModel Item = productrovider
+                                            .getoneProductById(element.product);
+                                        String price = Item.price2! > -1
+                                            ? Item.price2!.toString()
+                                            : Item.price.toString();
+                                        data +=
+                                            "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
+                                      }
+
+                                      var data2 = {
+                                        "customerid": userdata["id"],
+                                        "total": widget.total,
+                                        "location":
+                                            productrovider.defultlocation!,
+                                        "order_data": data.substring(2),
+                                        "note": NoteController.text,
+                                        "voucher_id":
+                                            VoucherID == -1 ? "" : VoucherID,
+                                        "cost": deleveryType == 1
+                                            ? productrovider.deleveryCost
+                                            : 0,
+                                        "schedule": deleveryType == 1
+                                            ? "now"
+                                            : selectedDateorder +
+                                                "||" +
+                                                selectedTime,
+                                      };
+
+                                      Network(false)
+                                          .postData("order", data2, context)
+                                          .then((value) {
+                                        print(value);
+                                        if (value != "") {
+                                          if (value["code"] == "201") {
+                                            setState(() {
+                                              waitingcheckout = false;
+                                            });
+                                            cartProvider.clearCart();
+                                            final productrovider =
+                                                Provider.of<productProvider>(
+                                                    context,
+                                                    listen: false);
+
+                                            productrovider.getuserdata(
+                                                userdata["id"].toString());
+
+                                            DateTime timecheck = DateTime.parse(
+                                                value["now"].toString());
+                                            DateTime ST = DateTime.parse(
+                                                "2023-11-09 ${productrovider.startTime}:00");
+
+                                            DateTime DT = DateTime.parse(
+                                                "2023-11-09 ${productrovider.endTime}:00");
+
+                                            DateTime NW = DateTime.parse(
+                                                "2023-11-09 ${timecheck.hour}:00");
+
+                                            if ((NW.isAfter(ST) &&
+                                                    NW.isBefore(DT)) ||
+                                                NW.isAtSameMomentAs(ST) ||
+                                                isSchedule) {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        successScreen(
+                                                            value["total"]
+                                                                .toString(),
+                                                            value["id"]
+                                                                .toString(),
+                                                            value["time"]
+                                                                .toString(),
+                                                            false,
+                                                            isSchedule,
+                                                            selectedDateorder +
+                                                                "" +
+                                                                selectedTime,
+                                                            deleveryType == 1
+                                                                ? productrovider
+                                                                    .deleveryCost
+                                                                : 0)),
+                                              ).then((value) {
+                                                Navigator.pushReplacement(
                                                   context,
-                                                  listen: false);
-
-                                          productrovider.getuserdata(
-                                              userdata["id"].toString());
-
-                                          DateTime timecheck = DateTime.parse(
-                                              value["now"].toString());
-                                          DateTime ST = DateTime.parse(
-                                              "2023-11-09 ${productrovider.startTime}:00");
-
-                                          DateTime DT = DateTime.parse(
-                                              "2023-11-09 ${productrovider.endTime}:00");
-
-                                          DateTime NW = DateTime.parse(
-                                              "2023-11-09 ${timecheck.hour}:00");
-
-                                          if ((NW.isAfter(ST) &&
-                                                  NW.isBefore(DT)) ||
-                                              NW.isAtSameMomentAs(ST) ||
-                                              isSchedule) {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      successScreen(
-                                                          value["total"]
-                                                              .toString(),
-                                                          value["id"]
-                                                              .toString(),
-                                                          value["time"]
-                                                              .toString(),
-                                                          false,
-                                                          isSchedule,
-                                                          selectedDateorder +
-                                                              "" +
-                                                              selectedTime,
-                                                          deleveryType == 1
-                                                              ? productrovider
-                                                                  .deleveryCost
-                                                              : 0)),
-                                            ).then((value) {
-                                              Navigator.pushReplacement(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          NavSwitch()),
+                                                );
+                                              });
+                                            } else {
+                                              Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        NavSwitch()),
-                                              );
-                                            });
+                                                        successScreen(
+                                                            value["total"]
+                                                                .toString(),
+                                                            value["id"]
+                                                                .toString(),
+                                                            value["time"]
+                                                                .toString(),
+                                                            true,
+                                                            isSchedule,
+                                                            selectedDateorder +
+                                                                "" +
+                                                                selectedTime,
+                                                            deleveryType == 1
+                                                                ? productrovider
+                                                                    .deleveryCost
+                                                                : 0)),
+                                              ).then((value) {
+                                                Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          NavSwitch()),
+                                                );
+                                              });
+                                            }
                                           } else {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      successScreen(
-                                                          value["total"]
-                                                              .toString(),
-                                                          value["id"]
-                                                              .toString(),
-                                                          value["time"]
-                                                              .toString(),
-                                                          true,
-                                                          isSchedule,
-                                                          selectedDateorder +
-                                                              "" +
-                                                              selectedTime,
-                                                          deleveryType == 1
-                                                              ? productrovider
-                                                                  .deleveryCost
-                                                              : 0)),
-                                            ).then((value) {
-                                              Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        NavSwitch()),
-                                              );
+                                            setState(() {
+                                              waitingcheckout = false;
                                             });
+                                            toastShort(
+                                                "unknown occurred error please try again later"
+                                                    .tr);
                                           }
                                         } else {
                                           setState(() {
@@ -1881,29 +1517,22 @@ class _CheckOutState extends State<CheckOut> {
                                               "unknown occurred error please try again later"
                                                   .tr);
                                         }
-                                      } else {
-                                        setState(() {
-                                          waitingcheckout = false;
-                                        });
-                                        toastShort(
-                                            "unknown occurred error please try again later"
-                                                .tr);
-                                      }
-                                    });
-                                  },
-                            style: TextButton.styleFrom(
-                              fixedSize: Size(
-                                  getWidth(context, 85), getHeight(context, 6)),
+                                      });
+                                    },
+                              style: TextButton.styleFrom(
+                                fixedSize: Size(getWidth(context, 85),
+                                    getHeight(context, 6)),
+                              ),
+                              child: Text(
+                                "Send Order".tr,
+                              ),
                             ),
-                            child: Text(
-                              "Send Order".tr,
-                            ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               waitingcheckout ? waitingWiget(context) : const SizedBox()
             ],

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 /// Define {NRT Fonts } in AtHome
-String mainFontbold = 'nrtB';
-String mainFontnormal = 'nrtN';
+String mainFontbold = 'irani';
+String mainFontnormal = 'irani';
 
 /// Define {SPEDA Fonts } in AtHome
 // String mainFontbold = 'spedaB';
