@@ -828,207 +828,147 @@ class _MyCartState extends State<MyCart> {
                           ),
                         )
                       : cartProvider.cartItems.isNotEmpty && isLogin
-                          ? Container(
-                              height: getHeight(context, 20),
-                              decoration: BoxDecoration(
-                                color: mainColorWhite,
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: getHeight(context, 2),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Divider(
-                                        color: mainColorGrey.withOpacity(0.2),
-                                        thickness: 1),
-                                  ),
-
-                                  SizedBox(
-                                    height: getHeight(context, 1),
-                                  ),
-
-                                  // Text --> ToTal
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          textAlign: TextAlign.start,
-                                          "Total".tr,
-                                          style: TextStyle(
-                                              color: mainColorBlack,
-                                              fontFamily: mainFontbold,
-                                              fontSize: 20),
-                                        ),
-                                        Text(
-                                          textAlign: TextAlign.end,
-                                          addCommasToPrice(
-                                              cartProvider.calculateTotalPrice(
-                                                  CardItemshow)),
-                                          style: TextStyle(
-                                              color: Colors.green,
-                                              fontFamily: mainFontbold,
-                                              fontSize: 20),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  SizedBox(
-                                    height: getHeight(context, 2),
-                                  ),
-
-                                  // Button
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: TextButton(
-                                      onPressed: () async {
-                                        if (await noInternet(context)) {
-                                          return;
-                                        }
-                                        if (cartProvider.calculateTotalPrice(
-                                                CardItemshow) <
-                                            productrovider.minimumOrder) {
-                                          // ignore: use_build_context_synchronously
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                content: Directionality(
-                                                  textDirection: lang == "en"
-                                                      ? TextDirection.ltr
-                                                      : TextDirection.rtl,
-                                                  child: Stack(
-                                                    alignment: lang == "en"
-                                                        ? Alignment.topLeft
-                                                        : Alignment.topRight,
-                                                    children: [
-                                                      SizedBox(
+                          ? Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 4)),
+                              child: TextButton(
+                                onPressed: () async {
+                                  if (await noInternet(context)) {
+                                    return;
+                                  }
+                                  if (cartProvider
+                                          .calculateTotalPrice(CardItemshow) <
+                                      productrovider.minimumOrder) {
+                                    // ignore: use_build_context_synchronously
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          content: Directionality(
+                                            textDirection: lang == "en"
+                                                ? TextDirection.ltr
+                                                : TextDirection.rtl,
+                                            child: Stack(
+                                              alignment: lang == "en"
+                                                  ? Alignment.topLeft
+                                                  : Alignment.topRight,
+                                              children: [
+                                                SizedBox(
+                                                  width: getWidth(context, 70),
+                                                  height:
+                                                      getHeight(context, 45),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    //textcheck
+                                                    children: <Widget>[
+                                                      Image.asset(
+                                                        "assets/Victors/minum.png",
                                                         width: getWidth(
-                                                            context, 70),
-                                                        height: getHeight(
-                                                            context, 45),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          //textcheck
-                                                          children: <Widget>[
-                                                            Image.asset(
-                                                              "assets/Victors/minum.png",
-                                                              width: getWidth(
-                                                                  context, 40),
-                                                              height: getWidth(
-                                                                  context, 40),
-                                                            ),
-                                                            Text(
-                                                              "min title".tr,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              maxLines: 1,
-                                                              style: TextStyle(
-                                                                color:
-                                                                    mainColorBlack,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 22,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              "min deatil".tr.toString().replaceAll(
-                                                                  "temp",
-                                                                  addCommasToPrice(
-                                                                          productrovider
-                                                                              .minimumOrder)
-                                                                      .replaceAll(
-                                                                          "IQD",
-                                                                          "")),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                color:
-                                                                    mainColorBlack,
-                                                                fontFamily:
-                                                                    mainFontnormal,
-                                                                fontSize: 16,
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 40),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              style: TextButton
-                                                                  .styleFrom(
-                                                                fixedSize: Size(
-                                                                    getWidth(
-                                                                        context,
-                                                                        70),
-                                                                    getHeight(
-                                                                        context,
-                                                                        5)),
-                                                              ),
-                                                              child: Text(
-                                                                "OK".tr,
-                                                              ),
-                                                            ),
-                                                          ],
+                                                            context, 40),
+                                                        height: getWidth(
+                                                            context, 40),
+                                                      ),
+                                                      Text(
+                                                        "min title".tr,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 1,
+                                                        style: TextStyle(
+                                                          color: mainColorBlack,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          fontSize: 22,
                                                         ),
                                                       ),
-                                                      IconButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          icon: const Icon(
-                                                              Icons.close))
+                                                      Text(
+                                                        "min deatil"
+                                                            .tr
+                                                            .toString()
+                                                            .replaceAll(
+                                                                "temp",
+                                                                addCommasToPrice(
+                                                                        productrovider
+                                                                            .minimumOrder)
+                                                                    .replaceAll(
+                                                                        "IQD",
+                                                                        "")),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          color: mainColorBlack,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                          height: 40),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        style: TextButton
+                                                            .styleFrom(
+                                                          fixedSize: Size(
+                                                              getWidth(
+                                                                  context, 70),
+                                                              getHeight(
+                                                                  context, 5)),
+                                                        ),
+                                                        child: Text(
+                                                          "OK".tr,
+                                                        ),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
-                                              );
-                                            },
-                                          );
-
-                                          return;
-                                        }
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => CheckOut(
-                                                  cartProvider
-                                                      .calculateTotalPrice(
-                                                          CardItemshow))),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon:
+                                                        const Icon(Icons.close))
+                                              ],
+                                            ),
+                                          ),
                                         );
                                       },
-                                      style: TextButton.styleFrom(
-                                        fixedSize: Size(getWidth(context, 90),
-                                            getHeight(context, 6)),
-                                      ),
-                                      child: Text(
-                                        "Checkout".tr,
-                                      ),
-                                    ),
-                                  ),
+                                    );
 
-                                  // SizedBox(
-                                  //   height: getWidth(context, 10),
-                                  // ),
-                                ],
+                                    return;
+                                  }
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CheckOut(
+                                            cartProvider.calculateTotalPrice(
+                                                CardItemshow))),
+                                  );
+                                },
+                                style: TextButton.styleFrom(
+                                  fixedSize: Size(getWidth(context, 90),
+                                      getHeight(context, 6)),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text("Total".tr +
+                                        ": " +
+                                        addCommasToPrice(
+                                            cartProvider.calculateTotalPrice(
+                                                CardItemshow))),
+                                    Text(
+                                      "Checkout".tr,
+                                    ),
+                                  ],
+                                ),
                               ),
                             )
                           : const SizedBox(),

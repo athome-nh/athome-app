@@ -4,14 +4,13 @@ import 'package:dllylas/Config/property.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class GudidePage extends StatefulWidget {
   @override
   _GudidePageState createState() => _GudidePageState();
 }
 
-class _GudidePageState extends State<GudidePage> with SingleTickerProviderStateMixin {
+class _GudidePageState extends State<GudidePage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -35,7 +34,6 @@ class _GudidePageState extends State<GudidePage> with SingleTickerProviderStateM
           style: TextStyle(
               color: mainColorBlack, fontSize: 16, fontFamily: mainFontbold),
         ),
-
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -44,7 +42,6 @@ class _GudidePageState extends State<GudidePage> with SingleTickerProviderStateM
             Icons.arrow_back_ios,
           ),
         ),
-
         bottom: TabBar(
           controller: _tabController,
           tabs: [
@@ -53,7 +50,6 @@ class _GudidePageState extends State<GudidePage> with SingleTickerProviderStateM
           ],
         ),
       ),
-
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -61,7 +57,6 @@ class _GudidePageState extends State<GudidePage> with SingleTickerProviderStateM
           UpdatesPage(),
         ],
       ),
-      
     );
   }
 }

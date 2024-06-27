@@ -1,5 +1,5 @@
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';

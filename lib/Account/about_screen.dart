@@ -78,7 +78,6 @@ class _AboutScreenState extends State<AboutScreen> {
                 SizedBox(height: getHeight(context, 2)),
                 CustomTextAbout(text: "AboutTextEight"),
                 SizedBox(height: getHeight(context, 5)),
-
               ],
             ),
           ),

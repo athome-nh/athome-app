@@ -8,6 +8,7 @@ import 'package:dllylas/Notifications/NotificationController.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
+import 'package:dllylas/thim.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -99,72 +100,7 @@ class _AtHomeAppState extends State<AtHomeApp> {
         ChangeNotifierProvider(create: (_) => productProvider()),
       ],
       child: GetMaterialApp(
-        theme: ThemeData(
-          dialogTheme: DialogTheme(
-            backgroundColor:
-                mainColorWhite, // Set the background color of AlertDialog
-          ),
-          popupMenuTheme: PopupMenuThemeData(color: mainColorWhite),
-          dividerTheme:
-              DividerThemeData(color: mainColorBlack.withOpacity(0.2)),
-          buttonTheme: ButtonThemeData(buttonColor: mainColorGrey),
-          textButtonTheme: TextButtonThemeData(
-            style: TextButton.styleFrom(
-              textStyle: TextStyle(
-                  color: mainColorWhite,
-                  fontFamily: mainFontnormal,
-                  fontSize: 14),
-              foregroundColor: mainColorWhite, // Text color of the button
-              backgroundColor: mainColorGrey, // Background color of the button
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(15.0), // Border radius of the button
-              ),
-            ),
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              textStyle: TextStyle(
-                  color: mainColorWhite,
-                  fontFamily: mainFontnormal,
-                  fontSize: 14),
-              foregroundColor: mainColorWhite, // Text color of the button
-              backgroundColor: mainColorGrey, // Background color of the button
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(15.0), // Border radius of the button
-              ),
-            ),
-          ),
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(
-              primary: mainColorGrey,
-              secondary: mainColorRed,
-              background: mainColorWhite,
-              brightness: Brightness.light,
-              surfaceTint: mainColorWhite,
-              seedColor: mainColorGrey),
-          scaffoldBackgroundColor: mainColorWhite,
-          appBarTheme: AppBarTheme(
-            actionsIconTheme: IconThemeData(color: mainColorGrey, size: 25),
-            iconTheme: IconThemeData(color: mainColorGrey),
-            centerTitle: true,
-            elevation: 0,
-            surfaceTintColor: mainColorWhite,
-            titleTextStyle: TextStyle(
-                color: mainColorBlack,
-                fontSize: 20,
-                fontFamily: mainFontnormal),
-            backgroundColor: mainColorWhite,
-          ),
-          // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          //   showUnselectedLabels: false,
-          //   selectedItemColor: mainColorGrey,
-          //   unselectedItemColor: mainColorGrey,
-          //   backgroundColor: mainColorWhite,
-          //   type: BottomNavigationBarType.fixed,
-          // ),
-        ),
+        theme: AppThemes.lightTheme1,
         translations: Translation(),
         locale: const Locale("en"),
         fallbackLocale: const Locale("en"),

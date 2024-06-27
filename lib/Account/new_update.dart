@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
-
-
 class Update {
   final String title;
   final String description;
@@ -15,7 +12,8 @@ class Update {
 List<Update> updates = [
   Update(
     title: "New Feature: Dark Mode",
-    description: "We've added a new dark mode to help reduce eye strain at night.",
+    description:
+        "We've added a new dark mode to help reduce eye strain at night.",
     date: DateTime(2024, 5, 20),
   ),
   Update(

@@ -4,7 +4,7 @@ import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Network/Network.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';

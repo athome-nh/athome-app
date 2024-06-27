@@ -13,7 +13,7 @@ import 'package:dllylas/Privacy.dart';
 import 'package:dllylas/TermsandCondition.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/map/loction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +67,6 @@ class _SettingState extends State<Setting> {
     } else {}
   }
 
-  
-
   List<String> items = [
     "Gender",
     'Male',
@@ -80,14 +78,13 @@ class _SettingState extends State<Setting> {
   TextEditingController phoneController = TextEditingController();
   String gender = "Male";
 
-  
   bool isEdit = false;
   bool colapse = false;
   bool waiting = false;
   bool waitingImage = false;
   String image = "";
   bool nameE = false;
-  
+
   String selectedLanguage = 'English';
   String selectedItem = 'English';
   @override

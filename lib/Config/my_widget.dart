@@ -17,7 +17,6 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../home/oneitem.dart';
 
-
 Widget listItemsShimer(BuildContext context) {
   return SizedBox(
     height: getHeight(context, 27),

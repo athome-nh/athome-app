@@ -24,11 +24,10 @@ class AccountSetting extends StatefulWidget {
 }
 
 class _AccountSettingState extends State<AccountSetting> {
-
   bool waiting = false;
   String selectedLanguage = 'English';
   String selectedItem = 'English';
-  
+
   @override
   void initState() {
     selectedItem = lang == "en"
@@ -83,7 +82,6 @@ class _AccountSettingState extends State<AccountSetting> {
                   : SingleChildScrollView(
                       child: Column(
                         children: [
-                          
                           // Title 1
                           SizedBox(height: getHeight(context, 2)),
                           _titles("Setting"),
@@ -118,8 +116,7 @@ class _AccountSettingState extends State<AccountSetting> {
                           // Delete Account
                           _DeleteAccount(
                               Ionicons.trash_outline, 'Delete Account'),
-
-                          ],
+                        ],
                       ),
                     ),
             ),
@@ -308,7 +305,11 @@ class _AccountSettingState extends State<AccountSetting> {
     return Column(
       children: [
         ListTile(
-          leading: Icon(icon, size: 24, color: mainColorRed,),
+          leading: Icon(
+            icon,
+            size: 24,
+            color: mainColorRed,
+          ),
           title: Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(
@@ -320,7 +321,8 @@ class _AccountSettingState extends State<AccountSetting> {
               ),
             ),
           ),
-          trailing: Icon(Icons.keyboard_arrow_right_outlined, color: mainColorRed),
+          trailing:
+              Icon(Icons.keyboard_arrow_right_outlined, color: mainColorRed),
           onTap: waiting
               ? null
               : () {
@@ -383,5 +385,4 @@ class _AccountSettingState extends State<AccountSetting> {
       ],
     );
   }
-
 }

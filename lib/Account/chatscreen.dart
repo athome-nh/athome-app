@@ -5,7 +5,7 @@ import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+
 import 'package:dllylas/model/chatmodel/chatmodel.dart';
 
 import 'package:flutter/material.dart';
@@ -15,6 +15,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:provider/provider.dart';
+
+import '../Landing/splash_screen.dart';
 // import 'message_model.dart';
 
 class ChatScreen extends StatefulWidget {

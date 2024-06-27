@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
+import '../Landing/splash_screen.dart';
 import '../Network/Network.dart';
 import '../controller/productprovider.dart';
 import '../main.dart';

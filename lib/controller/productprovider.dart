@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
 
 import 'package:dllylas/main.dart';
@@ -15,6 +16,7 @@ import 'package:dllylas/model/location/location.dart';
 
 import 'package:dllylas/model/order_items/order_items.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
+import 'package:dllylas/model/point_model/point_model.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:dllylas/model/productitems/productitems.dart';
 import 'package:dllylas/model/products_image/products_image.dart';
@@ -23,6 +25,7 @@ import 'package:dllylas/model/slidemodel/slidemodel.dart';
 import 'package:dllylas/model/sub_category/sub_category.dart';
 import 'package:dllylas/model/topmodel/topmodel.dart';
 import 'package:dllylas/model/voucher/voucher.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -80,10 +83,14 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
+
+          setPoints((value['points'] as List)
+              .map((x) => PointModel.fromMap(x))
+              .toList());
+
           setSchedules((value['timeList'] as List)
               .map((x) => ScheduleModel.fromMap(x))
               .toList());
-          // print(value['homePopup'].toString());
           homePopupData = value['homePopup'] ?? {};
 
           setMinimumOrder(
@@ -106,6 +113,7 @@ class productProvider extends ChangeNotifier {
           setlocation((value['locations'] as List)
               .map((x) => Locationuser.fromMap(x))
               .toList());
+
           setOrders((value['orders'] as List)
               .map((x) => OrderModel.fromMap(x))
               .toList());
@@ -135,6 +143,7 @@ class productProvider extends ChangeNotifier {
         if (valueuser != "") {
           if (valueuser["code"] == "201") {
             userdata = json.decode(decryptAES(valueuser["data"]));
+
             if (userdata["isActive"] == 0) {
               userdata.clear();
               Network(false)
@@ -260,6 +269,7 @@ class productProvider extends ChangeNotifier {
   List<OrderItems> _Orderitems = [];
   List<Locationuser> _location = [];
   List<Voucher> _vouchers = [];
+  List<PointModel> _points = [];
 
   // Map<String, dynamic> _homePopup = {};
   int _defultlocation = 0;
@@ -284,6 +294,7 @@ class productProvider extends ChangeNotifier {
 
   // Map<String, dynamic> get homePopup => _homePopup;
   List<Voucher> get vouchers => _vouchers;
+  List<PointModel> get points => _points;
   List<Slidemodel> get slides => _slides;
   List<Brandmodel> get brands => _brands;
   List<OrderItems> get Orderitems => _Orderitems;
@@ -638,6 +649,12 @@ class productProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setPoints(List<PointModel> point) {
+    _points = point;
+
+    notifyListeners();
+  }
+
   void setOrderItems(List<OrderItems> orderitems) {
     _Orderitems = orderitems;
 
@@ -651,6 +668,16 @@ class productProvider extends ChangeNotifier {
 
   void setlocation(List<Locationuser> location) {
     _location = location;
+    getIntPrefs("location").then((value) {
+      if (value != "" && value != 0) {
+        setdefultlocation(value);
+      } else {
+        if (_location.isNotEmpty) {
+          setdefultlocation(_location.first.id!);
+        } else {}
+      }
+    });
+
     notifyListeners();
   }
 
@@ -704,8 +731,8 @@ class productProvider extends ChangeNotifier {
   void setdefultlocation(int id) {
     if (id >= 0) {
       _defultlocation = id;
+      setIntPrefs("location", id);
     }
-
     notifyListeners();
   }
 

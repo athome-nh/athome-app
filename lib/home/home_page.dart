@@ -7,28 +7,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Config/slideshow.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
-import 'package:dllylas/home/nav_switch.dart';
+
 import 'package:dllylas/home/oneitem.dart';
 
 import 'package:dllylas/home/search_page.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -37,6 +35,8 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../Landing/splash_screen.dart';
 
 class HomeSreen extends StatefulWidget {
   const HomeSreen({super.key});
@@ -757,101 +757,9 @@ class _HomeSreenState extends State<HomeSreen> {
                     SizedBox(
                       height: getHeight(context, 1),
                     ),
-
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
-                      child: Visibility(
-                        visible: productrovider.show,
-                        replacement: Skeletonizer(
-                          effect: ShimmerEffect.raw(colors: [
-                            mainColorGrey.withOpacity(0.1),
-                            mainColorWhite,
-                            //  mainColorRed.withOpacity(0.1),
-                          ]),
-                          enabled: true,
-                          child: SizedBox(
-                            width: getWidth(context, 100),
-                            height: getHeight(context, 25),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15.0),
-                              child: CarouselSlider(
-                                items: [
-                                  ClipRRect(
-                                    child: Image.asset(
-                                      "assets/images/Logo-Type-2.png",
-                                      width: getWidth(context, 100),
-                                      height: getHeight(context, 20),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ],
-                                options: CarouselOptions(
-                                  autoPlay: true,
-                                  aspectRatio: 16 / 9,
-                                  viewportFraction: 1.0,
-                                  enlargeCenterPage: true,
-                                  autoPlayInterval: const Duration(seconds: 5),
-                                  autoPlayAnimationDuration:
-                                      const Duration(milliseconds: 3000),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        child: SizedBox(
-                          width: getWidth(context, 100),
-                          height: getHeight(context, 25),
-                          child: CarouselSlider.builder(
-                            itemCount: productrovider.slides.length,
-                            options: CarouselOptions(
-                              autoPlay: true,
-                              aspectRatio: 16 / 9,
-                              viewportFraction: 1.0,
-                              enlargeCenterPage: true,
-                              autoPlayInterval: const Duration(seconds: 5),
-                              autoPlayAnimationDuration:
-                                  const Duration(milliseconds: 3000),
-                              enableInfiniteScroll:
-                                  true, // if you don't want infinite loop
-                              onPageChanged: (index, reason) {
-                                // Do something when page changes
-                              },
-                            ),
-                            itemBuilder: (BuildContext context, int index, _) {
-                              var item = productrovider.slides[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  productrovider.settype("brand");
-                                  productrovider.setidbrand(item.brandId!);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const AllItem()),
-                                  );
-                                },
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  child: CachedNetworkImage(
-                                    imageUrl: dotenv.env['imageUrlServer']! +
-                                        item.img!,
-                                    placeholder: (context, url) => Image.asset(
-                                        "assets/images/Logo-Type-2.png"),
-                                    errorWidget: (context, url, error) =>
-                                        Image.asset(
-                                            "assets/images/Logo-Type-2.png"),
-                                    filterQuality: FilterQuality.low,
-                                    width: getWidth(context, 100),
-                                    height: getHeight(context, 20),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Carousel(productrovider)),
 
                     // Categories
                     Row(
@@ -885,20 +793,8 @@ class _HomeSreenState extends State<HomeSreen> {
                             style: TextButton.styleFrom(
                                 foregroundColor: mainColorRed,
                                 backgroundColor: Colors.transparent),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "View All".tr,
-                                ),
-                                // SizedBox(
-                                //   width: getWidth(context, 2),
-                                // ),
-                                // Icon(
-                                //   Icons.arrow_forward_ios_outlined,
-                                //   color: mainColorRed,
-                                //   size: 14,
-                                // ),
-                              ],
+                            child: Text(
+                              "View All".tr,
                             ),
                           ),
                         ),
@@ -974,68 +870,69 @@ class _HomeSreenState extends State<HomeSreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: productrovider.categores.length,
                           itemBuilder: (BuildContext context, int index) {
+                            final randomColor =
+                                categoryColors[index % categoryColors.length];
                             final cateItem = productrovider.categores[index];
-                            return Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 4)),
-                              child: Column(
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      productrovider.setcatetype(cateItem.id!);
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                itemCategories()),
-                                      ).then((value) {
-                                        productrovider.setsubcateSelect(0);
-                                      });
-                                    },
-                                    child: Container(
-                                      width: getHeight(context, 9),
-                                      height: getHeight(context, 9),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: mainColorBlack
-                                                  .withOpacity(0.1)),
-                                          borderRadius:
-                                              BorderRadius.circular(50)),
-                                      child: Center(
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              dotenv.env['imageUrlServer']! +
-                                                  cateItem.img!,
-                                          placeholder: (context, url) =>
-                                              Image.asset(
-                                                  "assets/images/Logo-Type-2.png"),
-                                          errorWidget: (context, url, error) =>
-                                              Image.asset(
-                                                  "assets/images/Logo-Type-2.png"),
-                                          filterQuality: FilterQuality.low,
-                                          width: getHeight(context, 7),
-                                          height: getHeight(context, 7),
-                                        ),
+                            return GestureDetector(
+                              onTap: () {
+                                productrovider.setcatetype(cateItem.id!);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => itemCategories()),
+                                ).then((value) {
+                                  productrovider.setsubcateSelect(0);
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: getHeight(context, 12),
+                                  height: getHeight(context, 12),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color:
+                                              mainColorBlack.withOpacity(0.2)),
+                                      color: randomColor,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CachedNetworkImage(
+                                        imageUrl:
+                                            dotenv.env['imageUrlServer']! +
+                                                cateItem.img!,
+                                        placeholder: (context, url) =>
+                                            Image.asset(
+                                                "assets/images/Logo-Type-2.png"),
+                                        errorWidget: (context, url, error) =>
+                                            Image.asset(
+                                                "assets/images/Logo-Type-2.png"),
+                                        filterQuality: FilterQuality.low,
+                                        width: getHeight(context, 8),
+                                        height: getHeight(context, 8),
                                       ),
-                                    ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        lang == "en"
+                                            ? cateItem.nameEn!
+                                            : lang == "ar"
+                                                ? cateItem.nameAr!
+                                                : cateItem.nameKu!,
+                                        maxLines: 1,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: mainColorBlack,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 13),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    height: getHeight(context, 1),
-                                  ),
-                                  Text(
-                                    lang == "en"
-                                        ? cateItem.nameEn!
-                                        : lang == "ar"
-                                            ? cateItem.nameAr!
-                                            : cateItem.nameKu!,
-                                    maxLines: 1,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: mainColorBlack,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 12),
-                                  ),
-                                ],
+                                ),
                               ),
                             );
                           },

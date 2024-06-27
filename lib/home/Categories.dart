@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:provider/provider.dart';
+import 'dart:math';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -44,68 +45,62 @@ class _CategoriesState extends State<Categories> {
 
           // Change the color of the unselected tab labels
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: getHeight(context, 90),
-                width: getWidth(context, 100),
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: getWidth(context, 0.20),
+        body: SizedBox(
+          height: getHeight(context, 90),
+          width: getWidth(context, 100),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: getWidth(context, 0.25),
+              crossAxisCount: 2, // Number of columns
+            ),
+            itemCount:
+                productPro.categores.length, // Number of items in the grid
+            itemBuilder: (BuildContext context, int index) {
+              final cateItem = productPro.categores[index];
 
-                    crossAxisCount: 3, // Number of columns
-                  ),
-                  itemCount: productPro
-                      .categores.length, // Number of items in the grid
-                  itemBuilder: (BuildContext context, int index) {
-                    final cateItem = productPro.categores[index];
-                    // Build each grid item here
-                    return Column(
+              final randomColor = categoryColors[index % categoryColors.length];
+
+              return GestureDetector(
+                onTap: () {
+                  productPro.setcatetype(cateItem.id!);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => itemCategories()),
+                  ).then((value) {
+                    productPro.setsubcateSelect(0);
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: getHeight(context, 20),
+                    height: getHeight(context, 20),
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: mainColorBlack.withOpacity(0.2)),
+                        color: randomColor,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            productPro.setcatetype(cateItem.id!);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => itemCategories()),
-                            ).then((value) {
-                              productPro.setsubcateSelect(0);
-                            });
-                          },
-                          child: Container(
-                            width: getHeight(context, 12),
-                            height: getHeight(context, 12),
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: mainColorBlack.withOpacity(0.1)),
-                                // color: mainColorLightGrey,
-                                borderRadius: BorderRadius.circular(50)),
-                            child: Center(
-                              child: CachedNetworkImage(
-                                imageUrl: dotenv.env['imageUrlServer']! +
-                                    cateItem.img!,
-                                placeholder: (context, url) => Image.asset(
-                                    "assets/images/Logo-Type-2.png"),
-                                errorWidget: (context, url, error) =>
-                                    Image.asset(
-                                        "assets/images/Logo-Type-2.png"),
-                                filterQuality: FilterQuality.low,
-                                width: getHeight(context, 9),
-                                height: getHeight(context, 9),
-                              ),
-                            ),
-                          ),
+                      children: [
+                        CachedNetworkImage(
+                          imageUrl:
+                              dotenv.env['imageUrlServer']! + cateItem.img!,
+                          placeholder: (context, url) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          errorWidget: (context, url, error) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          filterQuality: FilterQuality.low,
+                          width: getHeight(context, 15),
+                          height: getHeight(context, 15),
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 10,
                         ),
                         Text(
                           lang == "en"
                               ? cateItem.nameEn!
-                              //cateItem.nameEn!
                               : lang == "ar"
                                   ? cateItem.nameAr!
                                   : cateItem.nameKu!,
@@ -113,15 +108,15 @@ class _CategoriesState extends State<Categories> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: mainColorBlack,
-                              fontFamily: mainFontnormal,
-                              fontSize: 12),
+                              fontFamily: mainFontbold,
+                              fontSize: 14),
                         ),
                       ],
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              );
+            },
           ),
         ),
       ),

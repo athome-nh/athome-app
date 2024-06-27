@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/controller/productprovider.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:dllylas/model/cartpast.dart';
 import 'package:dllylas/model/product_model/product_model.dart';

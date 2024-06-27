@@ -51,10 +51,10 @@ class ActiveTab extends StatelessWidget {
               child: Text(
                 "Don\'t have any Voucher Code",
                 style: TextStyle(
-                    fontFamily: mainFontnormal,
-                    fontSize: 20,
-                    color: mainColorGrey,
-                    ),
+                  fontFamily: mainFontnormal,
+                  fontSize: 20,
+                  color: mainColorGrey,
+                ),
               ),
             )
           : ListView.builder(
@@ -88,10 +88,10 @@ class UsedTab extends StatelessWidget {
               child: Text(
                 "Don\'t have any Voucher Code",
                 style: TextStyle(
-                    fontFamily: mainFontnormal,
-                    fontSize: 20,
-                    color: mainColorGrey,
-                    ),
+                  fontFamily: mainFontnormal,
+                  fontSize: 20,
+                  color: mainColorGrey,
+                ),
               ),
             )
           : ListView.builder(
@@ -125,10 +125,10 @@ class ExpiredTab extends StatelessWidget {
               child: Text(
                 "Don\'t have any Voucher Code",
                 style: TextStyle(
-                    fontFamily: mainFontnormal,
-                    fontSize: 20,
-                    color: mainColorGrey,
-                    ),
+                  fontFamily: mainFontnormal,
+                  fontSize: 20,
+                  color: mainColorGrey,
+                ),
               ),
             )
           : ListView.builder(

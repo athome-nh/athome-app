@@ -1,5 +1,4 @@
 const Map<String, String> kur = {
-
   // about_screen
   "About Us": "دەربارەی ئاپەکە",
   "AboutTextOne":
@@ -35,10 +34,6 @@ const Map<String, String> kur = {
   "City": "شار",
   "Save": "زەخیرە کردن",
 
-  
-  
-  
-
   // profilo
   "Information": "زانیاری",
   "Enter Name": "تۆمارکردنی ناو",
@@ -47,8 +42,6 @@ const Map<String, String> kur = {
   "Address": "ناونیشان",
   "About us": "دەربارەی ئێمە",
   "Log out": "چوونە دەر",
-  
-  
 
   //
   "New": "نوێ",
@@ -142,7 +135,6 @@ const Map<String, String> kur = {
   "Register First": "خۆت تۆمار بکە",
   "You need login": "پێویستە خۆت تۆمار بکەیت",
   "Register": "خۆتۆمارکردن",
-  
 
   // categories
   "All Categories": "گشت پۆلێنەکان",
@@ -233,7 +225,7 @@ const Map<String, String> kur = {
 
   // locationdeatil
   "Locations": "ناونیشان",
-  
+
   "Add name": "زیادکردنی ناو",
   "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",
@@ -254,10 +246,9 @@ const Map<String, String> kur = {
   "Enter your account information to complete your account":
       "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
   "Enter your Name": "ناوت تۆمار بکە",
-  
 
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
-  
+
   "unknown occurred error please try again later":
       "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
   "Confirm": "دووپاتکردنەوە",
@@ -280,7 +271,6 @@ const Map<String, String> kur = {
   "Account is disable please contact athome admin":
       "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
   "the code is un correct": "کۆدەکە هەڵەیە",
-  
 
   // map
   "Map": "نەخشە",
@@ -297,7 +287,6 @@ const Map<String, String> kur = {
   "Cancel order": "پوچەڵ کردنەوە",
   "View order": "بینینی داواکاری ",
 
-  
   //more old_order
   "Order Placed": "داواکاریەکەت تۆمارکرا",
   "Processing Order": "داواکاریەکە ئامادە دەکرێ",

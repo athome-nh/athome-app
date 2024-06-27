@@ -21,6 +21,15 @@ Color mainColorWhite = const Color(0XFFffffff);
 Color mainColorBlack = const Color(0XFF1c1c1c);
 Color mainFacebookColor = const Color(0xff367FC0);
 Color mainGoogleColor = const Color(0xffDD4B39);
+// Define your list of colors
+List<Color> categoryColors = [
+  Color(0xFFedf8f2),
+  Color(0xFFfff6ed),
+  Color(0xFFfde8e3),
+  Color(0xFFf3ebf8),
+  Color(0xFFfff8e5),
+  Color(0xFFeef7fc),
+];
 
 ///Define { Images } in AtHome
 // String mainImagePattern = 'assets/images/001_pattern.jpg';

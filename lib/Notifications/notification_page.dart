@@ -8,7 +8,7 @@ import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/nav_switch.dart';
 import 'package:dllylas/home/oneitem.dart';
 import 'package:dllylas/home/track_order.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,6 @@ class _NotificationPageState extends State<NotificationPage> {
       child: Scaffold(
         appBar: AppBar(
           actions: [
-            
             Switch(
               value: _isSwitched,
               onChanged: (value) {
@@ -74,7 +73,7 @@ class _NotificationPageState extends State<NotificationPage> {
               inactiveTrackColor: Colors.white,
               inactiveThumbColor: Colors.red,
             ),
-          SizedBox(width: getHeight(context, 1)),
+            SizedBox(width: getHeight(context, 1)),
           ],
           title: Text(
             "Notification".tr,

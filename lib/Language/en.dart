@@ -1,5 +1,4 @@
 const Map<String, String> en = {
-
   // about_screen
   "About Us": "About Us",
   "AboutTextOne":
@@ -18,7 +17,7 @@ const Map<String, String> en = {
       "Feedback and Improvement: We value your feedback. Your suggestions help us enhance our application and services. We're always looking for ways to improve and provide you with the best possible experience.",
   "AboutTextEight":
       "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
-  
+
   // account_info
   "Image changed": "Image changed",
   "Cancel": "Cancel",
@@ -35,8 +34,6 @@ const Map<String, String> en = {
   "City": "City",
   "Save": "Save",
 
-
-  
   // profilo Chenged
   "Information": "Information",
   "Enter Name": "Enter Name",
@@ -45,8 +42,6 @@ const Map<String, String> en = {
   "Address": "Address",
   "About us": "About us",
   "Log out": "Log out",
-  
-  
 
   //
   "New": "New",
@@ -171,8 +166,6 @@ const Map<String, String> en = {
   // Page --> Login First --> my_widget
   "Please login first": "Please login first", // nmayaa
 
-  
-
   // order_screen
   "My Orders": "My Orders",
   "On going": "On going",
@@ -288,8 +281,6 @@ const Map<String, String> en = {
   "Order:": "Order: ",
   "Cancel order": "Cancel order",
   "View order": "View order",
-
-  
 
   //more old_order
   "Order Placed": "Order Placed",

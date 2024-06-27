@@ -1,5 +1,4 @@
 const Map<String, String> ar = {
-
   // about_screen
   "About Us": "حول التطبیق",
   "AboutTextOne":
@@ -35,8 +34,6 @@ const Map<String, String> ar = {
   "City": "مدينة",
   "Save": "حفظ",
 
-  
-  
   // profilo
   "Information": "حسابي",
   "Enter Name": "ادخل الاسم",
@@ -45,8 +42,6 @@ const Map<String, String> ar = {
   "Address": "الموقع",
   "About us": "حول التطبیق",
   "Log out": "خروج",
-  
-  
 
   //
   "New": "جديد",
@@ -139,7 +134,6 @@ const Map<String, String> ar = {
   "Register First": "تسجيل اولا",
   "You need login": "یرجی التسجیل أولا",
   "Register": "تسجیل الدخول",
-  
 
   // categories
   "All Categories": "کل الفئات",
@@ -285,7 +279,6 @@ const Map<String, String> ar = {
   "Order:": "الطلبیة: ",
   "Cancel order": "الغاء الطلب",
   "View order": "عرض الطلب",
-
 
   //more old_order
   "Order Placed": "تم التثبیت الطلب",

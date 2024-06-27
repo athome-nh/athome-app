@@ -99,10 +99,13 @@ class _OrderScreenState extends State<OrderScreen> {
                         : productrovider.Orders.any(
                                 (order) => order.status! < 5)
                             ? ListView.builder(
-                                itemCount: productrovider.getOrderOngoing().length,
+                                itemCount:
+                                    productrovider.getOrderOngoing().length,
                                 itemBuilder: (BuildContext context, int index) {
                                   OrderModel order = productrovider
-                                      .getOrderOngoing().reversed.toList()[index];
+                                      .getOrderOngoing()
+                                      .reversed
+                                      .toList()[index];
                                   return Card(
                                     elevation: 2,
                                     margin: EdgeInsets.all(8),

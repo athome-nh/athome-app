@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
-import 'package:dllylas/Landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';

@@ -14,7 +14,7 @@ import 'package:dllylas/TermsandCondition.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
-import 'package:dllylas/landing/splash_screen.dart';
+
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/loction.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +26,7 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../Config/my_widget.dart';
 import '../Landing/login_page.dart';
+import '../Landing/splash_screen.dart';
 import 'account_setting.dart';
 import 'all_gudide.dart';
 import 'bawar.dart';
