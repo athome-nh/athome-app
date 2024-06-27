@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:dllylas/Config/local_data.dart';
-
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Notifications/Notification.dart';
 import 'package:dllylas/Notifications/NotificationController.dart';

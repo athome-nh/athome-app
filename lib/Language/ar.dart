@@ -34,15 +34,134 @@ const Map<String, String> ar = {
   "City": "مدينة",
   "Save": "حفظ",
 
+  // account_setting
+  "Account Settings": "",
+  "Setting": "",
+  "Notification Setting": "",
+  "Language": "اللغة",
+  "Support": "",
+  "Help center": "",
+  "About us": "حول التطبیق",
+  "Guide": "",
+  "Feedback": "",
+  "Delete Account": "حذف الحساب",
+  "Select Language": "",
+  "English": "إنجليزي",
+  "Arabic": "العربية",
+  "Kurdish": "كردي",
+
+  // all_gudide
+  "FAQs": "FAQs",
+  "What\'s New": "",
+  "Title_FAQ_1": "",
+  "Title_FAQ_2": "",
+  "Title_FAQ_3": "",
+  "Title_FAQ_4": "",
+  "Title_FAQ_5": "",
+  "Title_FAQ_6": "",
+  "Question_FAQ_1": "",
+  "Question_FAQ_2": "",
+  "Question_FAQ_3": "",
+  "Question_FAQ_4": "",
+  "Question_FAQ_5": "",
+  "Question_FAQ_6": "",
+  "Question_FAQ_7": "",
+  "Question_FAQ_8": "",
+  "Question_FAQ_9": "",
+  "Question_FAQ_10": "",
+  "Question_FAQ_11": "",
+  "Answer_FAQ_1": "",
+  "Answer_FAQ_2": "",
+  "Answer_FAQ_3": "",
+  "Answer_FAQ_4": "",
+  "Answer_FAQ_5": "",
+  "Answer_FAQ_6": "",
+  "Answer_FAQ_7": "",
+  "Answer_FAQ_8": "",
+  "Answer_FAQ_9": "",
+  "Answer_FAQ_10": "",
+  "Answer_FAQ_11": "",
+  "Search": "البحث",
+  "Title_Update_1": "",
+  "Title_Update_2": "",
+  "Title_Update_3": "",
+  "Title_Update_4": "",
+  "Title_Update_5": "",
+  "Title_Update_6": "",
+  "Title_Update_7": "",
+  "Description_Update_1": "",
+  "Description_Update_2": "",
+  "Description_Update_3": "",
+  "Description_Update_4": "",
+  "Description_Update_5": "",
+  "Description_Update_6": "",
+  "Description_Update_7": "",
+  "Date": "",
+
+  // chatscreen
+  "Select Bug": "",
+  "Customer Support": "",
+  "Customer Support Form": "",
+  "Enter your account information to contact for chat suport": "",
+  "Issue Bug": "",
+  "Please Select Bug": "",
+  "Please Select Language": "",
+  "Short Description": "",
+  "Add  Description": "",
+  "Please enter a Description": "",
+  "Start Conversion": "",
+  "Type a message": "",
+  "Last week": "الأسبوع الماضي",
+  "days ago": "منذ أيام",
+  "Yesterday": "الأمس",
+  "hours ago": "بضع ساعات مضت",
+  "1 hour ago": "منذ ساعة واحدة",
+  "minutes ago": "منذ دقائق",
+  "1 minute ago": "قبل دقيقة واحدة",
+  "seconds ago": "منذ ثوان",
+  "Just now": "الآن",
+
+  // feedback
+  "Poor": "",
+  "Terrible": "",
+  "Awful": "",
+  "Unacceptable": "",
+  "Dismal": "",
+  "Share your Feedback": "",
+  "Your feedback helps us improve": "",
+  "Please slecte stars": "",
+  "Leave Your Comments": "",
+  "feedback is require": "",
+  "Add your Feedback": "",
+  "Enjoying the app?": "",
+  "Would you mind rating us?": "",
+  "Rate us in": "",
+  "Send Feedback": "",
+
+  // help_screen
+  "Help": "الدعم",
+  "DescriptionTextInHelp": "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
+  "PhoneNumber": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
+
+  
+  // Notification
+  "Notification": "إشعار",
+  "You don't have any notification": "هیليس لديك أي إشعار",
+
+  // choose_lan
+  "Get Start": "ابدأ",
+  
   // profilo
   "Information": "حسابي",
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
   "Orders": "طلباتي",
   "Address": "الموقع",
-  "About us": "حول التطبیق",
   "Log out": "خروج",
-
+  
   //
   "New": "جديد",
 
@@ -63,39 +182,6 @@ const Map<String, String> ar = {
   "Select": "اختر",
   "Delevery schedule": "تحديد موعد للتوصيل",
 
-  // Notification
-  "Notification": "إشعار",
-  "You don't have any notification": "هیليس لديك أي إشعار",
-  //"1 week ago": "1 week ago",
-  "Last week": "الأسبوع الماضي",
-  "days ago": "منذ أيام",
-  //"1 day ago": "One day ago",
-  "Yesterday": "الأمس",
-  "hours ago": "بضع ساعات مضت",
-  "1 hour ago": "منذ ساعة واحدة",
-  //"An hour ago": "An hour ago",
-  "minutes ago": "منذ دقائق",
-  "1 minute ago": "قبل دقيقة واحدة",
-  //"A minute ago": "A minute ago",
-  "seconds ago": "منذ ثوان",
-  "Just now": "الآن",
-
-  // Help
-  "Help": "الدعم",
-  "DearCustomers":
-      "زبائنا الأعزاء في حال وجود أي مشاكل اواي صعوبات ارجوا منكم الاتصال بنا على الطرق الآتية",
-  "Call": "07509583333 - 07802320717",
-  "Email": "Info@dllylas.com",
-  "WebSite": "www.dllylas.com",
-  "Facebook": "DLLY.LAS.24",
-
-  // choose_lan
-  "Language": "اللغة",
-  "Kurdish": "كردي",
-  "Arabic": "العربية",
-  "English": "إنجليزي",
-  "Get Start": "ابدأ",
-
   // welcome_screen
   "wst01": "تسوق بذکاء و سهولة",
   "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
@@ -108,7 +194,6 @@ const Map<String, String> ar = {
 
   // nav_switch
   "Home": "الرئیسیة",
-  "Search": "البحث",
   "Cart": "السلة",
   "Favorite": "مفضلاتي",
   "Account": "الحساب",
@@ -323,7 +408,7 @@ const Map<String, String> ar = {
   "Update": "تحديث",
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "من خلال المتابعة، فإنك توافق على الحصول على سياسة الخصوصية الخاصة بـ Dlly Las",
-  "Delete Account": "حذف الحساب",
+  
   "Account recovery opportunity":
       "فرصة استعادة الحساب متاحة حتى @date@، يرجي التواصل معنا:(07509583333)",
 

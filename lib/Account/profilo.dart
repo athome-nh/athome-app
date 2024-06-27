@@ -2148,7 +2148,7 @@ class _SettingState extends State<Setting> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => GudidePage()),
+                                        builder: (context) => GuidePage()),
                                   );
                                 },
                                 child: Padding(

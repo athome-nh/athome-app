@@ -20,7 +20,7 @@ const Map<String, String> en = {
 
   // account_info
   "Image changed": "Image changed",
-  "Cancel": "Cancel",
+  "Cancel": "Cancel", // feedback
   "Edit": "Edit",
   "Profile": "Profile",
   "Name": "Name",
@@ -33,14 +33,139 @@ const Map<String, String> en = {
   "Phone": "Phone",
   "City": "City",
   "Save": "Save",
+  
+  // account_setting
+  "Account Settings": "Account Settings",
+  "Setting": "Setting",
+  "Notification Setting": "Notification Setting",
+  "Language": "Language", // chatscreen
+  "Support": "Support",
+  "Help center": "Help center",
+  "About us": "About us",
+  "Guide": "Guide", // all_gudide
+  "Feedback": "Feedback", // feedback
+  "Delete Account": "Delete Account",
+  "Select Language": "Select Language", // chatscreen
+  "English": "English", // chatscreen
+  "Arabic": "Arabic ", // chatscreen
+  "Kurdish": "Kurdish", // chatscreen
+  
+  // all_gudide
+  "FAQs": "FAQs",
+  "What\'s New": "What\'s New",
+  "Title_FAQ_1": "General",
+  "Title_FAQ_2": "Installation",
+  "Title_FAQ_3": "Development",
+  "Title_FAQ_4": "Performance",
+  "Title_FAQ_5": "Features",
+  "Title_FAQ_6": "Learning Resources",
+  "Question_FAQ_1": "What is Flutter?",
+  "Question_FAQ_2": "What programming language does Flutter use?",
+  "Question_FAQ_3": "Is Flutter free to use?",
+  "Question_FAQ_4": "How do I install Flutter?",
+  "Question_FAQ_5": "What are the system requirements for Flutter?",
+  "Question_FAQ_6": "Can I use Flutter with my existing project?",
+  "Question_FAQ_7": "What IDEs can I use with Flutter?",
+  "Question_FAQ_8": "Does Flutter support hot reload?",
+  "Question_FAQ_9": "How does Flutter perform compared to native apps?",
+  "Question_FAQ_10": "Does Flutter have access to native device features?",
+  "Question_FAQ_11": "Where can I find Flutter tutorials?",
+  "Answer_FAQ_1": "Flutter is an open-source UI software development kit created by Google.",
+  "Answer_FAQ_2": "Flutter uses the Dart programming language.",
+  "Answer_FAQ_3": "Yes, Flutter is free and open-source.",
+  "Answer_FAQ_4": "You can install Flutter by following the instructions on the official website.",
+  "Answer_FAQ_5": "Refer to the official documentation for detailed requirements.",
+  "Answer_FAQ_6": "You can integrate Flutter into existing applications incrementally.",
+  "Answer_FAQ_7": "You can use Android Studio, IntelliJ IDEA, and Visual Studio Code with Flutter.",
+  "Answer_FAQ_8": "Yes, Flutter supports hot reload.",
+  "Answer_FAQ_9": "Flutter provides high performance on both Android and iOS.",
+  "Answer_FAQ_10": "Yes, Flutter provides plugins to access native device features.",
+  "Answer_FAQ_11": "There are many resources available, including the official documentation.",
+  "Search": "Search",
+  "Title_Update_1": "New Feature: Dark Mode",
+  "Title_Update_2": "Improved Performance",
+  "Title_Update_3": "Bug Fixes",
+  "Title_Update_4": "Enhanced Security",
+  "Title_Update_5": "User Interface Overhaul",
+  "Title_Update_6": "New Language Support",
+  "Title_Update_7": "Social Media Integration",
+  "Description_Update_1": "We\'ve added a new dark mode to help reduce eye strain at night.",
+  "Description_Update_2": "App startup time is now 50% faster!",
+  "Description_Update_3": "Fixed various bugs reported by users to improve stability.",
+  "Description_Update_4": "Implemented new security protocols to keep your data safe.",
+  "Description_Update_5": "Revamped the UI for a more modern and intuitive experience.",
+  "Description_Update_6": "Added support for Spanish and French languages.",
+  "Description_Update_7": "You can now link your social media accounts with the app.",
+  "Date": "Date",
+  
+  // chatscreen
+  "Select Bug": "Select Bug",
+  "Customer Support": "Customer Support",
+  "Customer Support Form": "Customer Support Form",
+  "Enter your account information to contact for chat suport": "Enter your account information to contact for chat suport",
+  "Issue Bug": "Issue Bug",
+  "Please Select Bug": "Please Select Bug",
+  "Please Select Language": "Please Select Language",
+  "Short Description": "Short Description",
+  "Add  Description": "Add  Description",
+  "Please enter a Description": "Please enter a Description",
+  "Start Conversion": "Start Conversion",
+  "Type a message": "Type a message",
+  "Last week": "Last week",
+  "days ago": "days ago",
+  "Yesterday": "Yesterday",
+  "hours ago": "hours ago",
+  "1 hour ago": "One hour ago",
+  "minutes ago": "minutes ago",
+  "1 minute ago": "One minute ago",
+  "seconds ago": "seconds ago",
+  "Just now": "Just now",
 
+  // feedback
+  "Poor": "Poor",
+  "Terrible": "Terrible",
+  "Awful": "Awful",
+  "Unacceptable": "Unacceptable",
+  "Dismal": "Dismal",
+  "Share your Feedback": "Share your Feedback",
+  "Your feedback helps us improve": "Your feedback helps us improve",
+  "Please slecte stars": "Please slecte stars",
+  "Leave Your Comments": "Leave Your Comments",
+  "feedback is require": "feedback is require",
+  "Add your Feedback": "Add your Feedback",
+  "Enjoying the app?": "Enjoying the app?",
+  "Would you mind rating us?": "Would you mind rating us?",
+  "Rate us in": "Rate us in",
+  "Send Feedback": "Send Feedback",
+
+  // help_screen
+  "Help": "Support",
+  "DescriptionTextInHelp": "Dear customers In case of any problems or any issues please contact us at via",
+  "PhoneNumber": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
+
+  // invite_friend
+  "": "",
+  
+  // Notification
+  "Notification": "Notification",
+  "You don't have any notification": "You don't have any notification.",
+  "1 week ago": "1 week ago",
+  "1 day ago": "One day ago",
+  "An hour ago": "An hour ago",
+  "A minute ago": "A minute ago",
+
+  // choose_lan
+  "Get Start": "Get Start",
+  
   // profilo Chenged
   "Information": "Information",
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
   "Orders": "Orders",
   "Address": "Address",
-  "About us": "About us",
   "Log out": "Log out",
 
   //
@@ -61,39 +186,6 @@ const Map<String, String> en = {
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
 
-  // Notification
-  "Notification": "Notification",
-  "You don't have any notification": "You don't have any notification.",
-  "1 week ago": "1 week ago",
-  "Last week": "Last week",
-  "days ago": "days ago",
-  "1 day ago": "One day ago",
-  "Yesterday": "Yesterday",
-  "hours ago": "hours ago",
-  "1 hour ago": "One hour ago",
-  "An hour ago": "An hour ago",
-  "minutes ago": "minutes ago",
-  "1 minute ago": "One minute ago",
-  "A minute ago": "A minute ago",
-  "seconds ago": "seconds ago",
-  "Just now": "Just now",
-
-  // Help
-  "Help": "Support",
-  "DearCustomers":
-      "Dear customers In case of any problems or any issues please contact us at via",
-  "Call": "07509583333 - 07802320717",
-  "Email": "Info@dllylas.com",
-  "WebSite": "www.dllylas.com",
-  "Facebook": "DLLY.LAS.24",
-
-  // choose_lan
-  "Language": "Language",
-  "Kurdish": "Kurdish",
-  "Arabic": "Arabic ",
-  "English": "English",
-  "Get Start": "Get Start",
-
   // welcome_screen
   "wst01": "Shop Smarter & Easier",
   "wsd01":
@@ -108,7 +200,7 @@ const Map<String, String> en = {
 
   // nav_switch
   "Home": "Home",
-  "Search": "Search",
+  
   "Cart": "Cart",
   "Favorite": "Favorite",
   "Account": "Account",
@@ -325,7 +417,7 @@ const Map<String, String> en = {
   "Update": "Update",
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "By continuing, you agree to get Dlly Las's Privacy Policy",
-  "Delete Account": "Delete Account",
+  
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
 

@@ -34,13 +34,134 @@ const Map<String, String> kur = {
   "City": "شار",
   "Save": "زەخیرە کردن",
 
+  // account_setting
+  "Account Settings": "",
+  "Setting": "",
+  "Notification Setting": "",
+  "Language": "زمان",
+  "Support": "",
+  "Help center": "",
+  "About us": "دەربارەی ئێمە",
+  "Guide": "",
+  "Feedback": "",
+  "Delete Account": "هەژمارەکە بسڕەوە",
+  "Select Language": "",
+  "English": "ئینگلیزی",
+  "Arabic": "عەرەبی",
+  "Kurdish": "کوردی",
+
+  // all_gudide
+  "FAQs": "FAQs",
+  "What\'s New": "",
+  "Title_FAQ_1": "",
+  "Title_FAQ_2": "",
+  "Title_FAQ_3": "",
+  "Title_FAQ_4": "",
+  "Title_FAQ_5": "",
+  "Title_FAQ_6": "",
+  "Question_FAQ_1": "",
+  "Question_FAQ_2": "",
+  "Question_FAQ_3": "",
+  "Question_FAQ_4": "",
+  "Question_FAQ_5": "",
+  "Question_FAQ_6": "",
+  "Question_FAQ_7": "",
+  "Question_FAQ_8": "",
+  "Question_FAQ_9": "",
+  "Question_FAQ_10": "",
+  "Question_FAQ_11": "",
+  "Answer_FAQ_1": "",
+  "Answer_FAQ_2": "",
+  "Answer_FAQ_3": "",
+  "Answer_FAQ_4": "",
+  "Answer_FAQ_5": "",
+  "Answer_FAQ_6": "",
+  "Answer_FAQ_7": "",
+  "Answer_FAQ_8": "",
+  "Answer_FAQ_9": "",
+  "Answer_FAQ_10": "",
+  "Answer_FAQ_11": "",
+  "Search": "گەڕان",
+  "Title_Update_1": "",
+  "Title_Update_2": "",
+  "Title_Update_3": "",
+  "Title_Update_4": "",
+  "Title_Update_5": "",
+  "Title_Update_6": "",
+  "Title_Update_7": "",
+  "Description_Update_1": "",
+  "Description_Update_2": "",
+  "Description_Update_3": "",
+  "Description_Update_4": "",
+  "Description_Update_5": "",
+  "Description_Update_6": "",
+  "Description_Update_7": "",
+  "Date": "",
+
+  // chatscreen
+  "Select Bug": "",
+  "Customer Support": "",
+  "Customer Support Form": "",
+  "Enter your account information to contact for chat suport": "",
+  "Issue Bug": "",
+  "Please Select Bug": "",
+  "Please Select Language": "",
+  "Short Description": "",
+  "Add  Description": "",
+  "Please enter a Description": "",
+  "Start Conversion": "",
+  "Type a message": "",
+  "Last week": "هەفتەی ڕابردوو",
+  "days ago": "چەند ڕۆژێک لەمەوبەر",
+  "Yesterday": "دوێنێ",
+  "hours ago": "چەند کاتژمێری ڕابردوو",
+  "1 hour ago": "یەک کاتژمێر لەمەوبەر",
+  "minutes ago": "چەند دەقیقەیەک لەمەوبەر",
+  "1 minute ago": "یەک دەقە لەمەوبەر",
+  "seconds ago": "چەند چرکەیەک لەمەوبەر",
+  "Just now": "ئێستا",
+
+  // feedback
+  "Poor": "",
+  "Terrible": "",
+  "Awful": "",
+  "Unacceptable": "",
+  "Dismal": "",
+  "Share your Feedback": "",
+  "Your feedback helps us improve": "",
+  "Please slecte stars": "",
+  "Leave Your Comments": "",
+  "feedback is require": "",
+  "Add your Feedback": "",
+  "Enjoying the app?": "",
+  "Would you mind rating us?": "",
+  "Rate us in": "",
+  "Send Feedback": "",
+
+  // help_screen
+  "Help": "پشتیوانی",
+  "DescriptionTextInHelp": "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
+  "PhoneNumber": "07509583333 - 07802320717",
+  "Email": "Info@dllylas.com",
+  "WebSite": "www.dllylas.com",
+  "Facebook": "DLLY.LAS.24",
+
+  
+  // Notification
+  "Notification": "ئاگادارکردنەوە",
+  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
+
+  // choose_lan
+  "Get Start": "دەست پێبکە",
+  
+
   // profilo
   "Information": "زانیاری",
   "Enter Name": "تۆمارکردنی ناو",
   "Enter Age": "تۆمارکدنی تەمەن",
   "Orders": "داواکاریەکانم",
   "Address": "ناونیشان",
-  "About us": "دەربارەی ئێمە",
+  
   "Log out": "چوونە دەر",
 
   //
@@ -63,39 +184,6 @@ const Map<String, String> kur = {
   "Select": "دیاریکردن",
   "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
 
-  // Notification
-  "Notification": "ئاگادارکردنەوە",
-  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",
-  //"1 week ago": "1 week ago",
-  "Last week": "هەفتەی ڕابردوو",
-  "days ago": "چەند ڕۆژێک لەمەوبەر",
-  //"1 day ago": "One day ago",
-  "Yesterday": "دوێنێ",
-  "hours ago": "چەند کاتژمێری ڕابردوو",
-  "1 hour ago": "یەک کاتژمێر لەمەوبەر",
-  //"An hour ago": "An hour ago",
-  "minutes ago": "چەند دەقیقەیەک لەمەوبەر",
-  "1 minute ago": "یەک دەقە لەمەوبەر",
-  //"A minute ago": "A minute ago",
-  "seconds ago": "چەند چرکەیەک لەمەوبەر",
-  "Just now": "ئێستا",
-
-  // Help
-  "Help": "پشتیوانی",
-  "DearCustomers":
-      "کڕیاڕی بەڕێز لە کاتی پێویست بوونی هەر یارمەتیەک یان هەر کێشەیەک دەتوانن پەیوەندیمان پێوە بکەن بەم ڕێگایانە",
-  "Call": "07509583333 - 07802320717",
-  "Email": "Info@dllylas.com",
-  "WebSite": "www.dllylas.com",
-  "Facebook": "DLLY.LAS.24",
-
-  // choose_lan
-  "Language": "زمان",
-  "Kurdish": "کوردی",
-  "Arabic": "عەرەبی",
-  "English": "ئینگلیزی",
-  "Get Start": "دەست پێبکە",
-
   // welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
   "wsd01":
@@ -109,7 +197,7 @@ const Map<String, String> kur = {
 
   // nav_switch
   "Home": "سەرەکی",
-  "Search": "گەڕان",
+  
   "Cart": "سەبەتە",
   "Favorite": "دڵخوازه‌كان",
   "Account": "هەژمار",
@@ -225,7 +313,6 @@ const Map<String, String> kur = {
 
   // locationdeatil
   "Locations": "ناونیشان",
-
   "Add name": "زیادکردنی ناو",
   "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",
@@ -329,7 +416,7 @@ const Map<String, String> kur = {
   "Update": "دابەزاندن",
   "By continuing, you agree to get Dlly Las's Privacy Policy":
       "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر بەدەستهێنانی سیاسەتی پاراستنی نهێنی Dlly Las",
-  "Delete Account": "هەژمارەکە بسڕەوە",
+  
   "Account recovery opportunity":
       "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
 
