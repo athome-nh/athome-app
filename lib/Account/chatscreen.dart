@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../Landing/splash_screen.dart';
 import '../main.dart';
 
 class ChatScreen extends StatefulWidget {
