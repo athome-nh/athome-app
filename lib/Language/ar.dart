@@ -213,7 +213,29 @@ const Map<String, String> ar = {
   "Resend": "اعادة الارسال",
   "Please enter code": "الرجاء إدخال الرمز التحقق",
   "Verify": "التحقق",
-  
+
+  // Landing --> welcome_screen
+  "wst01": "Shop Smarter & Easier",
+  "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
+  "wst02": "Learn From the Best",
+  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "wst03": "Fast Delevery",
+  "wsd03": "we will reach you wherever you are",
+
+  // welcome_screen
+  "wst01": "تسوق بذکاء و سهولة",
+  "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
+  "wst02": "تعلم من الأفضل",
+  "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
+  "wst03": "توصیل سریع",
+  "wsd03": "سنصل الیك أینما ما كنت",
+
+
+
+  // Ziyadaa
+  "NEXT": "التالي",
+  "SKIP": "تخطي",
+
   
   // Notification
   "Notification": "إشعار",
@@ -245,15 +267,7 @@ const Map<String, String> ar = {
   "Select": "اختر",
   "Delevery schedule": "تحديد موعد للتوصيل",
 
-  // welcome_screen
-  "wst01": "تسوق بذکاء و سهولة",
-  "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
-  "wst02": "تعلم من الأفضل",
-  "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
-  "wst03": "توصیل سریع",
-  "wsd03": "سنصل الیك أینما ما كنت",
-  "NEXT": "التالي",
-  "SKIP": "تخطي",
+  
 
   // nav_switch
   "Home": "الرئیسیة",

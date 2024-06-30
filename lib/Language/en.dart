@@ -172,7 +172,7 @@ const Map<String, String> en = {
   "Do not have any Voucher Code": "Do not have any Voucher Code",
 
   // Landing --> choose_lan
-  "Get Start": "Get Start", // login_page
+  "Get Start": "Get Start", // login_page, welcome_screen
 
   // Landing --> disableaccount
   "account is disabled": "account is disabled",
@@ -213,11 +213,23 @@ const Map<String, String> en = {
   "Resend": "Resend",
   "Please enter code": "Please enter verification code",
   "Verify": "Verify",
-  
+
+  // Landing --> welcome_screen
+  "wst01": "Shop Smarter & Easier",
+  "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
+  "wst02": "Learn From the Best",
+  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "wst03": "Fast Delevery",
+  "wsd03": "we will reach you wherever you are",
+
 
 
   "": "",
-  
+
+
+  // Ziyadaa
+  "NEXT": "NEXT",
+  "SKIP": "SKIP",
 
   
   // Notification
@@ -252,17 +264,7 @@ const Map<String, String> en = {
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
 
-  // welcome_screen
-  "wst01": "Shop Smarter & Easier",
-  "wsd01":
-      "is an innovative platform designed to enhance your online shopping experience.",
-  "wst02": "Learn From the Best",
-  "wsd02":
-      "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "Fast Delevery",
-  "wsd03": "we will reach you wherever you are",
-  "NEXT": "NEXT",
-  "SKIP": "SKIP",
+  
 
   // nav_switch
   "Home": "Home",
