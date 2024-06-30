@@ -215,14 +215,6 @@ const Map<String, String> ar = {
   "Verify": "التحقق",
 
   // Landing --> welcome_screen
-  "wst01": "Shop Smarter & Easier",
-  "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
-  "wst02": "Learn From the Best",
-  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "Fast Delevery",
-  "wsd03": "we will reach you wherever you are",
-
-  // welcome_screen
   "wst01": "تسوق بذکاء و سهولة",
   "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
   "wst02": "تعلم من الأفضل",
