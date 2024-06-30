@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../Config/property.dart';
 
-import '../landing/splash_screen.dart';
+import '../Landing/splash_screen.dart';
 import '../main.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -215,152 +215,133 @@ class _InvitePageState extends State<InvitePage> {
                 height: getWidth(context, 80),
                 child: Image.asset("assets/images/LogoLoading.gif"),
               ))
-            : SingleChildScrollView(
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: getHeight(context, 5)),
-
-                    // top image
                     Image.asset(
-                      "assets/Victors/login.png",
-                      width: getWidth(context, 75),
+                      "assets/images/refer.png",
                     ),
+                    SizedBox(height: getHeight(context, 2)),
+                    Text(
+                      "Invite your friends",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: mainFontbold,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: getHeight(context, 1)),
+                    Text(
+                      textAlign: TextAlign.center,
+                      "Just share this code with your friends and ask them to signup and add this code. Both of you will get ahead of the waitlist",
+                      style: TextStyle(fontSize: 16, fontFamily: mainFontbold),
+                    ),
+                    SizedBox(height: getHeight(context, 2)),
 
-                    // Notification Setting
-                    _listTiles(
-                        FontAwesomeIcons.one, 'Share your referral code'),
-                    _listTiles(FontAwesomeIcons.two,
-                        'Friends get \$10 on their first gesture'),
-                    _listTiles(
-                        FontAwesomeIcons.three, 'You get \$10 off coupon'),
-                    SizedBox(height: getHeight(context, 5)),
-
-                    Container(
-                      width: getWidth(context, 90),
-                      height: getWidth(context, 12),
-                      child: TextFormField(
-                        controller: _controllercode,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              Icons.copy,
-                              color: mainColorGrey,
-                            ),
-                            onPressed: _copyText,
+                    TextFormField(
+                      controller: _controllercode,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            Icons.copy,
+                            color: mainColorGrey,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                              color: mainColorGrey, // Customize border color
-                              width: 1.0, // Customize border width
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                              color: mainColorGrey.withOpacity(0.8),
-                              width: 1.0,
-                            ),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                              color: Colors.red,
-                              width: 1.0,
-                            ),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                              color: Colors.red,
-                              width: 1.0,
-                            ),
-                          ),
-                          labelText: "Referral Code",
-                          // hintText: "Copy",
-                          hintStyle: TextStyle(
-                              color: mainColorBlack.withOpacity(0.5),
-                              fontSize: 14,
-                              fontFamily: mainFontnormal),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          onPressed: _copyText,
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: mainColorGrey, // Customize border color
+                            width: 1.0, // Customize border width
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: mainColorGrey.withOpacity(0.8),
+                            width: 1.0,
+                          ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                            width: 1.0,
+                          ),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                            width: 1.0,
+                          ),
+                        ),
+                        labelText: "Referral Code",
+                        // hintText: "Copy",
+                        hintStyle: TextStyle(
+                            color: mainColorBlack.withOpacity(0.5),
+                            fontSize: 14,
+                            fontFamily: mainFontnormal),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
                     ),
 
                     SizedBox(height: getHeight(context, 2)),
 
                     // Invite Botton
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        fixedSize: Size(
-                          getWidth(context, 90),
-                          getHeight(context, 6),
+                    Row(
+                      mainAxisAlignment: userdata["refer"] == null
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(
+                              getWidth(
+                                  context, userdata["refer"] == null ? 45 : 90),
+                              getHeight(context, 6),
+                            ),
+                          ),
+                          onPressed: () async {
+                            final result = await Share.share(
+                                'Download the app https://dllylas.com\n\n Code: ' +
+                                    _controllercode.text);
+                            if (result.status == ShareResultStatus.success) {
+                              print('Thank you for sharing my website!');
+                            }
+                          },
+                          child: Text(
+                            "Invite friends now".tr,
+                          ),
                         ),
-                      ),
-                      onPressed: () async {
-                        final result = await Share.share(
-                            'Download the app https://dllylas.com\n\n Code: ' +
-                                _controllercode.text);
-                        if (result.status == ShareResultStatus.success) {
-                          print('Thank you for sharing my website!');
-                        }
-                      },
-                      child: Text(
-                        "Invite friends now".tr,
-                      ),
+
+                        userdata["refer"] == null
+                            ? SizedBox(height: getHeight(context, 1))
+                            : SizedBox(),
+
+                        // Refer Botton
+                        userdata["refer"] == null
+                            ? TextButton(
+                                style: TextButton.styleFrom(
+                                    fixedSize: Size(
+                                      getWidth(context, 45),
+                                      getHeight(context, 6),
+                                    ),
+                                    backgroundColor: mainColorRed),
+                                onPressed: () => _showBottomSheet(context),
+                                child: Text(
+                                  "Enter Refer Code".tr,
+                                ),
+                              )
+                            : SizedBox(),
+                      ],
                     ),
-
-                    userdata["refer"] == null
-                        ? SizedBox(height: getHeight(context, 1))
-                        : SizedBox(),
-
-                    // Refer Botton
-                    userdata["refer"] == null
-                        ? TextButton(
-                            style: TextButton.styleFrom(
-                              fixedSize: Size(
-                                getWidth(context, 90),
-                                getHeight(context, 6),
-                              ),
-                            ),
-                            onPressed: () => _showBottomSheet(context),
-                            child: Text(
-                              "Enter Refer Code".tr,
-                            ),
-                          )
-                        : SizedBox(),
                   ],
                 ),
               ),
-      ),
-    );
-  }
-
-  Widget _listTiles(IconData icon, String title) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10),
-      child: Column(
-        children: [
-          ListTile(
-            leading: Icon(
-              icon,
-              size: 24,
-              color: mainColorGrey,
-            ),
-            title: Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontFamily: mainFontnormal,
-                  color: mainColorGrey,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

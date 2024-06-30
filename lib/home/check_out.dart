@@ -4,8 +4,6 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/successScreen.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
@@ -108,6 +106,7 @@ class _CheckOutState extends State<CheckOut> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Card(
+                      // color: mainColorWhite,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),

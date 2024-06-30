@@ -61,8 +61,6 @@ class _LocationScreenState extends State<LocationScreen> {
                   SizedBox(
                     child: Image.asset("assets/Victors/empty_location.png"),
                   ),
-
-                  //textCheck
                 ],
               )
             : SingleChildScrollView(
@@ -79,10 +77,20 @@ class _LocationScreenState extends State<LocationScreen> {
                             elevation: 2,
                             margin: EdgeInsets.all(8),
                             color: mainColorWhite,
-                            child: Column(
-                              children: [
-                                ListTile(
-                                  trailing: TextButton(
+                            child: ListTile(
+                              onTap: () {
+                                productrovider.setdefultlocation(location.id!);
+                              },
+                              trailing: productrovider.defultlocation ==
+                                      location.id
+                                  ? Text(
+                                      "Selected",
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontFamily: mainFontbold,
+                                          fontSize: 14),
+                                    )
+                                  : TextButton(
                                       onPressed: () {
                                         var data = {"id": location.id!};
                                         Network(false)
@@ -109,82 +117,32 @@ class _LocationScreenState extends State<LocationScreen> {
                                             color: mainColorRed,
                                             fontFamily: mainFontnormal),
                                       )),
-                                  leading:
-                                      location.type.toString().contains("House")
-                                          ? Icon(
-                                              Ionicons.home_outline,
-                                              color: mainColorGrey,
-                                              size: 35,
-                                            )
-                                          : Icon(
-                                              Ionicons.business_outline,
-                                              color: mainColorGrey,
-                                              size: 35,
-                                            ),
-                                  title: Text(
-                                    location.name!,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: mainFontbold,
-                                        color: mainColorBlack),
-                                  ),
-                                  subtitle: Text(
-                                    location.area!,
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontFamily: mainFontnormal,
-                                        color: mainColorBlack),
-                                  ),
-                                ),
-                                // Padding(
-                                //   padding: EdgeInsets.symmetric(
-                                //       horizontal: getWidth(context, 4)),
-                                //   child: Row(
-                                //     mainAxisAlignment:
-                                //         MainAxisAlignment.spaceBetween,
-                                //     children: [
-                                //       TextButton.icon(
-                                //         onPressed: () {
-
-                                //         },
-                                //         icon: Icon(
-                                //           Icons.repeat,
-                                //           color: mainColorGrey,
-                                //         ), // Add your desired icon
-                                //         style: TextButton.styleFrom(
-                                //             backgroundColor: Colors.transparent,
-                                //             fixedSize: Size(
-                                //                 getWidth(context, 30),
-                                //                 getHeight(context, 3))),
-                                //         label: Text(
-                                //           "Re order".tr,
-                                //           style:
-                                //               TextStyle(color: mainColorGrey),
-                                //         ),
-                                //       ),
-                                //       TextButton.icon(
-                                //         onPressed: () {
-
-                                //         },
-                                //         icon: Icon(
-                                //           Icons.visibility_outlined,
-                                //           color: mainColorGrey,
-                                //         ), // Add your desired icon
-                                //         style: TextButton.styleFrom(
-                                //             backgroundColor: Colors.transparent,
-                                //             fixedSize: Size(
-                                //                 getWidth(context, 30),
-                                //                 getHeight(context, 3))),
-                                //         label: Text(
-                                //           "View".tr,
-                                //           style:
-                                //               TextStyle(color: mainColorGrey),
-                                //         ),
-                                //       )
-                                //     ],
-                                //   ),
-                                // ),
-                              ],
+                              leading:
+                                  location.type.toString().contains("House")
+                                      ? Icon(
+                                          Ionicons.home_outline,
+                                          color: mainColorGrey,
+                                          size: 35,
+                                        )
+                                      : Icon(
+                                          Ionicons.business_outline,
+                                          color: mainColorGrey,
+                                          size: 35,
+                                        ),
+                              title: Text(
+                                location.name!,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: mainFontbold,
+                                    color: mainColorBlack),
+                              ),
+                              subtitle: Text(
+                                location.area!,
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: mainFontnormal,
+                                    color: mainColorBlack),
+                              ),
                             ),
                           );
                         }),

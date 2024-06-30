@@ -59,6 +59,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
      signingConfigs {
        release {
@@ -89,6 +90,7 @@ flutter {
 dependencies {
  implementation 'com.huawei.agconnect:agconnect-core:1.7.1.300'
  implementation 'com.huawei.hms:push:6.11.0.300'
+ implementation 'androidx.multidex:multidex:2.0.1'
 
 }
 apply plugin: 'com.huawei.agconnect'

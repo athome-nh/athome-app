@@ -5,6 +5,7 @@ import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/account_info.dart';
 import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/chatscreen.dart';
+import 'package:dllylas/Account/reward.dart';
 import 'package:dllylas/Account/voucher_code.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
@@ -1117,8 +1118,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   OrderScreen()),
 
                               // Locations
-                              _listTiles(Ionicons.location_outline, 'Locations'.tr,
-                                  LocationScreen()),
+                              _listTiles(Ionicons.location_outline,
+                                  'Locations'.tr, LocationScreen()),
 
                               // Refer a friend
                               _listTiles(Icons.person_add_outlined,
@@ -1126,7 +1127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               // Coin & Reward
                               _listTiles(Icons.monetization_on_outlined,
-                                  'Coin & Reward'.tr, BlankPage()),
+                                  'Coin & Reward'.tr, coinReward()),
 
                               // My Voucher
                               _listTiles(Icons.card_giftcard, 'My Voucher'.tr,
@@ -1321,7 +1322,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _Language(Ionicons.globe_outline, 'Language'.tr),
 
           // Help center
-          _listTiles(Icons.description_outlined, "Help center".tr, HelpScreen()),
+          _listTiles(
+              Icons.description_outlined, "Help center".tr, HelpScreen()),
 
           // About us
           _listTiles(Icons.privacy_tip_outlined, 'About us', AboutScreen()),
@@ -1336,7 +1338,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           // Privacy Policy
           _listTiles(
               Icons.privacy_tip_outlined, 'Privacy Policy', PrivacyScreen()),
-       
+
           // Logout
           Padding(
             padding: const EdgeInsets.all(20.0),
