@@ -84,20 +84,12 @@ class _SingInUpState extends State<SingInUp> {
 
   Future<void> initPlatformState() async {
     if (!mounted) return;
-    // If you want auto init enabled, after getting user agreement call this method.
     await Push.setAutoInitEnabled(true);
 
     Push.getTokenStream.listen(
       _onTokenEvent,
       onError: _onTokenError,
     );
-
-    // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
-    //   backgroundMessageCallback,
-    // );
-    // debugPrint(
-    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
-    // );
   }
 
   void _onTokenEvent(String event) {

@@ -23,15 +23,15 @@ const Map<String, String> en = {
   "Cancel": "Cancel", // feedback
   "Edit": "Edit",
   "Profile": "Profile",
-  "Name": "Name",
+  "Name": "Name", // singin_up
   "Enter Your Name": "Enter Your Name",
   "Enter Your Full Name": "Enter Your Full Name",
   "Age": "Age",
-  "Enter your age": "Enter your age",
-  "please, Enter the number only": "please, Enter the number only",
+  "Enter your age": "Enter your age", // singin_up
+  "please, Enter the number only": "please, Enter the number only", // singin_up
   "Gender": "Gender",
   "Phone": "Phone",
-  "City": "City",
+  "City": "City", // singin_up
   "Save": "Save",
   
   // Account --> account_setting
@@ -185,19 +185,25 @@ const Map<String, String> en = {
   "Phone Number": "Phone Number",
   "By continuing, you agree to get Dlly Las's Privacy Policy": "By continuing, you agree to get Dlly Las's Privacy Policy",
   "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
-  "Account Pendding": "Wait...",
-  "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
-  "OK": "OK",
+  "Account Pendding": "Wait...", // singin_up
+  "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)", // signin_up
+  "OK": "OK", // singin_up 
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
-  "unknown occurred error please try again later": "Error please try again later",
+  "unknown occurred error please try again later": "Error please try again later", // singin_up
   "Account range out": "Sorry....",
   "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   
-
+  // Landing --> singin_up
+  "Complete Account": "Personal Information",
+  "Enter your account information to complete your account": "Please enter the required information for registration",
+  "Enter your Name": "Enter your Name",
+  "Enter your full name": "Enter your full name",
+  "Confirm": "Confirm",
+  "Male": "Male",
+  "Female": "Female",
+  "Erbil": "Erbil",
   
-  "": "",
-
   // Notification
   "Notification": "Notification",
   "You don't have any notification": "You don't have any notification.",
@@ -361,15 +367,6 @@ const Map<String, String> en = {
   "Add phone number": "Add phone number",
   "Delete location success": "Delete location success",
 
-  // singin_up
-  "Complete Account": "Personal Information", // Aram English Gorayaa
-  "Enter your account information to complete your account":
-      "Please enter the required information for registration",
-  "Enter your Name": "Enter your Name",
-  "Enter your full name": "Enter your full name",
-  
-  "Confirm": "Confirm",
-
   // verification
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Please enter code": "Please enter verification code",
@@ -420,9 +417,7 @@ const Map<String, String> en = {
   //
   "Privacy Poilcy": "Privacy policy",
   "Terms Of Use": "Terms and Condition",
-  "Male": "Male",
-  "Female": "Female",
-  "Erbil": "Erbil",
+  
 
   //
   "Ordered successfully": "Ordered successfully",

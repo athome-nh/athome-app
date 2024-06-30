@@ -194,6 +194,15 @@ const Map<String, String> ar = {
   "Account range out": "...آسف",
   "Account range out content": "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
   
+  // Landing --> singin_up
+  "Complete Account": "",
+  "Enter your account information to complete your account": "الرجاء إدخال المعلومات المطلوبة للتسجيل",
+  "Enter your Name": "ادخال الاسم",
+  "Enter your full name": "یرجی الادخال الاسم الکامل",
+  "Confirm": "تثبيت",
+  "Male": "ذكر",
+  "Female": "أنثى",
+  "Erbil": "اربيل",
 
   
   // Notification
@@ -338,14 +347,9 @@ const Map<String, String> ar = {
       "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
   "Add location": "إضافة موقع",
+
   // login_page
-  
-  
-  
-  
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",
-  
-  
 
   // locationdeatil
   
@@ -364,18 +368,6 @@ const Map<String, String> ar = {
   "Add phone number": "اضافة رقم الهاتف",
   "Delete location success": "تم إزالة الموقع بنجاح",
 
-  // singin_up
-  "Complete Account": "أدخل المعلومات الخاصة بك", // Aram English Gorayaa
-  "Enter your account information to complete your account":
-      "الرجاء إدخال المعلومات المطلوبة للتسجيل",
-  "Enter your Name": "ادخال الاسم",
-  "Enter your full name": "یرجی الادخال الاسم الکامل",
-  
-  "Confirm": "تثبيت",
-  
-  
-  
-  
   // verification
   "Hold till the waiting time ends": "انتظر حتى ينتهي وقت الانتظار", //
   "Please enter code": "الرجاء إدخال الرمز التحقق",
@@ -427,9 +419,7 @@ const Map<String, String> ar = {
   //
   "Privacy Poilcy": "سياسة الخصوصية",
   "Terms Of Use": "الشروط والأحكام",
-  "Male": "ذكر",
-  "Female": "أنثى",
-  "Erbil": "اربيل",
+  
 
   //
   "Ordered successfully": "تم الطلب بنجاح",

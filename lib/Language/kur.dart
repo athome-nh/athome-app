@@ -194,8 +194,16 @@ const Map<String, String> kur = {
   "Account range out": "...ببورە",
   "Account range out content": "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
   
-
-
+  // Landing --> singin_up
+  "Complete Account": "",
+  "Enter your account information to complete your account": "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
+  "Enter your Name": "ناوت تۆمار بکە",
+  "Enter your full name": "ناوی تەواوت تۆمار بکە",
+  "Confirm": "دووپاتکردنەوە",
+  "Male": "نێر",
+  "Female": "مێ",
+  "Erbil": "هەولێر",
+  
   // Notification
   "Notification": "ئاگادارکردنەوە",
   "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",  
@@ -363,16 +371,7 @@ const Map<String, String> kur = {
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
 
-  // singin_up
-  "Complete Account": "زانیاریەکانت داخڵ بکە", // Aram English Gorayaa
-  "Enter your account information to complete your account":
-      "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
-  "Enter your Name": "ناوت تۆمار بکە",
-
-  "Enter your full name": "ناوی تەواوت تۆمار بکە",
-
   
-  "Confirm": "دووپاتکردنەوە",
   
   
   
@@ -427,9 +426,7 @@ const Map<String, String> kur = {
   //
   "Privacy Poilcy": "سیاسەتی  تایبەتمەندێتی",
   "Terms Of Use": "مەرج و ڕێساکانی",
-  "Male": "نێر",
-  "Female": "مێ",
-  "Erbil": "هەولێر",
+  
 
   //
   "Ordered successfully": "داواکاریەکەت بە سەرکەوتویی وەرگیرا",
