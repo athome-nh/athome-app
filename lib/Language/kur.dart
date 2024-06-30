@@ -203,6 +203,17 @@ const Map<String, String> kur = {
   "Male": "نێر",
   "Female": "مێ",
   "Erbil": "هەولێر",
+
+  // Landing --> verification
+  "Verification": "دڵنیابوونەوە",
+  "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی تۆمار بکە",
+  "Don't resive the OTP ?": "ئایا کۆدی دڵنیابونەوەت بە دەست گەیشت ؟",
+  "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
+  "Try again in": "دوبارە داوابکەوە لە ",
+  "Resend": "دووبارە ناردنەوە",
+  "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
+  "Verify": "دڵنیا بوونەوە",
+  
   
   // Notification
   "Notification": "ئاگادارکردنەوە",
@@ -371,22 +382,6 @@ const Map<String, String> kur = {
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
 
-  
-  
-  
-  
-  
-  // verification
-  "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
-  "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
-  "Verification": "دڵنیابوونەوە",
-  "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی تۆمار بکە",
-  "Don't resive the OTP ?": "ئایا کۆدی دڵنیابونەوەت بە دەست گەیشت ؟",
-  "Try again in": "دوبارە داوابکەوە لە ",
-  "Resend": "دووبارە ناردنەوە",
-  "Verify": "دڵنیا بوونەوە",
-  
-  
   "the code is un correct": "کۆدەکە هەڵەیە",
 
   // map

@@ -10,9 +10,7 @@ import 'package:dllylas/Landing/singin_up.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
-
 import 'package:dllylas/main.dart';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -84,13 +82,6 @@ class _VerificatoinState extends State<Verificatoin> {
       _onTokenEvent,
       onError: _onTokenError,
     );
-
-    // bool backgroundMessageHandler = await Push.registerBackgroundMessageHandler(
-    //   backgroundMessageCallback,
-    // );
-    // debugPrint(
-    //   'backgroundMessageHandler registered: $backgroundMessageHandler',
-    // );
   }
 
   void _onTokenEvent(String event) {
@@ -150,7 +141,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       FadeInDown(
                           duration: const Duration(milliseconds: 500),
                           child: Text(
-                            "Verification",
+                            "Verification".tr,
                             style: TextStyle(
                                 color: mainColorBlack,
                                 fontSize: 30,
@@ -175,8 +166,6 @@ class _VerificatoinState extends State<Verificatoin> {
                       SizedBox(
                         height: getHeight(context, 4),
                       ),
-
-                      // Todo: (Jeger and Bawar) Am basha dabe bgordret / Paniyakay nagonje
                       // Verification Code Input
                       FadeInDown(
                         delay: const Duration(milliseconds: 600),
@@ -238,8 +227,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                       backgroundColor: Colors.transparent),
                                   child: Text(
                                     timecode != 0
-                                        ? "Try again in".tr +
-                                            formatedTime(timeInSecond: timecode)
+                                        ? "Try again in".tr + formatedTime(timeInSecond: timecode)
                                         : "Resend".tr,
                                     style: TextStyle(
                                         color: mainColorRed,
@@ -327,10 +315,15 @@ class _VerificatoinState extends State<Verificatoin> {
               _isLoading = false;
             });
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SingInUp(widget.phone_number,
-                        value["isNotApprove"], value["token"])));
+              context,
+              MaterialPageRoute(
+                builder: (context) => SingInUp(
+                  widget.phone_number,
+                  value["isNotApprove"],
+                  value["token"],
+                ),
+              ),
+            );
           } else {
             _codeTimer.cancel();
             setState(() {
@@ -356,7 +349,6 @@ class _VerificatoinState extends State<Verificatoin> {
           }
         }
       } else {
-        // toastShort("unknown occurred error please try again later");
         setState(() {
           _isLoading = false;
         });

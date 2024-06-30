@@ -204,6 +204,16 @@ const Map<String, String> ar = {
   "Female": "أنثى",
   "Erbil": "اربيل",
 
+  // Landing --> verification
+  "Verification": "التحقق",
+  "Please enter the 6 digit code sent to": "یرجی الادخال رمز المكون من ٦ ارقام الذي ارسلت الی",
+  "Don't resive the OTP ?": "لم تستلم الرمز؟",
+  "Hold till the waiting time ends": "Hold till the waiting time ends",
+  "Try again in": "حاول مری اخری في ",
+  "Resend": "اعادة الارسال",
+  "Please enter code": "الرجاء إدخال الرمز التحقق",
+  "Verify": "التحقق",
+  
   
   // Notification
   "Notification": "إشعار",
@@ -367,18 +377,7 @@ const Map<String, String> ar = {
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
   "Delete location success": "تم إزالة الموقع بنجاح",
-
-  // verification
-  "Hold till the waiting time ends": "انتظر حتى ينتهي وقت الانتظار", //
-  "Please enter code": "الرجاء إدخال الرمز التحقق",
-  "Verification": "التحقق",
-  "Please enter the 6 digit code sent to":
-      "یرجی الادخال رمز المكون من ٦ ارقام الذي ارسلت الی",
-  "Don't resive the OTP ?": "لم تستلم الرمز؟",
-  "Try again in": "حاول مری اخری في ",
-  "Resend": "اعادة الارسال",
-  "Verify": "التحقق",
-  
+   
   
   "the code is un correct": "الرمز غیر صحیع",
 

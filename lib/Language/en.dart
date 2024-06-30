@@ -203,6 +203,22 @@ const Map<String, String> en = {
   "Male": "Male",
   "Female": "Female",
   "Erbil": "Erbil",
+
+  // Landing --> verification
+  "Verification": "Verification",
+  "Please enter the 6 digit code sent to": "Please enter the 6 digit code sent to",
+  "Don't resive the OTP ?": "Didn't receive the OTP ?",
+  "Hold till the waiting time ends": "Hold till the waiting time ends",
+  "Try again in": "Try again in ",
+  "Resend": "Resend",
+  "Please enter code": "Please enter verification code",
+  "Verify": "Verify",
+  
+
+
+  "": "",
+  
+
   
   // Notification
   "Notification": "Notification",
@@ -367,16 +383,7 @@ const Map<String, String> en = {
   "Add phone number": "Add phone number",
   "Delete location success": "Delete location success",
 
-  // verification
-  "Hold till the waiting time ends": "Hold till the waiting time ends",
-  "Please enter code": "Please enter verification code",
-  "Verification": "Verification",
-  "Please enter the 6 digit code sent to":
-      "Please enter the 6 digit code sent to",
-  "Don't resive the OTP ?": "Didn't receive the OTP ?",
-  "Try again in": "Try again in ",
-  "Resend": "Resend",
-  "Verify": "Verify",
+  
   
   
   "the code is un correct": "the code is wrong",
