@@ -194,6 +194,39 @@ const Map<String, String> kur = {
   "Account range out": "...ببورە",
   "Account range out content": "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
   
+  // Landing --> singin_up
+  "Complete Account": "",
+  "Enter your account information to complete your account": "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
+  "Enter your Name": "ناوت تۆمار بکە",
+  "Enter your full name": "ناوی تەواوت تۆمار بکە",
+  "Confirm": "دووپاتکردنەوە",
+  "Male": "نێر",
+  "Female": "مێ",
+  "Erbil": "هەولێر",
+
+  // Landing --> verification
+  "Verification": "دڵنیابوونەوە",
+  "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی تۆمار بکە",
+  "Don't resive the OTP ?": "ئایا کۆدی دڵنیابونەوەت بە دەست گەیشت ؟",
+  "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
+  "Try again in": "دوبارە داوابکەوە لە ",
+  "Resend": "دووبارە ناردنەوە",
+  "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
+  "Verify": "دڵنیا بوونەوە",
+
+  // Landing --> welcome_screen
+  "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
+  "wsd01": "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
+  "wst02": "لە باشترینەکانەوە فێر ببە",
+  "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
+  "wst03": "گەیاندنی خێرا",
+  "wsd03": "لە هەر کوێیەک بن دەگەینە لاتان",
+
+
+
+  // Ziyadaa
+  "NEXT": "NEXT",
+  "SKIP": "SKIP",
 
 
   // Notification
@@ -224,16 +257,6 @@ const Map<String, String> kur = {
   "Select": "دیاریکردن",
   "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
 
-  // welcome_screen
-  "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
-  "wsd01":
-      "ئەم پلاتفۆڕمە داهێنراوێکی نوێی دیزاین کراوەبۆ باشتر کردنی ئەزموونی بازاڕکردنی ئۆنلاین.",
-  "wst02": "لە باشترینەکانەوە فێر ببە",
-  "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
-  "wst03": "گەیاندنی خێرا",
-  "wsd03": "لە هەر کوێیەک بن دەگەینە لاتان",
-  "NEXT": "دواتر",
-  "SKIP": "تێپەڕبوون",
 
   // nav_switch
   "Home": "سەرەکی",
@@ -363,31 +386,6 @@ const Map<String, String> kur = {
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
 
-  // singin_up
-  "Complete Account": "زانیاریەکانت داخڵ بکە", // Aram English Gorayaa
-  "Enter your account information to complete your account":
-      "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
-  "Enter your Name": "ناوت تۆمار بکە",
-
-  "Enter your full name": "ناوی تەواوت تۆمار بکە",
-
-  
-  "Confirm": "دووپاتکردنەوە",
-  
-  
-  
-  
-  // verification
-  "Hold till the waiting time ends": "دەتوانیت دوبارە هەوڵ بدیتەوە",
-  "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
-  "Verification": "دڵنیابوونەوە",
-  "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی تۆمار بکە",
-  "Don't resive the OTP ?": "ئایا کۆدی دڵنیابونەوەت بە دەست گەیشت ؟",
-  "Try again in": "دوبارە داوابکەوە لە ",
-  "Resend": "دووبارە ناردنەوە",
-  "Verify": "دڵنیا بوونەوە",
-  
-  
   "the code is un correct": "کۆدەکە هەڵەیە",
 
   // map
@@ -427,9 +425,7 @@ const Map<String, String> kur = {
   //
   "Privacy Poilcy": "سیاسەتی  تایبەتمەندێتی",
   "Terms Of Use": "مەرج و ڕێساکانی",
-  "Male": "نێر",
-  "Female": "مێ",
-  "Erbil": "هەولێر",
+  
 
   //
   "Ordered successfully": "داواکاریەکەت بە سەرکەوتویی وەرگیرا",

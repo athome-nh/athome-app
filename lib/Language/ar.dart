@@ -194,6 +194,39 @@ const Map<String, String> ar = {
   "Account range out": "...آسف",
   "Account range out content": "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
   
+  // Landing --> singin_up
+  "Complete Account": "",
+  "Enter your account information to complete your account": "الرجاء إدخال المعلومات المطلوبة للتسجيل",
+  "Enter your Name": "ادخال الاسم",
+  "Enter your full name": "یرجی الادخال الاسم الکامل",
+  "Confirm": "تثبيت",
+  "Male": "ذكر",
+  "Female": "أنثى",
+  "Erbil": "اربيل",
+
+  // Landing --> verification
+  "Verification": "التحقق",
+  "Please enter the 6 digit code sent to": "یرجی الادخال رمز المكون من ٦ ارقام الذي ارسلت الی",
+  "Don't resive the OTP ?": "لم تستلم الرمز؟",
+  "Hold till the waiting time ends": "Hold till the waiting time ends",
+  "Try again in": "حاول مری اخری في ",
+  "Resend": "اعادة الارسال",
+  "Please enter code": "الرجاء إدخال الرمز التحقق",
+  "Verify": "التحقق",
+
+  // Landing --> welcome_screen
+  "wst01": "تسوق بذکاء و سهولة",
+  "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
+  "wst02": "تعلم من الأفضل",
+  "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
+  "wst03": "توصیل سریع",
+  "wsd03": "سنصل الیك أینما ما كنت",
+
+
+
+  // Ziyadaa
+  "NEXT": "التالي",
+  "SKIP": "تخطي",
 
   
   // Notification
@@ -226,15 +259,7 @@ const Map<String, String> ar = {
   "Select": "اختر",
   "Delevery schedule": "تحديد موعد للتوصيل",
 
-  // welcome_screen
-  "wst01": "تسوق بذکاء و سهولة",
-  "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
-  "wst02": "تعلم من الأفضل",
-  "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
-  "wst03": "توصیل سریع",
-  "wsd03": "سنصل الیك أینما ما كنت",
-  "NEXT": "التالي",
-  "SKIP": "تخطي",
+  
 
   // nav_switch
   "Home": "الرئیسیة",
@@ -338,14 +363,9 @@ const Map<String, String> ar = {
       "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
   "Add location": "إضافة موقع",
+
   // login_page
-  
-  
-  
-  
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",
-  
-  
 
   // locationdeatil
   
@@ -363,30 +383,7 @@ const Map<String, String> ar = {
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
   "Delete location success": "تم إزالة الموقع بنجاح",
-
-  // singin_up
-  "Complete Account": "أدخل المعلومات الخاصة بك", // Aram English Gorayaa
-  "Enter your account information to complete your account":
-      "الرجاء إدخال المعلومات المطلوبة للتسجيل",
-  "Enter your Name": "ادخال الاسم",
-  "Enter your full name": "یرجی الادخال الاسم الکامل",
-  
-  "Confirm": "تثبيت",
-  
-  
-  
-  
-  // verification
-  "Hold till the waiting time ends": "انتظر حتى ينتهي وقت الانتظار", //
-  "Please enter code": "الرجاء إدخال الرمز التحقق",
-  "Verification": "التحقق",
-  "Please enter the 6 digit code sent to":
-      "یرجی الادخال رمز المكون من ٦ ارقام الذي ارسلت الی",
-  "Don't resive the OTP ?": "لم تستلم الرمز؟",
-  "Try again in": "حاول مری اخری في ",
-  "Resend": "اعادة الارسال",
-  "Verify": "التحقق",
-  
+   
   
   "the code is un correct": "الرمز غیر صحیع",
 
@@ -427,9 +424,7 @@ const Map<String, String> ar = {
   //
   "Privacy Poilcy": "سياسة الخصوصية",
   "Terms Of Use": "الشروط والأحكام",
-  "Male": "ذكر",
-  "Female": "أنثى",
-  "Erbil": "اربيل",
+  
 
   //
   "Ordered successfully": "تم الطلب بنجاح",

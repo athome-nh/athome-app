@@ -48,6 +48,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            
             // slide 3 page
             CarouselSlider(
               carouselController: buttonCarouselController,
@@ -107,34 +108,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // skip button
-                        // TextButton(
-                        //   onPressed: () {
-                        //     Map<String, dynamic> myMap = {};
-                        //     myMap["onbord"] = true;
-                        //     setStringPrefs("data", json.encode(myMap));
-                        //     Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) =>
-                        //               NavSwitch()),
-                        //     );
-                        //   },
-                        //   style: ElevatedButton.styleFrom(
-                        //     backgroundColor: mainColorWhite,
-                        //     foregroundColor: mainColorWhite,
-                        //   ),
-                        //   child: Text(
-                        //     'SKIP'.tr,
-                        //     style: TextStyle(
-                        //       fontFamily: mainFontbold,
-                        //       fontSize: getHeight(context, 2),
-                        //       color: mainColorBlack,
-                        //     ),
-                        //     textAlign: TextAlign.left,
-                        //   ),
-                        // ),
-
                         // 3 dote
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -177,42 +150,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
                             ),
                           ],
                         ),
-
-                        // next button
-                        // Container(
-                        //   height: getHeight(context, 5),
-                        //   decoration: BoxDecoration(
-                        //       color: mainColorRed,
-                        //       borderRadius: BorderRadius.circular(5)),
-                        //   child: TextButton(
-                        //     onPressed: () {
-                        //       if (currentIndex == 2) {
-                        //       } else {
-                        //         buttonCarouselController.nextPage();
-                        //       }
-                        //     },
-                        //     style: TextButton.styleFrom(
-                        //         foregroundColor: mainColorRed),
-                        //     child: Padding(
-                        //       padding: EdgeInsets.symmetric(
-                        //         horizontal: getWidth(context, 5),
-                        //       ),
-                        //       child: Row(
-                        //         children: [
-                        //           Text(
-                        //             'NEXT'.tr,
-                        //             style: TextStyle(
-                        //               fontFamily: mainFontbold,
-                        //               fontSize: getHeight(context, 2),
-                        //               color: mainColorWhite,
-                        //             ),
-                        //             textAlign: TextAlign.left,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -226,16 +163,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
   Widget slid1() {
     return Column(
       children: [
-        // logo
-        // Expanded(
-        //   child: Image.asset(
-        //     "assets/images/Logo-Type-2.png",
-        //     width: getWidth(context, 80),
-        //     height: getHeight(context, 100),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-
         // image
         Image.asset(
           "assets/images/003_welcome_1.png",
@@ -281,14 +208,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
   Widget slid2() {
     return Column(
       children: [
-        // logo
-        // Image.asset(
-        //   "assets/images/Logo-Type-2.png",
-        //   width: getWidth(context, 80),
-        //   height: getHeight(context, 100),
-        //   fit: BoxFit.cover,
-        // ),
-
         // image
         Image.asset(
           "assets/images/003_welcome_2.png",
@@ -334,19 +253,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
   Widget slid3() {
     return Column(
       children: [
-        // logo
-        // Expanded(
-        //   child: Image.asset(
-        //     "assets/images/Logo-Type-2.png",
-        //     width: getWidth(context, 80),
-        //     height: getHeight(context, 100),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-        // SizedBox(
-        //   height: getHeight(context, 3),
-        // ),
-
         // image
         Image.asset(
           "assets/images/003_welcome_3.png",

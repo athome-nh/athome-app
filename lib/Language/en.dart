@@ -23,15 +23,15 @@ const Map<String, String> en = {
   "Cancel": "Cancel", // feedback
   "Edit": "Edit",
   "Profile": "Profile",
-  "Name": "Name",
+  "Name": "Name", // singin_up
   "Enter Your Name": "Enter Your Name",
   "Enter Your Full Name": "Enter Your Full Name",
   "Age": "Age",
-  "Enter your age": "Enter your age",
-  "please, Enter the number only": "please, Enter the number only",
+  "Enter your age": "Enter your age", // singin_up
+  "please, Enter the number only": "please, Enter the number only", // singin_up
   "Gender": "Gender",
   "Phone": "Phone",
-  "City": "City",
+  "City": "City", // singin_up
   "Save": "Save",
   
   // Account --> account_setting
@@ -172,7 +172,7 @@ const Map<String, String> en = {
   "Do not have any Voucher Code": "Do not have any Voucher Code",
 
   // Landing --> choose_lan
-  "Get Start": "Get Start", // login_page
+  "Get Start": "Get Start", // login_page, welcome_screen
 
   // Landing --> disableaccount
   "account is disabled": "account is disabled",
@@ -185,19 +185,53 @@ const Map<String, String> en = {
   "Phone Number": "Phone Number",
   "By continuing, you agree to get Dlly Las's Privacy Policy": "By continuing, you agree to get Dlly Las's Privacy Policy",
   "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
-  "Account Pendding": "Wait...",
-  "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)",
-  "OK": "OK",
+  "Account Pendding": "Wait...", // singin_up
+  "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)", // signin_up
+  "OK": "OK", // singin_up 
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
-  "unknown occurred error please try again later": "Error please try again later",
+  "unknown occurred error please try again later": "Error please try again later", // singin_up
   "Account range out": "Sorry....",
   "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   
+  // Landing --> singin_up
+  "Complete Account": "Personal Information",
+  "Enter your account information to complete your account": "Please enter the required information for registration",
+  "Enter your Name": "Enter your Name",
+  "Enter your full name": "Enter your full name",
+  "Confirm": "Confirm",
+  "Male": "Male",
+  "Female": "Female",
+  "Erbil": "Erbil",
 
-  
+  // Landing --> verification
+  "Verification": "Verification",
+  "Please enter the 6 digit code sent to": "Please enter the 6 digit code sent to",
+  "Don't resive the OTP ?": "Didn't receive the OTP ?",
+  "Hold till the waiting time ends": "Hold till the waiting time ends",
+  "Try again in": "Try again in ",
+  "Resend": "Resend",
+  "Please enter code": "Please enter verification code",
+  "Verify": "Verify",
+
+  // Landing --> welcome_screen
+  "wst01": "Shop Smarter & Easier",
+  "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
+  "wst02": "Learn From the Best",
+  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "wst03": "Fast Delevery",
+  "wsd03": "we will reach you wherever you are",
+
+
+
   "": "",
 
+
+  // Ziyadaa
+  "NEXT": "NEXT",
+  "SKIP": "SKIP",
+
+  
   // Notification
   "Notification": "Notification",
   "You don't have any notification": "You don't have any notification.",
@@ -230,17 +264,7 @@ const Map<String, String> en = {
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
 
-  // welcome_screen
-  "wst01": "Shop Smarter & Easier",
-  "wsd01":
-      "is an innovative platform designed to enhance your online shopping experience.",
-  "wst02": "Learn From the Best",
-  "wsd02":
-      "We will guide you with the best tutors and experts in Kurdistan/Iraq",
-  "wst03": "Fast Delevery",
-  "wsd03": "we will reach you wherever you are",
-  "NEXT": "NEXT",
-  "SKIP": "SKIP",
+  
 
   // nav_switch
   "Home": "Home",
@@ -361,25 +385,7 @@ const Map<String, String> en = {
   "Add phone number": "Add phone number",
   "Delete location success": "Delete location success",
 
-  // singin_up
-  "Complete Account": "Personal Information", // Aram English Gorayaa
-  "Enter your account information to complete your account":
-      "Please enter the required information for registration",
-  "Enter your Name": "Enter your Name",
-  "Enter your full name": "Enter your full name",
   
-  "Confirm": "Confirm",
-
-  // verification
-  "Hold till the waiting time ends": "Hold till the waiting time ends",
-  "Please enter code": "Please enter verification code",
-  "Verification": "Verification",
-  "Please enter the 6 digit code sent to":
-      "Please enter the 6 digit code sent to",
-  "Don't resive the OTP ?": "Didn't receive the OTP ?",
-  "Try again in": "Try again in ",
-  "Resend": "Resend",
-  "Verify": "Verify",
   
   
   "the code is un correct": "the code is wrong",
@@ -420,9 +426,7 @@ const Map<String, String> en = {
   //
   "Privacy Poilcy": "Privacy policy",
   "Terms Of Use": "Terms and Condition",
-  "Male": "Male",
-  "Female": "Female",
-  "Erbil": "Erbil",
+  
 
   //
   "Ordered successfully": "Ordered successfully",
