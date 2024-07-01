@@ -147,13 +147,23 @@ const Map<String, String> kur = {
   "Facebook": "DLLY.LAS.24",
 
   // Account --> invite_friend
+  "Copied to clipboard": "",
+  "Enter your details": "",
+  "Referral Code": "",
+  "Apply": "",
+  "Invite a friend": "",
+  "Invite your friends": "",
+  "TextIFP": "",
+  "Download the app": "",
+  "Code": "",
+  "Invite friends now": "",
+  "Enter Refer Code": "",
 
   // Account --> profile
   "Account & Security": "",
   "Account Information": "",
   "Orders": "داواکاریەکانم",
   "Locations": "ناونیشان",
-  "Invite a friend": "",
   "Coin & Reward": "",
   "My Voucher": "",
   "General": "",
