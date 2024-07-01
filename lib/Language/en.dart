@@ -245,9 +245,20 @@ const Map<String, String> en = {
   "Delete location success": "Delete location success",
   "Delete": "Delete",
 
+  // map --> map_screen
+  "Map": "Map",
+  "Zoom in Please": "Zoom in",
+  "Sorry, we don't deliver here": "your location excludes delivery service",
+  "Delivery To": "Deliver To",
+  "try again": "try again",
+  "Failed to load data": "Failed to load data",
+
+
+  "": "",
 
   
-  "": "",
+  
+  
   
 
   
@@ -407,13 +418,7 @@ const Map<String, String> en = {
   
   "the code is un correct": "the code is wrong",
 
-  // map
-  "Map": "Map",
-  "Zoom in Please": "Zoom in",
-  "Sorry, we don't deliver here": "your location excludes delivery service",
-  "Delivery To:": "Deliver To:",
-  "try again": "try again",
-  "Failed to load data": "Failed to load data",
+  
 
   // track_order
   "Track Order": "Track your Order",

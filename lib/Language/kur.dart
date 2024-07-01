@@ -235,7 +235,7 @@ const Map<String, String> kur = {
   "Enter floor number": "ژمارەی نهۆم تۆمار بکە",
   "building name/number": "ژمارە/ناوی باڵەخانە",
   "Enter building name/number": "ناو/ژمارەی باڵەخانە تۆمار بکە",
-  "number": "ژمارەی ",
+  "number": "ژمارەی",
   "Enter number": "ژمارەکە تۆمار بکە",
   "Phone number": "ژمارەی مۆبایل تۆمار بکە",
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
@@ -245,6 +245,13 @@ const Map<String, String> kur = {
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
   "Delete": "سڕینەوە",
 
+  // map --> map_screen
+  "Map": "نەخشە",
+  "Zoom in Please": "نزیکتر بکەوە",
+  "Sorry, we don't deliver here": "ببورە، گەیادنمان بۆ ناوچەی ناوبراو بەردەست نیە",
+  "Delivery To": "گەیاندن بۆ",
+  "try again": "دوبارە هەوڵ بدەوە",
+  "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی زانیاریەکان",
 
 
 
@@ -391,16 +398,6 @@ const Map<String, String> kur = {
   
   
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
-  
-  
-  // map
-  "Map": "نەخشە",
-  "Zoom in Please": "نزیکتر بکەوە",
-  "Sorry, we don't deliver here":
-      "ببورە، گەیادنمان بۆ ناوچەی ناوبراو بەردەست نیە",
-  "Delivery To:": "گەیاندن بۆ:",
-  "try again": "دوبارە هەوڵ بدەوە",
-  "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی زانیاریەکان",
 
   // track_order
   "Track Order": "بەدواداچوونی داواکاری",

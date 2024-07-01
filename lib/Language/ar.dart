@@ -235,7 +235,7 @@ const Map<String, String> ar = {
   "Enter floor number": "ادخال رقم الطابق",
   "building name/number": "أسم المبنى/ الرقم",
   "Enter building name/number": "ادخال أسم المبنی/ الرقم",
-  "number": "رقم ",
+  "number": "رقم",
   "Enter number": "ادخال الرقم",
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
@@ -244,8 +244,18 @@ const Map<String, String> ar = {
   "Selected": "",
   "Delete location success": "تم إزالة الموقع بنجاح",
   "Delete": "حذف",
+
+  // map --> map_screen
+  "Map": "الخريطة",
+  "Zoom in Please": "تكبير",
+  "Sorry, we don't deliver here": "للأسف -لا يوجد خدمة توصيل في هذا الموقع",
+  "Delivery To": "التوصیل الی",
+  "try again": "يرجى المحاولة مرة أخرى",
+  "Failed to load data": "فشلت عملية تحميل البيانات",
+
   
   
+
   // Ziyadaa
   "NEXT": "التالي",
   "SKIP": "تخطي",
@@ -393,14 +403,6 @@ const Map<String, String> ar = {
    
   
   "the code is un correct": "الرمز غیر صحیع",
-
-  // map
-  "Map": "الخريطة",
-  "Zoom in Please": "تكبير",
-  "Sorry, we don't deliver here": "للأسف -لا يوجد خدمة توصيل في هذا الموقع",
-  "Delivery To:": "التوصیل الی",
-  "try again": "يرجى المحاولة مرة أخرى",
-  "Failed to load data": "فشلت عملية تحميل البيانات",
 
   // track_order
   "Track Order": "تابع الطلبیة",
