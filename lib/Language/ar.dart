@@ -222,8 +222,30 @@ const Map<String, String> ar = {
   "wst03": "توصیل سریع",
   "wsd03": "سنصل الیك أینما ما كنت",
 
+  // map --> locationdeatil
+  "House": "منزل",
+  "Office": "مكتب",
+  "Apartment": "شقة",
+  "Add name": "اضافة الاسم",
+  "Add name location": "اضافة اسم الموقع",
+  "Area": "المنطقة",
+  "Add Area": "اضافة المنطقة",
+  "Type Building": "نوع المبنی",
+  "Floor number": "رقم الطابق",
+  "Enter floor number": "ادخال رقم الطابق",
+  "building name/number": "أسم المبنى/ الرقم",
+  "Enter building name/number": "ادخال أسم المبنی/ الرقم",
+  "number": "رقم ",
+  "Enter number": "ادخال الرقم",
+  "Phone number": "رقم الهاتف",
+  "Add phone number": "اضافة رقم الهاتف",
 
-
+  // map --> location
+  "Selected": "",
+  "Delete location success": "تم إزالة الموقع بنجاح",
+  "Delete": "حذف",
+  
+  
   // Ziyadaa
   "NEXT": "التالي",
   "SKIP": "تخطي",
@@ -301,7 +323,7 @@ const Map<String, String> ar = {
   "My Cart": "سلة التسوق",
   "Clear": "إزالة",
   "Your cart is empty": "سلة التسوف فارغة",
-  "Delete": "حذف",
+  
   "you can not add more this item": "لايمكن إضافة منتج أخر",
   "Sub Total": "المجموع الجزئي",
   "Delivery Cost": "کلفة التوصیل",
@@ -367,22 +389,7 @@ const Map<String, String> ar = {
   // login_page
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",
 
-  // locationdeatil
   
-  "Add name": "اضافة الاسم",
-  "Add name location": "اضافة اسم الموقع",
-  "Area": "المنطقة",
-  "Add Area": "اضافة المنطقة",
-  "Type Building": "نوع المبنی",
-  "Floor number": "رقم الطابق",
-  "Enter floor number": "ادخال رقم الطابق",
-  "building name/number": "أسم المبنى/ الرقم",
-  "Enter building name/number": "ادخال أسم المبنی/ الرقم",
-  "number": "رقم ",
-  "Enter number": "ادخال الرقم",
-  "Phone number": "رقم الهاتف",
-  "Add phone number": "اضافة رقم الهاتف",
-  "Delete location success": "تم إزالة الموقع بنجاح",
    
   
   "the code is un correct": "الرمز غیر صحیع",
@@ -431,9 +438,7 @@ const Map<String, String> ar = {
   "Yes i Agree": "نعم",
   "No, Cancel order": "نرجو إلغاء الطلب",
   //
-  'House': 'منزل',
-  'Office': 'مكتب',
-  'Apartment': 'شقة',
+  
   "An error occurred, Please try again later.":
       "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
   "New update is available": "يوجد تحديث للتطبيق",
