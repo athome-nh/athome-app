@@ -222,6 +222,30 @@ const Map<String, String> kur = {
   "wst03": "گەیاندنی خێرا",
   "wsd03": "لە هەر کوێیەک بن دەگەینە لاتان",
 
+  // map --> locationdeatil
+  "House": "خانوو",
+  "Office": "نووسینگە",
+  "Apartment": "شوقە",
+  "Add name": "زیادکردنی ناو",
+  "Add name location": "ناوی شوێنەکەت تۆمار بکە",
+  "Area": "ناوچە",
+  "Add Area": "زیادکردنی ناونیشان",
+  "Type Building": "جۆری نیشینگە",
+  "Floor number": "ژمارەی نهۆم",
+  "Enter floor number": "ژمارەی نهۆم تۆمار بکە",
+  "building name/number": "ژمارە/ناوی باڵەخانە",
+  "Enter building name/number": "ناو/ژمارەی باڵەخانە تۆمار بکە",
+  "number": "ژمارەی ",
+  "Enter number": "ژمارەکە تۆمار بکە",
+  "Phone number": "ژمارەی مۆبایل تۆمار بکە",
+  "Add phone number": "زیادکردنی ژمارەی مۆبایل",
+
+
+  // locationdeatil
+  
+  "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
+  "the code is un correct": "کۆدەکە هەڵەیە",
+
 
 
   // Ziyadaa
@@ -364,30 +388,9 @@ const Map<String, String> kur = {
   // login_page
   
   
-  
-  
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
   
   
-
-  // locationdeatil
-  "Add name": "زیادکردنی ناو",
-  "Add name location": "ناوی شوێنەکەت تۆمار بکە",
-  "Area": "ناوچە",
-  "Add Area": "زیادکردنی ناونیشان",
-  "Type Building": "جۆری نیشینگە",
-  "Floor number": "ژمارەی نهۆم",
-  "Enter floor number": "ژمارەی نهۆم تۆمار بکە",
-  "building name/number": "ژمارە/ناوی باڵەخانە",
-  "Enter building name/number": "ناو/ژمارەی باڵەخانە تۆمار بکە",
-  "number": "ژمارەی ",
-  "Enter number": "ژمارەکە تۆمار بکە",
-  "Phone number": "ژمارەی مۆبایل تۆمار بکە",
-  "Add phone number": "زیادکردنی ژمارەی مۆبایل",
-  "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
-
-  "the code is un correct": "کۆدەکە هەڵەیە",
-
   // map
   "Map": "نەخشە",
   "Zoom in Please": "نزیکتر بکەوە",
@@ -432,9 +435,7 @@ const Map<String, String> kur = {
   "Yes i Agree": "بەڵێ",
   "No, Cancel order": "داواکاری هەڵبوەشێنەرەوە",
   //
-  'House': 'خانوو',
-  'Office': 'نووسینگە',
-  'Apartment': 'شوقە',
+  
   "An error occurred, Please try again later.":
       "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
   "New update is available": "ئەپدەیتێکی نوێ بەردەستە",

@@ -20,10 +20,10 @@ const Map<String, String> en = {
 
   // Account --> account_info
   "Image changed": "Image changed",
-  "Cancel": "Cancel", // feedback
+  "Cancel": "Cancel", // feedback, locationdeatil
   "Edit": "Edit",
   "Profile": "Profile",
-  "Name": "Name", // singin_up
+  "Name": "Name", // singin_up, locationdeatil
   "Enter Your Name": "Enter Your Name",
   "Enter Your Full Name": "Enter Your Full Name",
   "Age": "Age",
@@ -32,7 +32,7 @@ const Map<String, String> en = {
   "Gender": "Gender",
   "Phone": "Phone",
   "City": "City", // singin_up
-  "Save": "Save",
+  "Save": "Save", // locationdeatil
   
   // Account --> account_setting
   "Account Settings": "Account Settings", // profile
@@ -152,7 +152,7 @@ const Map<String, String> en = {
   "Account & Security": "Account & Security",
   "Account Information": "Account Information",
   "Orders": "Orders",
-  "Locations": "Locations",
+  "Locations": "Locations", // locationdeatil
   "Invite a friend": "Invite a friend",
   "Coin & Reward": "Coin & Reward",
   "My Voucher": "My Voucher",
@@ -222,9 +222,40 @@ const Map<String, String> en = {
   "wst03": "Fast Delevery",
   "wsd03": "we will reach you wherever you are",
 
+  // map --> locationdeatil
+  "House": "House",
+  "Office": "Office",
+  "Apartment": "Apartment",
+  "Add name": "Add name",
+  "Add name location": "Add name location",
+  "Area": "Area",
+  "Add Area": "Add Area",
+  "Type Building": "Type Building",
+  "Floor number": "Floor number",
+  "Enter floor number": "Enter floor number",
+  "building name/number": "building name/number",
+  "Enter building name/number": "Enter building name/number",
+  "number": "number ",
+  "Enter number": "Enter number",
+  "Phone number": "Phone number",
+  "Add phone number": "Add phone number",
 
-
+  // map --> locationdeatil
   "": "",
+  
+
+  
+  "Delete location success": "Delete location success",
+
+  
+  
+  
+  "An error occurred, Please try again later.":
+      "An error occurred, Please try again later.",
+  "New update is available": "New update is available",
+  "A newer version of dlly las application is available, please download the latest version .":
+      "A newer version of dlly las application is available, please download the latest version .",
+  "Update": "Update",
 
 
   // Ziyadaa
@@ -367,26 +398,6 @@ const Map<String, String> en = {
   "am": "am?",
   
   "Add location": "Add location",
-
-  
-  // locationdeatil
-  "Add name": "Add name",
-  "Add name location": "Add name location",
-  "Area": "Area",
-  "Add Area": "Add Area",
-  "Type Building": "Type Building",
-  "Floor number": "Floor number",
-  "Enter floor number": "Enter floor number",
-  "building name/number": "building name/number",
-  "Enter building name/number": "Enter building name/number",
-  "number": "number ",
-  "Enter number": "Enter number",
-  "Phone number": "Phone number",
-  "Add phone number": "Add phone number",
-  "Delete location success": "Delete location success",
-
-  
-  
   
   "the code is un correct": "the code is wrong",
 
@@ -433,16 +444,7 @@ const Map<String, String> en = {
   "Yes i Agree": "Yes",
   "No, Cancel order": "Cancel order",
 
-  //
-  'House': 'House',
-  'Office': 'Office',
-  'Apartment': 'Apartment',
-  "An error occurred, Please try again later.":
-      "An error occurred, Please try again later.",
-  "New update is available": "New update is available",
-  "A newer version of dlly las application is available, please download the latest version .":
-      "A newer version of dlly las application is available, please download the latest version .",
-  "Update": "Update",
+  
   
   
   "Account recovery opportunity":
