@@ -13,6 +13,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
@@ -56,6 +57,36 @@ class _OneitemState extends State<Oneitem> {
               icon: Icon(
                 Icons.arrow_back_ios,
               )),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyCart(true)),
+                  );
+                },
+                icon: cartProvider.cartItems.isNotEmpty
+                    ? Badge(
+                        label: Text(
+                          cartProvider.cartItems.length.toString(),
+                        ),
+                        backgroundColor: mainColorRed,
+                        child: Icon(
+                          size: 30,
+                          LineIcons.shoppingCart,
+                          color: mainColorGrey,
+                        ),
+                      )
+                    : Icon(
+                        size: 30,
+                        LineIcons.shoppingCart,
+                        color: mainColorGrey,
+                      ),
+              ),
+            )
+          ],
 
           // Change the color of the unselected tab labels
         ),

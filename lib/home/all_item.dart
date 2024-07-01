@@ -1,8 +1,12 @@
 import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/my_cart.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 
@@ -22,6 +26,7 @@ class _AllItemState extends State<AllItem> {
   @override
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     String type = productPro.allitemType;
     String name = type == "brand"
         ? lang == "en"
@@ -64,6 +69,37 @@ class _AllItemState extends State<AllItem> {
               icon: const Icon(
                 Icons.arrow_back_ios,
               )),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyCart(true)),
+                  );
+                },
+                icon: cartProvider.cartItems.isNotEmpty
+                    ? Badge(
+                        label: Text(
+                          cartProvider.cartItems.length.toString(),
+                        ),
+                        backgroundColor: mainColorRed,
+                        child: Icon(
+                          size: 30,
+                          LineIcons.shoppingCart,
+                          color: mainColorGrey,
+                        ),
+                      )
+                    : Icon(
+                        size: 30,
+                        LineIcons.shoppingCart,
+                        color: mainColorGrey,
+                      ),
+              ),
+            )
+         
+          ],
 
           // Change the color of the unselected tab labels
         ),
