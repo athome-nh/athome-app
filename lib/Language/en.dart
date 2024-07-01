@@ -20,7 +20,7 @@ const Map<String, String> en = {
 
   // Account --> account_info
   "Image changed": "Image changed",
-  "Cancel": "Cancel", // feedback, locationdeatil
+  "Cancel": "Cancel", // feedback, locationdeatil, my_widget
   "Edit": "Edit",
   "Profile": "Profile",
   "Name": "Name", // singin_up, locationdeatil
@@ -172,7 +172,7 @@ const Map<String, String> en = {
   "Customer Services": "Customer Services",
   "Logout": "Log out",
   "Guest Account": "Guest Account",
-  "Register": "Register",
+  "Register": "Register", // my_widget
 
   // Account --> reward
   "Voucher Codes": "Voucher Codes",
@@ -190,6 +190,11 @@ const Map<String, String> en = {
   "Do not have any Voucher Code": "Do not have any Voucher Code",
 
   // Config --> my_widget
+  "No internet connection, check your connection": "No internet connection, check your connection",
+  "You are offline, connect to a network.": "You are offline, connect to a network.",
+  "You are online": "You are online",
+  "Register First": "Register First",
+  "no internet": "You are offline, connect to WIFI",
 
   // home --> 
 
@@ -348,8 +353,9 @@ const Map<String, String> en = {
   "Wellcome to": "Wellcome to",
   'Dlly Las ': 'Dlly Las ',
   'Supermarket': 'Supermarket',
+
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "Register First",
+  
   "You need login": "You have to register first",
 
   // categories
@@ -376,9 +382,6 @@ const Map<String, String> en = {
 
   // favorite
   "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
-
-  // Page --> No Internet --> my_widget
-  "no internet": "You are offline, connect to WIFI",
 
   // Page --> Login First --> my_widget
   "Please login first": "Please login first", // nmayaa

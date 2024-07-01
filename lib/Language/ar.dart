@@ -189,6 +189,13 @@ const Map<String, String> ar = {
   "Expired": "",
   "Do not have any Voucher Code": "",
 
+  // Config --> my_widget
+  "No internet connection, check your connection": "",
+  "You are offline, connect to a network.": "",
+  "You are online": "",
+  "Register First": "تسجيل اولا",
+  "no internet": "الانترنت غیر متوفر",
+
   // Landing --> choose_lan
   "Get Start": "ابدأ",
 
@@ -335,7 +342,7 @@ const Map<String, String> ar = {
   'Supermarket': 'سوبر ماركت',
 
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "تسجيل اولا",
+  
   "You need login": "یرجی التسجیل أولا",
   
 
@@ -364,9 +371,6 @@ const Map<String, String> ar = {
   // favorite
   "No have any favorite":
       "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
-
-  // Page --> No Internet --> my_widget
-  "no internet": "الانترنت غیر متوفر",
 
   // Page --> Login First --> my_widget
   "Please login first": "الرجاء تسجیل الدخول أولا",

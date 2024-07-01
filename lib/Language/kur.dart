@@ -189,6 +189,13 @@ const Map<String, String> kur = {
   "Expired": "",
   "Do not have any Voucher Code": "",
 
+  // Config --> my_widget
+  "No internet connection, check your connection": "",
+  "You are offline, connect to a network.": "",
+  "You are online": "",
+  "Register First": "خۆت تۆمار بکە",
+  "no internet": "ئینتەرنێت بەردەست  نیە",
+
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
 
@@ -334,7 +341,7 @@ const Map<String, String> kur = {
   'Supermarket': 'سوپەرمارکێت',
 
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "خۆت تۆمار بکە",
+  
   "You need login": "پێویستە خۆت تۆمار بکەیت",
 
   // categories
@@ -362,9 +369,6 @@ const Map<String, String> kur = {
   // favorite
   "No have any favorite":
       "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
-
-  // Page --> No Internet --> my_widget
-  "no internet": "ئینتەرنێت بەردەست  نیە",
 
   // Page --> Login First --> my_widget
   "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa

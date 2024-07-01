@@ -1253,7 +1253,7 @@ Future<bool> checkInternet(BuildContext context) async {
       SnackBar(
         content: Container(
           child: Text(
-            'No internet connection, check your connection',
+            'No internet connection, check your connection'.tr,
             style: TextStyle(
               color: mainColorWhite,
               fontFamily: "RK",
@@ -1277,7 +1277,7 @@ Future noInternet(BuildContext context) {
 SnackBar noInternetSnackBar = SnackBar(
   duration: const Duration(seconds: 4),
   content: Text(
-    'You\'re offline, connect to a network.'.tr,
+    'You are offline, connect to a network.'.tr,
     style: TextStyle(fontFamily: mainFontnormal),
   ),
   backgroundColor: mainColorGrey,
@@ -1287,7 +1287,7 @@ SnackBar noInternetSnackBar = SnackBar(
 SnackBar internetBackSnackBar = SnackBar(
   duration: const Duration(seconds: 3),
   content: Text(
-    "You're online ✅".tr,
+    "You are online".tr + " ✅",
     style: TextStyle(fontFamily: mainFontnormal),
   ),
   backgroundColor: Colors.green,
