@@ -240,13 +240,12 @@ const Map<String, String> ar = {
   "Phone number": "رقم الهاتف",
   "Add phone number": "اضافة رقم الهاتف",
 
-  
-
-  // locationdeatil
-  
+  // map --> location
+  "Selected": "",
   "Delete location success": "تم إزالة الموقع بنجاح",
-
-
+  "Delete": "حذف",
+  
+  
   // Ziyadaa
   "NEXT": "التالي",
   "SKIP": "تخطي",
@@ -324,7 +323,7 @@ const Map<String, String> ar = {
   "My Cart": "سلة التسوق",
   "Clear": "إزالة",
   "Your cart is empty": "سلة التسوف فارغة",
-  "Delete": "حذف",
+  
   "you can not add more this item": "لايمكن إضافة منتج أخر",
   "Sub Total": "المجموع الجزئي",
   "Delivery Cost": "کلفة التوصیل",

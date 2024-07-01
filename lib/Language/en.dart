@@ -152,7 +152,7 @@ const Map<String, String> en = {
   "Account & Security": "Account & Security",
   "Account Information": "Account Information",
   "Orders": "Orders",
-  "Locations": "Locations", // locationdeatil
+  "Locations": "Locations", // locationdeatil,  location
   "Invite a friend": "Invite a friend",
   "Coin & Reward": "Coin & Reward",
   "My Voucher": "My Voucher",
@@ -240,12 +240,18 @@ const Map<String, String> en = {
   "Phone number": "Phone number",
   "Add phone number": "Add phone number",
 
-  // map --> locationdeatil
+  // map --> location
+  "Selected": "Selected",
+  "Delete location success": "Delete location success",
+  "Delete": "Delete",
+
+
+  
   "": "",
   
 
   
-  "Delete location success": "Delete location success",
+  
 
   
   
@@ -336,7 +342,7 @@ const Map<String, String> en = {
   "My Cart": "My Cart",
   "Clear": "Clear",
   "Your cart is empty": "Your cart is empty",
-  "Delete": "Delete",
+  
   "you can not add more this item": "you can not add more items",
   "Sub Total": "Sub Total",
   "Delivery Cost": "Delivery Cost",

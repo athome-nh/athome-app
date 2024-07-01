@@ -240,13 +240,15 @@ const Map<String, String> kur = {
   "Phone number": "ژمارەی مۆبایل تۆمار بکە",
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
 
-
-  // locationdeatil
-  
+  // map --> location
+  "Selected": "",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
+  "Delete": "سڕینەوە",
+
+
+
+
   "the code is un correct": "کۆدەکە هەڵەیە",
-
-
 
   // Ziyadaa
   "NEXT": "NEXT",
@@ -322,7 +324,7 @@ const Map<String, String> kur = {
   "My Cart": "سەبەتەی بازاڕکردن",
   "Clear": "پاک کردنەوە",
   "Your cart is empty": "سەبەتەی بازاڕکردن بەتاڵە",
-  "Delete": "سڕینەوە",
+  
   "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
   "Sub Total": "کۆی بەش",
   "Delivery Cost": "تێچوی گەیاندن",
