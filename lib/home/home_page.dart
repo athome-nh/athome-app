@@ -20,6 +20,7 @@ import 'package:dllylas/home/oneitem.dart';
 import 'package:dllylas/home/search_page.dart';
 
 import 'package:dllylas/main.dart';
+import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/Categories.dart';
@@ -29,6 +30,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:line_icons/line_icons.dart';
@@ -56,6 +58,7 @@ class _HomeSreenState extends State<HomeSreen> {
     return build.manufacturer;
   }
 
+  final ScrollController _scrollController = ScrollController();
   List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
@@ -97,9 +100,21 @@ class _HomeSreenState extends State<HomeSreen> {
     }
   }
 
+  void _scrollToSelectedItem(int index) {
+    // Calculate the position to scroll to
+    double position = index * 65.0; // Assuming each item has a height of 65
+    _scrollController.animateTo(
+      position,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   void initState() {
     super.initState();
+    final productrovider = Provider.of<productProvider>(context, listen: false);
+
     FirebaseFirestore.instance
         .collection("onLoad")
         .doc("1")
@@ -128,9 +143,9 @@ class _HomeSreenState extends State<HomeSreen> {
                   (value == "ios" && documentSnapshot.get("isAccpetApple")))
                 _homePopup(context, value);
             } else {
-              final productrovider =
-                  Provider.of<productProvider>(context, listen: false);
-              if (isLogin &&
+              if (isLogin && productrovider.location.isEmpty) {
+                locationempty(productrovider);
+              } else if (isLogin &&
                   productrovider.Orders.isNotEmpty &&
                   productrovider.Orders.last.status == 5 &&
                   productrovider.Orders.last.rating == null) {
@@ -642,6 +657,7 @@ class _HomeSreenState extends State<HomeSreen> {
 
   @override
   void dispose() {
+    _scrollController.dispose();
     _connectivitySubscription.cancel();
     super.dispose();
   }
@@ -1191,69 +1207,257 @@ class _HomeSreenState extends State<HomeSreen> {
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          content: Directionality(
-            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-            child: Stack(
-              alignment: lang == "en" ? Alignment.topLeft : Alignment.topRight,
-              children: [
-                SizedBox(
-                  width: getWidth(context, 100),
-                  height: getHeight(context, 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset(
-                        "assets/Victors/info.png",
-                        width: getWidth(context, 40),
-                        height: getWidth(context, 40),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        title.tr,
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontFamily: mainFontbold,
-                          fontSize: 20,
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {},
+          child: AlertDialog(
+            content: Directionality(
+              textDirection:
+                  lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+              child: Stack(
+                alignment:
+                    lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                children: [
+                  SizedBox(
+                    width: getWidth(context, 100),
+                    height: getHeight(context, 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/Victors/info.png",
+                          width: getWidth(context, 40),
+                          height: getWidth(context, 40),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      Text(
-                        content,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontFamily: mainFontnormal,
-                          fontSize: 14,
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                      const SizedBox(height: 30),
-                      TextButton(
-                        onPressed: () async {
-                          exit(0);
-                        },
-                        style: TextButton.styleFrom(
-                          fixedSize: Size(
-                              getWidth(context, 70), getHeight(context, 5)),
+                        Text(
+                          title.tr,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: mainColorBlack,
+                            fontFamily: mainFontbold,
+                            fontSize: 20,
+                          ),
                         ),
-                        child: Text(
-                          buttontxt,
+                        const SizedBox(height: 15),
+                        Text(
+                          content,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: mainColorBlack,
+                            fontFamily: mainFontnormal,
+                            fontSize: 14,
+                          ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 30),
+                        TextButton(
+                          onPressed: () async {
+                            exit(0);
+                          },
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(
+                                getWidth(context, 70), getHeight(context, 5)),
+                          ),
+                          child: Text(
+                            buttontxt,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
       },
     );
+  }
+
+  Future<void> locationempty(productProvider productrovider) {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusDirectional.only(
+          topEnd: Radius.circular(25),
+          topStart: Radius.circular(25),
+        ),
+      ),
+      builder: (context) => Directionality(
+        textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+        child: PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {},
+          child: StatefulBuilder(
+              builder: (BuildContext context, StateSetter mystate) {
+            return Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                SizedBox(
+                  width: getWidth(context, 100),
+                  height: productrovider.location.isEmpty
+                      ? getHeight(context, 40)
+                      : getHeight(context, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      productrovider.location.isEmpty
+                          ? Column(
+                              children: [
+                                SizedBox(
+                                  height: getHeight(context, 5),
+                                ),
+                                GestureDetector(
+                                  onTap: () async {
+                                    LocationPermission permission =
+                                        await Geolocator.requestPermission();
+                                    if (permission ==
+                                        LocationPermission.denied) {
+                                      // Handle case where the user denied access to their location
+                                    }
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Map_screen()),
+                                    );
+                                  },
+                                  child: SizedBox(
+                                    width: getWidth(context, 100),
+                                    height: getHeight(context, 15),
+                                    child: Image.asset(lang == "en"
+                                        ? "assets/Victors/location.png"
+                                        : lang == "ar"
+                                            ? "assets/Victors/locationAr.png"
+                                            : "assets/Victors/locationKu.png"),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: getHeight(context, 5),
+                                ),
+                              ],
+                            )
+                          : Container(
+                              width: getWidth(context, 100),
+                              height: getHeight(context, 35),
+                              child: ListView.builder(
+                                  controller: _scrollController,
+                                  itemCount: productrovider.location.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    final location = productrovider
+                                        .location.reversed
+                                        .toList()[index];
+                                    if (location.id ==
+                                        productrovider.defultlocation) {
+                                      _scrollToSelectedItem(index);
+                                    }
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                            color:
+                                                mainColorGrey.withOpacity(0.5),
+                                            width: 1,
+                                            style: BorderStyle.solid,
+                                          ),
+                                        ),
+                                        child: ListTile(
+                                          onTap: () {
+                                            if (productrovider.defultlocation ==
+                                                location.id!) {
+                                            } else {
+                                              mystate(() {
+                                                productrovider
+                                                    .setdefultlocation(
+                                                        location.id!);
+                                              });
+                                              Navigator.pop(context);
+                                            }
+                                          },
+                                          title: Text(
+                                            location.name!,
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontFamily: mainFontbold,
+                                                color: mainColorBlack,
+                                                fontSize: 16),
+                                          ),
+                                          subtitle: Text(
+                                            location.area!,
+                                            style: TextStyle(
+                                                fontFamily: mainFontnormal,
+                                                color: mainColorGrey,
+                                                fontSize: 12),
+                                          ),
+                                          trailing: Icon(
+                                            productrovider.defultlocation ==
+                                                    location.id!
+                                                ? Icons.check_box
+                                                : Icons.check_box_outline_blank,
+                                            color: mainColorGrey,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                            ),
+                      TextButton(
+                        onPressed: () async {
+                          LocationPermission permission =
+                              await Geolocator.requestPermission();
+                          if (permission == LocationPermission.denied) {
+                            // Handle case where the user denied access to their location
+                          }
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Map_screen()),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor: productrovider.location.length > 0
+                              ? mainColorGrey
+                              : mainColorRed,
+                          fixedSize: Size(
+                              getWidth(context, 70), getHeight(context, 5)),
+                        ),
+                        child: Text(
+                          "Add location".tr,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Container(
+                      width: 65,
+                      height: 5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: mainColorGrey,
+                      ),
+                    ))
+              ],
+            );
+          }),
+        ),
+      ),
+    ).then((value) {});
   }
 
   Future<void> _homePopup(
@@ -1266,138 +1470,157 @@ class _HomeSreenState extends State<HomeSreen> {
       builder: (BuildContext context) {
         final productrovider =
             Provider.of<productProvider>(context, listen: false);
-        return AlertDialog(
-          actionsPadding: EdgeInsets.all(0),
-          contentPadding: EdgeInsets.all(0),
-          content: Directionality(
-            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-            child: Stack(
-              alignment: lang == "en" ? Alignment.topRight : Alignment.topLeft,
-              children: [
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    SizedBox(
-                      width: getWidth(context, 100),
-                      height: getHeight(context, 45),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: type != "pop"
-                            ? lang == "en"
-                                ? Image.asset("assets/Victors/updateEN.png")
-                                : lang == "ar"
-                                    ? Image.asset("assets/Victors/updateAR.png")
-                                    : Image.asset("assets/Victors/updateKU.png")
-                            : CachedNetworkImage(
-                                imageUrl: dotenv.env['imageUrlServer']! +
-                                    homePopupData["img"],
-                                placeholder: (context, url) => Image.asset(
-                                    "assets/images/Logo-Type-2.png"),
-                                errorWidget: (context, url, error) =>
-                                    Image.asset(
-                                        "assets/images/Logo-Type-2.png"),
-                                filterQuality: FilterQuality.low,
-                                fit: BoxFit.cover,
-                              ),
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {
+            if (type == "pop") {
+              Navigator.pop(context);
+            }
+          },
+          child: AlertDialog(
+            actionsPadding: EdgeInsets.all(0),
+            contentPadding: EdgeInsets.all(0),
+            content: Directionality(
+              textDirection:
+                  lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+              child: Stack(
+                alignment:
+                    lang == "en" ? Alignment.topRight : Alignment.topLeft,
+                children: [
+                  Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      SizedBox(
+                        width: getWidth(context, 100),
+                        height: getHeight(context, 45),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: type != "pop"
+                              ? lang == "en"
+                                  ? Image.asset("assets/Victors/updateEN.png")
+                                  : lang == "ar"
+                                      ? Image.asset(
+                                          "assets/Victors/updateAR.png")
+                                      : Image.asset(
+                                          "assets/Victors/updateKU.png")
+                              : CachedNetworkImage(
+                                  imageUrl: dotenv.env['imageUrlServer']! +
+                                      homePopupData["img"],
+                                  placeholder: (context, url) => Image.asset(
+                                      "assets/images/Logo-Type-2.png"),
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset(
+                                          "assets/images/Logo-Type-2.png"),
+                                  filterQuality: FilterQuality.low,
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
                       ),
-                    ),
-                    FadeInUp(
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        child: TextButton(
-                          onPressed: type != "pop"
-                              ? () async {
-                                  if (type == "huawei") {
-                                    Uri url = Uri.parse(
-                                        'https://appgallery.huawei.com/app/C109952685');
-                                    if (!await launchUrl(url,
-                                        mode: LaunchMode.externalApplication)) {
-                                      throw Exception('Could not launch $url');
-                                    }
-                                  } else if (type == "android") {
-                                    Uri url = Uri.parse(
-                                        'https://play.google.com/store/apps/details?id=com.market.dllylas');
-                                    if (!await launchUrl(url,
-                                        mode: LaunchMode.externalApplication)) {
-                                      throw Exception('Could not launch $url');
-                                    }
-                                  } else {
-                                    Uri url = Uri.parse(
-                                        'https://apps.apple.com/iq/app/dlly-las-market/id6474247014');
-                                    if (!await launchUrl(url,
-                                        mode: LaunchMode.externalApplication)) {
-                                      throw Exception('Could not launch $url');
+                      FadeInUp(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 5),
+                          child: TextButton(
+                            onPressed: type != "pop"
+                                ? () async {
+                                    if (type == "huawei") {
+                                      Uri url = Uri.parse(
+                                          'https://appgallery.huawei.com/app/C109952685');
+                                      if (!await launchUrl(url,
+                                          mode:
+                                              LaunchMode.externalApplication)) {
+                                        throw Exception(
+                                            'Could not launch $url');
+                                      }
+                                    } else if (type == "android") {
+                                      Uri url = Uri.parse(
+                                          'https://play.google.com/store/apps/details?id=com.market.dllylas');
+                                      if (!await launchUrl(url,
+                                          mode:
+                                              LaunchMode.externalApplication)) {
+                                        throw Exception(
+                                            'Could not launch $url');
+                                      }
+                                    } else {
+                                      Uri url = Uri.parse(
+                                          'https://apps.apple.com/iq/app/dlly-las-market/id6474247014');
+                                      if (!await launchUrl(url,
+                                          mode:
+                                              LaunchMode.externalApplication)) {
+                                        throw Exception(
+                                            'Could not launch $url');
+                                      }
                                     }
                                   }
-                                }
-                              : () async {
-                                  if (homePopupData["type"] == "attention") {
-                                    Navigator.pop(context);
-                                  } else if (homePopupData["type"] == "brand") {
-                                    productrovider.settype("brand");
-                                    productrovider
-                                        .setidbrand(homePopupData["brand_id"]);
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const AllItem()),
-                                    );
-                                  } else if (homePopupData["type"] ==
-                                      "discount") {
-                                    productrovider.settype("discount");
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const AllItem()),
-                                    );
-                                  } else if (homePopupData["type"] ==
-                                      "onItem") {
-                                    productrovider.setidItem(productrovider
-                                        .getoneProductByBarcode(
-                                            homePopupData["barcode"])
-                                        .id!);
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Oneitem()),
-                                    );
-                                  }
-                                },
-                          style: TextButton.styleFrom(
-                            fixedSize: Size(
-                                getWidth(context, 45), getHeight(context, 5)),
-                          ),
-                          //checkText
-                          child: Text(
-                            type != "pop"
-                                ? "Update".tr
-                                : homePopupData["type"] == "attention"
-                                    ? "OK".tr
-                                    : "tap View",
+                                : () async {
+                                    if (homePopupData["type"] == "attention") {
+                                      Navigator.pop(context);
+                                    } else if (homePopupData["type"] ==
+                                        "brand") {
+                                      productrovider.settype("brand");
+                                      productrovider.setidbrand(
+                                          homePopupData["brand_id"]);
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllItem()),
+                                      );
+                                    } else if (homePopupData["type"] ==
+                                        "discount") {
+                                      productrovider.settype("discount");
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllItem()),
+                                      );
+                                    } else if (homePopupData["type"] ==
+                                        "onItem") {
+                                      productrovider.setidItem(productrovider
+                                          .getoneProductByBarcode(
+                                              homePopupData["barcode"])
+                                          .id!);
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Oneitem()),
+                                      );
+                                    }
+                                  },
+                            style: TextButton.styleFrom(
+                              fixedSize: Size(
+                                  getWidth(context, 45), getHeight(context, 5)),
+                            ),
+                            //checkText
+                            child: Text(
+                              type != "pop"
+                                  ? "Update".tr
+                                  : homePopupData["type"] == "attention"
+                                      ? "OK".tr
+                                      : "tap View",
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                type != "pop"
-                    ? SizedBox()
-                    : IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.close,
-                          color: mainColorRed,
-                          size: 35,
-                        ))
-              ],
+                    ],
+                  ),
+                  type != "pop"
+                      ? SizedBox()
+                      : IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.close,
+                            color: mainColorRed,
+                            size: 35,
+                          ))
+                ],
+              ),
             ),
           ),
         );

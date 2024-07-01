@@ -1,15 +1,18 @@
 import 'dart:async';
 
 import 'package:dllylas/Config/my_widget.dart';
+import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/my_cart.dart';
 import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 class Search extends StatefulWidget {
@@ -37,6 +40,7 @@ class _SearchState extends State<Search> {
 
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     final pro = Provider.of<productProvider>(context, listen: false);
+
     if (result[0] == ConnectivityResult.none) {
       pro.setnointernetcheck(true);
     } else {
@@ -70,6 +74,7 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     searchCon.text = productPro.searchproduct;
     return productPro.nointernetCheck
         ? noInternetWidget(context)
@@ -89,18 +94,34 @@ class _SearchState extends State<Search> {
                 automaticallyImplyLeading: true,
                 title: Text("Search".tr),
                 actions: [
-                  searchCon.text.isNotEmpty
-                      ? IconButton(
-                          icon: const Icon(Icons.cancel),
-                          onPressed: () {
-                            setState(() {
-                              isSearch = false;
-                              searchCon.text = "";
-                              productPro.setsearch("");
-                            });
-                          },
-                        )
-                      : const SizedBox(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyCart(true)),
+                        );
+                      },
+                      icon: cartProvider.cartItems.isNotEmpty
+                          ? Badge(
+                              label: Text(
+                                cartProvider.cartItems.length.toString(),
+                              ),
+                              backgroundColor: mainColorRed,
+                              child: Icon(
+                                size: 30,
+                                LineIcons.shoppingCart,
+                                color: mainColorGrey,
+                              ),
+                            )
+                          : Icon(
+                              size: 30,
+                              LineIcons.shoppingCart,
+                              color: mainColorGrey,
+                            ),
+                    ),
+                  ),
                 ],
               ),
               body: GestureDetector(
@@ -134,6 +155,18 @@ class _SearchState extends State<Search> {
                                         productPro.setsearch(searchCon.text);
                                       },
                                       decoration: InputDecoration(
+                                        suffixIcon: searchCon.text.isNotEmpty
+                                            ? IconButton(
+                                                icon: const Icon(Icons.cancel),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    isSearch = false;
+                                                    searchCon.text = "";
+                                                    productPro.setsearch("");
+                                                  });
+                                                },
+                                              )
+                                            : const SizedBox(),
                                         prefixIcon: Icon(
                                           Ionicons.search_outline,
                                           color: mainColorGrey,

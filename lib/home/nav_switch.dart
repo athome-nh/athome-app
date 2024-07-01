@@ -90,10 +90,10 @@ class _NavSwitchState extends State<NavSwitch> {
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: WillPopScope(
-        onWillPop: () async {
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) {
           yesNoOption(context);
-          return false;
         },
         child: Scaffold(
           body: Center(

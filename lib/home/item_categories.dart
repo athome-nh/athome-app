@@ -1,11 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/my_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 
@@ -85,6 +88,7 @@ class _itemCategoriesState extends State<itemCategories>
   @override
   Widget build(BuildContext context) {
     final productPro = Provider.of<productProvider>(context, listen: true);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
     String categoryName = productPro.getCategoryNameById(productPro.cateType);
     final subcategoriesWithProducts =
         productPro.getsubcateById(productPro.cateType).toList();
@@ -104,7 +108,36 @@ class _itemCategoriesState extends State<itemCategories>
               },
               icon: const Icon(Icons.arrow_back_ios),
             ),
-            actions: [],
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyCart(true)),
+                    );
+                  },
+                  icon: cartProvider.cartItems.isNotEmpty
+                      ? Badge(
+                          label: Text(
+                            cartProvider.cartItems.length.toString(),
+                          ),
+                          backgroundColor: mainColorRed,
+                          child: Icon(
+                            size: 30,
+                            LineIcons.shoppingCart,
+                            color: mainColorGrey,
+                          ),
+                        )
+                      : Icon(
+                          size: 30,
+                          LineIcons.shoppingCart,
+                          color: mainColorGrey,
+                        ),
+                ),
+              )
+            ],
           ),
           body: Column(
             children: [

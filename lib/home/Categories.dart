@@ -49,7 +49,7 @@ class _CategoriesState extends State<Categories> {
           height: getHeight(context, 90),
           width: getWidth(context, 100),
           child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: getWidth(context, 2)),
+            padding: EdgeInsets.symmetric(horizontal: getWidth(context, 2)),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 childAspectRatio: getWidth(context, 0.25),
@@ -59,9 +59,10 @@ class _CategoriesState extends State<Categories> {
                   productPro.categores.length, // Number of items in the grid
               itemBuilder: (BuildContext context, int index) {
                 final cateItem = productPro.categores[index];
-            
-                final randomColor = categoryColors[index % categoryColors.length];
-            
+
+                final randomColor =
+                    categoryColors[index % categoryColors.length];
+
                 return GestureDetector(
                   onTap: () {
                     productPro.setcatetype(cateItem.id!);
@@ -78,8 +79,8 @@ class _CategoriesState extends State<Categories> {
                       width: getHeight(context, 20),
                       height: getHeight(context, 20),
                       decoration: BoxDecoration(
-                          border:
-                              Border.all(color: mainColorBlack.withOpacity(0.2)),
+                          border: Border.all(
+                              color: mainColorBlack.withOpacity(0.2)),
                           color: randomColor,
                           borderRadius: BorderRadius.circular(15)),
                       child: Column(

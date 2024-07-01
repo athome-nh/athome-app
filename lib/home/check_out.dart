@@ -73,11 +73,11 @@ class _CheckOutState extends State<CheckOut> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final productrovider = Provider.of<productProvider>(context, listen: true);
-    List<ProductModel> cardItemshow =
-        productrovider.getProductsByIds(cartProvider.ListId());
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: Color.fromARGB(241, 255, 255, 255),
         // appbar
         appBar: AppBar(
           title: Text(
@@ -99,18 +99,14 @@ class _CheckOutState extends State<CheckOut> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  left: getWidth(context, 1),
-                  right: getWidth(context, 1),
+                  left: getWidth(context, 0),
+                  right: getWidth(context, 0),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Card(
-                      // color: mainColorWhite,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      elevation: 2,
+                    Container(
+                      color: mainColorWhite,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -381,10 +377,27 @@ class _CheckOutState extends State<CheckOut> {
                                             ),
                                             new TextSpan(
                                               text: productrovider
+                                                      .getonelocationById(
+                                                          productrovider
+                                                              .defultlocation!)
+                                                      .name! +
+                                                  " : " +
+                                                  productrovider
+                                                      .getonelocationById(
+                                                          productrovider
+                                                              .defultlocation!)
+                                                      .number! +
+                                                  "\n",
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: mainFontnormal),
+                                            ),
+                                            new TextSpan(
+                                              text: productrovider
                                                   .getonelocationById(
                                                       productrovider
                                                           .defultlocation!)
-                                                  .name!,
+                                                  .phone!,
                                               style: TextStyle(
                                                   fontSize: 13,
                                                   fontFamily: mainFontnormal),
@@ -398,11 +411,11 @@ class _CheckOutState extends State<CheckOut> {
                         ),
                       ),
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      elevation: 2,
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
+                    Container(
+                      color: mainColorWhite,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -411,6 +424,7 @@ class _CheckOutState extends State<CheckOut> {
                             Text(
                               "Delivery Type".tr,
                               style: TextStyle(
+                                  fontWeight: FontWeight.bold,
                                   color: mainColorBlack,
                                   fontFamily: mainFontnormal,
                                   fontSize: 16),
@@ -811,11 +825,11 @@ class _CheckOutState extends State<CheckOut> {
                         ),
                       ),
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      elevation: 2,
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
+                    Container(
+                      color: mainColorWhite,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -881,14 +895,14 @@ class _CheckOutState extends State<CheckOut> {
                                                       child: ListView.builder(
                                                           itemCount:
                                                               productrovider
-                                                                  .usedVouchers
+                                                                  .unusedVouchers
                                                                   .length,
                                                           itemBuilder:
                                                               (BuildContextcontext,
                                                                   int index) {
                                                             final voucher =
                                                                 productrovider
-                                                                        .usedVouchers[
+                                                                        .unusedVouchers[
                                                                     index];
 
                                                             return Padding(
@@ -1156,16 +1170,29 @@ class _CheckOutState extends State<CheckOut> {
                         ),
                       ),
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      elevation: 2,
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
+                    Container(
+                      color: mainColorWhite,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Text(
+                              "Add your note".tr,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: mainColorBlack,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 16),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Divider(),
+                            ),
                             TextFormField(
                               maxLines: null,
                               controller: NoteController,
@@ -1190,11 +1217,11 @@ class _CheckOutState extends State<CheckOut> {
                                     width: 1.0, // Customize border width
                                   ),
                                 ),
-                                labelText: "Add your note".tr,
-                                labelStyle: TextStyle(
-                                    color: mainColorGrey.withOpacity(0.8),
-                                    fontSize: 20,
-                                    fontFamily: mainFontbold),
+                                // labelText: "Add your note".tr,
+                                // labelStyle: TextStyle(
+                                //     color: mainColorGrey.withOpacity(0.8),
+                                //     fontSize: 20,
+                                //     fontFamily: mainFontbold),
                                 hintText: "Note".tr,
                                 hintStyle: TextStyle(
                                     color: mainColorBlack.withOpacity(0.5),
@@ -1209,11 +1236,11 @@ class _CheckOutState extends State<CheckOut> {
                         ),
                       ),
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      elevation: 2,
+                    SizedBox(
+                      height: getHeight(context, 1),
+                    ),
+                    Container(
+                      color: mainColorWhite,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -1367,174 +1394,157 @@ class _CheckOutState extends State<CheckOut> {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextButton(
-                              onPressed: waitingcheckout
-                                  ? null
-                                  : () {
-                                      setState(() {
-                                        waitingcheckout = true;
-                                      });
-
-                                      String data = "";
-                                      for (var element
-                                          in cartProvider.cartItems) {
-                                        ProductModel Item = productrovider
-                                            .getoneProductById(element.product);
-                                        String price = Item.price2! > -1
-                                            ? Item.price2!.toString()
-                                            : Item.price.toString();
-                                        data +=
-                                            "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
-                                      }
-
-                                      var data2 = {
-                                        "customerid": userdata["id"],
-                                        "total": widget.total,
-                                        "location":
-                                            productrovider.defultlocation!,
-                                        "order_data": data.substring(2),
-                                        "note": NoteController.text,
-                                        "voucher_id":
-                                            VoucherID == -1 ? "" : VoucherID,
-                                        "cost": deleveryType == 1
-                                            ? productrovider.deleveryCost
-                                            : 0,
-                                        "schedule": deleveryType == 1
-                                            ? "now"
-                                            : selectedDateorder +
-                                                "||" +
-                                                selectedTime,
-                                      };
-
-                                      Network(false)
-                                          .postData("order", data2, context)
-                                          .then((value) {
-                                        print(value);
-                                        if (value != "") {
-                                          if (value["code"] == "201") {
-                                            setState(() {
-                                              waitingcheckout = false;
-                                            });
-                                            cartProvider.clearCart();
-                                            final productrovider =
-                                                Provider.of<productProvider>(
-                                                    context,
-                                                    listen: false);
-
-                                            productrovider.getuserdata(
-                                                userdata["id"].toString());
-
-                                            DateTime timecheck = DateTime.parse(
-                                                value["now"].toString());
-                                            DateTime ST = DateTime.parse(
-                                                "2023-11-09 ${productrovider.startTime}:00");
-
-                                            DateTime DT = DateTime.parse(
-                                                "2023-11-09 ${productrovider.endTime}:00");
-
-                                            DateTime NW = DateTime.parse(
-                                                "2023-11-09 ${timecheck.hour}:00");
-
-                                            if ((NW.isAfter(ST) &&
-                                                    NW.isBefore(DT)) ||
-                                                NW.isAtSameMomentAs(ST) ||
-                                                isSchedule) {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        successScreen(
-                                                            value["total"]
-                                                                .toString(),
-                                                            value["id"]
-                                                                .toString(),
-                                                            value["time"]
-                                                                .toString(),
-                                                            false,
-                                                            isSchedule,
-                                                            selectedDateorder +
-                                                                "" +
-                                                                selectedTime,
-                                                            deleveryType == 1
-                                                                ? productrovider
-                                                                    .deleveryCost
-                                                                : 0)),
-                                              ).then((value) {
-                                                Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          NavSwitch()),
-                                                );
-                                              });
-                                            } else {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        successScreen(
-                                                            value["total"]
-                                                                .toString(),
-                                                            value["id"]
-                                                                .toString(),
-                                                            value["time"]
-                                                                .toString(),
-                                                            true,
-                                                            isSchedule,
-                                                            selectedDateorder +
-                                                                "" +
-                                                                selectedTime,
-                                                            deleveryType == 1
-                                                                ? productrovider
-                                                                    .deleveryCost
-                                                                : 0)),
-                                              ).then((value) {
-                                                Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          NavSwitch()),
-                                                );
-                                              });
-                                            }
-                                          } else {
-                                            setState(() {
-                                              waitingcheckout = false;
-                                            });
-                                            toastShort(
-                                                "unknown occurred error please try again later"
-                                                    .tr);
-                                          }
-                                        } else {
-                                          setState(() {
-                                            waitingcheckout = false;
-                                          });
-                                          toastShort(
-                                              "unknown occurred error please try again later"
-                                                  .tr);
-                                        }
-                                      });
-                                    },
-                              style: TextButton.styleFrom(
-                                fixedSize: Size(getWidth(context, 85),
-                                    getHeight(context, 6)),
-                              ),
-                              child: Text(
-                                "Send Order".tr,
-                              ),
-                            ),
                           ],
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 5,
+                    )
                   ],
                 ),
               ),
               waitingcheckout ? waitingWiget(context) : const SizedBox()
             ],
+          ),
+        ),
+        bottomNavigationBar: Container(
+          height: getHeight(context, 10),
+          color: mainColorWhite,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: getWidth(context, 6),
+                vertical: getHeight(context, 1.5)),
+            child: TextButton(
+              onPressed: waitingcheckout
+                  ? null
+                  : () {
+                      setState(() {
+                        waitingcheckout = true;
+                      });
+
+                      String data = "";
+                      for (var element in cartProvider.cartItems) {
+                        ProductModel Item =
+                            productrovider.getoneProductById(element.product);
+                        String price = Item.price2! > -1
+                            ? Item.price2!.toString()
+                            : Item.price.toString();
+                        data +=
+                            "!&${Item.id},,,${Item.purchasePrice},,,$price,,,${Item.offerPrice},,,${element.quantity}";
+                      }
+
+                      var data2 = {
+                        "customerid": userdata["id"],
+                        "total": widget.total,
+                        "location": productrovider.defultlocation!,
+                        "order_data": data.substring(2),
+                        "note": NoteController.text,
+                        "voucher_id": VoucherID == -1 ? "" : VoucherID,
+                        "cost":
+                            deleveryType == 1 ? productrovider.deleveryCost : 0,
+                        "schedule": deleveryType == 1
+                            ? "now"
+                            : selectedDateorder + "||" + selectedTime,
+                      };
+
+                      Network(false)
+                          .postData("order", data2, context)
+                          .then((value) {
+                        print(value);
+                        if (value != "") {
+                          if (value["code"] == "201") {
+                            setState(() {
+                              waitingcheckout = false;
+                            });
+                            cartProvider.clearCart();
+                            final productrovider = Provider.of<productProvider>(
+                                context,
+                                listen: false);
+
+                            productrovider
+                                .getuserdata(userdata["id"].toString());
+
+                            DateTime timecheck =
+                                DateTime.parse(value["now"].toString());
+                            DateTime ST = DateTime.parse(
+                                "2023-11-09 ${productrovider.startTime}:00");
+
+                            DateTime DT = DateTime.parse(
+                                "2023-11-09 ${productrovider.endTime}:00");
+
+                            DateTime NW = DateTime.parse(
+                                "2023-11-09 ${timecheck.hour}:00");
+
+                            if ((NW.isAfter(ST) && NW.isBefore(DT)) ||
+                                NW.isAtSameMomentAs(ST) ||
+                                isSchedule) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => successScreen(
+                                        value["total"].toString(),
+                                        value["id"].toString(),
+                                        value["time"].toString(),
+                                        false,
+                                        isSchedule,
+                                        selectedDateorder + "" + selectedTime,
+                                        deleveryType == 1
+                                            ? productrovider.deleveryCost
+                                            : 0)),
+                              ).then((value) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NavSwitch()),
+                                );
+                              });
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => successScreen(
+                                        value["total"].toString(),
+                                        value["id"].toString(),
+                                        value["time"].toString(),
+                                        true,
+                                        isSchedule,
+                                        selectedDateorder + "" + selectedTime,
+                                        deleveryType == 1
+                                            ? productrovider.deleveryCost
+                                            : 0)),
+                              ).then((value) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NavSwitch()),
+                                );
+                              });
+                            }
+                          } else {
+                            setState(() {
+                              waitingcheckout = false;
+                            });
+                            toastShort(
+                                "unknown occurred error please try again later"
+                                    .tr);
+                          }
+                        } else {
+                          setState(() {
+                            waitingcheckout = false;
+                          });
+                          toastShort(
+                              "unknown occurred error please try again later"
+                                  .tr);
+                        }
+                      });
+                    },
+              style: TextButton.styleFrom(
+                  textStyle: TextStyle(fontSize: 18, fontFamily: mainFontbold)),
+              child: Text(
+                "Send Order".tr,
+              ),
+            ),
           ),
         ),
       ),
