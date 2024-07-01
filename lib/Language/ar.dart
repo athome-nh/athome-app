@@ -164,6 +164,14 @@ const Map<String, String> ar = {
   "Guest Account": "",
   "Register": "تسجیل الدخول",
 
+  // Account --> reward
+  "Voucher Codes": "",
+  "STARBUCKS": "",
+  "OFF": "",
+  "VALUE": "",
+  "Point": "",
+  "Buy Now": "",
+
   // Account --> voucher_code
   "Vouchers": "",
   "Active": "",

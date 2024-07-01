@@ -154,7 +154,7 @@ const Map<String, String> en = {
   "Orders": "Orders",
   "Locations": "Locations", // locationdeatil,  location
   "Invite a friend": "Invite a friend",
-  "Coin & Reward": "Coin & Reward",
+  "Coin & Reward": "Coin & Reward", // reward
   "My Voucher": "My Voucher",
   "General": "General",
   "Terms & Conditions": "Terms & Conditions",
@@ -163,6 +163,14 @@ const Map<String, String> en = {
   "Logout": "Log out",
   "Guest Account": "Guest Account",
   "Register": "Register",
+
+  // Account --> reward
+  "Voucher Codes": "Voucher Codes",
+  "STARBUCKS": "STARBUCKS",
+  "OFF": "OFF",
+  "VALUE": "VALUE",
+  "Point": "Point",
+  "Buy Now": "Buy Now",
 
   // Account --> voucher_code
   "Vouchers": "Vouchers",
