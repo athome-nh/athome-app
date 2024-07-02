@@ -280,11 +280,13 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
+  // Network --> Network 
+  "An error occurred, Please try again later.": "An error occurred, Please try again later.",
+
   
   
 
-  "An error occurred, Please try again later.":
-      "An error occurred, Please try again later.",
+  
   "New update is available": "New update is available",
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",

@@ -278,6 +278,9 @@ const Map<String, String> ar = {
   "try again": "يرجى المحاولة مرة أخرى",
   "Failed to load data": "فشلت عملية تحميل البيانات",
 
+  // Network --> Network 
+  "An error occurred, Please try again later.": "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
+
   
   
 
@@ -463,8 +466,6 @@ const Map<String, String> ar = {
   "No, Cancel order": "نرجو إلغاء الطلب",
   //
   
-  "An error occurred, Please try again later.":
-      "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
   "New update is available": "يوجد تحديث للتطبيق",
   "A newer version of dlly las application is available, please download the latest version .":
       "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",

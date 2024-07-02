@@ -278,6 +278,9 @@ const Map<String, String> kur = {
   "try again": "دوبارە هەوڵ بدەوە",
   "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی زانیاریەکان",
 
+  // Network --> Network 
+  "An error occurred, Please try again later.": "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
+
 
 
   "the code is un correct": "کۆدەکە هەڵەیە",
@@ -457,8 +460,7 @@ const Map<String, String> kur = {
   "No, Cancel order": "داواکاری هەڵبوەشێنەرەوە",
   //
   
-  "An error occurred, Please try again later.":
-      "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
+  
   "New update is available": "ئەپدەیتێکی نوێ بەردەستە",
   "A newer version of dlly las application is available, please download the latest version .":
       "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
