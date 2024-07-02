@@ -328,243 +328,239 @@ Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
   return SizedBox(
-    height: getHeight(context, 30),
+    height: getHeight(context, 24),
     //  decoration: BoxDecoration(border: Border.all()),
     child: Visibility(
       visible: productrovider.show,
       replacement: listItemsShimer(context),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: getWidth(context, 2.5)),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: data.length,
-          itemBuilder: (BuildContext context, int index) {
-            final product = data[index];
-            final isItemInCart = cartProvider.itemExistsInCart(product);
-            final isFavInCart = cartProvider.FavExistsInCart(product);
-            int count = cartProvider
-                .calculateQuantityForProduct(int.parse(product.id.toString()));
-
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
-              child: Container(
-                width: getWidth(context, 45),
-                height: getWidth(context, 28),
-                decoration: BoxDecoration(
-                    border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                    // color: mainColorLightGrey,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Stack(
-                  alignment:
-                      lang == "en" ? Alignment.topLeft : Alignment.topRight,
-                  children: [
-                    Stack(
-                      alignment: lang == "en"
-                          ? Alignment.bottomLeft
-                          : Alignment.bottomRight,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: data.length,
+        itemBuilder: (BuildContext context, int index) {
+          final product = data[index];
+          final isItemInCart = cartProvider.itemExistsInCart(product);
+          final isFavInCart = cartProvider.FavExistsInCart(product);
+          int count = cartProvider
+              .calculateQuantityForProduct(int.parse(product.id.toString()));
+          final randomColor = categoryColors[index % categoryColors.length];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: getWidth(context, 36),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.grey.shade200,
+                boxShadow: [
+                  BoxShadow(
+                      color: mainColorBlack.withOpacity(0.1),
+                      blurRadius: 5,
+                      spreadRadius: 0,
+                      offset: Offset(0, 1))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: getHeight(context, 14),
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Stack(
                       children: [
                         Center(
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      productrovider.setidItem(product.id!);
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const Oneitem()),
-                                      );
-                                    },
-                                    child: CachedNetworkImage(
-                                      imageUrl: dotenv.env['imageUrlServer']! +
-                                          product.coverImg,
-                                      placeholder: (context, url) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      filterQuality: FilterQuality.low,
-                                      width: getWidth(context, 30),
-                                      height: getWidth(context, 30),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    lang == "en"
-                                        ? product.nameEn.toString()
-                                        : lang == "ar"
-                                            ? product.nameAr.toString()
-                                            : product.nameKu.toString(),
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        color: mainColorBlack,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 14),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Text(
-                                    lang == "en"
-                                        ? product.contentsEn.toString()
-                                        : lang == "ar"
-                                            ? product.contentsAr.toString()
-                                            : product.contentsKu.toString(),
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        color: mainColorGrey.withOpacity(0.5),
-                                        fontFamily: mainFontbold,
-                                        fontSize: 11),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        addCommasToPrice(product.price2! > -1
-                                            ? product.price2!
-                                            : product.price!),
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            decoration: checkOferPrice(product)
-                                                ? TextDecoration.lineThrough
-                                                : TextDecoration.none,
-                                            color: checkOferPrice(product)
-                                                ? mainColorRed
-                                                : Colors.green,
-                                            fontFamily: checkOferPrice(product)
-                                                ? mainFontnormal
-                                                : mainFontbold,
-                                            fontSize: 14),
-                                      ),
-                                      checkOferPrice(product)
-                                          ? const Text("/")
-                                          : const SizedBox(),
-                                      checkOferPrice(product)
-                                          ? Text(
-                                              addCommasToPrice(
-                                                  product.offerPrice!),
-                                              maxLines: 1,
-                                              style: TextStyle(
-                                                  color: Colors.green,
-                                                  fontFamily: mainFontbold,
-                                                  fontSize: 14),
-                                            )
-                                          : const SizedBox(),
-                                    ],
-                                  ),
-                                ],
+                          child: GestureDetector(
+                            onTap: () {
+                              productrovider.setidItem(product.id!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Oneitem()),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: CachedNetworkImage(
+                                imageUrl: dotenv.env['imageUrlServer']! +
+                                    product.coverImg,
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
                               ),
-                            ],
+                            ),
                           ),
+                        ),
+                        checkOferPrice(product)
+                            ? Positioned(
+                                top: 0,
+                                child: Container(
+                                    width: getWidth(context, 10),
+                                    height: getWidth(context, 6),
+                                    decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: lang == "en"
+                                          ? const BorderRadius.only(
+                                              //  topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(5.0),
+                                              // bottomLeft: Radius.circular(0.0),
+                                              bottomRight: Radius.circular(5.0),
+                                            )
+                                          : const BorderRadius.only(
+                                              topLeft: Radius.circular(5.0),
+                                              bottomLeft: Radius.circular(5.0),
+                                            ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        calculatePercentageDiscount(
+                                            double.parse(product.price2 > -1
+                                                ? product.price2!.toString()
+                                                : product.price!.toString()),
+                                            double.parse(product.offerPrice!
+                                                .toString())),
+                                        style: TextStyle(
+                                            color: mainColorWhite,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 12),
+                                      ),
+                                    )),
+                              )
+                            : SizedBox(),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: mainColorWhite),
+                              child: IconButton(
+                                onPressed: () {
+                                  if (!isLogin) {
+                                    loiginPopup(context);
+                                    return;
+                                  }
+
+                                  final cartItem =
+                                      CartItem(product: product.id!);
+                                  cartProvider.addFavToCart(cartItem);
+                                },
+                                icon: isFavInCart
+                                    ? Icon(
+                                        LineIcons.heartAlt,
+                                        color: mainColorRed,
+                                        size: 20,
+                                      )
+                                    : Icon(
+                                        LineIcons.heart,
+                                        color: mainColorBlack,
+                                        size: 20,
+                                      ),
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          maxLines: 1,
+                          lang == "en"
+                              ? product.nameEn.toString()
+                              : lang == "ar"
+                                  ? product.nameAr.toString()
+                                  : product.nameKu.toString(),
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: mainColorBlack,
+                              fontFamily: mainFontbold),
+                        ),
+                        Text(
+                          maxLines: 1,
+                          lang == "en"
+                              ? product.contentsEn.toString()
+                              : lang == "ar"
+                                  ? product.contentsAr.toString()
+                                  : product.contentsKu.toString(),
+                          style: TextStyle(
+                              fontSize: 9,
+                              color: mainColorBlack.withOpacity(0.5),
+                              fontFamily: mainFontnormal),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                if (!isLogin) {
-                                  loiginPopup(context);
-                                  return;
-                                }
-                                final cartItem = CartItem(product: product.id!);
-                                cartProvider.addFavToCart(cartItem);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 6.0),
-                                child: isFavInCart
-                                    ? Icon(LineIcons.heartAlt,
-                                        color: mainColorRed,
-                                        size: getHeight(context, 3.5))
-                                    : Icon(LineIcons.heart,
-                                        color: mainColorBlack,
-                                        size: getHeight(context, 3.5)),
-                              ),
-                            ),
-                            // isItemInCart
-                            //     ? // button
-                            Padding(
-                              padding: EdgeInsets.all(6),
-                              child: AnimatedContainer(
-                                padding: EdgeInsets.all(4),
-                                width: isItemInCart ? 110 : 30,
-                                height: isItemInCart ? 30 : 30,
-                                duration: Duration(milliseconds: 600),
-                                decoration: BoxDecoration(
-                                    color: mainColorGrey.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                        color: mainColorGrey.withOpacity(0.2))),
-                                child: isItemInCart
-                                    ? FlipInX(
-                                        delay:
-                                            const Duration(milliseconds: 300),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                final cartItem = CartItem(
-                                                    product: product.id!);
-                                                cartProvider
-                                                    .removeFromCart(cartItem);
-                                              },
-                                              child: Icon(Icons.remove,
-                                                  color: mainColorBlack,
-                                                  size:
-                                                      getHeight(context, 2.5)),
-                                            ),
-                                            Text(
-                                              count.toString(),
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: mainColorBlack,
-                                              ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: checkProductStock(
-                                                          product, count) ||
-                                                      checkProductLimit(
-                                                          product, count)
-                                                  ? null
-                                                  : () {
-                                                      final cartItem = CartItem(
-                                                          product: product.id!);
-                                                      cartProvider
-                                                          .addToCart(cartItem);
-                                                    },
-                                              child: Icon(LineIcons.plus,
-                                                  color: checkProductStock(
-                                                              product, count) ||
-                                                          checkProductLimit(
-                                                              product, count)
-                                                      ? mainColorGrey
-                                                          .withOpacity(0.5)
-                                                      : mainColorBlack,
-                                                  size:
-                                                      getHeight(context, 2.5)),
-                                            ),
-                                          ],
-                                        ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  checkOferPrice(product)
+                                      ? (product.price2! > -1
+                                              ? product.price2!
+                                              : product.price!)
+                                          .toString()
+                                      : addCommasToPrice(product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!),
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      decoration: checkOferPrice(product)
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.none,
+                                      color: checkOferPrice(product)
+                                          ? mainColorRed
+                                          : Colors.green,
+                                      fontFamily: checkOferPrice(product)
+                                          ? mainFontnormal
+                                          : mainFontbold,
+                                      fontSize:
+                                          checkOferPrice(product) ? 10 : 14),
+                                ),
+                                checkOferPrice(product)
+                                    ? const Text(
+                                        "/",
+                                        style: TextStyle(fontSize: 8),
                                       )
-                                    : GestureDetector(
-                                        onTap: () {
+                                    : const SizedBox(),
+                                checkOferPrice(product)
+                                    ? Text(
+                                        addCommasToPrice(product.offerPrice!),
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: mainFontbold,
+                                            fontSize: 11),
+                                      )
+                                    : const SizedBox(),
+                              ],
+                            ),
+                            isItemInCart
+                                ? Badge(
+                                    label: Text(
+                                      count.toString(),
+                                    ),
+                                    textStyle: TextStyle(fontSize: 12),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          color: mainColorGrey,
+                                          borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(15),
+                                              topLeft: Radius.circular(15))),
+                                      child: IconButton(
+                                        onPressed: () {
                                           if (!isLogin) {
                                             loiginPopup(context);
                                             return;
@@ -573,58 +569,49 @@ Widget listItemsSmall(BuildContext context, var data) {
                                               CartItem(product: product.id!);
                                           cartProvider.addToCart(cartItem);
                                         },
-                                        child: Icon(LineIcons.plus,
-                                            color: mainColorBlack,
-                                            size: getHeight(context, 2)),
+                                        icon: Icon(
+                                          Icons.add,
+                                          color: mainColorWhite,
+                                          size: 15,
+                                        ),
                                       ),
-                              ),
-                            )
+                                    ),
+                                  )
+                                : Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                        color: mainColorGrey,
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(15),
+                                            topLeft: Radius.circular(15))),
+                                    child: IconButton(
+                                      onPressed: () {
+                                        if (!isLogin) {
+                                          loiginPopup(context);
+                                          return;
+                                        }
+                                        final cartItem =
+                                            CartItem(product: product.id!);
+                                        cartProvider.addToCart(cartItem);
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: mainColorWhite,
+                                        size: 15,
+                                      ),
+                                    ),
+                                  ),
                           ],
                         ),
                       ],
                     ),
-                    checkOferPrice(product)
-                        ? Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Container(
-                                width: getWidth(context, 10),
-                                height: getWidth(context, 6),
-                                decoration: BoxDecoration(
-                                  borderRadius: lang == "en"
-                                      ? const BorderRadius.only(
-                                          //  topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(5.0),
-                                          // bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(5.0),
-                                        )
-                                      : const BorderRadius.only(
-                                          topLeft: Radius.circular(5.0),
-                                          bottomLeft: Radius.circular(5.0),
-                                        ),
-                                  color: mainColorRed,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    calculatePercentageDiscount(
-                                        double.parse(product.price2 > -1
-                                            ? product.price2!.toString()
-                                            : product.price!.toString()),
-                                        double.parse(
-                                            product.offerPrice!.toString())),
-                                    style: TextStyle(
-                                        color: mainColorWhite,
-                                        fontFamily: mainFontnormal,
-                                        fontSize: 12),
-                                  ),
-                                )),
-                          )
-                        : const SizedBox(),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     ),
   );
@@ -643,7 +630,7 @@ Widget listItemsShow(BuildContext context, var data) {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          childAspectRatio: getWidth(context, 0.19),
+          childAspectRatio: getWidth(context, 0.23),
         ),
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
@@ -652,226 +639,251 @@ Widget listItemsShow(BuildContext context, var data) {
           final isFavInCart = cartProvider.FavExistsInCart(product);
           int count = cartProvider
               .calculateQuantityForProduct(int.parse(product.id.toString()));
+          final randomColor = categoryColors[index % categoryColors.length];
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
+            padding: const EdgeInsets.all(8.0),
             child: Container(
-              width: getWidth(context, 45),
-              height: getHeight(context, 27),
+              width: getWidth(context, 36),
               decoration: BoxDecoration(
-                  border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                  // color: mainColorLightGrey,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Stack(
-                alignment:
-                    lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.grey.shade200,
+                boxShadow: [
+                  BoxShadow(
+                      color: mainColorBlack.withOpacity(0.1),
+                      blurRadius: 5,
+                      spreadRadius: 0,
+                      offset: Offset(0, 1))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Stack(
-                    alignment: lang == "en"
-                        ? Alignment.bottomLeft
-                        : Alignment.bottomRight,
-                    children: [
-                      Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    productrovider.setidItem(product.id!);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Oneitem()),
-                                    );
-                                  },
-                                  child: Hero(
-                                    tag: product.coverImg,
-                                    child: CachedNetworkImage(
-                                      imageUrl: dotenv.env['imageUrlServer']! +
-                                          product.coverImg,
-                                      placeholder: (context, url) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      filterQuality: FilterQuality.low,
-                                      width: getWidth(context, 30),
-                                      height: getWidth(context, 30),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  lang == "en"
-                                      ? product.nameEn.toString()
-                                      : lang == "ar"
-                                          ? product.nameAr.toString()
-                                          : product.nameKu.toString(),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                Text(
-                                  lang == "en"
-                                      ? product.contentsEn.toString()
-                                      : lang == "ar"
-                                          ? product.contentsAr.toString()
-                                          : product.contentsKu.toString(),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: mainColorGrey.withOpacity(0.5),
-                                      fontFamily: mainFontbold,
-                                      fontSize: 11),
-                                ),
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      addCommasToPrice(product.price2! > -1
-                                          ? product.price2!
-                                          : product.price!),
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                          decoration: checkOferPrice(product)
-                                              ? TextDecoration.lineThrough
-                                              : TextDecoration.none,
-                                          color: checkOferPrice(product)
-                                              ? mainColorRed
-                                              : Colors.green,
-                                          fontFamily: checkOferPrice(product)
-                                              ? mainFontnormal
-                                              : mainFontbold,
-                                          fontSize: 14),
-                                    ),
-                                    checkOferPrice(product)
-                                        ? const Text("/")
-                                        : const SizedBox(),
-                                    checkOferPrice(product)
-                                        ? Text(
-                                            addCommasToPrice(
-                                                product.offerPrice!),
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                color: Colors.green,
-                                                fontFamily: mainFontbold,
-                                                fontSize: 14),
-                                          )
-                                        : const SizedBox(),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
+                  Container(
+                    height: getHeight(context, 14),
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: GestureDetector(
                             onTap: () {
-                              if (!isLogin) {
-                                loiginPopup(context);
-                                return;
-                              }
-                              final cartItem = CartItem(product: product.id!);
-                              cartProvider.addFavToCart(cartItem);
+                              productrovider.setidItem(product.id!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Oneitem()),
+                              );
                             },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 6.0),
-                              child: isFavInCart
-                                  ? Icon(LineIcons.heartAlt,
-                                      color: mainColorRed,
-                                      size: getHeight(context, 3.5))
-                                  : Icon(LineIcons.heart,
-                                      color: mainColorBlack,
-                                      size: getHeight(context, 3.5)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: CachedNetworkImage(
+                                imageUrl: dotenv.env['imageUrlServer']! +
+                                    product.coverImg,
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
+                              ),
                             ),
                           ),
-                          // isItemInCart
-                          //     ? // button
-
-                          Padding(
-                            padding: EdgeInsets.all(4),
-                            child: AnimatedContainer(
-                              padding: EdgeInsets.all(4),
-                              width: isItemInCart ? 110 : 30,
-                              height: isItemInCart ? 30 : 30,
-                              duration: Duration(milliseconds: 600),
-                              decoration: BoxDecoration(
-                                  color: mainColorGrey.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                      color: mainColorGrey.withOpacity(0.2))),
-                              child: isItemInCart
-                                  ? FlipInX(
-                                      delay: const Duration(milliseconds: 300),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              final cartItem = CartItem(
-                                                  product: product.id!);
-                                              cartProvider
-                                                  .removeFromCart(cartItem);
-                                            },
-                                            child: Icon(Icons.remove,
-                                                color: mainColorBlack,
-                                                size: getHeight(context, 2.5)),
-                                          ),
-                                          Text(
-                                            count.toString(),
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: mainColorBlack,
+                        ),
+                        checkOferPrice(product)
+                            ? Positioned(
+                                top: 0,
+                                child: Container(
+                                    width: getWidth(context, 10),
+                                    height: getWidth(context, 6),
+                                    decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: lang == "en"
+                                          ? const BorderRadius.only(
+                                              //  topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(5.0),
+                                              // bottomLeft: Radius.circular(0.0),
+                                              bottomRight: Radius.circular(5.0),
+                                            )
+                                          : const BorderRadius.only(
+                                              topLeft: Radius.circular(5.0),
+                                              bottomLeft: Radius.circular(5.0),
                                             ),
-                                          ),
-                                          GestureDetector(
-                                            onTap: checkProductStock(
-                                                        product, count) ||
-                                                    checkProductLimit(
-                                                        product, count)
-                                                ? null
-                                                : () {
-                                                    final cartItem = CartItem(
-                                                        product: product.id!);
-                                                    cartProvider
-                                                        .addToCart(cartItem);
-                                                  },
-                                            child: Icon(LineIcons.plus,
-                                                color: checkProductStock(
-                                                            product, count) ||
-                                                        checkProductLimit(
-                                                            product, count)
-                                                    ? mainColorGrey
-                                                        .withOpacity(0.5)
-                                                    : mainColorBlack,
-                                                size: getHeight(context, 2.5)),
-                                          ),
-                                        ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        calculatePercentageDiscount(
+                                            double.parse(product.price2 > -1
+                                                ? product.price2!.toString()
+                                                : product.price!.toString()),
+                                            double.parse(product.offerPrice!
+                                                .toString())),
+                                        style: TextStyle(
+                                            color: mainColorWhite,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 12),
                                       ),
-                                    )
-                                  : GestureDetector(
-                                      onTap: () {
+                                    )),
+                              )
+                            : SizedBox(),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: mainColorWhite),
+                              child: IconButton(
+                                onPressed: () {
+                                  if (!isLogin) {
+                                    loiginPopup(context);
+                                    return;
+                                  }
+
+                                  final cartItem =
+                                      CartItem(product: product.id!);
+                                  cartProvider.addFavToCart(cartItem);
+                                },
+                                icon: isFavInCart
+                                    ? Icon(
+                                        LineIcons.heartAlt,
+                                        color: mainColorRed,
+                                        size: 20,
+                                      )
+                                    : Icon(
+                                        LineIcons.heart,
+                                        color: mainColorBlack,
+                                        size: 20,
+                                      ),
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          maxLines: 1,
+                          lang == "en"
+                              ? product.nameEn.toString()
+                              : lang == "ar"
+                                  ? product.nameAr.toString()
+                                  : product.nameKu.toString(),
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: mainColorBlack,
+                              fontFamily: mainFontbold),
+                        ),
+                        Text(
+                          maxLines: 1,
+                          lang == "en"
+                              ? product.contentsEn.toString()
+                              : lang == "ar"
+                                  ? product.contentsAr.toString()
+                                  : product.contentsKu.toString(),
+                          style: TextStyle(
+                              fontSize: 9,
+                              color: mainColorBlack.withOpacity(0.5),
+                              fontFamily: mainFontnormal),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  checkOferPrice(product)
+                                      ? (product.price2! > -1
+                                              ? product.price2!
+                                              : product.price!)
+                                          .toString()
+                                      : addCommasToPrice(product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!),
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      decoration: checkOferPrice(product)
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.none,
+                                      color: checkOferPrice(product)
+                                          ? mainColorRed
+                                          : Colors.green,
+                                      fontFamily: checkOferPrice(product)
+                                          ? mainFontnormal
+                                          : mainFontbold,
+                                      fontSize:
+                                          checkOferPrice(product) ? 10 : 14),
+                                ),
+                                checkOferPrice(product)
+                                    ? const Text(
+                                        "/",
+                                        style: TextStyle(fontSize: 8),
+                                      )
+                                    : const SizedBox(),
+                                checkOferPrice(product)
+                                    ? Text(
+                                        addCommasToPrice(product.offerPrice!),
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: mainFontbold,
+                                            fontSize: 11),
+                                      )
+                                    : const SizedBox(),
+                              ],
+                            ),
+                            isItemInCart
+                                ? Badge(
+                                    label: Text(
+                                      count.toString(),
+                                    ),
+                                    textStyle: TextStyle(fontSize: 12),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          color: mainColorGrey,
+                                          borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(15),
+                                              topLeft: Radius.circular(15))),
+                                      child: IconButton(
+                                        onPressed: () {
+                                          if (!isLogin) {
+                                            loiginPopup(context);
+                                            return;
+                                          }
+                                          final cartItem =
+                                              CartItem(product: product.id!);
+                                          cartProvider.addToCart(cartItem);
+                                        },
+                                        icon: Icon(
+                                          Icons.add,
+                                          color: mainColorWhite,
+                                          size: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                        color: mainColorGrey,
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(15),
+                                            topLeft: Radius.circular(15))),
+                                    child: IconButton(
+                                      onPressed: () {
                                         if (!isLogin) {
                                           loiginPopup(context);
                                           return;
@@ -880,52 +892,18 @@ Widget listItemsShow(BuildContext context, var data) {
                                             CartItem(product: product.id!);
                                         cartProvider.addToCart(cartItem);
                                       },
-                                      child: Icon(LineIcons.plus,
-                                          color: mainColorBlack,
-                                          size: getHeight(context, 2)),
-                                    ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  checkOferPrice(product)
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Container(
-                              width: getWidth(context, 10),
-                              height: getWidth(context, 6),
-                              decoration: BoxDecoration(
-                                borderRadius: lang == "en"
-                                    ? const BorderRadius.only(
-                                        //  topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(5.0),
-                                        // bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(5.0),
-                                      )
-                                    : const BorderRadius.only(
-                                        topLeft: Radius.circular(5.0),
-                                        bottomLeft: Radius.circular(5.0),
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: mainColorWhite,
+                                        size: 15,
                                       ),
-                                color: mainColorRed,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  calculatePercentageDiscount(
-                                      double.parse(product.price2 > -1
-                                          ? product.price2!.toString()
-                                          : product.price!.toString()),
-                                      double.parse(
-                                          product.offerPrice!.toString())),
-                                  style: TextStyle(
-                                      color: mainColorWhite,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 12),
-                                ),
-                              )),
-                        )
-                      : const SizedBox(),
+                                    ),
+                                  ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -949,7 +927,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          childAspectRatio: getWidth(context, 0.20),
+          childAspectRatio: getWidth(context, 0.23),
         ),
 
         itemCount: data.length, // Number of items in the grid
@@ -959,225 +937,251 @@ Widget listItemsShowSearch(BuildContext context, var data) {
           final isFavInCart = cartProvider.FavExistsInCart(product);
           int count = cartProvider
               .calculateQuantityForProduct(int.parse(product.id.toString()));
+          final randomColor = categoryColors[index % categoryColors.length];
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
+            padding: const EdgeInsets.all(8.0),
             child: Container(
-              width: getWidth(context, 45),
-              height: getHeight(context, 27),
+              width: getWidth(context, 36),
               decoration: BoxDecoration(
-                  border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                  //  color: mainColorBlack,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Stack(
-                alignment:
-                    lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.grey.shade200,
+                boxShadow: [
+                  BoxShadow(
+                      color: mainColorBlack.withOpacity(0.1),
+                      blurRadius: 5,
+                      spreadRadius: 0,
+                      offset: Offset(0, 1))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Stack(
-                    alignment: lang == "en"
-                        ? Alignment.bottomLeft
-                        : Alignment.bottomRight,
-                    children: [
-                      Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    productrovider.setidItem(product.id!);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Oneitem()),
-                                    );
-                                  },
-                                  child: Hero(
-                                    tag: product.coverImg,
-                                    child: CachedNetworkImage(
-                                      imageUrl: dotenv.env['imageUrlServer']! +
-                                          product.coverImg,
-                                      placeholder: (context, url) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset(
-                                              "assets/images/Logo-Type-2.png"),
-                                      filterQuality: FilterQuality.low,
-                                      width: getWidth(context, 30),
-                                      height: getWidth(context, 30),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  lang == "en"
-                                      ? product.nameEn.toString()
-                                      : lang == "ar"
-                                          ? product.nameAr.toString()
-                                          : product.nameKu.toString(),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: mainColorBlack,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                Text(
-                                  lang == "en"
-                                      ? product.contentsEn.toString()
-                                      : lang == "ar"
-                                          ? product.contentsAr.toString()
-                                          : product.contentsKu.toString(),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: mainColorGrey.withOpacity(0.5),
-                                      fontFamily: mainFontbold,
-                                      fontSize: 11),
-                                ),
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      addCommasToPrice(product.price2! > -1
-                                          ? product.price2!
-                                          : product.price!),
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                          decoration: checkOferPrice(product)
-                                              ? TextDecoration.lineThrough
-                                              : TextDecoration.none,
-                                          color: checkOferPrice(product)
-                                              ? mainColorRed
-                                              : Colors.green,
-                                          fontFamily: checkOferPrice(product)
-                                              ? mainFontnormal
-                                              : mainFontbold,
-                                          fontSize: 14),
-                                    ),
-                                    checkOferPrice(product)
-                                        ? const Text("/")
-                                        : const SizedBox(),
-                                    checkOferPrice(product)
-                                        ? Text(
-                                            addCommasToPrice(
-                                                product.offerPrice!),
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                color: Colors.green,
-                                                fontFamily: mainFontbold,
-                                                fontSize: 14),
-                                          )
-                                        : const SizedBox(),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
+                  Container(
+                    height: getHeight(context, 14),
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: GestureDetector(
                             onTap: () {
-                              if (!isLogin) {
-                                loiginPopup(context);
-                                return;
-                              }
-                              final cartItem = CartItem(product: product.id!);
-                              cartProvider.addFavToCart(cartItem);
+                              productrovider.setidItem(product.id!);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Oneitem()),
+                              );
                             },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 6.0),
-                              child: isFavInCart
-                                  ? Icon(LineIcons.heartAlt,
-                                      color: mainColorRed,
-                                      size: getHeight(context, 3.5))
-                                  : Icon(LineIcons.heart,
-                                      color: mainColorBlack,
-                                      size: getHeight(context, 3.5)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: CachedNetworkImage(
+                                imageUrl: dotenv.env['imageUrlServer']! +
+                                    product.coverImg,
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
+                              ),
                             ),
                           ),
-                          // isItemInCart
-                          //     ? // button
-                          Padding(
-                            padding: EdgeInsets.all(6),
-                            child: AnimatedContainer(
-                              padding: EdgeInsets.all(4),
-                              width: isItemInCart ? 110 : 30,
-                              height: isItemInCart ? 30 : 30,
-                              duration: Duration(milliseconds: 600),
-                              decoration: BoxDecoration(
-                                  color: mainColorGrey.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                      color: mainColorGrey.withOpacity(0.2))),
-                              child: isItemInCart
-                                  ? FlipInX(
-                                      delay: const Duration(milliseconds: 300),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              final cartItem = CartItem(
-                                                  product: product.id!);
-                                              cartProvider
-                                                  .removeFromCart(cartItem);
-                                            },
-                                            child: Icon(Icons.remove,
-                                                color: mainColorBlack,
-                                                size: getHeight(context, 2.5)),
-                                          ),
-                                          Text(
-                                            count.toString(),
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: mainColorBlack,
+                        ),
+                        checkOferPrice(product)
+                            ? Positioned(
+                                top: 0,
+                                child: Container(
+                                    width: getWidth(context, 10),
+                                    height: getWidth(context, 6),
+                                    decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: lang == "en"
+                                          ? const BorderRadius.only(
+                                              //  topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(5.0),
+                                              // bottomLeft: Radius.circular(0.0),
+                                              bottomRight: Radius.circular(5.0),
+                                            )
+                                          : const BorderRadius.only(
+                                              topLeft: Radius.circular(5.0),
+                                              bottomLeft: Radius.circular(5.0),
                                             ),
-                                          ),
-                                          GestureDetector(
-                                            onTap: checkProductStock(
-                                                        product, count) ||
-                                                    checkProductLimit(
-                                                        product, count)
-                                                ? null
-                                                : () {
-                                                    final cartItem = CartItem(
-                                                        product: product.id!);
-                                                    cartProvider
-                                                        .addToCart(cartItem);
-                                                  },
-                                            child: Icon(LineIcons.plus,
-                                                color: checkProductStock(
-                                                            product, count) ||
-                                                        checkProductLimit(
-                                                            product, count)
-                                                    ? mainColorGrey
-                                                        .withOpacity(0.5)
-                                                    : mainColorBlack,
-                                                size: getHeight(context, 2.5)),
-                                          ),
-                                        ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        calculatePercentageDiscount(
+                                            double.parse(product.price2 > -1
+                                                ? product.price2!.toString()
+                                                : product.price!.toString()),
+                                            double.parse(product.offerPrice!
+                                                .toString())),
+                                        style: TextStyle(
+                                            color: mainColorWhite,
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 12),
                                       ),
-                                    )
-                                  : GestureDetector(
-                                      onTap: () {
+                                    )),
+                              )
+                            : SizedBox(),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: mainColorWhite),
+                              child: IconButton(
+                                onPressed: () {
+                                  if (!isLogin) {
+                                    loiginPopup(context);
+                                    return;
+                                  }
+
+                                  final cartItem =
+                                      CartItem(product: product.id!);
+                                  cartProvider.addFavToCart(cartItem);
+                                },
+                                icon: isFavInCart
+                                    ? Icon(
+                                        LineIcons.heartAlt,
+                                        color: mainColorRed,
+                                        size: 20,
+                                      )
+                                    : Icon(
+                                        LineIcons.heart,
+                                        color: mainColorBlack,
+                                        size: 20,
+                                      ),
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          maxLines: 1,
+                          lang == "en"
+                              ? product.nameEn.toString()
+                              : lang == "ar"
+                                  ? product.nameAr.toString()
+                                  : product.nameKu.toString(),
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: mainColorBlack,
+                              fontFamily: mainFontbold),
+                        ),
+                        Text(
+                          maxLines: 1,
+                          lang == "en"
+                              ? product.contentsEn.toString()
+                              : lang == "ar"
+                                  ? product.contentsAr.toString()
+                                  : product.contentsKu.toString(),
+                          style: TextStyle(
+                              fontSize: 9,
+                              color: mainColorBlack.withOpacity(0.5),
+                              fontFamily: mainFontnormal),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  checkOferPrice(product)
+                                      ? (product.price2! > -1
+                                              ? product.price2!
+                                              : product.price!)
+                                          .toString()
+                                      : addCommasToPrice(product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!),
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      decoration: checkOferPrice(product)
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.none,
+                                      color: checkOferPrice(product)
+                                          ? mainColorRed
+                                          : Colors.green,
+                                      fontFamily: checkOferPrice(product)
+                                          ? mainFontnormal
+                                          : mainFontbold,
+                                      fontSize:
+                                          checkOferPrice(product) ? 10 : 14),
+                                ),
+                                checkOferPrice(product)
+                                    ? const Text(
+                                        "/",
+                                        style: TextStyle(fontSize: 8),
+                                      )
+                                    : const SizedBox(),
+                                checkOferPrice(product)
+                                    ? Text(
+                                        addCommasToPrice(product.offerPrice!),
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: mainFontbold,
+                                            fontSize: 11),
+                                      )
+                                    : const SizedBox(),
+                              ],
+                            ),
+                            isItemInCart
+                                ? Badge(
+                                    label: Text(
+                                      count.toString(),
+                                    ),
+                                    textStyle: TextStyle(fontSize: 12),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          color: mainColorGrey,
+                                          borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(15),
+                                              topLeft: Radius.circular(15))),
+                                      child: IconButton(
+                                        onPressed: () {
+                                          if (!isLogin) {
+                                            loiginPopup(context);
+                                            return;
+                                          }
+                                          final cartItem =
+                                              CartItem(product: product.id!);
+                                          cartProvider.addToCart(cartItem);
+                                        },
+                                        icon: Icon(
+                                          Icons.add,
+                                          color: mainColorWhite,
+                                          size: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                        color: mainColorGrey,
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(15),
+                                            topLeft: Radius.circular(15))),
+                                    child: IconButton(
+                                      onPressed: () {
                                         if (!isLogin) {
                                           loiginPopup(context);
                                           return;
@@ -1186,52 +1190,18 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                             CartItem(product: product.id!);
                                         cartProvider.addToCart(cartItem);
                                       },
-                                      child: Icon(LineIcons.plus,
-                                          color: mainColorBlack,
-                                          size: getHeight(context, 2)),
-                                    ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  checkOferPrice(product)
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Container(
-                              width: getWidth(context, 10),
-                              height: getWidth(context, 6),
-                              decoration: BoxDecoration(
-                                borderRadius: lang == "en"
-                                    ? const BorderRadius.only(
-                                        //  topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(5.0),
-                                        // bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(5.0),
-                                      )
-                                    : const BorderRadius.only(
-                                        topLeft: Radius.circular(5.0),
-                                        bottomLeft: Radius.circular(5.0),
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: mainColorWhite,
+                                        size: 15,
                                       ),
-                                color: mainColorRed,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  calculatePercentageDiscount(
-                                      double.parse(product.price2 > -1
-                                          ? product.price2!.toString()
-                                          : product.price!.toString()),
-                                      double.parse(
-                                          product.offerPrice!.toString())),
-                                  style: TextStyle(
-                                      color: mainColorWhite,
-                                      fontFamily: mainFontnormal,
-                                      fontSize: 12),
-                                ),
-                              )),
-                        )
-                      : const SizedBox(),
+                                    ),
+                                  ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

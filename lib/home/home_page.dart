@@ -10,7 +10,6 @@ import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/slideshow.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/Network/Network.dart';
-import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
@@ -675,14 +674,10 @@ class _HomeSreenState extends State<HomeSreen> {
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: SafeArea(
               child: Scaffold(
-                  body:
-                      // body
-                      SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ListTile(
+                  appBar: AppBar(
+                    title: ListTile(
                       contentPadding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 4)),
+                          horizontal: getWidth(context, 1)),
                       title: Text(
                         "Wellcome to".tr,
                         style:
@@ -725,282 +720,308 @@ class _HomeSreenState extends State<HomeSreen> {
                           ),
                         ),
                       ),
-                      trailing: IconButton(
+                    ),
+                    actions: [
+                      IconButton(
                         icon: Icon(
-                          Icons.notifications_none_outlined,
+                          Icons.search,
                           color: mainColorGrey,
                           size: 30,
                         ),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => NotificationPage()),
+                            MaterialPageRoute(builder: (context) => Search()),
                           );
                         },
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Search()),
-                        );
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(context, 4)),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                  color: mainColorBlack.withOpacity(0.1))),
-                          height: 50,
-                          child: Row(
-                            children: [
-                              Icon(
-                                Ionicons.search_outline,
-                                color: mainColorBlack,
-                                size: 22,
-                              ),
-                              SizedBox(
-                                width: getWidth(context, 1),
-                              ),
-                              Text(
-                                "Search".tr,
-                                style: TextStyle(
-                                    fontFamily: mainFontnormal,
-                                    color: mainColorBlack.withOpacity(0.8),
-                                    fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // Space
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Carousel(productrovider)),
-
-                    // Categories
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ],
+                  ),
+                  body:
+                      // body
+                      SingleChildScrollView(
+                    child: Column(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Text(
-                            "Categories".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontSize: 16,
-                                fontFamily: mainFontbold),
-                          ),
+                        // Space
+
+                        Carousel(productrovider),
+                        SizedBox(
+                          height: 10,
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: TextButton(
-                            onPressed: () {
-                              !productrovider.show
-                                  ? const SizedBox()
-                                  : Navigator.push(
+                        // Categories
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 1)),
+                              child: Text(
+                                "Categories".tr,
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontSize: 16,
+                                    fontFamily: mainFontbold),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 1)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  !productrovider.show
+                                      ? const SizedBox()
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const Categories()),
+                                        );
+                                },
+                                child: Text(
+                                  "View All".tr,
+                                  style: TextStyle(color: mainColorRed),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // Shimmer Effect
+                        SizedBox(
+                          height: getHeight(context, 14),
+                          child: Visibility(
+                            visible: productrovider.show,
+                            replacement: Skeletonizer(
+                              effect: ShimmerEffect.raw(colors: [
+                                mainColorGrey.withOpacity(0.1),
+                                mainColorWhite,
+                                //   mainColorRed.withOpacity(0.1),
+                              ]),
+                              enabled: true,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 10,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: getWidth(context, 1)),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Container(
+                                          width: getHeight(context, 8),
+                                          height: getHeight(context, 8),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: mainColorBlack
+                                                      .withOpacity(0.1)),
+                                              borderRadius:
+                                                  BorderRadius.circular(100)),
+                                          child: Center(
+                                              child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                            child: CachedNetworkImage(
+                                              imageUrl:
+                                                  "https://www.dllylas.com/assets/img/logo/logo.png",
+                                              placeholder: (context, url) =>
+                                                  Image.asset(
+                                                      "assets/images/home.png"),
+                                              errorWidget: (context, url,
+                                                      error) =>
+                                                  Image.asset(
+                                                      "assets/images/home.png"),
+                                              fit: BoxFit.fill,
+                                              width: getHeight(context, 5),
+                                              height: getHeight(context, 5),
+                                            ),
+                                          )),
+                                        ),
+                                        SizedBox(
+                                          height: getHeight(context, 1),
+                                        ),
+                                        Text(
+                                          "cateItem",
+                                          style: TextStyle(
+                                              color: mainColorGrey,
+                                              fontFamily: mainFontnormal,
+                                              fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: productrovider.categores.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final randomColor = categoryColors[
+                                    index % categoryColors.length];
+                                final cateItem =
+                                    productrovider.categores[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    productrovider.setcatetype(cateItem.id!);
+                                    Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const Categories()),
-                                    );
-                            },
-                            style: TextButton.styleFrom(
-                                foregroundColor: mainColorRed,
-                                backgroundColor: Colors.transparent),
-                            child: Text(
-                              "View All".tr,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    // Shimmer Effect
-                    SizedBox(
-                      height: getHeight(context, 14),
-                      child: Visibility(
-                        visible: productrovider.show,
-                        replacement: Skeletonizer(
-                          effect: ShimmerEffect.raw(colors: [
-                            mainColorGrey.withOpacity(0.1),
-                            mainColorWhite,
-                            //   mainColorRed.withOpacity(0.1),
-                          ]),
-                          enabled: true,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 10,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: getWidth(context, 4)),
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      width: getHeight(context, 8),
-                                      height: getHeight(context, 8),
+                                              itemCategories()),
+                                    ).then((value) {
+                                      productrovider.setsubcateSelect(0);
+                                    });
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      width: getHeight(context, 12),
+                                      height: getHeight(context, 12),
                                       decoration: BoxDecoration(
                                           border: Border.all(
                                               color: mainColorBlack
-                                                  .withOpacity(0.1)),
+                                                  .withOpacity(0.2)),
+                                          color: randomColor,
                                           borderRadius:
-                                              BorderRadius.circular(100)),
-                                      child: Center(
-                                          child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              "https://www.dllylas.com/assets/img/logo/logo.png",
-                                          placeholder: (context, url) =>
-                                              Image.asset(
-                                                  "assets/images/home.png"),
-                                          errorWidget: (context, url, error) =>
-                                              Image.asset(
-                                                  "assets/images/home.png"),
-                                          fit: BoxFit.fill,
-                                          width: getHeight(context, 5),
-                                          height: getHeight(context, 5),
-                                        ),
-                                      )),
+                                              BorderRadius.circular(15)),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl:
+                                                dotenv.env['imageUrlServer']! +
+                                                    cateItem.img!,
+                                            placeholder: (context, url) =>
+                                                Image.asset(
+                                                    "assets/images/Logo-Type-2.png"),
+                                            errorWidget: (context, url,
+                                                    error) =>
+                                                Image.asset(
+                                                    "assets/images/Logo-Type-2.png"),
+                                            filterQuality: FilterQuality.low,
+                                            width: getHeight(context, 8),
+                                            height: getHeight(context, 8),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            lang == "en"
+                                                ? cateItem.nameEn!
+                                                : lang == "ar"
+                                                    ? cateItem.nameAr!
+                                                    : cateItem.nameKu!,
+                                            maxLines: 1,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 13),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    SizedBox(
-                                      height: getHeight(context, 1),
-                                    ),
-                                    Text(
-                                      "cateItem",
-                                      style: TextStyle(
-                                          color: mainColorGrey,
-                                          fontFamily: mainFontnormal,
-                                          fontSize: 14),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: productrovider.categores.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            final randomColor =
-                                categoryColors[index % categoryColors.length];
-                            final cateItem = productrovider.categores[index];
-                            return GestureDetector(
-                              onTap: () {
-                                productrovider.setcatetype(cateItem.id!);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => itemCategories()),
-                                ).then((value) {
-                                  productrovider.setsubcateSelect(0);
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  width: getHeight(context, 12),
-                                  height: getHeight(context, 12),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color:
-                                              mainColorBlack.withOpacity(0.2)),
-                                      color: randomColor,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+
+                        productrovider.Orderitems.isNotEmpty &&
+                                productrovider
+                                    .getProductsByIds2(
+                                      productrovider.listOrderProductIds(),
+                                    )
+                                    .isNotEmpty
+                            ? Column(
+                                children: [
+                                  // Recent Order
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      CachedNetworkImage(
-                                        imageUrl:
-                                            dotenv.env['imageUrlServer']! +
-                                                cateItem.img!,
-                                        placeholder: (context, url) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        errorWidget: (context, url, error) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        filterQuality: FilterQuality.low,
-                                        width: getHeight(context, 8),
-                                        height: getHeight(context, 8),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 1)),
+                                        child: Text(
+                                          "Recent Order".tr,
+                                          style: TextStyle(
+                                              color: mainColorBlack,
+                                              fontSize: 16,
+                                              fontFamily: mainFontbold),
+                                        ),
                                       ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        lang == "en"
-                                            ? cateItem.nameEn!
-                                            : lang == "ar"
-                                                ? cateItem.nameAr!
-                                                : cateItem.nameKu!,
-                                        maxLines: 1,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: mainColorBlack,
-                                            fontFamily: mainFontnormal,
-                                            fontSize: 13),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 1)),
+                                        child: Row(
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                if (productrovider.show) {
+                                                  productrovider
+                                                      .settype("orders");
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const AllItem()),
+                                                  );
+                                                }
+                                              },
+                                              child: Text(
+                                                "View All".tr,
+                                                style: TextStyle(
+                                                    color: mainColorRed),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
 
-                    productrovider.Orderitems.isNotEmpty &&
-                            productrovider
-                                .getProductsByIds2(
-                                  productrovider.listOrderProductIds(),
-                                )
-                                .isNotEmpty
-                        ? Column(
-                            children: [
-                              // Recent Order
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Text(
-                                      "Recent Order".tr,
-                                      style: TextStyle(
-                                          color: mainColorBlack,
-                                          fontSize: 16,
-                                          fontFamily: mainFontbold),
+                                  listItemsSmall(
+                                    context,
+                                    productrovider.getProductsByIds2(
+                                      productrovider.listOrderProductIds(),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Row(
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
+                                ],
+                              )
+                            : const SizedBox(),
+
+                        productrovider.getProductsByDiscount().isNotEmpty
+                            ? Column(
+                                children: [
+                                  // Discount
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 1)),
+                                        child: Text(
+                                          "Discount".tr,
+                                          style: TextStyle(
+                                              color: mainColorBlack,
+                                              fontSize: 16,
+                                              fontFamily: mainFontbold),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: getWidth(context, 1)),
+                                        child: GestureDetector(
+                                          onTap: () {
                                             if (productrovider.show) {
-                                              productrovider.settype("orders");
+                                              productrovider
+                                                  .settype("discount");
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
@@ -1009,165 +1030,50 @@ class _HomeSreenState extends State<HomeSreen> {
                                               );
                                             }
                                           },
-                                          style: TextButton.styleFrom(
-                                              foregroundColor: mainColorRed,
-                                              backgroundColor:
-                                                  Colors.transparent),
-                                          child: Text(
-                                            "View All".tr,
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "View All".tr,
+                                                style: TextStyle(
+                                                    color: mainColorRed),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-                              listItemsSmall(
-                                context,
-                                productrovider.getProductsByIds2(
-                                  productrovider.listOrderProductIds(),
-                                ),
-                              ),
-                            ],
-                          )
-                        : const SizedBox(),
-
-                    productrovider.getProductsByDiscount().isNotEmpty
-                        ? Column(
-                            children: [
-                              // Discount
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: Text(
-                                      "Discount".tr,
-                                      style: TextStyle(
-                                          color: mainColorBlack,
-                                          fontSize: 16,
-                                          fontFamily: mainFontbold),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 4)),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        if (productrovider.show) {
-                                          productrovider.settype("discount");
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const AllItem()),
-                                          );
-                                        }
-                                      },
-                                      style: TextButton.styleFrom(
-                                          foregroundColor: mainColorRed,
-                                          backgroundColor: Colors.transparent),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            "View All".tr,
-                                          ),
-                                        ],
                                       ),
-                                    ),
+                                    ],
+                                  ),
+
+                                  listItemsSmall(
+                                    context,
+                                    productrovider.getProductsByDiscount(),
                                   ),
                                 ],
-                              ),
+                              )
+                            : const SizedBox(),
 
-                              listItemsSmall(
-                                context,
-                                productrovider.getProductsByDiscount(),
+                        // Highlight
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 1)),
+                              child: Text(
+                                "Highlight".tr,
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontSize: 16,
+                                    fontFamily: mainFontbold),
                               ),
-                            ],
-                          )
-                        : const SizedBox(),
-
-                    // Highlight
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Text(
-                            "Highlight".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontSize: 16,
-                                fontFamily: mainFontbold),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: TextButton(
-                            onPressed: () {
-                              if (productrovider.show) {
-                                productrovider.settype("Highlight");
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const AllItem()),
-                                );
-                              }
-                            },
-                            style: TextButton.styleFrom(
-                                foregroundColor: mainColorRed,
-                                backgroundColor: Colors.transparent),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "View All".tr,
-                                ),
-                              ],
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    listItemsSmall(
-                      context,
-                      productrovider.getProductsByHighlight(),
-                    ),
-
-                    // Space
-                    SizedBox(
-                      height: getHeight(context, 1),
-                    ),
-
-                    // Best Seller
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Text(
-                            "Best Sell".tr,
-                            style: TextStyle(
-                                color: mainColorBlack,
-                                fontSize: 16,
-                                fontFamily: mainFontbold),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: getWidth(context, 4)),
-                          child: Row(
-                            children: [
-                              TextButton(
-                                onPressed: () {
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 1)),
+                              child: GestureDetector(
+                                onTap: () {
                                   if (productrovider.show) {
-                                    productrovider.settype("best");
+                                    productrovider.settype("Highlight");
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -1176,33 +1082,83 @@ class _HomeSreenState extends State<HomeSreen> {
                                     );
                                   }
                                 },
-                                style: TextButton.styleFrom(
-                                    foregroundColor: mainColorRed,
-                                    backgroundColor: Colors.transparent),
                                 child: Row(
                                   children: [
                                     Text(
                                       "View All".tr,
+                                      style: TextStyle(color: mainColorRed),
                                     ),
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
+
+                        listItemsSmall(
+                          context,
+                          productrovider.getProductsByHighlight(),
+                        ),
+
+                        // Space
+
+                        // Best Seller
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 1)),
+                              child: Text(
+                                "Best Sell".tr,
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontSize: 16,
+                                    fontFamily: mainFontbold),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getWidth(context, 1)),
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (productrovider.show) {
+                                        productrovider.settype("best");
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const AllItem()),
+                                        );
+                                      }
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "View All".tr,
+                                          style: TextStyle(color: mainColorRed),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        listItemsSmall(
+                            context, productrovider.getProductsByBestsell()),
+
+                        // Space
+                        SizedBox(
+                          height: getHeight(context, 2),
+                        )
                       ],
                     ),
-
-                    listItemsSmall(
-                        context, productrovider.getProductsByBestsell()),
-
-                    // Space
-                    SizedBox(
-                      height: getHeight(context, 2),
-                    )
-                  ],
-                ),
-              )),
+                  )),
             ),
           );
   }
