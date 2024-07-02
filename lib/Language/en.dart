@@ -111,15 +111,15 @@ const Map<String, String> en = {
   "Please enter a Description": "Please enter a Description",
   "Start Conversion": "Start Conversion",
   "Type a message": "Type a message",
-  "Last week": "Last week",
-  "days ago": "days ago",
-  "Yesterday": "Yesterday",
-  "hours ago": "hours ago",
-  "1 hour ago": "One hour ago",
-  "minutes ago": "minutes ago",
-  "1 minute ago": "One minute ago",
-  "seconds ago": "seconds ago",
-  "Just now": "Just now",
+  "Last week": "Last week", // notification_page
+  "days ago": "days ago", // notification_page
+  "Yesterday": "Yesterday", // notification_page
+  "hours ago": "hours ago", // notification_page
+  "1 hour ago": "One hour ago", // notification_page
+  "minutes ago": "minutes ago", // notification_page
+  "1 minute ago": "One minute ago", // notification_page
+  "seconds ago": "seconds ago", // notification_page
+  "Just now": "Just now", // notification_page
 
   // Account --> feedback
   "Poor": "Poor",
@@ -280,29 +280,30 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
-  
-  
+  // Network --> Network 
+  "An error occurred, Please try again later.": "An error occurred, Please try again later.",
 
-  "An error occurred, Please try again later.":
-      "An error occurred, Please try again later.",
+  // Notification --> notification_page
+  "Notification": "Notification",
+  "New": "New",
+  "You dont have any notification": "You don\'t have any notification.",
+
+
+  // Notification
+  "1 week ago": "1 week ago",
+  "1 day ago": "One day ago",
+  "An hour ago": "An hour ago",
+  "A minute ago": "A minute ago",  
+  
+  //
   "New update is available": "New update is available",
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",
   "Update": "Update",
 
-
   // Ziyadaa
   "NEXT": "NEXT",
   "SKIP": "SKIP",
-
-  
-  // Notification
-  "Notification": "Notification",
-  "You don't have any notification": "You don't have any notification.",
-  "1 week ago": "1 week ago",
-  "1 day ago": "One day ago",
-  "An hour ago": "An hour ago",
-  "A minute ago": "A minute ago",  
   
   // profilo Chenged
   "Information": "Information",
@@ -311,7 +312,6 @@ const Map<String, String> en = {
   "Address": "Address",
 
   //
-  "New": "New",
   "Saturday": "Saturday",
   "Sunday": "Sunday",
   "Monday": "Monday",
@@ -328,11 +328,8 @@ const Map<String, String> en = {
   "Select": "Select",
   "Delevery schedule": "Schedule for Later",
 
-  
-
   // nav_switch
   "Home": "Home",
-  
   "Cart": "Cart",
   "Favorite": "Favorite",
   "Account": "Account",
@@ -355,13 +352,11 @@ const Map<String, String> en = {
   'Supermarket': 'Supermarket',
 
   // Dialogbox ( Register ) --> my_widget
-  
   "You need login": "You have to register first",
 
   // categories
   "All Categories": "All Categories",
   'All Items': 'All Items',
-  // all_item >> shtakan dobar boo
 
   // Search_page
   "Not found any item": "No item found",
@@ -370,7 +365,6 @@ const Map<String, String> en = {
   "My Cart": "My Cart",
   "Clear": "Clear",
   "Your cart is empty": "Your cart is empty",
-  
   "you can not add more this item": "you can not add more items",
   "Sub Total": "Sub Total",
   "Delivery Cost": "Delivery Cost",
@@ -427,12 +421,8 @@ const Map<String, String> en = {
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
-  
   "Add location": "Add location",
-  
   "the code is un correct": "the code is wrong",
-
-  
 
   // track_order
   "Track Order": "Track your Order",
@@ -463,20 +453,15 @@ const Map<String, String> en = {
   "Privacy Poilcy": "Privacy policy",
   "Terms Of Use": "Terms and Condition",
   
-
   //
   "Ordered successfully": "Ordered successfully",
   "Yes i Agree": "Yes",
   "No, Cancel order": "Cancel order",
 
-  
-  
-  
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
 
   //Privacy Policy
-
   "Privacy Policy Title": "Privacy Policy for Dlly Las Grocery App",
   "Privacy Policy intoduction":
       """This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your

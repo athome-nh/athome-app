@@ -196,6 +196,8 @@ const Map<String, String> ar = {
   "Register First": "تسجيل اولا",
   "no internet": "الانترنت غیر متوفر",
 
+  // home --> 
+
   // Landing --> choose_lan
   "Get Start": "ابدأ",
 
@@ -278,7 +280,15 @@ const Map<String, String> ar = {
   "try again": "يرجى المحاولة مرة أخرى",
   "Failed to load data": "فشلت عملية تحميل البيانات",
 
-  
+  // Network --> Network 
+  "An error occurred, Please try again later.": "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
+
+  // Notification --> notification_page
+  "Notification": "إشعار",
+  "New": "جديد",
+  "You dont have any notification": "هیليس لديك أي إشعار", 
+
+
   
 
   // Ziyadaa
@@ -287,8 +297,8 @@ const Map<String, String> ar = {
 
   
   // Notification
-  "Notification": "إشعار",
-  "You don't have any notification": "هیليس لديك أي إشعار", 
+  
+  
   
   // profilo
   "Information": "حسابي",
@@ -298,7 +308,6 @@ const Map<String, String> ar = {
 
   
   //
-  "New": "جديد",
   "Saturday": "السبت",
   "Sunday": "الأحد",
   "Monday": "الاثنين",
@@ -463,8 +472,6 @@ const Map<String, String> ar = {
   "No, Cancel order": "نرجو إلغاء الطلب",
   //
   
-  "An error occurred, Please try again later.":
-      "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
   "New update is available": "يوجد تحديث للتطبيق",
   "A newer version of dlly las application is available, please download the latest version .":
       "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",

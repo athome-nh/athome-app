@@ -238,7 +238,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       ),
                     ),
                     Text(
-                      "You don't have any notification".tr,
+                      "You dont have any notification".tr,
                       style: TextStyle(
                           fontFamily: mainFontnormal,
                           fontSize: 20.0,

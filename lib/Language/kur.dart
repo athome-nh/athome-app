@@ -196,6 +196,8 @@ const Map<String, String> kur = {
   "Register First": "خۆت تۆمار بکە",
   "no internet": "ئینتەرنێت بەردەست  نیە",
 
+  // home --> 
+
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
 
@@ -278,6 +280,13 @@ const Map<String, String> kur = {
   "try again": "دوبارە هەوڵ بدەوە",
   "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی زانیاریەکان",
 
+  // Network --> Network 
+  "An error occurred, Please try again later.": "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
+
+  // Notification --> notification_page
+  "Notification": "ئاگادارکردنەوە",
+  "New": "نوێ",
+  "You dont have any notification": "هیچ ئاگادارکردنەوەکت نیە",  
 
 
   "the code is un correct": "کۆدەکە هەڵەیە",
@@ -286,11 +295,6 @@ const Map<String, String> kur = {
   "NEXT": "NEXT",
   "SKIP": "SKIP",
 
-
-  // Notification
-  "Notification": "ئاگادارکردنەوە",
-  "You don't have any notification": "هیچ ئاگادارکردنەوەکت نیە",  
-
   // profilo
   "Information": "زانیاری",
   "Enter Name": "تۆمارکردنی ناو",
@@ -298,7 +302,6 @@ const Map<String, String> kur = {
   "Address": "ناونیشان",
 
   //
-  "New": "نوێ",
   "Saturday": "شەمە",
   "Sunday": "یەک شەمە",
   "Monday": "دوو شەمە",
@@ -457,8 +460,7 @@ const Map<String, String> kur = {
   "No, Cancel order": "داواکاری هەڵبوەشێنەرەوە",
   //
   
-  "An error occurred, Please try again later.":
-      "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
+  
   "New update is available": "ئەپدەیتێکی نوێ بەردەستە",
   "A newer version of dlly las application is available, please download the latest version .":
       "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
