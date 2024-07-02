@@ -196,6 +196,8 @@ const Map<String, String> ar = {
   "Register First": "تسجيل اولا",
   "no internet": "الانترنت غیر متوفر",
 
+  // home --> 
+
   // Landing --> choose_lan
   "Get Start": "ابدأ",
 
@@ -281,7 +283,12 @@ const Map<String, String> ar = {
   // Network --> Network 
   "An error occurred, Please try again later.": "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
 
-  
+  // Notification --> notification_page
+  "Notification": "إشعار",
+  "New": "جديد",
+  "You dont have any notification": "هیليس لديك أي إشعار", 
+
+
   
 
   // Ziyadaa
@@ -290,8 +297,8 @@ const Map<String, String> ar = {
 
   
   // Notification
-  "Notification": "إشعار",
-  "You don't have any notification": "هیليس لديك أي إشعار", 
+  
+  
   
   // profilo
   "Information": "حسابي",
@@ -301,7 +308,6 @@ const Map<String, String> ar = {
 
   
   //
-  "New": "جديد",
   "Saturday": "السبت",
   "Sunday": "الأحد",
   "Monday": "الاثنين",
