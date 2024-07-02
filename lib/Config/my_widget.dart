@@ -344,6 +344,7 @@ Widget listItemsSmall(BuildContext context, var data) {
             final isFavInCart = cartProvider.FavExistsInCart(product);
             int count = cartProvider
                 .calculateQuantityForProduct(int.parse(product.id.toString()));
+
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
               child: Container(

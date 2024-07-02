@@ -18,6 +18,7 @@ import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/oneitem.dart';
 
 import 'package:dllylas/home/search_page.dart';
+import 'package:dllylas/home/test.dart';
 
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/map_screen.dart';
@@ -143,7 +144,9 @@ class _HomeSreenState extends State<HomeSreen> {
                   (value == "ios" && documentSnapshot.get("isAccpetApple")))
                 _homePopup(context, value);
             } else {
-              if (isLogin && productrovider.location.isEmpty) {
+              if (isLogin &&
+                  productrovider.location.isEmpty &&
+                  productrovider.show) {
                 locationempty(productrovider);
               } else if (isLogin &&
                   productrovider.Orders.isNotEmpty &&
@@ -685,32 +688,41 @@ class _HomeSreenState extends State<HomeSreen> {
                         style:
                             TextStyle(fontSize: 12, fontFamily: mainFontnormal),
                       ),
-                      subtitle: RichText(
-                        text: new TextSpan(
-                          // Note: Styles for TextSpans must be explicitly defined.
-                          // Child text spans will inherit styles from parent
-                          style: new TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
+                      subtitle: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const test()),
+                          );
+                        },
+                        child: RichText(
+                          text: new TextSpan(
+                            // Note: Styles for TextSpans must be explicitly defined.
+                            // Child text spans will inherit styles from parent
+                            style: new TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black,
+                            ),
+                            children: <TextSpan>[
+                              new TextSpan(
+                                text: 'Dlly Las '.tr,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: mainColorGrey,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: mainFontnormal),
+                              ),
+                              new TextSpan(
+                                text: 'Supermarket'.tr,
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    color: mainColorRed,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: mainFontnormal),
+                              ),
+                            ],
                           ),
-                          children: <TextSpan>[
-                            new TextSpan(
-                              text: 'Dlly Las '.tr,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: mainColorGrey,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: mainFontnormal),
-                            ),
-                            new TextSpan(
-                              text: 'Supermarket'.tr,
-                              style: TextStyle(
-                                  fontSize: 11,
-                                  color: mainColorRed,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: mainFontnormal),
-                            ),
-                          ],
                         ),
                       ),
                       trailing: IconButton(

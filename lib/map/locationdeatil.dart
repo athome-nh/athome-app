@@ -128,6 +128,7 @@ class _location_DeatilState extends State<location_Deatil> {
                         ),
                       ),
                     ),
+               
                     SizedBox(
                       height: getHeight(context, 2),
                     ),
