@@ -191,7 +191,7 @@ class _Map_screenState extends State<Map_screen> {
                         if (value.zoom < 12) {
                           setState(() {
                             zoom = true;
-                            nameloc = "Zoom in Please".tr;
+                            nameloc = "Zoom in Please";
                             wait = false;
                           });
                         } else {
@@ -201,7 +201,7 @@ class _Map_screenState extends State<Map_screen> {
                       } else {
                         setState(() {
                           zoom = true;
-                          nameloc = "Sorry, we don't deliver here".tr;
+                          nameloc = "Sorry, we don't deliver here";
                           wait = false;
                         });
                       }
@@ -242,69 +242,66 @@ class _Map_screenState extends State<Map_screen> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                    width: getWidth(context, 100),
-                    height: getHeight(context, 6),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        shape: BoxShape.rectangle,
-                        color: zoom ? mainColorRed : mainColorGrey),
-                    child: Center(
-                        child: wait
-                            ? Container(
-                                height: getWidth(context, 10),
-                                child: LoadingIndicator(
-                                  indicatorType: Indicator.ballRotateChase,
-                                  colors: [
-                                    mainColorWhite,
-                                    // mainColorRed,
-                                    // mainColorSuger,
-                                  ],
-
-                                  // strokeWidth: 5,
+                  width: getWidth(context, 100),
+                  height: getHeight(context, 6),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      shape: BoxShape.rectangle,
+                      color: zoom ? mainColorRed : mainColorGrey),
+                  child: Center(
+                    child: wait
+                        ? Container(
+                            height: getWidth(context, 10),
+                            child: LoadingIndicator(
+                              indicatorType: Indicator.ballRotateChase,
+                              colors: [
+                                mainColorWhite,
+                              ],
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: zoom
+                                ? null
+                                : () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => location_Deatil(
+                                            selectLon,
+                                            selectLat,
+                                            nameloc,
+                                            housenumber),
+                                      ),
+                                    );
+                                  },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                zoom
+                                    ? const SizedBox()
+                                    : Text(
+                                        "Delivery To".tr + ": ",
+                                        style: TextStyle(
+                                            fontFamily: mainFontnormal,
+                                            color: mainColorWhite,
+                                            fontSize: 16),
+                                      ),
+                                zoom
+                                    ? const SizedBox()
+                                    : const SizedBox(
+                                        width: 3,
+                                      ),
+                                Text(
+                                  nameloc.tr,
+                                  style: TextStyle(
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorWhite,
+                                      fontSize: 16),
                                 ),
-                              )
-                            : GestureDetector(
-                                onTap: zoom
-                                    ? null
-                                    : () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                location_Deatil(
-                                                    selectLon,
-                                                    selectLat,
-                                                    nameloc,
-                                                    housenumber),
-                                          ),
-                                        );
-                                      },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    zoom
-                                        ? const SizedBox()
-                                        : Text(
-                                            "Delivery To:".tr,
-                                            style: TextStyle(
-                                                fontFamily: mainFontnormal,
-                                                color: mainColorWhite,
-                                                fontSize: 16),
-                                          ),
-                                    zoom
-                                        ? const SizedBox()
-                                        : const SizedBox(
-                                            width: 3,
-                                          ),
-                                    Text(
-                                      nameloc,
-                                      style: TextStyle(
-                                          fontFamily: mainFontnormal,
-                                          color: mainColorWhite,
-                                          fontSize: 16),
-                                    ),
-                                  ],
-                                ),
-                              ))),
+                              ],
+                            ),
+                          ),
+                  ),
+                ),
               ),
             ),
           ],

@@ -58,7 +58,7 @@ class _InvitePageState extends State<InvitePage> {
   void _copyText() {
     Clipboard.setData(ClipboardData(text: _controllercode.text));
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Copied to clipboard')),
+      SnackBar(content: Text('Copied to clipboard'.tr)),
     );
   }
 
@@ -82,7 +82,7 @@ class _InvitePageState extends State<InvitePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Enter your details',
+                    'Enter your details'.tr,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: getHeight(context, 3)),
@@ -123,7 +123,7 @@ class _InvitePageState extends State<InvitePage> {
                             width: 1.0,
                           ),
                         ),
-                        labelText: "Referral Code",
+                        labelText: "Referral Code".tr,
                         hintStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.5),
                             fontSize: 14,
@@ -226,7 +226,7 @@ class _InvitePageState extends State<InvitePage> {
                     ),
                     SizedBox(height: getHeight(context, 2)),
                     Text(
-                      "Invite your friends",
+                      "Invite your friends".tr,
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: mainFontbold,
@@ -235,7 +235,7 @@ class _InvitePageState extends State<InvitePage> {
                     SizedBox(height: getHeight(context, 1)),
                     Text(
                       textAlign: TextAlign.center,
-                      "Just share this code with your friends and ask them to signup and add this code. Both of you will get ahead of the waitlist",
+                      "TextIFP".tr,
                       style: TextStyle(fontSize: 16, fontFamily: mainFontbold),
                     ),
                     SizedBox(height: getHeight(context, 2)),
@@ -279,7 +279,7 @@ class _InvitePageState extends State<InvitePage> {
                             width: 1.0,
                           ),
                         ),
-                        labelText: "Referral Code",
+                        labelText: "Referral Code".tr,
                         // hintText: "Copy",
                         hintStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.5),
@@ -307,7 +307,10 @@ class _InvitePageState extends State<InvitePage> {
                           ),
                           onPressed: () async {
                             final result = await Share.share(
-                                'Download the app https://dllylas.com\n\n Code: ' +
+                                "Download the app".tr +
+                                    'https://dllylas.com\n\n' +
+                                    "Code".tr +
+                                    ": " +
                                     _controllercode.text);
                             if (result.status == ShareResultStatus.success) {
                               print('Thank you for sharing my website!');

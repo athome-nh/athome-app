@@ -147,13 +147,23 @@ const Map<String, String> kur = {
   "Facebook": "DLLY.LAS.24",
 
   // Account --> invite_friend
+  "Copied to clipboard": "",
+  "Enter your details": "",
+  "Referral Code": "",
+  "Apply": "",
+  "Invite a friend": "",
+  "Invite your friends": "",
+  "TextIFP": "",
+  "Download the app": "",
+  "Code": "",
+  "Invite friends now": "",
+  "Enter Refer Code": "",
 
   // Account --> profile
   "Account & Security": "",
   "Account Information": "",
   "Orders": "داواکاریەکانم",
   "Locations": "ناونیشان",
-  "Invite a friend": "",
   "Coin & Reward": "",
   "My Voucher": "",
   "General": "",
@@ -164,12 +174,27 @@ const Map<String, String> kur = {
   "Guest Account": "",
   "Register": "خۆتۆمارکردن",
 
+  // Account --> reward
+  "Voucher Codes": "",
+  "STARBUCKS": "",
+  "OFF": "",
+  "VALUE": "",
+  "Point": "",
+  "Buy Now": "",
+
   // Account --> voucher_code
   "Vouchers": "",
   "Active": "",
   "Used": "",
   "Expired": "",
   "Do not have any Voucher Code": "",
+
+  // Config --> my_widget
+  "No internet connection, check your connection": "",
+  "You are offline, connect to a network.": "",
+  "You are online": "",
+  "Register First": "خۆت تۆمار بکە",
+  "no internet": "ئینتەرنێت بەردەست  نیە",
 
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
@@ -235,7 +260,7 @@ const Map<String, String> kur = {
   "Enter floor number": "ژمارەی نهۆم تۆمار بکە",
   "building name/number": "ژمارە/ناوی باڵەخانە",
   "Enter building name/number": "ناو/ژمارەی باڵەخانە تۆمار بکە",
-  "number": "ژمارەی ",
+  "number": "ژمارەی",
   "Enter number": "ژمارەکە تۆمار بکە",
   "Phone number": "ژمارەی مۆبایل تۆمار بکە",
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
@@ -245,6 +270,13 @@ const Map<String, String> kur = {
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
   "Delete": "سڕینەوە",
 
+  // map --> map_screen
+  "Map": "نەخشە",
+  "Zoom in Please": "نزیکتر بکەوە",
+  "Sorry, we don't deliver here": "ببورە، گەیادنمان بۆ ناوچەی ناوبراو بەردەست نیە",
+  "Delivery To": "گەیاندن بۆ",
+  "try again": "دوبارە هەوڵ بدەوە",
+  "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی زانیاریەکان",
 
 
 
@@ -309,7 +341,7 @@ const Map<String, String> kur = {
   'Supermarket': 'سوپەرمارکێت',
 
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "خۆت تۆمار بکە",
+  
   "You need login": "پێویستە خۆت تۆمار بکەیت",
 
   // categories
@@ -337,9 +369,6 @@ const Map<String, String> kur = {
   // favorite
   "No have any favorite":
       "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
-
-  // Page --> No Internet --> my_widget
-  "no internet": "ئینتەرنێت بەردەست  نیە",
 
   // Page --> Login First --> my_widget
   "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa
@@ -391,16 +420,6 @@ const Map<String, String> kur = {
   
   
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
-  
-  
-  // map
-  "Map": "نەخشە",
-  "Zoom in Please": "نزیکتر بکەوە",
-  "Sorry, we don't deliver here":
-      "ببورە، گەیادنمان بۆ ناوچەی ناوبراو بەردەست نیە",
-  "Delivery To:": "گەیاندن بۆ:",
-  "try again": "دوبارە هەوڵ بدەوە",
-  "Failed to load data": "سەرکەوتوو نەبوو لە پیشاندانی زانیاریەکان",
 
   // track_order
   "Track Order": "بەدواداچوونی داواکاری",

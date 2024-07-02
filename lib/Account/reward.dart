@@ -2,6 +2,7 @@ import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class coinReward extends StatefulWidget {
@@ -25,7 +26,7 @@ class _coinRewardState extends State<coinReward> {
               Icons.arrow_back_ios,
             )),
         title: Text(
-          "Coin & Reward",
+          "Coin & Reward".tr,
         ),
       ),
       body: SingleChildScrollView(
@@ -35,7 +36,7 @@ class _coinRewardState extends State<coinReward> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
-                "Voucher Codes",
+                "Voucher Codes".tr,
                 style: TextStyle(fontSize: 20, fontFamily: mainFontbold),
               ),
             ),
@@ -75,7 +76,7 @@ class _coinRewardState extends State<coinReward> {
                                   height: 50,
                                 ),
                                 Text(
-                                  "STARBUCKS",
+                                  "STARBUCKS".tr,
                                   style: TextStyle(
                                       color: mainColorWhite, fontSize: 18),
                                 ),
@@ -107,7 +108,7 @@ class _coinRewardState extends State<coinReward> {
                                                 fontFamily: mainFontnormal),
                                           ),
                                           new TextSpan(
-                                            text: " OFF",
+                                            text: " " + "OFF".tr,
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 color: mainColorRed,
@@ -118,9 +119,9 @@ class _coinRewardState extends State<coinReward> {
                                       ),
                                     ),
                                     Text(
-                                      "VALUE: " +
-                                          point.porint.toString() +
-                                          " Point",
+                                      "VALUE".tr + ": " + 
+                                      point.porint.toString() + 
+                                      " " + "Point".tr,
                                       style: TextStyle(
                                           fontFamily: mainFontbold,
                                           color: mainColorBlack,
@@ -133,7 +134,7 @@ class _coinRewardState extends State<coinReward> {
                                       backgroundColor: mainColorGrey,
                                     ),
                                     onPressed: () {},
-                                    child: Text("Buy Now"))
+                                    child: Text("Buy Now".tr))
                               ],
                             ),
                           ),

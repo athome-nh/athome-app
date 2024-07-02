@@ -20,7 +20,7 @@ const Map<String, String> en = {
 
   // Account --> account_info
   "Image changed": "Image changed",
-  "Cancel": "Cancel", // feedback, locationdeatil
+  "Cancel": "Cancel", // feedback, locationdeatil, my_widget
   "Edit": "Edit",
   "Profile": "Profile",
   "Name": "Name", // singin_up, locationdeatil
@@ -147,14 +147,24 @@ const Map<String, String> en = {
   "Facebook": "DLLY.LAS.24",
 
   // Account --> invite_friend
+  "Copied to clipboard": "Copied to clipboard",
+  "Enter your details": "Enter your details",
+  "Referral Code": "Referral Code",
+  "Apply": "Apply",
+  "Invite a friend": "Invite a friend",
+  "Invite your friends": "Invite your friends",
+  "TextIFP": "Just share this code with your friends and ask them to signup and add this code. Both of you will get ahead of the waitlist",
+  "Download the app": "Download the app",
+  "Code": "Code",
+  "Invite friends now": "Invite friends now",
+  "Enter Refer Code": "Enter Refer Code",
 
   // Account --> profile
   "Account & Security": "Account & Security",
   "Account Information": "Account Information",
   "Orders": "Orders",
   "Locations": "Locations", // locationdeatil,  location
-  "Invite a friend": "Invite a friend",
-  "Coin & Reward": "Coin & Reward",
+  "Coin & Reward": "Coin & Reward", // reward
   "My Voucher": "My Voucher",
   "General": "General",
   "Terms & Conditions": "Terms & Conditions",
@@ -162,7 +172,15 @@ const Map<String, String> en = {
   "Customer Services": "Customer Services",
   "Logout": "Log out",
   "Guest Account": "Guest Account",
-  "Register": "Register",
+  "Register": "Register", // my_widget
+
+  // Account --> reward
+  "Voucher Codes": "Voucher Codes",
+  "STARBUCKS": "STARBUCKS",
+  "OFF": "OFF",
+  "VALUE": "VALUE",
+  "Point": "Point",
+  "Buy Now": "Buy Now",
 
   // Account --> voucher_code
   "Vouchers": "Vouchers",
@@ -170,6 +188,15 @@ const Map<String, String> en = {
   "Used": "Used",
   "Expired": "Expired",
   "Do not have any Voucher Code": "Do not have any Voucher Code",
+
+  // Config --> my_widget
+  "No internet connection, check your connection": "No internet connection, check your connection",
+  "You are offline, connect to a network.": "You are offline, connect to a network.",
+  "You are online": "You are online",
+  "Register First": "Register First",
+  "no internet": "You are offline, connect to WIFI",
+
+  // home --> 
 
   // Landing --> choose_lan
   "Get Start": "Get Start", // login_page, welcome_screen
@@ -245,17 +272,17 @@ const Map<String, String> en = {
   "Delete location success": "Delete location success",
   "Delete": "Delete",
 
+  // map --> map_screen
+  "Map": "Map",
+  "Zoom in Please": "Zoom in",
+  "Sorry, we don't deliver here": "your location excludes delivery service",
+  "Delivery To": "Deliver To",
+  "try again": "try again",
+  "Failed to load data": "Failed to load data",
 
   
-  "": "",
   
 
-  
-  
-
-  
-  
-  
   "An error occurred, Please try again later.":
       "An error occurred, Please try again later.",
   "New update is available": "New update is available",
@@ -326,8 +353,9 @@ const Map<String, String> en = {
   "Wellcome to": "Wellcome to",
   'Dlly Las ': 'Dlly Las ',
   'Supermarket': 'Supermarket',
+
   // Dialogbox ( Register ) --> my_widget
-  "Register First": "Register First",
+  
   "You need login": "You have to register first",
 
   // categories
@@ -354,9 +382,6 @@ const Map<String, String> en = {
 
   // favorite
   "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
-
-  // Page --> No Internet --> my_widget
-  "no internet": "You are offline, connect to WIFI",
 
   // Page --> Login First --> my_widget
   "Please login first": "Please login first", // nmayaa
@@ -407,13 +432,7 @@ const Map<String, String> en = {
   
   "the code is un correct": "the code is wrong",
 
-  // map
-  "Map": "Map",
-  "Zoom in Please": "Zoom in",
-  "Sorry, we don't deliver here": "your location excludes delivery service",
-  "Delivery To:": "Deliver To:",
-  "try again": "try again",
-  "Failed to load data": "Failed to load data",
+  
 
   // track_order
   "Track Order": "Track your Order",
