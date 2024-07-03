@@ -288,6 +288,22 @@ const Map<String, String> en = {
   "New": "New",
   "You dont have any notification": "You don\'t have any notification.",
 
+  // Order --> old_order
+  "Order Deatil": "Order Deatil",
+  "Quantity: ": "Quantity: ",
+  "Order Placed": "Order Placed",
+  "Processing Order": "Processing Order",
+  "Order Is On way": "Your order is on it's way",
+  "Order Ready For Pickup": "Order Ready For Pickup",
+  "Order is delivered": "The order is delivered",
+  "Undelivered": "Undelivered",
+  "Date and Time": "Date and Time",
+  "Order No.": "Order No.",
+  "Sub Total": "Sub Total",
+  "Voucher":"Voucher",
+  "Delivery Cost": "Delivery Cost",
+
+  
 
   // Notification
   "1 week ago": "1 week ago",
@@ -303,7 +319,8 @@ const Map<String, String> en = {
 
   // Ziyadaa
   "NEXT": "NEXT",
-  "SKIP": "SKIP",
+  "SKIP":
+  "SKIP",
   
   // profilo Chenged
   "Information": "Information",
@@ -366,8 +383,8 @@ const Map<String, String> en = {
   "Clear": "Clear",
   "Your cart is empty": "Your cart is empty",
   "you can not add more this item": "you can not add more items",
-  "Sub Total": "Sub Total",
-  "Delivery Cost": "Delivery Cost",
+  
+  
   "Free Delivery": "Free Delivery",
   "Total": "Total",
   "Checkout": "Payment & Delivery",
@@ -393,11 +410,6 @@ const Map<String, String> en = {
   // order_items
   "Past Order": "Order history",
   "Add More Items": "Add More Items",
-
-  // old_order
-  "Quantity: ": "Quantity: ",
-  "Date and Time": "Date and Time",
-  "Order No.": "Order No.",
 
   // check_out
   "Delivery Address": "Delivery Address",
@@ -429,15 +441,6 @@ const Map<String, String> en = {
   "Order:": "Order: ",
   "Cancel order": "Cancel order",
   "View order": "View order",
-
-  //more old_order
-  "Order Placed": "Order Placed",
-  "Processing Order": "Processing Order",
-  "Order Is On way": "Your order is on it's way",
-  "Order Ready For Pickup": "Order Ready For Pickup",
-  "Order is delivered": "The order is delivered",
-  "Undelivered": "Undelivered",
-  "Order Deatil": "Order Deatil",
 
   //
   "min title": "Minimum Order required",

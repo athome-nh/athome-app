@@ -288,18 +288,26 @@ const Map<String, String> ar = {
   "New": "جديد",
   "You dont have any notification": "هیليس لديك أي إشعار", 
 
-
+  // Order --> old_order
+  "Order Deatil": "تفاصيل الطلبية",
+  "Quantity: ": "العدد: ",
+  "Order Placed": "تم التثبیت الطلب",
+  "Processing Order": "قید العمل",
+  "Order Is On way": "سيتم توصيل طلبك قريبا",
+  "Order Ready For Pickup": "الطلبیة جاهز للاستلام",
+  "Order is delivered": "تم توصيل الطلب",
+  "Undelivered": "لم يتم توصيل الطلب",
+  "Date and Time": "التاریخ و الوقت",
+  "Order No.": "رقم الطلبیة",
+  "Sub Total": "المجموع الجزئي",
+  "Voucher":"",
+  "Delivery Cost": "کلفة التوصیل",
   
-
+  
   // Ziyadaa
   "NEXT": "التالي",
   "SKIP": "تخطي",
 
-  
-  // Notification
-  
-  
-  
   // profilo
   "Information": "حسابي",
   "Enter Name": "ادخل الاسم",
@@ -369,8 +377,7 @@ const Map<String, String> ar = {
   "Your cart is empty": "سلة التسوف فارغة",
   
   "you can not add more this item": "لايمكن إضافة منتج أخر",
-  "Sub Total": "المجموع الجزئي",
-  "Delivery Cost": "کلفة التوصیل",
+  
   "Free Delivery": "توصیل المجاني",
   "Total": "المجموع الكلي",
   "Checkout": "الدفع و توصيل",
@@ -398,10 +405,7 @@ const Map<String, String> ar = {
   "Past Order": "سجل الطلبات",
   "Add More Items": "اضافة مزيد من المنتجات",
 
-  // old_order
-  "Quantity: ": "العدد: ",
-  "Date and Time": "التاریخ و الوقت",
-  "Order No.": "رقم الطلبیة",
+ 
 
   // check_out
   "Delivery Address": "عنوان التوصیل",
@@ -430,9 +434,6 @@ const Map<String, String> ar = {
   // login_page
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",
 
-  
-   
-  
   "the code is un correct": "الرمز غیر صحیع",
 
   // track_order
@@ -440,15 +441,6 @@ const Map<String, String> ar = {
   "Order:": "الطلبیة: ",
   "Cancel order": "الغاء الطلب",
   "View order": "عرض الطلب",
-
-  //more old_order
-  "Order Placed": "تم التثبیت الطلب",
-  "Processing Order": "قید العمل",
-  "Order Is On way": "سيتم توصيل طلبك قريبا",
-  "Order Ready For Pickup": "الطلبیة جاهز للاستلام",
-  "Order is delivered": "تم توصيل الطلب",
-  "Undelivered": "لم يتم توصيل الطلب",
-  "Order Deatil": "تفاصيل الطلبية",
 
   //
   "min title": "الحد الأدنى للشراء المطلوب",

@@ -286,8 +286,24 @@ const Map<String, String> kur = {
   // Notification --> notification_page
   "Notification": "ئاگادارکردنەوە",
   "New": "نوێ",
-  "You dont have any notification": "هیچ ئاگادارکردنەوەکت نیە",  
+  "You dont have any notification": "هیچ ئاگادارکردنەوەکت نیە",
 
+  // Order --> old_order
+  "Order Deatil": "زانیاری داواکاریەکە",
+  "Quantity: ": "بڕی: ",
+  "Order Placed": "داواکاریەکەت تۆمارکرا",
+  "Processing Order": "داواکاریەکە ئامادە دەکرێ",
+  "Order Is On way": "داواکاریەکەت لە ڕێگایە",
+  "Order Ready For Pickup": "داواکاریەکە ئامادەیە بۆ وەرگرتن",
+  "Order is delivered": "داواکاریەکە گەیشت",
+  "Undelivered": "داواکاریەکە نەگەیەنرا",
+  "Date and Time": "کات و بەروار",
+  "Order No.": "ژمارەی داواکاری",
+  "Sub Total": "کۆی بەش",
+  "Voucher":"",
+  "Delivery Cost": "تێچوی گەیاندن",
+
+  
 
   "the code is un correct": "کۆدەکە هەڵەیە",
 
@@ -361,8 +377,7 @@ const Map<String, String> kur = {
   "Your cart is empty": "سەبەتەی بازاڕکردن بەتاڵە",
   
   "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
-  "Sub Total": "کۆی بەش",
-  "Delivery Cost": "تێچوی گەیاندن",
+  
   "Free Delivery": "گەیاندنی خۆڕایی",
   "Total": "کۆی گشتی",
   "Checkout": "پارەدان و گەیاندن",
@@ -389,11 +404,6 @@ const Map<String, String> kur = {
   // order_items
   "Past Order": "لیستی داواکاریەکان",
   "Add More Items": "زیادکردنی بەرهەمی تر",
-
-  // old_order
-  "Quantity: ": "بڕی: ",
-  "Date and Time": "کات و بەروار",
-  "Order No.": "ژمارەی داواکاری",
 
   // check_out
   "Delivery Address": "ناونیشانی گەیاندن",
@@ -430,14 +440,7 @@ const Map<String, String> kur = {
   "Cancel order": "پوچەڵ کردنەوە",
   "View order": "بینینی داواکاری ",
 
-  //more old_order
-  "Order Placed": "داواکاریەکەت تۆمارکرا",
-  "Processing Order": "داواکاریەکە ئامادە دەکرێ",
-  "Order Is On way": "داواکاریەکەت لە ڕێگایە",
-  "Order Ready For Pickup": "داواکاریەکە ئامادەیە بۆ وەرگرتن",
-  "Order is delivered": "داواکاریەکە گەیشت",
-  "Undelivered": "داواکاریەکە نەگەیەنرا",
-  "Order Deatil": "زانیاری داواکاریەکە",
+  
 
   //
   "min title": "کەمترین داواکاری پێشکەشکراو",
