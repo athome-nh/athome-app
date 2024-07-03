@@ -675,6 +675,7 @@ class _HomeSreenState extends State<HomeSreen> {
             child: SafeArea(
               child: Scaffold(
                   appBar: AppBar(
+                    automaticallyImplyLeading: false,
                     title: ListTile(
                       title: Text(
                         "Wellcome to".tr,

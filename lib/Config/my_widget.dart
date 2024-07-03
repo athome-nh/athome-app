@@ -328,7 +328,8 @@ Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
   return SizedBox(
-    height: getHeight(context, 24),
+    height: getHeight(context, 27),
+
     //  decoration: BoxDecoration(border: Border.all()),
     child: Visibility(
       visible: productrovider.show,
@@ -478,7 +479,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: getHeight(context, 1),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
