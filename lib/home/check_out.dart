@@ -37,6 +37,7 @@ class _CheckOutState extends State<CheckOut> {
   String VoucherE = "";
   int VoucherID = -1;
   int VoucherAmount = 0;
+  bool waiting = false;
   List<String> listOfDays = [
     "Select Day".tr,
     "Monday".tr,
@@ -1097,7 +1098,11 @@ class _CheckOutState extends State<CheckOut> {
                                                                       onPressed: widget.total >=
                                                                               voucher.mimimumAmount!
                                                                           ? () {
-                                                                              voucherCode.text = voucher.code!;
+                                                                              mystate(() {
+                                                                                voucherCode.text = voucher.code!;
+                                                                              });
+
+                                                                              Navigator.pop(context);
                                                                             }
                                                                           : null,
                                                                       child:
@@ -1135,7 +1140,10 @@ class _CheckOutState extends State<CheckOut> {
                                         );
                                       }),
                                     ),
-                                  ).then((value) {});
+                                  ).then((value) {
+                                    setState(() {});
+                                    FocusScope.of(context).unfocus();
+                                  });
                                 },
                                 child: Text(
                                   'Select',
@@ -1179,83 +1187,114 @@ class _CheckOutState extends State<CheckOut> {
                                 ),
                                 suffixIcon: Container(
                                   margin: EdgeInsets.all(8),
-                                  child: TextButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent),
-                                    child: Text(
-                                      "Submit",
-                                      style: TextStyle(
-                                          color: voucherCode.text.isEmpty
-                                              ? mainColorGrey.withOpacity(0.5)
-                                              : mainColorGrey),
-                                    ),
-                                    onPressed: voucherCode.text.isEmpty
-                                        ? () {}
-                                        : () {
-                                            var data = {
-                                              "id": userdata["id"],
-                                              "amount": widget.total,
-                                              "code": voucherCode.text,
-                                            };
-                                            Network(false)
-                                                .postData("checkvoucher", data,
-                                                    context)
-                                                .then((value) {
-                                              print(value);
+                                  child: waiting
+                                      ? Container(
+                                          width: getHeight(context, 4),
+                                          height: getHeight(context, 4),
+                                          child: waitingWiget(context))
+                                      : TextButton(
+                                          style: TextButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.transparent),
+                                          child: Text(
+                                            "Submit",
+                                            style: TextStyle(
+                                                color: voucherCode.text.isEmpty
+                                                    ? mainColorGrey
+                                                        .withOpacity(0.5)
+                                                    : mainColorGrey),
+                                          ),
+                                          onPressed: voucherCode.text.isEmpty
+                                              ? () {}
+                                              : () {
+                                                  setState(() {
+                                                    waiting = true;
+                                                  });
+                                                  var data = {
+                                                    "id": userdata["id"],
+                                                    "amount": widget.total,
+                                                    "code": voucherCode.text,
+                                                  };
+                                                  Network(false)
+                                                      .postData("checkvoucher",
+                                                          data, context)
+                                                      .then((value) {
+                                                    print(value);
 
-                                              if (value != "") {
-                                                if (value["code"] == "200") {
-                                                  if (value["data"] ==
-                                                      "not_found") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "expired") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "minimum") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "limit") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "used") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "success") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
+                                                    if (value != "") {
+                                                      if (value["code"] ==
+                                                          "200") {
+                                                        if (value["data"] ==
+                                                            "not_found") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "expired") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "minimum") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "limit") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "used") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "success") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
 
-                                                      VoucherID = value["id"];
-                                                      VoucherAmount =
-                                                          value["amount"];
-                                                    });
+                                                            VoucherID =
+                                                                value["id"];
+                                                            VoucherAmount =
+                                                                value["amount"];
+                                                          });
 
-                                                    productrovider
-                                                        .notifyListeners();
-                                                  }
-                                                } else {}
-                                              } else {
-                                                setState(() {});
-                                              }
-                                            });
-                                          },
-                                  ),
+                                                          productrovider
+                                                              .notifyListeners();
+                                                        }
+                                                      } else {}
+                                                    } else {
+                                                      setState(() {
+                                                        waiting = false;
+                                                      });
+                                                    }
+                                                  });
+                                                },
+                                        ),
                                 ),
                               ),
                             ),
