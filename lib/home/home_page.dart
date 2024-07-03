@@ -115,53 +115,53 @@ class _HomeSreenState extends State<HomeSreen> {
     super.initState();
     final productrovider = Provider.of<productProvider>(context, listen: false);
 
-    FirebaseFirestore.instance
-        .collection("onLoad")
-        .doc("1")
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        if (documentSnapshot.get("show") == true) {
-          if (lang == "en") {
-            ShowInfo(context, documentSnapshot.get("titleen"),
-                documentSnapshot.get("contenten"), "OK".tr, "error", "");
-          } else if (lang == "ar") {
-            ShowInfo(context, documentSnapshot.get("titlear"),
-                documentSnapshot.get("contentar"), "OK".tr, "error", "");
-          } else {
-            ShowInfo(context, documentSnapshot.get("titleku"),
-                documentSnapshot.get("contentku"), "OK".tr, "error", "");
-          }
-        } else {
-          checkPlatformAndLaunchUrl().then((value) {
-            if (dotenv.env['currentVersion']! !=
-                documentSnapshot.get("newversion")) {
-              if ((value == "huawei" &&
-                      documentSnapshot.get("isAccpetHuawei")) ||
-                  (value == "android" &&
-                      documentSnapshot.get("isAccpetAndroid")) ||
-                  (value == "ios" && documentSnapshot.get("isAccpetApple")))
-                _homePopup(context, value);
-            } else {
-              if (isLogin &&
-                  productrovider.location.isEmpty &&
-                  productrovider.show) {
-                locationempty(productrovider);
-              } else if (isLogin &&
-                  productrovider.Orders.isNotEmpty &&
-                  productrovider.Orders.last.status == 5 &&
-                  productrovider.Orders.last.rating == null) {
-                feedbackmMdal(context, productrovider);
-              } else {
-                if (!seenHomepopup) {
-                  showhompopup();
-                }
-              }
-            }
-          });
-        }
-      }
-    });
+    // FirebaseFirestore.instance
+    //     .collection("onLoad")
+    //     .doc("1")
+    //     .get()
+    //     .then((DocumentSnapshot documentSnapshot) {
+    //   if (documentSnapshot.exists) {
+    //     if (documentSnapshot.get("show") == true) {
+    //       if (lang == "en") {
+    //         ShowInfo(context, documentSnapshot.get("titleen"),
+    //             documentSnapshot.get("contenten"), "OK".tr, "error", "");
+    //       } else if (lang == "ar") {
+    //         ShowInfo(context, documentSnapshot.get("titlear"),
+    //             documentSnapshot.get("contentar"), "OK".tr, "error", "");
+    //       } else {
+    //         ShowInfo(context, documentSnapshot.get("titleku"),
+    //             documentSnapshot.get("contentku"), "OK".tr, "error", "");
+    //       }
+    //     } else {
+    //       checkPlatformAndLaunchUrl().then((value) {
+    //         if (dotenv.env['currentVersion']! !=
+    //             documentSnapshot.get("newversion")) {
+    //           if ((value == "huawei" &&
+    //                   documentSnapshot.get("isAccpetHuawei")) ||
+    //               (value == "android" &&
+    //                   documentSnapshot.get("isAccpetAndroid")) ||
+    //               (value == "ios" && documentSnapshot.get("isAccpetApple")))
+    //             _homePopup(context, value);
+    //         } else {
+    //           if (isLogin &&
+    //               productrovider.location.isEmpty &&
+    //               productrovider.show) {
+    //             locationempty(productrovider);
+    //           } else if (isLogin &&
+    //               productrovider.Orders.isNotEmpty &&
+    //               productrovider.Orders.last.status == 5 &&
+    //               productrovider.Orders.last.rating == null) {
+    //             feedbackmMdal(context, productrovider);
+    //           } else {
+    //             if (!seenHomepopup) {
+    //               showhompopup();
+    //             }
+    //           }
+    //         }
+    //       });
+    //     }
+    //   }
+    // });
 
     checkinternet();
 
@@ -676,8 +676,6 @@ class _HomeSreenState extends State<HomeSreen> {
               child: Scaffold(
                   appBar: AppBar(
                     title: ListTile(
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: getWidth(context, 1)),
                       title: Text(
                         "Wellcome to".tr,
                         style:
@@ -754,7 +752,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 1)),
+                                  horizontal: getWidth(context, 2)),
                               child: Text(
                                 "Categories".tr,
                                 style: TextStyle(
@@ -765,7 +763,7 @@ class _HomeSreenState extends State<HomeSreen> {
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 1)),
+                                  horizontal: getWidth(context, 2)),
                               child: GestureDetector(
                                 onTap: () {
                                   !productrovider.show
@@ -804,7 +802,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 1)),
+                                        horizontal: getWidth(context, 2)),
                                     child: Column(
                                       children: <Widget>[
                                         Container(
@@ -902,8 +900,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 Image.asset(
                                                     "assets/images/Logo-Type-2.png"),
                                             filterQuality: FilterQuality.low,
-                                            width: getHeight(context, 8),
-                                            height: getHeight(context, 8),
+                                            width: getHeight(context, 7),
+                                            height: getHeight(context, 7),
                                           ),
                                           const SizedBox(
                                             height: 5,
@@ -946,7 +944,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(context, 1)),
+                                            horizontal: getWidth(context, 2)),
                                         child: Text(
                                           "Recent Order".tr,
                                           style: TextStyle(
@@ -957,7 +955,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(context, 1)),
+                                            horizontal: getWidth(context, 2)),
                                         child: Row(
                                           children: [
                                             GestureDetector(
@@ -1005,7 +1003,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(context, 1)),
+                                            horizontal: getWidth(context, 2)),
                                         child: Text(
                                           "Discount".tr,
                                           style: TextStyle(
@@ -1016,7 +1014,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(context, 1)),
+                                            horizontal: getWidth(context, 2)),
                                         child: GestureDetector(
                                           onTap: () {
                                             if (productrovider.show) {
@@ -1058,7 +1056,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 1)),
+                                  horizontal: getWidth(context, 2)),
                               child: Text(
                                 "Highlight".tr,
                                 style: TextStyle(
@@ -1069,7 +1067,7 @@ class _HomeSreenState extends State<HomeSreen> {
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 1)),
+                                  horizontal: getWidth(context, 2)),
                               child: GestureDetector(
                                 onTap: () {
                                   if (productrovider.show) {
@@ -1108,7 +1106,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 1)),
+                                  horizontal: getWidth(context, 2)),
                               child: Text(
                                 "Best Sell".tr,
                                 style: TextStyle(
@@ -1119,7 +1117,7 @@ class _HomeSreenState extends State<HomeSreen> {
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 1)),
+                                  horizontal: getWidth(context, 2)),
                               child: Row(
                                 children: [
                                   GestureDetector(
