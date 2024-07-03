@@ -568,8 +568,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                               ),
                               textStyle: TextStyle(fontSize: 12),
                               child: Container(
-                                width: 30,
-                                height: 30,
+                                width: getHeight(context, 4),
+                              height: getHeight(context, 4),
                                 decoration: BoxDecoration(
                                     color: mainColorGrey,
                                     borderRadius: BorderRadius.only(
@@ -588,7 +588,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   icon: Icon(
                                     Icons.add,
                                     color: mainColorWhite,
-                                    size: 15,
+                                    size: getHeight(context, 1.7),
                                   ),
                                 ),
                               ),
@@ -614,7 +614,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                 icon: Icon(
                                   Icons.add,
                                   color: mainColorWhite,
-                                  size: getHeight(context, 2),
+                                  size: getHeight(context, 1.7),
                                 ),
                               ),
                             ),
