@@ -1,6 +1,10 @@
 import 'package:dllylas/Config/athome_functions.dart';
+import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/Landing/splash_screen.dart';
+import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/model/voucher/voucher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +17,8 @@ class coinReward extends StatefulWidget {
 }
 
 class _coinRewardState extends State<coinReward> {
+  bool waiting = false;
+  int id = -1;
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: false);
@@ -108,7 +114,7 @@ class _coinRewardState extends State<coinReward> {
                                                 fontFamily: mainFontnormal),
                                           ),
                                           new TextSpan(
-                                            text: " " + "OFF".tr,
+                                            text: " " + "Discount".tr,
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 color: mainColorRed,
@@ -119,9 +125,11 @@ class _coinRewardState extends State<coinReward> {
                                       ),
                                     ),
                                     Text(
-                                      "VALUE".tr + ": " + 
-                                      point.porint.toString() + 
-                                      " " + "Point".tr,
+                                      "VALUE".tr +
+                                          ": " +
+                                          point.porint.toString() +
+                                          " " +
+                                          "Point".tr,
                                       style: TextStyle(
                                           fontFamily: mainFontbold,
                                           color: mainColorBlack,
@@ -129,12 +137,60 @@ class _coinRewardState extends State<coinReward> {
                                     ),
                                   ],
                                 ),
-                                TextButton(
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: mainColorGrey,
-                                    ),
-                                    onPressed: () {},
-                                    child: Text("Buy Now".tr))
+                                waiting && id == point.id
+                                    ? Container(
+                                        width: getHeight(context, 5),
+                                        height: getHeight(context, 5),
+                                        child: waitingWiget(context))
+                                    : TextButton(
+                                        onPressed:
+                                            userdata["point"] < point.porint
+                                                ? null
+                                                : () {
+                                                    setState(() {
+                                                      waiting = true;
+                                                      id = point.id!;
+                                                    });
+                                                    var data = {
+                                                      "id": userdata["id"],
+                                                      "discount": point.price,
+                                                      "point": point.porint,
+                                                    };
+                                                    Network(false)
+                                                        .postData("buy_voucher",
+                                                            data, context)
+                                                        .then((value) {
+                                                      if (value != "") {
+                                                        if (value["code"] ==
+                                                            "200") {
+                                                          setState(() {
+                                                            productrovider.setvouchers(
+                                                                (value['data']
+                                                                        as List)
+                                                                    .map((x) =>
+                                                                        Voucher.fromMap(
+                                                                            x))
+                                                                    .toList());
+                                                            userdata["point"] =
+                                                                userdata[
+                                                                        "point"] -
+                                                                    point
+                                                                        .porint;
+                                                            waiting = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            waiting = false;
+                                                          });
+                                                        }
+                                                      } else {
+                                                        setState(() {
+                                                          waiting = false;
+                                                        });
+                                                      }
+                                                    });
+                                                  },
+                                        child: Text("Buy Now".tr))
                               ],
                             ),
                           ),
