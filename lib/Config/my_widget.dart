@@ -328,7 +328,7 @@ Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
   return SizedBox(
-    height: getHeight(context, 27),
+    height: getHeight(context, 25),
 
     //  decoration: BoxDecoration(border: Border.all()),
     child: Visibility(
@@ -494,7 +494,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                       ? product.nameAr.toString()
                                       : product.nameKu.toString(),
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: getHeight(context, 1.8),
                                   color: mainColorBlack,
                                   fontFamily: mainFontbold),
                             ),
@@ -506,7 +506,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                       ? product.contentsAr.toString()
                                       : product.contentsKu.toString(),
                               style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: getHeight(context, 1.2),
                                   color: mainColorBlack.withOpacity(0.5),
                                   fontFamily: mainFontnormal),
                             ),
@@ -594,8 +594,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                               ),
                             )
                           : Container(
-                              width: 30,
-                              height: 30,
+                              width: getHeight(context, 4),
+                              height: getHeight(context, 4),
                               decoration: BoxDecoration(
                                   color: mainColorGrey,
                                   borderRadius: BorderRadius.only(
@@ -614,7 +614,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                 icon: Icon(
                                   Icons.add,
                                   color: mainColorWhite,
-                                  size: 15,
+                                  size: getHeight(context, 2),
                                 ),
                               ),
                             ),
