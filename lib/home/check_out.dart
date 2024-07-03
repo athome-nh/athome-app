@@ -37,6 +37,7 @@ class _CheckOutState extends State<CheckOut> {
   String VoucherE = "";
   int VoucherID = -1;
   int VoucherAmount = 0;
+  bool waiting = false;
   List<String> listOfDays = [
     "Select Day".tr,
     "Monday".tr,
@@ -84,7 +85,10 @@ class _CheckOutState extends State<CheckOut> {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: Color.fromARGB(241, 255, 255, 255),
+        // backgroundColor: Color.fromARGB(241, 255, 255, 255),
+        // backgroundColor: Color(0xFFE4E4E4),
+        // backgroundColor: Color(0xFFEEEEEE),
+        backgroundColor: Color(0xFFE5E5E5),
         // appbar
         appBar: AppBar(
           title: Text(
@@ -107,14 +111,37 @@ class _CheckOutState extends State<CheckOut> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: getHeight(context, 15),
-                        width: getWidth(context, 100),
-                        child: map.MapWidget(
-                          cameraOptions: map.CameraOptions(
-                              center: map.Point(
+                  SizedBox(
+                    height: getHeight(context, 15),
+                    width: getWidth(context, 100),
+                    child: map.MapWidget(
+                      cameraOptions: map.CameraOptions(
+                          center: map.Point(
+                                  coordinates: map.Position(
+                                      productrovider
+                                          .getonelocationById(
+                                              productrovider.defultlocation)
+                                          .longitude!,
+                                      productrovider
+                                          .getonelocationById(
+                                              productrovider.defultlocation)
+                                          .latitude!))
+                              .toJson(),
+                          zoom: 17.0),
+                      key: const ValueKey("mapWidget"),
+                      onTapListener: (coordinate) {},
+                      onMapCreated: (controller) {
+                        _mapController = controller;
+                        controller.annotations
+                            .createPointAnnotationManager()
+                            .then((pointAnnotationManager) async {
+                          final ByteData bytes =
+                              await rootBundle.load('assets/images/PIN@2x.png');
+                          final Uint8List list = bytes.buffer.asUint8List();
+                          var options = <map.PointAnnotationOptions>[];
+
+                          options.add(map.PointAnnotationOptions(
+                              geometry: map.Point(
                                       coordinates: map.Position(
                                           productrovider
                                               .getonelocationById(
@@ -125,381 +152,363 @@ class _CheckOutState extends State<CheckOut> {
                                                   productrovider.defultlocation)
                                               .latitude!))
                                   .toJson(),
-                              zoom: 17.0),
-                          key: const ValueKey("mapWidget"),
-                          onTapListener: (coordinate) {},
-                          onMapCreated: (controller) {
-                            _mapController = controller;
-                            controller.annotations
-                                .createPointAnnotationManager()
-                                .then((pointAnnotationManager) async {
-                              final ByteData bytes = await rootBundle
-                                  .load('assets/images/PIN@2x.png');
-                              final Uint8List list = bytes.buffer.asUint8List();
-                              var options = <map.PointAnnotationOptions>[];
+                              image: list,
+                              iconSize: 0.5));
 
-                              options.add(map.PointAnnotationOptions(
-                                  geometry: map.Point(
-                                          coordinates: map.Position(
-                                              productrovider
-                                                  .getonelocationById(
-                                                      productrovider
-                                                          .defultlocation)
-                                                  .longitude!,
-                                              productrovider
-                                                  .getonelocationById(
-                                                      productrovider
-                                                          .defultlocation)
-                                                  .latitude!))
-                                      .toJson(),
-                                  image: list,
-                                  iconSize: 0.5));
+                          pointAnnotationManager.createMulti(options);
+                        });
 
-                              pointAnnotationManager.createMulti(options);
-                            });
-
-                            controller.gestures
-                                .updateSettings(map.GesturesSettings(
-                                    rotateEnabled: false,
-                                    quickZoomEnabled: false,
-                                    doubleTapToZoomInEnabled: false,
-                                    doubleTouchToZoomOutEnabled: false,
-                                    pinchToZoomEnabled: false,
-                                    scrollDecelerationEnabled: false,
-                                    scrollEnabled: false,
-                                    focalPoint: map.ScreenCoordinate(
-                                      x: productrovider
-                                          .getonelocationById(
-                                              productrovider.defultlocation)
-                                          .latitude!,
-                                      y: productrovider
-                                          .getonelocationById(
-                                              productrovider.defultlocation)
-                                          .longitude!,
-                                    )));
-                          },
-                        ),
-                      ),
-                      Container(
-                        color: mainColorWhite,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        controller.gestures.updateSettings(map.GesturesSettings(
+                            rotateEnabled: false,
+                            quickZoomEnabled: false,
+                            doubleTapToZoomInEnabled: false,
+                            doubleTouchToZoomOutEnabled: false,
+                            pinchToZoomEnabled: false,
+                            scrollDecelerationEnabled: false,
+                            scrollEnabled: false,
+                            focalPoint: map.ScreenCoordinate(
+                              x: productrovider
+                                  .getonelocationById(
+                                      productrovider.defultlocation)
+                                  .latitude!,
+                              y: productrovider
+                                  .getonelocationById(
+                                      productrovider.defultlocation)
+                                  .longitude!,
+                            )));
+                      },
+                    ),
+                  ),
+                  Container(
+                    color: mainColorWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Delivery to',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: productrovider.location.isEmpty
-                                        ? () async {
-                                            geolocator.LocationPermission
-                                                permission =
-                                                await geolocator.Geolocator
-                                                    .requestPermission();
-                                            if (permission ==
-                                                geolocator.LocationPermission
-                                                    .denied) {
-                                              // Handle case where the user denied access to their location
-                                            }
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const Map_screen()),
-                                            );
-                                          }
-                                        : () {
-                                            showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              context: context,
-                                              backgroundColor: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadiusDirectional
-                                                        .only(
-                                                  topEnd: Radius.circular(25),
-                                                  topStart: Radius.circular(25),
-                                                ),
-                                              ),
+                              Text(
+                                'Delivery to',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: productrovider.location.isEmpty
+                                    ? () async {
+                                        geolocator.LocationPermission
+                                            permission = await geolocator
+                                                .Geolocator.requestPermission();
+                                        if (permission ==
+                                            geolocator
+                                                .LocationPermission.denied) {
+                                          // Handle case where the user denied access to their location
+                                        }
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
                                               builder: (context) =>
-                                                  Directionality(
-                                                textDirection: lang == "en"
-                                                    ? TextDirection.ltr
-                                                    : TextDirection.rtl,
-                                                child: StatefulBuilder(builder:
-                                                    (BuildContext context,
-                                                        StateSetter mystate) {
-                                                  return Stack(
-                                                    alignment:
-                                                        Alignment.topCenter,
-                                                    children: [
-                                                      SizedBox(
-                                                        width: getWidth(
-                                                            context, 100),
-                                                        height: getHeight(
-                                                            context, 50),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: <Widget>[
-                                                            Text(
-                                                              "Please select Address"
-                                                                  .tr,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              maxLines: 1,
-                                                              style: TextStyle(
-                                                                color:
-                                                                    mainColorBlack,
-                                                                fontFamily:
-                                                                    mainFontbold,
-                                                                fontSize: 15,
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 5),
-                                                            Container(
-                                                              width: getWidth(
-                                                                  context, 100),
-                                                              height: getHeight(
-                                                                  context, 35),
-                                                              child: ListView
-                                                                  .builder(
-                                                                      itemCount: productrovider
+                                                  const Map_screen()),
+                                        );
+                                      }
+                                    : () {
+                                        showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          context: context,
+                                          backgroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadiusDirectional.only(
+                                              topEnd: Radius.circular(25),
+                                              topStart: Radius.circular(25),
+                                            ),
+                                          ),
+                                          builder: (context) => Directionality(
+                                            textDirection: lang == "en"
+                                                ? TextDirection.ltr
+                                                : TextDirection.rtl,
+                                            child: StatefulBuilder(builder:
+                                                (BuildContext context,
+                                                    StateSetter mystate) {
+                                              return Stack(
+                                                alignment: Alignment.topCenter,
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        getWidth(context, 100),
+                                                    height:
+                                                        getHeight(context, 50),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          "Please select Address"
+                                                              .tr,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          maxLines: 1,
+                                                          style: TextStyle(
+                                                            color:
+                                                                mainColorBlack,
+                                                            fontFamily:
+                                                                mainFontbold,
+                                                            fontSize: 15,
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                            height: 5),
+                                                        Container(
+                                                          width: getWidth(
+                                                              context, 100),
+                                                          height: getHeight(
+                                                              context, 35),
+                                                          child:
+                                                              ListView.builder(
+                                                                  itemCount:
+                                                                      productrovider
                                                                           .location
                                                                           .length,
-                                                                      itemBuilder:
-                                                                          (BuildContext context,
-                                                                              int index) {
-                                                                        final location = productrovider
-                                                                            .location
-                                                                            .reversed
-                                                                            .toList()[index];
+                                                                  itemBuilder:
+                                                                      (BuildContext
+                                                                              context,
+                                                                          int index) {
+                                                                    final location = productrovider
+                                                                        .location
+                                                                        .reversed
+                                                                        .toList()[index];
 
-                                                                        return Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .all(
-                                                                              8.0),
-                                                                          child:
-                                                                              Container(
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              borderRadius: BorderRadius.circular(15),
-                                                                              border: Border.all(
-                                                                                color: mainColorGrey.withOpacity(0.5),
-                                                                                width: 1,
-                                                                                style: BorderStyle.solid,
-                                                                              ),
-                                                                            ),
-                                                                            child:
-                                                                                ListTile(
-                                                                              onTap: () {
-                                                                                if (productrovider.defultlocation == location.id!) {
-                                                                                } else {
-                                                                                  _mapController?.annotations.createPointAnnotationManager().then((pointAnnotationManager) async {
-                                                                                    final ByteData bytes = await rootBundle.load('assets/images/PIN@2x.png');
-                                                                                    final Uint8List list = bytes.buffer.asUint8List();
-                                                                                    var options = <map.PointAnnotationOptions>[];
-
-                                                                                    options.add(map.PointAnnotationOptions(geometry: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)).toJson(), image: list, iconSize: 0.5));
-
-                                                                                    pointAnnotationManager.createMulti(options);
-                                                                                  });
-                                                                                  _mapController!.flyTo(map.CameraOptions(center: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)).toJson(), zoom: 18, bearing: 0, pitch: 15), map.MapAnimationOptions(duration: 3000, startDelay: 0));
-                                                                                  mystate(() {
-                                                                                    productrovider.setdefultlocation(location.id!);
-                                                                                  });
-                                                                                  Navigator.pop(context);
-                                                                                }
-                                                                              },
-                                                                              title: Text(
-                                                                                location.name!,
-                                                                                maxLines: 1,
-                                                                                style: TextStyle(fontFamily: mainFontbold, color: mainColorBlack, fontSize: 16),
-                                                                              ),
-                                                                              subtitle: Text(
-                                                                                location.area!,
-                                                                                style: TextStyle(fontFamily: mainFontnormal, color: mainColorGrey, fontSize: 12),
-                                                                              ),
-                                                                              trailing: Icon(
-                                                                                productrovider.defultlocation == location.id! ? Icons.check_box : Icons.check_box_outline_blank,
-                                                                                color: mainColorGrey,
-                                                                              ),
-                                                                            ),
+                                                                    return Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          8.0),
+                                                                      child:
+                                                                          Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(15),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color:
+                                                                                mainColorGrey.withOpacity(0.5),
+                                                                            width:
+                                                                                1,
+                                                                            style:
+                                                                                BorderStyle.solid,
                                                                           ),
-                                                                        );
-                                                                      }),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed:
-                                                                  () async {
+                                                                        ),
+                                                                        child:
+                                                                            ListTile(
+                                                                          onTap:
+                                                                              () {
+                                                                            if (productrovider.defultlocation ==
+                                                                                location.id!) {
+                                                                            } else {
+                                                                              _mapController?.annotations.createPointAnnotationManager().then((pointAnnotationManager) async {
+                                                                                final ByteData bytes = await rootBundle.load('assets/images/PIN@2x.png');
+                                                                                final Uint8List list = bytes.buffer.asUint8List();
+                                                                                var options = <map.PointAnnotationOptions>[];
+
+                                                                                options.add(map.PointAnnotationOptions(geometry: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)).toJson(), image: list, iconSize: 0.5));
+
+                                                                                pointAnnotationManager.createMulti(options);
+                                                                              });
+                                                                              _mapController!.flyTo(map.CameraOptions(center: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)).toJson(), zoom: 18, bearing: 0, pitch: 15), map.MapAnimationOptions(duration: 3000, startDelay: 0));
+                                                                              mystate(() {
+                                                                                productrovider.setdefultlocation(location.id!);
+                                                                              });
+                                                                              Navigator.pop(context);
+                                                                            }
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            location.name!,
+                                                                            maxLines:
+                                                                                1,
+                                                                            style: TextStyle(
+                                                                                fontFamily: mainFontbold,
+                                                                                color: mainColorBlack,
+                                                                                fontSize: 16),
+                                                                          ),
+                                                                          subtitle:
+                                                                              Text(
+                                                                            location.area!,
+                                                                            style: TextStyle(
+                                                                                fontFamily: mainFontnormal,
+                                                                                color: mainColorGrey,
+                                                                                fontSize: 12),
+                                                                          ),
+                                                                          trailing:
+                                                                              Icon(
+                                                                            productrovider.defultlocation == location.id!
+                                                                                ? Icons.check_box
+                                                                                : Icons.check_box_outline_blank,
+                                                                            color:
+                                                                                mainColorGrey,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () async {
+                                                            geolocator
+                                                                .LocationPermission
+                                                                permission =
+                                                                await geolocator
+                                                                        .Geolocator
+                                                                    .requestPermission();
+                                                            if (permission ==
                                                                 geolocator
                                                                     .LocationPermission
-                                                                    permission =
-                                                                    await geolocator
-                                                                            .Geolocator
-                                                                        .requestPermission();
-                                                                if (permission ==
-                                                                    geolocator
-                                                                        .LocationPermission
-                                                                        .denied) {
-                                                                  // Handle case where the user denied access to their location
-                                                                }
-                                                                Navigator.pop(
-                                                                    context);
-                                                                Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              const Map_screen()),
-                                                                );
-                                                              },
-                                                              style: TextButton
-                                                                  .styleFrom(
-                                                                backgroundColor: productrovider
-                                                                            .location
-                                                                            .length >
-                                                                        0
-                                                                    ? mainColorGrey
-                                                                    : mainColorRed,
-                                                                fixedSize: Size(
-                                                                    getWidth(
-                                                                        context,
-                                                                        70),
-                                                                    getHeight(
-                                                                        context,
-                                                                        5)),
-                                                              ),
-                                                              child: Text(
-                                                                "Add location"
-                                                                    .tr,
-                                                              ),
-                                                            ),
-                                                          ],
+                                                                    .denied) {
+                                                              // Handle case where the user denied access to their location
+                                                            }
+                                                            Navigator.pop(
+                                                                context);
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          const Map_screen()),
+                                                            );
+                                                          },
+                                                          style: TextButton
+                                                              .styleFrom(
+                                                            backgroundColor: productrovider
+                                                                        .location
+                                                                        .length >
+                                                                    0
+                                                                ? mainColorGrey
+                                                                : mainColorRed,
+                                                            fixedSize: Size(
+                                                                getWidth(
+                                                                    context,
+                                                                    70),
+                                                                getHeight(
+                                                                    context,
+                                                                    5)),
+                                                          ),
+                                                          child: Text(
+                                                            "Add location".tr,
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  top: 8.0),
-                                                          child: Container(
-                                                            width: 65,
-                                                            height: 5,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          100),
-                                                              color:
-                                                                  mainColorGrey,
-                                                            ),
-                                                          ))
-                                                    ],
-                                                  );
-                                                }),
-                                              ),
-                                            ).then((value) {});
-                                          },
-                                    child: Text(
-                                      productrovider.location.isEmpty
-                                          ? "Add location"
-                                          : 'Change',
-                                      style: TextStyle(
-                                        color: mainColorRed,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 8.0),
+                                                      child: Container(
+                                                        width: 65,
+                                                        height: 5,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100),
+                                                          color: mainColorGrey,
+                                                        ),
+                                                      ))
+                                                ],
+                                              );
+                                            }),
+                                          ),
+                                        ).then((value) {});
+                                      },
+                                child: Text(
+                                  productrovider.location.isEmpty
+                                      ? "Add location"
+                                      : 'Change',
+                                  style: TextStyle(
+                                    color: mainColorRed,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
+                                ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
-                                child: Divider(),
-                              ),
-                              productrovider.location.isEmpty
-                                  ? SizedBox()
-                                  : Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_pin,
-                                          color: mainColorRed,
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Divider(),
+                          ),
+                          productrovider.location.isEmpty
+                              ? SizedBox()
+                              : Row(
+                                  children: [
+                                    Icon(
+                                      Icons.location_pin,
+                                      color: mainColorRed,
+                                    ),
+                                    SizedBox(width: 8),
+                                    RichText(
+                                      text: new TextSpan(
+                                        // Note: Styles for TextSpans must be explicitly defined.
+                                        // Child text spans will inherit styles from parent
+                                        style: new TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
                                         ),
-                                        SizedBox(width: 8),
-                                        RichText(
-                                          text: new TextSpan(
-                                            // Note: Styles for TextSpans must be explicitly defined.
-                                            // Child text spans will inherit styles from parent
-                                            style: new TextStyle(
-                                              fontSize: 14.0,
-                                              color: Colors.black,
-                                            ),
-                                            children: <TextSpan>[
-                                              new TextSpan(
-                                                text: productrovider
-                                                        .getonelocationById(
-                                                            productrovider
-                                                                .defultlocation!)
-                                                        .area! +
-                                                    "\n",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontFamily: mainFontnormal),
-                                              ),
-                                              new TextSpan(
-                                                text: productrovider
-                                                        .getonelocationById(
-                                                            productrovider
-                                                                .defultlocation!)
-                                                        .name! +
-                                                    " : " +
-                                                    productrovider
-                                                        .getonelocationById(
-                                                            productrovider
-                                                                .defultlocation!)
-                                                        .number! +
-                                                    "\n",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontFamily: mainFontnormal),
-                                              ),
-                                              new TextSpan(
-                                                text: productrovider
+                                        children: <TextSpan>[
+                                          new TextSpan(
+                                            text: productrovider
                                                     .getonelocationById(
                                                         productrovider
                                                             .defultlocation!)
-                                                    .phone!,
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontFamily: mainFontnormal),
-                                              ),
-                                            ],
+                                                    .area! +
+                                                "\n",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: mainFontnormal),
                                           ),
-                                        ),
-                                      ],
+                                          new TextSpan(
+                                            text: productrovider
+                                                    .getonelocationById(
+                                                        productrovider
+                                                            .defultlocation!)
+                                                    .name! +
+                                                " : " +
+                                                productrovider
+                                                    .getonelocationById(
+                                                        productrovider
+                                                            .defultlocation!)
+                                                    .number! +
+                                                "\n",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: mainFontnormal),
+                                          ),
+                                          new TextSpan(
+                                            text: productrovider
+                                                .getonelocationById(
+                                                    productrovider
+                                                        .defultlocation!)
+                                                .phone!,
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: mainFontnormal),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                            ],
-                          ),
-                        ),
+                                  ],
+                                ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                   SizedBox(
                     height: getHeight(context, 1),
@@ -1089,7 +1098,11 @@ class _CheckOutState extends State<CheckOut> {
                                                                       onPressed: widget.total >=
                                                                               voucher.mimimumAmount!
                                                                           ? () {
-                                                                              voucherCode.text = voucher.code!;
+                                                                              mystate(() {
+                                                                                voucherCode.text = voucher.code!;
+                                                                              });
+
+                                                                              Navigator.pop(context);
                                                                             }
                                                                           : null,
                                                                       child:
@@ -1127,7 +1140,10 @@ class _CheckOutState extends State<CheckOut> {
                                         );
                                       }),
                                     ),
-                                  ).then((value) {});
+                                  ).then((value) {
+                                    setState(() {});
+                                    FocusScope.of(context).unfocus();
+                                  });
                                 },
                                 child: Text(
                                   'Select',
@@ -1171,83 +1187,114 @@ class _CheckOutState extends State<CheckOut> {
                                 ),
                                 suffixIcon: Container(
                                   margin: EdgeInsets.all(8),
-                                  child: TextButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent),
-                                    child: Text(
-                                      "Submit",
-                                      style: TextStyle(
-                                          color: voucherCode.text.isEmpty
-                                              ? mainColorGrey.withOpacity(0.5)
-                                              : mainColorGrey),
-                                    ),
-                                    onPressed: voucherCode.text.isEmpty
-                                        ? () {}
-                                        : () {
-                                            var data = {
-                                              "id": userdata["id"],
-                                              "amount": widget.total,
-                                              "code": voucherCode.text,
-                                            };
-                                            Network(false)
-                                                .postData("checkvoucher", data,
-                                                    context)
-                                                .then((value) {
-                                              print(value);
+                                  child: waiting
+                                      ? Container(
+                                          width: getHeight(context, 4),
+                                          height: getHeight(context, 4),
+                                          child: waitingWiget(context))
+                                      : TextButton(
+                                          style: TextButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.transparent),
+                                          child: Text(
+                                            "Submit",
+                                            style: TextStyle(
+                                                color: voucherCode.text.isEmpty
+                                                    ? mainColorGrey
+                                                        .withOpacity(0.5)
+                                                    : mainColorGrey),
+                                          ),
+                                          onPressed: voucherCode.text.isEmpty
+                                              ? () {}
+                                              : () {
+                                                  setState(() {
+                                                    waiting = true;
+                                                  });
+                                                  var data = {
+                                                    "id": userdata["id"],
+                                                    "amount": widget.total,
+                                                    "code": voucherCode.text,
+                                                  };
+                                                  Network(false)
+                                                      .postData("checkvoucher",
+                                                          data, context)
+                                                      .then((value) {
+                                                    print(value);
 
-                                              if (value != "") {
-                                                if (value["code"] == "200") {
-                                                  if (value["data"] ==
-                                                      "not_found") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "expired") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "minimum") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "limit") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "used") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
-                                                    });
-                                                  } else if (value["data"] ==
-                                                      "success") {
-                                                    setState(() {
-                                                      VoucherE = value["data"]
-                                                          .toString();
+                                                    if (value != "") {
+                                                      if (value["code"] ==
+                                                          "200") {
+                                                        if (value["data"] ==
+                                                            "not_found") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "expired") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "minimum") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "limit") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "used") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
+                                                          });
+                                                        } else if (value[
+                                                                "data"] ==
+                                                            "success") {
+                                                          setState(() {
+                                                            waiting = false;
+                                                            VoucherE =
+                                                                value["data"]
+                                                                    .toString();
 
-                                                      VoucherID = value["id"];
-                                                      VoucherAmount =
-                                                          value["amount"];
-                                                    });
+                                                            VoucherID =
+                                                                value["id"];
+                                                            VoucherAmount =
+                                                                value["amount"];
+                                                          });
 
-                                                    productrovider
-                                                        .notifyListeners();
-                                                  }
-                                                } else {}
-                                              } else {
-                                                setState(() {});
-                                              }
-                                            });
-                                          },
-                                  ),
+                                                          productrovider
+                                                              .notifyListeners();
+                                                        }
+                                                      } else {}
+                                                    } else {
+                                                      setState(() {
+                                                        waiting = false;
+                                                      });
+                                                    }
+                                                  });
+                                                },
+                                        ),
                                 ),
                               ),
                             ),
