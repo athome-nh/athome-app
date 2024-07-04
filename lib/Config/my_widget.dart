@@ -354,7 +354,7 @@ Widget listItemsSmall(BuildContext context, var data) {
               width: getWidth(context, 36),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.grey.shade200,
+                color: randomColor,
                 boxShadow: [
                   BoxShadow(
                       color: mainColorBlack.withOpacity(0.1),
@@ -515,59 +515,89 @@ Widget listItemsSmall(BuildContext context, var data) {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
+                  Padding(
+                    padding: lang == "en"
+                        ? EdgeInsets.only(left: getWidth(context, 1))
+                        : EdgeInsets.only(right: getWidth(context, 1)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              checkOferPrice(product)
+                                  ? (product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!)
+                                      .toString()
+                                  : addCommasToPrice(product.price2! > -1
+                                      ? product.price2!
+                                      : product.price!),
+                              maxLines: 1,
+                              style: TextStyle(
+                                  decoration: checkOferPrice(product)
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
+                                  color: checkOferPrice(product)
+                                      ? mainColorRed
+                                      : Colors.green,
+                                  fontFamily: checkOferPrice(product)
+                                      ? mainFontnormal
+                                      : mainFontbold,
+                                  fontSize: checkOferPrice(product) ? 10 : 14),
+                            ),
                             checkOferPrice(product)
-                                ? (product.price2! > -1
-                                        ? product.price2!
-                                        : product.price!)
-                                    .toString()
-                                : addCommasToPrice(product.price2! > -1
-                                    ? product.price2!
-                                    : product.price!),
-                            maxLines: 1,
-                            style: TextStyle(
-                                decoration: checkOferPrice(product)
-                                    ? TextDecoration.lineThrough
-                                    : TextDecoration.none,
-                                color: checkOferPrice(product)
-                                    ? mainColorRed
-                                    : Colors.green,
-                                fontFamily: checkOferPrice(product)
-                                    ? mainFontnormal
-                                    : mainFontbold,
-                                fontSize: checkOferPrice(product) ? 10 : 14),
-                          ),
-                          checkOferPrice(product)
-                              ? const Text(
-                                  "/",
-                                  style: TextStyle(fontSize: 8),
-                                )
-                              : const SizedBox(),
-                          checkOferPrice(product)
-                              ? Text(
-                                  addCommasToPrice(product.offerPrice!),
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 11),
-                                )
-                              : const SizedBox(),
-                        ],
-                      ),
-                      isItemInCart
-                          ? Badge(
-                              label: Text(
-                                count.toString(),
-                              ),
-                              textStyle: TextStyle(fontSize: 12),
-                              child: Container(
+                                ? const Text(
+                                    "/",
+                                    style: TextStyle(fontSize: 8),
+                                  )
+                                : const SizedBox(),
+                            checkOferPrice(product)
+                                ? Text(
+                                    addCommasToPrice(product.offerPrice!),
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontFamily: mainFontbold,
+                                        fontSize: 11),
+                                  )
+                                : const SizedBox(),
+                          ],
+                        ),
+                        isItemInCart
+                            ? Badge(
+                                label: Text(
+                                  count.toString(),
+                                ),
+                                textStyle: TextStyle(fontSize: 12),
+                                child: Container(
+                                  width: getHeight(context, 4),
+                                  height: getHeight(context, 4),
+                                  decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(15),
+                                          topLeft: Radius.circular(15))),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      if (!isLogin) {
+                                        loiginPopup(context);
+                                        return;
+                                      }
+                                      final cartItem =
+                                          CartItem(product: product.id!);
+                                      cartProvider.addToCart(cartItem);
+                                    },
+                                    icon: Icon(
+                                      Icons.add,
+                                      color: mainColorWhite,
+                                      size: getHeight(context, 1.7),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Container(
                                 width: getHeight(context, 4),
                                 height: getHeight(context, 4),
                                 decoration: BoxDecoration(
@@ -592,33 +622,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   ),
                                 ),
                               ),
-                            )
-                          : Container(
-                              width: getHeight(context, 4),
-                              height: getHeight(context, 4),
-                              decoration: BoxDecoration(
-                                  color: mainColorGrey,
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(15),
-                                      topLeft: Radius.circular(15))),
-                              child: IconButton(
-                                onPressed: () {
-                                  if (!isLogin) {
-                                    loiginPopup(context);
-                                    return;
-                                  }
-                                  final cartItem =
-                                      CartItem(product: product.id!);
-                                  cartProvider.addToCart(cartItem);
-                                },
-                                icon: Icon(
-                                  Icons.add,
-                                  color: mainColorWhite,
-                                  size: getHeight(context, 1.7),
-                                ),
-                              ),
-                            ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -816,61 +821,91 @@ Widget listItemsShow(BuildContext context, var data) {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
+                Padding(
+                  padding: lang == "en"
+                      ? EdgeInsets.only(left: getWidth(context, 1))
+                      : EdgeInsets.only(right: getWidth(context, 1)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            checkOferPrice(product)
+                                ? (product.price2! > -1
+                                        ? product.price2!
+                                        : product.price!)
+                                    .toString()
+                                : addCommasToPrice(product.price2! > -1
+                                    ? product.price2!
+                                    : product.price!),
+                            maxLines: 1,
+                            style: TextStyle(
+                                decoration: checkOferPrice(product)
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none,
+                                color: checkOferPrice(product)
+                                    ? mainColorRed
+                                    : Colors.green,
+                                fontFamily: checkOferPrice(product)
+                                    ? mainFontnormal
+                                    : mainFontbold,
+                                fontSize: checkOferPrice(product) ? 10 : 14),
+                          ),
                           checkOferPrice(product)
-                              ? (product.price2! > -1
-                                      ? product.price2!
-                                      : product.price!)
-                                  .toString()
-                              : addCommasToPrice(product.price2! > -1
-                                  ? product.price2!
-                                  : product.price!),
-                          maxLines: 1,
-                          style: TextStyle(
-                              decoration: checkOferPrice(product)
-                                  ? TextDecoration.lineThrough
-                                  : TextDecoration.none,
-                              color: checkOferPrice(product)
-                                  ? mainColorRed
-                                  : Colors.green,
-                              fontFamily: checkOferPrice(product)
-                                  ? mainFontnormal
-                                  : mainFontbold,
-                              fontSize: checkOferPrice(product) ? 10 : 14),
-                        ),
-                        checkOferPrice(product)
-                            ? const Text(
-                                "/",
-                                style: TextStyle(fontSize: 8),
-                              )
-                            : const SizedBox(),
-                        checkOferPrice(product)
-                            ? Text(
-                                addCommasToPrice(product.offerPrice!),
-                                maxLines: 1,
-                                style: TextStyle(
-                                    color: Colors.green,
-                                    fontFamily: mainFontbold,
-                                    fontSize: 11),
-                              )
-                            : const SizedBox(),
-                      ],
-                    ),
-                    isItemInCart
-                        ? Badge(
-                            label: Text(
-                              count.toString(),
-                            ),
-                            textStyle: TextStyle(fontSize: 12),
-                            child: Container(
-                              width: getHeight(context, 4),
-                              height: getHeight(context, 4),
+                              ? const Text(
+                                  "/",
+                                  style: TextStyle(fontSize: 8),
+                                )
+                              : const SizedBox(),
+                          checkOferPrice(product)
+                              ? Text(
+                                  addCommasToPrice(product.offerPrice!),
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontFamily: mainFontbold,
+                                      fontSize: 11),
+                                )
+                              : const SizedBox(),
+                        ],
+                      ),
+                      isItemInCart
+                          ? Badge(
+                              label: Text(
+                                count.toString(),
+                              ),
+                              textStyle: TextStyle(fontSize: 12),
+                              child: Container(
+                                width: getHeight(context, 4),
+                                height: getHeight(context, 4),
+                                decoration: BoxDecoration(
+                                    color: mainColorGrey,
+                                    borderRadius: BorderRadius.only(
+                                        bottomRight: Radius.circular(15),
+                                        topLeft: Radius.circular(15))),
+                                child: IconButton(
+                                  onPressed: () {
+                                    if (!isLogin) {
+                                      loiginPopup(context);
+                                      return;
+                                    }
+                                    final cartItem =
+                                        CartItem(product: product.id!);
+                                    cartProvider.addToCart(cartItem);
+                                  },
+                                  icon: Icon(
+                                    Icons.add,
+                                    color: mainColorWhite,
+                                    size: getHeight(context, 2),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              width: 30,
+                              height: 30,
                               decoration: BoxDecoration(
                                   color: mainColorGrey,
                                   borderRadius: BorderRadius.only(
@@ -893,32 +928,8 @@ Widget listItemsShow(BuildContext context, var data) {
                                 ),
                               ),
                             ),
-                          )
-                        : Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                                color: mainColorGrey,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(15),
-                                    topLeft: Radius.circular(15))),
-                            child: IconButton(
-                              onPressed: () {
-                                if (!isLogin) {
-                                  loiginPopup(context);
-                                  return;
-                                }
-                                final cartItem = CartItem(product: product.id!);
-                                cartProvider.addToCart(cartItem);
-                              },
-                              icon: Icon(
-                                Icons.add,
-                                color: mainColorWhite,
-                                size: getHeight(context, 2),
-                              ),
-                            ),
-                          ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -1120,59 +1131,89 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
+                  Padding(
+                    padding: lang == "en"
+                        ? EdgeInsets.only(left: getWidth(context, 1))
+                        : EdgeInsets.only(right: getWidth(context, 1)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              checkOferPrice(product)
+                                  ? (product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!)
+                                      .toString()
+                                  : addCommasToPrice(product.price2! > -1
+                                      ? product.price2!
+                                      : product.price!),
+                              maxLines: 1,
+                              style: TextStyle(
+                                  decoration: checkOferPrice(product)
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
+                                  color: checkOferPrice(product)
+                                      ? mainColorRed
+                                      : Colors.green,
+                                  fontFamily: checkOferPrice(product)
+                                      ? mainFontnormal
+                                      : mainFontbold,
+                                  fontSize: checkOferPrice(product) ? 10 : 14),
+                            ),
                             checkOferPrice(product)
-                                ? (product.price2! > -1
-                                        ? product.price2!
-                                        : product.price!)
-                                    .toString()
-                                : addCommasToPrice(product.price2! > -1
-                                    ? product.price2!
-                                    : product.price!),
-                            maxLines: 1,
-                            style: TextStyle(
-                                decoration: checkOferPrice(product)
-                                    ? TextDecoration.lineThrough
-                                    : TextDecoration.none,
-                                color: checkOferPrice(product)
-                                    ? mainColorRed
-                                    : Colors.green,
-                                fontFamily: checkOferPrice(product)
-                                    ? mainFontnormal
-                                    : mainFontbold,
-                                fontSize: checkOferPrice(product) ? 10 : 14),
-                          ),
-                          checkOferPrice(product)
-                              ? const Text(
-                                  "/",
-                                  style: TextStyle(fontSize: 8),
-                                )
-                              : const SizedBox(),
-                          checkOferPrice(product)
-                              ? Text(
-                                  addCommasToPrice(product.offerPrice!),
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontFamily: mainFontbold,
-                                      fontSize: 11),
-                                )
-                              : const SizedBox(),
-                        ],
-                      ),
-                      isItemInCart
-                          ? Badge(
-                              label: Text(
-                                count.toString(),
-                              ),
-                              textStyle: TextStyle(fontSize: 12),
-                              child: Container(
+                                ? const Text(
+                                    "/",
+                                    style: TextStyle(fontSize: 8),
+                                  )
+                                : const SizedBox(),
+                            checkOferPrice(product)
+                                ? Text(
+                                    addCommasToPrice(product.offerPrice!),
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontFamily: mainFontbold,
+                                        fontSize: 11),
+                                  )
+                                : const SizedBox(),
+                          ],
+                        ),
+                        isItemInCart
+                            ? Badge(
+                                label: Text(
+                                  count.toString(),
+                                ),
+                                textStyle: TextStyle(fontSize: 12),
+                                child: Container(
+                                  width: getHeight(context, 4),
+                                  height: getHeight(context, 4),
+                                  decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(15),
+                                          topLeft: Radius.circular(15))),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      if (!isLogin) {
+                                        loiginPopup(context);
+                                        return;
+                                      }
+                                      final cartItem =
+                                          CartItem(product: product.id!);
+                                      cartProvider.addToCart(cartItem);
+                                    },
+                                    icon: Icon(
+                                      Icons.add,
+                                      color: mainColorWhite,
+                                      size: 15,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Container(
                                 width: getHeight(context, 4),
                                 height: getHeight(context, 4),
                                 decoration: BoxDecoration(
@@ -1193,37 +1234,12 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   icon: Icon(
                                     Icons.add,
                                     color: mainColorWhite,
-                                    size: 15,
+                                    size: getHeight(context, 2),
                                   ),
                                 ),
                               ),
-                            )
-                          : Container(
-                              width: getHeight(context, 4),
-                              height: getHeight(context, 4),
-                              decoration: BoxDecoration(
-                                  color: mainColorGrey,
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(15),
-                                      topLeft: Radius.circular(15))),
-                              child: IconButton(
-                                onPressed: () {
-                                  if (!isLogin) {
-                                    loiginPopup(context);
-                                    return;
-                                  }
-                                  final cartItem =
-                                      CartItem(product: product.id!);
-                                  cartProvider.addToCart(cartItem);
-                                },
-                                icon: Icon(
-                                  Icons.add,
-                                  color: mainColorWhite,
-                                  size: getHeight(context, 2),
-                                ),
-                              ),
-                            ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
