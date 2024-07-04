@@ -568,8 +568,8 @@ Widget listItemsSmall(BuildContext context, var data) {
                               ),
                               textStyle: TextStyle(fontSize: 12),
                               child: Container(
-                                width: 30,
-                                height: 30,
+                                width: getHeight(context, 4),
+                                height: getHeight(context, 4),
                                 decoration: BoxDecoration(
                                     color: mainColorGrey,
                                     borderRadius: BorderRadius.only(
@@ -588,7 +588,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   icon: Icon(
                                     Icons.add,
                                     color: mainColorWhite,
-                                    size: 15,
+                                    size: getHeight(context, 2),
                                   ),
                                 ),
                               ),
@@ -869,8 +869,8 @@ Widget listItemsShow(BuildContext context, var data) {
                             ),
                             textStyle: TextStyle(fontSize: 12),
                             child: Container(
-                              width: 30,
-                              height: 30,
+                              width: getHeight(context, 4),
+                              height: getHeight(context, 4),
                               decoration: BoxDecoration(
                                   color: mainColorGrey,
                                   borderRadius: BorderRadius.only(
@@ -889,7 +889,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                 icon: Icon(
                                   Icons.add,
                                   color: mainColorWhite,
-                                  size: 15,
+                                  size: getHeight(context, 2),
                                 ),
                               ),
                             ),
@@ -914,7 +914,7 @@ Widget listItemsShow(BuildContext context, var data) {
                               icon: Icon(
                                 Icons.add,
                                 color: mainColorWhite,
-                                size: 15,
+                                size: getHeight(context, 2),
                               ),
                             ),
                           ),
@@ -1173,8 +1173,8 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                               ),
                               textStyle: TextStyle(fontSize: 12),
                               child: Container(
-                                width: 30,
-                                height: 30,
+                                width: getHeight(context, 4),
+                                height: getHeight(context, 4),
                                 decoration: BoxDecoration(
                                     color: mainColorGrey,
                                     borderRadius: BorderRadius.only(
@@ -1199,8 +1199,8 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                               ),
                             )
                           : Container(
-                              width: 30,
-                              height: 30,
+                              width: getHeight(context, 4),
+                              height: getHeight(context, 4),
                               decoration: BoxDecoration(
                                   color: mainColorGrey,
                                   borderRadius: BorderRadius.only(
@@ -1219,7 +1219,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                 icon: Icon(
                                   Icons.add,
                                   color: mainColorWhite,
-                                  size: 15,
+                                  size: getHeight(context, 2),
                                 ),
                               ),
                             ),
