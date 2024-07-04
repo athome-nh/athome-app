@@ -66,6 +66,7 @@ class AppThemes {
   );
 
   static final darkTheme2 = ThemeData(
+    
     canvasColor: Color(0xff1A3848),
     primaryColor: const Color(0xff2382AA),
     colorScheme: ColorScheme.dark(
