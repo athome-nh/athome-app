@@ -106,10 +106,16 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .getOrderOngoing()
                                       .reversed
                                       .toList()[index];
-                                  return Card(
-                                    elevation: 2,
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                        color: mainColorWhite,
+                                        border: Border.all(
+                                            color: mainColorBlack
+                                                .withOpacity(0.5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     margin: EdgeInsets.all(8),
-                                    color: mainColorWhite,
+                                    padding: EdgeInsets.all(4),
                                     child: Column(
                                       children: [
                                         ListTile(
@@ -212,10 +218,16 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .reversed
                                       .toList()[index];
 
-                                  return Card(
-                                    elevation: 2,
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                        color: mainColorWhite,
+                                        border: Border.all(
+                                            color: mainColorBlack
+                                                .withOpacity(0.5)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     margin: EdgeInsets.all(8),
-                                    color: mainColorWhite,
+                                    padding: EdgeInsets.all(4),
                                     child: Column(
                                       children: [
                                         ListTile(

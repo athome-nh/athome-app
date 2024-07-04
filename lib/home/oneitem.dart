@@ -333,7 +333,22 @@ class _OneitemState extends State<Oneitem> {
                       : MainAxisAlignment.center,
                   children: [
                     isItemInCart
-                        ? const SizedBox()
+                        ? TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyCart(true)),
+                              );
+                            },
+                            style: TextButton.styleFrom(
+                              fixedSize: Size(
+                                  getWidth(context, 40), getHeight(context, 4)),
+                            ),
+                            child: Text(
+                              "My Cart".tr,
+                            ),
+                          )
                         : TextButton(
                             onPressed: checkProductStock(Item, count) ||
                                     checkProductLimit(Item, count)
@@ -356,83 +371,64 @@ class _OneitemState extends State<Oneitem> {
                             ),
                           ),
                     isItemInCart
-                        ? TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyCart(true)),
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              fixedSize: Size(
-                                  getWidth(context, 40), getHeight(context, 4)),
-                            ),
-                            child: Text(
-                              "My Cart".tr,
-                            ),
-                          )
-                        : const SizedBox(),
-                    isItemInCart ? const Spacer() : const SizedBox(),
-                    isItemInCart
                         ? Container(
-                            width: getWidth(context, 30),
-                            height: getHeight(context, 4),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: mainColorWhite,
-                            ),
+                            width: getWidth(context, 32),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                GestureDetector(
-                                  onTap: checkProductStock(Item, count) ||
-                                          checkProductLimit(Item, count)
-                                      ? null
-                                      : () {
-                                          final cartItem =
-                                              CartItem(product: Item.id!);
-                                          cartProvider.addToCart(cartItem);
-                                        },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        border: Border.all(
-                                            color: checkProductStock(
-                                                        Item, count) ||
-                                                    checkProductLimit(
-                                                        Item, count)
-                                                ? mainColorGrey.withOpacity(0.5)
-                                                : Colors.green)),
-                                    child: Icon(Icons.add,
-                                        color: checkProductStock(Item, count) ||
-                                                checkProductLimit(Item, count)
-                                            ? mainColorGrey.withOpacity(0.5)
-                                            : Colors.green,
-                                        size: getHeight(context, 2.5)),
+                                Container(
+                                  width: getHeight(context, 5),
+                                  height: getHeight(context, 5),
+                                  decoration: BoxDecoration(
+                                      color: mainColorGrey,
+                                      borderRadius: BorderRadius.circular(100)),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      if (!isLogin) {
+                                        loiginPopup(context);
+                                        return;
+                                      }
+                                      final cartItem =
+                                          CartItem(product: Item.id!);
+                                      cartProvider.addToCart(cartItem);
+                                    },
+                                    icon: Icon(
+                                      Icons.add,
+                                      color: mainColorWhite,
+                                      size: getHeight(context, 2),
+                                    ),
                                   ),
                                 ),
                                 Text(
-                                  count.toString(),
+                                  count.toString().length == 1
+                                      ? "0" + count.toString()
+                                      : count.toString(),
                                   style: TextStyle(
                                       color: mainColorGrey,
                                       fontFamily: mainFontnormal,
-                                      fontSize: 18),
+                                      fontSize: 20),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    final cartItem =
-                                        CartItem(product: Item.id!);
-                                    cartProvider.removeFromCart(cartItem);
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        border:
-                                            Border.all(color: mainColorRed)),
-                                    child: Icon(Icons.remove,
-                                        color: mainColorRed,
-                                        size: getHeight(context, 2.5)),
+                                Container(
+                                  width: getHeight(context, 5),
+                                  height: getHeight(context, 5),
+                                  decoration: BoxDecoration(
+                                      color: mainColorRed,
+                                      borderRadius: BorderRadius.circular(100)),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      if (!isLogin) {
+                                        loiginPopup(context);
+                                        return;
+                                      }
+                                      final cartItem =
+                                          CartItem(product: Item.id!);
+                                      cartProvider.removeFromCart(cartItem);
+                                    },
+                                    icon: Icon(
+                                      Icons.remove,
+                                      color: mainColorWhite,
+                                      size: getHeight(context, 2),
+                                    ),
                                   ),
                                 ),
                               ],

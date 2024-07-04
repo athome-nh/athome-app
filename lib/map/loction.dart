@@ -73,10 +73,14 @@ class _LocationScreenState extends State<LocationScreen> {
                         itemCount: productrovider.location.length,
                         itemBuilder: (BuildContext context, int index) {
                           final location = productrovider.location[index];
-                          return Card(
-                            elevation: 2,
+                          return Container(
+                            decoration: BoxDecoration(
+                                color: mainColorWhite,
+                                border: Border.all(
+                                    color: mainColorBlack.withOpacity(0.5)),
+                                borderRadius: BorderRadius.circular(15)),
                             margin: EdgeInsets.all(8),
-                            color: mainColorWhite,
+                            padding: EdgeInsets.all(4),
                             child: ListTile(
                               onTap: () {
                                 productrovider.setdefultlocation(location.id!);

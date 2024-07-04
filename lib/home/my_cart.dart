@@ -830,7 +830,8 @@ class _MyCartState extends State<MyCart> {
                       : cartProvider.cartItems.isNotEmpty && isLogin
                           ? Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: getWidth(context, 4)),
+                                  horizontal: getWidth(context, 4),
+                                  vertical: getHeight(context, 2)),
                               child: TextButton(
                                 onPressed: () async {
                                   if (await noInternet(context)) {
