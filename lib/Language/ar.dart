@@ -201,7 +201,10 @@ const Map<String, String> ar = {
   "Highlight": "المنتجات المميزة",
   "Recent Order": "احدث الطلبیات",
   "Best Sell": "المنتجات الاکثر مبیعا",
-  
+
+  // home --> Categories 
+  "All Categories": "کل الفئات",
+
   // home_page
   "Order now": "اطلب الان",
   "Categories": "الفئات",
@@ -361,12 +364,6 @@ const Map<String, String> ar = {
   // Dialogbox ( Register ) --> my_widget
   
   "You need login": "یرجی التسجیل أولا",
-  
-
-  // categories
-  "All Categories": "کل الفئات",
-
-  // all_item >> shtakan dobar boo
 
   // Search_page
   "Not found any item": "لم یتم العثور علی أي منتج",

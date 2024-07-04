@@ -202,6 +202,13 @@ const Map<String, String> kur = {
   "Recent Order": "دوایین داواکاریەکان",
   "Best Sell": "باشترین فرۆش",
 
+  // home --> Categories 
+  "All Categories": "گشت پۆلێنەکان",
+
+  // categories
+  
+  'All Items': 'هەموو شتەکان',
+
   // home_page
   "Order now": "ئێستا داوا بكه‌",
   "Categories": "پۆلێنەکان",
@@ -365,9 +372,6 @@ const Map<String, String> kur = {
   
   "You need login": "پێویستە خۆت تۆمار بکەیت",
 
-  // categories
-  "All Categories": "گشت پۆلێنەکان",
-  'All Items': 'هەموو شتەکان',
   // all_item >> shtakan dobar boo
 
   // Search_page

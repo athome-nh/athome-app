@@ -201,8 +201,14 @@ const Map<String, String> en = {
   "Highlight": "Highlight",
   "Recent Order": "Recent Orders",
   "Best Sell": "Best Sell",
+
+  // home --> Categories 
+  "All Categories": "All Categories",
+
   
-  "":"",
+  
+  // categories
+  'All Items': 'All Items',
 
   // home_page
   "Order now": "Order now",
@@ -373,9 +379,7 @@ const Map<String, String> en = {
   // Dialogbox ( Register ) --> my_widget
   "You need login": "You have to register first",
 
-  // categories
-  "All Categories": "All Categories",
-  'All Items': 'All Items',
+  
 
   // Search_page
   "Not found any item": "No item found",
