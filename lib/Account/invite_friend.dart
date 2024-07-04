@@ -215,134 +215,137 @@ class _InvitePageState extends State<InvitePage> {
                 height: getWidth(context, 80),
                 child: Image.asset("assets/images/LogoLoading.gif"),
               ))
-            : Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/refer.png",
-                    ),
-                    SizedBox(height: getHeight(context, 2)),
-                    Text(
-                      "Invite your friends".tr,
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: mainFontbold,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: getHeight(context, 1)),
-                    Text(
-                      textAlign: TextAlign.center,
-                      "TextIFP".tr,
-                      style: TextStyle(fontSize: 16, fontFamily: mainFontbold),
-                    ),
-                    SizedBox(height: getHeight(context, 2)),
-
-                    TextFormField(
-                      controller: _controllercode,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            Icons.copy,
-                            color: mainColorGrey,
-                          ),
-                          onPressed: _copyText,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: mainColorGrey, // Customize border color
-                            width: 1.0, // Customize border width
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: mainColorGrey.withOpacity(0.8),
-                            width: 1.0,
-                          ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Colors.red,
-                            width: 1.0,
-                          ),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Colors.red,
-                            width: 1.0,
-                          ),
-                        ),
-                        labelText: "Referral Code".tr,
-                        // hintText: "Copy",
-                        hintStyle: TextStyle(
-                            color: mainColorBlack.withOpacity(0.5),
-                            fontSize: 14,
-                            fontFamily: mainFontnormal),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/refer.png",
                       ),
-                    ),
+                      SizedBox(height: getHeight(context, 2)),
+                      Text(
+                        "Invite your friends".tr,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: mainFontbold,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: getHeight(context, 1)),
+                      Text(
+                        textAlign: TextAlign.center,
+                        "TextIFP".tr,
+                        style:
+                            TextStyle(fontSize: 16, fontFamily: mainFontbold),
+                      ),
+                      SizedBox(height: getHeight(context, 2)),
 
-                    SizedBox(height: getHeight(context, 2)),
-
-                    // Invite Botton
-                    Row(
-                      mainAxisAlignment: userdata["refer"] == null
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            fixedSize: Size(
-                              getWidth(
-                                  context, userdata["refer"] == null ? 45 : 90),
-                              getHeight(context, 6),
+                      TextFormField(
+                        controller: _controllercode,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              Icons.copy,
+                              color: mainColorGrey,
+                            ),
+                            onPressed: _copyText,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(
+                              color: mainColorGrey, // Customize border color
+                              width: 1.0, // Customize border width
                             ),
                           ),
-                          onPressed: () async {
-                            final result = await Share.share(
-                                "Download the app".tr +
-                                    'https://dllylas.com\n\n' +
-                                    "Code".tr +
-                                    ": " +
-                                    _controllercode.text);
-                            if (result.status == ShareResultStatus.success) {
-                              print('Thank you for sharing my website!');
-                            }
-                          },
-                          child: Text(
-                            "Invite friends now".tr,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(
+                              color: mainColorGrey.withOpacity(0.8),
+                              width: 1.0,
+                            ),
                           ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                              width: 1.0,
+                            ),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                              width: 1.0,
+                            ),
+                          ),
+                          labelText: "Referral Code".tr,
+                          // hintText: "Copy",
+                          hintStyle: TextStyle(
+                              color: mainColorBlack.withOpacity(0.5),
+                              fontSize: 14,
+                              fontFamily: mainFontnormal),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                         ),
+                      ),
 
-                        userdata["refer"] == null
-                            ? SizedBox(height: getHeight(context, 1))
-                            : SizedBox(),
+                      SizedBox(height: getHeight(context, 2)),
 
-                        // Refer Botton
-                        userdata["refer"] == null
-                            ? TextButton(
-                                style: TextButton.styleFrom(
-                                    fixedSize: Size(
-                                      getWidth(context, 45),
-                                      getHeight(context, 6),
-                                    ),
-                                    backgroundColor: mainColorRed),
-                                onPressed: () => _showBottomSheet(context),
-                                child: Text(
-                                  "Enter Refer Code".tr,
-                                ),
-                              )
-                            : SizedBox(),
-                      ],
-                    ),
-                  ],
+                      // Invite Botton
+                      Row(
+                        mainAxisAlignment: userdata["refer"] == null
+                            ? MainAxisAlignment.spaceBetween
+                            : MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              fixedSize: Size(
+                                getWidth(context,
+                                    userdata["refer"] == null ? 45 : 90),
+                                getHeight(context, 6),
+                              ),
+                            ),
+                            onPressed: () async {
+                              final result = await Share.share(
+                                  "Download the app".tr +
+                                      'https://dllylas.com\n\n' +
+                                      "Code".tr +
+                                      ": " +
+                                      _controllercode.text);
+                              if (result.status == ShareResultStatus.success) {
+                                print('Thank you for sharing my website!');
+                              }
+                            },
+                            child: Text(
+                              "Invite friends now".tr,
+                            ),
+                          ),
+
+                          userdata["refer"] == null
+                              ? SizedBox(height: getHeight(context, 1))
+                              : SizedBox(),
+
+                          // Refer Botton
+                          userdata["refer"] == null
+                              ? TextButton(
+                                  style: TextButton.styleFrom(
+                                      fixedSize: Size(
+                                        getWidth(context, 45),
+                                        getHeight(context, 6),
+                                      ),
+                                      backgroundColor: mainColorRed),
+                                  onPressed: () => _showBottomSheet(context),
+                                  child: Text(
+                                    "Enter Refer Code".tr,
+                                  ),
+                                )
+                              : SizedBox(),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
       ),
