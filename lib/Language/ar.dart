@@ -196,7 +196,19 @@ const Map<String, String> ar = {
   "Register First": "تسجيل اولا",
   "no internet": "الانترنت غیر متوفر",
 
-  // home --> 
+  // home --> all_item
+  "Discount": "العروضات",
+  "Highlight": "المنتجات المميزة",
+  "Recent Order": "احدث الطلبیات",
+  "Best Sell": "المنتجات الاکثر مبیعا",
+  
+  // home_page
+  "Order now": "اطلب الان",
+  "Categories": "الفئات",
+  "View All": "عرض الکل",
+  "Wellcome to": "مرحبا بك في",
+  'Dlly Las ': 'دلی لاس ',
+  'Supermarket': 'سوبر ماركت',
 
   // Landing --> choose_lan
   "Get Start": "ابدأ",
@@ -345,18 +357,6 @@ const Map<String, String> ar = {
   "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
   "Yes": "نعم",
   "No": "لا",
-
-  // home_page
-  "Order now": "اطلب الان",
-  "Categories": "الفئات",
-  "Recent Order": "احدث الطلبیات",
-  "Discount": "العروضات",
-  "Highlight": "المنتجات المميزة",
-  "Best Sell": "المنتجات الاکثر مبیعا",
-  "View All": "عرض الکل",
-  "Wellcome to": "مرحبا بك في",
-  'Dlly Las ': 'دلی لاس ',
-  'Supermarket': 'سوبر ماركت',
 
   // Dialogbox ( Register ) --> my_widget
   

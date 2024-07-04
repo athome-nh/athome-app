@@ -196,7 +196,21 @@ const Map<String, String> en = {
   "Register First": "Register First",
   "no internet": "You are offline, connect to WIFI",
 
-  // home --> 
+  // home --> all_item
+  "Discount": "Discount",
+  "Highlight": "Highlight",
+  "Recent Order": "Recent Orders",
+  "Best Sell": "Best Sell",
+  
+  "":"",
+
+  // home_page
+  "Order now": "Order now",
+  "Categories": "Category",
+  "View All": "View All",
+  "Wellcome to": "Wellcome to",
+  'Dlly Las ': 'Dlly Las ',
+  'Supermarket': 'Supermarket',
 
   // Landing --> choose_lan
   "Get Start": "Get Start", // login_page, welcome_screen
@@ -355,19 +369,7 @@ const Map<String, String> en = {
   "Are you sure exiting the app": "Are you sure exiting the app",
   "Yes": "Yes",
   "No": "No",
-
-  // home_page
-  "Order now": "Order now",
-  "Categories": "Category",
-  "Recent Order": "Recent Orders",
-  "Discount": "Discount",
-  "Highlight": "Highlight",
-  "Best Sell": "Best Sell",
-  "View All": "View All",
-  "Wellcome to": "Wellcome to",
-  'Dlly Las ': 'Dlly Las ',
-  'Supermarket': 'Supermarket',
-
+  
   // Dialogbox ( Register ) --> my_widget
   "You need login": "You have to register first",
 

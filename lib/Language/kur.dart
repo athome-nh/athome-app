@@ -196,7 +196,19 @@ const Map<String, String> kur = {
   "Register First": "خۆت تۆمار بکە",
   "no internet": "ئینتەرنێت بەردەست  نیە",
 
-  // home --> 
+  // home --> all_item
+  "Discount": "داشکانەکان",
+  "Highlight": "دیارترینەکان",
+  "Recent Order": "دوایین داواکاریەکان",
+  "Best Sell": "باشترین فرۆش",
+
+  // home_page
+  "Order now": "ئێستا داوا بكه‌",
+  "Categories": "پۆلێنەکان",
+  "View All": "بینینی هەموو",
+  "Wellcome to": "بەخێربێیت بۆ",
+  'Dlly Las ': 'دڵی لاس ',
+  'Supermarket': 'سوپەرمارکێت',
 
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
@@ -347,17 +359,7 @@ const Map<String, String> kur = {
   "Yes": "بەڵێ",
   "No": "نەخێر",
 
-  // home_page
-  "Order now": "ئێستا داوا بكه‌",
-  "Categories": "پۆلێنەکان",
-  "Recent Order": "دوایین داواکاریەکان",
-  "Discount": "داشکانەکان",
-  "Highlight": "دیارترینەکان",
-  "Best Sell": "باشترین فرۆش",
-  "View All": "بینینی هەموو",
-  "Wellcome to": "بەخێربێیت بۆ",
-  'Dlly Las ': 'دڵی لاس ',
-  'Supermarket': 'سوپەرمارکێت',
+  
 
   // Dialogbox ( Register ) --> my_widget
   

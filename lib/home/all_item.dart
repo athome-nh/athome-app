@@ -100,11 +100,8 @@ class _AllItemState extends State<AllItem> {
             )
          
           ],
-
-          // Change the color of the unselected tab labels
         ),
         body: listItemsShow(context, products),
-        //floatingActionButton: buildFAB(context),
       ),
     );
   }
