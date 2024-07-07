@@ -1,4 +1,4 @@
-import 'package:animate_do/animate_do.dart';
+import 'package:dllylas/Account/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -384,7 +384,11 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Oneitem()),
+                                        builder: (context) => DetailsPage(
+                                              color: (index %
+                                                      categoryColors.length)
+                                                  .toInt(),
+                                            )),
                                   );
                                 },
                                 child: ClipRRect(
@@ -904,8 +908,8 @@ Widget listItemsShow(BuildContext context, var data) {
                               ),
                             )
                           : Container(
-                              width: 30,
-                              height: 30,
+                              width: getHeight(context, 4),
+                              height: getHeight(context, 4),
                               decoration: BoxDecoration(
                                   color: mainColorGrey,
                                   borderRadius: BorderRadius.only(

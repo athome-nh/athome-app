@@ -90,6 +90,7 @@ class _OneitemState extends State<Oneitem> {
 
           // Change the color of the unselected tab labels
         ),
+        
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,6 +271,7 @@ class _OneitemState extends State<Oneitem> {
                             : SizedBox(),
                       ],
                     ),
+               
                   ],
                 ),
               ),
@@ -441,6 +443,7 @@ class _OneitemState extends State<Oneitem> {
             ),
           ],
         ),
+      
       ),
     );
   }

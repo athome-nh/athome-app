@@ -1092,14 +1092,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             ),
                                           ],
                                         ),
+                                        Container(
+                                          height: getHeight(context, 4),
+                                          width: getWidth(context, 20),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: mainColorGrey
+                                                      .withOpacity(0.3)),
+                                              color: mainColorWhite,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                userdata["point"].toString(),
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: mainColorBlack,
+                                                    fontFamily: mainFontbold),
+                                              ),
+                                              Container(
+                                                height: getHeight(context, 2),
+                                                width: getWidth(context, 4),
+                                                child: CircleAvatar(
+                                                  backgroundImage: AssetImage(
+                                                    "assets/images/App-Icon.png",
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ],
-                                    ),
-                                    SizedBox(
-                                      width: 50,
-                                    ),
-                                    Text(
-                                      userdata["point"].toString(),
-                                      style: TextStyle(color: mainColorWhite),
                                     ),
                                   ],
                                 ),
