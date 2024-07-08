@@ -204,6 +204,47 @@ const Map<String, String> ar = {
 
   // home --> Categories 
   "All Categories": "کل الفئات",
+  
+  // home --> check_out
+  "Select Day": "اختر يوما للتوصيل",
+  "Saturday": "السبت",
+  "Sunday": "الأحد",
+  "Monday": "الاثنين",
+  "Tuesday": "الثلاثاء",
+  "Wednesday": "الأربعاء",
+  "Thursday": "الخميس",
+  "Friday": "جمعة",
+  "Checkout": "الدفع و توصيل",
+  "Delivery to": "",
+  "Please select Address": "الرجاء تحديد عنوان التسليم",
+  "Add location": "إضافة موقع",
+  "Change": "",
+  "Delivery Type": "خيارات التوصيل",
+  "Delevery now": "توصيل الآن",
+  "Delevery schedule": "تحديد موعد للتوصيل",
+  "Today": "اليوم",
+  "Select Day to show time deleverys": "اختر تاريخ التوصيل",
+  "Select the Time please": "اختر وقت الاستلام",
+  "Select": "اختر",
+  "Voucher Code": "",
+  "Please select Your Voucher": "",
+  "must order by": "",
+  "Voucher": "",
+  "Submit": "",
+  "Add your note": "أضف ملاحظاتك",
+  "Note": "ملاحظة",
+  "Payment deatils": "",
+  "Sub Total": "المجموع الجزئي",
+  "Voucher Amount": "",
+  "Delivery Cost": "کلفة التوصیل",
+  "Free Delivery": "توصیل المجاني",
+  "Pyment Method": "طریقة الدفع",
+  "Cash": "",
+  "Total": "المجموع الكلي",
+  "unknown occurred error please try again later": "حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
+  "Send Order": "ارسال الطلبیة",
+  "AM": "",
+  "PM": "",
 
   // home_page
   "Order now": "اطلب الان",
@@ -232,7 +273,6 @@ const Map<String, String> ar = {
   "OK": "موافق",
   "Account Disabled": "الحساب متوقف",
   "Account is disable please contact athome admin": "تم إيقاف الحساب، يرجى التواصل مع موظفي قسم الاتصالات على الرقم (07509583333)",
-  "unknown occurred error please try again later": "حدث خطأ أثناء تنفيذ هذه العملية, یرجی إعادة المحاولة لاحقا",
   "Account range out": "...آسف",
   "Account range out content": "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
   
@@ -314,9 +354,7 @@ const Map<String, String> ar = {
   "Undelivered": "لم يتم توصيل الطلب",
   "Date and Time": "التاریخ و الوقت",
   "Order No.": "رقم الطلبیة",
-  "Sub Total": "المجموع الجزئي",
-  "Voucher":"",
-  "Delivery Cost": "کلفة التوصیل",
+  
   
   
   // Ziyadaa
@@ -328,25 +366,6 @@ const Map<String, String> ar = {
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
   "Address": "الموقع",
-
-  
-  //
-  "Saturday": "السبت",
-  "Sunday": "الأحد",
-  "Monday": "الاثنين",
-  "Tuesday": "الثلاثاء",
-  "Wednesday": "الأربعاء",
-  "Thursday": "الخميس",
-  "Friday": "جمعة",
-
-  "Select Day": "اختر يوما للتوصيل",
-  "Delivery Type": "خيارات التوصيل",
-  "Delevery now": "توصيل الآن",
-  "Today": "اليوم",
-  "Select Day to show time deleverys": "اختر تاريخ التوصيل",
-  "Select the Time please": "اختر وقت الاستلام",
-  "Select": "اختر",
-  "Delevery schedule": "تحديد موعد للتوصيل",
 
   
 
@@ -375,9 +394,7 @@ const Map<String, String> ar = {
   
   "you can not add more this item": "لايمكن إضافة منتج أخر",
   
-  "Free Delivery": "توصیل المجاني",
-  "Total": "المجموع الكلي",
-  "Checkout": "الدفع و توصيل",
+  
   "Clear cart": "إزالة الكل",
   "Are you sure you want to continue?": "هل انت مأكد من الاستمرار ؟",
 
@@ -408,11 +425,10 @@ const Map<String, String> ar = {
   "Delivery Address": "عنوان التوصیل",
   "Not have any location": "لیس لدیك موقع محفوظ",
   "Add new Location": "إضافة عنوان جديد",
-  "Pyment Method": "طریقة الدفع",
+  
   "Cash on delivery": "الدفع عند التسلیم",
   "Coming soon": "قریبا",
-  "Note": "ملاحظة",
-  "Add your note": "أضف ملاحظاتك",
+  
   "Thank You!": "شکرا",
   "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
   "Order Number:": "رقم الطلبیة: ",
@@ -421,12 +437,11 @@ const Map<String, String> ar = {
   "Track My Order": "متابعة الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
   "Please Delivery Address": "يرجى إضافة الموقع",
-  "Please select Address": "الرجاء تحديد عنوان التسليم",
-  "Send Order": "ارسال الطلبیة",
+  
   "sorryWeDoNotHaveDelivery":
       "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
-  "Add location": "إضافة موقع",
+  
 
   // login_page
   "Please remove 0 form start": "یرجی إزالة 0 من البداية",

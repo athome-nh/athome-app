@@ -150,7 +150,7 @@ const Map<String, String> en = {
   "Copied to clipboard": "Copied to clipboard",
   "Enter your details": "Enter your details",
   "Referral Code": "Referral Code",
-  "Apply": "Apply",
+  "Apply": "Apply", // check_out
   "Invite a friend": "Invite a friend",
   "Invite your friends": "Invite your friends",
   "TextIFP": "Just share this code with your friends and ask them to signup and add this code. Both of you will get ahead of the waitlist",
@@ -205,6 +205,70 @@ const Map<String, String> en = {
   // home --> Categories 
   "All Categories": "All Categories",
 
+  // home --> check_out
+  "Select Day": "Pick a delivery day",
+  "Saturday": "Saturday",
+  "Sunday": "Sunday",
+  "Monday": "Monday",
+  "Tuesday": "Tuesday",
+  "Wednesday": "Wednesday",
+  "Thursday": "Thursday",
+  "Friday": "Friday",
+  "Checkout": "Payment & Delivery",
+  "Delivery to": "Delivery to",
+  "Please select Address": "Please Select Delivery Address",
+  "Add location": "Add location",
+  "Change": "Change",
+  "Delivery Type": "Delivery Methods",
+  "Delevery now": "Deliver Now",
+  "Delevery schedule": "Schedule for Later",
+  "Today": "Today",
+  "Select Day to show time deleverys": "Choose a delivery date",
+  "Select the Time please": "Choose a delivery time",
+  "Select": "Select",
+  "Voucher Code": "Voucher Code",
+  "Please select Your Voucher": "Please select Your Voucher",
+  "must order by": "must order by",
+  "Voucher": "Voucher",
+  "Submit": "Submit",
+  "Add your note": "Add your note",
+  "Note": "Note",
+  "Payment deatils": "Payment deatils",
+  "Sub Total": "Sub Total", // old_order
+  "Voucher Amount": "Voucher Amount", // old_order
+  "Delivery Cost": "Delivery Cost", // old_order
+  "Free Delivery": "Free Delivery",
+  "Pyment Method": "Payment Method",
+  "Cash": "Cash",
+  "Total": "Total",
+  "unknown occurred error please try again later": "Error please try again later", // singin_up, login_page
+  "Send Order": "Send Order",
+  "AM": "AM",
+  "PM": "PM",
+  
+  "": "",
+  
+
+  // check_out
+  "Delivery Address": "Delivery Address",
+  "Not have any location": "you don't have any location",
+  "Add new Location": "Add a new Location",
+  "Cash on delivery": "Cash on delivery",
+  "Coming soon": "Coming soon",
+  "Thank You!": "Thank You!",
+  "for yor order": "For shopping with Dlly Lass Market.",
+  "Order Number:": "Order Number: ",
+  "YourOrderIsNowBeingProcessed":
+      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
+  "Track My Order": "Track My Order",
+  "Back to Home": "Back to Home",
+  "Please Delivery Address": "Please Add Delivery Address",
+  "sorryWeDoNotHaveDelivery":
+      "We are soory our delivery service is close .\nWould you like your order to be delivered after",
+  "am": "am?",
+  "the code is un correct": "the code is wrong",
+   
+
   
   
   // categories
@@ -217,6 +281,7 @@ const Map<String, String> en = {
   "Wellcome to": "Wellcome to",
   'Dlly Las ': 'Dlly Las ',
   'Supermarket': 'Supermarket',
+  //////////////////////////////////////
 
   // Landing --> choose_lan
   "Get Start": "Get Start", // login_page, welcome_screen
@@ -237,7 +302,7 @@ const Map<String, String> en = {
   "OK": "OK", // singin_up 
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
-  "unknown occurred error please try again later": "Error please try again later", // singin_up
+  
   "Account range out": "Sorry....",
   "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   
@@ -319,9 +384,7 @@ const Map<String, String> en = {
   "Undelivered": "Undelivered",
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
-  "Sub Total": "Sub Total",
-  "Voucher":"Voucher",
-  "Delivery Cost": "Delivery Cost",
+  
 
   
 
@@ -347,24 +410,7 @@ const Map<String, String> en = {
   "Enter Name": "Enter Name",
   "Enter Age": "Enter Age",
   "Address": "Address",
-
-  //
-  "Saturday": "Saturday",
-  "Sunday": "Sunday",
-  "Monday": "Monday",
-  "Tuesday": "Tuesday",
-  "Wednesday": "Wednesday",
-  "Thursday": "Thursday",
-  "Friday": "Friday",
-  "Select Day": "Pick a delivery day",
-  "Delivery Type": "Delivery Methods",
-  "Delevery now": "Deliver Now",
-  "Today": "Today",
-  "Select Day to show time deleverys": "Choose a delivery date",
-  "Select the Time please": "Choose a delivery time",
-  "Select": "Select",
-  "Delevery schedule": "Schedule for Later",
-
+  
   // nav_switch
   "Home": "Home",
   "Cart": "Cart",
@@ -390,10 +436,6 @@ const Map<String, String> en = {
   "Your cart is empty": "Your cart is empty",
   "you can not add more this item": "you can not add more items",
   
-  
-  "Free Delivery": "Free Delivery",
-  "Total": "Total",
-  "Checkout": "Payment & Delivery",
   "Clear cart": "Clear cart",
   "Are you sure you want to continue?": "Are you sure about continuing?",
 
@@ -417,30 +459,7 @@ const Map<String, String> en = {
   "Past Order": "Order history",
   "Add More Items": "Add More Items",
 
-  // check_out
-  "Delivery Address": "Delivery Address",
-  "Not have any location": "you don't have any location",
-  "Add new Location": "Add a new Location",
-  "Pyment Method": "Payment Method",
-  "Cash on delivery": "Cash on delivery",
-  "Coming soon": "Coming soon",
-  "Note": "Note",
-  "Add your note": "Add your note",
-  "Thank You!": "Thank You!",
-  "for yor order": "For shopping with Dlly Lass Market.",
-  "Order Number:": "Order Number: ",
-  "YourOrderIsNowBeingProcessed":
-      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
-  "Track My Order": "Track My Order",
-  "Back to Home": "Back to Home",
-  "Please Delivery Address": "Please Add Delivery Address",
-  "Please select Address": "Please Select Delivery Address",
-  "Send Order": "Send Order",
-  "sorryWeDoNotHaveDelivery":
-      "We are soory our delivery service is close .\nWould you like your order to be delivered after",
-  "am": "am?",
-  "Add location": "Add location",
-  "the code is un correct": "the code is wrong",
+  
 
   // track_order
   "Track Order": "Track your Order",
