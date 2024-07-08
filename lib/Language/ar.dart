@@ -235,7 +235,7 @@ const Map<String, String> ar = {
   "Note": "ملاحظة",
   "Payment deatils": "",
   "Sub Total": "المجموع الجزئي",
-  "Voucher Amount": "", // old_order
+  "Voucher Amount": "",
   "Delivery Cost": "کلفة التوصیل",
   "Free Delivery": "توصیل المجاني",
   "Pyment Method": "طریقة الدفع",

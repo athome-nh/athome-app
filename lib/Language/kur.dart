@@ -224,7 +224,7 @@ const Map<String, String> kur = {
   "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
   "Today": "ئەمڕۆ",
   "Select Day to show time deleverys": "ڕۆژی گەیاندن  دیاری  بکە",
-  "Select the Time please": "کاتی گەیاندن دیاری بکە ",
+  "Select the Time please": "کاتی گەیاندن دیاری بکە",
   "Select": "دیاریکردن",
   "Voucher Code": "",
   "Please select Your Voucher": "",
@@ -235,7 +235,7 @@ const Map<String, String> kur = {
   "Note": "تێبینی",
   "Payment deatils": "",
   "Sub Total": "کۆی بەش",
-  "Voucher Amount": "", // old_order
+  "Voucher Amount": "",
   "Delivery Cost": "تێچوی گەیاندن",
   "Free Delivery": "گەیاندنی خۆڕایی",
   "Pyment Method": "شێوازی پارەدان",
