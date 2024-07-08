@@ -85,10 +85,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
               // appbar
-              appBar: AppBar(
-                backgroundColor: mainColorGrey,
-                toolbarHeight: 0,
-              ),
 
               // body
               body: !isLogin
@@ -110,223 +106,239 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                         )
-                      : SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              // Image and Username
-                              Container(
-                                height: getWidth(context, 45),
-                                decoration: BoxDecoration(
-                                    color: mainColorGrey,
-                                    borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(50),
-                                        bottomRight: Radius.circular(50))),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 20),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    // image
-                                    Container(
-                                        width: getWidth(context, 30),
-                                        height: getWidth(context, 30),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
+                      : Column(
+                          children: [
+                            // Image and Username
+                            Container(
+                              height: getHeight(context, 25),
+                              decoration: BoxDecoration(
+                                  color: mainColorGrey,
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(50),
+                                      bottomRight: Radius.circular(50))),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // image
+                                  Container(
+                                      width: getWidth(context, 30),
+                                      height: getWidth(context, 30),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                      ),
+                                      child: CircleAvatar(
+                                        child: Image.network(
+                                          dotenv.env['imageUrlServer']! +
+                                              userdata["img"],
+                                          width: getWidth(context, 25),
+                                          height: getWidth(context, 25),
                                         ),
-                                        child: CircleAvatar(
-                                          child: Image.network(
-                                            dotenv.env['imageUrlServer']! +
-                                                userdata["img"],
-                                            width: getWidth(context, 25),
-                                            height: getWidth(context, 25),
+                                        backgroundColor: mainColorWhite,
+                                        // foregroundImage: AssetImage(
+                                        //   "assets/images/test1.png",
+                                        // ),
+                                      )),
+
+                                  SizedBox(width: getHeight(context, 4)),
+
+                                  // Username
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            "assets/rank/IV.png",
+                                            width: getWidth(context, 6),
+                                            height: getWidth(context, 6),
                                           ),
-                                          backgroundColor: mainColorWhite,
-                                          // foregroundImage: AssetImage(
-                                          //   "assets/images/test1.png",
-                                          // ),
-                                        )),
-
-                                    SizedBox(width: getHeight(context, 4)),
-
-                                    // Username
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
+                                          SizedBox(
+                                              width: getHeight(context, 1)),
+                                          Text(
+                                            userdata["name"].toString(),
+                                            //userdata["name"].toString(),
+                                            style: TextStyle(
+                                                fontFamily: mainFontbold,
+                                                fontSize: 16,
+                                                color: mainColorWhite),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: getHeight(context, 1)),
+                                      Text(
+                                        userdata["phone"].toString(),
+                                        style: TextStyle(
+                                            fontFamily: mainFontnormal,
+                                            fontSize: 14,
+                                            color: mainColorWhite),
+                                      ),
+                                      SizedBox(height: getHeight(context, 1)),
+                                      Container(
+                                        height: getHeight(context, 4),
+                                        width: getWidth(context, 20),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: mainColorGrey
+                                                    .withOpacity(0.3)),
+                                            color: mainColorWhite,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Image.asset(
-                                              "assets/rank/IV.png",
-                                              width: getWidth(context, 6),
-                                              height: getWidth(context, 6),
-                                            ),
-                                            SizedBox(
-                                                width: getHeight(context, 1)),
                                             Text(
-                                              userdata["name"].toString(),
-                                              //userdata["name"].toString(),
+                                              userdata["point"].toString(),
                                               style: TextStyle(
-                                                  fontFamily: mainFontbold,
                                                   fontSize: 16,
-                                                  color: mainColorWhite),
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontbold),
+                                            ),
+                                            Container(
+                                              height: getHeight(context, 2),
+                                              width: getWidth(context, 4),
+                                              child: CircleAvatar(
+                                                backgroundImage: AssetImage(
+                                                  "assets/images/App-Icon.png",
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: getHeight(context, 1)),
-                                        Text(
-                                          userdata["phone"].toString(),
-                                          style: TextStyle(
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 14,
-                                              color: mainColorWhite),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            Expanded(
+                              flex: 10,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    // Title 1
+                                    SizedBox(height: getHeight(context, 2)),
+                                    _titles("Account & Security".tr),
+
+                                    // Account Information
+                                    _listTiles(
+                                        Icons.person_outline,
+                                        'Account Information'.tr,
+                                        AccountInfo()),
+
+                                    // Orders
+                                    _listTiles(Ionicons.bag_outline,
+                                        'Orders'.tr, OrderScreen()),
+
+                                    // Locations
+                                    _listTiles(Ionicons.location_outline,
+                                        'Locations'.tr, LocationScreen()),
+
+                                    // Refer a friend
+                                    _listTiles(Icons.person_add_outlined,
+                                        'Invite a friend'.tr, InvitePage()),
+
+                                    // Coin & Reward
+                                    _listTiles(Icons.monetization_on_outlined,
+                                        'Coin & Reward'.tr, coinReward()),
+
+                                    // My Voucher
+                                    _listTiles(Icons.card_giftcard,
+                                        'My Voucher'.tr, VoucherCodePage()),
+
+                                    // Account Settings
+                                    _listTiles(
+                                        Icons.settings_outlined,
+                                        'Account Settings'.tr,
+                                        AccountSetting()),
+
+                                    // Title 2
+                                    SizedBox(height: getHeight(context, 2)),
+                                    _titles("General".tr),
+
+                                    // Terms & Conditions
+                                    _listTiles(
+                                        Icons.description_outlined,
+                                        "Terms & Conditions".tr,
+                                        TermsandCondition()),
+
+                                    // Privacy Policy
+                                    _listTiles(Icons.privacy_tip_outlined,
+                                        'Privacy Policy'.tr, PrivacyScreen()),
+
+                                    // Customer Services
+                                    _listTiles(Icons.support_agent,
+                                        'Customer Services'.tr, ChatScreen()),
+
+                                    // Logout
+                                    Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          var data = {
+                                            "id": userdata["id"].toString()
+                                          };
+                                          Network(false)
+                                              .postData("logout", data, context)
+                                              .then((value) {
+                                            getStringPrefs("data").then((map) {
+                                              Map<String, dynamic> myMap =
+                                                  json.decode(map);
+                                              myMap["islogin"] = false;
+                                              myMap["token"] = "";
+                                              setStringPrefs(
+                                                  "data", json.encode(myMap));
+                                            });
+
+                                            final cartProvider =
+                                                Provider.of<CartProvider>(
+                                                    context,
+                                                    listen: false);
+                                            final product =
+                                                Provider.of<productProvider>(
+                                                    context,
+                                                    listen: false);
+
+                                            setState(() {
+                                              userdata = {};
+                                              token = "";
+                                              isLogin = false;
+                                            });
+                                            product.Orderitems.clear();
+                                            product.location.clear();
+                                            product.Orders.clear();
+                                            cartProvider.cartItems.clear();
+                                            cartProvider.FavItems.clear();
+
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      NavSwitch()),
+                                            );
+                                          });
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          foregroundColor: Colors.black,
+                                          backgroundColor: Colors.white,
+                                          minimumSize:
+                                              Size(double.infinity, 50),
+                                          side: BorderSide(color: Colors.grey),
                                         ),
-                                        SizedBox(height: getHeight(context, 1)),
-                                        Container(
-                                          height: getHeight(context, 4),
-                                          width: getWidth(context, 20),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: mainColorGrey
-                                                      .withOpacity(0.3)),
-                                              color: mainColorWhite,
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Text(
-                                                userdata["point"].toString(),
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    color: mainColorBlack,
-                                                    fontFamily: mainFontbold),
-                                              ),
-                                              Container(
-                                                height: getHeight(context, 2),
-                                                width: getWidth(context, 4),
-                                                child: CircleAvatar(
-                                                  backgroundImage: AssetImage(
-                                                    "assets/images/App-Icon.png",
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                        child: Text('Logout'.tr),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-
-                              // Title 1
-                              SizedBox(height: getHeight(context, 2)),
-                              _titles("Account & Security".tr),
-
-                              // Account Information
-                              _listTiles(Icons.person_outline,
-                                  'Account Information'.tr, AccountInfo()),
-
-                              // Orders
-                              _listTiles(Ionicons.bag_outline, 'Orders'.tr,
-                                  OrderScreen()),
-
-                              // Locations
-                              _listTiles(Ionicons.location_outline,
-                                  'Locations'.tr, LocationScreen()),
-
-                              // Refer a friend
-                              _listTiles(Icons.person_add_outlined,
-                                  'Invite a friend'.tr, InvitePage()),
-
-                              // Coin & Reward
-                              _listTiles(Icons.monetization_on_outlined,
-                                  'Coin & Reward'.tr, coinReward()),
-
-                              // My Voucher
-                              _listTiles(Icons.card_giftcard, 'My Voucher'.tr,
-                                  VoucherCodePage()),
-
-                              // Account Settings
-                              _listTiles(Icons.settings_outlined,
-                                  'Account Settings'.tr, AccountSetting()),
-
-                              // Title 2
-                              SizedBox(height: getHeight(context, 2)),
-                              _titles("General".tr),
-
-                              // Terms & Conditions
-                              _listTiles(Icons.description_outlined,
-                                  "Terms & Conditions".tr, TermsandCondition()),
-
-                              // Privacy Policy
-                              _listTiles(Icons.privacy_tip_outlined,
-                                  'Privacy Policy'.tr, PrivacyScreen()),
-
-                              // Customer Services
-                              _listTiles(Icons.support_agent,
-                                  'Customer Services'.tr, ChatScreen()),
-
-                              // Logout
-                              Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    var data = {
-                                      "id": userdata["id"].toString()
-                                    };
-                                    Network(false)
-                                        .postData("logout", data, context)
-                                        .then((value) {
-                                      getStringPrefs("data").then((map) {
-                                        Map<String, dynamic> myMap =
-                                            json.decode(map);
-                                        myMap["islogin"] = false;
-                                        myMap["token"] = "";
-                                        setStringPrefs(
-                                            "data", json.encode(myMap));
-                                      });
-
-                                      final cartProvider =
-                                          Provider.of<CartProvider>(context,
-                                              listen: false);
-                                      final product =
-                                          Provider.of<productProvider>(context,
-                                              listen: false);
-
-                                      setState(() {
-                                        userdata = {};
-                                        token = "";
-                                        isLogin = false;
-                                      });
-                                      product.Orderitems.clear();
-                                      product.location.clear();
-                                      product.Orders.clear();
-                                      cartProvider.cartItems.clear();
-                                      cartProvider.FavItems.clear();
-
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => NavSwitch()),
-                                      );
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    foregroundColor: Colors.black,
-                                    backgroundColor: Colors.white,
-                                    minimumSize: Size(double.infinity, 50),
-                                    side: BorderSide(color: Colors.grey),
-                                  ),
-                                  child: Text('Logout'.tr),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
             ),
           );
