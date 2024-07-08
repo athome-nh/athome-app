@@ -205,8 +205,50 @@ const Map<String, String> kur = {
   // home --> Categories 
   "All Categories": "گشت پۆلێنەکان",
 
+  // home --> check_out
+  "Select Day": "کاتی گەیاندن هەڵبژێرە",
+  "Saturday": "شەمە",
+  "Sunday": "یەک شەمە",
+  "Monday": "دوو شەمە",
+  "Tuesday": "سێ شەمە",
+  "Wednesday": "چوار شەمە",
+  "Thursday": "پێنج شەمە",
+  "Friday": "هەینی",
+  "Checkout": "پارەدان و گەیاندن",
+  "Delivery to": "",
+  "Please select Address": "تکایە ناونیشانی گەیاندن هەڵبژێرە",
+  "Add location": "ناونیشان زیاد بکە",
+  "Change": "",
+  "Delivery Type": "شێوازی گەیاندن",
+  "Delevery now": "گەیاندنی ڕاستوخۆ",
+  "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
+  "Today": "ئەمڕۆ",
+  "Select Day to show time deleverys": "ڕۆژی گەیاندن  دیاری  بکە",
+  "Select the Time please": "کاتی گەیاندن دیاری بکە ",
+  "Select": "دیاریکردن",
+  "Voucher Code": "",
+  "Please select Your Voucher": "",
+  "must order by": "",
+  "Voucher": "",
+  "Submit": "",
+  "Add your note": "زیادکردنی تێبینی",
+  "Note": "تێبینی",
+  "Payment deatils": "",
+  "Sub Total": "کۆی بەش",
+  "Voucher Amount": "", // old_order
+  "Delivery Cost": "تێچوی گەیاندن",
+  "Free Delivery": "گەیاندنی خۆڕایی",
+  "Pyment Method": "شێوازی پارەدان",
+  "Cash": "",
+  "Total": "کۆی گشتی",
+  "unknown occurred error please try again later": "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
+  "Send Order": "داواکاریەکەت بنێرە",
+  "AM": "",
+  "PM": "",
+
+
+
   // categories
-  
   'All Items': 'هەموو شتەکان',
 
   // home_page
@@ -236,7 +278,7 @@ const Map<String, String> kur = {
   "OK": "دڵنیام",
   "Account Disabled": "هەژمارەکە ڕاگیرا",
   "Account is disable please contact athome admin": "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
-  "unknown occurred error please try again later": "ببورە هەوڵەکەت سەرکەوتو نەبوو تکایە دواتر هەوڵ بدەوە",
+  
   "Account range out": "...ببورە",
   "Account range out content": "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
   
@@ -318,9 +360,7 @@ const Map<String, String> kur = {
   "Undelivered": "داواکاریەکە نەگەیەنرا",
   "Date and Time": "کات و بەروار",
   "Order No.": "ژمارەی داواکاری",
-  "Sub Total": "کۆی بەش",
-  "Voucher":"",
-  "Delivery Cost": "تێچوی گەیاندن",
+  
 
   
 
@@ -335,25 +375,7 @@ const Map<String, String> kur = {
   "Enter Name": "تۆمارکردنی ناو",
   "Enter Age": "تۆمارکدنی تەمەن",
   "Address": "ناونیشان",
-
-  //
-  "Saturday": "شەمە",
-  "Sunday": "یەک شەمە",
-  "Monday": "دوو شەمە",
-  "Tuesday": "سێ شەمە",
-  "Wednesday": "چوار شەمە",
-  "Thursday": "پێنج شەمە",
-  "Friday": "هەینی",
-  "Select Day": "کاتی گەیاندن هەڵبژێرە",
-  "Delivery Type": "شێوازی گەیاندن",
-  "Delevery now": "گەیاندنی ڕاستوخۆ",
-  "Today": "ئەمڕۆ",
-  "Select Day to show time deleverys": "ڕۆژی گەیاندن  دیاری  بکە",
-  "Select the Time please": "کاتی گەیاندن دیاری بکە ",
-  "Select": "دیاریکردن",
-  "Delevery schedule": "خشتەی کاتەکانی گەیاندن",
-
-
+  
   // nav_switch
   "Home": "سەرەکی",
   
@@ -384,9 +406,6 @@ const Map<String, String> kur = {
   
   "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
   
-  "Free Delivery": "گەیاندنی خۆڕایی",
-  "Total": "کۆی گشتی",
-  "Checkout": "پارەدان و گەیاندن",
   "Clear cart": "لابردنی هەموو",
   "Are you sure you want to continue?": "دڵنیای لە بەردەوامبوون؟",
 
@@ -415,11 +434,10 @@ const Map<String, String> kur = {
   "Delivery Address": "ناونیشانی گەیاندن",
   "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
   "Add new Location": "زیاد کردنی ناونیشانی گەیاندن",
-  "Pyment Method": "شێوازی پارەدان",
+  
   "Cash on delivery": "پارەدان لەکاتی گەیاندن",
   "Coming soon": "بەم زوانە",
-  "Note": "تێبینی",
-  "Add your note": "زیادکردنی تێبینی",
+  
   "Thank You!": "سوپاس",
   "for yor order": "بۆ بازاڕکردن و هەڵبژاردنی دڵی لاس مارکێت",
   "Order Number:": "ژمارەی داواکاری: ",
@@ -428,12 +446,11 @@ const Map<String, String> kur = {
   "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
   "Back to Home": "گەڕانەوە بۆ پەرەی سەرەکی",
   "Please Delivery Address": "تکایە ناونیشانی گەیاندن زیاد بکە",
-  "Please select Address": "تکایە ناونیشانی گەیاندن هەڵبژێرە",
-  "Send Order": "داواکاریەکەت بنێرە",
+  
   "sorryWeDoNotHaveDelivery":
       "ببورن خزمەت گوزاری گەیاندن داخراوە لەم کاتەدا.\nئارەزوو دەکەیت داوەکاریەکەت بگەیەنین پاش",
   "am": "بەیانی؟",
-  "Add location": "ناونیشان زیاد بکە",
+  
 
   // login_page
   
