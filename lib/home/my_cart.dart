@@ -545,118 +545,125 @@ class _MyCartState extends State<MyCart> {
                                                   const Spacer(),
                                                   Container(
                                                     width:
-                                                        getWidth(context, 20),
-                                                    height:
-                                                        getHeight(context, 4),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15),
-                                                      color: mainColorWhite,
-                                                    ),
+                                                        getWidth(context, 28),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceBetween,
                                                       children: [
-                                                        GestureDetector(
-                                                          onTap: checkProductStock(
-                                                                      cartitem,
-                                                                      cartitemQ
-                                                                          .quantity) ||
-                                                                  checkProductLimit(
-                                                                      cartitem,
-                                                                      cartitemQ
-                                                                          .quantity)
-                                                              ? null
-                                                              : () {
-                                                                  final cartItem =
-                                                                      CartItem(
-                                                                          product:
-                                                                              cartitemQ.product);
-
-                                                                  cartProvider
-                                                                      .addToCart(
-                                                                          cartItem);
-                                                                },
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            15),
-                                                                border: Border.all(
-                                                                    color: checkProductStock(cartitem, cartitemQ.quantity) ||
-                                                                            checkProductLimit(
-                                                                                cartitem,
-                                                                                cartitemQ
-                                                                                    .quantity)
-                                                                        ? mainColorGrey.withOpacity(
-                                                                            0.5)
-                                                                        : Colors
-                                                                            .green)),
-                                                            child: Icon(
-                                                                Icons.add,
-                                                                color: checkProductStock(
-                                                                            cartitem,
-                                                                            cartitemQ
-                                                                                .quantity) ||
-                                                                        checkProductLimit(
-                                                                            cartitem,
-                                                                            cartitemQ
-                                                                                .quantity)
-                                                                    ? mainColorGrey
-                                                                        .withOpacity(
-                                                                            0.5)
-                                                                    : Colors
-                                                                        .green,
-                                                                size: getHeight(
-                                                                    context,
-                                                                    2.5)),
+                                                        Container(
+                                                          width: getHeight(
+                                                              context, 4),
+                                                          height: getHeight(
+                                                              context, 4),
+                                                          decoration: BoxDecoration(
+                                                              color:
+                                                                  mainColorRed,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          100)),
+                                                          child: IconButton(
+                                                            onPressed: () {
+                                                              final cartItem =
+                                                                  CartItem(
+                                                                      product:
+                                                                          cartitemQ
+                                                                              .product);
+                                                              cartProvider
+                                                                  .removeFromCart(
+                                                                      cartItem);
+                                                            },
+                                                            icon: Icon(
+                                                              Icons.remove,
+                                                              color:
+                                                                  mainColorWhite,
+                                                              size: getHeight(
+                                                                  context, 2),
+                                                            ),
                                                           ),
                                                         ),
                                                         Text(
                                                           cartitemQ.quantity
-                                                              .toString(),
+                                                                      .toString()
+                                                                      .length ==
+                                                                  1
+                                                              ? "0" +
+                                                                  cartitemQ
+                                                                      .quantity
+                                                                      .toString()
+                                                              : cartitemQ
+                                                                  .quantity
+                                                                  .toString(),
                                                           style: TextStyle(
                                                               color:
-                                                                  mainColorBlack,
+                                                                  mainColorGrey,
                                                               fontFamily:
                                                                   mainFontnormal,
-                                                              fontSize: 18),
+                                                              fontSize: 20),
                                                         ),
-                                                        GestureDetector(
-                                                          onTap: () {
-                                                            final cartItem =
-                                                                CartItem(
-                                                                    product:
+                                                        Container(
+                                                          width: getHeight(
+                                                              context, 4),
+                                                          height: getHeight(
+                                                              context, 4),
+                                                          decoration: BoxDecoration(
+                                                              color: checkProductStock(
+                                                                          cartitem,
+                                                                          cartitemQ
+                                                                              .quantity) ||
+                                                                      checkProductLimit(
+                                                                          cartitem,
+                                                                          cartitemQ
+                                                                              .quantity)
+                                                                  ? lightGrey
+                                                                  : mainColorGrey,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          100)),
+                                                          child: IconButton(
+                                                            onPressed: checkProductStock(
+                                                                        cartitem,
                                                                         cartitemQ
-                                                                            .product);
-                                                            cartProvider
-                                                                .removeFromCart(
-                                                                    cartItem);
-                                                          },
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            15),
-                                                                border: Border.all(
-                                                                    color:
-                                                                        mainColorRed)),
-                                                            child: Icon(
-                                                                Icons.remove,
-                                                                color:
-                                                                    mainColorRed,
-                                                                size: getHeight(
-                                                                    context,
-                                                                    2.5)),
+                                                                            .quantity) ||
+                                                                    checkProductLimit(
+                                                                        cartitem,
+                                                                        cartitemQ
+                                                                            .quantity)
+                                                                ? null
+                                                                : () {
+                                                                    final cartItem =
+                                                                        CartItem(
+                                                                            product:
+                                                                                cartitemQ.product);
+
+                                                                    cartProvider
+                                                                        .addToCart(
+                                                                            cartItem);
+                                                                  },
+                                                            icon: Icon(
+                                                              Icons.add,
+                                                              color: checkProductStock(
+                                                                          cartitem,
+                                                                          cartitemQ
+                                                                              .quantity) ||
+                                                                      checkProductLimit(
+                                                                          cartitem,
+                                                                          cartitemQ
+                                                                              .quantity)
+                                                                  ? mainColorBlack
+                                                                      .withOpacity(
+                                                                          0.5)
+                                                                  : mainColorWhite,
+                                                              size: getHeight(
+                                                                  context, 2),
+                                                            ),
                                                           ),
                                                         ),
                                                       ],
                                                     ),
-                                                  ),
+                                                  )
                                                 ],
                                               ),
                                             ),

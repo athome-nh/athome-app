@@ -81,6 +81,7 @@ flutter:
   assets:
     - .env
     - assets/images/
+    - assets/rank/
     - assets/Victors/
     - assets/images/location.png
     - assets/images/LogoLoading.gif

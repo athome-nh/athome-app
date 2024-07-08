@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dllylas/Account/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
@@ -327,6 +329,7 @@ Widget listItemsBigShimer(BuildContext context) {
 Widget listItemsSmall(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
   return SizedBox(
     height: getHeight(context, 25),
 
@@ -347,7 +350,7 @@ Widget listItemsSmall(BuildContext context, var data) {
           final isFavInCart = cartProvider.FavExistsInCart(product);
           int count = cartProvider
               .calculateQuantityForProduct(int.parse(product.id.toString()));
-          final randomColor = categoryColors[index % categoryColors.length];
+          final randomColor = categoryColors[5];
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -372,7 +375,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                       Container(
                         height: getHeight(context, 14),
                         decoration: BoxDecoration(
-                          color: Colors.white70,
+                          color: mainColorWhite,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Stack(
@@ -385,9 +388,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => DetailsPage(
-                                              color: (index %
-                                                      categoryColors.length)
-                                                  .toInt(),
+                                              color: 5,
                                             )),
                                   );
                                 },
@@ -579,20 +580,28 @@ Widget listItemsSmall(BuildContext context, var data) {
                                   width: getHeight(context, 4),
                                   height: getHeight(context, 4),
                                   decoration: BoxDecoration(
-                                      color: mainColorGrey,
+                                      color: checkProductStock(
+                                                  product, count) ||
+                                              checkProductLimit(product, count)
+                                          ? lightGrey
+                                          : mainColorGrey,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(15),
                                           topLeft: Radius.circular(15))),
                                   child: IconButton(
-                                    onPressed: () {
-                                      if (!isLogin) {
-                                        loiginPopup(context);
-                                        return;
-                                      }
-                                      final cartItem =
-                                          CartItem(product: product.id!);
-                                      cartProvider.addToCart(cartItem);
-                                    },
+                                    onPressed: checkProductStock(
+                                                product, count) ||
+                                            checkProductLimit(product, count)
+                                        ? null
+                                        : () {
+                                            if (!isLogin) {
+                                              loiginPopup(context);
+                                              return;
+                                            }
+                                            final cartItem =
+                                                CartItem(product: product.id!);
+                                            cartProvider.addToCart(cartItem);
+                                          },
                                     icon: Icon(
                                       Icons.add,
                                       color: mainColorWhite,
@@ -659,14 +668,14 @@ Widget listItemsShow(BuildContext context, var data) {
         final isFavInCart = cartProvider.FavExistsInCart(product);
         int count = cartProvider
             .calculateQuantityForProduct(int.parse(product.id.toString()));
-        final randomColor = categoryColors[index % categoryColors.length];
+        final randomColor = categoryColors[5];
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             width: getWidth(context, 36),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.grey.shade200,
+              color: randomColor,
               boxShadow: [
                 BoxShadow(
                     color: mainColorBlack.withOpacity(0.1),
@@ -684,7 +693,7 @@ Widget listItemsShow(BuildContext context, var data) {
                     Container(
                       height: getHeight(context, 14),
                       decoration: BoxDecoration(
-                        color: Colors.white70,
+                        color: mainColorWhite,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Stack(
@@ -696,7 +705,9 @@ Widget listItemsShow(BuildContext context, var data) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Oneitem()),
+                                      builder: (context) => DetailsPage(
+                                            color: 5,
+                                          )),
                                 );
                               },
                               child: ClipRRect(
@@ -885,23 +896,33 @@ Widget listItemsShow(BuildContext context, var data) {
                                 width: getHeight(context, 4),
                                 height: getHeight(context, 4),
                                 decoration: BoxDecoration(
-                                    color: mainColorGrey,
+                                    color: checkProductStock(product, count) ||
+                                            checkProductLimit(product, count)
+                                        ? lightGrey
+                                        : mainColorGrey,
                                     borderRadius: BorderRadius.only(
                                         bottomRight: Radius.circular(15),
                                         topLeft: Radius.circular(15))),
                                 child: IconButton(
-                                  onPressed: () {
-                                    if (!isLogin) {
-                                      loiginPopup(context);
-                                      return;
-                                    }
-                                    final cartItem =
-                                        CartItem(product: product.id!);
-                                    cartProvider.addToCart(cartItem);
-                                  },
+                                  onPressed: checkProductStock(
+                                              product, count) ||
+                                          checkProductLimit(product, count)
+                                      ? null
+                                      : () {
+                                          if (!isLogin) {
+                                            loiginPopup(context);
+                                            return;
+                                          }
+                                          final cartItem =
+                                              CartItem(product: product.id!);
+                                          cartProvider.addToCart(cartItem);
+                                        },
                                   icon: Icon(
                                     Icons.add,
-                                    color: mainColorWhite,
+                                    color: checkProductStock(product, count) ||
+                                            checkProductLimit(product, count)
+                                        ? mainColorBlack.withOpacity(0.5)
+                                        : mainColorWhite,
                                     size: getHeight(context, 2),
                                   ),
                                 ),
@@ -967,14 +988,14 @@ Widget listItemsShowSearch(BuildContext context, var data) {
           final isFavInCart = cartProvider.FavExistsInCart(product);
           int count = cartProvider
               .calculateQuantityForProduct(int.parse(product.id.toString()));
-          final randomColor = categoryColors[index % categoryColors.length];
+          final randomColor = categoryColors[5];
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               width: getWidth(context, 36),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.grey.shade200,
+                color: randomColor,
                 boxShadow: [
                   BoxShadow(
                       color: mainColorBlack.withOpacity(0.1),
@@ -992,7 +1013,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                       Container(
                         height: getHeight(context, 14),
                         decoration: BoxDecoration(
-                          color: Colors.white70,
+                          color: mainColorWhite,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Stack(
@@ -1004,7 +1025,9 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Oneitem()),
+                                        builder: (context) => DetailsPage(
+                                              color: 5,
+                                            )),
                                   );
                                 },
                                 child: ClipRRect(
@@ -1195,23 +1218,35 @@ Widget listItemsShowSearch(BuildContext context, var data) {
                                   width: getHeight(context, 4),
                                   height: getHeight(context, 4),
                                   decoration: BoxDecoration(
-                                      color: mainColorGrey,
+                                      color: checkProductStock(
+                                                  product, count) ||
+                                              checkProductLimit(product, count)
+                                          ? lightGrey
+                                          : mainColorGrey,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(15),
                                           topLeft: Radius.circular(15))),
                                   child: IconButton(
-                                    onPressed: () {
-                                      if (!isLogin) {
-                                        loiginPopup(context);
-                                        return;
-                                      }
-                                      final cartItem =
-                                          CartItem(product: product.id!);
-                                      cartProvider.addToCart(cartItem);
-                                    },
+                                    onPressed: checkProductStock(
+                                                product, count) ||
+                                            checkProductLimit(product, count)
+                                        ? null
+                                        : () {
+                                            if (!isLogin) {
+                                              loiginPopup(context);
+                                              return;
+                                            }
+                                            final cartItem =
+                                                CartItem(product: product.id!);
+                                            cartProvider.addToCart(cartItem);
+                                          },
                                     icon: Icon(
                                       Icons.add,
-                                      color: mainColorWhite,
+                                      color: checkProductStock(
+                                                  product, count) ||
+                                              checkProductLimit(product, count)
+                                          ? mainColorBlack.withOpacity(0.5)
+                                          : mainColorWhite,
                                       size: 15,
                                     ),
                                   ),

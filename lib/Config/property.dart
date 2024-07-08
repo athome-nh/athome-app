@@ -1,4 +1,6 @@
 /// All the necessary methods for Fonts, Colors and Images to build the Athome App
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 /// Define {NRT Fonts } in AtHome
@@ -34,6 +36,7 @@ List<Color> categoryColors = [
   Color(0xFFfff8e5),
   Color(0xFFeef7fc),
 ];
+int colorNumber = Random().nextInt(6);
 
 ///Define { Images } in AtHome
 // String mainImagePattern = 'assets/images/001_pattern.jpg';

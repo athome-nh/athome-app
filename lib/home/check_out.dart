@@ -427,6 +427,7 @@ class _CheckOutState extends State<CheckOut> {
                                             }),
                                           ),
                                         ).then((value) {});
+                                      
                                       },
                                 child: Text(
                                   productrovider.location.isEmpty
