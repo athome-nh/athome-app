@@ -57,7 +57,7 @@ class _CheckOutState extends State<CheckOut> {
   bool showTime = false;
   bool showDate = false;
   bool isSchedule = false;
-
+ 
   int currentDateSelectedIndex = 0;
   int currentTimeSelectedIndex = -1;
   @override
@@ -428,7 +428,6 @@ class _CheckOutState extends State<CheckOut> {
                                             }),
                                           ),
                                         ).then((value) {});
-                                      
                                       },
                                 child: Text(
                                   productrovider.location.isEmpty
@@ -1005,7 +1004,8 @@ class _CheckOutState extends State<CheckOut> {
                                                 children: [
                                                   const SizedBox(height: 50),
                                                   Text(
-                                                    "Please select Your Voucher".tr,
+                                                    "Please select Your Voucher"
+                                                        .tr,
                                                     textAlign: TextAlign.center,
                                                     maxLines: 1,
                                                     style: TextStyle(
@@ -1128,7 +1128,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                           : null,
                                                                       child:
                                                                           Text(
-                                                                        "Apply".tr,
+                                                                        "Apply"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             fontFamily:
                                                                                 mainFontnormal,
@@ -1240,8 +1241,6 @@ class _CheckOutState extends State<CheckOut> {
                                                       .postData("checkvoucher",
                                                           data, context)
                                                       .then((value) {
-                                                    print(value);
-
                                                     if (value != "") {
                                                       if (value["code"] ==
                                                           "200") {
@@ -1250,8 +1249,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code not found";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1259,8 +1259,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code is expiere";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1268,8 +1269,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "you must ${value["money"]} the voucher code";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1277,8 +1279,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code out of limit";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1286,17 +1289,18 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code used before";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
                                                             "success") {
                                                           setState(() {
                                                             waiting = false;
-                                                            VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                            // VoucherE =
+                                                            //     value["data"]
+                                                            //         .toString();
 
                                                             VoucherID =
                                                                 value["id"];
@@ -1320,15 +1324,16 @@ class _CheckOutState extends State<CheckOut> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: VoucherE.isNotEmpty ? 5 : 0,
+                          ),
                           VoucherE.isNotEmpty
-                              ? Center(
-                                  child: Text(
-                                    VoucherE,
-                                    style: TextStyle(
-                                        fontFamily: mainFontnormal,
-                                        color: mainColorRed,
-                                        fontSize: 14),
-                                  ),
+                              ? Text(
+                                  VoucherE,
+                                  style: TextStyle(
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorRed,
+                                      fontSize: 14),
                                 )
                               : SizedBox(),
                         ],
@@ -1451,6 +1456,9 @@ class _CheckOutState extends State<CheckOut> {
                                     fontSize: 16),
                               ),
                             ],
+                          ),
+                          SizedBox(
+                            height: VoucherID != -1 ? 10 : 0,
                           ),
                           VoucherID != -1
                               ? Row(
@@ -1714,7 +1722,7 @@ class _CheckOutState extends State<CheckOut> {
       ),
     );
   }
-
+ 
   String convertTo12HourFormat(String time24) {
     // Splitting the time string into hours and minutes
     List<String> parts = time24.split(":");
