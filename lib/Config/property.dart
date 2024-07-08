@@ -14,6 +14,10 @@ String mainFontnormal = 'irani';
 // String mainFontnormal = 'iraniN';
 
 /// Define { Colors } in AtHome
+const Color green = Color(0xFF2FA849);
+const Color lightGreen = Color(0xFFECF4F3);
+const Color grey = Color(0xFF9C9C9C);
+const Color lightGrey = Color(0xFFEBEBEB);
 Color mainColorRed = const Color(0xFFc82036);
 Color mainColorGrey = const Color(0xFF014a64);
 // Color mainColorLightGrey = const Color(0xFFf2f2f2);
