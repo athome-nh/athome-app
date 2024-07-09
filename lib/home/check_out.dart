@@ -27,6 +27,7 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
+  final ScrollController _scrollController = ScrollController();
   final PageController controller = PageController(initialPage: 0);
   TextEditingController NoteController = TextEditingController();
   TextEditingController voucherCode = TextEditingController();
@@ -72,8 +73,19 @@ class _CheckOutState extends State<CheckOut> {
     super.initState();
   }
 
+  void _scrollToSelectedItem(int index) {
+    // Calculate the position to scroll to
+    double position = index * 65.0; // Assuming each item has a height of 65
+    _scrollController.animateTo(
+      position,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   void dispose() {
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -273,6 +285,8 @@ class _CheckOutState extends State<CheckOut> {
                                                               context, 35),
                                                           child:
                                                               ListView.builder(
+                                                                  controller:
+                                                                      _scrollController,
                                                                   itemCount:
                                                                       productrovider
                                                                           .location
@@ -285,7 +299,13 @@ class _CheckOutState extends State<CheckOut> {
                                                                         .location
                                                                         .reversed
                                                                         .toList()[index];
-
+                                                                    if (location
+                                                                            .id ==
+                                                                        productrovider
+                                                                            .defultlocation) {
+                                                                      _scrollToSelectedItem(
+                                                                          index);
+                                                                    }
                                                                     return Padding(
                                                                       padding: const EdgeInsets
                                                                           .all(
@@ -428,7 +448,6 @@ class _CheckOutState extends State<CheckOut> {
                                             }),
                                           ),
                                         ).then((value) {});
-                                      
                                       },
                                 child: Text(
                                   productrovider.location.isEmpty
@@ -1005,7 +1024,8 @@ class _CheckOutState extends State<CheckOut> {
                                                 children: [
                                                   const SizedBox(height: 50),
                                                   Text(
-                                                    "Please select Your Voucher".tr,
+                                                    "Please select Your Voucher"
+                                                        .tr,
                                                     textAlign: TextAlign.center,
                                                     maxLines: 1,
                                                     style: TextStyle(
@@ -1128,7 +1148,8 @@ class _CheckOutState extends State<CheckOut> {
                                                                           : null,
                                                                       child:
                                                                           Text(
-                                                                        "Apply".tr,
+                                                                        "Apply"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             fontFamily:
                                                                                 mainFontnormal,
@@ -1240,8 +1261,6 @@ class _CheckOutState extends State<CheckOut> {
                                                       .postData("checkvoucher",
                                                           data, context)
                                                       .then((value) {
-                                                    print(value);
-
                                                     if (value != "") {
                                                       if (value["code"] ==
                                                           "200") {
@@ -1250,8 +1269,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code not found";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1259,8 +1279,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code is expiere";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1268,8 +1289,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "you must ${value["money"]} the voucher code";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1277,8 +1299,9 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code out of limit";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
@@ -1286,17 +1309,18 @@ class _CheckOutState extends State<CheckOut> {
                                                           setState(() {
                                                             waiting = false;
                                                             VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                                "the voucher code used before";
+                                                            VoucherID = -1;
+                                                            VoucherAmount = 0;
                                                           });
                                                         } else if (value[
                                                                 "data"] ==
                                                             "success") {
                                                           setState(() {
                                                             waiting = false;
-                                                            VoucherE =
-                                                                value["data"]
-                                                                    .toString();
+                                                            // VoucherE =
+                                                            //     value["data"]
+                                                            //         .toString();
 
                                                             VoucherID =
                                                                 value["id"];
@@ -1320,15 +1344,16 @@ class _CheckOutState extends State<CheckOut> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: VoucherE.isNotEmpty ? 5 : 0,
+                          ),
                           VoucherE.isNotEmpty
-                              ? Center(
-                                  child: Text(
-                                    VoucherE,
-                                    style: TextStyle(
-                                        fontFamily: mainFontnormal,
-                                        color: mainColorRed,
-                                        fontSize: 14),
-                                  ),
+                              ? Text(
+                                  VoucherE,
+                                  style: TextStyle(
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorRed,
+                                      fontSize: 14),
                                 )
                               : SizedBox(),
                         ],
@@ -1451,6 +1476,9 @@ class _CheckOutState extends State<CheckOut> {
                                     fontSize: 16),
                               ),
                             ],
+                          ),
+                          SizedBox(
+                            height: VoucherID != -1 ? 10 : 0,
                           ),
                           VoucherID != -1
                               ? Row(

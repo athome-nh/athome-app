@@ -130,9 +130,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             BorderRadius.circular(100),
                                       ),
                                       child: CircleAvatar(
-                                        child: Image.network(
-                                          dotenv.env['imageUrlServer']! +
-                                              userdata["img"],
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              dotenv.env['imageUrlServer']! +
+                                                  userdata["img"],
                                           width: getWidth(context, 25),
                                           height: getWidth(context, 25),
                                         ),
