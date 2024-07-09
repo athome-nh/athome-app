@@ -82,7 +82,7 @@ class _coinRewardState extends State<coinReward> {
                                   height: 50,
                                 ),
                                 Text(
-                                  "STARBUCKS".tr,
+                                  "Promo Code",
                                   style: TextStyle(
                                       color: mainColorWhite, fontSize: 18),
                                 ),

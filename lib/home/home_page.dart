@@ -17,7 +17,6 @@ import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/oneitem.dart';
 
 import 'package:dllylas/home/search_page.dart';
-import 'package:dllylas/home/test.dart';
 
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/map_screen.dart';
@@ -32,7 +31,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -58,7 +57,6 @@ class _HomeSreenState extends State<HomeSreen> {
     return build.manufacturer;
   }
 
-  final ScrollController _scrollController = ScrollController();
   List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
@@ -98,16 +96,6 @@ class _HomeSreenState extends State<HomeSreen> {
       }
       loaddata = true;
     }
-  }
-
-  void _scrollToSelectedItem(int index) {
-    // Calculate the position to scroll to
-    double position = index * 65.0; // Assuming each item has a height of 65
-    _scrollController.animateTo(
-      position,
-      duration: Duration(seconds: 1),
-      curve: Curves.easeInOut,
-    );
   }
 
   @override
@@ -432,13 +420,6 @@ class _HomeSreenState extends State<HomeSreen> {
                                               SizedBox(
                                                 height: getHeight(context, 3),
                                               ),
-                                              // Wrap(
-                                              //   alignment: WrapAlignment.center,
-                                              //   children: elem(setState),
-                                              // ),
-                                              // SizedBox(
-                                              //   height: getHeight(context, 4),
-                                              // ),
                                               Padding(
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 16.0),
@@ -659,7 +640,6 @@ class _HomeSreenState extends State<HomeSreen> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
     _connectivitySubscription.cancel();
     super.dispose();
   }
@@ -682,41 +662,30 @@ class _HomeSreenState extends State<HomeSreen> {
                         style:
                             TextStyle(fontSize: 12, fontFamily: mainFontnormal),
                       ),
-                      subtitle: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const test()),
-                          );
-                        },
-                        child: RichText(
-                          text: new TextSpan(
-                            // Note: Styles for TextSpans must be explicitly defined.
-                            // Child text spans will inherit styles from parent
-                            style: new TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                            ),
-                            children: <TextSpan>[
-                              new TextSpan(
-                                text: 'Dlly Las '.tr,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: mainColorGrey,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: mainFontnormal),
-                              ),
-                              new TextSpan(
-                                text: 'Supermarket'.tr,
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    color: mainColorRed,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: mainFontnormal),
-                              ),
-                            ],
+                      subtitle: RichText(
+                        text: new TextSpan(
+                          style: new TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
                           ),
+                          children: <TextSpan>[
+                            new TextSpan(
+                              text: 'Dlly Las '.tr,
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: mainColorGrey,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: mainFontnormal),
+                            ),
+                            new TextSpan(
+                              text: 'Supermarket'.tr,
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: mainColorRed,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: mainFontnormal),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -1317,17 +1286,13 @@ class _HomeSreenState extends State<HomeSreen> {
                               width: getWidth(context, 100),
                               height: getHeight(context, 35),
                               child: ListView.builder(
-                                  controller: _scrollController,
                                   itemCount: productrovider.location.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     final location = productrovider
                                         .location.reversed
                                         .toList()[index];
-                                    if (location.id ==
-                                        productrovider.defultlocation) {
-                                      _scrollToSelectedItem(index);
-                                    }
+
                                     return Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(

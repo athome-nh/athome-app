@@ -27,6 +27,7 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
+  final ScrollController _scrollController = ScrollController();
   final PageController controller = PageController(initialPage: 0);
   TextEditingController NoteController = TextEditingController();
   TextEditingController voucherCode = TextEditingController();
@@ -57,7 +58,7 @@ class _CheckOutState extends State<CheckOut> {
   bool showTime = false;
   bool showDate = false;
   bool isSchedule = false;
- 
+
   int currentDateSelectedIndex = 0;
   int currentTimeSelectedIndex = -1;
   @override
@@ -72,8 +73,19 @@ class _CheckOutState extends State<CheckOut> {
     super.initState();
   }
 
+  void _scrollToSelectedItem(int index) {
+    // Calculate the position to scroll to
+    double position = index * 65.0; // Assuming each item has a height of 65
+    _scrollController.animateTo(
+      position,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   void dispose() {
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -273,6 +285,8 @@ class _CheckOutState extends State<CheckOut> {
                                                               context, 35),
                                                           child:
                                                               ListView.builder(
+                                                                  controller:
+                                                                      _scrollController,
                                                                   itemCount:
                                                                       productrovider
                                                                           .location
@@ -285,7 +299,13 @@ class _CheckOutState extends State<CheckOut> {
                                                                         .location
                                                                         .reversed
                                                                         .toList()[index];
-
+                                                                    if (location
+                                                                            .id ==
+                                                                        productrovider
+                                                                            .defultlocation) {
+                                                                      _scrollToSelectedItem(
+                                                                          index);
+                                                                    }
                                                                     return Padding(
                                                                       padding: const EdgeInsets
                                                                           .all(
@@ -1722,7 +1742,7 @@ class _CheckOutState extends State<CheckOut> {
       ),
     );
   }
- 
+
   String convertTo12HourFormat(String time24) {
     // Splitting the time string into hours and minutes
     List<String> parts = time24.split(":");
