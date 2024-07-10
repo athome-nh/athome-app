@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -31,6 +34,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
   bool isEdit = false;
   bool waiting = false;
   bool waitingImage = false;
+  String image = "";
   String gender = "Male";
   String city = "Erbil";
   String selectedItem = 'English';
@@ -134,9 +138,15 @@ class _AccountInfo2State extends State<AccountInfo2> {
                           SizedBox(height: getHeight(context, 3)),
                           profileFields(),
                           SizedBox(height: getHeight(context, 8)),
-                          isEdit ? saveButton() : editButton(),
-                          if (isEdit) SizedBox(height: getHeight(context, 2)),
-                          if (isEdit) cancelButton(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              if (isEdit) cancelButton(),
+                              if (isEdit)
+                                SizedBox(width: getHeight(context, 2)),
+                              isEdit ? saveButton() : editButton(),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -171,16 +181,97 @@ class _AccountInfo2State extends State<AccountInfo2> {
       width: getWidth(context, 30),
       height: getWidth(context, 30),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: CircleAvatar(
-        child: Image.network(
-          dotenv.env['imageUrlServer']! + userdata["img"],
-          width: getWidth(context, 25),
-          height: getWidth(context, 25),
-        ),
-        backgroundColor: mainColorWhite,
-      ),
+          borderRadius: BorderRadius.circular(100), color: mainColorWhite),
+      child: _image != null
+          ? Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                // CircleAvatar (Edit)
+                Container(
+                  width: getWidth(context, 30),
+                  height: getWidth(context, 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: mainColorGrey,
+                    backgroundImage: FileImage(
+                      File(_image!.path),
+                    ),
+                  ),
+                ),
+
+                // Icon (Edit)
+                isEdit
+                    ? IconButton(
+                        onPressed: () {
+                          _getImage();
+                        },
+                        icon: Container(
+                          width: getWidth(context, 8),
+                          height: getWidth(context, 8),
+                          decoration: BoxDecoration(
+                            color: mainColorGrey,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: waitingImage
+                              ? Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: waitingWiget2(context),
+                                )
+                              : Icon(
+                                  Icons.edit_outlined,
+                                  size: 15,
+                                  color: mainColorWhite,
+                                ),
+                        ),
+                      )
+                    : SizedBox(),
+              ],
+            )
+          : Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                // CircleAvatar
+                Container(
+                    width: getWidth(context, 30),
+                    height: getWidth(context, 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: CircleAvatar(
+                      backgroundColor: mainColorGrey,
+                      backgroundImage: CachedNetworkImageProvider(
+                        dotenv.env['imageUrlServer']! + image,
+                      ),
+                    )),
+                isEdit
+                    ? IconButton(
+                        onPressed: () {
+                          _getImage();
+                        },
+                        icon: Container(
+                          width: getWidth(context, 8),
+                          height: getWidth(context, 8),
+                          decoration: BoxDecoration(
+                            color: mainColorGrey,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: waitingImage
+                              ? Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: waitingWiget2(context),
+                                )
+                              : Icon(
+                                  Icons.edit_outlined,
+                                  size: 15,
+                                  color: mainColorWhite,
+                                ),
+                        ),
+                      )
+                    : SizedBox(),
+              ],
+            ),
     );
   }
 
@@ -245,15 +336,20 @@ class _AccountInfo2State extends State<AccountInfo2> {
     return Column(
       children: [
         SizedBox(height: getHeight(context, 2)),
-        textFields(Ionicons.person_outline, 'Enter Your Name', nameController, userdata["name"]),
+        textFields(Ionicons.person_outline, 'Enter Your Name', nameController,
+            userdata["name"]),
         SizedBox(height: getHeight(context, 2)),
-        textFields(Ionicons.calendar_outline, 'Enter Your Age', ageController, userdata["age"].toString()),
+        textFields(Ionicons.calendar_outline, 'Enter Your Age', ageController,
+            userdata["age"].toString()),
         SizedBox(height: getHeight(context, 2)),
-        dropdownField(Ionicons.male_female_outline, 'Select Gender', genderOptions, gender),
+        dropdownField(Ionicons.male_female_outline, 'Select Gender',
+            genderOptions, gender),
         SizedBox(height: getHeight(context, 2)),
-        dropdownField( Ionicons.business_outline, 'Select City', cityOptions, city),
+        dropdownField(
+            Ionicons.business_outline, 'Select City', cityOptions, city),
         SizedBox(height: getHeight(context, 2)),
-        textFieldsLock(Ionicons.call_outline, 'Enter Your Phone', phoneController, userdata["phone"].toString()),
+        textFieldsLock(Ionicons.call_outline, 'Enter Your Phone',
+            phoneController, userdata["phone"].toString()),
         SizedBox(height: getHeight(context, 2)),
       ],
     );
@@ -302,7 +398,8 @@ class _AccountInfo2State extends State<AccountInfo2> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: getHeight(context, 7), right:getHeight(context, 2) ),
+          padding: EdgeInsets.only(
+              left: getHeight(context, 7), right: getHeight(context, 2)),
           child: Divider(height: 1, thickness: 1),
         ),
       ],
@@ -321,89 +418,93 @@ class _AccountInfo2State extends State<AccountInfo2> {
               SizedBox(width: getHeight(context, 2)),
               Expanded(
                 child: TextField(
-                        controller: controller,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          hintText: label,
-                          hintStyle: TextStyle(
-                            fontFamily: mainFontnormal,
-                            color: mainColorBlack,
-                            fontSize: 16,
-                          ),
-                          border: InputBorder.none,
-                        ),
-                      ),
+                  controller: controller,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    hintText: label,
+                    hintStyle: TextStyle(
+                      fontFamily: mainFontnormal,
+                      color: mainColorBlack,
+                      fontSize: 16,
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
             ],
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: getHeight(context, 7), right:getHeight(context, 2) ),
+          padding: EdgeInsets.only(
+              left: getHeight(context, 7), right: getHeight(context, 2)),
           child: Divider(height: 1, thickness: 1),
         ),
       ],
     );
   }
 
-  
-  Widget dropdownField(IconData icon, String label, List<String> options, String value) {
-  return Column(
-    children: [
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: getHeight(context, 2)),
-        child: Row(
-          children: [
-            Icon(icon, size: 24),
-            SizedBox(width: getHeight(context, 2)),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: mainColorGrey.withOpacity(0.3))),
-                ),
-                child: DropdownButtonFormField<String>(
-                  value: value,
-                  isDense: false,
-                  decoration: InputDecoration(
-                    hintText: label,
-                    hintStyle: TextStyle(
-                      fontFamily: mainFontnormal,
-                      color: mainColorGrey,
-                      fontSize: 16,
-                    ),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero, // Adjust padding as needed
+  Widget dropdownField(
+      IconData icon, String label, List<String> options, String value) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: getHeight(context, 2)),
+          child: Row(
+            children: [
+              Icon(icon, size: 24),
+              SizedBox(width: getHeight(context, 2)),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                        bottom:
+                            BorderSide(color: mainColorGrey.withOpacity(0.3))),
                   ),
-                  onChanged: isEdit ? (newValue) => setState(() => value = newValue!) : null,
-                  items: options.map((option) {
-                    return DropdownMenuItem<String>(
-                      value: option,
-                      child: Text(
-                        option.tr,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: mainFontnormal,
-                          color: mainColorBlack,
-                        ),
+                  child: DropdownButtonFormField<String>(
+                    value: value,
+                    isDense: false,
+                    decoration: InputDecoration(
+                      hintText: label,
+                      hintStyle: TextStyle(
+                        fontFamily: mainFontnormal,
+                        color: mainColorGrey,
+                        fontSize: 16,
                       ),
-                    );
-                  }).toList(),
+                      border: InputBorder.none,
+                      contentPadding:
+                          EdgeInsets.zero, // Adjust padding as needed
+                    ),
+                    onChanged: isEdit
+                        ? (newValue) => setState(() => value = newValue!)
+                        : null,
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(
+                          option.tr,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: mainFontnormal,
+                            color: mainColorBlack,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    ],
-  );
-}
+      ],
+    );
+  }
 
-
- 
   Widget saveButton() {
     return TextButton(
       onPressed: waiting ? null : _saveProfile,
       style: TextButton.styleFrom(
-        fixedSize: Size(getWidth(context, 90), getHeight(context, 6.8)),
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 6)),
         side: BorderSide(color: mainColorGrey.withOpacity(0.5), width: 1),
       ),
       child: Text(
@@ -417,7 +518,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     return TextButton(
       onPressed: _cancelEdit,
       style: TextButton.styleFrom(
-        fixedSize: Size(getWidth(context, 90), getHeight(context, 6.8)),
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 6)),
         backgroundColor: mainColorRed,
       ),
       child: Text(
@@ -432,7 +533,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     return TextButton(
       onPressed: () => setState(() => isEdit = true),
       style: TextButton.styleFrom(
-        fixedSize: Size(getWidth(context, 90), getHeight(context, 6.8)),
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 6)),
         side: BorderSide(color: mainColorGrey.withOpacity(0.5), width: 1),
       ),
       child: Text(
