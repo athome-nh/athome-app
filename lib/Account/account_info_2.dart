@@ -33,7 +33,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
 
   bool isEdit = false;
   bool waiting = false;
-  bool waitingImage = false;
+
   String image = "";
   String gender = "Male";
   String city = "Erbil";
@@ -55,6 +55,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
       ageController.text = userdata["age"].toString();
       phoneController.text = userdata["phone"].toString();
       gender = userdata["gender"] ?? "Gender";
+      image = userdata["img"];
     }
   }
 
@@ -64,23 +65,6 @@ class _AccountInfo2State extends State<AccountInfo2> {
     if (pickedFile != null) {
       setState(() {
         _image = pickedFile;
-        _uploadImage();
-      });
-    }
-  }
-
-  void _uploadImage() async {
-    if (_image != null) {
-      setState(() {
-        waitingImage = true;
-      });
-      Map<String, String> body = {"id": userdata["id"].toString()};
-      Network(false).addImage("profileImg", body, _image!.path).then((value) {
-        setState(() {
-          waitingImage = false;
-        });
-        Provider.of<productProvider>(context, listen: false).updateUser();
-        toastLong("Image changed".tr);
       });
     }
   }
@@ -89,6 +73,12 @@ class _AccountInfo2State extends State<AccountInfo2> {
     setState(() {
       waiting = true;
     });
+    if (_image != null) {
+      Map<String, String> body = {"id": userdata["id"].toString()};
+      Network(false)
+          .addImage("profileImg", body, _image!.path)
+          .then((value) {});
+    }
 
     var data = {
       "id": userdata["id"],
@@ -96,8 +86,8 @@ class _AccountInfo2State extends State<AccountInfo2> {
       "age": ageController.text,
       "gender": gender,
     };
-
     Network(false).postData("profile", data, context).then((value) {
+      print(value);
       if (value != "") {
         if (value["code"] == "201") {
           userdata = value["data"];
@@ -117,6 +107,8 @@ class _AccountInfo2State extends State<AccountInfo2> {
       ageController.text = userdata["age"].toString();
       phoneController.text = userdata["phone"].toString();
       gender = userdata["gender"];
+      image = userdata["img"];
+      _image = null;
     });
   }
 
@@ -141,9 +133,8 @@ class _AccountInfo2State extends State<AccountInfo2> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              if (isEdit) cancelButton(),
-                              if (isEdit)
-                                SizedBox(width: getHeight(context, 2)),
+                              isEdit ? cancelButton() : backButton(),
+                              SizedBox(width: getHeight(context, 2)),
                               isEdit ? saveButton() : editButton(),
                             ],
                           ),
@@ -208,22 +199,17 @@ class _AccountInfo2State extends State<AccountInfo2> {
                           _getImage();
                         },
                         icon: Container(
-                          width: getWidth(context, 8),
-                          height: getWidth(context, 8),
+                          width: getWidth(context, 9),
+                          height: getWidth(context, 9),
                           decoration: BoxDecoration(
-                            color: mainColorGrey,
+                            color: mainColorRed,
                             borderRadius: BorderRadius.circular(100),
                           ),
-                          child: waitingImage
-                              ? Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: waitingWiget2(context),
-                                )
-                              : Icon(
-                                  Icons.edit_outlined,
-                                  size: 15,
-                                  color: mainColorWhite,
-                                ),
+                          child: Icon(
+                            Icons.edit_outlined,
+                            size: 15,
+                            color: mainColorWhite,
+                          ),
                         ),
                       )
                     : SizedBox(),
@@ -240,10 +226,15 @@ class _AccountInfo2State extends State<AccountInfo2> {
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: CircleAvatar(
-                      backgroundColor: mainColorGrey,
-                      backgroundImage: CachedNetworkImageProvider(
-                        dotenv.env['imageUrlServer']! + image,
+                      child: CachedNetworkImage(
+                        imageUrl: dotenv.env['imageUrlServer']! + image,
+                        width: getWidth(context, 25),
+                        height: getWidth(context, 25),
                       ),
+                      backgroundColor: mainColorWhite,
+                      // foregroundImage: AssetImage(
+                      //   "assets/images/test1.png",
+                      // ),
                     )),
                 isEdit
                     ? IconButton(
@@ -251,22 +242,17 @@ class _AccountInfo2State extends State<AccountInfo2> {
                           _getImage();
                         },
                         icon: Container(
-                          width: getWidth(context, 8),
-                          height: getWidth(context, 8),
+                          width: getWidth(context, 9),
+                          height: getWidth(context, 9),
                           decoration: BoxDecoration(
-                            color: mainColorGrey,
+                            color: mainColorRed,
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          child: waitingImage
-                              ? Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: waitingWiget2(context),
-                                )
-                              : Icon(
-                                  Icons.edit_outlined,
-                                  size: 15,
-                                  color: mainColorWhite,
-                                ),
+                          child: Icon(
+                            Icons.edit_outlined,
+                            size: 15,
+                            color: mainColorWhite,
+                          ),
                         ),
                       )
                     : SizedBox(),
@@ -485,7 +471,9 @@ class _AccountInfo2State extends State<AccountInfo2> {
                           style: TextStyle(
                             fontSize: 16,
                             fontFamily: mainFontnormal,
-                            color: mainColorBlack,
+                            color: isEdit
+                                ? mainColorBlack
+                                : mainColorBlack.withOpacity(0.5),
                           ),
                         ),
                       );
@@ -504,12 +492,12 @@ class _AccountInfo2State extends State<AccountInfo2> {
     return TextButton(
       onPressed: waiting ? null : _saveProfile,
       style: TextButton.styleFrom(
-        fixedSize: Size(getWidth(context, 40), getHeight(context, 6)),
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
         side: BorderSide(color: mainColorGrey.withOpacity(0.5), width: 1),
       ),
       child: Text(
         "Save".tr,
-        style: TextStyle(fontFamily: mainFontbold, fontSize: 18),
+        style: TextStyle(fontFamily: mainFontbold, fontSize: 16),
       ),
     );
   }
@@ -518,13 +506,30 @@ class _AccountInfo2State extends State<AccountInfo2> {
     return TextButton(
       onPressed: _cancelEdit,
       style: TextButton.styleFrom(
-        fixedSize: Size(getWidth(context, 40), getHeight(context, 6)),
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
         backgroundColor: mainColorRed,
       ),
       child: Text(
         "Cancel".tr,
         style: TextStyle(
-            fontFamily: mainFontbold, fontSize: 18, color: mainColorWhite),
+            fontFamily: mainFontbold, fontSize: 16, color: mainColorWhite),
+      ),
+    );
+  }
+
+  Widget backButton() {
+    return TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      style: TextButton.styleFrom(
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
+        backgroundColor: mainColorRed,
+      ),
+      child: Text(
+        "back".tr,
+        style: TextStyle(
+            fontFamily: mainFontbold, fontSize: 16, color: mainColorWhite),
       ),
     );
   }
@@ -533,13 +538,13 @@ class _AccountInfo2State extends State<AccountInfo2> {
     return TextButton(
       onPressed: () => setState(() => isEdit = true),
       style: TextButton.styleFrom(
-        fixedSize: Size(getWidth(context, 40), getHeight(context, 6)),
+        fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
         side: BorderSide(color: mainColorGrey.withOpacity(0.5), width: 1),
       ),
       child: Text(
         "Edit".tr,
         style: TextStyle(
-            fontFamily: mainFontbold, fontSize: 18, color: mainColorWhite),
+            fontFamily: mainFontbold, fontSize: 16, color: mainColorWhite),
       ),
     );
   }
