@@ -133,7 +133,7 @@ class _HomeSreenState extends State<HomeSreen> {
             } else {
               if (isLogin &&
                   productrovider.location.isEmpty &&
-                  productrovider.show) {
+                  productrovider.showuser) {
                 locationempty(productrovider);
               } else if (isLogin &&
                   productrovider.Orders.isNotEmpty &&
@@ -1403,10 +1403,9 @@ class _HomeSreenState extends State<HomeSreen> {
         final productrovider =
             Provider.of<productProvider>(context, listen: false);
         return PopScope(
-          canPop: false,
           onPopInvoked: (didPop) {
-            if (type == "pop") {
-              Navigator.pop(context);
+            if (type != "pop") {
+              return;
             }
           },
           child: AlertDialog(
@@ -1510,6 +1509,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       );
                                     } else if (homePopupData["type"] ==
                                         "onItem") {
+                                      print(homePopupData["barcode"]);
                                       productrovider.setidItem(productrovider
                                           .getoneProductByBarcode(
                                               homePopupData["barcode"])

@@ -137,7 +137,6 @@ class productProvider extends ChangeNotifier {
   }
 
   updatePost(bool user) async {
-    // getDataAll(false);
     if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
         if (valueuser != "") {
@@ -232,7 +231,7 @@ class productProvider extends ChangeNotifier {
 
               return;
             }
-            setshowuser(true);
+
             getuserdata(userdata["id"].toString());
           }
         } else {}
