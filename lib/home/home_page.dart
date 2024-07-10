@@ -142,7 +142,7 @@ class _HomeSreenState extends State<HomeSreen> {
                 feedbackmMdal(context, productrovider);
               } else {
                 if (!seenHomepopup) {
-                  showhompopup();
+                //  showhompopup();
                 }
               }
             }
@@ -1544,7 +1544,7 @@ class _HomeSreenState extends State<HomeSreen> {
                       ? SizedBox()
                       : IconButton(
                           onPressed: () {
-                            Navigator.pop(context);
+                              Navigator.pop(context);
                           },
                           icon: Icon(
                             Icons.close,

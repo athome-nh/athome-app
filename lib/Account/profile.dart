@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/account_info.dart';
+import 'package:dllylas/Account/account_info_2.dart';
 import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/chatscreen.dart';
 import 'package:dllylas/Account/reward.dart';
@@ -231,7 +232,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     _listTiles(
                                         Icons.person_outline,
                                         'Account Information'.tr,
-                                        AccountInfo()),
+                                        AccountInfo2()),
 
                                     // Orders
                                     _listTiles(Ionicons.bag_outline,
