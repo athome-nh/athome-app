@@ -90,7 +90,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // body
               body: !isLogin
                   ? _guestAccount(context)
-                  : Provider.of<productProvider>(context, listen: true).showuser
+                  : !Provider.of<productProvider>(context, listen: true)
+                          .showuser
                       ? Skeletonizer(
                           effect: ShimmerEffect.raw(colors: [
                             mainColorGrey.withOpacity(0.1),
