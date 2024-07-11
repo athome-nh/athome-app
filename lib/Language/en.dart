@@ -246,6 +246,10 @@ const Map<String, String> en = {
   "AM": "AM",
   "PM": "PM",
 
+  // home --> DetailsPage
+  "Add to cart": "Add to cart",
+  "Similar item": "Related items",
+  
   // home --> favorite
   "Favorite": "Favorite",
   "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
@@ -481,9 +485,6 @@ const Map<String, String> en = {
   // item_categories
   "You not have any item": "You do not have any items",
 
-  // oneitem --> labir kraboo
-  "Add to cart": "Add to cart",
-  "Similar item": "Related items",
   //
   "Privacy Poilcy": "Privacy policy",
   "Terms Of Use": "Terms and Condition",
