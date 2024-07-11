@@ -276,6 +276,9 @@ const Map<String, String> ar = {
   "Your cart is empty": "سلة التسوف فارغة",
   "min title": "الحد الأدنى للشراء المطلوب",
   "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو temp دينار",
+
+  // home --> item_ctegories
+  'All Items': 'جميع المواد',
   
   // home_page
   "Order now": "اطلب الان",
@@ -466,7 +469,6 @@ const Map<String, String> ar = {
 
   // item_categories
   "You not have any item": "لا تملك أي عنصر",
-  'All Items': 'جميع المواد',
 
   //
   "Privacy Poilcy": "سياسة الخصوصية",

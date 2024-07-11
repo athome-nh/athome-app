@@ -276,6 +276,9 @@ const Map<String, String> kur = {
   "Your cart is empty": "سەبەتەی بازاڕکردن بەتاڵە",
   "min title": "کەمترین داواکاری پێشکەشکراو",
   "min deatil": "کڕیاڕی بەڕێز کەمترین بڕی داواکاری temp دینارە",
+
+  // home --> item_ctegories
+  'All Items': 'هەموو شتەکان',
   
 
 
@@ -284,9 +287,6 @@ const Map<String, String> kur = {
 
   // home_page
   "Order now": "ئێستا داوا بكه‌",
-
-  // categories
-  'All Items': 'هەموو شتەکان',
 
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
