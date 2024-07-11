@@ -43,7 +43,7 @@ const Map<String, String> en = {
   "Help center": "Help center", // profile
   "About us": "About us", // profile
   "Guide": "Guide", // all_gudide, profile
-  "Feedback": "Feedback", // feedback
+  "Feedback": "Feedback", // feedback, home_page
   "Delete Account": "Delete Account",
   "Select Language": "Select Language", // chatscreen, profile
   "English": "English", // chatscreen, profile, choose_lan
@@ -122,21 +122,21 @@ const Map<String, String> en = {
   "Just now": "Just now", // notification_page
 
   // Account --> feedback
-  "Poor": "Poor",
-  "Terrible": "Terrible",
-  "Awful": "Awful",
-  "Unacceptable": "Unacceptable",
-  "Dismal": "Dismal",
+  "Poor": "Poor", // home_page
+  "Terrible": "Terrible", // home_page
+  "Awful": "Awful", // home_page
+  "Unacceptable": "Unacceptable", // home_page
+  "Dismal": "Dismal", // home_page
   "Share your Feedback": "Share your Feedback",
   "Your feedback helps us improve": "Your feedback helps us improve",
   "Please slecte stars": "Please slecte stars",
   "Leave Your Comments": "Leave Your Comments",
   "feedback is require": "feedback is require",
-  "Add your Feedback": "Add your Feedback",
+  "Add your Feedback": "Add your Feedback", // home_page
   "Enjoying the app?": "Enjoying the app?",
   "Would you mind rating us?": "Would you mind rating us?",
   "Rate us in": "Rate us in",
-  "Send Feedback": "Send Feedback",
+  "Send Feedback": "Send Feedback", // home_page
 
   // Account --> help_screen
   "Help": "Support",
@@ -197,10 +197,10 @@ const Map<String, String> en = {
   "no internet": "You are offline, connect to WIFI",
 
   // home --> all_item
-  "Discount": "Discount",
-  "Highlight": "Highlight",
-  "Recent Order": "Recent Orders",
-  "Best Sell": "Best Sell",
+  "Discount": "Discount", // home_page
+  "Highlight": "Highlight", // home_page
+  "Recent Order": "Recent Orders", // home_page
+  "Best Sell": "Best Sell", // home_page
 
   // home --> Categories 
   "All Categories": "All Categories",
@@ -217,7 +217,7 @@ const Map<String, String> en = {
   "Checkout": "Payment & Delivery",
   "Delivery to": "Delivery to",
   "Please select Address": "Please Select Delivery Address",
-  "Add location": "Add location",
+  "Add location": "Add location", // home_page
   "Change": "Change",
   "Delivery Type": "Delivery Methods",
   "Delevery now": "Deliver Now",
@@ -250,10 +250,24 @@ const Map<String, String> en = {
   "Favorite": "Favorite",
   "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
   
-  // home --> favorite
+  // home --> home_page
+  "rating detail text": "rating detail text",
+  "Wellcome to": "Wellcome to",
+  "Dlly Las": "Dlly Las",
+  "Supermarket": "Supermarket",
+  "Categories": "Category",
+  "View All": "View All",
+  "cateItem": "cateItem",
+  "Could not launch": "Could not launch",
+  "Update": "Update",
+  "OK": "OK", // singin_up, login_page
+  "tap View": "tap View",
+
+  // 
   "": "",
 
-  
+  // home_page
+  "Order now": "Order now",
 
   // check_out
   "Delivery Address": "Delivery Address",
@@ -277,13 +291,7 @@ const Map<String, String> en = {
   // categories
   'All Items': 'All Items',
 
-  // home_page
-  "Order now": "Order now",
-  "Categories": "Category",
-  "View All": "View All",
-  "Wellcome to": "Wellcome to",
-  'Dlly Las ': 'Dlly Las ',
-  'Supermarket': 'Supermarket',
+  
   //////////////////////////////////////
 
   // Landing --> choose_lan
@@ -302,7 +310,6 @@ const Map<String, String> en = {
   "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
   "Account Pendding": "Wait...", // singin_up
   "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)", // signin_up
-  "OK": "OK", // singin_up 
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
   
@@ -401,7 +408,7 @@ const Map<String, String> en = {
   "New update is available": "New update is available",
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",
-  "Update": "Update",
+  
 
   // Ziyadaa
   "NEXT": "NEXT",

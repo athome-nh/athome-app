@@ -248,12 +248,20 @@ const Map<String, String> kur = {
 
   // home --> favorite
   "Favorite": "دڵخوازه‌كان",
-  "No have any favorite":
-      "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
+  "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
   
-
-  // categories
-  'All Items': 'هەموو شتەکان',
+  // home --> home_page
+  "rating detail text": "rating detail text",
+  "Wellcome to": "Wellcome to",
+  "Dlly Las": "Dlly Las",
+  "Supermarket": "Supermarket",
+  "Categories": "Category",
+  "View All": "View All",
+  "cateItem": "cateItem",
+  "Could not launch": "Could not launch",
+  "Update": "Update",
+  "OK": "OK", // singin_up, login_page
+  "tap View": "tap View",
 
   // home_page
   "Order now": "ئێستا داوا بكه‌",
@@ -262,6 +270,11 @@ const Map<String, String> kur = {
   "Wellcome to": "بەخێربێیت بۆ",
   'Dlly Las ': 'دڵی لاس ',
   'Supermarket': 'سوپەرمارکێت',
+  "OK": "دڵنیام",
+  "Update": "دابەزاندن",
+
+  // categories
+  'All Items': 'هەموو شتەکان',
 
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
@@ -279,7 +292,7 @@ const Map<String, String> kur = {
   "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
   "Account Pendding": "...چاوەڕوانبە",
   "Account npt approved by admin yet": "بەشداربووی بەڕێز بەم زووانە ڕەزامەندی سەرپەرشتیار وەردەگریت. بۆ زانیاری زیاتر پەیوەندی بکەن بە (07509583333)",
-  "OK": "دڵنیام",
+  
   "Account Disabled": "هەژمارەکە ڕاگیرا",
   "Account is disable please contact athome admin": "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
   
@@ -490,7 +503,7 @@ const Map<String, String> kur = {
   "New update is available": "ئەپدەیتێکی نوێ بەردەستە",
   "A newer version of dlly las application is available, please download the latest version .":
       "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
-  "Update": "دابەزاندن",
+  
   "Account recovery opportunity":
       "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
 

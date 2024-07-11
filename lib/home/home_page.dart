@@ -13,7 +13,6 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
-
 import 'package:dllylas/home/search_page.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/map_screen.dart';
@@ -30,7 +29,6 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../Landing/splash_screen.dart';
 
 class HomeSreen extends StatefulWidget {
@@ -187,6 +185,7 @@ class _HomeSreenState extends State<HomeSreen> {
     'Unacceptable',
     'Dismal'
   ];
+
   // List<String> oneStar = [
   //   'Poor',
   //   'Terrible',
@@ -351,7 +350,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: getWidth(context, 6)),
                                       child: Text(
-                                        "Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more."
+                                        "rating detail text"
                                             .tr,
                                         style: TextStyle(
                                           color: mainColorBlack,
@@ -393,7 +392,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                     ),
                                     isExpanded
                                         ? Text(
-                                            ratestar[selectedRating! - 1],
+                                            ratestar[selectedRating! - 1].tr,
                                             style: TextStyle(
                                               color: mainColorBlack,
                                               fontFamily: mainFontnormal,
@@ -452,7 +451,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                             1.0, // Customize border width
                                                       ),
                                                     ),
-                                                    labelText: "Feedback",
+                                                    labelText: "Feedback".tr,
                                                     labelStyle: TextStyle(
                                                         color: mainColorGrey
                                                             .withOpacity(0.8),
@@ -460,7 +459,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         fontFamily:
                                                             mainFontbold),
                                                     hintText:
-                                                        "Add your Feedback",
+                                                        "Add your Feedback".tr,
                                                     hintStyle: TextStyle(
                                                         color: mainColorBlack
                                                             .withOpacity(0.5),
@@ -528,7 +527,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                                         getHeight(context, 6)),
                                                   ),
                                                   child: Text(
-                                                    "Send Feedback",
+                                                    "Send Feedback".tr,
                                                   ),
                                                 ),
                                               ),
@@ -662,7 +661,7 @@ class _HomeSreenState extends State<HomeSreen> {
                           ),
                           children: <TextSpan>[
                             new TextSpan(
-                              text: 'Dlly Las '.tr,
+                              text: 'Dlly Las'.tr + " ",
                               style: TextStyle(
                                   fontSize: 16,
                                   color: mainColorGrey,
@@ -800,7 +799,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           height: getHeight(context, 1),
                                         ),
                                         Text(
-                                          "cateItem",
+                                          "cateItem".tr,
                                           style: TextStyle(
                                               color: mainColorGrey,
                                               fontFamily: mainFontnormal,
@@ -1173,7 +1172,7 @@ class _HomeSreenState extends State<HomeSreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          content,
+                          content.tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: mainColorBlack,
@@ -1191,7 +1190,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                 getWidth(context, 70), getHeight(context, 5)),
                           ),
                           child: Text(
-                            buttontxt,
+                            buttontxt.tr,
                           ),
                         ),
                       ],
@@ -1452,7 +1451,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           mode:
                                               LaunchMode.externalApplication)) {
                                         throw Exception(
-                                            'Could not launch $url');
+                                            "Could not launch".tr + "$url");
                                       }
                                     } else if (type == "android") {
                                       Uri url = Uri.parse(
@@ -1461,7 +1460,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           mode:
                                               LaunchMode.externalApplication)) {
                                         throw Exception(
-                                            'Could not launch $url');
+                                            "Could not launch".tr + "$url");
                                       }
                                     } else {
                                       Uri url = Uri.parse(
@@ -1470,7 +1469,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                           mode:
                                               LaunchMode.externalApplication)) {
                                         throw Exception(
-                                            'Could not launch $url');
+                                            "Could not launch".tr + "$url");
                                       }
                                     }
                                   }
@@ -1525,7 +1524,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                   ? "Update".tr
                                   : homePopupData["type"] == "attention"
                                       ? "OK".tr
-                                      : "tap View",
+                                      : "tap View".tr,
                             ),
                           ),
                         ),

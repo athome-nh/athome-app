@@ -248,8 +248,7 @@ const Map<String, String> ar = {
 
   // home --> favorite
   "Favorite": "مفضلاتي",
-  "No have any favorite":
-      "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
+  "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
   
 
   // home_page
