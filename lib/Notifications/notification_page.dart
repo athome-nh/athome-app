@@ -1,3 +1,4 @@
+import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
@@ -5,9 +6,8 @@ import 'package:dllylas/Network/Network.dart';
 
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
-import 'package:dllylas/home/nav_switch.dart';
-import 'package:dllylas/home/oneitem.dart';
-import 'package:dllylas/home/track_order.dart';
+
+import 'package:dllylas/Order/track_order.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
@@ -127,7 +127,8 @@ class _NotificationPageState extends State<NotificationPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Oneitem()),
+                                    builder: (context) =>
+                                        DetailsPage(color: 5)),
                               );
                             } else if ('discount' == notification.type) {
                               productrovider.settype("discount");
@@ -275,7 +276,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Oneitem()),
+                                      builder: (context) =>
+                                          DetailsPage(color: 5)),
                                 );
                               } else if ('discount' == notification.type) {
                                 productrovider.settype("discount");

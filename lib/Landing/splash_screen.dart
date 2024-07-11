@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
@@ -7,8 +8,8 @@ import 'package:dllylas/Landing/choose_lan.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/all_item.dart';
 import 'package:dllylas/home/item_categories.dart';
-import 'package:dllylas/home/oneitem.dart';
-import 'package:dllylas/home/track_order.dart';
+
+import 'package:dllylas/Order/track_order.dart';
 import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
@@ -102,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen> {
         productrovider.setidItem(int.parse(id));
         Navigator.of(context)
             .pushReplacement(
-          MaterialPageRoute(builder: (context) => const Oneitem()),
+          MaterialPageRoute(builder: (context) => DetailsPage(color: 5)),
         )
             .then((value) {
           Get.toNamed("/home");
@@ -121,7 +122,7 @@ class _SplashScreenState extends State<SplashScreen> {
           .id!);
       Navigator.of(context)
           .pushReplacement(
-        MaterialPageRoute(builder: (context) => const Oneitem()),
+        MaterialPageRoute(builder: (context) => DetailsPage(color: 5)),
       )
           .then((value) {
         Get.toNamed("/home");

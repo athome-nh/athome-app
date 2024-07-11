@@ -5,6 +5,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/slideshow.dart';
 import 'package:dllylas/Home/all_item.dart';
@@ -12,7 +13,7 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
-import 'package:dllylas/home/oneitem.dart';
+
 import 'package:dllylas/home/search_page.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/map_screen.dart';
@@ -1510,7 +1511,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const Oneitem()),
+                                                DetailsPage(color: 5)),
                                       );
                                     }
                                   },

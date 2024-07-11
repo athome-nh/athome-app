@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:dllylas/Account/DetailsPage.dart';
+import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -17,7 +17,6 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import '../home/oneitem.dart';
 
 Widget listItemsShimer(BuildContext context) {
   return SizedBox(

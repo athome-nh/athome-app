@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
-import 'package:dllylas/Account/account_info.dart';
+
 import 'package:dllylas/Account/account_info_2.dart';
 import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/chatscreen.dart';
@@ -22,7 +22,7 @@ import 'package:dllylas/map/loction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -30,7 +30,6 @@ import '../Config/my_widget.dart';
 import '../Landing/login_page.dart';
 import '../Landing/splash_screen.dart';
 import 'account_setting.dart';
-import 'bawar.dart';
 import 'help_screen.dart';
 import 'invite_friend.dart';
 

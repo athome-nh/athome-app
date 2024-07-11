@@ -3,7 +3,7 @@ import '../Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/nav_switch.dart';
-import 'package:dllylas/home/track_order.dart';
+import 'package:dllylas/Order/track_order.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

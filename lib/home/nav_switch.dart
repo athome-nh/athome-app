@@ -1,16 +1,16 @@
 import 'dart:io';
-import 'package:custom_rating_bar/custom_rating_bar.dart';
+
 import 'package:dllylas/Account/profile.dart';
-import 'package:dllylas/Account/profilo.dart';
+
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/home/favorite.dart';
 import 'package:dllylas/home/my_cart.dart';
-import 'package:dllylas/home/search_page.dart';
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:ionicons/ionicons.dart';
+
 import 'package:dllylas/Config/property.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
@@ -66,9 +66,6 @@ class _NavSwitchState extends State<NavSwitch> {
     const Favorite(),
     ProfileScreen(),
   ];
-
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
 
   void _onItemTapped(int index) {
     setState(() {

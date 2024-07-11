@@ -1,26 +1,18 @@
-// ignore_for_file: file_names, avoid_print
+
 import 'dart:async';
 import 'dart:convert';
-// import 'package:audioplayers/audioplayers.dart';
-import 'package:dllylas/Config/athome_functions.dart';
-import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Home/all_item.dart';
+
 import '../Landing/splash_screen.dart';
-import 'package:dllylas/Notifications/notification_page.dart';
-import 'package:dllylas/controller/productprovider.dart';
-import 'package:dllylas/home/item_categories.dart';
-import 'package:dllylas/home/nav_switch.dart';
-import 'package:dllylas/home/oneitem.dart';
-import 'package:dllylas/home/search_page.dart';
+
 import 'package:dllylas/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:provider/provider.dart';
+
 
 class FCMNotification {
   BuildContext context;
