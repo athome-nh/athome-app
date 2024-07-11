@@ -277,12 +277,11 @@ const Map<String, String> en = {
   "min title": "Minimum Order required",
   "min deatil": "Dear Customer, The minimum acceptable order is temp IQD",
  
+  // home --> item_ctegories
+  'All Items': 'All Items',
 
-
-
-  // 
+  //
   "": "",
-
 
   // my_cart
   "you can not add more this item": "you can not add more items",
@@ -308,10 +307,6 @@ const Map<String, String> en = {
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
   "the code is un correct": "the code is wrong",
-   
-  // categories
-  'All Items': 'All Items',
-
   
   //////////////////////////////////////
 

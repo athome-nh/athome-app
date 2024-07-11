@@ -7,7 +7,6 @@ import 'package:dllylas/home/my_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:animate_do/animate_do.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
@@ -100,7 +99,7 @@ class _itemCategoriesState extends State<itemCategories>
         textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-            title: Text(categoryName),
+            title: Text(categoryName.tr),
             leading: IconButton(
               onPressed: () {
                 productPro.setsubcateSelect(0);
