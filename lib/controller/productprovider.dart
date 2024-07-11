@@ -100,7 +100,7 @@ class productProvider extends ChangeNotifier {
             value['deliveryCost'],
           );
 
-          // setshow(true);
+          setshow(true);
         } else {}
       } else {}
     });

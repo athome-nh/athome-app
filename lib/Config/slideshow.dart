@@ -12,7 +12,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 class Carousel extends StatelessWidget {
   productProvider pro;
   Carousel(this.pro, {Key? key}) : super(key: key);
-  List<String> a = [
+  List<String> temp = [
     "sddsdsdsd",
     "sddsdsdsd",
     "sddsdsdsd",
@@ -21,46 +21,8 @@ class Carousel extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    List<Widget> imageSliders = !pro.show
-        ? a
-            .map((item) => Skeletonizer(
-                  enabled: true,
-                  effect: ShimmerEffect.raw(colors: [
-                    mainColorGrey.withOpacity(0.1),
-                    mainColorWhite,
-                    // mainColorRed.withOpacity(0.1),
-                  ]),
-                  child: Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
-                      child: Stack(
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {},
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Image.asset(
-                                  "assets/shimmer/flag.png",
-                                  width: getWidth(context, 100) - 48,
-                                  fit: BoxFit.fill,
-                                )),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 0.0, horizontal: 0.0),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ))
-            .toList()
-        : pro.slides
+    List<Widget> imageSliders = pro.show
+        ? pro.slides
             .map((item) => Container(
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -101,6 +63,44 @@ class Carousel extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ))
+            .toList()
+        : temp
+            .map((item) => Skeletonizer(
+                  enabled: true,
+                  effect: ShimmerEffect.raw(colors: [
+                    mainColorGrey.withOpacity(0.1),
+                    mainColorWhite,
+                    // mainColorRed.withOpacity(0.1),
+                  ]),
+                  child: Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      child: Stack(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {},
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15.0),
+                                child: Image.asset(
+                                  "assets/shimmer/flag.png",
+                                  width: getWidth(context, 100) - 48,
+                                  fit: BoxFit.fill,
+                                )),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 0.0, horizontal: 0.0),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ))
