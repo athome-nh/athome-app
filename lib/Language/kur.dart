@@ -291,11 +291,20 @@ const Map<String, String> kur = {
   // home --> search_page
   "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
 
-  // my_cart
-  "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
-
-  // home_page
-  "Order now": "ئێستا داوا بكه‌",
+  // home --> successScreen
+  "Ordered successfully": "داواکاریەکەت بە سەرکەوتویی وەرگیرا",
+  "Thank You!": "سوپاس",
+  "for yor order": "بۆ بازاڕکردن و هەڵبژاردنی دڵی لاس مارکێت",
+  "Order Number:": "ژمارەی داواکاری:",
+  "sorryWeDoNotHaveDelivery":
+      "ببورن خزمەت گوزاری گەیاندن داخراوە لەم کاتەدا.\nئارەزوو دەکەیت داوەکاریەکەت بگەیەنین پاش",
+  "am": "بەیانی؟",
+  "YourOrderIsNowBeingProcessed":
+      "داواکاریەکەت لە جێبەجێ کردن دایە. لە کاتی وەرگرتنی داواکاریەکەت ئاگادار دەکرێیتەوە.",
+  "Yes i Agree": "بەڵێ",
+  "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
+  "No, Cancel order": "داواکاری هەڵبوەشێنەرەوە",
+  "Back to Home": "گەڕانەوە بۆ پەرەی سەرەکی",
 
   // Landing --> choose_lan
   "Get Start": "دەست پێبکە",
@@ -397,6 +406,16 @@ const Map<String, String> kur = {
   "Undelivered": "داواکاریەکە نەگەیەنرا",
   "Date and Time": "کات و بەروار",
   "Order No.": "ژمارەی داواکاری",
+
+  
+
+  "Please Delivery Address": "تکایە ناونیشانی گەیاندن زیاد بکە",
+
+  // my_cart
+  "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
+
+  // home_page
+  "Order now": "ئێستا داوا بكه‌",
   
 
   
@@ -442,24 +461,9 @@ const Map<String, String> kur = {
   
   "Cash on delivery": "پارەدان لەکاتی گەیاندن",
   "Coming soon": "بەم زوانە",
-  
-  "Thank You!": "سوپاس",
-  "for yor order": "بۆ بازاڕکردن و هەڵبژاردنی دڵی لاس مارکێت",
-  "Order Number:": "ژمارەی داواکاری: ",
-  "YourOrderIsNowBeingProcessed":
-      "داواکاریەکەت لە جێبەجێ کردن دایە. لە کاتی وەرگرتنی داواکاریەکەت ئاگادار دەکرێیتەوە.",
-  "Track My Order": "بینینی ئامادەکاری گەیاندنەکەم",
-  "Back to Home": "گەڕانەوە بۆ پەرەی سەرەکی",
-  "Please Delivery Address": "تکایە ناونیشانی گەیاندن زیاد بکە",
-  
-  "sorryWeDoNotHaveDelivery":
-      "ببورن خزمەت گوزاری گەیاندن داخراوە لەم کاتەدا.\nئارەزوو دەکەیت داوەکاریەکەت بگەیەنین پاش",
-  "am": "بەیانی؟",
-  
+
 
   // login_page
-  
-  
   "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
 
   // track_order
@@ -474,13 +478,6 @@ const Map<String, String> kur = {
   //
   "Privacy Poilcy": "سیاسەتی  تایبەتمەندێتی",
   "Terms Of Use": "مەرج و ڕێساکانی",
-  
-
-  //
-  "Ordered successfully": "داواکاریەکەت بە سەرکەوتویی وەرگیرا",
-  "Yes i Agree": "بەڵێ",
-  "No, Cancel order": "داواکاری هەڵبوەشێنەرەوە",
-  //
   
   
   "New update is available": "ئەپدەیتێکی نوێ بەردەستە",

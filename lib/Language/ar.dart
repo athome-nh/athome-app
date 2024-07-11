@@ -290,9 +290,21 @@ const Map<String, String> ar = {
 
   // home --> search_page
   "Not found any item": "لم یتم العثور علی أي منتج",
-  
-  // home_page
-  "Order now": "اطلب الان",
+
+  // home --> successScreen
+  "Ordered successfully": "تم الطلب بنجاح",
+  "Thank You!": "شکرا",
+  "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
+  "Order Number:": "رقم الطلبیة:",
+  "sorryWeDoNotHaveDelivery":
+      "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
+  "am": "صباحا؟",
+  "YourOrderIsNowBeingProcessed":
+      "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر.",
+  "Yes i Agree": "نعم",
+  "Track My Order": "متابعة الطلب",
+  "No, Cancel order": "نرجو إلغاء الطلب",
+  "Back to Home": "الرجوع للقائمة الرئیسیة",
 
   // Landing --> choose_lan
   "Get Start": "ابدأ",
@@ -394,6 +406,15 @@ const Map<String, String> ar = {
   "Undelivered": "لم يتم توصيل الطلب",
   "Date and Time": "التاریخ و الوقت",
   "Order No.": "رقم الطلبیة",
+
+  
+  
+
+  
+  "Please Delivery Address": "يرجى إضافة الموقع",
+
+  // home_page
+  "Order now": "اطلب الان",
   
   
   
@@ -434,22 +455,10 @@ const Map<String, String> ar = {
   "Delivery Address": "عنوان التوصیل",
   "Not have any location": "لیس لدیك موقع محفوظ",
   "Add new Location": "إضافة عنوان جديد",
-  
   "Cash on delivery": "الدفع عند التسلیم",
   "Coming soon": "قریبا",
   
-  "Thank You!": "شکرا",
-  "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
-  "Order Number:": "رقم الطلبیة: ",
-  "YourOrderIsNowBeingProcessed":
-      "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر.",
-  "Track My Order": "متابعة الطلب",
-  "Back to Home": "الرجوع للقائمة الرئیسیة",
-  "Please Delivery Address": "يرجى إضافة الموقع",
   
-  "sorryWeDoNotHaveDelivery":
-      "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
-  "am": "صباحا؟",
   
 
   // login_page
@@ -471,12 +480,8 @@ const Map<String, String> ar = {
   "Terms Of Use": "الشروط والأحكام",
   
 
-  //
-  "Ordered successfully": "تم الطلب بنجاح",
-  "Yes i Agree": "نعم",
-  "No, Cancel order": "نرجو إلغاء الطلب",
-  //
   
+  //
   "New update is available": "يوجد تحديث للتطبيق",
   "A newer version of dlly las application is available, please download the latest version .":
       "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",

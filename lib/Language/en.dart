@@ -291,35 +291,20 @@ const Map<String, String> en = {
   // home --> search_page
   "Not found any item": "No item found",
 
-  //
-  "": "",
-
-  // my_cart
-  "you can not add more this item": "you can not add more items",
-  
-  // home_page
-  "Order now": "Order now",
-
-  // check_out
-  "Delivery Address": "Delivery Address",
-  "Not have any location": "you don't have any location",
-  "Add new Location": "Add a new Location",
-  "Cash on delivery": "Cash on delivery",
-  "Coming soon": "Coming soon",
+  // home --> successScreen
+  "Ordered successfully": "Ordered successfully",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
   "Order Number:": "Order Number: ",
-  "YourOrderIsNowBeingProcessed":
-      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
-  "Track My Order": "Track My Order",
-  "Back to Home": "Back to Home",
-  "Please Delivery Address": "Please Add Delivery Address",
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
-  "the code is un correct": "the code is wrong",
-  
-  //////////////////////////////////////
+  "YourOrderIsNowBeingProcessed":
+      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
+  "Yes i Agree": "Yes",
+  "Track My Order": "Track My Order",
+  "No, Cancel order": "Cancel order",
+  "Back to Home": "Back to Home",
 
   // Landing --> choose_lan
   "Get Start": "Get Start", // login_page, welcome_screen
@@ -421,6 +406,28 @@ const Map<String, String> en = {
   "Undelivered": "Undelivered",
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
+
+  
+
+  //
+  "": "",
+
+  // my_cart
+  "you can not add more this item": "you can not add more items",
+  
+  // home_page
+  "Order now": "Order now",
+
+  // check_out
+  "Delivery Address": "Delivery Address",
+  "Not have any location": "you don't have any location",
+  "Add new Location": "Add a new Location",
+  "Cash on delivery": "Cash on delivery",
+  "Coming soon": "Coming soon",
+  
+  
+  "Please Delivery Address": "Please Add Delivery Address",
+  "the code is un correct": "the code is wrong",
   
   // Notification
   "1 week ago": "1 week ago",
@@ -479,11 +486,6 @@ const Map<String, String> en = {
   //
   "Privacy Poilcy": "Privacy policy",
   "Terms Of Use": "Terms and Condition",
-  
-  //
-  "Ordered successfully": "Ordered successfully",
-  "Yes i Agree": "Yes",
-  "No, Cancel order": "Cancel order",
 
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
