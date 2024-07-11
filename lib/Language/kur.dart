@@ -246,6 +246,10 @@ const Map<String, String> kur = {
   "AM": "",
   "PM": "",
 
+  // home --> DetailsPage
+  "Add to cart": "زیادی بکە بۆ سەبەتە",
+  "Similar item": "بابەتی پەیوەندیدار",
+
   // home --> favorite
   "Favorite": "دڵخوازه‌كان",
   "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
@@ -265,7 +269,7 @@ const Map<String, String> kur = {
 
   // home_page
   "Order now": "ئێستا داوا بكه‌",
-  
+
   // categories
   'All Items': 'هەموو شتەکان',
 
@@ -478,9 +482,6 @@ const Map<String, String> kur = {
   // item_categories
   "You not have any item": "هیچ بابەتێک بەردەست نیە",
 
-  // oneitem
-  "Add to cart": "زیادی بکە بۆ سەبەتە",
-  "Similar item": "بابەتی پەیوەندیدار",
   //
   "Privacy Poilcy": "سیاسەتی  تایبەتمەندێتی",
   "Terms Of Use": "مەرج و ڕێساکانی",

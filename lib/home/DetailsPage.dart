@@ -65,7 +65,7 @@ class DetailsPage extends StatelessWidget {
                 icon: cartProvider.cartItems.isNotEmpty
                     ? Badge(
                         label: Text(
-                          cartProvider.cartItems.length.toString(),
+                          cartProvider.cartItems.length.toString().tr,
                         ),
                         backgroundColor: mainColorRed,
                         child: Icon(
@@ -268,8 +268,8 @@ class DetailsPage extends StatelessWidget {
                                             ),
                                             Text(
                                               count.toString().length == 1
-                                                  ? "0" + count.toString()
-                                                  : count.toString(),
+                                                  ? "0" + count.toString().tr
+                                                  : count.toString().tr,
                                               style: TextStyle(
                                                   color: mainColorGrey,
                                                   fontFamily: mainFontnormal,

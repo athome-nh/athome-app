@@ -246,6 +246,10 @@ const Map<String, String> ar = {
   "AM": "",
   "PM": "",
 
+  // home --> DetailsPage
+  "Add to cart": "أضف إلى السلة",
+  "Similar item": "عناصر مرتبطة",
+
   // home --> favorite
   "Favorite": "مفضلاتي",
   "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
@@ -469,9 +473,6 @@ const Map<String, String> ar = {
   "You not have any item": "لا تملك أي عنصر",
   'All Items': 'جميع المواد',
 
-  // oneitem --> labir kraboo
-  "Add to cart": "أضف إلى السلة",
-  "Similar item": "عناصر مرتبطة",
   //
   "Privacy Poilcy": "سياسة الخصوصية",
   "Terms Of Use": "الشروط والأحكام",
