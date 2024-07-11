@@ -246,6 +246,12 @@ const Map<String, String> ar = {
   "AM": "",
   "PM": "",
 
+  // home --> favorite
+  "Favorite": "مفضلاتي",
+  "No have any favorite":
+      "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
+  
+
   // home_page
   "Order now": "اطلب الان",
   "Categories": "الفئات",
@@ -372,7 +378,6 @@ const Map<String, String> ar = {
   // nav_switch
   "Home": "الرئیسیة",
   "Cart": "السلة",
-  "Favorite": "مفضلاتي",
   "Account": "الحساب",
 
   // Dialogbox --> nav_switch
@@ -397,10 +402,6 @@ const Map<String, String> ar = {
   
   "Clear cart": "إزالة الكل",
   "Are you sure you want to continue?": "هل انت مأكد من الاستمرار ؟",
-
-  // favorite
-  "No have any favorite":
-      "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
 
   // Page --> Login First --> my_widget
   "Please login first": "الرجاء تسجیل الدخول أولا",

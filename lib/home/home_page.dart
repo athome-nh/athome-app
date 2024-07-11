@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
@@ -13,11 +12,8 @@ import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
-
 import 'package:dllylas/home/oneitem.dart';
-
 import 'package:dllylas/home/search_page.dart';
-
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/cart.dart';
@@ -25,13 +21,10 @@ import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/Categories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';

@@ -246,7 +246,11 @@ const Map<String, String> kur = {
   "AM": "",
   "PM": "",
 
-
+  // home --> favorite
+  "Favorite": "دڵخوازه‌كان",
+  "No have any favorite":
+      "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
+  
 
   // categories
   'All Items': 'هەموو شتەکان',
@@ -380,7 +384,7 @@ const Map<String, String> kur = {
   "Home": "سەرەکی",
   
   "Cart": "سەبەتە",
-  "Favorite": "دڵخوازه‌كان",
+  
   "Account": "هەژمار",
 
   // Dialogbox --> nav_switch
@@ -408,10 +412,6 @@ const Map<String, String> kur = {
   
   "Clear cart": "لابردنی هەموو",
   "Are you sure you want to continue?": "دڵنیای لە بەردەوامبوون؟",
-
-  // favorite
-  "No have any favorite":
-      "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
 
   // Page --> Login First --> my_widget
   "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa

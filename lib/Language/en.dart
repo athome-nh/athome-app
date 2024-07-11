@@ -245,8 +245,14 @@ const Map<String, String> en = {
   "Send Order": "Send Order",
   "AM": "AM",
   "PM": "PM",
+
+  // home --> favorite
+  "Favorite": "Favorite",
+  "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
   
+  // home --> favorite
   "": "",
+
   
 
   // check_out
@@ -268,9 +274,6 @@ const Map<String, String> en = {
   "am": "am?",
   "the code is un correct": "the code is wrong",
    
-
-  
-  
   // categories
   'All Items': 'All Items',
 
@@ -414,7 +417,6 @@ const Map<String, String> en = {
   // nav_switch
   "Home": "Home",
   "Cart": "Cart",
-  "Favorite": "Favorite",
   "Account": "Account",
 
   // Dialogbox --> nav_switch
@@ -439,9 +441,7 @@ const Map<String, String> en = {
   "Clear cart": "Clear cart",
   "Are you sure you want to continue?": "Are you sure about continuing?",
 
-  // favorite
-  "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
-
+  
   // Page --> Login First --> my_widget
   "Please login first": "Please login first", // nmayaa
 
