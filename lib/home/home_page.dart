@@ -350,8 +350,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: getWidth(context, 6)),
                                       child: Text(
-                                        "rating detail text"
-                                            .tr,
+                                        "rating detail text".tr,
                                         style: TextStyle(
                                           color: mainColorBlack,
                                           fontFamily: mainFontnormal,
@@ -754,7 +753,6 @@ class _HomeSreenState extends State<HomeSreen> {
                               effect: ShimmerEffect.raw(colors: [
                                 mainColorGrey.withOpacity(0.1),
                                 mainColorWhite,
-                                //   mainColorRed.withOpacity(0.1),
                               ]),
                               enabled: true,
                               child: ListView.builder(
@@ -762,50 +760,43 @@ class _HomeSreenState extends State<HomeSreen> {
                                 itemCount: 10,
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: getWidth(context, 2)),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Container(
-                                          width: getHeight(context, 8),
-                                          height: getHeight(context, 8),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: mainColorBlack
-                                                      .withOpacity(0.1)),
-                                              borderRadius:
-                                                  BorderRadius.circular(100)),
-                                          child: Center(
-                                              child: ClipRRect(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Skeleton.leaf(
+                                      child: Container(
+                                        width: getHeight(context, 12),
+                                        height: getHeight(context, 12),
+                                        decoration: BoxDecoration(
+                                            color: categoryColors[5],
+                                            border: Border.all(
+                                                color: mainColorBlack
+                                                    .withOpacity(0.2)),
                                             borderRadius:
-                                                BorderRadius.circular(100),
-                                            child: CachedNetworkImage(
-                                              imageUrl:
-                                                  "https://www.dllylas.com/assets/img/logo/logo.png",
-                                              placeholder: (context, url) =>
-                                                  Image.asset(
-                                                      "assets/images/home.png"),
-                                              errorWidget: (context, url,
-                                                      error) =>
-                                                  Image.asset(
-                                                      "assets/images/home.png"),
-                                              fit: BoxFit.fill,
-                                              width: getHeight(context, 5),
-                                              height: getHeight(context, 5),
+                                                BorderRadius.circular(15)),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Image.asset(
+                                              "assets/shimmer/flag.png",
+                                              width: getWidth(context, 20),
                                             ),
-                                          )),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              "hello good",
+                                              maxLines: 1,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 13),
+                                            ),
+                                          ],
                                         ),
-                                        SizedBox(
-                                          height: getHeight(context, 1),
-                                        ),
-                                        Text(
-                                          "cateItem".tr,
-                                          style: TextStyle(
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontnormal,
-                                              fontSize: 14),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   );
                                 },
