@@ -298,25 +298,61 @@ class _MyCartState extends State<MyCart> {
                                         ),
                                         const Spacer(),
                                         Container(
-                                          width: getWidth(context, 20),
-                                          height: getHeight(context, 4),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: mainColorWhite,
-                                          ),
+                                          width: getWidth(context, 28),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                  decoration:
-                                                      const BoxDecoration(),
-                                                  child:
-                                                      const Text("546646444")),
+                                              Skeleton.leaf(
+                                                child: Container(
+                                                  width: getHeight(context, 4),
+                                                  height: getHeight(context, 4),
+                                                  decoration: BoxDecoration(
+                                                      color: mainColorRed,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100)),
+                                                  child: IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.remove,
+                                                      color: mainColorWhite,
+                                                      size:
+                                                          getHeight(context, 2),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                "01",
+                                                style: TextStyle(
+                                                    color: mainColorRed,
+                                                    fontFamily: mainFontnormal,
+                                                    fontSize: 20),
+                                              ),
+                                              Skeleton.leaf(
+                                                child: Container(
+                                                  width: getHeight(context, 4),
+                                                  height: getHeight(context, 4),
+                                                  decoration: BoxDecoration(
+                                                      color: mainColorRed,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100)),
+                                                  child: IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.add,
+                                                      color: mainColorWhite,
+                                                      size:
+                                                          getHeight(context, 2),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -526,8 +562,9 @@ class _MyCartState extends State<MyCart> {
                                                                   cartitem)
                                                               ? Text(
                                                                   addCommasToPrice(
-                                                                      cartitem
-                                                                          .offerPrice!).tr,
+                                                                          cartitem
+                                                                              .offerPrice!)
+                                                                      .tr,
                                                                   maxLines: 1,
                                                                   style: TextStyle(
                                                                       color: Colors
@@ -591,10 +628,12 @@ class _MyCartState extends State<MyCart> {
                                                               ? "0" +
                                                                   cartitemQ
                                                                       .quantity
-                                                                      .toString().tr
+                                                                      .toString()
+                                                                      .tr
                                                               : cartitemQ
                                                                   .quantity
-                                                                  .toString().tr,
+                                                                  .toString()
+                                                                  .tr,
                                                           style: TextStyle(
                                                               color:
                                                                   mainColorGrey,
@@ -708,129 +747,28 @@ class _MyCartState extends State<MyCart> {
                             // mainColorRed.withOpacity(0.1),
                           ]),
                           enabled: true,
-                          child: Container(
-                            height: getHeight(context, 29),
-                            decoration: BoxDecoration(
-                              color: mainColorWhite,
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: getHeight(context, 3),
-                                ),
-                                SizedBox(
-                                  height: getHeight(context, 1),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 4)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Sub Total".tr,
-                                        style: TextStyle(
-                                            color: mainColorBlack,
-                                            fontFamily: mainFontnormal,
-                                            fontSize: 16),
-                                      ),
-                                      Text(
-                                        textAlign: TextAlign.end,
-                                        addCommasToPrice(10000),
-                                        style: TextStyle(
-                                            color: mainColorBlack,
-                                            fontFamily: mainFontnormal,
-                                            fontSize: 16),
-                                      ),
-                                    ],
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 4),
+                                vertical: getHeight(context, 2)),
+                            child: TextButton(
+                              onPressed: () async {},
+                              style: TextButton.styleFrom(
+                                fixedSize: Size(getWidth(context, 90),
+                                    getHeight(context, 6)),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text("Total".tr +
+                                      ": " +
+                                      addCommasToPrice(2500)),
+                                  Text(
+                                    "Checkout".tr,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: getHeight(context, 1),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 4)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Delivery Cost".tr,
-                                        style: TextStyle(
-                                            color: mainColorBlack,
-                                            fontFamily: mainFontnormal,
-                                            fontSize: 16),
-                                      ),
-                                      Text(
-                                        textAlign: TextAlign.end,
-                                        "Free Delivery".tr,
-                                        style: TextStyle(
-                                            color: Colors.green,
-                                            fontFamily: mainFontnormal,
-                                            fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 4)),
-                                  child: Divider(
-                                      color: mainColorGrey.withOpacity(0.2),
-                                      thickness: 1),
-                                ),
-                                SizedBox(
-                                  height: getHeight(context, 1),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 4)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        textAlign: TextAlign.start,
-                                        "Total".tr,
-                                        style: TextStyle(
-                                            color: mainColorBlack,
-                                            fontFamily: mainFontbold,
-                                            fontSize: 20),
-                                      ),
-                                      Text(
-                                        textAlign: TextAlign.end,
-                                        addCommasToPrice(10000),
-                                        style: TextStyle(
-                                            color: Colors.green,
-                                            fontFamily: mainFontbold,
-                                            fontSize: 20),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: getHeight(context, 2),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: getWidth(context, 4)),
-                                  child: TextButton(
-                                    onPressed: () async {},
-                                    style: TextButton.styleFrom(
-                                      fixedSize: Size(getWidth(context, 90),
-                                          getHeight(context, 6)),
-                                    ),
-                                    child: Text(
-                                      "Checkout".tr,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: getWidth(context, 2),
-                                )
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         )
