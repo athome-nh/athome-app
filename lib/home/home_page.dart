@@ -349,11 +349,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: getWidth(context, 6)),
                                       child: Text(
-                                        isExpanded
-                                            ? "Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more."
-                                                .tr
-                                            : "Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more."
-                                                .tr,
+                                        "Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more."
+                                            .tr,
                                         style: TextStyle(
                                           color: mainColorBlack,
                                           fontFamily: mainFontnormal,
