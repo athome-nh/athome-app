@@ -251,28 +251,21 @@ const Map<String, String> kur = {
   "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
   
   // home --> home_page
-  "rating detail text": "rating detail text",
-  "Wellcome to": "Wellcome to",
-  "Dlly Las": "Dlly Las",
-  "Supermarket": "Supermarket",
-  "Categories": "Category",
-  "View All": "View All",
-  "cateItem": "cateItem",
-  "Could not launch": "Could not launch",
-  "Update": "Update",
-  "OK": "OK", // singin_up, login_page
-  "tap View": "tap View",
+  "rating detail text": "",
+  "Wellcome to": "بەخێربێیت بۆ",
+  "Dlly Las": "دڵی لاس",
+  "Supermarket": 'سوپەرمارکێت',
+  "Categories": "پۆلێنەکان",
+  "View All": "بینینی هەموو",
+  "cateItem": "",
+  "Could not launch": "",
+  "Update": "دابەزاندن",
+  "OK": "دڵنیام", // singin_up, login_page
+  "tap View": "",
 
   // home_page
   "Order now": "ئێستا داوا بكه‌",
-  "Categories": "پۆلێنەکان",
-  "View All": "بینینی هەموو",
-  "Wellcome to": "بەخێربێیت بۆ",
-  'Dlly Las ': 'دڵی لاس ',
-  'Supermarket': 'سوپەرمارکێت',
-  "OK": "دڵنیام",
-  "Update": "دابەزاندن",
-
+  
   // categories
   'All Items': 'هەموو شتەکان',
 

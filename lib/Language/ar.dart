@@ -250,14 +250,21 @@ const Map<String, String> ar = {
   "Favorite": "مفضلاتي",
   "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
   
+  // home --> home_page
+  "rating detail text": "",
+  "Wellcome to": "مرحبا بك في",
+  "Dlly Las": "دڵی لاس",
+  "Supermarket": "سوبر ماركت",
+  "Categories": "الفئات",
+  "View All": "عرض الکل",
+  "cateItem": "",
+  "Could not launch": "",
+  "Update": "تحديث",
+  "OK": "موافق",
+  "tap View": "",
 
   // home_page
   "Order now": "اطلب الان",
-  "Categories": "الفئات",
-  "View All": "عرض الکل",
-  "Wellcome to": "مرحبا بك في",
-  'Dlly Las ': 'دلی لاس ',
-  'Supermarket': 'سوبر ماركت',
 
   // Landing --> choose_lan
   "Get Start": "ابدأ",
@@ -275,7 +282,7 @@ const Map<String, String> ar = {
   "WeWillSendYouOTP": "سنرسل لك رمز التحقق",
   "Account Pendding": "...انتظر",
   "Account npt approved by admin yet": "عزيزي المشترك، سوف تحصل على موافقة المشرف قريبا. للاستفسار الاتصال على (07509583333)",
-  "OK": "موافق",
+  
   "Account Disabled": "الحساب متوقف",
   "Account is disable please contact athome admin": "تم إيقاف الحساب، يرجى التواصل مع موظفي قسم الاتصالات على الرقم (07509583333)",
   "Account range out": "...آسف",
@@ -479,7 +486,7 @@ const Map<String, String> ar = {
   "New update is available": "يوجد تحديث للتطبيق",
   "A newer version of dlly las application is available, please download the latest version .":
       "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",
-  "Update": "تحديث",
+  
   
   
   "Account recovery opportunity":
