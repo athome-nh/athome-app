@@ -279,6 +279,17 @@ const Map<String, String> ar = {
 
   // home --> item_ctegories
   'All Items': 'جميع المواد',
+
+  //home --> nav_switch
+  "Home": "الرئیسیة",
+  "Cart": "السلة",
+  "Account": "الحساب",
+  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
+  "Yes": "نعم",
+  "No": "لا",
+
+  // home --> search_page
+  "Not found any item": "لم یتم العثور علی أي منتج",
   
   // home_page
   "Order now": "اطلب الان",
@@ -396,24 +407,9 @@ const Map<String, String> ar = {
   "Enter Age": "ادخل العمر",
   "Address": "الموقع",
 
-  
-
-  // nav_switch
-  "Home": "الرئیسیة",
-  "Cart": "السلة",
-  "Account": "الحساب",
-
-  // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
-  "Yes": "نعم",
-  "No": "لا",
-
   // Dialogbox ( Register ) --> my_widget
   
   "You need login": "یرجی التسجیل أولا",
-
-  // Search_page
-  "Not found any item": "لم یتم العثور علی أي منتج",
 
   // Page --> Login First --> my_widget
   "Please login first": "الرجاء تسجیل الدخول أولا",

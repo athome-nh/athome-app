@@ -280,7 +280,16 @@ const Map<String, String> kur = {
   // home --> item_ctegories
   'All Items': 'هەموو شتەکان',
   
+  //home --> nav_switch
+  "Home": "سەرەکی",
+  "Cart": "سەبەتە",
+  "Account": "هەژمار",
+  "Are you sure exiting the app": "دڵنیای لە چونە دەرەوە؟",
+  "Yes": "بەڵێ",
+  "No": "نەخێر",
 
+  // home --> search_page
+  "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
 
   // my_cart
   "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
@@ -403,29 +412,11 @@ const Map<String, String> kur = {
   "Enter Name": "تۆمارکردنی ناو",
   "Enter Age": "تۆمارکدنی تەمەن",
   "Address": "ناونیشان",
-  
-  // nav_switch
-  "Home": "سەرەکی",
-  
-  "Cart": "سەبەتە",
-  
-  "Account": "هەژمار",
-
-  // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "دڵنیای لە چونە دەرەوە؟",
-  "Yes": "بەڵێ",
-  "No": "نەخێر",
-
-  
 
   // Dialogbox ( Register ) --> my_widget
   
   "You need login": "پێویستە خۆت تۆمار بکەیت",
-
-  // all_item >> shtakan dobar boo
-
-  // Search_page
-  "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
+  
 
   // Page --> Login First --> my_widget
   "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa

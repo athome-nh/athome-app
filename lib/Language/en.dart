@@ -81,7 +81,7 @@ const Map<String, String> en = {
   "Answer_FAQ_9": "Flutter provides high performance on both Android and iOS.",
   "Answer_FAQ_10": "Yes, Flutter provides plugins to access native device features.",
   "Answer_FAQ_11": "There are many resources available, including the official documentation.",
-  "Search": "Search",
+  "Search": "Search", // search_page
   "Title_Update_1": "New Feature: Dark Mode",
   "Title_Update_2": "Improved Performance",
   "Title_Update_3": "Bug Fixes",
@@ -251,7 +251,7 @@ const Map<String, String> en = {
   "Similar item": "Related items",
   
   // home --> favorite
-  "Favorite": "Favorite",
+  "Favorite": "Favorite", // nav_switch
   "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
   
   // home --> home_page
@@ -279,6 +279,17 @@ const Map<String, String> en = {
  
   // home --> item_ctegories
   'All Items': 'All Items',
+
+  // home --> nav_switch
+  "Home": "Home",
+  "Cart": "Cart",
+  "Account": "Account",
+  "Are you sure exiting the app": "Are you sure exiting the app",
+  "Yes": "Yes",
+  "No": "No",
+
+  // home --> search_page
+  "Not found any item": "No item found",
 
   //
   "": "",
@@ -411,9 +422,6 @@ const Map<String, String> en = {
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
   
-
-  
-
   // Notification
   "1 week ago": "1 week ago",
   "1 day ago": "One day ago",
@@ -437,25 +445,10 @@ const Map<String, String> en = {
   "Enter Age": "Enter Age",
   "Address": "Address",
   
-  // nav_switch
-  "Home": "Home",
-  "Cart": "Cart",
-  "Account": "Account",
-
-  // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "Are you sure exiting the app",
-  "Yes": "Yes",
-  "No": "No",
-  
   // Dialogbox ( Register ) --> my_widget
   "You need login": "You have to register first",
 
   
-
-  // Search_page
-  "Not found any item": "No item found",
-  // Page --> Login First --> my_widget
-  "Please login first": "Please login first", // nmayaa
 
   // order_screen
   "My Orders": "My Orders",
