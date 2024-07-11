@@ -761,41 +761,39 @@ class _HomeSreenState extends State<HomeSreen> {
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Skeleton.leaf(
-                                      child: Container(
-                                        width: getHeight(context, 12),
-                                        height: getHeight(context, 12),
-                                        decoration: BoxDecoration(
-                                            color: categoryColors[5],
-                                            border: Border.all(
-                                                color: mainColorBlack
-                                                    .withOpacity(0.2)),
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Image.asset(
-                                              "assets/shimmer/flag.png",
-                                              width: getWidth(context, 20),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              "hello good",
-                                              maxLines: 1,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: mainColorBlack,
-                                                  fontFamily: mainFontnormal,
-                                                  fontSize: 13),
-                                            ),
-                                          ],
-                                        ),
+                                    child: Container(
+                                      width: getHeight(context, 12),
+                                      height: getHeight(context, 12),
+                                      decoration: BoxDecoration(
+                                          color: categoryColors[5],
+                                          border: Border.all(
+                                              color: mainColorBlack
+                                                  .withOpacity(0.2)),
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/shimmer/flag.png",
+                                            width: getWidth(context, 20),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "hello good",
+                                            maxLines: 1,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontnormal,
+                                                fontSize: 13),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   );
