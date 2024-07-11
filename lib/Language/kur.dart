@@ -286,7 +286,10 @@ const Map<String, String> kur = {
   "Account": "هەژمار",
   "Are you sure exiting the app": "دڵنیای لە چونە دەرەوە؟",
   "Yes": "بەڵێ",
-  "No": "نەخێر",  
+  "No": "نەخێر",
+
+  // home --> search_page
+  "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
 
   // my_cart
   "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
@@ -413,11 +416,7 @@ const Map<String, String> kur = {
   // Dialogbox ( Register ) --> my_widget
   
   "You need login": "پێویستە خۆت تۆمار بکەیت",
-
-  // all_item >> shtakan dobar boo
-
-  // Search_page
-  "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
+  
 
   // Page --> Login First --> my_widget
   "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa

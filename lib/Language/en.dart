@@ -81,7 +81,7 @@ const Map<String, String> en = {
   "Answer_FAQ_9": "Flutter provides high performance on both Android and iOS.",
   "Answer_FAQ_10": "Yes, Flutter provides plugins to access native device features.",
   "Answer_FAQ_11": "There are many resources available, including the official documentation.",
-  "Search": "Search",
+  "Search": "Search", // search_page
   "Title_Update_1": "New Feature: Dark Mode",
   "Title_Update_2": "Improved Performance",
   "Title_Update_3": "Bug Fixes",
@@ -280,7 +280,7 @@ const Map<String, String> en = {
   // home --> item_ctegories
   'All Items': 'All Items',
 
-  //home --> nav_switch
+  // home --> nav_switch
   "Home": "Home",
   "Cart": "Cart",
   "Account": "Account",
@@ -288,9 +288,11 @@ const Map<String, String> en = {
   "Yes": "Yes",
   "No": "No",
 
+  // home --> search_page
+  "Not found any item": "No item found",
+
   //
   "": "",
-
 
   // my_cart
   "you can not add more this item": "you can not add more items",
@@ -446,10 +448,7 @@ const Map<String, String> en = {
   // Dialogbox ( Register ) --> my_widget
   "You need login": "You have to register first",
 
-  // Search_page
-  "Not found any item": "No item found",
-  // Page --> Login First --> my_widget
-  "Please login first": "Please login first", // nmayaa
+  
 
   // order_screen
   "My Orders": "My Orders",

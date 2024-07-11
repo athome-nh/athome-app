@@ -1,14 +1,11 @@
 import 'dart:async';
-
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/my_cart.dart';
 import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dllylas/Config/property.dart';
