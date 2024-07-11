@@ -20,7 +20,7 @@ const Map<String, String> en = {
 
   // Account --> account_info
   "Image changed": "Image changed",
-  "Cancel": "Cancel", // feedback, locationdeatil, my_widget
+  "Cancel": "Cancel", // feedback, locationdeatil, my_widget, my_cart
   "Edit": "Edit",
   "Profile": "Profile",
   "Name": "Name", // singin_up, locationdeatil
@@ -214,7 +214,7 @@ const Map<String, String> en = {
   "Wednesday": "Wednesday",
   "Thursday": "Thursday",
   "Friday": "Friday",
-  "Checkout": "Payment & Delivery",
+  "Checkout": "Payment & Delivery", // my_cart
   "Delivery to": "Delivery to",
   "Please select Address": "Please Select Delivery Address",
   "Add location": "Add location", // home_page
@@ -234,13 +234,13 @@ const Map<String, String> en = {
   "Add your note": "Add your note",
   "Note": "Note",
   "Payment deatils": "Payment deatils",
-  "Sub Total": "Sub Total", // old_order
+  "Sub Total": "Sub Total", // old_order, my_cart
   "Voucher Amount": "Voucher Amount", // old_order
-  "Delivery Cost": "Delivery Cost", // old_order
-  "Free Delivery": "Free Delivery",
+  "Delivery Cost": "Delivery Cost", // old_order, my_cart
+  "Free Delivery": "Free Delivery", // my_cart
   "Pyment Method": "Payment Method",
   "Cash": "Cash",
-  "Total": "Total",
+  "Total": "Total", // my_cart
   "unknown occurred error please try again later": "Error please try again later", // singin_up, login_page
   "Send Order": "Send Order",
   "AM": "AM",
@@ -264,12 +264,29 @@ const Map<String, String> en = {
   "cateItem": "cateItem",
   "Could not launch": "Could not launch",
   "Update": "Update",
-  "OK": "OK", // singin_up, login_page
+  "OK": "OK", // singin_up, login_page, my_cart
   "tap View": "tap View",
+
+  // home --> my_cart
+  "My Cart": "My Cart",
+  "Clear cart": "Clear cart",
+  "Are you sure you want to continue?": "Are you sure about continuing?",
+  "Clear": "Clear",
+  "Delete": "Delete", // location
+  "Your cart is empty": "Your cart is empty",
+  "min title": "Minimum Order required",
+  "min deatil": "Dear Customer, The minimum acceptable order is temp IQD",
+ 
+
+
 
   // 
   "": "",
 
+
+  // my_cart
+  "you can not add more this item": "you can not add more items",
+  
   // home_page
   "Order now": "Order now",
 
@@ -369,7 +386,7 @@ const Map<String, String> en = {
   // map --> location
   "Selected": "Selected",
   "Delete location success": "Delete location success",
-  "Delete": "Delete",
+  
 
   // map --> map_screen
   "Map": "Map",
@@ -442,17 +459,6 @@ const Map<String, String> en = {
 
   // Search_page
   "Not found any item": "No item found",
-
-  // my_cart
-  "My Cart": "My Cart",
-  "Clear": "Clear",
-  "Your cart is empty": "Your cart is empty",
-  "you can not add more this item": "you can not add more items",
-  
-  "Clear cart": "Clear cart",
-  "Are you sure you want to continue?": "Are you sure about continuing?",
-
-  
   // Page --> Login First --> my_widget
   "Please login first": "Please login first", // nmayaa
 
@@ -478,10 +484,7 @@ const Map<String, String> en = {
   "Cancel order": "Cancel order",
   "View order": "View order",
 
-  //
-  "min title": "Minimum Order required",
-  "min deatil": "Dear Customer, The minimum acceptable order is temp IQD",
-
+  
   // item_categories
   "You not have any item": "You do not have any items",
 
@@ -651,3 +654,4 @@ note: By accessing or using dlly las app constitutes your agreement to be bound 
   "Contact Us:TC content":
       """If you have any questions about these terms and conditions, please contact us at [Info@Dllylas.com]. or using this phone number (+964 750 958 3333).""",
 };
+

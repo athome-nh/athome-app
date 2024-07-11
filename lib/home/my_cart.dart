@@ -363,7 +363,7 @@ class _MyCartState extends State<MyCart> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                "${"Delete".tr}  $name",
+                                                "Delete".tr + "$name",
                                               ),
                                             ),
                                           );
@@ -527,7 +527,7 @@ class _MyCartState extends State<MyCart> {
                                                               ? Text(
                                                                   addCommasToPrice(
                                                                       cartitem
-                                                                          .offerPrice!),
+                                                                          .offerPrice!).tr,
                                                                   maxLines: 1,
                                                                   style: TextStyle(
                                                                       color: Colors
@@ -591,10 +591,10 @@ class _MyCartState extends State<MyCart> {
                                                               ? "0" +
                                                                   cartitemQ
                                                                       .quantity
-                                                                      .toString()
+                                                                      .toString().tr
                                                               : cartitemQ
                                                                   .quantity
-                                                                  .toString(),
+                                                                  .toString().tr,
                                                           style: TextStyle(
                                                               color:
                                                                   mainColorGrey,

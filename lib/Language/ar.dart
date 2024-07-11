@@ -267,6 +267,16 @@ const Map<String, String> ar = {
   "OK": "موافق",
   "tap View": "",
 
+  // home --> my_cart
+  "My Cart": "سلة التسوق",
+  "Clear cart": "إزالة الكل",
+  "Are you sure you want to continue?": "هل انت مأكد من الاستمرار ؟",
+  "Clear": "إزالة",
+  "Delete": "حذف",
+  "Your cart is empty": "سلة التسوف فارغة",
+  "min title": "الحد الأدنى للشراء المطلوب",
+  "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو temp دينار",
+  
   // home_page
   "Order now": "اطلب الان",
 
@@ -341,7 +351,7 @@ const Map<String, String> ar = {
   // map --> location
   "Selected": "",
   "Delete location success": "تم إزالة الموقع بنجاح",
-  "Delete": "حذف",
+  
 
   // map --> map_screen
   "Map": "الخريطة",
@@ -402,17 +412,6 @@ const Map<String, String> ar = {
   // Search_page
   "Not found any item": "لم یتم العثور علی أي منتج",
 
-  // my_cart
-  "My Cart": "سلة التسوق",
-  "Clear": "إزالة",
-  "Your cart is empty": "سلة التسوف فارغة",
-  
-  "you can not add more this item": "لايمكن إضافة منتج أخر",
-  
-  
-  "Clear cart": "إزالة الكل",
-  "Are you sure you want to continue?": "هل انت مأكد من الاستمرار ؟",
-
   // Page --> Login First --> my_widget
   "Please login first": "الرجاء تسجیل الدخول أولا",
 
@@ -464,10 +463,6 @@ const Map<String, String> ar = {
   "Order:": "الطلبیة: ",
   "Cancel order": "الغاء الطلب",
   "View order": "عرض الطلب",
-
-  //
-  "min title": "الحد الأدنى للشراء المطلوب",
-  "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو temp دينار",
 
   // item_categories
   "You not have any item": "لا تملك أي عنصر",
