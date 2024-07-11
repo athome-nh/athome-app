@@ -53,7 +53,7 @@ class _HomeSreenState extends State<HomeSreen> {
   List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
-  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
   // Check Internet
   Future<void> checkinternet() async {
     // if (await noInternet(context)) {
@@ -151,8 +151,9 @@ class _HomeSreenState extends State<HomeSreen> {
   }
 
   void showhompopup() {
-    if (homePopupData["id"] != userdata["popupID"] ||
-        homePopupData["isAlwaysShow"] == 1) {
+    if ((homePopupData["id"] != userdata["popupID"] ||
+            homePopupData["isAlwaysShow"] == 1) &&
+        homePopupData.isNotEmpty) {
       if (lang == "en") {
         _homePopup(context, "pop");
       } else if (lang == "ar") {

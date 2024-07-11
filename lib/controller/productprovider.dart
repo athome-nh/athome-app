@@ -62,6 +62,7 @@ class productProvider extends ChangeNotifier {
     Network(false).getData("showData").then((value) async {
       if (value != "") {
         if (value["code"] != 200) {
+          homePopupData = value['homePopup'] ?? {};
           setProducts((value["products"] as List)
               .map((x) => ProductModel.fromMap(x))
               .toList());
@@ -91,7 +92,6 @@ class productProvider extends ChangeNotifier {
           setSchedules((value['timeList'] as List)
               .map((x) => ScheduleModel.fromMap(x))
               .toList());
-          homePopupData = value['homePopup'] ?? {};
 
           setMinimumOrder(
             value['minimum_order'],
