@@ -226,10 +226,8 @@ class _AccountInfo2State extends State<AccountInfo2> {
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: CircleAvatar(
-                      child: CachedNetworkImage(
-                        imageUrl: dotenv.env['imageUrlServer']! + image,
-                        width: getWidth(context, 25),
-                        height: getWidth(context, 25),
+                      backgroundImage: CachedNetworkImageProvider(
+                        dotenv.env['imageUrlServer']! + userdata["img"],
                       ),
                       backgroundColor: mainColorWhite,
                       // foregroundImage: AssetImage(
