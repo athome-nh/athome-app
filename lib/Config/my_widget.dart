@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
@@ -29,140 +27,154 @@ Widget listItemsShimer(BuildContext context) {
         // mainColorRed.withOpacity(0.1),
       ]),
       enabled: true,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
-              child: Container(
-                width: getWidth(context, 45),
-                height: getHeight(context, 27),
-                decoration: BoxDecoration(
-                    border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Stack(
-                  alignment:
-                      lang == "en" ? Alignment.topLeft : Alignment.topRight,
-                  children: [
-                    Stack(
-                      alignment: lang == "en"
-                          ? Alignment.bottomLeft
-                          : Alignment.bottomRight,
-                      children: [
-                        Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  // rectangle
-                                  Image.asset(
-                                    "assets/images/home.png",
-                                    width: getWidth(context, 30),
-                                    height: getWidth(context, 30),
-                                  ),
-                                  // space
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "I dont know",
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontFamily: mainFontbold,
-                                        fontSize: 13),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Text(
-                                    "900 ml",
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        color: mainColorGrey.withOpacity(0.5),
-                                        fontFamily: mainFontbold,
-                                        fontSize: 11),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "900000",
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            decoration: TextDecoration.none,
-                                            color: Colors.green,
-                                            fontFamily: mainFontbold,
-                                            fontSize: 14),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          childAspectRatio: getWidth(context, 0.30),
+        ),
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (BuildContext context, int index) {
+          final randomColor = categoryColors[5];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: getWidth(context, 36),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: randomColor,
+                boxShadow: [
+                  BoxShadow(
+                      color: mainColorBlack.withOpacity(0.1),
+                      blurRadius: 5,
+                      spreadRadius: 0,
+                      offset: Offset(0, 1))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Wrap(
+                    children: [
+                      Container(
+                        height: getHeight(context, 14),
+                        decoration: BoxDecoration(
+                          // color: mainColorWhite,
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(6),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Skeleton.keep(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (!isLogin) {
-                                      loiginPopup(context);
-                                      return;
-                                    }
-                                  },
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(left: 6.0),
-                                      child: Icon(LineIcons.heart,
-                                          color: mainColorGrey,
-                                          size: getHeight(context, 3.5))),
-                                ),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+                                      "assets/shimmer/flag.png",
+                                    )),
                               ),
-                              // isItemInCart
-                              //     ? // button
-                              Skeleton.keep(
-                                  child: AnimatedContainer(
-                                padding: EdgeInsets.all(4),
-                                width: 35,
-                                height: 35,
-                                duration: Duration(milliseconds: 600),
-                                decoration: BoxDecoration(
-                                    color: mainColorGrey.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                        color: mainColorGrey.withOpacity(0.2))),
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Icon(LineIcons.plus,
-                                      color: mainColorBlack,
-                                      size: getHeight(context, 2)),
-                                ),
-                              ))
-                            ],
+                            ),
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: mainColorWhite),
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Skeleton.keep(
+                                      child: Icon(
+                                        LineIcons.heart,
+                                        color: mainColorBlack,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  )),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 1),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              maxLines: 1,
+                              "hello good bad",
+                              style: TextStyle(
+                                  fontSize: getHeight(context, 1.8),
+                                  color: mainColorBlack,
+                                  fontFamily: mainFontbold),
+                            ),
+                            Text(
+                              maxLines: 1,
+                              "500 ml",
+                              style: TextStyle(
+                                  fontSize: getHeight(context, 1.2),
+                                  color: mainColorBlack.withOpacity(0.5),
+                                  fontFamily: mainFontnormal),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: lang == "en"
+                        ? EdgeInsets.only(left: getWidth(context, 1))
+                        : EdgeInsets.only(right: getWidth(context, 1)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              addCommasToPrice(1500),
+                              maxLines: 1,
+                              style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.green,
+                                  fontFamily: mainFontbold,
+                                  fontSize: 14),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          width: getHeight(context, 4),
+                          height: getHeight(context, 4),
+                          decoration: BoxDecoration(
+                              color: mainColorGrey,
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(15),
+                                  topLeft: Radius.circular(15))),
+                          child: Skeleton.keep(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.add,
+                                color: mainColorWhite,
+                                size: getHeight(context, 1.7),
+                              ),
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     ),
   );
@@ -190,128 +202,141 @@ Widget listItemsBigShimer(BuildContext context) {
 
           itemCount: 8, // Number of items in the grid
           itemBuilder: (BuildContext context, int index) {
+            final randomColor = categoryColors[5];
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 1.5)),
+              padding: const EdgeInsets.all(8.0),
               child: Container(
-                width: getWidth(context, 45),
-                height: getHeight(context, 27),
+                width: getWidth(context, 36),
                 decoration: BoxDecoration(
-                    border: Border.all(color: mainColorBlack.withOpacity(0.1)),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Stack(
-                  alignment:
-                      lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                  borderRadius: BorderRadius.circular(15),
+                  color: randomColor,
+                  boxShadow: [
+                    BoxShadow(
+                        color: mainColorBlack.withOpacity(0.1),
+                        blurRadius: 5,
+                        spreadRadius: 0,
+                        offset: Offset(0, 1))
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Stack(
-                      alignment: lang == "en"
-                          ? Alignment.bottomLeft
-                          : Alignment.bottomRight,
+                    Wrap(
                       children: [
-                        Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                        Container(
+                          height: getHeight(context, 14),
+                          decoration: BoxDecoration(
+                            // color: mainColorWhite,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Stack(
                             children: [
-                              Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/home.png",
-                                    width: getWidth(context, 30),
-                                    height: getWidth(context, 30),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "slaw chonn bashn",
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontFamily: mainFontbold,
-                                        fontSize: 13),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Text(
-                                    "900 ml",
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        color: mainColorGrey.withOpacity(0.5),
-                                        fontFamily: mainFontbold,
-                                        fontSize: 11),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "900000",
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            decoration: TextDecoration.none,
-                                            color: Colors.green,
-                                            fontFamily: mainFontbold,
-                                            fontSize: 14),
+                              Center(
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.asset(
+                                        "assets/shimmer/flag.png",
+                                      )),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0,
+                                right: 0,
+                                child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: mainColorWhite),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: Skeleton.keep(
+                                        child: Icon(
+                                          LineIcons.heart,
+                                          color: mainColorBlack,
+                                          size: 20,
+                                        ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: getHeight(context, 3),
-                              ),
+                                    )),
+                              )
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: getHeight(context, 1),
+                        ),
                         Padding(
-                          padding: EdgeInsets.all(6),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Skeleton.keep(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (!isLogin) {
-                                      loiginPopup(context);
-                                      return;
-                                    }
-                                  },
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(left: 6.0),
-                                      child: Icon(LineIcons.heart,
-                                          color: mainColorGrey,
-                                          size: getHeight(context, 3.5))),
-                                ),
+                              Text(
+                                maxLines: 1,
+                                "hello good bad",
+                                style: TextStyle(
+                                    fontSize: getHeight(context, 1.8),
+                                    color: mainColorBlack,
+                                    fontFamily: mainFontbold),
                               ),
-                              // isItemInCart
-                              //     ? // button
-                              Skeleton.keep(
-                                  child: AnimatedContainer(
-                                padding: EdgeInsets.all(4),
-                                width: 35,
-                                height: 35,
-                                duration: Duration(milliseconds: 600),
-                                decoration: BoxDecoration(
-                                    color: mainColorGrey.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                        color: mainColorGrey.withOpacity(0.2))),
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Icon(LineIcons.plus,
-                                      color: mainColorBlack,
-                                      size: getHeight(context, 2)),
-                                ),
-                              ))
+                              Text(
+                                maxLines: 1,
+                                "500 ml",
+                                style: TextStyle(
+                                    fontSize: getHeight(context, 1.2),
+                                    color: mainColorBlack.withOpacity(0.5),
+                                    fontFamily: mainFontnormal),
+                              ),
                             ],
                           ),
                         ),
                       ],
+                    ),
+                    Padding(
+                      padding: lang == "en"
+                          ? EdgeInsets.only(left: getWidth(context, 1))
+                          : EdgeInsets.only(right: getWidth(context, 1)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                addCommasToPrice(1500),
+                                maxLines: 1,
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    color: Colors.green,
+                                    fontFamily: mainFontbold,
+                                    fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            width: getHeight(context, 4),
+                            height: getHeight(context, 4),
+                            decoration: BoxDecoration(
+                                color: mainColorGrey,
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(15),
+                                    topLeft: Radius.circular(15))),
+                            child: Skeleton.keep(
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.add,
+                                  color: mainColorWhite,
+                                  size: getHeight(context, 1.7),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
