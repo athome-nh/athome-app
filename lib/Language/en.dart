@@ -251,7 +251,7 @@ const Map<String, String> en = {
   "Similar item": "Related items",
   
   // home --> favorite
-  "Favorite": "Favorite",
+  "Favorite": "Favorite", // nav_switch
   "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
   
   // home --> home_page
@@ -280,8 +280,17 @@ const Map<String, String> en = {
   // home --> item_ctegories
   'All Items': 'All Items',
 
+  //home --> nav_switch
+  "Home": "Home",
+  "Cart": "Cart",
+  "Account": "Account",
+  "Are you sure exiting the app": "Are you sure exiting the app",
+  "Yes": "Yes",
+  "No": "No",
+
   //
   "": "",
+
 
   // my_cart
   "you can not add more this item": "you can not add more items",
@@ -411,9 +420,6 @@ const Map<String, String> en = {
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
   
-
-  
-
   // Notification
   "1 week ago": "1 week ago",
   "1 day ago": "One day ago",
@@ -437,20 +443,8 @@ const Map<String, String> en = {
   "Enter Age": "Enter Age",
   "Address": "Address",
   
-  // nav_switch
-  "Home": "Home",
-  "Cart": "Cart",
-  "Account": "Account",
-
-  // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "Are you sure exiting the app",
-  "Yes": "Yes",
-  "No": "No",
-  
   // Dialogbox ( Register ) --> my_widget
   "You need login": "You have to register first",
-
-  
 
   // Search_page
   "Not found any item": "No item found",

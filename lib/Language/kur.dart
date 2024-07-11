@@ -280,7 +280,13 @@ const Map<String, String> kur = {
   // home --> item_ctegories
   'All Items': 'هەموو شتەکان',
   
-
+  //home --> nav_switch
+  "Home": "سەرەکی",
+  "Cart": "سەبەتە",
+  "Account": "هەژمار",
+  "Are you sure exiting the app": "دڵنیای لە چونە دەرەوە؟",
+  "Yes": "بەڵێ",
+  "No": "نەخێر",  
 
   // my_cart
   "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
@@ -403,20 +409,6 @@ const Map<String, String> kur = {
   "Enter Name": "تۆمارکردنی ناو",
   "Enter Age": "تۆمارکدنی تەمەن",
   "Address": "ناونیشان",
-  
-  // nav_switch
-  "Home": "سەرەکی",
-  
-  "Cart": "سەبەتە",
-  
-  "Account": "هەژمار",
-
-  // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "دڵنیای لە چونە دەرەوە؟",
-  "Yes": "بەڵێ",
-  "No": "نەخێر",
-
-  
 
   // Dialogbox ( Register ) --> my_widget
   

@@ -279,6 +279,14 @@ const Map<String, String> ar = {
 
   // home --> item_ctegories
   'All Items': 'جميع المواد',
+
+  //home --> nav_switch
+  "Home": "الرئیسیة",
+  "Cart": "السلة",
+  "Account": "الحساب",
+  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
+  "Yes": "نعم",
+  "No": "لا",
   
   // home_page
   "Order now": "اطلب الان",
@@ -395,18 +403,6 @@ const Map<String, String> ar = {
   "Enter Name": "ادخل الاسم",
   "Enter Age": "ادخل العمر",
   "Address": "الموقع",
-
-  
-
-  // nav_switch
-  "Home": "الرئیسیة",
-  "Cart": "السلة",
-  "Account": "الحساب",
-
-  // Dialogbox --> nav_switch
-  "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
-  "Yes": "نعم",
-  "No": "لا",
 
   // Dialogbox ( Register ) --> my_widget
   
