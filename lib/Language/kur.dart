@@ -267,6 +267,21 @@ const Map<String, String> kur = {
   "OK": "دڵنیام", // singin_up, login_page
   "tap View": "",
 
+  // home --> my_cart
+  "My Cart": "سەبەتەی بازاڕکردن",
+  "Clear cart": "لابردنی هەموو",
+  "Are you sure you want to continue?": "دڵنیای لە بەردەوامبوون؟",
+  "Clear": "پاک کردنەوە",
+  "Delete": "سڕینەوە",
+  "Your cart is empty": "سەبەتەی بازاڕکردن بەتاڵە",
+  "min title": "کەمترین داواکاری پێشکەشکراو",
+  "min deatil": "کڕیاڕی بەڕێز کەمترین بڕی داواکاری temp دینارە",
+  
+
+
+  // my_cart
+  "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
+
   // home_page
   "Order now": "ئێستا داوا بكه‌",
 
@@ -345,7 +360,6 @@ const Map<String, String> kur = {
   // map --> location
   "Selected": "",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
-  "Delete": "سڕینەوە",
 
   // map --> map_screen
   "Map": "نەخشە",
@@ -413,16 +427,6 @@ const Map<String, String> kur = {
   // Search_page
   "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
 
-  // my_cart
-  "My Cart": "سەبەتەی بازاڕکردن",
-  "Clear": "پاک کردنەوە",
-  "Your cart is empty": "سەبەتەی بازاڕکردن بەتاڵە",
-  
-  "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
-  
-  "Clear cart": "لابردنی هەموو",
-  "Are you sure you want to continue?": "دڵنیای لە بەردەوامبوون؟",
-
   // Page --> Login First --> my_widget
   "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa
 
@@ -472,12 +476,6 @@ const Map<String, String> kur = {
   "Order:": "داواکاری: ",
   "Cancel order": "پوچەڵ کردنەوە",
   "View order": "بینینی داواکاری ",
-
-  
-
-  //
-  "min title": "کەمترین داواکاری پێشکەشکراو",
-  "min deatil": "کڕیاڕی بەڕێز کەمترین بڕی داواکاری temp دینارە",
 
   // item_categories
   "You not have any item": "هیچ بابەتێک بەردەست نیە",
