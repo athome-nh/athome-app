@@ -135,7 +135,7 @@ class _Map_screenState extends State<Map_screen> {
       polygonAnnotationManager = value;
       var options = <PolygonAnnotationOptions>[];
       options.add(PolygonAnnotationOptions(
-          geometry: Polygon(coordinates: [zone]).toJson(),
+          geometry: Polygon(coordinates: [zone]),
           fillColor: Colors.transparent.value,
           fillOpacity: 0.2));
       polygonAnnotationManager?.createMulti(options);
@@ -163,8 +163,7 @@ class _Map_screenState extends State<Map_screen> {
           children: [
             MapWidget(
                 cameraOptions: CameraOptions(
-                    center: Point(coordinates: Position(44.009167, 36.191113))
-                        .toJson(),
+                    center: Point(coordinates: Position(44.009167, 36.191113)),
                     zoom: 10.0),
                 onTapListener: (coordinate) {},
                 styleUri: MapboxStyles.STANDARD,
@@ -178,15 +177,9 @@ class _Map_screenState extends State<Map_screen> {
                   }
                   scrollTimer = Timer(const Duration(milliseconds: 500), () {
                     _mapController!.getCameraState().then((value) {
-                      final split = value.center["coordinates"]
-                          .toString()
-                          .substring(1)
-                          .replaceAll("]", '')
-                          .split(",");
-
                       if (isPointInsidePolygon(
-                          Position(
-                              double.parse(split[0]), double.parse(split[1])),
+                          Position(value.center.coordinates.lng,
+                              value.center.coordinates.lat),
                           zone)) {
                         if (value.zoom < 12) {
                           setState(() {
@@ -196,7 +189,8 @@ class _Map_screenState extends State<Map_screen> {
                           });
                         } else {
                           getLocationName(
-                              double.parse(split[0]), double.parse(split[1]));
+                              (value.center.coordinates.lng).toDouble(),
+                              (value.center.coordinates.lat).toDouble());
                         }
                       } else {
                         setState(() {
@@ -376,9 +370,8 @@ class _Map_screenState extends State<Map_screen> {
     _mapController!.flyTo(
         CameraOptions(
             center: Point(
-                    coordinates: Position(
-                        myLocationData.longitude, myLocationData.latitude))
-                .toJson(),
+                coordinates: Position(
+                    myLocationData.longitude, myLocationData.latitude)),
             zoom: 18,
             bearing: 0,
             pitch: 15),

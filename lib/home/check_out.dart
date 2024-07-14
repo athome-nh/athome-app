@@ -128,18 +128,18 @@ class _CheckOutState extends State<CheckOut> {
                     height: getHeight(context, 15),
                     width: getWidth(context, 100),
                     child: map.MapWidget(
+                  
                       cameraOptions: map.CameraOptions(
                           center: map.Point(
-                                  coordinates: map.Position(
-                                      productrovider
-                                          .getonelocationById(
-                                              productrovider.defultlocation)
-                                          .longitude!,
-                                      productrovider
-                                          .getonelocationById(
-                                              productrovider.defultlocation)
-                                          .latitude!))
-                              .toJson(),
+                              coordinates: map.Position(
+                                  productrovider
+                                      .getonelocationById(
+                                          productrovider.defultlocation)
+                                      .longitude!,
+                                  productrovider
+                                      .getonelocationById(
+                                          productrovider.defultlocation)
+                                      .latitude!)),
                           zoom: 17.0),
                       key: const ValueKey("mapWidget"),
                       onTapListener: (coordinate) {},
@@ -155,16 +155,15 @@ class _CheckOutState extends State<CheckOut> {
 
                           options.add(map.PointAnnotationOptions(
                               geometry: map.Point(
-                                      coordinates: map.Position(
-                                          productrovider
-                                              .getonelocationById(
-                                                  productrovider.defultlocation)
-                                              .longitude!,
-                                          productrovider
-                                              .getonelocationById(
-                                                  productrovider.defultlocation)
-                                              .latitude!))
-                                  .toJson(),
+                                  coordinates: map.Position(
+                                      productrovider
+                                          .getonelocationById(
+                                              productrovider.defultlocation)
+                                          .longitude!,
+                                      productrovider
+                                          .getonelocationById(
+                                              productrovider.defultlocation)
+                                          .latitude!)),
                               image: list,
                               iconSize: 0.5));
 
@@ -338,11 +337,11 @@ class _CheckOutState extends State<CheckOut> {
                                                                                 final Uint8List list = bytes.buffer.asUint8List();
                                                                                 var options = <map.PointAnnotationOptions>[];
 
-                                                                                options.add(map.PointAnnotationOptions(geometry: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)).toJson(), image: list, iconSize: 0.5));
+                                                                                options.add(map.PointAnnotationOptions(geometry: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)), image: list, iconSize: 0.5));
 
                                                                                 pointAnnotationManager.createMulti(options);
                                                                               });
-                                                                              _mapController!.flyTo(map.CameraOptions(center: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)).toJson(), zoom: 18, bearing: 0, pitch: 15), map.MapAnimationOptions(duration: 3000, startDelay: 0));
+                                                                              _mapController!.flyTo(map.CameraOptions(center: map.Point(coordinates: map.Position(location.longitude!, location.latitude!)), zoom: 18, bearing: 0, pitch: 15), map.MapAnimationOptions(duration: 3000, startDelay: 0));
                                                                               mystate(() {
                                                                                 productrovider.setdefultlocation(location.id!);
                                                                               });

@@ -89,9 +89,8 @@ class _location_DeatilState extends State<location_Deatil> {
                         child: MapWidget(
                           cameraOptions: CameraOptions(
                               center: Point(
-                                      coordinates: Position(
-                                          widget.longitude, widget.latitude))
-                                  .toJson(),
+                                  coordinates: Position(
+                                      widget.longitude, widget.latitude)),
                               zoom: 18.0),
                           key: const ValueKey("mapWidget"),
                           onTapListener: (coordinate) {
@@ -108,8 +107,7 @@ class _location_DeatilState extends State<location_Deatil> {
                               // for (var i = 0; i < 5; i++) {
                               options.add(PointAnnotationOptions(
                                   geometry: createRandomPoint2(
-                                          widget.longitude, widget.latitude)
-                                      .toJson(),
+                                      widget.longitude, widget.latitude),
                                   image: list,
                                   iconSize: 0.5));
                               // }
