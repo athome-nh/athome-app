@@ -19,10 +19,8 @@ const Map<String, String> ar = {
       "نشكركم على اختياركم تطبيق دلي لاس لتلبية طلباتكم. نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد!",
 
   // Account --> account_info
-  "Image changed": "تم التغیر الصورة",
   "Cancel": "الغاء",
   "Edit": " ",
-  "Profile": " ",
   "Name": "الأسم",
   "Enter Your Name": " ",
   "Enter Your Full Name": " ",

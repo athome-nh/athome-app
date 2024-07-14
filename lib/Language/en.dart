@@ -18,22 +18,17 @@ const Map<String, String> en = {
   "AboutTextEight":
       "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
 
-  // Account --> account_info
-  "Image changed": "Image changed",
-  "Cancel": "Cancel", // feedback, locationdeatil, my_widget, my_cart
-  "Edit": "Edit",
-  "Profile": "Profile",
-  "Name": "Name", // singin_up, locationdeatil
+  // Account --> account_info2
+  "Male": "Male", // singin_up
+  "Female": "Female", //singin_up
+  "Erbil": "Erbil", // singin_up
   "Enter Your Name": "Enter Your Name",
-  "Enter Your Full Name": "Enter Your Full Name",
-  "Age": "Age",
   "Enter your age": "Enter your age", // singin_up
-  "please, Enter the number only": "please, Enter the number only", // singin_up
-  "Gender": "Gender",
-  "Phone": "Phone",
-  "City": "City", // singin_up
   "Save": "Save", // locationdeatil
-  
+  "Cancel": "Cancel", // feedback, locationdeatil, my_widget, my_cart
+  "back": "back",
+  "Edit": "Edit",
+
   // Account --> account_setting
   "Account Settings": "Account Settings", // profile
   "Setting": "Setting",
@@ -267,6 +262,9 @@ const Map<String, String> en = {
   "OK": "OK", // singin_up, login_page, my_cart
   "tap View": "tap View",
 
+  // home --> item_ctegories
+  'All Items': 'All Items',
+
   // home --> my_cart
   "My Cart": "My Cart",
   "Clear cart": "Clear cart",
@@ -277,9 +275,6 @@ const Map<String, String> en = {
   "min title": "Minimum Order required",
   "min deatil": "Dear Customer, The minimum acceptable order is temp IQD",
  
-  // home --> item_ctegories
-  'All Items': 'All Items',
-
   // home --> nav_switch
   "Home": "Home",
   "Cart": "Cart",
@@ -295,7 +290,7 @@ const Map<String, String> en = {
   "Ordered successfully": "Ordered successfully",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
-  "Order Number:": "Order Number: ",
+  "Order Number:": "Order Number:",
   "sorryWeDoNotHaveDelivery":
       "We are soory our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
@@ -324,7 +319,6 @@ const Map<String, String> en = {
   "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)", // signin_up
   "Account Disabled": "Account Disabled",
   "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
-  
   "Account range out": "Sorry....",
   "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   
@@ -334,9 +328,9 @@ const Map<String, String> en = {
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
   "Confirm": "Confirm",
-  "Male": "Male",
-  "Female": "Female",
-  "Erbil": "Erbil",
+  "Name": "Name", // singin_up, locationdeatil
+  "please, Enter the number only": "please, Enter the number only", // singin_up
+  "City": "City", // singin_up
 
   // Landing --> verification
   "Verification": "Verification",
@@ -407,11 +401,7 @@ const Map<String, String> en = {
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
 
-  
-
-  //
-  "": "",
-
+////////////////////////////////////
   // my_cart
   "you can not add more this item": "you can not add more items",
   
@@ -424,8 +414,6 @@ const Map<String, String> en = {
   "Add new Location": "Add a new Location",
   "Cash on delivery": "Cash on delivery",
   "Coming soon": "Coming soon",
-  
-  
   "Please Delivery Address": "Please Add Delivery Address",
   "the code is un correct": "the code is wrong",
   
@@ -440,7 +428,6 @@ const Map<String, String> en = {
   "A newer version of dlly las application is available, please download the latest version .":
       "A newer version of dlly las application is available, please download the latest version .",
   
-
   // Ziyadaa
   "NEXT": "NEXT",
   "SKIP":
@@ -454,8 +441,6 @@ const Map<String, String> en = {
   
   // Dialogbox ( Register ) --> my_widget
   "You need login": "You have to register first",
-
-  
 
   // order_screen
   "My Orders": "My Orders",
@@ -471,15 +456,12 @@ const Map<String, String> en = {
   "Past Order": "Order history",
   "Add More Items": "Add More Items",
 
-  
-
   // track_order
   "Track Order": "Track your Order",
   "Order:": "Order: ",
   "Cancel order": "Cancel order",
   "View order": "View order",
 
-  
   // item_categories
   "You not have any item": "You do not have any items",
 
@@ -489,6 +471,8 @@ const Map<String, String> en = {
 
   "Account recovery opportunity":
       "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
+
+//////////////////////////////
 
   //Privacy Policy
   "Privacy Policy Title": "Privacy Policy for Dlly Las Grocery App",

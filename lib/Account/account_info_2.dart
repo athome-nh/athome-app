@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -354,7 +353,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
                     ? TextField(
                         controller: controller,
                         decoration: InputDecoration(
-                          hintText: label,
+                          hintText: label.tr,
                           hintStyle: TextStyle(
                             fontFamily: mainFontnormal,
                             color: mainColorGrey,
@@ -367,7 +366,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
                         controller: controller,
                         readOnly: true,
                         decoration: InputDecoration(
-                          hintText: label,
+                          hintText: label.tr,
                           hintStyle: TextStyle(
                             fontFamily: mainFontnormal,
                             color: mainColorBlack,
@@ -405,7 +404,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
                   controller: controller,
                   readOnly: true,
                   decoration: InputDecoration(
-                    hintText: label,
+                    hintText: label.tr,
                     hintStyle: TextStyle(
                       fontFamily: mainFontnormal,
                       color: mainColorBlack,
@@ -448,7 +447,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
                     value: value,
                     isDense: false,
                     decoration: InputDecoration(
-                      hintText: label,
+                      hintText: label.tr,
                       hintStyle: TextStyle(
                         fontFamily: mainFontnormal,
                         color: mainColorGrey,
