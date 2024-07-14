@@ -264,4 +264,5 @@ class _NavSwitchState extends State<NavSwitch> {
       },
     );
   }
+
 }

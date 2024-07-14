@@ -273,50 +273,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         padding: const EdgeInsets.all(20.0),
                                         child: ElevatedButton(
                                           onPressed: () {
-                                            var data = {
-                                              "id": userdata["id"].toString()
-                                            };
-                                            Network(false)
-                                                .postData(
-                                                    "logout", data, context)
-                                                .then((value) {
-                                              getStringPrefs("data")
-                                                  .then((map) {
-                                                Map<String, dynamic> myMap =
-                                                    json.decode(map);
-                                                myMap["islogin"] = false;
-                                                myMap["token"] = "";
-                                                setStringPrefs(
-                                                    "data", json.encode(myMap));
-                                              });
-
-                                              final cartProvider =
-                                                  Provider.of<CartProvider>(
-                                                      context,
-                                                      listen: false);
-                                              final product =
-                                                  Provider.of<productProvider>(
-                                                      context,
-                                                      listen: false);
-
-                                              setState(() {
-                                                userdata = {};
-                                                token = "";
-                                                isLogin = false;
-                                              });
-                                              product.Orderitems.clear();
-                                              product.location.clear();
-                                              product.Orders.clear();
-                                              cartProvider.cartItems.clear();
-                                              cartProvider.FavItems.clear();
-
-                                              Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        NavSwitch()),
-                                              );
-                                            });
+                                            yesNoOption(context);
                                           },
                                           style: ElevatedButton.styleFrom(
                                             foregroundColor: Colors.black,
@@ -510,48 +467,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       padding: const EdgeInsets.all(20.0),
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          var data = {
-                                            "id": userdata["id"].toString()
-                                          };
-                                          Network(false)
-                                              .postData("logout", data, context)
-                                              .then((value) {
-                                            getStringPrefs("data").then((map) {
-                                              Map<String, dynamic> myMap =
-                                                  json.decode(map);
-                                              myMap["islogin"] = false;
-                                              myMap["token"] = "";
-                                              setStringPrefs(
-                                                  "data", json.encode(myMap));
-                                            });
-
-                                            final cartProvider =
-                                                Provider.of<CartProvider>(
-                                                    context,
-                                                    listen: false);
-                                            final product =
-                                                Provider.of<productProvider>(
-                                                    context,
-                                                    listen: false);
-
-                                            setState(() {
-                                              userdata = {};
-                                              token = "";
-                                              isLogin = false;
-                                            });
-                                            product.Orderitems.clear();
-                                            product.location.clear();
-                                            product.Orders.clear();
-                                            cartProvider.cartItems.clear();
-                                            cartProvider.FavItems.clear();
-
-                                            Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      NavSwitch()),
-                                            );
-                                          });
+                                          yesNoOption(context);
                                         },
                                         style: ElevatedButton.styleFrom(
                                           foregroundColor: Colors.black,
@@ -914,6 +830,123 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Divider(height: 1, thickness: 1),
         ),
       ],
+    );
+  }
+
+  Future<void> yesNoOption(
+    BuildContext context,
+  ) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return StatefulBuilder(builder: (context2, state) {
+          return AlertDialog(
+            contentPadding: const EdgeInsets.all(0),
+            content: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: ClipRect(
+                child: Container(
+                  width: getWidth(context, 90),
+                  height: getHeight(context, 20),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                  padding: const EdgeInsets.all(10),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: getHeight(context, 20),
+                    ),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const SizedBox(),
+                          Text(
+                            "Are you sure Logout",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: mainColorBlack,
+                              fontFamily: mainFontnormal,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(),
+                          const SizedBox(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const SizedBox(),
+                              TextButton(
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                },
+                                style: TextButton.styleFrom(
+                                    backgroundColor: mainColorRed,
+                                    fixedSize: Size(getWidth(context, 30),
+                                        getHeight(context, 4))),
+                                child: Text(
+                                  "No".tr,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  var data = {"id": userdata["id"].toString()};
+                                  Network(false)
+                                      .postData("logout", data, context)
+                                      .then((value) {
+                                    getStringPrefs("data").then((map) {
+                                      Map<String, dynamic> myMap =
+                                          json.decode(map);
+                                      myMap["islogin"] = false;
+                                      myMap["token"] = "";
+                                      setStringPrefs(
+                                          "data", json.encode(myMap));
+                                    });
+
+                                    final cartProvider =
+                                        Provider.of<CartProvider>(context,
+                                            listen: false);
+                                    final product =
+                                        Provider.of<productProvider>(context,
+                                            listen: false);
+
+                                    setState(() {
+                                      userdata = {};
+                                      token = "";
+                                      isLogin = false;
+                                    });
+                                    product.Orderitems.clear();
+                                    product.location.clear();
+                                    product.Orders.clear();
+                                    product.setshowuser(false);
+                                    cartProvider.cartItems.clear();
+                                    cartProvider.FavItems.clear();
+
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => NavSwitch()),
+                                    );
+                                  });
+                                },
+                                style: TextButton.styleFrom(
+                                    fixedSize: Size(getWidth(context, 30),
+                                        getHeight(context, 4))),
+                                child: Text(
+                                  "Yes".tr,
+                                ),
+                              ),
+                              const SizedBox(),
+                            ],
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
+      },
     );
   }
 }

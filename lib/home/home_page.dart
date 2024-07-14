@@ -124,8 +124,8 @@ class _HomeSreenState extends State<HomeSreen> {
                 _homePopup(context, value);
             } else {
               if (isLogin &&
-                  productrovider.location.isEmpty &&
-                  productrovider.showuser) {
+                  productrovider.showuser &&
+                  productrovider.location.isEmpty) {
                 locationempty(productrovider);
               } else if (isLogin &&
                   productrovider.Orders.isNotEmpty &&

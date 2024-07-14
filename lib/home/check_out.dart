@@ -128,7 +128,6 @@ class _CheckOutState extends State<CheckOut> {
                     height: getHeight(context, 15),
                     width: getWidth(context, 100),
                     child: map.MapWidget(
-                  
                       cameraOptions: map.CameraOptions(
                           center: map.Point(
                               coordinates: map.Position(
@@ -573,6 +572,7 @@ class _CheckOutState extends State<CheckOut> {
                                       selectedDate = DateTime.now();
                                       selectedDateorder = "";
                                       selectedTime = "";
+                                      isSchedule = false;
                                     });
                                   },
                                   child: Icon(

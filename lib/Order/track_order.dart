@@ -344,22 +344,7 @@ class _TrackOrderState extends State<TrackOrder> {
                       ? status == 0
                           ? TextButton(
                               onPressed: () {
-                                Network(false)
-                                    .postData("userCancel", {"oid": widget.id},
-                                        context)
-                                    .then((value) {
-                                  if (value != "") {
-                                    if (value["code"] == "201") {
-                                      final productrovider =
-                                          Provider.of<productProvider>(context,
-                                              listen: false);
-                                      productrovider.getuserdata(
-                                          userdata["id"].toString());
-
-                                      Navigator.pop(context);
-                                    }
-                                  }
-                                });
+                                yesNoOption(context);
                               },
                               style: TextButton.styleFrom(
                                 backgroundColor: mainColorRed,
@@ -404,6 +389,104 @@ class _TrackOrderState extends State<TrackOrder> {
           ),
         ),
       ),
+    );
+  }
+
+  // Dialogbox
+  Future<void> yesNoOption(
+    BuildContext context,
+  ) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return StatefulBuilder(builder: (context2, state) {
+          return AlertDialog(
+            contentPadding: const EdgeInsets.all(0),
+            content: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: ClipRect(
+                child: Container(
+                  width: getWidth(context, 90),
+                  height: getHeight(context, 20),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                  padding: const EdgeInsets.all(10),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: getHeight(context, 20),
+                    ),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const SizedBox(),
+                          Text(
+                            "Are you sure Cancel order",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: mainColorBlack,
+                              fontFamily: mainFontnormal,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(),
+                          const SizedBox(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const SizedBox(),
+                              TextButton(
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                },
+                                style: TextButton.styleFrom(
+                                    backgroundColor: mainColorRed,
+                                    fixedSize: Size(getWidth(context, 30),
+                                        getHeight(context, 4))),
+                                child: Text(
+                                  "No".tr,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Network(false)
+                                      .postData("userCancel",
+                                          {"oid": widget.id}, context)
+                                      .then((value) {
+                                    if (value != "") {
+                                      if (value["code"] == "201") {
+                                        final productrovider =
+                                            Provider.of<productProvider>(
+                                                context,
+                                                listen: false);
+                                        productrovider.getuserdata(
+                                            userdata["id"].toString());
+
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      }
+                                    }
+                                  });
+                                },
+                                style: TextButton.styleFrom(
+                                    fixedSize: Size(getWidth(context, 30),
+                                        getHeight(context, 4))),
+                                child: Text(
+                                  "Yes".tr,
+                                ),
+                              ),
+                              const SizedBox(),
+                            ],
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
+      },
     );
   }
 }

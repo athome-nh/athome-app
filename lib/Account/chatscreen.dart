@@ -142,7 +142,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     final productrovider = Provider.of<productProvider>(context, listen: false);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child:  Scaffold(
+      child: Scaffold(
           appBar: AppBar(
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -212,7 +212,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                       height: getHeight(context, 1),
                                     ),
                                     Text(
-                                        "Enter your account information to contact for chat suport".tr,
+                                        "Enter your account information to contact for chat suport"
+                                            .tr,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 14,
@@ -226,32 +227,34 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                       value: _issueType,
                                       decoration: InputDecoration(
                                         focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color:
-                                                mainColorGrey, 
-                                            width: 1.0, 
+                                            color: mainColorGrey,
+                                            width: 1.0,
                                           ),
                                         ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: mainColorGrey.withOpacity(
-                                                0.5), 
-                                            width: 1.0, 
+                                            color:
+                                                mainColorGrey.withOpacity(0.5),
+                                            width: 1.0,
                                           ),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: Colors
-                                                .red, 
+                                            color: Colors.red,
                                             width:
                                                 1.0, // Customize error border width
                                           ),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
                                             color: Colors
                                                 .red, // Customize focused error border color
@@ -261,7 +264,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                         ),
                                         labelText: "Issue Bug".tr,
                                         labelStyle: TextStyle(
-                                            color: mainColorGrey.withOpacity(0.8),
+                                            color:
+                                                mainColorGrey.withOpacity(0.8),
                                             fontSize: 20,
                                             fontFamily: mainFontbold),
                                         hintStyle: TextStyle(
@@ -316,42 +320,42 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                       value: _language,
                                       decoration: InputDecoration(
                                         focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color:
-                                                mainColorGrey, 
-                                            width: 1.0, 
+                                            color: mainColorGrey,
+                                            width: 1.0,
                                           ),
                                         ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: mainColorGrey.withOpacity(
-                                                0.5), 
-                                            width: 1.0, 
+                                            color:
+                                                mainColorGrey.withOpacity(0.5),
+                                            width: 1.0,
                                           ),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: Colors
-                                                .red, 
-                                            width:
-                                                1.0, 
+                                            color: Colors.red,
+                                            width: 1.0,
                                           ),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: Colors
-                                                .red, 
-                                            width:
-                                                1.0, 
+                                            color: Colors.red,
+                                            width: 1.0,
                                           ),
                                         ),
                                         labelText: "Language".tr,
                                         labelStyle: TextStyle(
-                                            color: mainColorGrey.withOpacity(0.8),
+                                            color:
+                                                mainColorGrey.withOpacity(0.8),
                                             fontSize: 20,
                                             fontFamily: mainFontbold),
                                         hintStyle: TextStyle(
@@ -403,32 +407,34 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                     TextFormField(
                                       decoration: InputDecoration(
                                         focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color:
-                                                mainColorGrey, 
-                                            width: 1.0, 
+                                            color: mainColorGrey,
+                                            width: 1.0,
                                           ),
                                         ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: mainColorGrey.withOpacity(
-                                                0.5), 
-                                            width: 1.0, 
+                                            color:
+                                                mainColorGrey.withOpacity(0.5),
+                                            width: 1.0,
                                           ),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
-                                            color: Colors
-                                                .red, 
+                                            color: Colors.red,
                                             width:
                                                 1.0, // Customize error border width
                                           ),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
                                             color: Colors
                                                 .red, // Customize focused error border color
@@ -438,7 +444,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                         ),
                                         labelText: "Short Description".tr,
                                         labelStyle: TextStyle(
-                                            color: mainColorGrey.withOpacity(0.8),
+                                            color:
+                                                mainColorGrey.withOpacity(0.8),
                                             fontSize: 20,
                                             fontFamily: mainFontbold),
                                         hintText: "Add  Description".tr,
@@ -453,7 +460,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                       maxLines: 3,
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'Please enter a Description'.tr;
+                                          return 'Please enter a Description'
+                                              .tr;
                                         }
                                         return null;
                                       },
@@ -485,6 +493,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                             if (value != "") {
                                               if (value["code"] == "201") {
                                                 updateChat(true);
+                                                _startTimer();
                                                 setState(() {});
                                               } else {
                                                 setState(() {
@@ -663,8 +672,9 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               if (isSentByMe)
                 CircleAvatar(
                   backgroundColor: mainColorGrey,
-                  backgroundImage: NetworkImage(
-                      "https://dllylas.app/storage/profile/Man.png"),
+                  backgroundImage: CachedNetworkImageProvider(
+                    dotenv.env['imageUrlServer']! + userdata["img"],
+                  ),
                   radius: 16,
                 ),
             ],
@@ -721,7 +731,6 @@ class FullScreenImage extends StatelessWidget {
               errorWidget: (context, url, error) =>
                   Image.asset("assets/images/Logo-Type-2.png"),
               filterQuality: FilterQuality.low,
-
               fit: BoxFit.contain,
             )),
           ),
