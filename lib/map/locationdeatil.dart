@@ -790,9 +790,10 @@ class _location_DeatilState extends State<location_Deatil> {
                                                 Provider.of<productProvider>(
                                                     context,
                                                     listen: false);
-                                            productrovider.getuserdata(
-                                                userdata["id"].toString());
+                                            productrovider
+                                                .refreshLocationData();
                                             productrovider.addlocation(loc);
+
                                             Navigator.pop(context);
                                             Navigator.pop(context);
                                           } else {

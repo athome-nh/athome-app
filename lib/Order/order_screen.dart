@@ -158,14 +158,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         TrackOrder(
-                                                            order.id.toString(),
-                                                            order
-                                                                .returnTotalPrice
-                                                                .toString(),
-                                                            order.createdAt
-                                                                .toString(),
-                                                            order
-                                                                .deliveryCost!)),
+                                                          order.id!,
+                                                        )),
                                               );
                                             },
                                             icon: Icon(
@@ -385,21 +379,16 @@ class _OrderScreenState extends State<OrderScreen> {
                                               TextButton.icon(
                                                 onPressed: () {
                                                   productrovider
+                                                      .refreshOrderData();
+                                                  productrovider
                                                       .getproductitems(
                                                           order.id!);
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
-                                                        builder: (context) => OldOrder(
-                                                            order.id.toString(),
-                                                            order
-                                                                .returnTotalPrice
-                                                                .toString(),
-                                                            order.createdAt
-                                                                .toString(),
-                                                            order.status!,
-                                                            order.deliveryCost!,
-                                                            false)),
+                                                        builder: (context) =>
+                                                            OldOrder(order.id!,
+                                                                false)),
                                                   );
                                                 },
                                                 icon: Icon(

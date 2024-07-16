@@ -1,6 +1,7 @@
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
+import 'package:dllylas/model/order_model/order_model.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
@@ -12,15 +13,10 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class OldOrder extends StatefulWidget {
-  String id = "";
-  String total = "";
-  String time = "";
-  int status = 0;
-  int deleverycost = 0;
+  int id;
+
   bool ongoing = false;
-  OldOrder(this.id, this.total, this.time, this.status, this.deleverycost,
-      this.ongoing,
-      {super.key});
+  OldOrder(this.id, this.ongoing, {super.key});
   @override
   State<OldOrder> createState() => _OldOrderState();
 }
@@ -29,7 +25,10 @@ class _OldOrderState extends State<OldOrder> {
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
-    List<OrderItems> items = productrovider.getordersbyOrderId(widget.id);
+
+    List<OrderItems> items =
+        productrovider.getordersbyOrderId(widget.id.toString());
+    final OrderModel order = productrovider.getoneOrderById(widget.id);
     return productrovider.nointernetCheck
         ? noInternetWidget(context)
         : Directionality(
@@ -158,22 +157,39 @@ class _OldOrderState extends State<OldOrder> {
                                         Row(
                                           children: [
                                             Text(
-                                              "Quantity: ".tr,
+                                              "Ordered: ".tr,
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,
                                                   fontSize: 14),
                                             ),
                                             Text(
-                                              item.pickedQt == 0
-                                                  ? item.qt.toString()
-                                                  : (item.pickedQt! -
-                                                          item.returnedQt!)
-                                                      .toString(),
+                                              item.qt.toString(),
                                               style: TextStyle(
                                                   color: mainColorRed,
                                                   fontFamily: mainFontnormal,
-                                                  fontSize: 16),
+                                                  fontSize: 14),
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              order.status! < 5
+                                                  ? "Picked: ".tr
+                                                  : "Deleverd: ".tr,
+                                              style: TextStyle(
+                                                  color: mainColorBlack,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 14),
+                                            ),
+                                            Text(
+                                              (item.pickedQt! -
+                                                      item.returnedQt!)
+                                                  .toString(),
+                                              style: TextStyle(
+                                                  color: mainColorRed,
+                                                  fontFamily: mainFontnormal,
+                                                  fontSize: 14),
                                             ),
                                           ],
                                         ),
@@ -220,21 +236,21 @@ class _OldOrderState extends State<OldOrder> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 4)),
                             child: Text(
-                              widget.status == 0
+                              order.status! == 0
                                   ? "Order Placed".tr
-                                  : (widget.status == 1 || widget.status == 2)
+                                  : (order.status! == 1 || order.status! == 2)
                                       ? "Processing Order".tr
-                                      : widget.status == 3
+                                      : order.status! == 3
                                           ? "Order Is On way".tr
-                                          : widget.status == 4
+                                          : order.status! == 4
                                               ? "Order Ready For Pickup".tr
-                                              : widget.status == 5
+                                              : order.status! == 5
                                                   ? "Order is delivered".tr
                                                   : "Undelivered".tr,
                               style: TextStyle(
-                                  color: widget.status < 5
+                                  color: order.status! < 5
                                       ? mainColorBlack
-                                      : widget.status > 5
+                                      : order.status! > 5
                                           ? mainColorRed
                                           : Colors.green,
                                   fontFamily: mainFontbold,
@@ -259,7 +275,7 @@ class _OldOrderState extends State<OldOrder> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  widget.time.substring(0, 16),
+                                  order.createdAt.toString().substring(0, 16),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontnormal,
@@ -286,7 +302,7 @@ class _OldOrderState extends State<OldOrder> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  widget.id,
+                                  widget.id.toString(),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontnormal,
@@ -313,11 +329,7 @@ class _OldOrderState extends State<OldOrder> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  widget.ongoing
-                                      ? addCommasToPrice(
-                                          int.parse(widget.total))
-                                      : addCommasToPrice(
-                                          int.parse(widget.total)),
+                                  addCommasToPrice(order.returnTotalPrice!),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontnormal,
@@ -378,10 +390,9 @@ class _OldOrderState extends State<OldOrder> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  widget.deleverycost == 0
+                                  order.deliveryCost! == 0
                                       ? "Free Delivery".tr
-                                      : addCommasToPrice(
-                                          productrovider.deleveryCost),
+                                      : addCommasToPrice(order.deliveryCost!),
                                   style: TextStyle(
                                       color: Colors.green,
                                       fontFamily: mainFontnormal,
@@ -415,18 +426,18 @@ class _OldOrderState extends State<OldOrder> {
                                 Text(
                                   textAlign: TextAlign.end,
                                   widget.ongoing
-                                      ? addCommasToPrice((int.parse(
-                                                  widget.total) -
+                                      ? addCommasToPrice(
+                                          order.returnTotalPrice! -
                                               int.parse(
                                                   vouchernow["discount_amount"]
-                                                      .toString())) +
-                                          widget.deleverycost)
-                                      : addCommasToPrice((int.parse(
-                                                  widget.total) -
+                                                      .toString()) +
+                                              order.deliveryCost!)
+                                      : addCommasToPrice(
+                                          order.returnTotalPrice! -
                                               int.parse(
                                                   vouchernow["discount_amount"]
-                                                      .toString())) +
-                                          widget.deleverycost),
+                                                      .toString()) +
+                                              order.deliveryCost!),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontbold,

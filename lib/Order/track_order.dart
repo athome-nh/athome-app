@@ -3,6 +3,7 @@ import 'package:dllylas/Order/old_order.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/model/order_model/order_model.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +14,9 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class TrackOrder extends StatefulWidget {
-  String id = "";
-  String total = "";
-  String time = "";
-  int deleverycost = 0;
-  TrackOrder(this.id, this.total, this.time, this.deleverycost, {super.key});
+  int id;
+
+  TrackOrder(this.id, {super.key});
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
@@ -38,30 +37,18 @@ int status = 0;
 
 class _TrackOrderState extends State<TrackOrder> {
   int updateStatus() {
-    Network(false).getData("orderTrack/${widget.id}").then((value) {
-      if (value != "") {
-        if (value["code"] == "200") {
-          setState(() {
-            if (value["status"] == 5) {
-              final productrovider =
-                  Provider.of<productProvider>(context, listen: false);
-              productrovider.getuserdata(userdata["id"].toString());
-            }
+    final pro = Provider.of<productProvider>(context, listen: false);
+    pro.refreshOrderData();
+    final OrderModel order = pro.getoneOrderById(widget.id);
 
-            final productrovider =
-                Provider.of<productProvider>(context, listen: false);
-            productrovider.updateOrder(int.parse(widget.id), status);
-            status = value["status"];
-            if (value["status"] > 5) {
-              status = 6;
-            }
-            loading = true;
-            return value["status"];
-          });
-        }
+    setState(() {
+      status = order.status!;
+      if (order.status! > 5) {
+        status = 6;
       }
+      loading = true;
     });
-    return -1;
+    return order.status!;
   }
 
   bool loading = false;
@@ -147,6 +134,8 @@ class _TrackOrderState extends State<TrackOrder> {
 
   @override
   Widget build(BuildContext context) {
+    final pro = Provider.of<productProvider>(context, listen: false);
+    final OrderModel order = pro.getoneOrderById(widget.id);
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -157,8 +146,6 @@ class _TrackOrderState extends State<TrackOrder> {
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
-                Provider.of<productProvider>(context, listen: false)
-                    .getuserdata(userdata["id"].toString());
               },
               icon: const Icon(
                 Icons.arrow_back_ios,
@@ -173,13 +160,13 @@ class _TrackOrderState extends State<TrackOrder> {
                   SizedBox(
                     height: getHeight(context, 1),
                   ),
-                  Text("Order:".tr + widget.id,
+                  Text("Order:".tr + widget.id.toString(),
                       style: TextStyle(
                         color: mainColorBlack,
                         fontSize: 28,
                         fontFamily: mainFontnormal,
                       )),
-                  Text(widget.time.substring(0, 19),
+                  Text(order.createdAt.toString().substring(0, 19),
                       style: TextStyle(
                         color: mainColorBlack,
                         fontSize: 20,
@@ -344,7 +331,7 @@ class _TrackOrderState extends State<TrackOrder> {
                       ? status == 0
                           ? TextButton(
                               onPressed: () {
-                                yesNoOption(context);
+                                // yesNoOption(context);
                               },
                               style: TextButton.styleFrom(
                                 backgroundColor: mainColorRed,
@@ -360,18 +347,12 @@ class _TrackOrderState extends State<TrackOrder> {
                   loading
                       ? TextButton(
                           onPressed: () {
-                            Provider.of<productProvider>(context, listen: false)
-                                .getproductitems(int.parse(widget.id));
+                            pro.getproductitems(widget.id);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => OldOrder(
-                                      widget.id,
-                                      widget.total,
-                                      widget.time,
-                                      status,
-                                      widget.deleverycost,
-                                      true)),
+                                  builder: (context) =>
+                                      OldOrder(widget.id, true)),
                             );
                           },
                           style: TextButton.styleFrom(
@@ -460,8 +441,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                             Provider.of<productProvider>(
                                                 context,
                                                 listen: false);
-                                        productrovider.getuserdata(
-                                            userdata["id"].toString());
+                                        productrovider.refreshOrderData();
 
                                         Navigator.pop(context);
                                         Navigator.pop(context);

@@ -141,10 +141,8 @@ class _successScreenState extends State<successScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => TrackOrder(
-                                    widget.id,
-                                    widget.total,
-                                    widget.time,
-                                    widget.deleverycost)),
+                                      int.parse(widget.id),
+                                    )),
                           ).then((value) {
                             Navigator.pushReplacement(
                               context,
@@ -176,8 +174,7 @@ class _successScreenState extends State<successScreen> {
                               final productrovider =
                                   Provider.of<productProvider>(context,
                                       listen: false);
-                              productrovider
-                                  .getuserdata(userdata["id"].toString());
+                              productrovider.refreshOrderData();
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

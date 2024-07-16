@@ -346,13 +346,12 @@ class _NotificationPageState extends State<NotificationPage> {
                                 OrderModel order = productrovider.Orders
                                     .firstWhere((element) =>
                                         element.id == notification.relationId!);
+                            
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (context) => TrackOrder(
-                                          order.id.toString(),
-                                          order.returnTotalPrice.toString(),
-                                          order.createdAt.toString(),
-                                          order.deliveryCost!)),
+                                            order.id!,
+                                          )),
                                 );
                               } else if ('attention' == notification.type) {}
                             },
