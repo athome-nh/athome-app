@@ -512,6 +512,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               MaterialPageRoute(
                 builder: (context) => destination,
               ),
+            ).then(
+              (value) {
+                setState(() {});
+              },
             );
           },
         ),
