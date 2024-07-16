@@ -203,7 +203,7 @@ class _OldOrderState extends State<OldOrder> {
                   ? Center(child: waitingWiget(context))
                   : Container(
                       height: getHeight(context,
-                          vouchernow["discount_amount"] == 0 ? 30 : 33),
+                          vouchernow["discount_amount"] == 0 ? 30 : 35),
                       decoration: BoxDecoration(
                         color: mainColorWhite,
                         // borderRadius: const BorderRadius.only(

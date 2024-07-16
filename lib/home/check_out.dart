@@ -920,13 +920,8 @@ class _CheckOutState extends State<CheckOut> {
                                                               },
                                                               style: TextButton
                                                                   .styleFrom(
-                                                                fixedSize: Size(
-                                                                    getWidth(
-                                                                        context,
-                                                                        85),
-                                                                    getHeight(
-                                                                        context,
-                                                                        6)),
+                                                                fixedSize: Size(getWidth(context,85),
+                                                                    getHeight(context,6)),
                                                               ),
                                                               child: Text(
                                                                 "Select".tr,
@@ -1021,7 +1016,7 @@ class _CheckOutState extends State<CheckOut> {
                                               height: getHeight(context, 40),
                                               child: Column(
                                                 children: [
-                                                  const SizedBox(height: 50),
+                                                  const SizedBox(height: 30),
                                                   Text(
                                                     "Please select Your Voucher"
                                                         .tr,
@@ -1034,11 +1029,8 @@ class _CheckOutState extends State<CheckOut> {
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
-                                                  Container(
-                                                    width:
-                                                        getWidth(context, 100),
-                                                    height:
-                                                        getHeight(context, 30),
+                                                  Expanded(
+                                                  
                                                     child: ListView.builder(
                                                         itemCount:
                                                             productrovider
@@ -1139,6 +1131,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                               voucher.mimimumAmount!
                                                                           ? () {
                                                                               mystate(() {
+                                                                                  VoucherE="";
                                                                                 voucherCode.text = voucher.code!;
                                                                               });
 
@@ -1201,146 +1194,149 @@ class _CheckOutState extends State<CheckOut> {
                                 const EdgeInsets.symmetric(horizontal: 16.0),
                             child: Divider(),
                           ),
-                          Container(
-                            height: getHeight(context, 6),
-                            child: TextField(
-                              controller: voucherCode,
-                              onChanged: (value) {
-                                setState(() {
-                                  VoucherE = "";
-                                });
-                              },
-                              decoration: InputDecoration(
-                                prefixIcon:
-                                    Icon(Icons.confirmation_num_outlined),
-                                hintText: "Voucher".tr,
-                                hintStyle: TextStyle(
-                                    color: mainColorBlack.withOpacity(0.5),
-                                    fontSize: 14,
-                                    fontFamily: mainFontnormal),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide: BorderSide(
-                                    color: mainColorGrey.withOpacity(0.5),
-                                    width: 1,
-                                    style: BorderStyle.solid,
-                                  ),
-                                ),
-                                suffixIcon: Container(
-                                  margin: EdgeInsets.all(8),
-                                  child: waiting
-                                      ? Container(
-                                          width: getHeight(context, 4),
-                                          height: getHeight(context, 4),
-                                          child: waitingWiget(context))
-                                      : TextButton(
-                                          style: TextButton.styleFrom(
-                                              backgroundColor:
-                                                  Colors.transparent),
-                                          child: Text(
-                                            "Submit".tr,
-                                            style: TextStyle(
-                                                color: voucherCode.text.isEmpty
-                                                    ? mainColorGrey
-                                                        .withOpacity(0.5)
-                                                    : mainColorGrey),
-                                          ),
-                                          onPressed: voucherCode.text.isEmpty
-                                              ? () {}
-                                              : () {
-                                                  setState(() {
-                                                    waiting = true;
-                                                  });
-                                                  var data = {
-                                                    "id": userdata["id"],
-                                                    "amount": widget.total,
-                                                    "code": voucherCode.text,
-                                                  };
-                                                  Network(false)
-                                                      .postData("checkvoucher",
-                                                          data, context)
-                                                      .then((value) {
-                                                    if (value != "") {
-                                                      if (value["code"] ==
-                                                          "200") {
-                                                        if (value["data"] ==
-                                                            "not_found") {
-                                                          setState(() {
-                                                            waiting = false;
-                                                            VoucherE =
-                                                                "the voucher code not found";
-                                                            VoucherID = -1;
-                                                            VoucherAmount = 0;
-                                                          });
-                                                        } else if (value[
-                                                                "data"] ==
-                                                            "expired") {
-                                                          setState(() {
-                                                            waiting = false;
-                                                            VoucherE =
-                                                                "the voucher code is expiere";
-                                                            VoucherID = -1;
-                                                            VoucherAmount = 0;
-                                                          });
-                                                        } else if (value[
-                                                                "data"] ==
-                                                            "minimum") {
-                                                          setState(() {
-                                                            waiting = false;
-                                                            VoucherE =
-                                                                "you must ${value["money"]} the voucher code";
-                                                            VoucherID = -1;
-                                                            VoucherAmount = 0;
-                                                          });
-                                                        } else if (value[
-                                                                "data"] ==
-                                                            "limit") {
-                                                          setState(() {
-                                                            waiting = false;
-                                                            VoucherE =
-                                                                "the voucher code out of limit";
-                                                            VoucherID = -1;
-                                                            VoucherAmount = 0;
-                                                          });
-                                                        } else if (value[
-                                                                "data"] ==
-                                                            "used") {
-                                                          setState(() {
-                                                            waiting = false;
-                                                            VoucherE =
-                                                                "the voucher code used before";
-                                                            VoucherID = -1;
-                                                            VoucherAmount = 0;
-                                                          });
-                                                        } else if (value[
-                                                                "data"] ==
-                                                            "success") {
-                                                          setState(() {
-                                                            waiting = false;
-                                                            // VoucherE =
-                                                            //     value["data"]
-                                                            //         .toString();
-
-                                                            VoucherID =
-                                                                value["id"];
-                                                            VoucherAmount =
-                                                                value["amount"];
-                                                          });
-
-                                                          productrovider
-                                                              .notifyListeners();
-                                                        }
-                                                      } else {}
-                                                    } else {
-                                                      setState(() {
-                                                        waiting = false;
-                                                      });
-                                                    }
-                                                  });
-                                                },
-                                        ),
+                          TextField(
+                            controller: voucherCode,
+                            onChanged: (value) {
+                              setState(() {
+                                VoucherE = "";
+                              });
+                            },
+                            decoration: InputDecoration(
+                              prefixIcon:
+                                  Icon(Icons.confirmation_num_outlined),
+                              hintText: "Voucher".tr,
+                              hintStyle: TextStyle(
+                                  color: mainColorBlack.withOpacity(0.5),
+                                  fontSize: 14,
+                                  fontFamily: mainFontnormal),
+                               focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: mainColorGrey.withOpacity(0.5),
+                                  width: 1.0, // Customize border width
                                 ),
                               ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: mainColorGrey.withOpacity(0.5),
+                                  width: 1.0, // Customize border width
+                                ),
+                              ),
+                              suffixIcon: waiting
+                                  ? Container(
+                                      width: getHeight(context, 3),
+                                      height: getHeight(context, 3),
+                                      child: waitingWiget(context))
+                                  : TextButton(
+                                      style: TextButton.styleFrom(
+                                          backgroundColor:
+                                              Colors.transparent),
+                                      child: Text(
+                                        "Submit".tr,
+                                        style: TextStyle(
+                                            color: voucherCode.text.isEmpty
+                                                ? mainColorGrey
+                                                    .withOpacity(0.5)
+                                                : mainColorGrey),
+                                      ),
+                                      onPressed: voucherCode.text.isEmpty
+                                          ? () {}
+                                          : () {
+                                              setState(() {
+                                                waiting = true;
+                                              });
+                                              var data = {
+                                                "id": userdata["id"],
+                                                "amount": widget.total,
+                                                "code": voucherCode.text,
+                                              };
+                                              Network(false)
+                                                  .postData("checkvoucher",
+                                                      data, context)
+                                                  .then((value) {
+                                                if (value != "") {
+                                                  if (value["code"] ==
+                                                      "200") { //bawar check text
+                                                    if (value["data"] ==
+                                                        "not_found") {
+                                                      setState(() {
+                                                        waiting = false;
+                                                        VoucherE =
+                                                            "the voucher code not found";
+                                                        VoucherID = -1;
+                                                        VoucherAmount = 0;
+                                                      });
+                                                    } else if (value[
+                                                            "data"] ==
+                                                        "expired") {
+                                                      setState(() {
+                                                        waiting = false;
+                                                        VoucherE =
+                                                            "the voucher code is expiere";
+                                                        VoucherID = -1;
+                                                        VoucherAmount = 0;
+                                                      });
+                                                    } else if (value[
+                                                            "data"] ==
+                                                        "minimum") {
+                                                      setState(() {
+                                                        waiting = false;
+                                                        VoucherE =
+                                                            "you must ${value["money"]} the voucher code";
+                                                        VoucherID = -1;
+                                                        VoucherAmount = 0;
+                                                      });
+                                                    } else if (value[
+                                                            "data"] ==
+                                                        "limit") {
+                                                      setState(() {
+                                                        waiting = false;
+                                                        VoucherE =
+                                                            "the voucher code out of limit";
+                                                        VoucherID = -1;
+                                                        VoucherAmount = 0;
+                                                      });
+                                                    } else if (value[
+                                                            "data"] ==
+                                                        "used") {
+                                                      setState(() {
+                                                        waiting = false;
+                                                        VoucherE =
+                                                            "the voucher code used before";
+                                                        VoucherID = -1;
+                                                        VoucherAmount = 0;
+                                                      });
+                                                    } else if (value[
+                                                            "data"] ==
+                                                        "success") {
+                                                      setState(() {
+                                                        waiting = false;
+                                                    
+                              
+                                                        VoucherID =
+                                                            value["id"];
+                                                        VoucherAmount =
+                                                            value["amount"];
+                                                      });
+                              
+                                                      productrovider
+                                                          .notifyListeners();
+                                                    }
+                                                  } else {
+                                                    setState(() {
+                                                    waiting = false;
+                                                  });
+                                                  }
+                                                } else {
+                                                  setState(() {
+                                                    waiting = false;
+                                                  });
+                                                }
+                                              });
+                                            },
+                                    
+                                    ),
                             ),
                           ),
                           SizedBox(
