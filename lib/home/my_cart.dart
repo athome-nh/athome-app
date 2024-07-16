@@ -399,7 +399,7 @@ class _MyCartState extends State<MyCart> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                "Delete".tr + "$name",
+                                                "Delete".tr + " $name",
                                               ),
                                             ),
                                           );

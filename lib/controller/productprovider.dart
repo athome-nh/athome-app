@@ -52,7 +52,9 @@ class productProvider extends ChangeNotifier {
           setProductitems((value['products'] as List)
               .map((x) => Productitems.fromMap(x))
               .toList());
-          vouchernow = value["voucher"];
+          if (value["voucher"] != null) {
+            vouchernow = value["voucher"];
+          }
         } else {}
       }
     });
@@ -113,7 +115,6 @@ class productProvider extends ChangeNotifier {
           setlocation((value['locations'] as List)
               .map((x) => Locationuser.fromMap(x))
               .toList());
-
           setOrders((value['orders'] as List)
               .map((x) => OrderModel.fromMap(x))
               .toList());
@@ -249,6 +250,45 @@ class productProvider extends ChangeNotifier {
         }
       });
     }
+  }
+
+  refreshOrderData() async {
+    Network(false).getData("refreshOrders/${userdata["id"]}").then((value) {
+      if (value != "") {
+        if (value["code"] == "200") {
+          setOrders((value['orders'] as List)
+              .map((x) => OrderModel.fromMap(x))
+              .toList());
+          setOrderItems((value['orders_item'] as List)
+              .map((x) => OrderItems.fromMap(x))
+              .toList());
+        }
+      }
+    });
+  }
+
+  refreshLocationData() async {
+    Network(false).getData("refreshLocations/${userdata["id"]}").then((value) {
+      if (value != "") {
+        if (value["code"] == "200") {
+          setlocation((value['locations'] as List)
+              .map((x) => Locationuser.fromMap(x))
+              .toList());
+        }
+      }
+    });
+  }
+
+  refreshVoucherData() async {
+    Network(false).getData("refreshVouchers/${userdata["id"]}").then((value) {
+      if (value != "") {
+        if (value["code"] == "200") {
+          setvouchers((value['vouchers'] as List)
+              .map((x) => Voucher.fromMap(x))
+              .toList());
+        }
+      }
+    });
   }
 
   // List to store your products
@@ -507,6 +547,18 @@ class productProvider extends ChangeNotifier {
     return item;
   }
 
+  OrderModel getoneOrderById(int itemId) {
+    final OrderModel? item = _Orders.firstWhere(
+      (element) => element.id == itemId,
+    );
+
+    if (item == null) {
+      throw Exception('Item with ID $itemId not found');
+    }
+
+    return item;
+  }
+
   List<OrderItems> getordersbyOrderId(String orderId) {
     return _Orderitems.where(
         (product) => orderId.contains(product.orderId.toString())).toList();
@@ -668,7 +720,7 @@ class productProvider extends ChangeNotifier {
   void setlocation(List<Locationuser> location) {
     _location = location;
     getIntPrefs("location").then((value) {
-      if (value != "" && value != 0) {
+      if (value != "") {
         setdefultlocation(value);
       } else {
         if (_location.isNotEmpty) {

@@ -195,12 +195,11 @@ class _SplashScreenState extends State<SplashScreen> {
           int.parse(widget.message!.data["relationId"].toString()));
       Navigator.of(context)
           .pushReplacement(
+       
         MaterialPageRoute(
             builder: (context) => TrackOrder(
-                order.id.toString(),
-                order.returnTotalPrice.toString(),
-                order.createdAt.toString(),
-                order.deliveryCost!)),
+                  order.id!,
+                )),
       )
           .then((value) {
         productrovider.setsubcateSelect(0);

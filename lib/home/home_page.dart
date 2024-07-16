@@ -126,7 +126,7 @@ class _HomeSreenState extends State<HomeSreen> {
               if (isLogin &&
                   productrovider.showuser &&
                   productrovider.location.isEmpty) {
-                locationempty(productrovider);
+                locationempty();
               } else if (isLogin &&
                   productrovider.Orders.isNotEmpty &&
                   productrovider.Orders.last.status == 5 &&
@@ -1194,7 +1194,7 @@ class _HomeSreenState extends State<HomeSreen> {
     );
   }
 
-  Future<void> locationempty(productProvider productrovider) {
+  Future<void> locationempty() {
     return showModalBottomSheet(
       isScrollControlled: true,
       isDismissible: false,
@@ -1214,6 +1214,8 @@ class _HomeSreenState extends State<HomeSreen> {
           onPopInvoked: (didPop) {},
           child: StatefulBuilder(
               builder: (BuildContext context, StateSetter mystate) {
+            final productrovider =
+                Provider.of<productProvider>(context, listen: true);
             return Stack(
               alignment: Alignment.topCenter,
               children: [

@@ -1649,8 +1649,7 @@ class _CheckOutState extends State<CheckOut> {
                                 context,
                                 listen: false);
 
-                            productrovider
-                                .getuserdata(userdata["id"].toString());
+                            productrovider.refreshOrderData();
 
                             DateTime timecheck =
                                 DateTime.parse(value["now"].toString());
