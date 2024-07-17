@@ -682,8 +682,7 @@ Widget listItemsShow(BuildContext context, var data) {
     child: GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 8,
-        childAspectRatio: getWidth(context, 0.23),
+        childAspectRatio: getWidth(context, 0.267),
       ),
       itemCount: data.length,
       itemBuilder: (BuildContext context, int index) {
@@ -802,7 +801,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       loiginPopup(context);
                                       return;
                                     }
-
+  
                                     final cartItem =
                                         CartItem(product: product.id!);
                                     cartProvider.addFavToCart(cartItem);
@@ -1002,7 +1001,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          childAspectRatio: getWidth(context, 0.23),
+          childAspectRatio: getWidth(context, 0.254),
         ),
 
         itemCount: data.length, // Number of items in the grid
