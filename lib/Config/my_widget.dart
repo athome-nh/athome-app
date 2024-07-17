@@ -682,7 +682,7 @@ Widget listItemsShow(BuildContext context, var data) {
     child: GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: getWidth(context, 0.267),
+        childAspectRatio: getWidth(context, 0.261),
       ),
       itemCount: data.length,
       itemBuilder: (BuildContext context, int index) {
@@ -1001,7 +1001,7 @@ Widget listItemsShowSearch(BuildContext context, var data) {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          childAspectRatio: getWidth(context, 0.254),
+          childAspectRatio: getWidth(context, 0.248),
         ),
 
         itemCount: data.length, // Number of items in the grid
