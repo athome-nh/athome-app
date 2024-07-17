@@ -82,7 +82,7 @@ class _coinRewardState extends State<coinReward> {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: getHeight(context, 17),
+                      height: getHeight(context, 19),
                       decoration: BoxDecoration(
                           border: Border.all(
                               color: mainColorBlack.withOpacity(0.5)),
@@ -101,6 +101,7 @@ class _coinRewardState extends State<coinReward> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                SizedBox(width: getWidth(context, 1),),
                                 Image.asset(
                                   "assets/images/App-Icon.png",
                                   height: 50,

@@ -348,32 +348,35 @@ class DetailsPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: lang == "en"
-                                            ? Item.nameEn!
-                                            : lang == "ar"
-                                                ? Item.nameAr!
-                                                : Item.nameKu!,
-                                        style: TextStyle(
-                                          color:
-                                              mainColorBlack.withOpacity(0.8),
-                                          fontFamily: mainFontbold,
-                                          fontSize: 16.0,
+                                Container(
+                                  width: getWidth(context, 50),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: lang == "en"
+                                              ? Item.nameEn!
+                                              : lang == "ar"
+                                                  ? Item.nameAr!
+                                                  : Item.nameKu!,
+                                          style: TextStyle(
+                                            color:
+                                                mainColorBlack.withOpacity(0.8),
+                                            fontFamily: mainFontbold,
+                                            fontSize: 16.0,
+                                          ),
                                         ),
-                                      ),
-                                      TextSpan(
-                                        text:
-                                            '  (${lang == "en" ? Item.contentsEn! : lang == "ar" ? Item.contentsAr! : Item.contentsKu!})',
-                                        style: TextStyle(
-                                          color:
-                                              mainColorBlack.withOpacity(0.5),
-                                          fontSize: 12.0,
+                                        TextSpan(
+                                          text:
+                                              '  (${lang == "en" ? Item.contentsEn! : lang == "ar" ? Item.contentsAr! : Item.contentsKu!})',
+                                          style: TextStyle(
+                                            color:
+                                                mainColorBlack.withOpacity(0.5),
+                                            fontSize: 12.0,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Container(

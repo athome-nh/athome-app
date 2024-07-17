@@ -335,7 +335,7 @@ class _InvitePageState extends State<InvitePage> {
                                         getWidth(context, 45),
                                         getHeight(context, 6),
                                       ),
-                                      backgroundColor: mainColorRed),
+                                      backgroundColor: mainColorGrey),
                                   onPressed: () => _showBottomSheet(context),
                                   child: Text(
                                     "Enter Refer Code".tr,

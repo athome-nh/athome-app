@@ -920,8 +920,13 @@ class _CheckOutState extends State<CheckOut> {
                                                               },
                                                               style: TextButton
                                                                   .styleFrom(
-                                                                fixedSize: Size(getWidth(context,85),
-                                                                    getHeight(context,6)),
+                                                                fixedSize: Size(
+                                                                    getWidth(
+                                                                        context,
+                                                                        85),
+                                                                    getHeight(
+                                                                        context,
+                                                                        6)),
                                                               ),
                                                               child: Text(
                                                                 "Select".tr,
@@ -1030,7 +1035,6 @@ class _CheckOutState extends State<CheckOut> {
                                                   ),
                                                   const SizedBox(height: 5),
                                                   Expanded(
-                                                  
                                                     child: ListView.builder(
                                                         itemCount:
                                                             productrovider
@@ -1131,7 +1135,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                               voucher.mimimumAmount!
                                                                           ? () {
                                                                               mystate(() {
-                                                                                  VoucherE="";
+                                                                                VoucherE = "";
                                                                                 voucherCode.text = voucher.code!;
                                                                               });
 
@@ -1202,14 +1206,13 @@ class _CheckOutState extends State<CheckOut> {
                               });
                             },
                             decoration: InputDecoration(
-                              prefixIcon:
-                                  Icon(Icons.confirmation_num_outlined),
+                              prefixIcon: Icon(Icons.confirmation_num_outlined),
                               hintText: "Voucher".tr,
                               hintStyle: TextStyle(
                                   color: mainColorBlack.withOpacity(0.5),
                                   fontSize: 14,
                                   fontFamily: mainFontnormal),
-                               focusedBorder: OutlineInputBorder(
+                              focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: mainColorGrey.withOpacity(0.5),
@@ -1230,16 +1233,21 @@ class _CheckOutState extends State<CheckOut> {
                                       child: waitingWiget(context))
                                   : TextButton(
                                       style: TextButton.styleFrom(
-                                          backgroundColor:
-                                              Colors.transparent),
-                                      child: Text(
-                                        "Submit".tr,
-                                        style: TextStyle(
-                                            color: voucherCode.text.isEmpty
-                                                ? mainColorGrey
-                                                    .withOpacity(0.5)
-                                                : mainColorGrey),
-                                      ),
+                                          backgroundColor: Colors.transparent),
+                                      child: VoucherID != -1
+                                          ? Icon(
+                                              Icons.check,
+                                              color: green,
+                                            )
+                                          : Text(
+                                              "Submit".tr,
+                                              style: TextStyle(
+                                                  color:
+                                                      voucherCode.text.isEmpty
+                                                          ? mainColorGrey
+                                                              .withOpacity(0.5)
+                                                          : mainColorGrey),
+                                            ),
                                       onPressed: voucherCode.text.isEmpty
                                           ? () {}
                                           : () {
@@ -1256,8 +1264,8 @@ class _CheckOutState extends State<CheckOut> {
                                                       data, context)
                                                   .then((value) {
                                                 if (value != "") {
-                                                  if (value["code"] ==
-                                                      "200") { //bawar check text
+                                                  if (value["code"] == "200") {
+                                                    //bawar check text
                                                     if (value["data"] ==
                                                         "not_found") {
                                                       setState(() {
@@ -1267,8 +1275,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         VoucherID = -1;
                                                         VoucherAmount = 0;
                                                       });
-                                                    } else if (value[
-                                                            "data"] ==
+                                                    } else if (value["data"] ==
                                                         "expired") {
                                                       setState(() {
                                                         waiting = false;
@@ -1277,8 +1284,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         VoucherID = -1;
                                                         VoucherAmount = 0;
                                                       });
-                                                    } else if (value[
-                                                            "data"] ==
+                                                    } else if (value["data"] ==
                                                         "minimum") {
                                                       setState(() {
                                                         waiting = false;
@@ -1287,8 +1293,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         VoucherID = -1;
                                                         VoucherAmount = 0;
                                                       });
-                                                    } else if (value[
-                                                            "data"] ==
+                                                    } else if (value["data"] ==
                                                         "limit") {
                                                       setState(() {
                                                         waiting = false;
@@ -1297,8 +1302,7 @@ class _CheckOutState extends State<CheckOut> {
                                                         VoucherID = -1;
                                                         VoucherAmount = 0;
                                                       });
-                                                    } else if (value[
-                                                            "data"] ==
+                                                    } else if (value["data"] ==
                                                         "used") {
                                                       setState(() {
                                                         waiting = false;
@@ -1307,26 +1311,21 @@ class _CheckOutState extends State<CheckOut> {
                                                         VoucherID = -1;
                                                         VoucherAmount = 0;
                                                       });
-                                                    } else if (value[
-                                                            "data"] ==
+                                                    } else if (value["data"] ==
                                                         "success") {
                                                       setState(() {
                                                         waiting = false;
-                                                    
-                              
-                                                        VoucherID =
-                                                            value["id"];
+                                                        VoucherID = value["id"];
                                                         VoucherAmount =
                                                             value["amount"];
                                                       });
-                              
                                                       productrovider
                                                           .notifyListeners();
                                                     }
                                                   } else {
                                                     setState(() {
-                                                    waiting = false;
-                                                  });
+                                                      waiting = false;
+                                                    });
                                                   }
                                                 } else {
                                                   setState(() {
@@ -1335,7 +1334,6 @@ class _CheckOutState extends State<CheckOut> {
                                                 }
                                               });
                                             },
-                                    
                                     ),
                             ),
                           ),
