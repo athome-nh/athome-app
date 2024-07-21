@@ -5,6 +5,7 @@ import 'package:dllylas/Account/profile.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/home/favorite.dart';
 import 'package:dllylas/home/my_cart.dart';
+import 'package:dllylas/home/new.dart';
 
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,7 @@ class NavSwitch extends StatefulWidget {
 class _NavSwitchState extends State<NavSwitch> {
   int selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    const HomeSreen(),
+    const newhomePage(),
     // const Search(),
     MyCart(false),
     const Favorite(),
@@ -264,5 +265,4 @@ class _NavSwitchState extends State<NavSwitch> {
       },
     );
   }
-
 }

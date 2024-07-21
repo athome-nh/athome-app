@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
@@ -672,6 +673,236 @@ Widget listItemsSmall(BuildContext context, var data) {
   );
 }
 
+Widget listItemsSmall2(BuildContext context, var data) {
+  final productrovider = Provider.of<productProvider>(context, listen: true);
+  final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
+  return SizedBox(
+    height: getHeight(context, 20),
+
+    //  decoration: BoxDecoration(border: Border.all()),
+    child: Visibility(
+      visible: productrovider.show,
+      replacement: listItemsShimer(context),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          mainAxisSpacing: getWidth(context, 2),
+          childAspectRatio: getWidth(context, 0.37),
+        ),
+        scrollDirection: Axis.horizontal,
+        itemCount: data.length,
+        itemBuilder: (BuildContext context, int index) {
+          final product = data[index];
+          final isItemInCart = cartProvider.itemExistsInCart(product);
+          int count = cartProvider
+              .calculateQuantityForProduct(int.parse(product.id.toString()));
+
+          return Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                width: getWidth(context, 30),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: mainColorlightGrey,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(getWidth(context, 1)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: GestureDetector(
+                          onTap: isItemInCart
+                              ? () {}
+                              : () {
+                                  productrovider.setidItem(product.id!);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DetailsPage(
+                                              color: 5,
+                                            )),
+                                  );
+                                },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: CachedNetworkImage(
+                              imageUrl: dotenv.env['imageUrlServer']! +
+                                  product.coverImg,
+                              placeholder: (context, url) =>
+                                  Image.asset("assets/images/Logo-Type-2.png"),
+                              errorWidget: (context, url, error) =>
+                                  Image.asset("assets/images/Logo-Type-2.png"),
+                              width: getHeight(context, 10),
+                              height: getHeight(context, 10),
+                              filterQuality: FilterQuality.low,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 1),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          productrovider.setidItem(product.id!);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailsPage(
+                                      color: 5,
+                                    )),
+                          );
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              checkOferPrice(product)
+                                  ? (product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!)
+                                      .toString()
+                                  : addCommasToPrice(product.price2! > -1
+                                      ? product.price2!
+                                      : product.price!),
+                              maxLines: 1,
+                              style: TextStyle(
+                                  decoration: checkOferPrice(product)
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
+                                  color: checkOferPrice(product)
+                                      ? mainColorGrey2
+                                      : mainColorBlack,
+                                  fontFamily: checkOferPrice(product)
+                                      ? mainFontnormal
+                                      : mainFontbold,
+                                  fontSize: checkOferPrice(product) ? 10 : 12),
+                            ),
+                            checkOferPrice(product)
+                                ? Text(
+                                    addCommasToPrice(product.offerPrice!),
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: mainColorRed,
+                                        fontFamily: mainFontbold,
+                                        fontSize: 12),
+                                  )
+                                : const SizedBox(),
+                            Text(
+                              maxLines: 1,
+                              lang == "en"
+                                  ? product.nameEn.toString()
+                                  : lang == "ar"
+                                      ? product.nameAr.toString()
+                                      : product.nameKu.toString(),
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: mainColorBlack,
+                                  fontFamily: mainFontbold),
+                            ),
+                            Text(
+                              maxLines: 1,
+                              lang == "en"
+                                  ? product.contentsEn.toString()
+                                  : lang == "ar"
+                                      ? product.contentsAr.toString()
+                                      : product.contentsKu.toString(),
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  color: mainColorBlack.withOpacity(0.5),
+                                  fontFamily: mainFontnormal),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                  padding: EdgeInsets.all(0),
+                  child: AnimatedContainer(
+                    padding: EdgeInsets.all(4),
+                    width: isItemInCart ? 110 : 30,
+                    height: 30,
+                    duration: Duration(milliseconds: 400),
+                    decoration: isItemInCart
+                        ? BoxDecoration(
+                            color: mainColorGrey,
+                            borderRadius: BorderRadius.all(Radius.circular(10)))
+                        : BoxDecoration(
+                            color: mainColorGrey,
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(15),
+                                bottomLeft: Radius.circular(15))),
+                    child: isItemInCart
+                        ? FlipInX(
+                            delay: const Duration(milliseconds: 300),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    final cartItem =
+                                        CartItem(product: product.id!);
+                                    cartProvider.removeFromCart(cartItem);
+                                  },
+                                  child: Icon(Icons.remove,
+                                      color: mainColorWhite,
+                                      size: getHeight(context, 2.5)),
+                                ),
+                                Text(
+                                  count.toString(),
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: mainColorWhite,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: checkProductStock(product, count) ||
+                                          checkProductLimit(product, count)
+                                      ? null
+                                      : () {
+                                          final cartItem =
+                                              CartItem(product: product.id!);
+                                          cartProvider.addToCart(cartItem);
+                                        },
+                                  child: Icon(LineIcons.plus,
+                                      color: checkProductStock(
+                                                  product, count) ||
+                                              checkProductLimit(product, count)
+                                          ? mainColorWhite.withOpacity(0.3)
+                                          : mainColorWhite,
+                                      size: getHeight(context, 2.5)),
+                                ),
+                              ],
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              if (!isLogin) {
+                                loiginPopup(context);
+                                return;
+                              }
+                              final cartItem = CartItem(product: product.id!);
+                              cartProvider.addToCart(cartItem);
+                            },
+                            child: Icon(LineIcons.plus,
+                                color: mainColorWhite,
+                                size: getHeight(context, 2.5)),
+                          ),
+                  ))
+            ],
+          );
+        },
+      ),
+    ),
+  );
+}
+
 // all items
 Widget listItemsShow(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -801,7 +1032,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       loiginPopup(context);
                                       return;
                                     }
-  
+
                                     final cartItem =
                                         CartItem(product: product.id!);
                                     cartProvider.addFavToCart(cartItem);

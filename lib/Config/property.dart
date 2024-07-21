@@ -4,12 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 /// Define {NRT Fonts } in AtHome
-String mainFontbold = 'irani';
-String mainFontnormal = 'irani';
-
-/// Define {SPEDA Fonts } in AtHome
-// String mainFontbold = 'spedaB';
-// String mainFontnormal = 'spedaN';
+String mainFontbold = 'nrtB';
+String mainFontnormal = 'nrtN';
 
 /// Define {Iranyakan Fonts } in AtHome
 // String mainFontbold = 'iraniB';
@@ -22,6 +18,8 @@ const Color grey = Color(0xFF9C9C9C);
 const Color lightGrey = Color(0xFFEBEBEB);
 Color mainColorRed = const Color(0xFFc82036);
 Color mainColorGrey = const Color(0xFF014a64);
+Color mainColorlightGrey = const Color(0xFFf5f5f5);
+Color mainColorGrey2 = const Color(0xFFb6b7b6);
 // Color mainColorLightGrey = const Color(0xFFf2f2f2);
 Color mainColorWhite = const Color(0XFFffffff);
 Color mainColorBlack = const Color(0XFF1c1c1c);

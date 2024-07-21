@@ -746,7 +746,7 @@ class _HomeSreenState extends State<HomeSreen> {
 
                         // Shimmer Effect
                         SizedBox(
-                          height: getHeight(context, 14),
+                          height: getHeight(context, 10),
                           child: Visibility(
                             visible: productrovider.show,
                             replacement: Skeletonizer(
@@ -821,10 +821,10 @@ class _HomeSreenState extends State<HomeSreen> {
                                     });
                                   },
                                   child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(4.0),
                                     child: Container(
-                                      width: getHeight(context, 12),
-                                      height: getHeight(context, 12),
+                                      width: getWidth(context, 20),
+                                      height: getWidth(context, 20),
                                       decoration: BoxDecoration(
                                           border: Border.all(
                                               color: mainColorBlack
@@ -850,8 +850,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                                 Image.asset(
                                                     "assets/images/Logo-Type-2.png"),
                                             filterQuality: FilterQuality.low,
-                                            width: getHeight(context, 7),
-                                            height: getHeight(context, 7),
+                                            width: getHeight(context, 6),
+                                            height: getHeight(context, 6),
                                           ),
                                           const SizedBox(
                                             height: 5,
@@ -867,7 +867,7 @@ class _HomeSreenState extends State<HomeSreen> {
                                             style: TextStyle(
                                                 color: mainColorBlack,
                                                 fontFamily: mainFontnormal,
-                                                fontSize: 13),
+                                                fontSize: 11),
                                           ),
                                         ],
                                       ),
@@ -1104,6 +1104,7 @@ class _HomeSreenState extends State<HomeSreen> {
                         SizedBox(
                           height: getHeight(context, 2),
                         )
+                      
                       ],
                     ),
                   )),

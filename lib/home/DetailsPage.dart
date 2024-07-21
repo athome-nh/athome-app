@@ -293,7 +293,6 @@ class DetailsPage extends StatelessWidget {
                               child: CachedNetworkImage(
                                 imageUrl: dotenv.env['imageUrlServer']! +
                                     Item.coverImg!,
-                                // dotenv.env['imageUrlServer']! + Item.coverImg!,
                                 placeholder: (context, url) => Image.asset(
                                     "assets/images/Logo-Type-2.png"),
                                 errorWidget: (context, url, error) =>
@@ -360,8 +359,7 @@ class DetailsPage extends StatelessWidget {
                                                   ? Item.nameAr!
                                                   : Item.nameKu!,
                                           style: TextStyle(
-                                            color:
-                                                mainColorBlack.withOpacity(0.8),
+                                            color: mainColorBlack,
                                             fontFamily: mainFontbold,
                                             fontSize: 16.0,
                                           ),

@@ -19,50 +19,37 @@ class Carousel extends StatelessWidget {
     "sddsdsdsd",
     "sddsdsdsd",
   ];
+
   @override
   Widget build(BuildContext context) {
     List<Widget> imageSliders = pro.show
         ? pro.slides
             .map((item) => Container(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    child: Stack(
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            pro.settype("brand");
-                            pro.setidbrand(item.brandId!);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const AllItem()),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15.0),
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  dotenv.env['imageUrlServer']! + item.img!,
-                              placeholder: (context, url) =>
-                                  Image.asset("assets/images/Logo-Type-2.png"),
-                              errorWidget: (context, url, error) =>
-                                  Image.asset("assets/images/Logo-Type-2.png"),
-                              filterQuality: FilterQuality.low,
-                              width: getWidth(context, 100) - 48,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    child: GestureDetector(
+                      onTap: () {
+                        pro.settype("brand");
+                        pro.setidbrand(item.brandId!);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AllItem()),
+                        );
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: CachedNetworkImage(
+                          imageUrl: dotenv.env['imageUrlServer']! + item.img!,
+                          placeholder: (context, url) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          errorWidget: (context, url, error) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          filterQuality: FilterQuality.low,
+                          width: getWidth(context, 100) - 80,
+                          fit: BoxFit.fill,
                         ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 0.0, horizontal: 0.0),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ))
@@ -109,12 +96,43 @@ class Carousel extends StatelessWidget {
       child: CarouselSlider(
         options: CarouselOptions(
             viewportFraction: 0.9,
-            aspectRatio: 3,
+            aspectRatio: 2.5,
             enableInfiniteScroll: true,
             initialPage: 1,
-            autoPlay: true,
+            autoPlay: false,
             autoPlayInterval: Duration(seconds: 5)),
         items: imageSliders,
+      ),
+    );
+  }
+
+  Widget _indicator(bool isActive) {
+    return Container(
+      height: 10,
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 150),
+        margin: EdgeInsets.symmetric(horizontal: 4.0),
+        height: isActive ? 10 : 8.0,
+        width: isActive ? 12 : 8.0,
+        decoration: BoxDecoration(
+          boxShadow: [
+            isActive
+                ? BoxShadow(
+                    color: Color(0XFF2FB7B2).withOpacity(0.72),
+                    blurRadius: 4.0,
+                    spreadRadius: 1.0,
+                    offset: Offset(
+                      0.0,
+                      0.0,
+                    ),
+                  )
+                : BoxShadow(
+                    color: Colors.transparent,
+                  )
+          ],
+          shape: BoxShape.circle,
+          color: isActive ? Color(0XFF6BC4C9) : Color(0XFFEAEAEA),
+        ),
       ),
     );
   }
