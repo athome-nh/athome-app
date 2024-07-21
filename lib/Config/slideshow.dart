@@ -73,7 +73,7 @@ class Carousel extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15.0),
                                 child: Image.asset(
                                   "assets/shimmer/flag.png",
-                                  width: getWidth(context, 100) - 48,
+                                  width: getWidth(context, 100) - 80,
                                   fit: BoxFit.fill,
                                 )),
                           ),

@@ -136,7 +136,11 @@ class _SearchState extends State<Search> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0,
+                                      bottom: 8.0,
+                                      left: 15,
+                                      right: 15),
                                   child: Container(
                                     height: getHeight(context, 6),
                                     child: TextField(
@@ -243,6 +247,18 @@ class _SearchState extends State<Search> {
                                       productPro.setsearch(searchCon.text);
                                     },
                                     decoration: InputDecoration(
+                                      suffixIcon: searchCon.text.isNotEmpty
+                                          ? IconButton(
+                                              icon: const Icon(Icons.cancel),
+                                              onPressed: () {
+                                                setState(() {
+                                                  isSearch = false;
+                                                  searchCon.text = "";
+                                                  productPro.setsearch("");
+                                                });
+                                              },
+                                            )
+                                          : const SizedBox(),
                                       prefixIcon: Icon(
                                         Ionicons.search_outline,
                                         color: mainColorGrey,
@@ -271,7 +287,7 @@ class _SearchState extends State<Search> {
                                 ),
                               ),
                               Flexible(
-                                child: listItemsShowSearch(
+                                child: listItemsShow(
                                   context,
                                   productPro.getProductsBySearch(
                                       productPro.searchproduct),
