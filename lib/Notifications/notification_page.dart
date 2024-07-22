@@ -54,6 +54,7 @@ class _NotificationPageState extends State<NotificationPage> {
             Switch(
               value: _isSwitched,
               onChanged: (value) {
+                print(value);
                 var data = {"id": userdata["id"], "SendNotfi": value};
                 Network(false)
                     .postData("SendNotfi_Change", data, context)
@@ -62,7 +63,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     if (value2["code"] == "201") {
                       setState(() {
                         _isSwitched = value;
-                        userdata["SendNotfi"] = value;
+                        userdata["SendNotfi"] = value ? 1 : 0;
                       });
                     } else {}
                   } else {}
@@ -346,7 +347,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 OrderModel order = productrovider.Orders
                                     .firstWhere((element) =>
                                         element.id == notification.relationId!);
-                            
+
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (context) => TrackOrder(

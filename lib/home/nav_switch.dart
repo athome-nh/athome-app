@@ -5,7 +5,7 @@ import 'package:dllylas/Account/profile.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/home/favorite.dart';
 import 'package:dllylas/home/my_cart.dart';
-import 'package:dllylas/home/new.dart';
+import 'package:dllylas/home/newhomePage.dart';
 
 import 'package:flutter/material.dart';
 
@@ -67,12 +67,6 @@ class _NavSwitchState extends State<NavSwitch> {
     const Favorite(),
     ProfileScreen(),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
   @override
   void initState() {
