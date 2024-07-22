@@ -608,7 +608,7 @@ class _newhomePageState extends State<newhomePage> {
               ),
 
               Visibility(
-                visible: productrovider.show,
+                visible: productrovider.show && productrovider.showuser,
                 replacement: Skeletonizer(
                   child: Stack(
                     alignment: lang == "en"
