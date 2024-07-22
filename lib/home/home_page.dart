@@ -114,38 +114,6 @@ class _HomeSreenState extends State<HomeSreen> {
         }
       },
     );
-    // FirebaseFirestore.instance
-    //     .collection("onLoad")
-    //     .doc("1")
-    //     .get()
-    //     .then((DocumentSnapshot documentSnapshot) {
-    //   if (documentSnapshot.exists) {
-    //     if (documentSnapshot.get("show") == true) {
-    //       if (lang == "en") {
-    //         ShowInfo(context, documentSnapshot.get("titleen"),
-    //             documentSnapshot.get("contenten"), "OK".tr, "error", "");
-    //       } else if (lang == "ar") {
-    //         ShowInfo(context, documentSnapshot.get("titlear"),
-    //             documentSnapshot.get("contentar"), "OK".tr, "error", "");
-    //       } else {
-    //         ShowInfo(context, documentSnapshot.get("titleku"),
-    //             documentSnapshot.get("contentku"), "OK".tr, "error", "");
-    //       }
-    //     } else {
-    //       checkPlatformAndLaunchUrl().then((value) {
-    //         if (dotenv.env['currentVersion']! !=
-    //             documentSnapshot.get("newversion")) {
-    //           if ((value == "huawei" &&
-    //                   documentSnapshot.get("isAccpetHuawei")) ||
-    //               (value == "android" &&
-    //                   documentSnapshot.get("isAccpetAndroid")) ||
-    //               (value == "ios" && documentSnapshot.get("isAccpetApple")))
-    //             _homePopup(context, value);
-    //         } else {}
-    //       });
-    //     }
-    //   }
-    // });
 
     checkinternet();
 
