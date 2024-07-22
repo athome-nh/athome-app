@@ -550,11 +550,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Container(
               height: getHeight(context, 25),
-              decoration: BoxDecoration(
-                  color: mainColorGrey,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
+              color: mainColorlightGrey,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -563,13 +559,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Container(
                       width: getWidth(context, 30),
                       height: getWidth(context, 30),
+                      margin: EdgeInsets.only(top: 30),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: CircleAvatar(
                           backgroundColor: mainColorWhite,
                           backgroundImage: AssetImage(
-                            "assets/Victors/first.png",
+                            "assets/Victors/profile.jpg",
                           )
 
                           // foregroundImage: AssetImage(
@@ -584,6 +581,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(height: getHeight(context, 4)),
                       Row(
                         children: [
                           Skeleton.keep(
@@ -600,7 +598,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontFamily: mainFontbold,
                                 fontSize: 16,
-                                color: mainColorWhite),
+                                color: mainColorBlack),
                           ),
                         ],
                       ),
@@ -610,7 +608,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         style: TextStyle(
                             fontFamily: mainFontnormal,
                             fontSize: 14,
-                            color: mainColorWhite),
+                            color: mainColorBlack),
                       ),
                       SizedBox(height: getHeight(context, 1)),
                       Container(
@@ -619,8 +617,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: mainColorGrey.withOpacity(0.3)),
-                            color: mainColorWhite,
-                            borderRadius: BorderRadius.circular(15)),
+                            borderRadius: BorderRadius.circular(7)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -637,7 +634,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 width: getWidth(context, 4),
                                 child: CircleAvatar(
                                   backgroundImage: AssetImage(
-                                    "assets/images/App-Icon.png",
+                                    "assets/images/star.png",
                                   ),
                                 ),
                               ),
@@ -678,8 +675,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             // Logout
             Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton(
+              padding: const EdgeInsets.only(top: 43, left: 15, right: 15),
+              child: TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -687,11 +684,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         builder: (context) => const RegisterWithPhoneNumber()),
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.white,
+                style: TextButton.styleFrom(
+                  elevation: 0,
+                  // foregroundColor: Colors.black,
+                  // backgroundColor: Colors.white,
                   minimumSize: Size(double.infinity, 50),
-                  side: BorderSide(color: Colors.grey),
+                  side: BorderSide(
+                    color: grey.withOpacity(0.5),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
                 child: Text(
                   "Register".tr,
