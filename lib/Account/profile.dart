@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Account/about_screen.dart';
-
 import 'package:dllylas/Account/account_info_2.dart';
 import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/chatscreen.dart';
@@ -23,7 +21,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -464,17 +461,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                                     // Logout
                                     Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: ElevatedButton(
+                                      padding: const EdgeInsets.only(
+                                          top: 43, left: 15, right: 15),
+                                      child: TextButton(
                                         onPressed: () {
                                           yesNoOption(context);
                                         },
-                                        style: ElevatedButton.styleFrom(
-                                          foregroundColor: Colors.black,
-                                          backgroundColor: Colors.white,
+                                        style: TextButton.styleFrom(
                                           minimumSize:
                                               Size(double.infinity, 50),
-                                          side: BorderSide(color: Colors.grey),
+                                          side: BorderSide(
+                                            color: grey.withOpacity(0.5),
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
                                         ),
                                         child: Text('Logout'.tr),
                                       ),
@@ -544,6 +546,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _guestAccount(context) {
     return Skeletonizer(
+      effect: ShimmerEffect.raw(colors: [
+        mainColorGrey.withOpacity(0.1),
+        mainColorWhite,
+        // mainColorRed.withOpacity(0.1),
+      ]),
       enabled: productProvider().show,
       child: SingleChildScrollView(
         child: Column(
@@ -556,32 +563,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // image
-                  Container(
-                      width: getWidth(context, 30),
-                      height: getWidth(context, 30),
-                      margin: EdgeInsets.only(top: 30),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: CircleAvatar(
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Skeleton.keep(
+                        child: CircleAvatar(
+                          radius: getWidth(context, 16),
+                          child: Image.asset(
+                            "assets/Victors/guest.png",
+                            width: getWidth(context, 40),
+                          ),
                           backgroundColor: mainColorWhite,
-                          backgroundImage: AssetImage(
-                            "assets/Victors/profile.jpg",
-                          )
-
-                          // foregroundImage: AssetImage(
-                          //   "assets/images/test1.png",
-                          // ),
-                          )),
+                        ),
+                      ),
+                    ],
+                  ),
 
                   SizedBox(width: getHeight(context, 4)),
 
-                  // Username
+                  // Name and phone and point
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: getHeight(context, 4)),
+                      // name
                       Row(
                         children: [
                           Skeleton.keep(
@@ -592,55 +598,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           SizedBox(width: getHeight(context, 1)),
-                          Text(
-                            "Guest Account",
-                            //userdata["name"].toString(),
-                            style: TextStyle(
-                                fontFamily: mainFontbold,
-                                fontSize: 16,
-                                color: mainColorBlack),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(top: getHeight(context, 0.5)),
+                            child: Text(
+                              "Guest Account",
+                              style: TextStyle(
+                                  fontFamily: mainFontbold,
+                                  fontSize: 16,
+                                  color: mainColorBlack),
+                            ),
                           ),
                         ],
                       ),
                       SizedBox(height: getHeight(context, 1)),
-                      Text(
-                        "+964 7-- --- ----",
-                        style: TextStyle(
-                            fontFamily: mainFontnormal,
-                            fontSize: 14,
-                            color: mainColorBlack),
+                      // phone
+                      Row(
+                        children: [
+                          Skeleton.keep(
+                            child: Icon(
+                              Icons.call,
+                              size: 20,
+                            ),
+                          ),
+                          SizedBox(width: getHeight(context, 1)),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(top: getHeight(context, 0.5)),
+                            child: Text(
+                              "+964 7-- --- ----",
+                              style: TextStyle(
+                                  fontFamily: mainFontbold,
+                                  fontSize: 14,
+                                  color: mainColorBlack),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: getHeight(context, 1)),
-                      Container(
-                        height: getHeight(context, 4),
-                        width: getWidth(context, 20),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: mainColorGrey.withOpacity(0.3)),
-                            borderRadius: BorderRadius.circular(7)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
+                      // point
+                      Row(
+                        children: [
+                          Skeleton.keep(
+                            child: CircleAvatar(
+                              radius: 11,
+                              backgroundImage: AssetImage(
+                                "assets/images/star.png",
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: getHeight(context, 1)),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(top: getHeight(context, 0.5)),
+                            child: Text(
                               "0",
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: mainColorBlack,
                                   fontFamily: mainFontbold),
                             ),
-                            Skeleton.keep(
-                              child: Container(
-                                height: getHeight(context, 2),
-                                width: getWidth(context, 4),
-                                child: CircleAvatar(
-                                  backgroundImage: AssetImage(
-                                    "assets/images/star.png",
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -673,7 +692,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             _listTiles(
                 Icons.privacy_tip_outlined, 'Privacy Policy', PrivacyScreen()),
 
-            // Logout
+            // Register
             Padding(
               padding: const EdgeInsets.only(top: 43, left: 15, right: 15),
               child: TextButton(
@@ -685,9 +704,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 },
                 style: TextButton.styleFrom(
-                  elevation: 0,
-                  // foregroundColor: Colors.black,
-                  // backgroundColor: Colors.white,
                   minimumSize: Size(double.infinity, 50),
                   side: BorderSide(
                     color: grey.withOpacity(0.5),
