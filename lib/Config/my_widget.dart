@@ -499,25 +499,23 @@ Widget listitemsBrands(BuildContext context, var data) {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "assets/images/testbrand.jpg",
-                          fit: BoxFit.fill,
-                        )
-
-                        // CachedNetworkImage(
-                        //   imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
-                        //   placeholder: (context, url) =>
-                        //       Image.asset("assets/images/Logo-Type-2.png"),
-                        //   errorWidget: (context, url, error) =>
-                        //       Image.asset("assets/images/Logo-Type-2.png"),
-                        //   width: getHeight(context, 6),
-                        //   height: getHeight(context, 6),
-                        //   filterQuality: FilterQuality.low,
-                        //  fit: BoxFit.fill,
-                        // ),
-
-                        ),
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
+                        placeholder: (context, url) =>
+                            Image.asset("assets/images/Logo-Type-2.png"),
+                        errorWidget: (context, url, error) =>
+                            Image.asset("assets/images/Logo-Type-2.png"),
+                        width: getHeight(context, 6),
+                        height: getHeight(context, 6),
+                        filterQuality: FilterQuality.low,
+                        fit: BoxFit.fill,
+                      ),
+//  Image.asset(
+//                           "assets/images/testbrand.jpg",
+//                           fit: BoxFit.fill,
+//                         )
+                    ),
                   ),
                 );
               })));
