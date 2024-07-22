@@ -99,7 +99,7 @@ class Carousel extends StatelessWidget {
             aspectRatio: 2.5,
             enableInfiniteScroll: true,
             initialPage: 1,
-            autoPlay: false,
+            autoPlay: true,
             autoPlayInterval: Duration(seconds: 5)),
         items: imageSliders,
       ),

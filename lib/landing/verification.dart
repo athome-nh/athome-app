@@ -227,7 +227,8 @@ class _VerificatoinState extends State<Verificatoin> {
                                       backgroundColor: Colors.transparent),
                                   child: Text(
                                     timecode != 0
-                                        ? "Try again in".tr + formatedTime(timeInSecond: timecode)
+                                        ? "Try again in".tr +
+                                            formatedTime(timeInSecond: timecode)
                                         : "Resend".tr,
                                     style: TextStyle(
                                         color: mainColorRed,
@@ -305,6 +306,7 @@ class _VerificatoinState extends State<Verificatoin> {
       "token": token2,
     };
     Network(false).postData("verifyPhone", data, context).then((value) async {
+      print(value);
       setState(() {
         _isLoading = false;
       });

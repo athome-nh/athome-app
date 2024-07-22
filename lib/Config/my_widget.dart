@@ -4,8 +4,10 @@ import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/home/all_item.dart';
 import 'package:dllylas/landing/login_page.dart';
 import 'package:dllylas/main.dart';
+import 'package:dllylas/model/brandmodel/brandmodel.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -335,7 +337,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                       ? TextDecoration.lineThrough
                                       : TextDecoration.none,
                                   color: checkOferPrice(product)
-                                      ? mainColorGrey2
+                                      ? mainColorRed
                                       : mainColorBlack,
                                   fontFamily: checkOferPrice(product)
                                       ? mainFontnormal
@@ -347,7 +349,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                                     addCommasToPrice(product.offerPrice!),
                                     maxLines: 1,
                                     style: TextStyle(
-                                        color: mainColorRed,
+                                        color: green,
                                         fontFamily: mainFontbold,
                                         fontSize: 12),
                                   )
@@ -464,6 +466,63 @@ Widget listItemsSmall(BuildContext context, var data) {
   );
 }
 
+Widget listitemsBrands(BuildContext context, var data) {
+  final productrovider = Provider.of<productProvider>(context, listen: true);
+
+  return SizedBox(
+      height: getHeight(context, 8),
+      child: Visibility(
+          visible: productrovider.show,
+          replacement: listItemsShimer(context),
+          child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                mainAxisSpacing: getWidth(context, 2),
+                childAspectRatio: getWidth(context, 0.26),
+              ),
+              scrollDirection: Axis.horizontal,
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+                final Brandmodel brand = data[index];
+
+                return GestureDetector(
+                  onTap: () {
+                    productrovider.settype("brand");
+                    productrovider.setidbrand(brand.id!);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AllItem()),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          "assets/images/testbrand.jpg",
+                          fit: BoxFit.fill,
+                        )
+
+                        // CachedNetworkImage(
+                        //   imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
+                        //   placeholder: (context, url) =>
+                        //       Image.asset("assets/images/Logo-Type-2.png"),
+                        //   errorWidget: (context, url, error) =>
+                        //       Image.asset("assets/images/Logo-Type-2.png"),
+                        //   width: getHeight(context, 6),
+                        //   height: getHeight(context, 6),
+                        //   filterQuality: FilterQuality.low,
+                        //  fit: BoxFit.fill,
+                        // ),
+
+                        ),
+                  ),
+                );
+              })));
+}
+
 // all items
 Widget listItemsShow(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -561,7 +620,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       ? TextDecoration.lineThrough
                                       : TextDecoration.none,
                                   color: checkOferPrice(product)
-                                      ? mainColorGrey2
+                                      ? mainColorRed
                                       : mainColorBlack,
                                   fontFamily: checkOferPrice(product)
                                       ? mainFontnormal
@@ -573,7 +632,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                     addCommasToPrice(product.offerPrice!),
                                     maxLines: 1,
                                     style: TextStyle(
-                                        color: mainColorRed,
+                                        color: green,
                                         fontFamily: mainFontbold,
                                         fontSize: 13),
                                   )

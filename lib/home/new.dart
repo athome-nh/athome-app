@@ -607,8 +607,8 @@ class _newhomePageState extends State<newhomePage> {
                 height: getHeight(context, 2),
               ),
 
-          productrovider.showuser?    Visibility(
-                visible: productrovider.show  ,
+              Visibility(
+                visible: productrovider.show,
                 replacement: Skeletonizer(
                   child: Stack(
                     alignment: lang == "en"
@@ -668,7 +668,7 @@ class _newhomePageState extends State<newhomePage> {
                                         ),
                                       ),
                                       Text(
-                                        userdata["point"].toString(),
+                                        "5000",
                                         style: TextStyle(
                                             fontSize: 30,
                                             color: mainColorRed,
@@ -707,15 +707,7 @@ class _newhomePageState extends State<newhomePage> {
                               fontWeight: FontWeight.bold,
                               fontSize: 11),
                         ),
-                        onPressed: () {
-                          !productrovider.show
-                              ? const SizedBox()
-                              : Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const coinReward()),
-                                );
-                        },
+                        onPressed: productrovider.show ? () {} : null,
                       )
                     ],
                   ),
@@ -752,23 +744,24 @@ class _newhomePageState extends State<newhomePage> {
                                             fontFamily: mainFontnormal),
                                       ),
                                       new TextSpan(
-                                        text: userdata["name"] + "\n",
+                                        text:
+                                            userdata["name"] ?? "Guest Account",
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: mainColorRed,
                                             fontWeight: FontWeight.bold,
                                             fontFamily: mainFontnormal),
                                       ),
-                                      new TextSpan(
-                                        text: "You are doing so well",
-                                        style: TextStyle(
-                                            fontSize: 8,
-                                            color: mainColorGrey,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: mainFontnormal),
-                                      ),
                                     ],
                                   ),
+                                ),
+                                Text(
+                                  "You are doing so well",
+                                  style: TextStyle(
+                                      fontSize: 8,
+                                      color: mainColorGrey,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: mainFontnormal),
                                 ),
                                 Row(
                                   children: [
@@ -778,7 +771,7 @@ class _newhomePageState extends State<newhomePage> {
                                       height: getWidth(context, 6),
                                     ),
                                     Text(
-                                      userdata["point"].toString(),
+                                      (userdata["point"] ?? "0").toString(),
                                       style: TextStyle(
                                           fontSize: 30,
                                           color: mainColorRed,
@@ -814,19 +807,19 @@ class _newhomePageState extends State<newhomePage> {
                             fontWeight: FontWeight.bold,
                             fontSize: 11),
                       ),
-                      onPressed: () {
-                        !productrovider.show
-                            ? const SizedBox()
-                            : Navigator.push(
+                      onPressed: productrovider.show && isLogin
+                          ? () {
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const coinReward()),
                               );
-                      },
+                            }
+                          : null,
                     )
                   ],
                 ),
-              ):SizedBox(),
+              ),
 
               productrovider.Orderitems.isNotEmpty &&
                       productrovider
@@ -977,6 +970,49 @@ class _newhomePageState extends State<newhomePage> {
               SizedBox(
                 height: getHeight(context, 1),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Brands".tr,
+                    style: TextStyle(
+                        color: mainColorBlack,
+                        fontSize: 16,
+                        fontFamily: mainFontbold),
+                  ),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          if (productrovider.show) {
+                            productrovider.settype("best");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AllItem()),
+                            );
+                          }
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              "View All".tr,
+                              style: TextStyle(color: mainColorRed),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: getHeight(context, 1),
+              ),
+              listitemsBrands(context, productrovider.brands),
+              SizedBox(
+                height: getHeight(context, 1),
+              ),
               // Best Seller
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1020,7 +1056,22 @@ class _newhomePageState extends State<newhomePage> {
               // Space
               SizedBox(
                 height: getHeight(context, 2),
-              )
+              ),
+
+              Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        "assets/images/Reklam.jpg",
+                        fit: BoxFit.fill,
+                      ))),
+              // Space
+              SizedBox(
+                height: getHeight(context, 2),
+              ),
             ],
           ),
         ),
