@@ -607,8 +607,8 @@ class _newhomePageState extends State<newhomePage> {
                 height: getHeight(context, 2),
               ),
 
-              Visibility(
-                visible: productrovider.show && productrovider.showuser,
+          productrovider.showuser?    Visibility(
+                visible: productrovider.show  ,
                 replacement: Skeletonizer(
                   child: Stack(
                     alignment: lang == "en"
@@ -826,7 +826,7 @@ class _newhomePageState extends State<newhomePage> {
                     )
                   ],
                 ),
-              ),
+              ):SizedBox(),
 
               productrovider.Orderitems.isNotEmpty &&
                       productrovider
