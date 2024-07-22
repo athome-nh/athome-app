@@ -7,6 +7,7 @@ import 'package:dllylas/Landing/splash_screen.dart';
 import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/Categories.dart';
+import 'package:dllylas/home/alBrands.dart';
 import 'package:dllylas/home/all_item.dart';
 import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/home/search_page.dart';
@@ -199,32 +200,7 @@ class _newhomePageState extends State<newhomePage> {
                           children: [
                             PageView.builder(
                               controller: _pageController,
-                              onPageChanged: (int page) {
-                                setState(() {
-                                  if (_activePage == 5) {
-                                    if (_oldPage < page) {
-                                      _oldPage = page;
-                                      _activePage = 1;
-                                    } else {
-                                      _oldPage = page;
-                                      _activePage = 4;
-                                    }
-                                  } else {
-                                    if (_oldPage < page) {
-                                      _oldPage = page;
-                                      _activePage++;
-                                    } else {
-                                      if (_activePage == 1) {
-                                        _oldPage = page;
-                                        _activePage = 5;
-                                      } else {
-                                        _oldPage = page;
-                                        _activePage--;
-                                      }
-                                    }
-                                  }
-                                });
-                              },
+                              onPageChanged: (int page) {},
                               scrollDirection: Axis.vertical,
                               itemCount: productrovider.categores.length,
                               itemBuilder: (context, index) {
@@ -232,17 +208,7 @@ class _newhomePageState extends State<newhomePage> {
                                     productrovider.categores[index];
 
                                 return GestureDetector(
-                                  onTap: () {
-                                    productrovider.setcatetype(category.id!);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              itemCategories()),
-                                    ).then((value) {
-                                      productrovider.setsubcateSelect(0);
-                                    });
-                                  },
+                                  onTap: () {},
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
@@ -989,7 +955,7 @@ class _newhomePageState extends State<newhomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const AllItem()),
+                                  builder: (context) => const allBrands()),
                             );
                           }
                         },
@@ -1058,16 +1024,57 @@ class _newhomePageState extends State<newhomePage> {
                 height: getHeight(context, 2),
               ),
 
-              Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        "assets/images/Reklam.jpg",
-                        fit: BoxFit.fill,
-                      ))),
+              Visibility(
+                visible: productrovider.show,
+                replacement: Skeletonizer(
+                  effect: ShimmerEffect.raw(colors: [
+                    mainColorGrey.withOpacity(0.1),
+                    mainColorWhite,
+                    // mainColorRed.withOpacity(0.1),
+                  ]),
+                  child: Container(
+                      height: getHeight(context, 22),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          "assets/images/Reklam.jpg",
+                          fit: BoxFit.fill,
+                        ),
+                      )),
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    productrovider.settype("brand");
+                    productrovider
+                        .setidbrand(productrovider.tops.first.brandId!);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AllItem()),
+                    );
+                  },
+                  child: Container(
+                      height: getHeight(context, 22),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: dotenv.env['imageUrlServer']! +
+                              productrovider.tops.first.imgEn!,
+                          placeholder: (context, url) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          errorWidget: (context, url, error) =>
+                              Image.asset("assets/images/Logo-Type-2.png"),
+                          filterQuality: FilterQuality.low,
+                          fit: BoxFit.fill,
+                        ),
+                      )),
+                ),
+              ),
               // Space
               SizedBox(
                 height: getHeight(context, 2),

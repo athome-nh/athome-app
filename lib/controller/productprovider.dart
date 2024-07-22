@@ -86,7 +86,6 @@ class productProvider extends ChangeNotifier {
           setbrands((value['brands'] as List)
               .map((x) => Brandmodel.fromMap(x))
               .toList());
-
           setPoints((value['points'] as List)
               .map((x) => PointModel.fromMap(x))
               .toList());
@@ -101,8 +100,12 @@ class productProvider extends ChangeNotifier {
             value['endTime'],
             value['deliveryCost'],
           );
-
-          setshow(true);
+          Timer(
+            const Duration(seconds: 1),
+            () {
+              setshow(true);
+            },
+          );
         } else {}
       } else {}
     });
@@ -719,13 +722,19 @@ class productProvider extends ChangeNotifier {
 
   void setlocation(List<Locationuser> location) {
     _location = location;
+
     getIntPrefs("location").then((value) {
-      if (value != "") {
+      if (value != 0) {
+        print("object1");
         setdefultlocation(value);
       } else {
+        print("object2");
         if (_location.isNotEmpty) {
+          print("object3");
           setdefultlocation(_location.first.id!);
-        } else {}
+        } else {
+          print("object4");
+        }
       }
     });
 
