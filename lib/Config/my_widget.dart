@@ -963,7 +963,7 @@ Future toastShort(
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: mainColorRed.withOpacity(0.5),
+      backgroundColor: mainColorGrey.withOpacity(0.5),
       textColor: Colors.white,
       fontSize: 14.0);
 }
@@ -976,7 +976,7 @@ Future toastLong(
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: mainColorRed.withOpacity(0.5),
+      backgroundColor: mainColorGrey.withOpacity(0.5),
       textColor: Colors.white,
       fontSize: 14.0);
 }

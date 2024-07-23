@@ -1,8 +1,8 @@
 import 'package:dllylas/home/DetailsPage.dart';
-import 'package:dllylas/Config/athome_functions.dart';
+
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
-import 'package:dllylas/Network/Network.dart';
+
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
 import '../Landing/splash_screen.dart';
@@ -13,6 +13,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+// ignore: must_be_immutable
 class NotificationPage extends StatefulWidget {
   int notID = 0;
   NotificationPage({this.notID = 0, Key? key}) : super(key: key);
@@ -22,18 +23,8 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  bool _isSwitched = true;
   @override
   void initState() {
-    if (userdata["SendNotfi"] == 1) {
-      setState(() {
-        _isSwitched = true;
-      });
-    } else {
-      setState(() {
-        _isSwitched = false;
-      });
-    }
     super.initState();
   }
 
@@ -43,35 +34,9 @@ class _NotificationPageState extends State<NotificationPage> {
     final filteredNotifications = productrovider.Notfication.where(
         (notification) => notification.type != 'chat').toList();
     return Directionality(
-      textDirection: lang != "en" ? TextDirection.ltr : TextDirection.rtl,
+      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            Switch(
-              value: _isSwitched,
-              onChanged: (value) {
-                print(value);
-                var data = {"id": userdata["id"], "SendNotfi": value};
-                Network(false)
-                    .postData("SendNotfi_Change", data, context)
-                    .then((value2) {
-                  if (value2 != "") {
-                    if (value2["code"] == "201") {
-                      setState(() {
-                        _isSwitched = value;
-                        userdata["SendNotfi"] = value ? 1 : 0;
-                      });
-                    } else {}
-                  } else {}
-                });
-              },
-              activeTrackColor: Colors.greenAccent[100],
-              activeColor: Colors.green,
-              inactiveTrackColor: Colors.white,
-              inactiveThumbColor: Colors.red,
-            ),
-            SizedBox(width: getHeight(context, 1)),
-          ],
           title: Text(
             "Notification".tr,
             style: TextStyle(
@@ -249,50 +214,57 @@ class _NotificationPageState extends State<NotificationPage> {
                   itemBuilder: (context, index) {
                     final notification = filteredNotifications[index];
                     return Padding(
-                      padding: const EdgeInsets.all(  8),
+                      padding: const EdgeInsets.all(8),
                       child: Container(
                         height: getHeight(context, 13),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: mainColorGrey2.withOpacity(0.3),
+                            color: mainColorGrey2.withOpacity(0.8),
                           ),
                           color: mainColorlightGrey,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                                   SizedBox(height: 8,),  
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   // icon and text
                                   Row(
                                     children: [
                                       Container(
+                                        width: getWidth(context, 6),
+                                        height: getWidth(context, 6),
                                         decoration: BoxDecoration(
                                           color: mainColorRed,
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                         child: Icon(
                                           Icons.notifications,
                                           color: mainColorWhite,
-                                          size: 20,
+                                          size: getWidth(context, 4),
                                         ),
                                       ),
-                                      SizedBox(width: getWidth(context, 2),),
-                                  Text(
-                                    textCount(notification.title!, 30),
-                                    style: TextStyle(
-                                        color: mainColorGrey,
-                                        fontSize: 12,
-                                        fontFamily: mainFontbold),
-                                  ),
+                                      SizedBox(
+                                        width: getWidth(context, 2),
+                                      ),
+                                      Text(
+                                        maxLines: 1,
+                                        notification.title!,
+                                        style: TextStyle(
+                                            color: mainColorGrey,
+                                            fontSize: 12,
+                                            fontFamily: mainFontbold),
+                                      ),
                                     ],
                                   ),
-                              
-                                  
+
                                   // text now
                                   Text(
                                     timeAgo(notification.createdAt!),
@@ -303,21 +275,18 @@ class _NotificationPageState extends State<NotificationPage> {
                                   ),
                                 ],
                               ),
-                                            SizedBox(height: 10,),  
+                              SizedBox(
+                                height: 10,
+                              ),
                               // text description
                               Text(
-                                textCount(
-                                    notification.content! +
-                                        notification.content! +
-                                        notification.content! +
-                                        notification.content!,
-                                    70),
+                                maxLines: 2,
+                                notification.content!,
                                 style: TextStyle(
                                     color: mainColorBlack,
                                     fontSize: 12,
                                     fontFamily: mainFontnormal),
                               ),
-                              
                             ],
                           ),
                         ),
