@@ -3,14 +3,10 @@ import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/Network/Network.dart';
-
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
-
-import 'package:dllylas/Order/track_order.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
-import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -47,7 +43,7 @@ class _NotificationPageState extends State<NotificationPage> {
     final filteredNotifications = productrovider.Notfication.where(
         (notification) => notification.type != 'chat').toList();
     return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+      textDirection: lang != "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
           actions: [
@@ -252,148 +248,80 @@ class _NotificationPageState extends State<NotificationPage> {
                   itemCount: filteredNotifications.length,
                   itemBuilder: (context, index) {
                     final notification = filteredNotifications[index];
-                    return Column(
-                      children: <Widget>[
-                        Badge(
-                          label: widget.notID == notification.id
-                              ? Text("New".tr)
-                              : SizedBox(),
-                          alignment: Alignment.topLeft,
-                          backgroundColor: widget.notID == notification.id
-                              ? mainColorRed
-                              : Colors.transparent,
-                          largeSize: 20,
-                          textStyle: TextStyle(
-                              fontFamily: mainFontnormal,
-                              fontSize: 8,
-                              color: mainColorRed),
-                          child: ListTile(
-                            onTap: () {
-                              if ('onItem' == notification.type) {
-                                productrovider.setidItem(productrovider
-                                    .getoneProductByBarcode(
-                                        notification.subrelation!)
-                                    .id!);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          DetailsPage(color: 5)),
-                                );
-                              } else if ('discount' == notification.type) {
-                                productrovider.settype("discount");
-                                if (productrovider
-                                    .getProductsByDiscount()
-                                    .isNotEmpty) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const AllItem()),
-                                  );
-                                }
-                              } else if ('brand' == notification.type) {
-                                productrovider.settype("brand");
-                                productrovider
-                                    .setidbrand(notification.relationId!);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const AllItem()),
-                                );
-                              } else if ('category' == notification.type) {
-                                if (productrovider.categores.indexWhere(
-                                        (category) =>
-                                            category.id ==
-                                            notification.relationId!) ==
-                                    -1) {
-                                  return;
-                                }
-                                productrovider
-                                    .setcatetype(notification.relationId!);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => itemCategories()),
-                                ).then((value) {
-                                  productrovider.setsubcateSelect(0);
-                                });
-                              } else if ('subcategory' == notification.type) {
-                                if (productrovider.categores.indexWhere(
-                                            (category) =>
-                                                category.id ==
-                                                notification.relationId!) ==
-                                        -1 ||
-                                    productrovider.subCategores.indexWhere(
-                                            (subCategory) =>
-                                                subCategory.id ==
-                                                int.parse(notification
-                                                    .subrelation!)) ==
-                                        -1) {
-                                  return;
-                                }
-                                productrovider
-                                    .setcatetype(notification.relationId!);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => itemCategories(
-                                            subcateID: int.parse(
-                                                notification.subrelation!),
-                                          )),
-                                ).then((value) {
-                                  productrovider.setsubcateSelect(0);
-                                });
-                              } else if ('order' == notification.type) {
-                                OrderModel order = productrovider.Orders
-                                    .firstWhere((element) =>
-                                        element.id == notification.relationId!);
-
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => TrackOrder(
-                                            order.id!,
-                                          )),
-                                );
-                              } else if ('attention' == notification.type) {}
-                            },
-                            leading: Icon(
-                              Ionicons.notifications_outline,
-                              color: mainColorRed,
-                              size: 35,
-                            ),
-                            title: Text(
-                              textCount(notification.title!, 30),
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontSize: 14,
-                                  fontFamily: mainFontbold),
-                            ),
-                            subtitle: Text(
-                              textCount(
-                                  notification.content! +
-                                      notification.content! +
-                                      notification.content! +
-                                      notification.content!,
-                                  70),
-                              style: TextStyle(
-                                  color: mainColorBlack,
-                                  fontSize: 12,
-                                  fontFamily: mainFontnormal),
-                            ),
-                            trailing: Text(
-                              timeAgo(notification.createdAt!),
-                              style: TextStyle(
-                                  color: mainColorGrey,
-                                  fontSize: 9,
-                                  fontFamily: mainFontbold),
-                            ),
+                    return Padding(
+                      padding: const EdgeInsets.all(  8),
+                      child: Container(
+                        height: getHeight(context, 13),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: mainColorGrey2.withOpacity(0.3),
+                          ),
+                          color: mainColorlightGrey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                                   SizedBox(height: 8,),  
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  // icon and text
+                                  Row(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: mainColorRed,
+                                          borderRadius: BorderRadius.circular(5),
+                                        ),
+                                        child: Icon(
+                                          Icons.notifications,
+                                          color: mainColorWhite,
+                                          size: 20,
+                                        ),
+                                      ),
+                                      SizedBox(width: getWidth(context, 2),),
+                                  Text(
+                                    textCount(notification.title!, 30),
+                                    style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 12,
+                                        fontFamily: mainFontbold),
+                                  ),
+                                    ],
+                                  ),
+                              
+                                  
+                                  // text now
+                                  Text(
+                                    timeAgo(notification.createdAt!),
+                                    style: TextStyle(
+                                        color: mainColorBlack,
+                                        fontSize: 9,
+                                        fontFamily: mainFontbold),
+                                  ),
+                                ],
+                              ),
+                                            SizedBox(height: 10,),  
+                              // text description
+                              Text(
+                                textCount(
+                                    notification.content! +
+                                        notification.content! +
+                                        notification.content! +
+                                        notification.content!,
+                                    70),
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontSize: 12,
+                                    fontFamily: mainFontnormal),
+                              ),
+                              
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Divider(height: 1, thickness: 1),
-                        ),
-                      ],
+                      ),
                     );
                   },
                 ),
