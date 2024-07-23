@@ -85,7 +85,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // body
               body: !isLogin
                   ? _guestAccount(context)
-                  : Provider.of<productProvider>(context, listen: true).showuser
+                  : !Provider.of<productProvider>(context, listen: true)
+                          .showuser
                       ? Skeletonizer(
                           effect: ShimmerEffect.raw(colors: [
                             mainColorGrey.withOpacity(0.1),
@@ -93,215 +94,215 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ]),
                           enabled: true,
                           child: Column(
-                          children: [
-                            // top side for Shimmer
-                            Container(
-                              height: getHeight(context, 25),
-                              color: mainColorlightGrey,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 20),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-
-                                  // image of shimmer
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: getWidth(context, 16),
-                                        backgroundColor: mainColorWhite,
-                                        backgroundImage:AssetImage("assets/Victors/guest.png"),
-                                      ),
-                                    ],
-                                  ),
-
-                                  SizedBox(width: getHeight(context, 4)),
-
-                                  // Name and phone and point of shimmer
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(height: getHeight(context, 4)),
-
-                                      // name of shimmer
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/rank/IV.png",
-                                            width: getWidth(context, 6),
-                                            height: getWidth(context, 6),
-                                          ),
-                                          SizedBox(
-                                              width: getHeight(context, 1)),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: getHeight(context, 0.5)),
-                                            child: Text(
-                                              userdata["name"].toString(),
-                                              style: TextStyle(
-                                                fontFamily: mainFontbold,
-                                                fontSize: 14,
-                                                color: mainColorBlack,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-
-                                      SizedBox(height: getHeight(context, 1)),
-
-                                      // phone of shimmer
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.call,
-                                            size: 20,
-                                          ),
-                                          SizedBox(
-                                              width: getHeight(context, 1)),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: getHeight(context, 0.5)),
-                                            child: Text(
-                                              userdata["phone"].toString(),
-                                              style: TextStyle(
-                                                fontFamily: mainFontbold,
-                                                fontSize: 14,
-                                                color: mainColorBlack,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-
-                                      SizedBox(height: getHeight(context, 1)),
-
-                                      // point of shimmer
-                                      Row(
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 11,
-                                            backgroundImage: AssetImage(
-                                              "assets/images/star.png",
-                                            ),
-                                          ),
-                                          SizedBox(
-                                              width: getHeight(context, 1)),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: getHeight(context, 0.5)),
-                                            child: Text(
-                                              userdata["point"].toString(),
-                                              style: TextStyle(
-                                                fontFamily: mainFontbold,
-                                                fontSize: 14,
-                                                color: mainColorBlack,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            // all menu
-                            Expanded(
-                              flex: 10,
-                              child: SingleChildScrollView(
-                                child: Column(
+                            children: [
+                              // top side for Shimmer
+                              Container(
+                                height: getHeight(context, 25),
+                                color: mainColorlightGrey,
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 20),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    // Title 1
-                                    SizedBox(height: getHeight(context, 2)),
-                                    _titles("Account & Security".tr),
-
-                                    // Account Information
-                                    _listTiles(
-                                        Icons.person_outline,
-                                        'Account Information'.tr,
-                                        AccountInfo2()),
-
-                                    // Orders
-                                    _listTiles(Ionicons.bag_outline,
-                                        'Orders'.tr, OrderScreen()),
-
-                                    // Locations
-                                    _listTiles(Ionicons.location_outline,
-                                        'Locations'.tr, LocationScreen()),
-
-                                    // Refer a friend
-                                    _listTiles(Icons.person_add_outlined,
-                                        'Invite a friend'.tr, InvitePage()),
-
-                                    // Coin & Reward
-                                    _listTiles(Icons.monetization_on_outlined,
-                                        'Coin & Reward'.tr, coinReward()),
-
-                                    // My Voucher
-                                    _listTiles(Icons.card_giftcard,
-                                        'My Voucher'.tr, VoucherCodePage()),
-
-                                    // Account Settings
-                                    _listTiles(
-                                        Icons.settings_outlined,
-                                        'Account Settings'.tr,
-                                        AccountSetting()),
-
-                                    // Title 2
-                                    SizedBox(height: getHeight(context, 2)),
-                                    _titles("General".tr),
-
-                                    // Terms & Conditions
-                                    _listTiles(
-                                        Icons.description_outlined,
-                                        "Terms & Conditions".tr,
-                                        TermsandCondition()),
-
-                                    // Privacy Policy
-                                    _listTiles(Icons.privacy_tip_outlined,
-                                        'Privacy Policy'.tr, PrivacyScreen()),
-
-                                    // Customer Services
-                                    _listTiles(Icons.support_agent,
-                                        'Customer Services'.tr, ChatScreen()),
-
-                                    // Logout
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 43, left: 15, right: 15),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          yesNoOption(context);
-                                        },
-                                        style: TextButton.styleFrom(
-                                          minimumSize:
-                                              Size(double.infinity, 50),
-                                          side: BorderSide(
-                                            color: grey.withOpacity(0.5),
-                                          ),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
+                                    // image of shimmer
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: getWidth(context, 16),
+                                          backgroundColor: mainColorWhite,
+                                          backgroundImage: AssetImage(
+                                              "assets/Victors/guest.png"),
                                         ),
-                                        child: Text('Logout'.tr),
-                                      ),
+                                      ],
                                     ),
 
-                                    SizedBox(height: getHeight(context, 5)),
-                                  
+                                    SizedBox(width: getHeight(context, 4)),
+
+                                    // Name and phone and point of shimmer
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(height: getHeight(context, 4)),
+
+                                        // name of shimmer
+                                        Row(
+                                          children: [
+                                            Image.asset(
+                                              "assets/rank/IV.png",
+                                              width: getWidth(context, 6),
+                                              height: getWidth(context, 6),
+                                            ),
+                                            SizedBox(
+                                                width: getHeight(context, 1)),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: getHeight(context, 0.5)),
+                                              child: Text(
+                                                userdata["name"].toString(),
+                                                style: TextStyle(
+                                                  fontFamily: mainFontbold,
+                                                  fontSize: 14,
+                                                  color: mainColorBlack,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(height: getHeight(context, 1)),
+
+                                        // phone of shimmer
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.call,
+                                              size: 20,
+                                            ),
+                                            SizedBox(
+                                                width: getHeight(context, 1)),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: getHeight(context, 0.5)),
+                                              child: Text(
+                                                userdata["phone"].toString(),
+                                                style: TextStyle(
+                                                  fontFamily: mainFontbold,
+                                                  fontSize: 14,
+                                                  color: mainColorBlack,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(height: getHeight(context, 1)),
+
+                                        // point of shimmer
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 11,
+                                              backgroundImage: AssetImage(
+                                                "assets/images/star.png",
+                                              ),
+                                            ),
+                                            SizedBox(
+                                                width: getHeight(context, 1)),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: getHeight(context, 0.5)),
+                                              child: Text(
+                                                userdata["point"].toString(),
+                                                style: TextStyle(
+                                                  fontFamily: mainFontbold,
+                                                  fontSize: 14,
+                                                  color: mainColorBlack,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-            )
+
+                              // all menu of shimmer
+                              Expanded(
+                                flex: 10,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      // Title 1
+                                      SizedBox(height: getHeight(context, 2)),
+                                      _titles("Account & Security".tr),
+
+                                      // Account Information
+                                      _listTiles(
+                                          Icons.person_outline,
+                                          'Account Information'.tr,
+                                          AccountInfo2()),
+
+                                      // Orders
+                                      _listTiles(Ionicons.bag_outline,
+                                          'Orders'.tr, OrderScreen()),
+
+                                      // Locations
+                                      _listTiles(Ionicons.location_outline,
+                                          'Locations'.tr, LocationScreen()),
+
+                                      // Refer a friend
+                                      _listTiles(Icons.person_add_outlined,
+                                          'Invite a friend'.tr, InvitePage()),
+
+                                      // Coin & Reward
+                                      _listTiles(Icons.monetization_on_outlined,
+                                          'Coin & Reward'.tr, coinReward()),
+
+                                      // My Voucher
+                                      _listTiles(Icons.card_giftcard,
+                                          'My Voucher'.tr, VoucherCodePage()),
+
+                                      // Account Settings
+                                      _listTiles(
+                                          Icons.settings_outlined,
+                                          'Account Settings'.tr,
+                                          AccountSetting()),
+
+                                      // Title 2
+                                      SizedBox(height: getHeight(context, 2)),
+                                      _titles("General".tr),
+
+                                      // Terms & Conditions
+                                      _listTiles(
+                                          Icons.description_outlined,
+                                          "Terms & Conditions".tr,
+                                          TermsandCondition()),
+
+                                      // Privacy Policy
+                                      _listTiles(Icons.privacy_tip_outlined,
+                                          'Privacy Policy'.tr, PrivacyScreen()),
+
+                                      // Customer Services
+                                      _listTiles(Icons.support_agent,
+                                          'Customer Services'.tr, ChatScreen()),
+
+                                      // Logout
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 43, left: 15, right: 15),
+                                        child: TextButton(
+                                          onPressed: () {
+                                            yesNoOption(context);
+                                          },
+                                          style: TextButton.styleFrom(
+                                            minimumSize:
+                                                Size(double.infinity, 50),
+                                            side: BorderSide(
+                                              color: grey.withOpacity(0.5),
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                          ),
+                                          child: Text('Logout'.tr),
+                                        ),
+                                      ),
+
+                                      SizedBox(height: getHeight(context, 5)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       : Column(
                           children: [
                             // top side for user page
@@ -325,7 +326,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               CachedNetworkImageProvider(
                                             dotenv.env['imageUrlServer']! +
                                                 userdata["img"],
-                                                
                                           ),
                                         ),
                                       ),
@@ -514,7 +514,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
 
                                     SizedBox(height: getHeight(context, 5)),
-                                  
                                   ],
                                 ),
                               ),
@@ -626,12 +625,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // name
                       Row(
                         children: [
-                          Skeleton.keep(
-                            child: Image.asset(
-                              "assets/rank/IV.png",
-                              width: getWidth(context, 6),
-                              height: getWidth(context, 6),
-                            ),
+                          Image.asset(
+                            "assets/rank/IV.png",
+                            width: getWidth(context, 6),
+                            height: getWidth(context, 6),
                           ),
                           SizedBox(width: getHeight(context, 1)),
                           Padding(
@@ -652,11 +649,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // phone
                       Row(
                         children: [
-                          Skeleton.keep(
-                            child: Icon(
-                              Icons.call,
-                              size: 20,
-                            ),
+                          Icon(
+                            Icons.call,
+                            size: 20,
                           ),
                           SizedBox(width: getHeight(context, 1)),
                           Padding(
@@ -676,12 +671,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // point
                       Row(
                         children: [
-                          Skeleton.keep(
-                            child: CircleAvatar(
-                              radius: 11,
-                              backgroundImage: AssetImage(
-                                "assets/images/star.png",
-                              ),
+                          CircleAvatar(
+                            radius: 11,
+                            backgroundImage: AssetImage(
+                              "assets/images/star.png",
                             ),
                           ),
                           SizedBox(width: getHeight(context, 1)),
@@ -754,7 +747,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
-          
           ],
         ),
       ),
