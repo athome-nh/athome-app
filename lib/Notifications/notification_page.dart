@@ -1,8 +1,8 @@
 import 'package:dllylas/home/DetailsPage.dart';
-import 'package:dllylas/Config/athome_functions.dart';
+
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
-import 'package:dllylas/Network/Network.dart';
+
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/item_categories.dart';
 import '../Landing/splash_screen.dart';
@@ -13,6 +13,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+// ignore: must_be_immutable
 class NotificationPage extends StatefulWidget {
   int notID = 0;
   NotificationPage({this.notID = 0, Key? key}) : super(key: key);
@@ -22,18 +23,8 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  bool _isSwitched = true;
   @override
   void initState() {
-    if (userdata["SendNotfi"] == 1) {
-      setState(() {
-        _isSwitched = true;
-      });
-    } else {
-      setState(() {
-        _isSwitched = false;
-      });
-    }
     super.initState();
   }
 
@@ -264,7 +255,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                         width: getWidth(context, 2),
                                       ),
                                       Text(
-                                        textCount(notification.title!, 30),
+                                        maxLines: 1,
+                                        notification.title!,
                                         style: TextStyle(
                                             color: mainColorGrey,
                                             fontSize: 12,
@@ -289,13 +281,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               // text description
                               Text(
                                 maxLines: 2,
-                                notification.content! +
-                                    notification.content! +
-                                    notification.content! +
-                                    notification.content! +
-                                    notification.content! +
-                                    notification.content! +
-                                    notification.content!,
+                                notification.content!,
                                 style: TextStyle(
                                     color: mainColorBlack,
                                     fontSize: 12,
