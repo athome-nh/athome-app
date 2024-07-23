@@ -478,8 +478,8 @@ Widget listItemsShow(BuildContext context, var data) {
     child: GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 20,
-        childAspectRatio: getWidth(context, 0.22),
+        mainAxisSpacing: 15,
+        childAspectRatio: getWidth(context, 0.240),
       ),
       itemCount: data.length,
       itemBuilder: (BuildContext context, int index) {
@@ -493,7 +493,7 @@ Widget listItemsShow(BuildContext context, var data) {
             alignment: Alignment.topRight,
             children: [
               Container(
-                width: getWidth(context, 43),
+                width: getWidth(context, 45),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: mainColorlightGrey,
@@ -518,7 +518,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   );
                                 },
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
                               imageUrl: dotenv.env['imageUrlServer']! +
                                   product.coverImg,
@@ -550,6 +550,8 @@ Widget listItemsShow(BuildContext context, var data) {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                             SizedBox(height: checkOferPrice(product)
+                                ?0: getHeight(context, 1.5),),
                             Text(
                               checkOferPrice(product)
                                   ? (product.price2! > -1
@@ -570,7 +572,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                   fontFamily: checkOferPrice(product)
                                       ? mainFontnormal
                                       : mainFontbold,
-                                  fontSize: checkOferPrice(product) ? 11 : 13),
+                                  fontSize: checkOferPrice(product) ? 11 : 14),
                             ),
                             checkOferPrice(product)
                                 ? Text(
@@ -590,7 +592,7 @@ Widget listItemsShow(BuildContext context, var data) {
                                       ? product.nameAr.toString()
                                       : product.nameKu.toString(),
                               style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   color: mainColorBlack,
                                   fontFamily: mainFontbold),
                             ),
