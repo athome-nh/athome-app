@@ -27,9 +27,20 @@ class _AccountSettingState extends State<AccountSetting> {
   bool waiting = false;
   String selectedLanguage = 'English';
   String selectedItem = 'English';
+  bool _isSwitched = true;
+  bool switchedWait = false;
 
   @override
   void initState() {
+    if (userdata["SendNotfi"] == 1) {
+      setState(() {
+        _isSwitched = true;
+      });
+    } else {
+      setState(() {
+        _isSwitched = false;
+      });
+    }
     selectedItem = lang == "en"
         ? "English".tr
         : lang == "ar"
@@ -87,9 +98,80 @@ class _AccountSettingState extends State<AccountSetting> {
                           _titles("Setting".tr),
 
                           // Notification Setting
-                          _listTiles(Ionicons.notifications_outline,
-                              'Notification Setting'.tr, NotificationPage()),
 
+                          Column(
+                            children: [
+                              ListTile(
+                                leading: Icon(Ionicons.notifications_outline,
+                                    size: 24),
+                                title: Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Text(
+                                    'Notification'.tr,
+                                    style: TextStyle(
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorGrey,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                trailing: Transform.scale(
+                                  scale: 0.9,
+                                  child: switchedWait
+                                      ? SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: waitingWiget2(context),
+                                        )
+                                      : Switch(
+                                          value: _isSwitched,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              switchedWait = true;
+                                            });
+                                            var data = {
+                                              "id": userdata["id"],
+                                              "SendNotfi": value
+                                            };
+                                            Network(false)
+                                                .postData("SendNotfi_Change",
+                                                    data, context)
+                                                .then((value2) {
+                                              if (value2 != "") {
+                                                if (value2["code"] == "201") {
+                                                  setState(() {
+                                                    switchedWait = false;
+                                                    _isSwitched = value;
+                                                    userdata["SendNotfi"] =
+                                                        value ? 1 : 0;
+                                                  });
+                                                } else {
+                                                  setState(() {
+                                                    switchedWait = false;
+                                                  });
+                                                }
+                                              } else {
+                                                setState(() {
+                                                  switchedWait = false;
+                                                });
+                                              }
+                                            });
+                                          },
+                                          
+                                          activeTrackColor: mainColorGrey,
+                                          activeColor: mainColorWhite,
+                                          inactiveTrackColor: Colors.white,
+                                          inactiveThumbColor: mainColorRed,
+                                        ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
+                                child: Divider(height: 1, thickness: 1),
+                              ),
+                            ],
+                          ),
                           // Language
                           _Language(Ionicons.globe_outline, 'Language'.tr),
 
@@ -98,8 +180,8 @@ class _AccountSettingState extends State<AccountSetting> {
                           _titles("Support".tr),
 
                           // Help center
-                          _listTiles(Icons.description_outlined, "Help center".tr,
-                              HelpScreen()),
+                          _listTiles(Icons.description_outlined,
+                              "Help center".tr, HelpScreen()),
 
                           // About us
                           _listTiles(Icons.privacy_tip_outlined, 'About us'.tr,
@@ -116,8 +198,7 @@ class _AccountSettingState extends State<AccountSetting> {
                           // Delete Account
                           _DeleteAccount(
                               Ionicons.trash_outline, 'Delete Account'.tr),
-
-                          ],
+                        ],
                       ),
                     ),
             ),

@@ -466,116 +466,6 @@ Widget listItemsSmall(BuildContext context, var data) {
   );
 }
 
-Widget listitemsBrands(BuildContext context, var data) {
-  final productrovider = Provider.of<productProvider>(context, listen: true);
-
-  return SizedBox(
-      height: getHeight(context, 8),
-      child: Visibility(
-          visible: productrovider.show,
-          replacement: listItemsShimer(context),
-          child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: getWidth(context, 2),
-                childAspectRatio: getWidth(context, 0.26),
-              ),
-              scrollDirection: Axis.horizontal,
-              itemCount: data.length,
-              itemBuilder: (BuildContext context, int index) {
-                final Brandmodel brand = data[index];
-
-                return GestureDetector(
-                  onTap: () {
-                    productrovider.settype("brand");
-                    productrovider.setidbrand(brand.id!);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const AllItem()),
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
-                        placeholder: (context, url) =>
-                            Image.asset("assets/images/Logo-Type-2.png"),
-                        errorWidget: (context, url, error) =>
-                            Image.asset("assets/images/Logo-Type-2.png"),
-                        width: getHeight(context, 6),
-                        height: getHeight(context, 6),
-                        filterQuality: FilterQuality.low,
-                        fit: BoxFit.fill,
-                      ),
-//  Image.asset(
-//                           "assets/images/testbrand.jpg",
-//                           fit: BoxFit.fill,
-//                         )
-                    ),
-                  ),
-                );
-              })));
-}
-
-Widget listitemsBigBrands(BuildContext context, var data) {
-  final productrovider = Provider.of<productProvider>(context, listen: true);
-
-  return Visibility(
-      visible: productrovider.show,
-      replacement: listItemsShimer(context),
-      child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: getWidth(context, 0.25),
-          ),
-          scrollDirection: Axis.vertical,
-          itemCount: data.length,
-          itemBuilder: (BuildContext context, int index) {
-            final Brandmodel brand = data[index];
-
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {
-                  productrovider.settype("brand");
-                  productrovider.setidbrand(brand.id!);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AllItem()),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
-                      placeholder: (context, url) =>
-                          Image.asset("assets/images/Logo-Type-2.png"),
-                      errorWidget: (context, url, error) =>
-                          Image.asset("assets/images/Logo-Type-2.png"),
-                      width: getHeight(context, 6),
-                      height: getHeight(context, 6),
-                      filterQuality: FilterQuality.low,
-                      fit: BoxFit.fill,
-                    ),
-                    //     Image.asset(
-                    //   "assets/images/testbrand.jpg",
-                    //   fit: BoxFit.fill,
-                    // )
-                  ),
-                ),
-              ),
-            );
-          }));
-}
-
 // all items
 Widget listItemsShow(BuildContext context, var data) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
@@ -802,6 +692,116 @@ Widget listItemsShow(BuildContext context, var data) {
   );
 }
 
+Widget listitemsBrands(BuildContext context, var data) {
+  final productrovider = Provider.of<productProvider>(context, listen: true);
+
+  return SizedBox(
+      height: getHeight(context, 8),
+      child: Visibility(
+          visible: productrovider.show,
+          replacement: listItemsShimer(context),
+          child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                mainAxisSpacing: getWidth(context, 2),
+                childAspectRatio: getWidth(context, 0.26),
+              ),
+              scrollDirection: Axis.horizontal,
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+                final Brandmodel brand = data[index];
+
+                return GestureDetector(
+                  onTap: () {
+                    productrovider.settype("brand");
+                    productrovider.setidbrand(brand.id!);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AllItem()),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
+                        placeholder: (context, url) =>
+                            Image.asset("assets/images/Logo-Type-2.png"),
+                        errorWidget: (context, url, error) =>
+                            Image.asset("assets/images/Logo-Type-2.png"),
+                        width: getHeight(context, 6),
+                        height: getHeight(context, 6),
+                        filterQuality: FilterQuality.low,
+                        fit: BoxFit.fill,
+                      ),
+//  Image.asset(
+//                           "assets/images/testbrand.jpg",
+//                           fit: BoxFit.fill,
+//                         )
+                    ),
+                  ),
+                );
+              })));
+}
+
+Widget listitemsBigBrands(BuildContext context, var data) {
+  final productrovider = Provider.of<productProvider>(context, listen: true);
+
+  return Visibility(
+      visible: productrovider.show,
+      replacement: listItemsShimer(context),
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: getWidth(context, 0.25),
+          ),
+          scrollDirection: Axis.vertical,
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
+            final Brandmodel brand = data[index];
+
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () {
+                  productrovider.settype("brand");
+                  productrovider.setidbrand(brand.id!);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AllItem()),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: CachedNetworkImage(
+                      imageUrl: dotenv.env['imageUrlServer']! + brand.limg!,
+                      placeholder: (context, url) =>
+                          Image.asset("assets/images/Logo-Type-2.png"),
+                      errorWidget: (context, url, error) =>
+                          Image.asset("assets/images/Logo-Type-2.png"),
+                      width: getHeight(context, 6),
+                      height: getHeight(context, 6),
+                      filterQuality: FilterQuality.low,
+                      fit: BoxFit.fill,
+                    ),
+                    //     Image.asset(
+                    //   "assets/images/testbrand.jpg",
+                    //   fit: BoxFit.fill,
+                    // )
+                  ),
+                ),
+              ),
+            );
+          }));
+}
+
 // here we check for internet availability
 Future<bool> checkInternet(BuildContext context) async {
   bool retrive = false;
@@ -862,7 +862,7 @@ Future toastShort(
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: mainColorRed.withOpacity(0.5),
+      backgroundColor: mainColorGrey.withOpacity(0.5),
       textColor: Colors.white,
       fontSize: 14.0);
 }
@@ -875,7 +875,7 @@ Future toastLong(
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: mainColorRed.withOpacity(0.5),
+      backgroundColor: mainColorGrey.withOpacity(0.5),
       textColor: Colors.white,
       fontSize: 14.0);
 }
