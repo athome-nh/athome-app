@@ -1,5 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
@@ -15,9 +20,11 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../Config/property.dart';
 import '../home/nav_switch.dart';
 
@@ -44,13 +51,51 @@ class _SplashScreenState extends State<SplashScreen> {
 
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
-
+  bool check = true;
   @override
   void initState() {
     checkinternet();
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
-
+    FirebaseFirestore.instance
+        .collection("onLoad")
+        .doc("1")
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        if (documentSnapshot.get("show") == true) {
+          setState(() {
+            check = false;
+          });
+          if (lang == "en") {
+            ShowInfo(context, documentSnapshot.get("titleen"),
+                documentSnapshot.get("contenten"), "OK".tr, "error", "");
+          } else if (lang == "ar") {
+            ShowInfo(context, documentSnapshot.get("titlear"),
+                documentSnapshot.get("contentar"), "OK".tr, "error", "");
+          } else {
+            ShowInfo(context, documentSnapshot.get("titleku"),
+                documentSnapshot.get("contentku"), "OK".tr, "error", "");
+          }
+        } else {
+          checkPlatformAndLaunchUrl().then((value) {
+            if (dotenv.env['currentVersion']! !=
+                documentSnapshot.get("newversion")) {
+              if ((value == "huawei" &&
+                      documentSnapshot.get("isAccpetHuawei")) ||
+                  (value == "android" &&
+                      documentSnapshot.get("isAccpetAndroid")) ||
+                  (value == "ios" && documentSnapshot.get("isAccpetApple"))) {
+                setState(() {
+                  check = false;
+                });
+                _homePopup(context, value);
+              }
+            }
+          });
+        }
+      }
+    });
     super.initState();
   }
 
@@ -195,7 +240,6 @@ class _SplashScreenState extends State<SplashScreen> {
           int.parse(widget.message!.data["relationId"].toString()));
       Navigator.of(context)
           .pushReplacement(
-       
         MaterialPageRoute(
             builder: (context) => TrackOrder(
                   order.id!,
@@ -249,7 +293,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       const Duration(seconds: 6),
       () {
-        navigator(context);
+        if (check) {
+          navigator(context);
+        }
       },
     );
   }
@@ -269,5 +315,205 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           );
+  }
+
+  Future<void> ShowInfo(
+    BuildContext context,
+    String title,
+    String content,
+    String buttontxt,
+    String type,
+    String platform,
+  ) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {},
+          child: AlertDialog(
+            content: Directionality(
+              textDirection:
+                  lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+              child: Stack(
+                alignment:
+                    lang == "en" ? Alignment.topLeft : Alignment.topRight,
+                children: [
+                  SizedBox(
+                    width: getWidth(context, 100),
+                    height: getHeight(context, 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/Victors/info.png",
+                          width: getWidth(context, 40),
+                          height: getWidth(context, 40),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          title.tr,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: mainColorBlack,
+                            fontFamily: mainFontbold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        Text(
+                          content.tr,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: mainColorBlack,
+                            fontFamily: mainFontnormal,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+                        TextButton(
+                          onPressed: () async {
+                            exit(0);
+                          },
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(
+                                getWidth(context, 70), getHeight(context, 5)),
+                          ),
+                          child: Text(
+                            buttontxt.tr,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _homePopup(
+    BuildContext context,
+    String type,
+  ) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        final productrovider =
+            Provider.of<productProvider>(context, listen: false);
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {},
+          child: AlertDialog(
+            actionsPadding: EdgeInsets.all(0),
+            contentPadding: EdgeInsets.all(0),
+            content: Directionality(
+              textDirection:
+                  lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+              child: SizedBox(
+                width: getWidth(context, 100),
+                height: getHeight(context, 50),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: getWidth(context, 100),
+                      height: getHeight(context, 40),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: type != "pop"
+                            ? lang == "en"
+                                ? Image.asset("assets/Victors/updateEN.png")
+                                : lang == "ar"
+                                    ? Image.asset("assets/Victors/updateAR.png")
+                                    : Image.asset("assets/Victors/updateKU.png")
+                            : CachedNetworkImage(
+                                imageUrl: dotenv.env['imageUrlServer']! +
+                                    homePopupData["img"],
+                                placeholder: (context, url) => Image.asset(
+                                    "assets/images/Logo-Type-2.png"),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                        "assets/images/Logo-Type-2.png"),
+                                filterQuality: FilterQuality.low,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    FadeInUp(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: TextButton(
+                          onPressed: () async {
+                            if (type == "huawei") {
+                              Uri url = Uri.parse(
+                                  'https://appgallery.huawei.com/app/C109952685');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception("Could not launch".tr + "$url");
+                              }
+                            } else if (type == "android") {
+                              Uri url = Uri.parse(
+                                  'https://play.google.com/store/apps/details?id=com.market.dllylas');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception("Could not launch".tr + "$url");
+                              }
+                            } else {
+                              Uri url = Uri.parse(
+                                  'https://apps.apple.com/iq/app/dlly-las-market/id6474247014');
+                              if (!await launchUrl(url,
+                                  mode: LaunchMode.externalApplication)) {
+                                throw Exception("Could not launch".tr + "$url");
+                              }
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(
+                                getWidth(context, 45), getHeight(context, 5)),
+                          ),
+                          //checkText
+                          child: Text(
+                            "Update".tr,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<String> checkPlatformAndLaunchUrl() async {
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+    if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
+      String manufacturer = androidInfo.manufacturer;
+
+      if (manufacturer.toLowerCase() == "huawei") {
+        return "huawei";
+      } else {
+        return "android";
+      }
+    } else {
+      return "ios";
+    }
   }
 }
