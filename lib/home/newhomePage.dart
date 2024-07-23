@@ -849,7 +849,7 @@ class _newhomePageState extends State<newhomePage> {
                         children: [
                           Container(
                             width: getWidth(context, 100),
-                            height: getHeight(context, 11),
+                            height: getHeight(context, 12),
                             decoration: BoxDecoration(
                                 color: mainColorlightGrey,
                                 borderRadius: BorderRadius.circular(10)),
@@ -861,6 +861,7 @@ class _newhomePageState extends State<newhomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -884,29 +885,35 @@ class _newhomePageState extends State<newhomePage> {
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: mainFontnormal),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Text(
-                                        "You are doing so well",
-                                        style: TextStyle(
+                                            new TextSpan(
+                                              text: "\n",
+                                            
+                                            ),
+  new TextSpan(
+                                              text: "You are doing so well",
+                                              style: TextStyle(
                                             fontSize: 8,
                                             color: mainColorGrey,
                                             fontWeight: FontWeight.bold,
                                             fontFamily: mainFontnormal),
+                                            ),
+
+                                          ],
+                                        ),
                                       ),
+                                      
                                       Row(
                                         children: [
                                           Image.asset(
                                             "assets/images/star.png",
-                                            width: getWidth(context, 6),
-                                            height: getWidth(context, 6),
+                                            width: getWidth(context, 7),
+                                            height: getWidth(context, 7),
                                           ),
                                           Text(
                                             (userdata["point"] ?? "0")
                                                 .toString(),
                                             style: TextStyle(
-                                                fontSize: 30,
+                                                fontSize: getHeight(context, 3),
                                                 color: mainColorRed,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: mainFontbold),
