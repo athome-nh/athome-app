@@ -142,6 +142,11 @@ class _SearchState extends State<Search> {
                                       left: 15,
                                       right: 15),
                                   child: Container(
+                                    decoration: BoxDecoration(
+                                        color: mainColorlightGrey,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: mainColorlightGrey)),
                                     height: getHeight(context, 6),
                                     child: TextField(
                                       key: formKey,
@@ -168,27 +173,41 @@ class _SearchState extends State<Search> {
                                                 },
                                               )
                                             : const SizedBox(),
-                                        prefixIcon: Icon(
-                                          Ionicons.search_outline,
-                                          color: mainColorGrey,
-                                          size: 20,
+                                        prefix: SizedBox(
+                                          width: getWidth(context, 10),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Ionicons.search_outline,
+                                                color: mainColorGrey,
+                                                size: 20,
+                                              ),
+                                              SizedBox(
+                                                width: getWidth(context, 2),
+                                              ),
+                                              Container(
+                                                height: 20,
+                                                width: 2,
+                                                color: mainColorGrey2,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(10),
                                           borderSide: BorderSide(
-                                              color: mainColorGrey
-                                                  .withOpacity(0.3)),
+                                              color: mainColorlightGrey),
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(10),
                                           borderSide: BorderSide(
-                                            color: mainColorGrey.withOpacity(
-                                                0.3), // Customize border color
+                                            color:
+                                                mainColorlightGrey, // Customize border color
                                           ),
                                         ),
-                                        hintText: "Search".tr,
+                                        hintText: "What are you searching for?",
                                         hintStyle: TextStyle(
                                             fontFamily: mainFontnormal,
                                             color:
@@ -233,6 +252,11 @@ class _SearchState extends State<Search> {
                                 padding: const EdgeInsets.only(
                                     top: 8.0, bottom: 8.0, left: 15, right: 15),
                                 child: Container(
+                                  decoration: BoxDecoration(
+                                      color: mainColorlightGrey,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color: mainColorlightGrey)),
                                   height: getHeight(context, 6),
                                   child: TextField(
                                     key: formKey,
@@ -259,24 +283,37 @@ class _SearchState extends State<Search> {
                                               },
                                             )
                                           : const SizedBox(),
-                                      prefixIcon: Icon(
-                                        Ionicons.search_outline,
-                                        color: mainColorGrey,
-                                        size: 20,
+                                      prefix: SizedBox(
+                                        width: getWidth(context, 10),
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              Ionicons.search_outline,
+                                              color: mainColorGrey,
+                                              size: 20,
+                                            ),
+                                            SizedBox(
+                                              width: getWidth(context, 2),
+                                            ),
+                                            Container(
+                                              height: 20,
+                                              width: 2,
+                                              color: mainColorGrey2,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15),
+                                        borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color:
-                                                mainColorGrey.withOpacity(0.3)),
+                                            color: mainColorlightGrey),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15),
+                                        borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color:
-                                                mainColorGrey.withOpacity(0.3)),
+                                            color: mainColorlightGrey),
                                       ),
-                                      hintText: "Search".tr,
+                                      hintText: "What are you searching for?",
                                       hintStyle: TextStyle(
                                           fontFamily: mainFontnormal,
                                           color:

@@ -259,7 +259,7 @@ class _newhomePageState extends State<newhomePage> {
                             color: mainColorlightGrey,
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: mainColorlightGrey)),
-                        height: 50,
+                        height: getHeight(context, 6),
                         child: Row(
                           children: [
                             Icon(
@@ -861,7 +861,8 @@ class _newhomePageState extends State<newhomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -887,21 +888,18 @@ class _newhomePageState extends State<newhomePage> {
                                             ),
                                             new TextSpan(
                                               text: "\n",
-                                            
                                             ),
-  new TextSpan(
+                                            new TextSpan(
                                               text: "You are doing so well",
                                               style: TextStyle(
-                                            fontSize: 8,
-                                            color: mainColorGrey,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: mainFontnormal),
+                                                  fontSize: 8,
+                                                  color: mainColorGrey,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: mainFontnormal),
                                             ),
-
                                           ],
                                         ),
                                       ),
-                                      
                                       Row(
                                         children: [
                                           Image.asset(

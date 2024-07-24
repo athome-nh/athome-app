@@ -212,205 +212,365 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .reversed
                                       .toList()[index];
 
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                        color: mainColorWhite,
-                                        border: Border.all(
-                                            color: mainColorBlack
-                                                .withOpacity(0.5)),
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    margin: EdgeInsets.all(8),
-                                    padding: EdgeInsets.all(4),
-                                    child: Column(
-                                      children: [
-                                        ListTile(
-                                          leading: Container(
-                                              width: getWidth(context, 15),
-                                              height: getHeight(context, 18),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(15),
-                                              ),
-                                              child: order.status == 5
-                                                  ? Image.asset(
-                                                      "assets/Victors/delivered.png",
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color:
+                                                mainColorGrey2.withOpacity(0.5),
+                                          ),
+                                          color: mainColorlightGrey,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(5),
+                                                          child: Image.asset(
+                                                            "assets/images/App_Icon_Red.png",
+                                                            height: getWidth(
+                                                                context, 9),
+                                                            width: getWidth(
+                                                                context, 9),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: getWidth(
+                                                              context, 1),
+                                                        ),
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              "Dlly Las Market",
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontFamily:
+                                                                      mainFontbold,
+                                                                  color:
+                                                                      mainColorBlack),
+                                                            ),
+                                                            Text(
+                                                              "Order ID:".tr +
+                                                                  order.id
+                                                                      .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontFamily:
+                                                                      mainFontnormal,
+                                                                  color:
+                                                                      mainColorBlack),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: getHeight(
+                                                          context, 0.7),
+                                                    ),
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(5),
+                                                          border: Border.all(
+                                                              color:
+                                                                  mainColorGrey2)),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(2.0),
+                                                        child: Text(
+                                                          addCommasToPrice(order
+                                                              .returnTotalPrice!),
+                                                          style: TextStyle(
+                                                              fontSize: 14,
+                                                              fontFamily:
+                                                                  mainFontnormal,
+                                                              color:
+                                                                  mainColorBlack),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      "Order Case:",
+                                                      style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontFamily:
+                                                              mainFontbold,
+                                                          color:
+                                                              mainColorBlack),
+                                                    ),
+                                                    SizedBox(
+                                                        height: getHeight(
+                                                            context, 1)),
+                                                    order.status == 5
+                                                        ? Image.asset(
+                                                            "assets/Victors/delivered.png",
+                                                            height: getWidth(
+                                                                context, 9),
+                                                            width: getWidth(
+                                                                context, 9),
+                                                          )
+                                                        : Image.asset(
+                                                            "assets/Victors/undelivered.png",
+                                                            height: getWidth(
+                                                                context, 9),
+                                                            width: getWidth(
+                                                                context, 9),
+                                                          ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: getHeight(context, 1),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        productrovider
+                                                            .getordersbyOrderId(
+                                                                order.id
+                                                                    .toString())
+                                                            .forEach((element) {
+                                                          final existingItemIndex =
+                                                              productrovider
+                                                                  .products
+                                                                  .indexWhere(
+                                                            (pro) =>
+                                                                pro.id ==
+                                                                element
+                                                                    .productId,
+                                                          );
+
+                                                          if (existingItemIndex !=
+                                                              -1) {
+                                                            //count order
+                                                            final productitem =
+                                                                productrovider
+                                                                        .products[
+                                                                    existingItemIndex];
+                                                            int count =
+                                                                element.qt!;
+                                                            if (order.status ==
+                                                                5) {
+                                                              count = (element
+                                                                      .pickedQt! -
+                                                                  element
+                                                                      .returnedQt!);
+                                                            } else {
+                                                              count =
+                                                                  element.qt!;
+                                                            }
+
+                                                            if (count == 0) {
+                                                              return;
+                                                            }
+
+                                                            if (checkOferPrice(
+                                                                    productitem) &&
+                                                                productitem
+                                                                        .orderLimit! <
+                                                                    count) {
+                                                              final cartItem =
+                                                                  CartItemPast(
+                                                                product:
+                                                                    productitem
+                                                                        .id!,
+                                                                quantity:
+                                                                    productitem
+                                                                        .orderLimit!,
+                                                              );
+                                                              cartProvider
+                                                                  .addToCartPast(
+                                                                      cartItem);
+                                                            } else if (count >
+                                                                productitem
+                                                                    .stock!) {
+                                                              final cartItem =
+                                                                  CartItemPast(
+                                                                product:
+                                                                    productitem
+                                                                        .id!,
+                                                                quantity:
+                                                                    productitem
+                                                                        .stock!,
+                                                              );
+                                                              cartProvider
+                                                                  .addToCartPast(
+                                                                      cartItem);
+                                                            } else {
+                                                              final cartItem =
+                                                                  CartItemPast(
+                                                                product: element
+                                                                    .productId!,
+                                                                quantity: count,
+                                                              );
+                                                              cartProvider
+                                                                  .addToCartPast(
+                                                                      cartItem);
+                                                            }
+                                                          } else {}
+                                                        });
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  const OrederItems()),
+                                                        ).then((value) {
+                                                          cartProvider
+                                                              .clearCartPast();
+                                                        });
+                                                      },
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color:
+                                                                mainColorGrey,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5)),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal: 6,
+                                                                  vertical: 3),
+                                                          child: Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons
+                                                                    .rotate_left,
+                                                                color:
+                                                                    mainColorWhite,
+                                                                size: 20,
+                                                              ),
+                                                              Text(
+                                                                "Re order".tr,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        13,
+                                                                    fontFamily:
+                                                                        mainFontnormal,
+                                                                    color:
+                                                                        mainColorWhite),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        productrovider
+                                                            .refreshOrderData();
+                                                        productrovider
+                                                            .getproductitems(
+                                                                order.id!);
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  OldOrder(
+                                                                      order.id!,
+                                                                      false)),
+                                                        );
+                                                      },
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .visibility_outlined,
+                                                            color:
+                                                                mainColorBlack,
+                                                          ),
+                                                          SizedBox(
+                                                            width: 3,
+                                                          ),
+                                                          Text(
+                                                            "View".tr,
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                fontFamily:
+                                                                    mainFontnormal,
+                                                                color:
+                                                                    mainColorBlack),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      order.status == 5
+                                                          ? "Deleverd"
+                                                          : "Undeliverd",
+                                                      style: TextStyle(
+                                                          fontSize: 10,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          color:
+                                                              mainColorBlack),
+                                                    ),
+                                                    Text(
+                                                      "Date:" +
+                                                          formatDate(
+                                                              order.createdAt!),
+                                                      style: TextStyle(
+                                                          fontSize: 11,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          color:
+                                                              mainColorBlack),
                                                     )
-                                                  : Image.asset(
-                                                      "assets/Victors/undelivered.png",
-                                                    )),
-                                          title: Row(
-                                            children: [
-                                              Text(
-                                                "Order number:".tr,
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: mainFontbold,
-                                                    color: mainColorGrey),
-                                              ),
-                                              Text(
-                                                order.id.toString(),
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: mainFontbold,
-                                                    color: mainColorRed),
-                                              ),
-                                            ],
-                                          ),
-                                          subtitle: Text(
-                                            "Date:".tr +
-                                                order.createdAt
-                                                    .toString()
-                                                    .substring(0, 16),
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: mainFontnormal,
-                                                color: mainColorGrey),
-                                          ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: getWidth(context, 4)),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              TextButton.icon(
-                                                onPressed: () {
-                                                  productrovider
-                                                      .getordersbyOrderId(
-                                                          order.id.toString())
-                                                      .forEach((element) {
-                                                    final existingItemIndex =
-                                                        productrovider.products
-                                                            .indexWhere(
-                                                      (pro) =>
-                                                          pro.id ==
-                                                          element.productId,
-                                                    );
-
-                                                    if (existingItemIndex !=
-                                                        -1) {
-                                                      //count order
-                                                      final productitem =
-                                                          productrovider
-                                                                  .products[
-                                                              existingItemIndex];
-                                                      int count = element.qt!;
-                                                      if (order.status == 5) {
-                                                        count = (element
-                                                                .pickedQt! -
-                                                            element
-                                                                .returnedQt!);
-                                                      } else {
-                                                        count = element.qt!;
-                                                      }
-
-                                                      if (count == 0) {
-                                                        return;
-                                                      }
-
-                                                      if (checkOferPrice(
-                                                              productitem) &&
-                                                          productitem
-                                                                  .orderLimit! <
-                                                              count) {
-                                                        final cartItem =
-                                                            CartItemPast(
-                                                          product:
-                                                              productitem.id!,
-                                                          quantity: productitem
-                                                              .orderLimit!,
-                                                        );
-                                                        cartProvider
-                                                            .addToCartPast(
-                                                                cartItem);
-                                                      } else if (count >
-                                                          productitem.stock!) {
-                                                        final cartItem =
-                                                            CartItemPast(
-                                                          product:
-                                                              productitem.id!,
-                                                          quantity: productitem
-                                                              .stock!,
-                                                        );
-                                                        cartProvider
-                                                            .addToCartPast(
-                                                                cartItem);
-                                                      } else {
-                                                        final cartItem =
-                                                            CartItemPast(
-                                                          product: element
-                                                              .productId!,
-                                                          quantity: count,
-                                                        );
-                                                        cartProvider
-                                                            .addToCartPast(
-                                                                cartItem);
-                                                      }
-                                                    } else {}
-                                                  });
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const OrederItems()),
-                                                  ).then((value) {
-                                                    cartProvider
-                                                        .clearCartPast();
-                                                  });
-                                                },
-                                                icon: Icon(
-                                                  Icons.rotate_left,
-                                                  color: mainColorGrey,
-                                                ), // Add your desired icon
-                                                style: TextButton.styleFrom(
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    fixedSize: Size(
-                                                        getWidth(context, 45),
-                                                        getHeight(context, 3))),
-                                                label: Text(
-                                                  "Re order".tr,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey),
-                                                ),
-                                              ),
-                                              TextButton.icon(
-                                                onPressed: () {
-                                                  productrovider
-                                                      .refreshOrderData();
-                                                  productrovider
-                                                      .getproductitems(
-                                                          order.id!);
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            OldOrder(order.id!,
-                                                                false)),
-                                                  );
-                                                },
-                                                icon: Icon(
-                                                  Icons.visibility_outlined,
-                                                  color: mainColorGrey,
-                                                ), // Add your desired icon
-                                                style: TextButton.styleFrom(
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    fixedSize: Size(
-                                                        getWidth(context, 30),
-                                                        getHeight(context, 3))),
-                                                label: Text(
-                                                  "View".tr,
-                                                  style: TextStyle(
-                                                      color: mainColorGrey),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   );
                                 })

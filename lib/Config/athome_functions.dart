@@ -10,6 +10,7 @@ import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:intl/intl.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -91,6 +92,14 @@ bool checkProductStock(ProductModel product, int i) {
 
 bool checkProductLimit(ProductModel product, int i) {
   return checkOferPrice(product) && product.orderLimit == i;
+}
+
+String formatDate(DateTime date) {
+  // Create a DateFormat object with the desired format
+  DateFormat formatter = DateFormat('MMMdd');
+
+  // Format the date and return the string
+  return formatter.format(date);
 }
 
 //// Cut text length according to the parameter
@@ -240,6 +249,7 @@ String addCommasToPrice(int price) {
     return '$integerWithCommas.${parts[1]}';
   }
 }
+
 String addCommasToPriceWithoutIQD(int price) {
   // Convert the price to a string with two decimal places
   String formattedPrice = price.toStringAsFixed(0);
@@ -260,7 +270,7 @@ String addCommasToPriceWithoutIQD(int price) {
   // Combine the integer part with the decimal part and return the result
   if (parts.length == 1) {
     // If there is no decimal part, return just the integer part
-    return integerWithCommas ;
+    return integerWithCommas;
   } else {
     return '$integerWithCommas.${parts[1]}';
   }
