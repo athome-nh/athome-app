@@ -108,12 +108,13 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .toList()[index];
                                   return Container(
                                     decoration: BoxDecoration(
-                                        color: mainColorWhite,
                                         border: Border.all(
-                                            color: mainColorBlack
-                                                .withOpacity(0.5)),
+                                          color:
+                                              mainColorGrey2.withOpacity(0.5),
+                                        ),
+                                        color: mainColorlightGrey,
                                         borderRadius:
-                                            BorderRadius.circular(15)),
+                                            BorderRadius.circular(10)),
                                     margin: EdgeInsets.all(8),
                                     padding: EdgeInsets.all(4),
                                     child: Column(
@@ -285,34 +286,34 @@ class _OrderScreenState extends State<OrderScreen> {
                                                         )
                                                       ],
                                                     ),
-                                                    SizedBox(
-                                                      height: getHeight(
-                                                          context, 0.7),
-                                                    ),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5),
-                                                          border: Border.all(
-                                                              color:
-                                                                  mainColorGrey2)),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(2.0),
-                                                        child: Text(
-                                                          addCommasToPrice(order
-                                                              .returnTotalPrice!),
-                                                          style: TextStyle(
-                                                              fontSize: 14,
-                                                              fontFamily:
-                                                                  mainFontnormal,
-                                                              color:
-                                                                  mainColorBlack),
-                                                        ),
-                                                      ),
-                                                    ),
+                                                    // SizedBox(
+                                                    //   height: getHeight(
+                                                    //       context, 0.7),
+                                                    // ),
+                                                    // Container(
+                                                    //   decoration: BoxDecoration(
+                                                    //       borderRadius:
+                                                    //           BorderRadius
+                                                    //               .circular(5),
+                                                    //       border: Border.all(
+                                                    //           color:
+                                                    //               mainColorGrey2)),
+                                                    //   child: Padding(
+                                                    //     padding:
+                                                    //         const EdgeInsets
+                                                    //             .all(2.0),
+                                                    //     child: Text(
+                                                    //       addCommasToPrice(order
+                                                    //           .returnTotalPrice!),
+                                                    //       style: TextStyle(
+                                                    //           fontSize: 14,
+                                                    //           fontFamily:
+                                                    //               mainFontnormal,
+                                                    //           color:
+                                                    //               mainColorBlack),
+                                                    //     ),
+                                                    //   ),
+                                                    // ),
                                                   ],
                                                 ),
                                                 Column(

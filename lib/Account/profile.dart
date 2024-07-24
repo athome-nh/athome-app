@@ -955,7 +955,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       setStringPrefs(
                                           "data", json.encode(myMap));
                                     });
-
+                                    clearPrifrences();
                                     final cartProvider =
                                         Provider.of<CartProvider>(context,
                                             listen: false);

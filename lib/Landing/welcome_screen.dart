@@ -21,6 +21,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   void initState() {
+    clearPrifrences();
     super.initState();
   }
 
@@ -48,7 +49,6 @@ class WelcomeScreenState extends State<WelcomeScreen>
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
             // slide 3 page
             CarouselSlider(
               carouselController: buttonCarouselController,
