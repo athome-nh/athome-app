@@ -52,134 +52,91 @@ class _NotificationPageState extends State<NotificationPage> {
         body: Visibility(
           visible: productrovider.show,
           replacement: Skeletonizer(
+            effect: ShimmerEffect.raw(colors: [
+              mainColorGrey.withOpacity(0.1),
+              mainColorWhite,
+            ]),
             enabled: true,
             child: ListView.builder(
-              itemCount: filteredNotifications.length,
+              itemCount: 10,
               itemBuilder: (context, index) {
-                final notification = filteredNotifications[index];
-                return Card(
-                  elevation: 2,
-                  margin: EdgeInsets.all(8),
-                  color: mainColorWhite,
-                  child: Column(
-                    children: <Widget>[
-                      Badge(
-                        label: widget.notID == notification.id
-                            ? Text("New".tr)
-                            : SizedBox(),
-                        alignment: Alignment.topLeft,
-                        backgroundColor: widget.notID == notification.id
-                            ? mainColorRed
-                            : Colors.transparent,
-                        largeSize: 20,
-                        textStyle: TextStyle(
-                            fontFamily: mainFontnormal,
-                            fontSize: 8,
-                            color: mainColorRed),
-                        child: ListTile(
-                          onTap: () {
-                            if ('onItem' == notification.type) {
-                              productrovider.setidItem(productrovider
-                                  .getoneProductByBarcode(
-                                      notification.subrelation!)
-                                  .id!);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DetailsPage(color: 5)),
-                              );
-                            } else if ('discount' == notification.type) {
-                              productrovider.settype("discount");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const AllItem()),
-                              );
-                            } else if ('brand' == notification.type) {
-                              productrovider.settype("brand");
-                              productrovider
-                                  .setidbrand(notification.relationId!);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const AllItem()),
-                              );
-                            } else if ('category' == notification.type) {
-                              if (productrovider.categores.indexWhere(
-                                      (category) =>
-                                          category.id ==
-                                          notification.relationId!) ==
-                                  -1) {
-                                return;
-                              }
-                              productrovider
-                                  .setcatetype(notification.relationId!);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => itemCategories()),
-                              ).then((value) {
-                                productrovider.setsubcateSelect(0);
-                              });
-                            } else if ('subcategory' == notification.type) {
-                              if (productrovider.categores.indexWhere(
-                                          (category) =>
-                                              category.id ==
-                                              notification.relationId!) ==
-                                      -1 ||
-                                  productrovider.subCategores.indexWhere(
-                                          (subCategory) =>
-                                              subCategory.id ==
-                                              int.parse(
-                                                  notification.subrelation!)) ==
-                                      -1) {
-                                return;
-                              }
-                              productrovider
-                                  .setcatetype(notification.relationId!);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => itemCategories(
-                                          subcateID: int.parse(
-                                              notification.subrelation!),
-                                        )),
-                              ).then((value) {
-                                productrovider.setsubcateSelect(0);
-                              });
-                            } else if ('order' == notification.type) {
-                            } else if ('attention' == notification.type) {}
-                          },
-                          leading: Icon(
-                            Ionicons.notifications_outline,
-                            color: mainColorRed,
-                            size: 35,
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Container(
+                    height: getHeight(context, 13),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: mainColorGrey2.withOpacity(0.8),
+                      ),
+                      color: mainColorlightGrey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // icon and text
+                              Row(
+                                children: [
+                                  Container(
+                                    width: getWidth(context, 6),
+                                    height: getWidth(context, 6),
+                                    decoration: BoxDecoration(
+                                      color: mainColorRed,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Skeleton.keep(
+                                      child: Icon(
+                                        Icons.notifications,
+                                        color: mainColorWhite,
+                                        size: getWidth(context, 4),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: getWidth(context, 2),
+                                  ),
+                                  Text(
+                                    maxLines: 1,
+                                    "Hello Every one whatsUp",
+                                    style: TextStyle(
+                                        color: mainColorGrey,
+                                        fontSize: 12,
+                                        fontFamily: mainFontbold),
+                                  ),
+                                ],
+                              ),
+
+                              // text now
+                              Text(
+                                "now",
+                                style: TextStyle(
+                                    color: mainColorBlack,
+                                    fontSize: 9,
+                                    fontFamily: mainFontbold),
+                              ),
+                            ],
                           ),
-                          title: Text(
-                            notification.title!,
-                            style: TextStyle(
-                                color: mainColorGrey,
-                                fontSize: 16,
-                                fontFamily: mainFontbold),
+                          SizedBox(
+                            height: 10,
                           ),
-                          subtitle: Text(
-                            notification.content!,
+                          // text description
+                          Text(
+                            maxLines: 2,
+                            "To finish setting up your Microsoft account,To finish setting up your Microsoft account,  ",
                             style: TextStyle(
                                 color: mainColorBlack,
                                 fontSize: 12,
                                 fontFamily: mainFontnormal),
                           ),
-                          trailing: Text(
-                            timeAgo(notification.createdAt!),
-                            style: TextStyle(
-                                color: mainColorGrey,
-                                fontSize: 12,
-                                fontFamily: mainFontbold),
-                          ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 );
               },
@@ -302,7 +259,9 @@ class _NotificationPageState extends State<NotificationPage> {
     DateTime date = DateTime.parse(datetime);
     final difference = date2.difference(date);
     // check text bawar
-    if ((difference.inDays / 7).floor() >= 1) {
+    if ((difference.inDays / 7).floor() > 1) {
+      return datetime.substring(0, 10);
+    } else if ((difference.inDays / 7).floor() == 1) {
       return 'Last week'.tr;
     } else if (difference.inDays >= 2) {
       return '${difference.inDays}' + 'days ago'.tr;

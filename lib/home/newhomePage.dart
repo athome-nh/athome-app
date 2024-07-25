@@ -1223,37 +1223,40 @@ class _newhomePageState extends State<newhomePage> {
                               ),
                             )),
                       ),
-                      child: GestureDetector(
-                        onTap: () {
-                          productrovider.settype("brand");
-                          productrovider
-                              .setidbrand(productrovider.tops.first.brandId!);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const AllItem()),
-                          );
-                        },
-                        child: Container(
-                            height: getHeight(context, 22),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                      child: productrovider.tops.isEmpty
+                          ? SizedBox()
+                          : GestureDetector(
+                              onTap: () {
+                                productrovider.settype("brand");
+                                productrovider.setidbrand(
+                                    productrovider.tops.first.brandId!);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const AllItem()),
+                                );
+                              },
+                              child: Container(
+                                  height: getHeight(context, 22),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: CachedNetworkImage(
+                                      imageUrl: dotenv.env['imageUrlServer']! +
+                                          productrovider.tops.first.imgEn!,
+                                      placeholder: (context, url) =>
+                                          Image.asset(
+                                              "assets/images/Logo-Type-2.png"),
+                                      errorWidget: (context, url, error) =>
+                                          Image.asset(
+                                              "assets/images/Logo-Type-2.png"),
+                                      filterQuality: FilterQuality.low,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  )),
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: CachedNetworkImage(
-                                imageUrl: dotenv.env['imageUrlServer']! +
-                                    productrovider.tops.first.imgEn!,
-                                placeholder: (context, url) => Image.asset(
-                                    "assets/images/Logo-Type-2.png"),
-                                errorWidget: (context, url, error) =>
-                                    Image.asset(
-                                        "assets/images/Logo-Type-2.png"),
-                                filterQuality: FilterQuality.low,
-                                fit: BoxFit.fill,
-                              ),
-                            )),
-                      ),
                     ),
                     // Space
                     SizedBox(
