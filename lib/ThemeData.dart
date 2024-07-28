@@ -21,7 +21,7 @@ class AppThemes {
         disabledForegroundColor: mainColorBlack.withOpacity(0.8),
         shape: RoundedRectangleBorder(
           borderRadius:
-              BorderRadius.circular(15.0), // Border radius of the button
+              BorderRadius.circular(10.0), // Border radius of the button
         ),
       ),
     ),

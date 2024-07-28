@@ -100,7 +100,8 @@ class ActiveTab extends StatelessWidget {
 
                                       // Text
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
@@ -170,7 +171,9 @@ class ActiveTab extends StatelessWidget {
                                       color: mainColorBlack),
                                 ),
                                 Text(
-                                  "Date:" + formatDate(DateTime.parse(voucher.expireDate!)),
+                                  "Date:" +
+                                      formatDate(
+                                          DateTime.parse(voucher.expireDate!)),
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -255,7 +258,8 @@ class UsedTab extends StatelessWidget {
 
                                       // Text
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
@@ -308,6 +312,7 @@ class UsedTab extends StatelessWidget {
                           ),
                         ),
                       ),
+
                       // date
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -318,14 +323,23 @@ class UsedTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Active",
+                                  "Used",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: mainFontnormal,
+                                      color: mainColorGrey),
+                                ),
+                                Text(
+                                  "Expired",
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontFamily: mainFontnormal,
                                       color: mainColorBlack),
                                 ),
                                 Text(
-                                  "Date:" + formatDate(DateTime.parse(voucher.expireDate!)),
+                                  "Date:" +
+                                      formatDate(
+                                          DateTime.parse(voucher.expireDate!)),
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -337,7 +351,7 @@ class UsedTab extends StatelessWidget {
                             Icon(
                               Icons.circle,
                               size: 15,
-                              color: mainColorRed,
+                              color: mainColorlightGrey,
                             )
                           ],
                         ),
@@ -410,7 +424,8 @@ class ExpiredTab extends StatelessWidget {
 
                                       // Text
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             children: [
@@ -473,14 +488,16 @@ class ExpiredTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Active",
+                                  "Expired",
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontFamily: mainFontnormal,
                                       color: mainColorBlack),
                                 ),
                                 Text(
-                                  "Date:" + formatDate(DateTime.parse(voucher.expireDate!)),
+                                  "Date:" +
+                                      formatDate(
+                                          DateTime.parse(voucher.expireDate!)),
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,

@@ -6,6 +6,7 @@ import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
+import 'package:dllylas/main.dart';
 import 'package:dllylas/model/voucher/voucher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -59,192 +60,201 @@ class _coinRewardState extends State<coinReward> {
           "Coin & Reward".tr,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                "Voucher Codes".tr,
-                style: TextStyle(fontSize: 20, fontFamily: mainFontbold),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: getHeight(context, 100),
-              child: ListView.builder(
+      body: Directionality(
+        textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+        child: productrovider.points.isEmpty
+            ? Center(
+                child: Text(
+                  "Do not have any Voucher Code".tr,
+                  style: TextStyle(
+                    fontFamily: mainFontnormal,
+                    fontSize: 20,
+                    color: mainColorGrey,
+                  ),
+                ),
+              )
+            : ListView.builder(
                 itemCount: productrovider.points.length,
                 itemBuilder: (context, index) {
                   final point = productrovider.points[index];
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: getHeight(context, 19),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: mainColorBlack.withOpacity(0.5)),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: getWidth(context, 100),
-                            height: getHeight(context, 8),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15.0),
-                                  topRight: Radius.circular(15.0),
-                                ),
-                                color: mainColorGrey),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                    child: Stack(
+                      alignment: lang == "en"
+                          ? Alignment.bottomRight
+                          : Alignment.bottomLeft,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: mainColorGrey2),
+                              borderRadius: BorderRadius.circular(15),
+                              color: mainColorlightGrey),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 8),
+                            child: Column(
                               children: [
-                                SizedBox(width: getWidth(context, 1),),
-                                Image.asset(
-                                  "assets/images/App-Icon.png",
-                                  height: 50,
-                                ),
-                                Text(
-                                  "Promo Code",
-                                  style: TextStyle(
-                                      color: mainColorWhite, fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    RichText(
-                                      text: new TextSpan(
-                                        style: new TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.black,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        // voucher image
+                                        Image.asset(
+                                          "assets/images/Voucher.png",
+                                          height: getHeight(context, 6),
                                         ),
-                                        children: <TextSpan>[
-                                          new TextSpan(
-                                            text:
-                                                addCommasToPrice(point.price!),
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.green,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: mainFontnormal),
-                                          ),
-                                          new TextSpan(
-                                            text: " " + "Discount".tr,
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: mainColorRed,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: mainFontnormal),
-                                          ),
-                                        ],
-                                      ),
+
+                                        SizedBox(
+                                          width: getWidth(context, 3),
+                                        ),
+
+                                        // Text
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "IQD" + " ",
+                                                  style: new TextStyle(
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorBlack,
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  addCommasToPriceWithoutIQD(
+                                                      point.price!),
+                                                  style: new TextStyle(
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorBlack,
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  " " + "Discont",
+                                                  style: new TextStyle(
+                                                    fontFamily: mainFontbold,
+                                                    color: mainColorBlack,
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              "VALUE".tr +
+                                                  ": " +
+                                                  point.porint.toString() +
+                                                  " " +
+                                                  "Point".tr,
+                                              style: TextStyle(
+                                                  fontFamily: mainFontbold,
+                                                  color: mainColorRed,
+                                                  fontSize: 12),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    Text(
-                                      "VALUE".tr +
-                                          ": " +
-                                          point.porint.toString() +
-                                          " " +
-                                          "Point".tr,
-                                      style: TextStyle(
-                                          fontFamily: mainFontbold,
-                                          color: mainColorBlack,
-                                          fontSize: 12),
-                                    ),
+                                    waiting && id == point.id
+                                        ? Container(
+                                            width: getHeight(context, 5),
+                                            height: getHeight(context, 5),
+                                            child: waitingWiget(context))
+                                        : TextButton(
+                                            style: TextButton.styleFrom(
+                                              fixedSize: Size(
+                                                  getWidth(context, 18),
+                                                  getHeight(context, 1)),
+                                            ),
+                                            onPressed: userdata["point"] <
+                                                        point.porint ||
+                                                    (time != 6 &&
+                                                        id == point.id)
+                                                ? null
+                                                : () {
+                                                    setState(() {
+                                                      waiting = true;
+                                                      id = point.id!;
+                                                    });
+                                                    var data = {
+                                                      "id": userdata["id"],
+                                                      "discount": point.price,
+                                                      "point": point.porint,
+                                                    };
+                                                    Network(false)
+                                                        .postData("buy_voucher",
+                                                            data, context)
+                                                        .then((value) {
+                                                      if (value != "") {
+                                                        if (value["code"] ==
+                                                            "200") {
+                                                          setState(() {
+                                                            productrovider.setvouchers(
+                                                                (value['data']
+                                                                        as List)
+                                                                    .map((x) =>
+                                                                        Voucher.fromMap(
+                                                                            x))
+                                                                    .toList());
+                                                            userdata["point"] =
+                                                                userdata[
+                                                                        "point"] -
+                                                                    point
+                                                                        .porint;
+
+                                                            _startTimer();
+
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .hideCurrentSnackBar();
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  "You buy voucher code ",
+                                                                ),
+                                                              ),
+                                                            );
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            waiting = false;
+                                                          });
+                                                        }
+                                                      } else {
+                                                        setState(() {
+                                                          waiting = false;
+                                                        });
+                                                      }
+                                                    });
+                                                  },
+                                            child: Text(
+                                              time != 6 && id == point.id
+                                                  ? time.toString()
+                                                  : "Buy Now".tr, style: TextStyle(fontSize: 10),
+                                            ),
+                                          ),
                                   ],
                                 ),
-                                waiting && id == point.id
-                                    ? Container(
-                                        width: getHeight(context, 5),
-                                        height: getHeight(context, 5),
-                                        child: waitingWiget(context))
-                                    : TextButton(
-                                        onPressed: userdata["point"] <
-                                                    point.porint ||
-                                                (time != 6 && id == point.id)
-                                            ? null
-                                            : () {
-                                                setState(() {
-                                                  waiting = true;
-                                                  id = point.id!;
-                                                });
-                                                var data = {
-                                                  "id": userdata["id"],
-                                                  "discount": point.price,
-                                                  "point": point.porint,
-                                                };
-                                                Network(false)
-                                                    .postData("buy_voucher",
-                                                        data, context)
-                                                    .then((value) {
-                                                  if (value != "") {
-                                                    if (value["code"] ==
-                                                        "200") {
-                                                      setState(() {
-                                                        productrovider
-                                                            .setvouchers((value[
-                                                                        'data']
-                                                                    as List)
-                                                                .map((x) =>
-                                                                    Voucher
-                                                                        .fromMap(
-                                                                            x))
-                                                                .toList());
-                                                        userdata["point"] =
-                                                            userdata["point"] -
-                                                                point.porint;
-
-                                                        _startTimer();
-
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .hideCurrentSnackBar();
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              "You buy voucher code ",
-                                                            ),
-                                                          ),
-                                                        );
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        waiting = false;
-                                                      });
-                                                    }
-                                                  } else {
-                                                    setState(() {
-                                                      waiting = false;
-                                                    });
-                                                  }
-                                                });
-                                              },
-                                        child: Text(time != 6 && id == point.id
-                                            ? time.toString()
-                                            : "Buy Now".tr))
                               ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   );
                 },
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
