@@ -322,13 +322,17 @@ Widget listItemsSmall(BuildContext context, var data) {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                          SizedBox(height: checkOferPrice(product)
-                                ?0: getHeight(context, 1),),
+                            SizedBox(
+                              height: checkOferPrice(product)
+                                  ? 0
+                                  : getHeight(context, 1),
+                            ),
                             Text(
                               checkOferPrice(product)
-                                  ? addCommasToPriceWithoutIQD(product.price2! > -1
-                                      ? product.price2!
-                                      : product.price!)
+                                  ? addCommasToPriceWithoutIQD(
+                                      product.price2! > -1
+                                          ? product.price2!
+                                          : product.price!)
                                   : addCommasToPrice(product.price2! > -1
                                       ? product.price2!
                                       : product.price!),
@@ -355,7 +359,6 @@ Widget listItemsSmall(BuildContext context, var data) {
                                         fontSize: 12),
                                   )
                                 : const SizedBox(),
-                     
                             Text(
                               maxLines: 1,
                               lang == "en"
@@ -550,8 +553,11 @@ Widget listItemsShow(BuildContext context, var data) {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             SizedBox(height: checkOferPrice(product)
-                                ?0: getHeight(context, 1.5),),
+                            SizedBox(
+                              height: checkOferPrice(product)
+                                  ? 0
+                                  : getHeight(context, 1.5),
+                            ),
                             Text(
                               checkOferPrice(product)
                                   ? (product.price2! > -1
@@ -807,7 +813,6 @@ Widget listitemsBigBrands(BuildContext context, var data) {
 
 // Shimmer of small Brands
 Widget shimerBrandSmall(BuildContext context) {
- 
   return SizedBox(
     height: getHeight(context, 8),
     child: Skeletonizer(
@@ -826,19 +831,16 @@ Widget shimerBrandSmall(BuildContext context) {
           scrollDirection: Axis.horizontal,
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
-          
-
             return GestureDetector(
-              onTap: () {
-                
-              },
+              onTap: () {},
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child:Image.asset("assets/images/flag.png",
+                  child: Image.asset(
+                    "assets/images/flag.png",
                     width: getHeight(context, 6),
                     height: getHeight(context, 6),
                     filterQuality: FilterQuality.low,
@@ -858,15 +860,14 @@ Widget shimerBrandSmall(BuildContext context) {
 
 // Shimmer of big Brands
 Widget shimerBrandBig(BuildContext context) {
-
   return Skeletonizer(
-      effect: ShimmerEffect.raw(colors: [
-        mainColorGrey.withOpacity(0.1),
-        mainColorWhite,
-        // mainColorRed.withOpacity(0.1),
-      ]),
-      enabled: true,
-      child: GridView.builder(
+    effect: ShimmerEffect.raw(colors: [
+      mainColorGrey.withOpacity(0.1),
+      mainColorWhite,
+      // mainColorRed.withOpacity(0.1),
+    ]),
+    enabled: true,
+    child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: getWidth(context, 0.25),
@@ -874,22 +875,20 @@ Widget shimerBrandBig(BuildContext context) {
         scrollDirection: Axis.vertical,
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
-          
-    
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: () { },
+              onTap: () {},
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset("assets/images/flag.png",
+                  child: Image.asset(
+                    "assets/images/flag.png",
                     width: getHeight(context, 6),
                     height: getHeight(context, 6),
-                  
                     fit: BoxFit.fill,
                   ),
                   //     Image.asset(
@@ -903,7 +902,6 @@ Widget shimerBrandBig(BuildContext context) {
         }),
   );
 }
-
 
 // here we check for internet availability
 Future<bool> checkInternet(BuildContext context) async {

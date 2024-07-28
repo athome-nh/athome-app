@@ -306,6 +306,7 @@ class _newhomePageState extends State<newhomePage> {
                     Visibility(
                       visible: productrovider.show,
                       replacement: Skeletonizer(
+                        enabled: true,
                         effect: ShimmerEffect.raw(colors: [
                           mainColorGrey.withOpacity(0.1),
                           mainColorWhite,
@@ -340,11 +341,8 @@ class _newhomePageState extends State<newhomePage> {
                                     controller: _pageController,
                                     onPageChanged: (int page) {},
                                     scrollDirection: Axis.vertical,
-                                    itemCount: productrovider.categores.length,
+                                    itemCount: 10,
                                     itemBuilder: (context, index) {
-                                      final category =
-                                          productrovider.categores[index];
-
                                       return GestureDetector(
                                         onTap: () {},
                                         child: Padding(
@@ -486,17 +484,8 @@ class _newhomePageState extends State<newhomePage> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8),
-                                      child: CachedNetworkImage(
-                                        imageUrl: dotenv
-                                                .env['imageUrlServer']! +
-                                            productrovider.categores[2].img!,
-                                        placeholder: (context, url) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        errorWidget: (context, url, error) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        filterQuality: FilterQuality.low,
+                                      child: Image.asset(
+                                        "assets/images/meat.png",
                                         width: getHeight(context, 7),
                                         height: getHeight(context, 7),
                                       ),
@@ -504,17 +493,8 @@ class _newhomePageState extends State<newhomePage> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8),
-                                      child: CachedNetworkImage(
-                                        imageUrl: dotenv
-                                                .env['imageUrlServer']! +
-                                            productrovider.categores[3].img!,
-                                        placeholder: (context, url) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        errorWidget: (context, url, error) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        filterQuality: FilterQuality.low,
+                                      child: Image.asset(
+                                        "assets/images/baby.png",
                                         width: getHeight(context, 7),
                                         height: getHeight(context, 7),
                                       ),
@@ -522,17 +502,8 @@ class _newhomePageState extends State<newhomePage> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8),
-                                      child: CachedNetworkImage(
-                                        imageUrl: dotenv
-                                                .env['imageUrlServer']! +
-                                            productrovider.categores[4].img!,
-                                        placeholder: (context, url) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        errorWidget: (context, url, error) =>
-                                            Image.asset(
-                                                "assets/images/Logo-Type-2.png"),
-                                        filterQuality: FilterQuality.low,
+                                      child: Image.asset(
+                                        "assets/images/care.png",
                                         width: getHeight(context, 7),
                                         height: getHeight(context, 7),
                                       ),
@@ -586,7 +557,6 @@ class _newhomePageState extends State<newhomePage> {
                                   itemBuilder: (context, index) {
                                     final category =
                                         productrovider.categores[index];
-
                                     return GestureDetector(
                                       onTap: () {
                                         productrovider
@@ -730,6 +700,7 @@ class _newhomePageState extends State<newhomePage> {
                         ],
                       ),
                     ),
+
                     SizedBox(
                       height: getHeight(context, 2),
                     ),
