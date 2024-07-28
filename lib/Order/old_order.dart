@@ -341,7 +341,8 @@ class _OldOrderState extends State<OldOrder> {
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-                          vouchernow["discount_amount"] == 0
+                          vouchernow["discount_amount"] == 0 &&
+                                  order.status != 5
                               ? SizedBox()
                               : Padding(
                                   padding: EdgeInsets.symmetric(
