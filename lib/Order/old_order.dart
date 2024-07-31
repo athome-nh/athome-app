@@ -218,8 +218,12 @@ class _OldOrderState extends State<OldOrder> {
               bottomNavigationBar: (productrovider.productitems.isEmpty)
                   ? Center(child: waitingWiget(context))
                   : Container(
-                      height: getHeight(context,
-                          vouchernow["discount_amount"] == 0 ? 30 : 35),
+                      height: getHeight(
+                          context,
+                          vouchernow["discount_amount"] == 0 ||
+                                  order.status! > 5
+                              ? 30
+                              : 35),
                       decoration: BoxDecoration(
                         color: mainColorWhite,
                         // borderRadius: const BorderRadius.only(
@@ -275,7 +279,8 @@ class _OldOrderState extends State<OldOrder> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  order.createdAt.toString().substring(0, 16),
+                                  convertToBaghdadTime(
+                                      order.createdAt.toString()),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontnormal,
@@ -341,8 +346,8 @@ class _OldOrderState extends State<OldOrder> {
                           SizedBox(
                             height: getHeight(context, 1),
                           ),
-                          vouchernow["discount_amount"] == 0 &&
-                                  order.status != 5
+                          vouchernow["discount_amount"] == 0 ||
+                                  order.status! > 5
                               ? SizedBox()
                               : Padding(
                                   padding: EdgeInsets.symmetric(
@@ -371,7 +376,8 @@ class _OldOrderState extends State<OldOrder> {
                                     ],
                                   ),
                                 ),
-                          vouchernow["discount_amount"] == 0
+                          vouchernow["discount_amount"] == 0 ||
+                                  order.status! > 5
                               ? SizedBox()
                               : SizedBox(
                                   height: getHeight(context, 1),
@@ -426,19 +432,10 @@ class _OldOrderState extends State<OldOrder> {
                                 ),
                                 Text(
                                   textAlign: TextAlign.end,
-                                  widget.ongoing
-                                      ? addCommasToPrice(
-                                          order.returnTotalPrice! -
-                                              int.parse(
-                                                  vouchernow["discount_amount"]
-                                                      .toString()) +
-                                              order.deliveryCost!)
-                                      : addCommasToPrice(
-                                          order.returnTotalPrice! -
-                                              int.parse(
-                                                  vouchernow["discount_amount"]
-                                                      .toString()) +
-                                              order.deliveryCost!),
+                                  addCommasToPrice(order.returnTotalPrice! -
+                                      int.parse(vouchernow["discount_amount"]
+                                          .toString()) +
+                                      order.deliveryCost!),
                                   style: TextStyle(
                                       color: mainColorBlack,
                                       fontFamily: mainFontbold,

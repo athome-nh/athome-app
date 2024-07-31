@@ -9,6 +9,7 @@ import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
@@ -91,15 +92,6 @@ bool checkProductStock(ProductModel product, int i) {
 
 bool checkProductLimit(ProductModel product, int i) {
   return checkOferPrice(product) && product.orderLimit == i;
-}
-
-String formatDate(DateTime date) {
-  // Create a DateFormat object with the desired format
-  DateFormat formatter =
-      lang == "en" ? DateFormat('MMMdd') : DateFormat('MM/dd');
-
-  // Format the date and return the string
-  return formatter.format(date);
 }
 
 //// Cut text length according to the parameter
@@ -274,6 +266,25 @@ String addCommasToPriceWithoutIQD(int price) {
   } else {
     return '$integerWithCommas.${parts[1]}';
   }
+}
+
+String convertToBaghdadTime(String utcTimeString) {
+  // Parse the UTC time string
+  DateTime utcDateTime = DateTime.parse(utcTimeString);
+
+  // Define the Baghdad timezone
+  String baghdadTimeZone = 'Asia/Baghdad';
+
+  // Get the current time zone offset for Baghdad
+  var baghdadTimeZoneOffset = Duration(hours: 3); // Baghdad is UTC+3
+
+  // Apply the time zone offset to the UTC time
+  DateTime baghdadDateTime = utcDateTime.add(baghdadTimeZoneOffset);
+
+  // Format the datetime in a human-readable format
+  DateFormat formatter =
+      lang == "en" ? DateFormat('MMM/dd-HH:mm') : DateFormat('MM/dd-HH:mm');
+  return formatter.format(baghdadDateTime);
 }
 
 String calculatePercentageDiscount(

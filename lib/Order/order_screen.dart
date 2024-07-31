@@ -170,9 +170,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                           ),
                                           subtitle: Text(
                                             "Date:".tr +
-                                                order.createdAt
-                                                    .toString()
-                                                    .substring(0, 16),
+                                                convertToBaghdadTime(
+                                                    order.createdAt.toString()),
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 fontFamily: mainFontnormal,
@@ -556,8 +555,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     ),
                                                     Text(
                                                       "Date:" +
-                                                          formatDate(
-                                                              order.createdAt!),
+                                                          convertToBaghdadTime(
+                                                              order.createdAt
+                                                                  .toString()),
                                                       style: TextStyle(
                                                           fontSize: 11,
                                                           fontFamily:

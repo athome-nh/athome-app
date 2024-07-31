@@ -172,8 +172,7 @@ class ActiveTab extends StatelessWidget {
                                 ),
                                 Text(
                                   "Date:" +
-                                      formatDate(
-                                          DateTime.parse(voucher.expireDate!)),
+                                      convertToBaghdadTime(voucher.expireDate!),
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -338,8 +337,7 @@ class UsedTab extends StatelessWidget {
                                 ),
                                 Text(
                                   "Date:" +
-                                      formatDate(
-                                          DateTime.parse(voucher.expireDate!)),
+                                      convertToBaghdadTime(voucher.expireDate!),
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -496,8 +494,7 @@ class ExpiredTab extends StatelessWidget {
                                 ),
                                 Text(
                                   "Date:" +
-                                      formatDate(
-                                          DateTime.parse(voucher.expireDate!)),
+                                      convertToBaghdadTime(voucher.expireDate!),
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
