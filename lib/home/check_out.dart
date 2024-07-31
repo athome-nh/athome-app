@@ -1636,7 +1636,6 @@ class _CheckOutState extends State<CheckOut> {
                       Network(false)
                           .postData("order", data2, context)
                           .then((value) {
-                        print(value);
                         if (value != "") {
                           if (value["code"] == "201") {
                             setState(() {

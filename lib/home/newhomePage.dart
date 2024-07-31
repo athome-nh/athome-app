@@ -872,11 +872,18 @@ class _newhomePageState extends State<newhomePage> {
                                         ),
                                       ),
                                       Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Image.asset(
                                             "assets/images/star.png",
                                             width: getWidth(context, 7),
                                             height: getWidth(context, 7),
+                                          ),
+                                          SizedBox(
+                                            width: 4,
                                           ),
                                           Text(
                                             (userdata["point"] ?? "0")
