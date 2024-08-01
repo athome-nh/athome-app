@@ -308,15 +308,15 @@ const Map<String, String> ar = {
   "Get Start": "ابدأ",
 
   // Landing --> disableaccount
-  "account is disabled": "",
+  "account is disabled": "تم تعطيل الحساب",
 
   // Landing --> login_page
   "Wellcome back": "مرحبا بك",
-  "EnterYourPhoneNumberToShop": "ادخل رقم هاتفك للتسوق بشكل أكثر ذكاء وأسهل",
+  "EnterYourPhoneNumberToShop": "أدخل رقم هاتفك لبدء تجربتك الجديدة",
   "Please enter your phone number": "یرجی ادخال رقم الهاتف",
-  "Please enter your phone number correct": "یرجی ادخال رقم الهاتفك بشكل صحیح",
+  "Please enter your phone number correct": "رقم الهاتف غير صحيح",
   "Phone Number": "رقم الهاتف",
-  "By continuing, you agree to get Dlly Las's Privacy Policy": "من خلال المتابعة، فإنك توافق على الحصول على سياسة الخصوصية الخاصة بـ Dlly Las",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "من خلال المتابعة، فإنك توافق على سياسة الخصوصية الخاصة بـ Dlly Las",
   "WeWillSendYouOTP": "سنرسل لك رمز التحقق",
   "Account Pendding": "...انتظر",
   "Account npt approved by admin yet": "عزيزي المشترك، سوف تحصل على موافقة المشرف قريبا. للاستفسار الاتصال على (07509583333)",
@@ -347,12 +347,16 @@ const Map<String, String> ar = {
   "Verify": "التحقق",
 
   // Landing --> welcome_screen
-  "wst01": "تسوق بذکاء و سهولة",
-  "wsd01": "تطبيق مبتكر لتحسين تجربتة تسوقك من خلال الانترنت",
-  "wst02": "تعلم من الأفضل",
-  "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
+  "wst01": "تسوق بطريقة أذكى وأسهل",
+  "wsd01": "منصة مبتكرة مصممة لتعزيز تجربة التسوق عبر الإنترنت",
+  //// "wst02": "تعلم من الأفضل",
+  "wst02": "تم انشاؤه‌ من قبل الأفضل",
+  //// "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
+  "wsd02": "لقد اخترنا الأفضل في كردستان العراق لنجعل التسوق الخاص بك سهلاً وممتعا",
   "wst03": "توصیل سریع",
-  "wsd03": "سنصل الیك أینما ما كنت",
+  //// "wsd03": "سنصل الیك أینما ما كنت",
+  "wsd03": "سنصل إليك أينما كنت بأسرع طريقة ممكنة",
+  "Start": "ابدأ",
 
   // map --> locationdeatil
   "House": "منزل",

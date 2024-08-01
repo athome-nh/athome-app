@@ -95,8 +95,16 @@ class WelcomeScreenState extends State<WelcomeScreen>
                                 builder: (context) => NavSwitch()),
                           );
                         },
-                        child: Text(
-                          "Get Start".tr,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 2),
+                          child: Text(
+                            "Start".tr,
+                            style: TextStyle(
+                                fontFamily: mainFontbold,
+                                fontSize: 18,
+                                color: mainColorWhite,
+                                ),
+                          ),
                         ),
                       ),
                     ),

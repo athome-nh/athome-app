@@ -236,13 +236,12 @@ Widget listItemsBigShimer(BuildContext context) {
   );
 }
 
-Widget listItemsSmall(BuildContext context, var data) {
+Widget listItemsSmall(BuildContext context, var data, bool discount) {
   final productrovider = Provider.of<productProvider>(context, listen: true);
   final cartProvider = Provider.of<CartProvider>(context, listen: true);
 
   return SizedBox(
-    height: getHeight(context, 20),
-
+    height: discount ? getHeight(context, 22) : getHeight(context, 21),
     //  decoration: BoxDecoration(border: Border.all()),
     child: Visibility(
       visible: productrovider.show,
@@ -274,6 +273,7 @@ Widget listItemsSmall(BuildContext context, var data) {
                   padding: EdgeInsets.all(getWidth(context, 1)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
                         child: GestureDetector(
@@ -391,78 +391,78 @@ Widget listItemsSmall(BuildContext context, var data) {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.all(0),
-                  child: AnimatedContainer(
-                    padding: EdgeInsets.all(4),
-                    width: isItemInCart ? 110 : 30,
-                    height: 30,
-                    duration: Duration(milliseconds: 400),
-                    decoration: isItemInCart
-                        ? BoxDecoration(
-                            color: mainColorGrey,
-                            borderRadius: BorderRadius.all(Radius.circular(10)))
-                        : BoxDecoration(
-                            color: mainColorGrey,
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(15),
-                                bottomLeft: Radius.circular(15))),
-                    child: isItemInCart
-                        ? FlipInX(
-                            delay: const Duration(milliseconds: 300),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    final cartItem =
-                                        CartItem(product: product.id!);
-                                    cartProvider.removeFromCart(cartItem);
-                                  },
-                                  child: Icon(Icons.remove,
-                                      color: mainColorWhite,
-                                      size: getHeight(context, 2.5)),
-                                ),
-                                Text(
-                                  count.toString(),
-                                  style: TextStyle(
-                                    fontSize: 13,
+                padding: EdgeInsets.all(0),
+                child: AnimatedContainer(
+                  padding: EdgeInsets.all(4),
+                  width: isItemInCart ? 110 : 30,
+                  height: 30,
+                  duration: Duration(milliseconds: 400),
+                  decoration: isItemInCart
+                      ? BoxDecoration(
+                          color: mainColorGrey,
+                          borderRadius: BorderRadius.all(Radius.circular(10)))
+                      : BoxDecoration(
+                          color: mainColorGrey,
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15))),
+                  child: isItemInCart
+                      ? FlipInX(
+                          delay: const Duration(milliseconds: 300),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  final cartItem =
+                                      CartItem(product: product.id!);
+                                  cartProvider.removeFromCart(cartItem);
+                                },
+                                child: Icon(Icons.remove,
                                     color: mainColorWhite,
-                                  ),
+                                    size: getHeight(context, 2.5)),
+                              ),
+                              Text(
+                                count.toString(),
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: mainColorWhite,
                                 ),
-                                GestureDetector(
-                                  onTap: checkProductStock(product, count) ||
-                                          checkProductLimit(product, count)
-                                      ? null
-                                      : () {
-                                          final cartItem =
-                                              CartItem(product: product.id!);
-                                          cartProvider.addToCart(cartItem);
-                                        },
-                                  child: Icon(LineIcons.plus,
-                                      color: checkProductStock(
-                                                  product, count) ||
-                                              checkProductLimit(product, count)
-                                          ? mainColorWhite.withOpacity(0.3)
-                                          : mainColorWhite,
-                                      size: getHeight(context, 2.5)),
-                                ),
-                              ],
-                            ),
-                          )
-                        : GestureDetector(
-                            onTap: () {
-                              if (!isLogin) {
-                                loiginPopup(context);
-                                return;
-                              }
-                              final cartItem = CartItem(product: product.id!);
-                              cartProvider.addToCart(cartItem);
-                            },
-                            child: Icon(LineIcons.plus,
-                                color: mainColorWhite,
-                                size: getHeight(context, 2.5)),
+                              ),
+                              GestureDetector(
+                                onTap: checkProductStock(product, count) ||
+                                        checkProductLimit(product, count)
+                                    ? null
+                                    : () {
+                                        final cartItem =
+                                            CartItem(product: product.id!);
+                                        cartProvider.addToCart(cartItem);
+                                      },
+                                child: Icon(LineIcons.plus,
+                                    color: checkProductStock(product, count) ||
+                                            checkProductLimit(product, count)
+                                        ? mainColorWhite.withOpacity(0.3)
+                                        : mainColorWhite,
+                                    size: getHeight(context, 2.5)),
+                              ),
+                            ],
                           ),
-                  ))
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            if (!isLogin) {
+                              loiginPopup(context);
+                              return;
+                            }
+                            final cartItem = CartItem(product: product.id!);
+                            cartProvider.addToCart(cartItem);
+                          },
+                          child: Icon(LineIcons.plus,
+                              color: mainColorWhite,
+                              size: getHeight(context, 2.5)),
+                        ),
+                ),
+              ),
             ],
           );
         },
@@ -482,7 +482,7 @@ Widget listItemsShow(BuildContext context, var data) {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 15,
-        childAspectRatio: getWidth(context, 0.240),
+        childAspectRatio: getWidth(context, 0.23),
       ),
       itemCount: data.length,
       itemBuilder: (BuildContext context, int index) {
@@ -505,6 +505,7 @@ Widget listItemsShow(BuildContext context, var data) {
                   padding: EdgeInsets.all(getWidth(context, 2)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
                         child: GestureDetector(
@@ -622,78 +623,78 @@ Widget listItemsShow(BuildContext context, var data) {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.all(0),
-                  child: AnimatedContainer(
-                    padding: EdgeInsets.all(4),
-                    width: isItemInCart ? 140 : 35,
-                    height: 35,
-                    duration: Duration(milliseconds: 400),
-                    decoration: isItemInCart
-                        ? BoxDecoration(
-                            color: mainColorGrey,
-                            borderRadius: BorderRadius.all(Radius.circular(10)))
-                        : BoxDecoration(
-                            color: mainColorGrey,
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(15),
-                                bottomLeft: Radius.circular(15))),
-                    child: isItemInCart
-                        ? FlipInX(
-                            delay: const Duration(milliseconds: 300),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    final cartItem =
-                                        CartItem(product: product.id!);
-                                    cartProvider.removeFromCart(cartItem);
-                                  },
-                                  child: Icon(Icons.remove,
-                                      color: mainColorWhite,
-                                      size: getHeight(context, 2.5)),
-                                ),
-                                Text(
-                                  count.toString(),
-                                  style: TextStyle(
-                                    fontSize: 15,
+                padding: EdgeInsets.all(0),
+                child: AnimatedContainer(
+                  padding: EdgeInsets.all(4),
+                  width: isItemInCart ? 140 : 35,
+                  height: 35,
+                  duration: Duration(milliseconds: 400),
+                  decoration: isItemInCart
+                      ? BoxDecoration(
+                          color: mainColorGrey,
+                          borderRadius: BorderRadius.all(Radius.circular(10)))
+                      : BoxDecoration(
+                          color: mainColorGrey,
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15))),
+                  child: isItemInCart
+                      ? FlipInX(
+                          delay: const Duration(milliseconds: 300),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  final cartItem =
+                                      CartItem(product: product.id!);
+                                  cartProvider.removeFromCart(cartItem);
+                                },
+                                child: Icon(Icons.remove,
                                     color: mainColorWhite,
-                                  ),
+                                    size: getHeight(context, 2.5)),
+                              ),
+                              Text(
+                                count.toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: mainColorWhite,
                                 ),
-                                GestureDetector(
-                                  onTap: checkProductStock(product, count) ||
-                                          checkProductLimit(product, count)
-                                      ? null
-                                      : () {
-                                          final cartItem =
-                                              CartItem(product: product.id!);
-                                          cartProvider.addToCart(cartItem);
-                                        },
-                                  child: Icon(LineIcons.plus,
-                                      color: checkProductStock(
-                                                  product, count) ||
-                                              checkProductLimit(product, count)
-                                          ? mainColorWhite.withOpacity(0.3)
-                                          : mainColorWhite,
-                                      size: getHeight(context, 2.5)),
-                                ),
-                              ],
-                            ),
-                          )
-                        : GestureDetector(
-                            onTap: () {
-                              if (!isLogin) {
-                                loiginPopup(context);
-                                return;
-                              }
-                              final cartItem = CartItem(product: product.id!);
-                              cartProvider.addToCart(cartItem);
-                            },
-                            child: Icon(LineIcons.plus,
-                                color: mainColorWhite,
-                                size: getHeight(context, 2.5)),
+                              ),
+                              GestureDetector(
+                                onTap: checkProductStock(product, count) ||
+                                        checkProductLimit(product, count)
+                                    ? null
+                                    : () {
+                                        final cartItem =
+                                            CartItem(product: product.id!);
+                                        cartProvider.addToCart(cartItem);
+                                      },
+                                child: Icon(LineIcons.plus,
+                                    color: checkProductStock(product, count) ||
+                                            checkProductLimit(product, count)
+                                        ? mainColorWhite.withOpacity(0.3)
+                                        : mainColorWhite,
+                                    size: getHeight(context, 2.5)),
+                              ),
+                            ],
                           ),
-                  ))
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            if (!isLogin) {
+                              loiginPopup(context);
+                              return;
+                            }
+                            final cartItem = CartItem(product: product.id!);
+                            cartProvider.addToCart(cartItem);
+                          },
+                          child: Icon(LineIcons.plus,
+                              color: mainColorWhite,
+                              size: getHeight(context, 2.5)),
+                        ),
+                ),
+              ),
             ],
           ),
         );

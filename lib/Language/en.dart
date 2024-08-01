@@ -301,19 +301,19 @@ const Map<String, String> en = {
   "No, Cancel order": "Cancel order",
   "Back to Home": "Back to Home",
 
-  // Landing --> choose_lan
-  "Get Start": "Get Start", // login_page, welcome_screen
+  // Landing --> choose_lan ----> Done
+  "Get Start": "Get Started", // login_page, welcome_screen
 
-  // Landing --> disableaccount
+  // Landing --> disableaccount ----> Done
   "account is disabled": "account is disabled",
 
-  // Landing --> login_page
+  // Landing --> login_page ----> Done
   "Wellcome back": "Welcome back",
-  "EnterYourPhoneNumberToShop": "Enter your phone number to Shop Smarter & Easier.",
-  "Please enter your phone number": "Please enter your phone number",
-  "Please enter your phone number correct": "accurate phone number needed",
+  "EnterYourPhoneNumberToShop": "Enter your phone number to begin your new experience",
+  "Please enter your phone number": "Enter your phone number",
+  "Please enter your phone number correct": "Incorrect phone number",
   "Phone Number": "Phone Number",
-  "By continuing, you agree to get Dlly Las's Privacy Policy": "By continuing, you agree to get Dlly Las's Privacy Policy",
+  "By continuing, you agree to get Dlly Las's Privacy Policy": "By continuing, you agree to Dlly Las's Privacy Policy",
   "WeWillSendYouOTP": "We will send you OTP code to verify your phone number.",
   "Account Pendding": "Wait...", // singin_up
   "Account npt approved by admin yet": "Dear subscriber, Admin approval coming soon. For questions call (0750 958 3333)", // signin_up
@@ -342,13 +342,17 @@ const Map<String, String> en = {
   "Please enter code": "Please enter verification code",
   "Verify": "Verify",
 
-  // Landing --> welcome_screen
+  // Landing --> welcome_screen  ----> Done
   "wst01": "Shop Smarter & Easier",
   "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
-  "wst02": "Learn From the Best",
-  "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  //// "wst02": "Learn From the Best",
+  "wst02": "Developed by the best",
+  //// "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
+  "wsd02": "We selected the best in Kurdistan Iraq to make your shopping easy and fun",
   "wst03": "Fast Delevery",
-  "wsd03": "we will reach you wherever you are",
+  //// "wsd03": "We will reach you wherever you are",
+  "wsd03": "We will reach you wherever you are the quickest way possible",
+  "Start": "Start",
 
   // map --> locationdeatil
   "House": "House",

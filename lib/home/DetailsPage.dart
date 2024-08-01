@@ -574,7 +574,7 @@ class DetailsPage extends StatelessWidget {
                 listItemsSmall(
                     context,
                     productrovider.getProductsBySubCategory2(
-                        Item.subCategoryId!, Item.id!)),
+                        Item.subCategoryId!, Item.id!),false),
               ],
             ),
           ),

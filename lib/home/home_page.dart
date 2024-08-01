@@ -909,7 +909,8 @@ class _HomeSreenState extends State<HomeSreen> {
                                     context,
                                     productrovider.getProductsByIds2(
                                       productrovider.listOrderProductIds(),
-                                    ),
+                                    )
+                                    ,false
                                   ),
                                 ],
                               )
@@ -966,7 +967,7 @@ class _HomeSreenState extends State<HomeSreen> {
 
                                   listItemsSmall(
                                     context,
-                                    productrovider.getProductsByDiscount(),
+                                    productrovider.getProductsByDiscount(),true
                                   ),
                                 ],
                               )
@@ -1017,7 +1018,7 @@ class _HomeSreenState extends State<HomeSreen> {
 
                         listItemsSmall(
                           context,
-                          productrovider.getProductsByHighlight(),
+                          productrovider.getProductsByHighlight(),false
                         ),
 
                         // Space
@@ -1070,7 +1071,7 @@ class _HomeSreenState extends State<HomeSreen> {
                         ),
 
                         listItemsSmall(
-                            context, productrovider.getProductsByBestsell()),
+                            context, productrovider.getProductsByBestsell(),false),
 
                         // Space
                         SizedBox(

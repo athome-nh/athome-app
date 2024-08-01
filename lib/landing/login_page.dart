@@ -11,6 +11,7 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class RegisterWithPhoneNumber extends StatefulWidget {
   const RegisterWithPhoneNumber({Key? key}) : super(key: key);
+  
 
   @override
   RegisterWithPhoneNumberState createState() => RegisterWithPhoneNumberState();
@@ -35,6 +36,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
 
   bool _isLoading = false;
   int max = 11;
+
   @override
   Widget build(BuildContext context) {
     return Directionality(

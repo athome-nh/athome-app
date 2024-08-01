@@ -901,6 +901,7 @@ class _newhomePageState extends State<newhomePage> {
                                   Image.asset(
                                     "assets/images/gobuy.png",
                                     width: getWidth(context, 45),
+                                    height: getHeight(context, 6),
                                   )
                                 ],
                               ),
@@ -990,7 +991,7 @@ class _newhomePageState extends State<newhomePage> {
                                 context,
                                 productrovider.getProductsByIds2(
                                   productrovider.listOrderProductIds(),
-                                ),
+                                ),false
                               ),
                             ],
                           )
@@ -1040,7 +1041,7 @@ class _newhomePageState extends State<newhomePage> {
                               ),
                               listItemsSmall(
                                 context,
-                                productrovider.getProductsByDiscount(),
+                                productrovider.getProductsByDiscount(),true
                               ),
                             ],
                           )
@@ -1085,7 +1086,7 @@ class _newhomePageState extends State<newhomePage> {
                     ),
                     listItemsSmall(
                       context,
-                      productrovider.getProductsByHighlight(),
+                      productrovider.getProductsByHighlight(),false
                     ),
                     SizedBox(
                       height: getHeight(context, 1),
@@ -1173,7 +1174,7 @@ class _newhomePageState extends State<newhomePage> {
                     ),
 
                     listItemsSmall(
-                        context, productrovider.getProductsByBestsell()),
+                        context, productrovider.getProductsByBestsell(),false),
 
                     // Space
                     SizedBox(
