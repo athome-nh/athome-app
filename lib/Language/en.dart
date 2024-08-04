@@ -1,5 +1,5 @@
 const Map<String, String> en = {
-  // Account --> about_screen
+  // Account --> about_screen ----> Done
   "About Us": "About Us",
   "AboutTextOne":
       "Welcome to the Dlly Las online market application! We're here to provide you with a convenient and efficient way to shop for your groceries and have them delivered right to your doorstep. Our platform is designed to enhance your shopping experience and make grocery shopping hassle-free. Here's a brief overview of what our application offers",
@@ -322,7 +322,7 @@ const Map<String, String> en = {
   "Account range out": "Sorry....",
   "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
   
-  // Landing --> singin_up
+  // Landing --> singin_up ----> Done
   "Complete Account": "Personal Information",
   "Enter your account information to complete your account": "Please enter the required information for registration",
   "Enter your Name": "Enter your Name",
@@ -332,10 +332,10 @@ const Map<String, String> en = {
   "please, Enter the number only": "please, Enter the number only", // singin_up
   "City": "City", // singin_up
 
-  // Landing --> verification
+  // Landing --> verification ----> Done
   "Verification": "Verification",
   "Please enter the 6 digit code sent to": "Please enter the 6 digit code sent to",
-  "Don't resive the OTP ?": "Didn't receive the OTP ?",
+  "Don't resive the OTP ?": "? Didn't receive the OTP",
   "Hold till the waiting time ends": "Hold till the waiting time ends",
   "Try again in": "Try again in ",
   "Resend": "Resend",
