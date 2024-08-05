@@ -296,7 +296,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                       items: <String>[
                                         'Select Bug',
                                         'account',
-                                        'order',
+                                        'orderi',
                                         'delivery',
                                         'other'
                                       ].map<DropdownMenuItem<String>>(

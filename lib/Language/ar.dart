@@ -18,32 +18,29 @@ const Map<String, String> ar = {
   "AboutTextEight":
       "نشكركم على اختياركم تطبيق دلي لاس لتلبية طلباتكم. نتطلع إلى خدمتكم وجعل تجربة التسوق الخاصة بك مريحة وممتعة وخالية من التوتر. تسوق سعيد!",
 
-  // Account --> account_info
-  "Cancel": "الغاء",
-  "Edit": " ",
-  "Name": "الأسم",
-  "Enter Your Name": " ",
-  "Enter Your Full Name": " ",
-  "Age": "عمر",
-  "Enter your age": "ادخال العمر",
-  "please, Enter the number only": "يُرجى إدخال الرقم فقط",
-  "Gender": "جنس",
-  "Phone": " ",
-  "City": "مدينة",
-  "Save": "حفظ",
+  // Account --> account_info2
+  "Male": "ذكر", // singin_up
+  "Female": "أنثى", //singin_up
+  "Erbil": "اربيل", // singin_up
+  "Enter Your Name": "أدخل أسمك",
+  "Enter your age": "أدخل عمرك", // singin_up
+  "Save": "حفظ", // locationdeatil
+  "Cancel": "الغاء", // feedback, locationdeatil, my_widget, my_cart
+  "back": "رجوع",
+  "Edit": "حرر",
 
   // Account --> account_setting
-  "Account Settings": "",
-  "Setting": "",
-  "Notification Setting": "",
+  "Account Settings": "إعدادت الحساب",
+  "Setting": "الإعدادات",
+  "Notification Setting": "إعداد الإشعارات",
   "Language": "اللغة",
-  "Support": "",
-  "Help center": "",
+  "Support": "دعم",
+  "Help center": "مركز المساعدة",
   "About us": "حول التطبیق",
-  "Guide": "",
-  "Feedback": "",
+  "Guide": "ارشادات",
+  "Feedback": "آرائكم",
   "Delete Account": "حذف الحساب",
-  "Select Language": "",
+  "Select Language": "اختیار اللغة",
   "English": "إنجليزي",
   "Arabic": "العربية",
   "Kurdish": "كردي",
@@ -79,7 +76,6 @@ const Map<String, String> ar = {
   "Answer_FAQ_9": "",
   "Answer_FAQ_10": "",
   "Answer_FAQ_11": "",
-  "Search": "البحث",
   "Title_Update_1": "",
   "Title_Update_2": "",
   "Title_Update_3": "",
@@ -97,18 +93,18 @@ const Map<String, String> ar = {
   "Date": "",
 
   // Account --> chatscreen
-  "Select Bug": "",
-  "Customer Support": "",
-  "Customer Support Form": "",
-  "Enter your account information to contact for chat suport": "",
-  "Issue Bug": "",
-  "Please Select Bug": "",
-  "Please Select Language": "",
-  "Short Description": "",
-  "Add  Description": "",
-  "Please enter a Description": "",
-  "Start Conversion": "",
-  "Type a message": "",
+  "Select Bug": "حدد القسم",
+  "Customer Support": "دعم العملاء",
+  "Customer Support Form": "نموذج دعم العملاء",
+  "Enter your account information to contact for chat suport": "حدد القسم الذي تواجه فيه مشكلة مع وصف مختصر للمشكلة",
+  "Issue Bug": "الأقسام",
+  "Please Select Bug": "الرجاء اختيار القسم",
+  "Please Select Language": "الرجاء اختيار اللغة",
+  "Short Description": "وصف الحالة",
+  "Add  Description": "اضف وصفا قصیرا",
+  "Please enter a Description": "الرجاء إدخال وصف  للحالة",
+  "Start Conversion": "ابدأ المحادثة",
+  "Type a message": "اكتب رسالة",
   "Last week": "الأسبوع الماضي",
   "days ago": "منذ أيام",
   "Yesterday": "الأمس",
@@ -118,6 +114,10 @@ const Map<String, String> ar = {
   "1 minute ago": "قبل دقيقة واحدة",
   "seconds ago": "منذ ثوان",
   "Just now": "الآن",
+  "account": "الحساب",
+  "orderi": "الطلبیة",
+  "delivery": "توصيل",
+  "other": "أخری",
 
   // Account --> feedback
   "Poor": "",
@@ -288,6 +288,7 @@ const Map<String, String> ar = {
 
   // home --> search_page
   "Not found any item": "لم یتم العثور علی أي منتج",
+  "Search": "البحث",
 
   // home --> successScreen
   "Ordered successfully": "تم الطلب بنجاح",
@@ -330,11 +331,8 @@ const Map<String, String> ar = {
   "Complete Account": "معلومات شخصية",
   "Enter your account information to complete your account": "یرجی إدخال المعلومات المطلوبة للتسجيل",
   "Enter your Name": "ادخال الاسم",
-  "Enter your full name": "یرجی الادخال الاسم الکامل",
+  "Enter your full name": "یرجی ادخال الاسم الکامل",
   "Confirm": "تثبيت",
-  "Male": "ذكر",
-  "Female": "أنثى",
-  "Erbil": "اربيل",
 
   // Landing --> verification
   "Verification": "التحقق",

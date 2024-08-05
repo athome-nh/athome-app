@@ -322,7 +322,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
         textFields(Ionicons.person_outline, 'Enter Your Name', nameController,
             userdata["name"]),
         SizedBox(height: getHeight(context, 2)),
-        textFields(Ionicons.calendar_outline, 'Enter Your Age', ageController,
+        textFields(Ionicons.calendar_outline, 'Enter your age', ageController,
             userdata["age"].toString()),
         SizedBox(height: getHeight(context, 2)),
         dropdownField(Ionicons.male_female_outline, 'Select Gender',

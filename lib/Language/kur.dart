@@ -18,32 +18,29 @@ const Map<String, String> kur = {
   "AboutTextEight":
       "سوپاس بۆ هەڵبژاردنی ئەپڵیکەیشنی دڵی لاس بۆ دابینکردنی پێداویستیەکانتان.بەردەوامبدەبین لە پێشکەشکردنی خزمەتگوزاری زیاتر بۆ ئەوەی ئەزمونی بازاریکردنەکانتان ئارامتر و چێژبەخشتربێت.",
 
-  // Account --> account_info
-  "Cancel": "پوچەڵ کردنەوە",
+  // Account --> account_info2
+  "Male": "نێر", // singin_up
+  "Female": "مێ", //singin_up
+  "Erbil": "هه‌ولێر", // singin_up
+  "Enter Your Name": "ناوی خۆت تۆمار بکە",
+  "Enter your age": "تەمەنی خۆت بنووسە", // singin_up
+  "Save": "هه‌ڵگرتن", // locationdeatil
+  "Cancel": "پوچەڵ کردنەوە", // feedback, locationdeatil, my_widget, my_cart
+  "back": "گەڕانەوە",
   "Edit": "ڕێکخستن",
-  "Name": "ناو",
-  "Enter Your Name": " ",
-  "Enter Your Full Name": " ",
-  "Age": "تەمەن",
-  "Enter your age": "تەمەنت تۆمار بکە",
-  "please, Enter the number only": "تکایە بەس ژمارە داخل بکە",
-  "Gender": "ڕەگەز",
-  "Phone": " ",
-  "City": "شار",
-  "Save": "زەخیرە کردن",
 
   // Account --> account_setting
-  "Account Settings": "",
-  "Setting": "",
-  "Notification Setting": "",
+  "Account Settings": "ڕێکخستنەکانی هەژمار",
+  "Setting": "ڕێکخستن",
+  "Notification Setting": "ڕێکخستنی ئاگادارکردنەوه‌كان",
   "Language": "زمان",
-  "Support": "",
-  "Help center": "",
+  "Support": "پشتیوانی",
+  "Help center": "ناوەندی یارمەتیدان",
   "About us": "دەربارەی ئێمە",
-  "Guide": "",
-  "Feedback": "",
+  "Guide": "ڕێنماییەکان",
+  "Feedback": "راو بۆچۆنه‌كانتان",
   "Delete Account": "هەژمارەکە بسڕەوە",
-  "Select Language": "",
+  "Select Language": "زمانەکە هەڵبژێرە",
   "English": "ئینگلیزی",
   "Arabic": "عەرەبی",
   "Kurdish": "کوردی",
@@ -79,7 +76,6 @@ const Map<String, String> kur = {
   "Answer_FAQ_9": "",
   "Answer_FAQ_10": "",
   "Answer_FAQ_11": "",
-  "Search": "گەڕان",
   "Title_Update_1": "",
   "Title_Update_2": "",
   "Title_Update_3": "",
@@ -97,18 +93,18 @@ const Map<String, String> kur = {
   "Date": "",
 
   // Account --> chatscreen
-  "Select Bug": "",
-  "Customer Support": "",
-  "Customer Support Form": "",
-  "Enter your account information to contact for chat suport": "",
-  "Issue Bug": "",
-  "Please Select Bug": "",
-  "Please Select Language": "",
-  "Short Description": "",
-  "Add  Description": "",
-  "Please enter a Description": "",
-  "Start Conversion": "",
-  "Type a message": "",
+  "Select Bug": "بەشه‌كه‌ هەڵبژێرە",
+  "Customer Support": "خزمەتگوزاریی بەشداربووان",
+  "Customer Support Form": "فۆرمی خزمەتگوزاریی بەشداربووان",
+  "Enter your account information to contact for chat suport": "ئەو بەشە هەڵبژێرە کە کێشەت تێدایە لەگەڵ کورتە باسێك سەبارەت بە کێشەکەت",
+  "Issue Bug": "بەشەکان",
+  "Please Select Bug": "تکایە بەشێك هەڵبژێرە",
+  "Please Select Language": "تکایە زمانێك هەڵبژێرە",
+  "Short Description": "باسێكی كورت",
+  "Add  Description": "باسێك زیاد بکە",
+  "Please enter a Description": "تکایە باسێكی کەیسەکە دابنێ",
+  "Start Conversion": "دەستپێکردنی گفتوگۆ",
+  "Type a message": "نامەیەک بنووسە",
   "Last week": "هەفتەی ڕابردوو",
   "days ago": "چەند ڕۆژێک لەمەوبەر",
   "Yesterday": "دوێنێ",
@@ -118,6 +114,10 @@ const Map<String, String> kur = {
   "1 minute ago": "یەک دەقە لەمەوبەر",
   "seconds ago": "چەند چرکەیەک لەمەوبەر",
   "Just now": "ئێستا",
+  "account": "ئەژمێر",
+  "orderi": "داواكاری",
+  "delivery": "گەیاندن",
+  "other": "ئی تر",
 
   // Account --> feedback
   "Poor": "",
@@ -288,6 +288,7 @@ const Map<String, String> kur = {
 
   // home --> search_page
   "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",
+  "Search": "گەڕان",
 
   // home --> successScreen
   "Ordered successfully": "داواکاریەکەت بە سەرکەوتویی وەرگیرا",
@@ -333,9 +334,6 @@ const Map<String, String> kur = {
   "Enter your Name": "ناوت تۆمار بکە",
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
   "Confirm": "دووپاتکردنەوە",
-  "Male": "نێر",
-  "Female": "مێ",
-  "Erbil": "هەولێر",
 
   // Landing --> verification
   "Verification": "دڵنیابوونەوە",

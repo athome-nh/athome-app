@@ -18,7 +18,7 @@ const Map<String, String> en = {
   "AboutTextEight":
       "Thank you for choosing Dlly Las marketting application to serve your unique demands. We look forward to serving you and making your shopping experience convenient, enjoyable, and stress-free. Happy shopping!",
 
-  // Account --> account_info2
+  // Account --> account_info2 ----> Done
   "Male": "Male", // singin_up
   "Female": "Female", //singin_up
   "Erbil": "Erbil", // singin_up
@@ -29,7 +29,7 @@ const Map<String, String> en = {
   "back": "back",
   "Edit": "Edit",
 
-  // Account --> account_setting
+  // Account --> account_setting ----> Done
   "Account Settings": "Account Settings", // profile
   "Setting": "Setting",
   "Notification Setting": "Notification Setting",
@@ -45,7 +45,7 @@ const Map<String, String> en = {
   "Arabic": "Arabic ", // chatscreen, profile, choose_lan
   "Kurdish": "Kurdish", // chatscreen, profile, choose_lan
   
-  // Account --> all_gudide
+  // Account --> all_gudide ----> Pause
   "FAQs": "FAQs",
   "What\'s New": "What\'s New",
   "Title_FAQ_1": "General",
@@ -76,7 +76,6 @@ const Map<String, String> en = {
   "Answer_FAQ_9": "Flutter provides high performance on both Android and iOS.",
   "Answer_FAQ_10": "Yes, Flutter provides plugins to access native device features.",
   "Answer_FAQ_11": "There are many resources available, including the official documentation.",
-  "Search": "Search", // search_page
   "Title_Update_1": "New Feature: Dark Mode",
   "Title_Update_2": "Improved Performance",
   "Title_Update_3": "Bug Fixes",
@@ -93,18 +92,18 @@ const Map<String, String> en = {
   "Description_Update_7": "You can now link your social media accounts with the app.",
   "Date": "Date",
   
-  // Account --> chatscreen
-  "Select Bug": "Select Bug",
+  // Account --> chatscreen ----> Done
+  "Select Bug": "Select section",
   "Customer Support": "Customer Support",
   "Customer Support Form": "Customer Support Form",
-  "Enter your account information to contact for chat suport": "Enter your account information to contact for chat suport",
-  "Issue Bug": "Issue Bug",
-  "Please Select Bug": "Please Select Bug",
+  "Enter your account information to contact for chat suport": "Select the section that you have problem in with the short description about the problem",
+  "Issue Bug": "Sections",
+  "Please Select Bug": "Please select section",
   "Please Select Language": "Please Select Language",
   "Short Description": "Short Description",
   "Add  Description": "Add  Description",
   "Please enter a Description": "Please enter a Description",
-  "Start Conversion": "Start Conversion",
+  "Start Conversion": "Start Conversation",
   "Type a message": "Type a message",
   "Last week": "Last week", // notification_page
   "days ago": "days ago", // notification_page
@@ -115,6 +114,10 @@ const Map<String, String> en = {
   "1 minute ago": "One minute ago", // notification_page
   "seconds ago": "seconds ago", // notification_page
   "Just now": "Just now", // notification_page
+  "account": "Account",
+  "orderi": "Order",
+  "delivery": "Delivery",
+  "other": "Other",
 
   // Account --> feedback
   "Poor": "Poor", // home_page
@@ -285,6 +288,7 @@ const Map<String, String> en = {
 
   // home --> search_page
   "Not found any item": "No item found",
+  "Search": "Search", // all_gudide
 
   // home --> successScreen
   "Ordered successfully": "Ordered successfully",
