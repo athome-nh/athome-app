@@ -30,7 +30,7 @@ const Map<String, String> kur = {
   "Edit": "ڕێکخستن",
 
   // Account --> account_setting
-  "Account Settings": "ڕێکخستنەکانی هەژمار",
+  "Account Settings": "ڕێکخستنەکانی هەژمار", // profile
   "Setting": "ڕێکخستن",
   "Notification Setting": "ڕێکخستنی ئاگادارکردنەوه‌كان",
   "Language": "زمان",
@@ -158,18 +158,18 @@ const Map<String, String> kur = {
   "Enter Refer Code": "کۆدی ئاماژە دابنێ",
 
   // Account --> profile
-  "Account & Security": "",
-  "Account Information": "",
+  "Account & Security": "هه‌ژمار و پاراستن",
+  "Account Information": "زانیاری هه‌ژمار",
   "Orders": "داواکاریەکانم",
   "Locations": "ناونیشان",
-  "Coin & Reward": "",
-  "My Voucher": "",
-  "General": "",
-  "Terms & Conditions": "",
-  "Privacy Policy": "",
-  "Customer Services": "",
+  "Coin & Reward": "خاڵ و پاداشت",
+  "My Voucher": "پسۆله‌كانم",
+  "General": "گشتی",
+  "Terms & Conditions": "مەرج و ڕێساکان",
+  "Privacy Policy": "سیاسەتی پاراستنی نهێنی",
+  "Customer Services": "خزمەتگوزاری كریاره‌كان",
   "Logout": "چوونە دەر",
-  "Guest Account": "",
+  "Guest Account": "هه‌ژماری میوان",
   "Register": "خۆتۆمارکردن",
 
   // Account --> reward

@@ -158,18 +158,18 @@ const Map<String, String> ar = {
   "Enter Refer Code": "أدخل رمز الإحالة",
 
   // Account --> profile
-  "Account & Security": "",
-  "Account Information": "",
+  "Account & Security": "الحساب والأمان",
+  "Account Information": "معلومات الحساب",
   "Orders": "طلباتي",
   "Locations": "الموقع",
-  "Coin & Reward": "",
-  "My Voucher": "",
-  "General": "",
-  "Terms & Conditions": "",
-  "Privacy Policy": "",
-  "Customer Services": "",
+  "Coin & Reward": "النقاط والمكافات",
+  "My Voucher": "قسيمتي",
+  "General": "عام",
+  "Terms & Conditions": "البنود و الشروط",
+  "Privacy Policy": "سياسة الخصوصية",
+  "Customer Services": "خدمة الزبائن",
   "Logout": "خروج",
-  "Guest Account": "",
+  "Guest Account": "حساب الضيف",
   "Register": "تسجیل الدخول",
 
   // Account --> reward

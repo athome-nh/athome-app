@@ -149,7 +149,7 @@ const Map<String, String> en = {
   "Enter your details": "Enter your details",
   "Referral Code": "Referral Code",
   "Apply": "Apply", // check_out
-  "Invite a friend": "Invite a friend",
+  "Invite a friend": "Invite a friend", // profile
   "Invite your friends": "Invite your friend",
   "TextIFP": "Share this code with a friend and ask him to sign up and add this code and you will get a free voucher as a gift",
   "Download the app": "Download the app",
@@ -157,12 +157,12 @@ const Map<String, String> en = {
   "Invite friends now": "Invite a friend now",
   "Enter Refer Code": "Enter Refer Code",
 
-  // Account --> profile
+  // Account --> profile ----> Done
   "Account & Security": "Account & Security",
   "Account Information": "Account Information",
   "Orders": "Orders",
   "Locations": "Locations", // locationdeatil,  location
-  "Coin & Reward": "Coin & Reward", // reward
+  "Coin & Reward": "Points & Reward", // reward
   "My Voucher": "My Voucher",
   "General": "General",
   "Terms & Conditions": "Terms & Conditions",
