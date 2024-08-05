@@ -45,11 +45,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   bool Efeedback = false;
   List<String> ratestar = [
     "",
-    'Poor',
     'Terrible',
-    'Awful',
-    'Unacceptable',
-    'Dismal'
+    'Poor',
+    'Fair',
+    'Good',
+    'Excellent'
   ];
   @override
   void initState() {
@@ -95,7 +95,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         style: TextStyle(
                           color: mainColorBlack,
                           fontFamily: mainFontbold,
-                          fontSize: 26,
+                          fontSize: 24,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -306,7 +306,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                         style: TextStyle(
                                           color: mainColorBlack,
                                           fontFamily: mainFontbold,
-                                          fontSize: 25,
+                                          fontSize: 20,
                                         ),
                                       ),
                                       const SizedBox(height: 10),

@@ -151,11 +151,11 @@ class _HomeSreenState extends State<HomeSreen> {
   bool waitingFeedback = false;
 
   List<String> ratestar = [
-    'Poor',
     'Terrible',
-    'Awful',
-    'Unacceptable',
-    'Dismal'
+    'Poor',
+    'Fair',
+    'Good',
+    'Excellent'
   ];
 
   // List<String> oneStar = [

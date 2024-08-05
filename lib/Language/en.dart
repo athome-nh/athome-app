@@ -119,15 +119,15 @@ const Map<String, String> en = {
   "delivery": "Delivery",
   "other": "Other",
 
-  // Account --> feedback
-  "Poor": "Poor", // home_page
+  // Account --> feedback ----> Done
   "Terrible": "Terrible", // home_page
-  "Awful": "Awful", // home_page
-  "Unacceptable": "Unacceptable", // home_page
-  "Dismal": "Dismal", // home_page
+  "Poor": "Poor", // home_page
+  "Fair": "Fair", // home_page
+  "Good": "Good", // home_page
+  "Excellent": "Excellent", // home_page
   "Share your Feedback": "Share your Feedback",
   "Your feedback helps us improve": "Your feedback helps us improve",
-  "Please slecte stars": "Please slecte stars",
+  "Please slecte stars": "Please select stars",
   "Leave Your Comments": "Leave Your Comments",
   "feedback is require": "feedback is require",
   "Add your Feedback": "Add your Feedback", // home_page
