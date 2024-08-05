@@ -136,25 +136,25 @@ const Map<String, String> en = {
   "Rate us in": "Rate us in",
   "Send Feedback": "Send Feedback", // home_page
 
-  // Account --> help_screen
+  // Account --> help_screen ----> Done
   "Help": "Support",
-  "DescriptionTextInHelp": "Dear customers In case of any problems or any issues please contact us at via",
+  "DescriptionTextInHelp": "Dear customers In case of any problems or any issues please contact us via",
   "PhoneNumber": "07509583333 - 07802320717",
   "Email": "Info@dllylas.com",
   "WebSite": "www.dllylas.com",
   "Facebook": "DLLY.LAS.24",
 
-  // Account --> invite_friend
-  "Copied to clipboard": "Copied to clipboard",
+  // Account --> invite_friend ----> Done
+  "Copied to clipboard": "Copy",
   "Enter your details": "Enter your details",
   "Referral Code": "Referral Code",
   "Apply": "Apply", // check_out
   "Invite a friend": "Invite a friend",
-  "Invite your friends": "Invite your friends",
-  "TextIFP": "Just share this code with your friends and ask them to signup and add this code. Both of you will get ahead of the waitlist",
+  "Invite your friends": "Invite your friend",
+  "TextIFP": "Share this code with a friend and ask him to sign up and add this code and you will get a free voucher as a gift",
   "Download the app": "Download the app",
   "Code": "Code",
-  "Invite friends now": "Invite friends now",
+  "Invite friends now": "Invite a friend now",
   "Enter Refer Code": "Enter Refer Code",
 
   // Account --> profile

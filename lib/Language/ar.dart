@@ -145,17 +145,17 @@ const Map<String, String> ar = {
   "Facebook": "DLLY.LAS.24",
 
   // Account --> invite_friend
-  "Copied to clipboard": "",
-  "Enter your details": "",
-  "Referral Code": "",
-  "Apply": "",
-  "Invite a friend": "",
-  "Invite your friends": "",
-  "TextIFP": "",
-  "Download the app": "",
-  "Code": "",
-  "Invite friends now": "",
-  "Enter Refer Code": "",
+  "Copied to clipboard": "نسخ",
+  "Enter your details": "أدخل تفاصيلك",
+  "Referral Code": "رمز الإحالة",
+  "Apply": "تطبیق",
+  "Invite a friend": "ادع صديقك",
+  "Invite your friends": "ادع صديقك",
+  "TextIFP": "شارك هذا الرمز مع صديقك واطلب منه التسجيل وإضافة هذا الرمز وستحصل على قسیمة مجانية كهدية",
+  "Download the app": "تنزيل التطبيق",
+  "Code": "الرمز",
+  "Invite friends now": "ادع صديقك الآن",
+  "Enter Refer Code": "أدخل رمز الإحالة",
 
   // Account --> profile
   "Account & Security": "",
