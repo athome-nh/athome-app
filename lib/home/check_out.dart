@@ -40,14 +40,14 @@ class _CheckOutState extends State<CheckOut> {
   int VoucherAmount = 0;
   bool waiting = false;
   List<String> listOfDays = [
-    "Select Day".tr,
-    "Monday".tr,
-    "Tuesday".tr,
-    "Wednesday".tr,
-    "Thursday".tr,
-    "Friday".tr,
-    "Saturday".tr,
-    "Sunday".tr
+    "Select Day",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
   ];
   bool Etime = false;
   late DateTime selectedDate;
@@ -763,7 +763,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                                     width: 15,
                                                                                   ),
                                                                                   Text(
-                                                                                    Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday),
+                                                                                    Datetimenow.add(Duration(days: index - 1)).day == Datetimenow.day ? "Today".tr : getWeekdayName(Datetimenow.add(Duration(days: index - 1)).weekday).tr,
                                                                                     style: TextStyle(fontFamily: mainFontnormal, color: hasAvailableSchedule ? mainColorBlack : mainColorBlack.withOpacity(0.4)),
                                                                                   ),
                                                                                 ],
@@ -1104,7 +1104,7 @@ class _CheckOutState extends State<CheckOut> {
                                                                       widget.total <
                                                                               voucher.mimimumAmount!
                                                                           ? Text(
-                                                                              "must order by".tr + " " + voucher.mimimumAmount.toString(),
+                                                                              "must order by".tr + ": " + addCommasToPrice(voucher.mimimumAmount!),
                                                                               style: TextStyle(fontFamily: mainFontnormal, color: mainColorRed, fontSize: 12),
                                                                             )
                                                                           : SizedBox(),
@@ -1758,19 +1758,19 @@ class _CheckOutState extends State<CheckOut> {
   String getWeekdayName(int weekday) {
     switch (weekday) {
       case DateTime.monday:
-        return 'Monday'.tr;
+        return 'Monday';
       case DateTime.tuesday:
-        return 'Tuesday'.tr;
+        return 'Tuesday';
       case DateTime.wednesday:
-        return 'Wednesday'.tr;
+        return 'Wednesday';
       case DateTime.thursday:
-        return 'Thursday'.tr;
+        return 'Thursday';
       case DateTime.friday:
-        return 'Friday'.tr;
+        return 'Friday';
       case DateTime.saturday:
-        return 'Saturday'.tr;
+        return 'Saturday';
       case DateTime.sunday:
-        return 'Sunday'.tr;
+        return 'Sunday';
       default:
         return '';
     }

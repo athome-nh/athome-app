@@ -77,74 +77,71 @@ class ActiveTab extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 16, horizontal: 8),
-                          child: Column(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                  // voucher image
+                                  Image.asset(
+                                    "assets/images/Voucher.png",
+                                    height: getHeight(context, 6),
+                                  ),
+                          
+                                  SizedBox(
+                                    width: getWidth(context, 3),
+                                  ),
+                          
+                                  // Text
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      // voucher image
-                                      Image.asset(
-                                        "assets/images/Voucher.png",
-                                        height: getHeight(context, 6),
-                                      ),
-
-                                      SizedBox(
-                                        width: getWidth(context, 3),
-                                      ),
-
-                                      // Text
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      Row(
                                         children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "IQD" + " ",
-                                                style: new TextStyle(
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorBlack,
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                              Text(
-                                                addCommasToPriceWithoutIQD(
-                                                    voucher.discountAmount!),
-                                                style: new TextStyle(
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorBlack,
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                              Text(
-                                                " " + "Discont",
-                                                style: new TextStyle(
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorBlack,
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
                                           Text(
-                                            lang == "en"
-                                                ? voucher.titleEn!
-                                                : lang == "ar"
-                                                    ? voucher.titleAr!
-                                                    : voucher.titleKu!,
+                                            "Discont".tr + " ",
                                             style: new TextStyle(
                                               fontFamily: mainFontbold,
-                                              color: mainColorRed,
+                                              color: mainColorBlack,
                                               fontSize: 14,
                                             ),
                                           ),
+                                          
+                                          Text(
+                                            addCommasToPriceWithoutIQD(
+                                                voucher.discountAmount!),
+                                            style: new TextStyle(
+                                              fontFamily: mainFontbold,
+                                              color: mainColorBlack,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          Text(
+                                            " " + "IQD".tr,
+                                            style: new TextStyle(
+                                              fontFamily: mainFontbold,
+                                              color: mainColorBlack,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          
                                         ],
+                                      ),
+                                      Text(
+                                        lang == "en"
+                                            ? voucher.titleEn!
+                                            : lang == "ar"
+                                                ? voucher.titleAr!
+                                                : voucher.titleKu!,
+                                        style: new TextStyle(
+                                          fontFamily: mainFontbold,
+                                          color: mainColorRed,
+                                          fontSize: 14,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -154,6 +151,7 @@ class ActiveTab extends StatelessWidget {
                           ),
                         ),
                       ),
+
                       // date
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -164,14 +162,14 @@ class ActiveTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Active",
+                                  "Active".tr,
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontFamily: mainFontnormal,
                                       color: mainColorBlack),
                                 ),
                                 Text(
-                                  "Date:" +
+                                  "Date".tr + ": " +
                                       convertToBaghdadTime(voucher.expireDate!),
                                   style: TextStyle(
                                       fontSize: 11,
@@ -181,6 +179,7 @@ class ActiveTab extends StatelessWidget {
                               ],
                             ),
                             SizedBox(width: 5),
+
                             Icon(
                               Icons.circle,
                               size: 15,
@@ -189,6 +188,7 @@ class ActiveTab extends StatelessWidget {
                           ],
                         ),
                       ),
+                    
                     ],
                   ),
                 );
@@ -263,7 +263,7 @@ class UsedTab extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                "IQD" + " ",
+                                                "Discont".tr + " ",
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
@@ -280,7 +280,7 @@ class UsedTab extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                " " + "Discont",
+                                                " " + "IQD".tr,
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
@@ -322,21 +322,21 @@ class UsedTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Used",
+                                  "Used".tr,
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontFamily: mainFontnormal,
                                       color: mainColorGrey),
                                 ),
                                 Text(
-                                  "Expired",
+                                  "Expired".tr,
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontFamily: mainFontnormal,
                                       color: mainColorBlack),
                                 ),
                                 Text(
-                                  "Date:" +
+                                  "Date".tr + ": " +
                                       convertToBaghdadTime(voucher.expireDate!),
                                   style: TextStyle(
                                       fontSize: 11,
@@ -428,13 +428,14 @@ class ExpiredTab extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                "IQD" + " ",
+                                                "Discont".tr + " ",
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
                                                   fontSize: 14,
                                                 ),
                                               ),
+                                              
                                               Text(
                                                 addCommasToPriceWithoutIQD(
                                                     voucher.discountAmount!),
@@ -445,13 +446,14 @@ class ExpiredTab extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                " " + "Discont",
+                                                " " + "IQD".tr,
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
                                                   fontSize: 14,
                                                 ),
                                               ),
+                                              
                                             ],
                                           ),
                                           Text(
@@ -486,14 +488,14 @@ class ExpiredTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Expired",
+                                  "Expired".tr,
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontFamily: mainFontnormal,
                                       color: mainColorBlack),
                                 ),
                                 Text(
-                                  "Date:" +
+                                  "Date".tr + ": " +
                                       convertToBaghdadTime(voucher.expireDate!),
                                   style: TextStyle(
                                       fontSize: 11,
@@ -603,7 +605,7 @@ class UsedTabOld extends StatelessWidget {
                                           fontFamily: mainFontnormal),
                                     ),
                                     new TextSpan(
-                                      text: " OFF",
+                                      text: " " + "OFF".tr,
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: mainColorRed,
@@ -712,7 +714,7 @@ class ExpiredTabOld extends StatelessWidget {
                                           fontFamily: mainFontnormal),
                                     ),
                                     new TextSpan(
-                                      text: " OFF",
+                                      text: " " + "OFF".tr,
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: mainColorRed,

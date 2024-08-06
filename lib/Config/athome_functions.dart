@@ -9,6 +9,7 @@ import 'package:dllylas/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:ntp/ntp.dart';
@@ -236,7 +237,7 @@ String addCommasToPrice(int price) {
   // Combine the integer part with the decimal part and return the result
   if (parts.length == 1) {
     // If there is no decimal part, return just the integer part
-    return integerWithCommas + " IQD";
+    return integerWithCommas + " " +"IQD".tr;
   } else {
     return '$integerWithCommas.${parts[1]}';
   }

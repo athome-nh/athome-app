@@ -90,7 +90,6 @@ const Map<String, String> en = {
   "Description_Update_5": "Revamped the UI for a more modern and intuitive experience.",
   "Description_Update_6": "Added support for Spanish and French languages.",
   "Description_Update_7": "You can now link your social media accounts with the app.",
-  "Date": "Date",
   
   // Account --> chatscreen ----> Done
   "Select Bug": "Select section",
@@ -172,38 +171,39 @@ const Map<String, String> en = {
   "Guest Account": "Guest Account",
   "Register": "Register", // my_widget
 
-  // Account --> reward
-  "Voucher Codes": "Voucher Codes",
-  "STARBUCKS": "STARBUCKS",
-  "OFF": "OFF",
+  // Account --> reward ----> Done
+  "IQD": "IQD",
+  "Discont": "Discont",
   "VALUE": "VALUE",
   "Point": "Point",
+  "You buy voucher code": "You bought a voucher code",
   "Buy Now": "Buy Now",
 
-  // Account --> voucher_code
+  // Account --> voucher_code ----> Done
   "Vouchers": "Vouchers",
   "Active": "Active",
   "Used": "Used",
   "Expired": "Expired",
-  "Do not have any Voucher Code": "Do not have any Voucher Code",
+  "Do not have any Voucher Code": "You do not have any Voucher Code",
+  "Date": "Date",
 
-  // Config --> my_widget
+  // Config --> my_widget ----> Done
   "No internet connection, check your connection": "No internet connection, check your connection",
   "You are offline, connect to a network.": "You are offline, connect to a network.",
   "You are online": "You are online",
   "Register First": "Register First",
   "no internet": "You are offline, connect to WIFI",
 
-  // home --> all_item
+  // home --> all_item ----> Done
   "Discount": "Discount", // home_page
   "Highlight": "Highlight", // home_page
   "Recent Order": "Recent Orders", // home_page
   "Best Sell": "Best Sell", // home_page
 
-  // home --> Categories 
+  // home --> Categories ----> Done
   "All Categories": "All Categories",
 
-  // home --> check_out
+  // home --> check_out ----> Done
   "Select Day": "Pick a delivery day",
   "Saturday": "Saturday",
   "Sunday": "Sunday",
@@ -226,7 +226,7 @@ const Map<String, String> en = {
   "Select": "Select",
   "Voucher Code": "Voucher Code",
   "Please select Your Voucher": "Please select Your Voucher",
-  "must order by": "must order by",
+  "must order by": "Use after order of",
   "Voucher": "Voucher",
   "Submit": "Submit",
   "Add your note": "Add your note",

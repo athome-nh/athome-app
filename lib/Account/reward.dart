@@ -62,18 +62,21 @@ class _coinRewardState extends State<coinReward> {
       ),
       body: Directionality(
         textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-        child: productrovider.points.isEmpty
-            ? Center(
-                child: Text(
-                  "Do not have any Voucher Code".tr,
-                  style: TextStyle(
-                    fontFamily: mainFontnormal,
-                    fontSize: 20,
-                    color: mainColorGrey,
-                  ),
-                ),
-              )
-            : ListView.builder(
+        child: 
+        // todo: Labar away lamdaa chonka aw page batal nabet
+        // productrovider.points.isEmpty
+        //     ? Center(
+        //         child: Text(
+        //           "Do not have any Voucher Code".tr,
+        //           style: TextStyle(
+        //             fontFamily: mainFontnormal,
+        //             fontSize: 20,
+        //             color: mainColorGrey,
+        //           ),
+        //         ),
+        //       )
+        //     : 
+            ListView.builder(
                 itemCount: productrovider.points.length,
                 itemBuilder: (context, index) {
                   final point = productrovider.points[index];
@@ -123,7 +126,7 @@ class _coinRewardState extends State<coinReward> {
                                             Row(
                                               children: [
                                                 Text(
-                                                  "IQD" + " ",
+                                                  "Discont".tr + " ",
                                                   style: new TextStyle(
                                                     fontFamily: mainFontbold,
                                                     color: mainColorBlack,
@@ -139,15 +142,16 @@ class _coinRewardState extends State<coinReward> {
                                                     fontSize: 14,
                                                   ),
                                                 ),
+                                                
                                                 Text(
-                                                  " " + "Discont",
+                                                  " " + "IQD".tr,
                                                   style: new TextStyle(
                                                     fontFamily: mainFontbold,
                                                     color: mainColorBlack,
                                                     fontSize: 14,
                                                   ),
                                                 ),
-                                              ],
+                                                ],
                                             ),
                                             Text(
                                               "VALUE".tr +
