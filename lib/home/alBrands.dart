@@ -1,6 +1,7 @@
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class allBrands extends StatefulWidget {
@@ -17,7 +18,7 @@ class _allBrandsState extends State<allBrands> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Brands"),
+        title: Text("Brands".tr),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);

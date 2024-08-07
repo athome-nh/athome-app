@@ -832,17 +832,10 @@ class _MyCartState extends State<MyCart> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        "min deatil"
-                                                            .tr
-                                                            .toString()
-                                                            .replaceAll(
-                                                                "temp",
-                                                                addCommasToPrice(
+                                                        "min deatil".tr.toString() + " " + addCommasToPrice(
                                                                         productrovider
                                                                             .minimumOrder)
-                                                                    .replaceAll(
-                                                                        "IQD",
-                                                                        "")),
+                                                                   ,
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(

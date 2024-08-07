@@ -194,6 +194,9 @@ const Map<String, String> ar = {
   "Register First": "سجل اولا",
   "no internet": "الانترنت غیر متوفر",
 
+  // home --> alBrands
+  "Brands": "العلامات التجارية",
+
   // home --> all_item
   "Discount": "العروضات",
   "Highlight": "المنتجات المميزة",
@@ -253,30 +256,33 @@ const Map<String, String> ar = {
   "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
   
   // home --> home_page
-  "rating detail text": "",
-  "Wellcome to": "مرحبا بك في",
-  "Dlly Las": "دڵی لاس",
-  "Supermarket": "سوبر ماركت",
-  "Categories": "الفئات",
-  "View All": "عرض الکل",
-  "cateItem": "",
-  "Could not launch": "",
-  "Update": "تحديث",
+  // "rating detail text": "يرجى تقييم خدمتنا",
+  // "Wellcome to": "مرحبا بك في",
+  // "Dlly Las": "دڵی لاس",
+  // "Supermarket": "سوبر ماركت",
+  // "Categories": "الفئات",
+  // "View All": "عرض الکل",
+  // "cateItem": "",
+  // "Could not launch": "",
+  // "Update": "تحديث",
+  // "tap View": "",
+
   "OK": "موافق",
-  "tap View": "",
+
+  // home --> item_ctegories
+  'All Items': 'جميع المواد',
 
   // home --> my_cart
-  "My Cart": "سلة التسوق",
+  "My Cart": "سلة تسوقي",
   "Clear cart": "إزالة الكل",
   "Are you sure you want to continue?": "هل انت مأكد من الاستمرار ؟",
   "Clear": "إزالة",
   "Delete": "حذف",
   "Your cart is empty": "سلة التسوف فارغة",
   "min title": "الحد الأدنى للشراء المطلوب",
-  "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو temp دينار",
+  "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو",
 
-  // home --> item_ctegories
-  'All Items': 'جميع المواد',
+  
 
   //home --> nav_switch
   "Home": "الرئیسیة",

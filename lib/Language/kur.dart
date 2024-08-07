@@ -194,6 +194,9 @@ const Map<String, String> kur = {
   "Register First": "خۆت تۆمار بکە",
   "no internet": "ئینتەرنێت بەردەست  نیە",
 
+  // home --> alBrands
+  "Brands": "براندەکان",
+
   // home --> all_item
   "Discount": "داشکانەکان",
   "Highlight": "دیارترینەکان",
@@ -253,31 +256,32 @@ const Map<String, String> kur = {
   "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
   
   // home --> home_page
-  "rating detail text": "",
-  "Wellcome to": "بەخێربێیت بۆ",
-  "Dlly Las": "دڵی لاس",
-  "Supermarket": 'سوپەرمارکێت',
-  "Categories": "پۆلێنەکان",
-  "View All": "بینینی هەموو",
-  "cateItem": "",
-  "Could not launch": "",
-  "Update": "دابەزاندن",
+  // "rating detail text": "تکایە هەڵسەنگاندن بۆ خزمەتگوزارییەکەمان بکە",
+  // "Wellcome to": "بەخێربێیت بۆ",
+  // "Dlly Las": "دڵی لاس",
+  // "Supermarket": 'سوپەرمارکێت',
+  // "Categories": "پۆلێنەکان",
+  // "View All": "بینینی هەموو",
+  // "cateItem": "",
+  // "Could not launch": "",
+  // "Update": "دابەزاندن",
+  // "tap View": "",
+
   "OK": "دڵنیام", // singin_up, login_page
-  "tap View": "",
+
+  // home --> item_ctegories
+  'All Items': "گشت كالاكان",
 
   // home --> my_cart
-  "My Cart": "سەبەتەی بازاڕکردن",
+  "My Cart": "سەبەتەی بازاڕکردنم",
   "Clear cart": "لابردنی هەموو",
   "Are you sure you want to continue?": "دڵنیای لە بەردەوامبوون؟",
   "Clear": "پاک کردنەوە",
   "Delete": "سڕینەوە",
   "Your cart is empty": "سەبەتەی بازاڕکردن بەتاڵە",
   "min title": "کەمترین داواکاری پێشکەشکراو",
-  "min deatil": "کڕیاڕی بەڕێز کەمترین بڕی داواکاری temp دینارە",
+  "min deatil": "کڕیاڕی بەڕێز کەمترین بڕی داواکاری ",
 
-  // home --> item_ctegories
-  'All Items': 'هەموو شتەکان',
-  
   //home --> nav_switch
   "Home": "سەرەکی",
   "Cart": "سەبەتە",

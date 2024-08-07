@@ -194,6 +194,9 @@ const Map<String, String> en = {
   "Register First": "Register First",
   "no internet": "You are offline, connect to WIFI",
 
+  // home --> alBrands ----> Done
+  "Brands": "Brands",
+
   // home --> all_item ----> Done
   "Discount": "Discount", // home_page
   "Highlight": "Highlight", // home_page
@@ -244,39 +247,40 @@ const Map<String, String> en = {
   "AM": "AM",
   "PM": "PM",
 
-  // home --> DetailsPage
+  // home --> DetailsPage ----> Done
   "Add to cart": "Add to cart",
   "Similar item": "Related items",
   
-  // home --> favorite
+  // home --> favorite ----> Done
   "Favorite": "Favorite", // nav_switch
-  "No have any favorite":"You haven't set any favorite items.\nMake it your own!",
+  "No have any favorite":"You have not set any favorite items.\nMake it your own!",
   
   // home --> home_page
-  "rating detail text": "rating detail text",
-  "Wellcome to": "Wellcome to",
-  "Dlly Las": "Dlly Las",
-  "Supermarket": "Supermarket",
-  "Categories": "Category",
-  "View All": "View All",
-  "cateItem": "cateItem",
-  "Could not launch": "Could not launch",
-  "Update": "Update",
-  "OK": "OK", // singin_up, login_page, my_cart
-  "tap View": "tap View",
+  // "rating detail text": "Please rate our service",
+  // "Wellcome to": "Wellcome to",
+  // "Dlly Las": "Dlly Las",
+  // "Supermarket": "Supermarket",
+  // "Categories": "Category",
+  // "View All": "View All",
+  // "cateItem": "cateItem",
+  // "Could not launch": "Could not launch",
+  // "Update": "Update",
+  // "tap View": "tap View",
 
-  // home --> item_ctegories
+  "OK": "OK", // singin_up, login_page, my_cart
+
+  // home --> item_ctegories ----> Done
   'All Items': 'All Items',
 
-  // home --> my_cart
+  // home --> my_cart ----> Done
   "My Cart": "My Cart",
-  "Clear cart": "Clear cart",
+  "Clear cart": "Clear all cart",
   "Are you sure you want to continue?": "Are you sure about continuing?",
   "Clear": "Clear",
   "Delete": "Delete", // location
   "Your cart is empty": "Your cart is empty",
   "min title": "Minimum Order required",
-  "min deatil": "Dear Customer, The minimum acceptable order is temp IQD",
+  "min deatil": "Dear Customer, The minimum acceptable order is",
  
   // home --> nav_switch
   "Home": "Home",
@@ -285,6 +289,8 @@ const Map<String, String> en = {
   "Are you sure exiting the app": "Are you sure exiting the app",
   "Yes": "Yes",
   "No": "No",
+
+  // newhomePage
 
   // home --> search_page
   "Not found any item": "No item found",
