@@ -8,7 +8,7 @@ import 'package:dllylas/home/my_cart.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
-import 'package:dllylas/model/products_image/products_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -30,8 +30,8 @@ class DetailsPage extends StatelessWidget {
     final isFavInCart = cartProvider.FavExistsInCart(Item);
     int count =
         cartProvider.calculateQuantityForProduct(int.parse(Item.id.toString()));
-    List<ProductsImage> images =
-        productrovider.getproductimages(productrovider.idItem);
+    // List<ProductsImage> images =
+    //     productrovider.getproductimages(productrovider.idItem);
 
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
@@ -275,7 +275,7 @@ class DetailsPage extends StatelessWidget {
                             height: getHeight(context, 35),
                             width: getWidth(context, 100),
                             decoration: BoxDecoration(
-                              color: categoryColors[color],
+                              color: mainColorlightGrey,
                               boxShadow: [
                                 BoxShadow(
                                   color: categoryColors[color].withOpacity(0.2),
@@ -368,6 +368,7 @@ class DetailsPage extends StatelessWidget {
                                           text:
                                               '  (${lang == "en" ? Item.contentsEn! : lang == "ar" ? Item.contentsAr! : Item.contentsKu!})',
                                           style: TextStyle(
+                                            fontFamily: mainFontnormal,
                                             color:
                                                 mainColorBlack.withOpacity(0.5),
                                             fontSize: 12.0,
@@ -409,6 +410,9 @@ class DetailsPage extends StatelessWidget {
                                                 label: Text(
                                                   "Add to cart".tr,
                                                   style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontFamily:
+                                                          mainFontnormal,
                                                       color: mainColorWhite),
                                                 ),
                                                 avatar: Icon(
@@ -547,10 +551,9 @@ class DetailsPage extends StatelessWidget {
                                         ? Item.descriptionAr!
                                         : Item.descriptionKu!,
                                 style: TextStyle(
+                                  fontFamily: mainFontnormal,
                                   color: mainColorBlack.withOpacity(0.5),
-                                  fontSize: 15.0,
-                                  height: 1.4,
-                                  letterSpacing: 0.5,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
@@ -558,11 +561,9 @@ class DetailsPage extends StatelessWidget {
                             Text(
                               "Similar item".tr,
                               style: TextStyle(
+                                fontFamily: mainFontbold,
                                 color: mainColorBlack.withOpacity(0.9),
                                 fontSize: 18.0,
-                                height: 1.4,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0.5,
                               ),
                             ),
                           ],
@@ -574,7 +575,8 @@ class DetailsPage extends StatelessWidget {
                 listItemsSmall(
                     context,
                     productrovider.getProductsBySubCategory2(
-                        Item.subCategoryId!, Item.id!),false),
+                        Item.subCategoryId!, Item.id!),
+                    false),
               ],
             ),
           ),

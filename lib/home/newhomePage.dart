@@ -830,16 +830,25 @@ class _newhomePageState extends State<newhomePage> {
                                             new TextSpan(
                                               text: 'Hi'.tr + " ",
                                               style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize:
+                                                      userdata["name"] == null
+                                                          ? 12
+                                                          : 16,
                                                   color: mainColorGrey,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: mainFontnormal),
                                             ),
                                             new TextSpan(
-                                              text: userdata["name"] ??
-                                                  "Guest Account".tr,
+                                              text: userdata["name"] == null
+                                                  ? "Guest Account".tr
+                                                  : userdata["name"]
+                                                      .toString()
+                                                      .split(" ")[0],
                                               style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize:
+                                                      userdata["name"] == null
+                                                          ? 12
+                                                          : 16,
                                                   color: mainColorRed,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: mainFontnormal),

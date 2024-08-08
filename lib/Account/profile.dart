@@ -37,7 +37,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String selectedLanguage = 'English';
   String selectedItem = 'English';
 
   void _updateLanguage(String language) {
@@ -62,10 +61,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     selectedItem = lang == "en"
-        ? "English".tr
+        ? "English"
         : lang == "ar"
-            ? "Arabic".tr
-            : "Kurdish".tr;
+            ? "Arabic"
+            : "Kurdish";
 
     super.initState();
   }
@@ -540,7 +539,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ),
-          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          trailing: Icon(lang == "en"
+              ? Icons.keyboard_arrow_right_outlined
+              : Icons.keyboard_arrow_left_outlined),
           onTap: () {
             Navigator.push(
               context,
@@ -769,7 +770,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ),
-          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          trailing: Icon(lang == "en"
+              ? Icons.keyboard_arrow_right_outlined
+              : Icons.keyboard_arrow_left_outlined),
           onTap: () {
             showDialog(
               context: context,
@@ -802,11 +805,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ]),
                           value: 'English',
-                          groupValue: selectedLanguage,
+                          groupValue: selectedItem,
                           onChanged: (value) {
                             setState(() {
-                              selectedLanguage = value!;
-                              _updateLanguage(selectedLanguage);
+                              selectedItem = value!;
+                              _updateLanguage(selectedItem);
                             });
                           },
                         ),
@@ -832,11 +835,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                           value: 'Arabic',
-                          groupValue: selectedLanguage,
+                          groupValue: selectedItem,
                           onChanged: (value) {
                             setState(() {
-                              selectedLanguage = value!;
-                              _updateLanguage(selectedLanguage);
+                              selectedItem = value!;
+                              _updateLanguage(selectedItem);
                             });
                           },
                         ),
@@ -862,11 +865,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                           value: 'Kurdish',
-                          groupValue: selectedLanguage,
+                          groupValue: selectedItem,
                           onChanged: (value) {
                             setState(() {
-                              selectedLanguage = value!;
-                              _updateLanguage(selectedLanguage);
+                              selectedItem = value!;
+                              _updateLanguage(selectedItem);
                             });
                           },
                         ),

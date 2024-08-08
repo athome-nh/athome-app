@@ -25,7 +25,7 @@ class AccountSetting extends StatefulWidget {
 
 class _AccountSettingState extends State<AccountSetting> {
   bool waiting = false;
-  String selectedLanguage = 'English';
+
   String selectedItem = 'English';
   bool _isSwitched = true;
   bool switchedWait = false;
@@ -42,10 +42,11 @@ class _AccountSettingState extends State<AccountSetting> {
       });
     }
     selectedItem = lang == "en"
-        ? "English".tr
+        ? "English"
         : lang == "ar"
-            ? "Arabic".tr
-            : "Kurdish".tr;
+            ? "Arabic"
+            : "Kurdish";
+
     super.initState();
   }
 
@@ -157,7 +158,6 @@ class _AccountSettingState extends State<AccountSetting> {
                                               }
                                             });
                                           },
-                                          
                                           activeTrackColor: mainColorGrey,
                                           activeColor: mainColorWhite,
                                           inactiveTrackColor: Colors.white,
@@ -236,7 +236,9 @@ class _AccountSettingState extends State<AccountSetting> {
               ),
             ),
           ),
-          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          trailing: Icon(lang == "en"
+              ? Icons.keyboard_arrow_right_outlined
+              : Icons.keyboard_arrow_left_outlined),
           onTap: () {
             Navigator.push(
               context,
@@ -270,49 +272,25 @@ class _AccountSettingState extends State<AccountSetting> {
               ),
             ),
           ),
-          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          trailing: Icon(lang == "en"
+              ? Icons.keyboard_arrow_right_outlined
+              : Icons.keyboard_arrow_left_outlined),
           onTap: () {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('Select Language'.tr),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      RadioListTile<String>(
-                        title: Row(children: [
-                          Image.asset(
-                            "assets/images/uk.png",
-                            width: 35,
-                            height: 35,
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                              top: getWidth(context, 2),
-                              left: getWidth(context, 2),
-                              right: getWidth(context, 2),
-                              bottom: getWidth(context, 1),
-                            ),
-                            child: Text(
-                              "English".tr,
-                            ),
-                          ),
-                        ]),
-                        value: 'English',
-                        groupValue: selectedLanguage,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedLanguage = value!;
-                            _updateLanguage(selectedLanguage);
-                          });
-                        },
-                      ),
-                      RadioListTile<String>(
-                        title: Row(
-                          children: [
+                return Directionality(
+                  textDirection:
+                      lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+                  child: AlertDialog(
+                    title: Text('Select Language'.tr),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        RadioListTile<String>(
+                          title: Row(children: [
                             Image.asset(
-                              "assets/images/iraq.png",
+                              "assets/images/uk.png",
                               width: 35,
                               height: 35,
                             ),
@@ -324,51 +302,81 @@ class _AccountSettingState extends State<AccountSetting> {
                                 bottom: getWidth(context, 1),
                               ),
                               child: Text(
-                                "Arabic".tr,
+                                "English".tr,
                               ),
                             ),
-                          ],
+                          ]),
+                          value: 'English',
+                          groupValue: selectedItem,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedItem = value!;
+                              _updateLanguage(selectedItem);
+                            });
+                          },
                         ),
-                        value: 'Arabic',
-                        groupValue: selectedLanguage,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedLanguage = value!;
-                            _updateLanguage(selectedLanguage);
-                          });
-                        },
-                      ),
-                      RadioListTile<String>(
-                        title: Row(
-                          children: [
-                            Image.asset(
-                              "assets/images/flag.png",
-                              width: 35,
-                              height: 35,
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: getWidth(context, 2),
-                                left: getWidth(context, 2),
-                                right: getWidth(context, 2),
-                                bottom: getWidth(context, 1),
+                        RadioListTile<String>(
+                          title: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/iraq.png",
+                                width: 35,
+                                height: 35,
                               ),
-                              child: Text(
-                                "Kurdish".tr,
+                              Container(
+                                padding: EdgeInsets.only(
+                                  top: getWidth(context, 2),
+                                  left: getWidth(context, 2),
+                                  right: getWidth(context, 2),
+                                  bottom: getWidth(context, 1),
+                                ),
+                                child: Text(
+                                  "Arabic".tr,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
+                          value: 'Arabic',
+                          groupValue: selectedItem,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedItem = value!;
+                              _updateLanguage(selectedItem);
+                            });
+                          },
                         ),
-                        value: 'Kurdish',
-                        groupValue: selectedLanguage,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedLanguage = value!;
-                            _updateLanguage(selectedLanguage);
-                          });
-                        },
-                      ),
-                    ],
+                        RadioListTile<String>(
+                          title: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/flag.png",
+                                width: 35,
+                                height: 35,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                  top: getWidth(context, 2),
+                                  left: getWidth(context, 2),
+                                  right: getWidth(context, 2),
+                                  bottom: getWidth(context, 1),
+                                ),
+                                child: Text(
+                                  "Kurdish".tr,
+                                ),
+                              ),
+                            ],
+                          ),
+                          value: 'Kurdish',
+                          groupValue: selectedItem,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedItem = value!;
+                              _updateLanguage(selectedItem);
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -403,8 +411,11 @@ class _AccountSettingState extends State<AccountSetting> {
               ),
             ),
           ),
-          trailing:
-              Icon(Icons.keyboard_arrow_right_outlined, color: mainColorRed),
+          trailing: Icon(
+              lang == "en"
+                  ? Icons.keyboard_arrow_right_outlined
+                  : Icons.keyboard_arrow_left_outlined,
+              color: mainColorRed),
           onTap: waiting
               ? null
               : () {
