@@ -49,13 +49,7 @@ class _newhomePageState extends State<newhomePage> {
   bool isExpanded = false;
   bool waitingFeedback = false;
 
-  List<String> ratestar = [
-    'Poor',
-    'Terrible',
-    'Awful',
-    'Unacceptable',
-    'Dismal'
-  ];
+  List<String> ratestar = ['Terrible', 'Poor', 'Fair', 'Good', 'Excellent'];
   List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
@@ -1323,11 +1317,9 @@ class _newhomePageState extends State<newhomePage> {
                           ),
                           //checkText
                           child: Text(
-                            type != "pop"
-                                ? "Update".tr
-                                : homePopupData["type"] == "attention"
-                                    ? "OK".tr
-                                    : "tap View".tr,
+                            homePopupData["type"] == "attention"
+                                ? "OK".tr
+                                : "tap View".tr,
                           ),
                         ),
                       ),
