@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:dllylas/Account/reward.dart';
-
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Config/slideshow.dart';
@@ -23,7 +22,6 @@ import 'package:dllylas/home/search_page.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/map/map_screen.dart';
 import 'package:dllylas/model/cart.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
@@ -279,7 +277,7 @@ class _newhomePageState extends State<newhomePage> {
                               width: getWidth(context, 2),
                             ),
                             Text(
-                              "What are you searching for?",
+                              "What are you searching for?".tr,
                               style: TextStyle(
                                   fontFamily: mainFontnormal,
                                   color: mainColorGrey2,
@@ -297,7 +295,7 @@ class _newhomePageState extends State<newhomePage> {
                       height: getHeight(context, 2),
                     ),
                     Text(
-                      "Categories",
+                      "Categories".tr,
                       style: TextStyle(
                           color: mainColorBlack,
                           fontSize: 20,
@@ -448,23 +446,12 @@ class _newhomePageState extends State<newhomePage> {
                                           color: mainColorlightGrey,
                                           borderRadius:
                                               BorderRadius.circular(10)),
-                                      child: RichText(
-                                        text: new TextSpan(
-                                          text: 'All You Need'.tr + " \n",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: mainColorGrey,
-                                              fontFamily: mainFontbold),
-                                          children: <TextSpan>[
-                                            new TextSpan(
-                                              text: "Categories".tr,
-                                              style: TextStyle(
-                                                  fontSize: 11,
-                                                  color: mainColorRed,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: mainFontnormal),
-                                            ),
-                                          ],
+                                      child: Text(
+                                        'All Categories'.tr,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: mainColorGrey,
+                                          fontFamily: mainFontbold,
                                         ),
                                       ),
                                     ),
@@ -585,10 +572,10 @@ class _newhomePageState extends State<newhomePage> {
                                               maxLines: 1,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  color: mainColorBlack,
-                                                  fontFamily: mainFontbold,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 13),
+                                                color: mainColorBlack,
+                                                fontFamily: mainFontbold,
+                                                fontSize: 14,
+                                              ),
                                             ),
                                             Expanded(
                                               child: ClipRRect(
@@ -626,7 +613,7 @@ class _newhomePageState extends State<newhomePage> {
                                                         .spaceBetween,
                                                 children: [
                                                   Text(
-                                                    "See More",
+                                                    "See More".tr,
                                                     style: TextStyle(
                                                         color: mainColorWhite,
                                                         fontFamily:
@@ -850,24 +837,24 @@ class _newhomePageState extends State<newhomePage> {
                                             ),
                                             new TextSpan(
                                               text: userdata["name"] ??
-                                                  "Guest Account",
+                                                  "Guest Account".tr,
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   color: mainColorRed,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: mainFontnormal),
                                             ),
-                                            new TextSpan(
-                                              text: "\n",
-                                            ),
-                                            new TextSpan(
-                                              text: "You are doing so well",
-                                              style: TextStyle(
-                                                  fontSize: 8,
-                                                  color: mainColorGrey,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: mainFontnormal),
-                                            ),
+                                            // new TextSpan(
+                                            //   text: "\n",
+                                            // ),
+                                            // new TextSpan(
+                                            //   text: "You are doing so well".tr,
+                                            //   style: TextStyle(
+                                            //       fontSize: 8,
+                                            //       color: mainColorGrey,
+                                            //       fontWeight: FontWeight.bold,
+                                            //       fontFamily: mainFontnormal),
+                                            // ),
                                           ],
                                         ),
                                       ),
@@ -917,7 +904,7 @@ class _newhomePageState extends State<newhomePage> {
                               size: 15,
                             ),
                             label: Text(
-                              "See More",
+                              "See More".tr,
                               style: TextStyle(
                                   color: mainColorRed,
                                   fontFamily: mainFontnormal,
@@ -988,11 +975,11 @@ class _newhomePageState extends State<newhomePage> {
                                 height: getHeight(context, 1),
                               ),
                               listItemsSmall(
-                                context,
-                                productrovider.getProductsByIds2(
-                                  productrovider.listOrderProductIds(),
-                                ),false
-                              ),
+                                  context,
+                                  productrovider.getProductsByIds2(
+                                    productrovider.listOrderProductIds(),
+                                  ),
+                                  false),
                             ],
                           )
                         : const SizedBox(),
@@ -1039,10 +1026,8 @@ class _newhomePageState extends State<newhomePage> {
                               SizedBox(
                                 height: getHeight(context, 1),
                               ),
-                              listItemsSmall(
-                                context,
-                                productrovider.getProductsByDiscount(),true
-                              ),
+                              listItemsSmall(context,
+                                  productrovider.getProductsByDiscount(), true),
                             ],
                           )
                         : const SizedBox(),
@@ -1084,10 +1069,8 @@ class _newhomePageState extends State<newhomePage> {
                     SizedBox(
                       height: getHeight(context, 1),
                     ),
-                    listItemsSmall(
-                      context,
-                      productrovider.getProductsByHighlight(),false
-                    ),
+                    listItemsSmall(context,
+                        productrovider.getProductsByHighlight(), false),
                     SizedBox(
                       height: getHeight(context, 1),
                     ),
@@ -1174,7 +1157,7 @@ class _newhomePageState extends State<newhomePage> {
                     ),
 
                     listItemsSmall(
-                        context, productrovider.getProductsByBestsell(),false),
+                        context, productrovider.getProductsByBestsell(), false),
 
                     // Space
                     SizedBox(

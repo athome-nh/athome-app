@@ -267,8 +267,6 @@ const Map<String, String> kur = {
   // "Update": "دابەزاندن",
   // "tap View": "",
 
-  "OK": "دڵنیام", // singin_up, login_page
-
   // home --> item_ctegories
   'All Items': "گشت كالاكان",
 
@@ -289,6 +287,21 @@ const Map<String, String> kur = {
   "Are you sure exiting the app": "دڵنیای لە چونە دەرەوە؟",
   "Yes": "بەڵێ",
   "No": "نەخێر",
+
+  // newhomePage
+  "Wellcome to": "بەخێربێیت بۆ",
+  "Dlly Las": "دڵی لاس",
+  "Supermarket": "سوپه‌ر ماركێت",
+  "What are you searching for?": "بەدوای چیدا دەگەڕێیت؟",
+  "Categories": "پۆلێنەکان",
+  "See More": "See More",
+  "Hi": "سڵاوت لێبێت",
+  "You are doing so well": "You are doing so well",
+  "View All": "View All",
+  "Update": "Update",
+  "OK": "دڵنیام",
+  "tap View": "tap View",
+  "rating detail text": "rating detail text",
 
   // home --> search_page
   "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",

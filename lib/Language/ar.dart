@@ -267,8 +267,6 @@ const Map<String, String> ar = {
   // "Update": "تحديث",
   // "tap View": "",
 
-  "OK": "موافق",
-
   // home --> item_ctegories
   'All Items': 'جميع المواد',
 
@@ -282,8 +280,6 @@ const Map<String, String> ar = {
   "min title": "الحد الأدنى للشراء المطلوب",
   "min deatil": "زبون العزيز, الحد الأدنى المقبول للطلب هو",
 
-  
-
   //home --> nav_switch
   "Home": "الرئیسیة",
   "Cart": "السلة",
@@ -291,6 +287,21 @@ const Map<String, String> ar = {
   "Are you sure exiting the app": "هل انت متاکد من تسجیل الخروج؟",
   "Yes": "نعم",
   "No": "لا",
+
+  // newhomePage
+  "Wellcome to": "مرحبا بك في",
+  "Dlly Las": "دلي لاس",
+  "Supermarket": "سوبر ماركت",
+  "What are you searching for?": "ما الذي تبحث عنه؟",
+  "Categories": "الاقسام",
+  "See More": "شاهد المزيد",
+  "Hi": "أهلا بك",
+  "You are doing so well": "You are doing so well",
+  "View All": "View All",
+  "Update": "Update",
+  "OK": "موافق",
+  "tap View": "tap View",
+  "rating detail text": "rating detail text",
 
   // home --> search_page
   "Not found any item": "لم یتم العثور علی أي منتج",

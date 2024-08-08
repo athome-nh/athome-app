@@ -38,7 +38,7 @@ const Map<String, String> en = {
   "Help center": "Help center", // profile
   "About us": "About us", // profile
   "Guide": "Guide", // all_gudide, profile
-  "Feedback": "Feedback", // feedback, home_page
+  "Feedback": "Feedback", // feedback, newhomePage
   "Delete Account": "Delete Account",
   "Select Language": "Select Language", // chatscreen, profile
   "English": "English", // chatscreen, profile, choose_lan
@@ -119,21 +119,21 @@ const Map<String, String> en = {
   "other": "Other",
 
   // Account --> feedback ----> Done
-  "Terrible": "Terrible", // home_page
-  "Poor": "Poor", // home_page
-  "Fair": "Fair", // home_page
-  "Good": "Good", // home_page
-  "Excellent": "Excellent", // home_page
+  "Terrible": "Terrible", // newhomePage
+  "Poor": "Poor", // newhomePage
+  "Fair": "Fair", // newhomePage
+  "Good": "Good", // newhomePage
+  "Excellent": "Excellent", // newhomePage
   "Share your Feedback": "Share your Feedback",
   "Your feedback helps us improve": "Your feedback helps us improve",
   "Please slecte stars": "Please select stars",
   "Leave Your Comments": "Leave Your Comments",
   "feedback is require": "feedback is require",
-  "Add your Feedback": "Add your Feedback", // home_page
+  "Add your Feedback": "Add your Feedback", // newhomePage
   "Enjoying the app?": "Enjoying the app?",
   "Would you mind rating us?": "Would you mind rating us?",
   "Rate us in": "Rate us in",
-  "Send Feedback": "Send Feedback", // home_page
+  "Send Feedback": "Send Feedback", // newhomePage
 
   // Account --> help_screen ----> Done
   "Help": "Support",
@@ -168,7 +168,7 @@ const Map<String, String> en = {
   "Privacy Policy": "Privacy Policy",
   "Customer Services": "Customer Services",
   "Logout": "Log out",
-  "Guest Account": "Guest Account",
+  "Guest Account": "Guest Account", // newhomePage
   "Register": "Register", // my_widget
 
   // Account --> reward ----> Done
@@ -195,13 +195,13 @@ const Map<String, String> en = {
   "no internet": "You are offline, connect to WIFI",
 
   // home --> alBrands ----> Done
-  "Brands": "Brands",
+  "Brands": "Brands", // newhomePage
 
   // home --> all_item ----> Done
-  "Discount": "Discount", // home_page
-  "Highlight": "Highlight", // home_page
-  "Recent Order": "Recent Orders", // home_page
-  "Best Sell": "Best Sell", // home_page
+  "Discount": "Discount", // newhomePage
+  "Highlight": "Highlight", // newhomePage
+  "Recent Order": "Recent Orders", // newhomePage
+  "Best Sell": "Best Sell", // newhomePage
 
   // home --> Categories ----> Done
   "All Categories": "All Categories",
@@ -218,7 +218,7 @@ const Map<String, String> en = {
   "Checkout": "Payment & Delivery", // my_cart
   "Delivery to": "Delivery to",
   "Please select Address": "Please Select Delivery Address",
-  "Add location": "Add location", // home_page
+  "Add location": "Add location", // newhomePage
   "Change": "Change",
   "Delivery Type": "Delivery Methods",
   "Delevery now": "Deliver Now",
@@ -266,9 +266,7 @@ const Map<String, String> en = {
   // "Could not launch": "Could not launch",
   // "Update": "Update",
   // "tap View": "tap View",
-
-  "OK": "OK", // singin_up, login_page, my_cart
-
+  
   // home --> item_ctegories ----> Done
   'All Items': 'All Items',
 
@@ -282,15 +280,29 @@ const Map<String, String> en = {
   "min title": "Minimum Order required",
   "min deatil": "Dear Customer, The minimum acceptable order is",
  
-  // home --> nav_switch
+  // home --> nav_switch ----> Done
   "Home": "Home",
   "Cart": "Cart",
   "Account": "Account",
-  "Are you sure exiting the app": "Are you sure exiting the app",
+  "Are you sure exiting the app": "Are you sure you want to exit the app?",
   "Yes": "Yes",
   "No": "No",
 
   // newhomePage
+  "Wellcome to": "Wellcome to",
+  "Dlly Las": "Dlly Las",
+  "Supermarket": "Supermarket",
+  "What are you searching for?": "What are you searching for ?",
+  "Categories": "Categories",
+  "See More": "See More",
+  "Hi": "Hi",
+  "You are doing so well": "You are doing so well",
+  "View All": "View All",
+  "Update": "Update",
+  "OK": "OK", // singin_up, login_page, my_cart
+  "tap View": "tap View",
+  "rating detail text": "rating detail text",
+
 
   // home --> search_page
   "Not found any item": "No item found",
