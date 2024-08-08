@@ -531,7 +531,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(
-              title,
+              title.tr,
               style: TextStyle(
                 fontFamily: mainFontnormal,
                 color: mainColorGrey,
@@ -636,7 +636,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             padding:
                                 EdgeInsets.only(top: getHeight(context, 0.5)),
                             child: Text(
-                              "Guest Account",
+                              "Guest Account".tr,
                               style: TextStyle(
                                 fontFamily: mainFontbold,
                                 fontSize: 16,

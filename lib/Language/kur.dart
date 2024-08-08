@@ -288,20 +288,20 @@ const Map<String, String> kur = {
   "Yes": "بەڵێ",
   "No": "نەخێر",
 
-  // newhomePage
+  // home --> newhomePage
   "Wellcome to": "بەخێربێیت بۆ",
   "Dlly Las": "دڵی لاس",
   "Supermarket": "سوپه‌ر ماركێت",
   "What are you searching for?": "بەدوای چیدا دەگەڕێیت؟",
   "Categories": "پۆلێنەکان",
-  "See More": "See More",
+  "See More": "بینینی زیاتر",
   "Hi": "سڵاوت لێبێت",
-  "You are doing so well": "You are doing so well",
-  "View All": "View All",
-  "Update": "Update",
+  "Dear Guest": "میوانی به‌رێز",
+  "View All": "بینینی هەموو",
+  "Update": "نوێکردنەوە",
   "OK": "دڵنیام",
-  "tap View": "tap View",
-  "rating detail text": "rating detail text",
+  "tap View": "بۆ بینین کلیک بکە",
+  "rating detail text": "تکایە هەڵسەنگاندن بۆ خزمەتگوزارییەکەمان بکە",
 
   // home --> search_page
   "Not found any item": "هیچ بەرهەمێک نەدۆزرایەوە",

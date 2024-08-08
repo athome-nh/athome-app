@@ -124,6 +124,7 @@ class _newhomePageState extends State<newhomePage> {
     Timer(
       const Duration(seconds: 1),
       () {
+        
         if (isLogin &&
             productrovider.showuser &&
             productrovider.location.isEmpty) {
@@ -834,7 +835,7 @@ class _newhomePageState extends State<newhomePage> {
                                             ),
                                             new TextSpan(
                                               text: userdata["name"] == null
-                                                  ? "Guest Account".tr
+                                                  ? "Dear Guest".tr
                                                   : userdata["name"]
                                                       .toString()
                                                       .split(" ")[0],
@@ -1584,8 +1585,8 @@ class _newhomePageState extends State<newhomePage> {
                                         "rating detail text".tr,
                                         style: TextStyle(
                                           color: mainColorBlack,
-                                          fontFamily: mainFontnormal,
-                                          fontSize: 14,
+                                          fontFamily: mainFontbold,
+                                          fontSize: 16,
                                         ),
                                         textAlign: TextAlign.center,
                                       ),

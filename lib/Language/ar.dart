@@ -288,7 +288,7 @@ const Map<String, String> ar = {
   "Yes": "نعم",
   "No": "لا",
 
-  // newhomePage
+  // home --> newhomePage
   "Wellcome to": "مرحبا بك في",
   "Dlly Las": "دلي لاس",
   "Supermarket": "سوبر ماركت",
@@ -296,12 +296,12 @@ const Map<String, String> ar = {
   "Categories": "الاقسام",
   "See More": "شاهد المزيد",
   "Hi": "أهلا بك",
-  "You are doing so well": "You are doing so well",
-  "View All": "View All",
-  "Update": "Update",
+  "Dear Guest": "ضیفنا العزیز",
+  "View All": "عرض الكل",
+  "Update": "تحديث",
   "OK": "موافق",
-  "tap View": "tap View",
-  "rating detail text": "rating detail text",
+  "tap View": "اضغط للعرض",
+  "rating detail text": "يرجى تقييم خدمتنا",
 
   // home --> search_page
   "Not found any item": "لم یتم العثور علی أي منتج",

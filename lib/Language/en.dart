@@ -288,7 +288,7 @@ const Map<String, String> en = {
   "Yes": "Yes",
   "No": "No",
 
-  // newhomePage
+  // home --> newhomePage ----> Done
   "Wellcome to": "Wellcome to",
   "Dlly Las": "Dlly Las",
   "Supermarket": "Supermarket",
@@ -296,12 +296,12 @@ const Map<String, String> en = {
   "Categories": "Categories",
   "See More": "See More",
   "Hi": "Hi",
-  "You are doing so well": "You are doing so well",
+  "Dear Guest": "Dear Guest",
   "View All": "View All",
   "Update": "Update",
   "OK": "OK", // singin_up, login_page, my_cart
-  "tap View": "tap View",
-  "rating detail text": "rating detail text",
+  "tap View": "Tap to view",
+  "rating detail text": "Please rate our service",
 
 
   // home --> search_page
