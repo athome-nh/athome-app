@@ -340,15 +340,15 @@ class DetailsPage extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 20.0),
+                            horizontal: 5.0, vertical: 20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  width: getWidth(context, 50),
+                                Flexible(
+                                  flex: 3,
                                   child: RichText(
                                     text: TextSpan(
                                       children: [
@@ -378,10 +378,10 @@ class DetailsPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  height: getHeight(context, 6),
+                                Flexible(
+                                  flex: 2,
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                   
                                     children: [
                                       isItemInCart
                                           ? SizedBox()
@@ -402,6 +402,7 @@ class DetailsPage extends StatelessWidget {
                                                           .addToCart(cartItem);
                                                     },
                                               child: Chip(
+                                              
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(15),
@@ -410,7 +411,7 @@ class DetailsPage extends StatelessWidget {
                                                 label: Text(
                                                   "Add to cart".tr,
                                                   style: TextStyle(
-                                                      fontSize: 12,
+                                                      fontSize: 10,
                                                       fontFamily:
                                                           mainFontnormal,
                                                       color: mainColorWhite),
@@ -423,6 +424,7 @@ class DetailsPage extends StatelessWidget {
                                       isItemInCart
                                           ? Container(
                                               width: getWidth(context, 32),
+                                              height: getHeight(context, 6),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment

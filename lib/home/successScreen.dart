@@ -70,7 +70,7 @@ class _successScreenState extends State<successScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Order Number:".tr,
+                    "Order Number".tr + " : ",
                     style: TextStyle(
                         fontSize: 16,
                         color: mainColorBlack,

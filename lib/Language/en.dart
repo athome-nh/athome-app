@@ -292,7 +292,7 @@ const Map<String, String> en = {
   "Wellcome to": "Wellcome to",
   "Dlly Las": "Dlly Las",
   "Supermarket": "Supermarket",
-  "What are you searching for?": "What are you searching for ?",
+  "What are you searching for?": "What are you searching for ?", // search_page
   "Categories": "Categories",
   "See More": "See More",
   "Hi": "Hi",
@@ -303,8 +303,7 @@ const Map<String, String> en = {
   "tap View": "Tap to view",
   "rating detail text": "Please rate our service",
 
-
-  // home --> search_page
+  // home --> search_page ----> Done
   "Not found any item": "No item found",
   "Search": "Search", // all_gudide
 
@@ -312,12 +311,12 @@ const Map<String, String> en = {
   "Ordered successfully": "Ordered successfully",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
-  "Order Number:": "Order Number:",
+  "Order Number": "Order Number",
   "sorryWeDoNotHaveDelivery":
-      "We are soory our delivery service is close .\nWould you like your order to be delivered after",
+      "We are sorry our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
   "YourOrderIsNowBeingProcessed":
-      "Your Order is now being processed. We will let you know once the order is picked from the Shop. Check the status of your Order",
+      "Your Order is now being processed. We will let you know as soon as your order finished picking from the store",
   "Yes i Agree": "Yes",
   "Track My Order": "Track My Order",
   "No, Cancel order": "Cancel order",

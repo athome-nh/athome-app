@@ -311,15 +311,15 @@ const Map<String, String> ar = {
   "Ordered successfully": "تم الطلب بنجاح",
   "Thank You!": "شکرا",
   "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
-  "Order Number:": "رقم الطلبیة:",
+  "Order Number": "رقم الطلبیة",
   "sorryWeDoNotHaveDelivery":
       "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
   "YourOrderIsNowBeingProcessed":
-      "الطلبیە قید التجهیز، سنخبركم عندما يتم استلام الطلب من المتجر.",
+      "يتم الآن تجهیز طلبك. سنخبرك بمجرد الانتهاء من تجهیز طلبك في المتجر",
   "Yes i Agree": "نعم",
   "Track My Order": "متابعة الطلب",
-  "No, Cancel order": "نرجو إلغاء الطلب",
+  "No, Cancel order": "إلغاء الطلب",
   "Back to Home": "الرجوع للقائمة الرئیسیة",
 
   // Landing --> choose_lan
