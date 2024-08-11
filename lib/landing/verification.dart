@@ -37,6 +37,8 @@ class _VerificatoinState extends State<Verificatoin> {
   int timecode = 60;
   late Timer _codeTimer;
   String token2 = "";
+  final List<TextEditingController> _controllers =
+      List.generate(6, (_) => TextEditingController());
 
   @override
   void initState() {
@@ -94,6 +96,9 @@ class _VerificatoinState extends State<Verificatoin> {
 
   @override
   void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
     _codeTimer.cancel();
     super.dispose();
   }
@@ -122,24 +127,23 @@ class _VerificatoinState extends State<Verificatoin> {
             child: SingleChildScrollView(
               child: Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: getHeight(context, 4)),
+                      EdgeInsets.symmetric(horizontal: getHeight(context, 2)),
                   height: getHeight(context, 88),
                   width: getWidth(context, 100),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: getHeight(context, 27),
+                        height: getHeight(context, 20),
                         child: Image.asset(
                           "assets/images/verify.gif",
                         ),
                       ),
-
                       SizedBox(
-                        height: getHeight(context, 4),
+                        height: getHeight(context, 2),
                       ),
                       FadeInDown(
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 400),
                           child: Text(
                             "Verification".tr,
                             style: TextStyle(
@@ -148,11 +152,11 @@ class _VerificatoinState extends State<Verificatoin> {
                                 fontFamily: mainFontbold),
                           )),
                       SizedBox(
-                        height: getHeight(context, 4),
+                        height: getHeight(context, 2),
                       ),
                       FadeInDown(
-                        delay: const Duration(milliseconds: 500),
-                        duration: const Duration(milliseconds: 500),
+                        delay: const Duration(milliseconds: 400),
+                        duration: const Duration(milliseconds: 400),
                         child: Text(
                           "${"Please enter the 6 digit code sent to".tr}\n${widget.phone_number}",
                           textAlign: TextAlign.center,
@@ -164,42 +168,61 @@ class _VerificatoinState extends State<Verificatoin> {
                         ),
                       ),
                       SizedBox(
-                        height: getHeight(context, 4),
+                        height: getHeight(context, 2),
                       ),
-                      // Verification Code Input
                       FadeInDown(
                         delay: const Duration(milliseconds: 600),
-                        duration: const Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 400),
                         child: Directionality(
                           textDirection: TextDirection.ltr,
-                          child: VerificationCode(
-                            length: 6,
-                            textStyle:
-                                TextStyle(fontSize: 20, color: mainColorBlack),
-                            underlineColor: mainColorRed,
-                            keyboardType: TextInputType.number,
-                            underlineUnfocusedColor: mainColorGrey,
-                            onCompleted: (value) async {
-                              _code = value;
-                              FocusScope.of(context).requestFocus(FocusNode());
-                              if (await noInternet(context)) {
-                                return;
-                              }
-
-                              RQverify();
-                            },
-                            onEditing: (value) {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: List.generate(6, (index) {
+                              return SizedBox(
+                                width: getWidth(context, 10),
+                                child: TextField(
+                                  autofocus: index == 0 ? true : false,
+                                  decoration: InputDecoration(
+                                    counterText: "",
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    border: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                  ),
+                                  readOnly: true,
+                                  controller: _controllers[index],
+                                  textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.none,
+                                  maxLength: 1,
+                                  onChanged: (value) {
+                                    if (value.isNotEmpty) {
+                                      if (index < _controllers.length - 1) {
+                                        FocusScope.of(context).nextFocus();
+                                      }
+                                    } else if (index > 0) {
+                                      FocusScope.of(context).previousFocus();
+                                    }
+                                  },
+                                ),
+                              );
+                            }),
                           ),
                         ),
                       ),
-
                       SizedBox(
                         height: getHeight(context, 2),
                       ),
-
                       FadeInDown(
                         delay: const Duration(milliseconds: 700),
-                        duration: const Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 400),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -240,23 +263,88 @@ class _VerificatoinState extends State<Verificatoin> {
                         ),
                       ),
                       SizedBox(
-                        height: getHeight(context, 6),
+                        height: getHeight(context, 2),
+                      ),
+                      Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: Column(
+                          children: [
+                            FadeInDown(
+                              delay: const Duration(milliseconds: 725),
+                              duration: const Duration(milliseconds: 400),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  _buildButton('1'),
+                                  _buildButton('2'),
+                                  _buildButton('3'),
+                                ],
+                              ),
+                            ),
+                            FadeInDown(
+                              delay: const Duration(milliseconds: 750),
+                              duration: const Duration(milliseconds: 400),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  _buildButton('4'),
+                                  _buildButton('5'),
+                                  _buildButton('6'),
+                                ],
+                              ),
+                            ),
+                            FadeInDown(
+                              delay: const Duration(milliseconds: 775),
+                              duration: const Duration(milliseconds: 400),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  _buildButton('7'),
+                                  _buildButton('8'),
+                                  _buildButton('9'),
+                                ],
+                              ),
+                            ),
+                            FadeInDown(
+                              delay: const Duration(milliseconds: 800),
+                              duration: const Duration(milliseconds: 400),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  _buildButton('Paste',
+                                      onPressed: _pasteFromClipboard),
+                                  _buildButton('0'),
+                                  _buildButton_backspace('⌫',
+                                      onPressed: _backspace),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: getHeight(context, 1),
                       ),
                       FadeInDown(
-                        delay: const Duration(milliseconds: 800),
-                        duration: const Duration(milliseconds: 500),
+                        delay: const Duration(milliseconds: 900),
+                        duration: const Duration(milliseconds: 400),
                         child: TextButton(
-                          onPressed: _code.length < 6
-                              ? () => {toastLong("Please enter code".tr)}
-                              : _isLoading
-                                  ? null
-                                  : () async {
-                                      if (await noInternet(context)) {
-                                        return;
-                                      }
+                          onPressed: () async {
+                            _code = getVerificationCode();
+                            if (_code.length < 6) {
+                              toastLong("Please enter code".tr);
+                              return;
+                            }
+                            if (await noInternet(context)) {
+                              return;
+                            }
 
-                                      RQverify();
-                                    },
+                            RQverify();
+                          },
                           style: TextButton.styleFrom(
                               fixedSize: Size(getHeight(context, 100),
                                   getHeight(context, 6))),
@@ -282,9 +370,50 @@ class _VerificatoinState extends State<Verificatoin> {
     );
   }
 
+  String getVerificationCode() {
+    // Concatenate the text from all controllers
+    return _controllers.map((controller) => controller.text).join('');
+  }
+
+  Future<void> _input(String text) async {
+    for (var i = 0; i < _controllers.length; i++) {
+      if (_controllers[i].text.isEmpty) {
+        setState(() {
+          _controllers[i].text = text;
+          if (i < _controllers.length - 1) {
+            FocusScope.of(context).nextFocus();
+          }
+        });
+        break;
+      }
+    }
+    _code = getVerificationCode();
+    if (_code.length == 6) {
+      if (await noInternet(context)) {
+        return;
+      }
+
+      RQverify();
+    }
+  }
+
+// 4
+  void _backspace() {
+    for (var i = _controllers.length - 1; i >= 0; i--) {
+      if (_controllers[i].text.isNotEmpty) {
+        setState(() {
+          _controllers[i].clear();
+          if (i > 0) {
+            FocusScope.of(context).previousFocus();
+          }
+        });
+        break;
+      }
+    }
+  }
+
   void verfyphone() async {
     timecode = 90;
-
     _codeTimer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       setState(() {
         if (timecode < 1) {
@@ -296,6 +425,72 @@ class _VerificatoinState extends State<Verificatoin> {
     });
   }
 
+  Future<void> _pasteFromClipboard() async {
+    final clipboardData = await Clipboard.getData('text/plain');
+    final clipboardText = clipboardData?.text ?? '';
+
+    // Ensure clipboardText length matches the number of fields
+    final code = clipboardText
+        .trim()
+        .replaceAll(RegExp(r'\D'), ''); // Remove non-digit characters
+    final codeLength = _controllers.length;
+
+    if (code.length <= codeLength) {
+      setState(() {
+        for (var i = 0; i < code.length; i++) {
+          _controllers[i].text = code[i];
+          if (i < codeLength - 1) {
+            FocusScope.of(context).nextFocus();
+          }
+        }
+        // Clear remaining fields if code is shorter than the number of fields
+        for (var i = code.length; i < codeLength; i++) {
+          _controllers[i].clear();
+        }
+      });
+    } else {
+      // Handle case where clipboard code is longer than the number of fields
+      print('Code from clipboard is too long');
+    }
+    _code = getVerificationCode();
+    if (_code.length == 6) {
+      if (await noInternet(context)) {
+        return;
+      }
+
+      RQverify();
+    }
+  }
+
+  _readAndroidBuildData(AndroidDeviceInfo build) {
+    return build.manufacturer;
+  }
+
+  Widget _buildButton(String text, {VoidCallback? onPressed}) {
+    return TextButton(
+      style: TextButton.styleFrom(
+          fixedSize: Size(getWidth(context, 25), getHeight(context, 3))),
+      onPressed: onPressed ?? () => _input(text),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 16),
+      ),
+    );
+  }
+
+  Widget _buildButton_backspace(String text, {VoidCallback? onPressed}) {
+    return TextButton(
+      style: TextButton.styleFrom(
+          backgroundColor: mainColorRed,
+          fixedSize: Size(
+            getWidth(context, 25),
+            getHeight(context, 3),
+          )),
+      onPressed: onPressed ?? () => _input(text),
+      child: Text(text),
+    );
+  }
+
   void RQverify() {
     setState(() {
       _isLoading = true;
@@ -305,6 +500,7 @@ class _VerificatoinState extends State<Verificatoin> {
       "code": _code,
       "token": token2,
     };
+    print(_code);
     Network(false).postData("verifyPhone", data, context).then((value) async {
       print(value);
       setState(() {
@@ -356,10 +552,6 @@ class _VerificatoinState extends State<Verificatoin> {
         });
       }
     });
-  }
-
-  _readAndroidBuildData(AndroidDeviceInfo build) {
-    return build.manufacturer;
   }
 
   formatedTime({required int timeInSecond}) {
