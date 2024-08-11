@@ -139,15 +139,15 @@ class _SearchState extends State<Search> {
                                   padding: const EdgeInsets.only(
                                       top: 8.0,
                                       bottom: 8.0,
-                                      left: 15,
-                                      right: 15),
+                                      left: 10,
+                                      right: 10),
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: mainColorlightGrey,
                                         borderRadius: BorderRadius.circular(10),
                                         border: Border.all(
                                             color: mainColorlightGrey)),
-                                    height: getHeight(context, 6),
+                                    height: getHeight(context,7),
                                     child: TextField(
                                       key: formKey,
                                       focusNode: _searchFocusNode,
@@ -173,9 +173,11 @@ class _SearchState extends State<Search> {
                                                 },
                                               )
                                             : const SizedBox(),
-                                        prefix: SizedBox(
-                                          width: getWidth(context, 10),
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8.0, right: 8.0),
                                           child: Row(
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Icon(
                                                 Ionicons.search_outline,
@@ -183,8 +185,7 @@ class _SearchState extends State<Search> {
                                                 size: 20,
                                               ),
                                               SizedBox(
-                                                width: getWidth(context, 2),
-                                              ),
+                                                  width: getWidth(context, 2)),
                                               Container(
                                                 height: 20,
                                                 width: 2,
@@ -203,8 +204,7 @@ class _SearchState extends State<Search> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: BorderSide(
-                                            color:
-                                                mainColorlightGrey, // Customize border color
+                                            color: mainColorlightGrey,
                                           ),
                                         ),
                                         hintText: "What are you searching for?",
@@ -245,92 +245,102 @@ class _SearchState extends State<Search> {
                               ],
                             ),
                           )
+
                         // if have item
-                        : Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, bottom: 8.0, left: 15, right: 15),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: mainColorlightGrey,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                          color: mainColorlightGrey)),
-                                  height: getHeight(context, 6),
-                                  child: TextField(
-                                    key: formKey,
-                                    focusNode: _searchFocusNode,
-                                    controller: searchCon,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: mainColorGrey,
-                                        fontFamily: mainFontbold),
-                                    keyboardType: TextInputType.text,
-                                    onChanged: (value) {
-                                      productPro.setsearch(searchCon.text);
-                                    },
-                                    decoration: InputDecoration(
-                                      suffixIcon: searchCon.text.isNotEmpty
-                                          ? IconButton(
-                                              icon: const Icon(Icons.cancel),
-                                              onPressed: () {
-                                                setState(() {
-                                                  isSearch = false;
-                                                  searchCon.text = "";
-                                                  productPro.setsearch("");
-                                                });
-                                              },
-                                            )
-                                          : const SizedBox(),
-                                      prefix: SizedBox(
-                                        width: getWidth(context, 10),
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              Ionicons.search_outline,
-                                              color: mainColorGrey,
-                                              size: 20,
-                                            ),
-                                            SizedBox(
-                                              width: getWidth(context, 2),
-                                            ),
-                                            Container(
-                                              height: 20,
-                                              width: 2,
-                                              color: mainColorGrey2,
-                                            ),
-                                          ],
+                        : Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0,
+                                      bottom: 8.0,
+                                      left: 10,
+                                      right: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: mainColorlightGrey,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: mainColorlightGrey)),
+                                    height: getHeight(context, 7),
+                                    child: TextField(
+                                      key: formKey,
+                                      focusNode: _searchFocusNode,
+                                      controller: searchCon,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: mainColorGrey,
+                                          fontFamily: mainFontbold),
+                                      keyboardType: TextInputType.text,
+                                      onChanged: (value) {
+                                        productPro.setsearch(searchCon.text);
+                                      },
+                                      decoration: InputDecoration(
+                                        suffixIcon: searchCon.text.isNotEmpty
+                                            ? IconButton(
+                                                icon: const Icon(Icons.cancel),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    isSearch = false;
+                                                    searchCon.text = "";
+                                                    productPro.setsearch("");
+                                                  });
+                                                },
+                                              )
+                                            : const SizedBox(),
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8.0, right: 8.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                Ionicons.search_outline,
+                                                color: mainColorGrey,
+                                                size: 20,
+                                              ),
+                                              SizedBox(
+                                                  width: getWidth(context, 2)),
+                                              Container(
+                                                height: 20,
+                                                width: 2,
+                                                color: mainColorGrey2,
+                                              ),
+                                            ],
+                                          ),
                                         ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                              color: mainColorlightGrey),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                              color: mainColorlightGrey),
+                                        ),
+                                        hintText: "What are you searching for?",
+                                        hintStyle: TextStyle(
+                                            fontFamily: mainFontnormal,
+                                            color:
+                                                mainColorBlack.withOpacity(0.4),
+                                            fontSize: 14),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(
-                                            color: mainColorlightGrey),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(
-                                            color: mainColorlightGrey),
-                                      ),
-                                      hintText: "What are you searching for?",
-                                      hintStyle: TextStyle(
-                                          fontFamily: mainFontnormal,
-                                          color:
-                                              mainColorBlack.withOpacity(0.4),
-                                          fontSize: 14),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Flexible(
-                                child: listItemsShow(
-                                  context,
-                                  productPro.getProductsBySearch(
-                                      productPro.searchproduct),
+                                Flexible(
+                                  child: listItemsShow(
+                                    context,
+                                    productPro.getProductsBySearch(
+                                        productPro.searchproduct),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
               ),
             ),
