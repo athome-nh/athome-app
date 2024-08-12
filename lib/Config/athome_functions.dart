@@ -304,18 +304,18 @@ String calculatePercentageDiscount(
 
 String fontBoldChoose() {
   String font = (lang == "en" || lang == "")
-      ? lang == "ar"
-          ? ""
-          : ""
-      : "";
+      ? "nrtB"
+      : lang == "ar"
+          ? "nrtB"
+          : "nrtB";
   return font;
 }
 
 String fontNormalChoose() {
   String font = (lang == "en" || lang == "")
-      ? lang == "ar"
-          ? ""
-          : ""
-      : "";
+      ? "nrtN"
+      : lang == "ar"
+          ? "nrtN"
+          : "nrtN";
   return font;
 }
