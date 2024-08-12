@@ -237,7 +237,7 @@ String addCommasToPrice(int price) {
   // Combine the integer part with the decimal part and return the result
   if (parts.length == 1) {
     // If there is no decimal part, return just the integer part
-    return integerWithCommas + " " +"IQD".tr;
+    return integerWithCommas + " " + "IQD".tr;
   } else {
     return '$integerWithCommas.${parts[1]}';
   }
@@ -303,7 +303,7 @@ String calculatePercentageDiscount(
 }
 
 String fontBoldChoose() {
-  String font = lang == "en"
+  String font = (lang == "en" || lang == "")
       ? lang == "ar"
           ? ""
           : ""
@@ -312,7 +312,7 @@ String fontBoldChoose() {
 }
 
 String fontNormalChoose() {
-  String font = lang == "en"
+  String font = (lang == "en" || lang == "")
       ? lang == "ar"
           ? ""
           : ""
