@@ -326,31 +326,33 @@ const Map<String, String> kur = {
   "Get Start": "دەست پێبکە",
 
   // Landing --> disableaccount
-  "account is disabled": "ئەکاونتەکە لەکارخراوە",
+  "account is disabled": "هه‌ژماره‌كه‌ لەکارخراوە",
 
   // Landing --> login_page
   "Wellcome back": "بەخێر بێیتەوە",
   "EnterYourPhoneNumberToShop": "ژمارەی تەلەفۆنەکەت بنووسە بۆ دەستپێکردنی ئەزموونە نوێیەکەت",
   "Please enter your phone number": "ژمارەی مۆبایلەکەت تۆمار بکە",
   "Please enter your phone number correct": "ژمارەی تەلەفۆنه‌كه‌ت هەڵەیه‌",
-  "Phone Number": "ژمارە مۆبایل",
+  "Phone Number": "ژمارەی مۆبایل",
   "By continuing, you agree to get Dlly Las's Privacy Policy": "بە بەردەوامبوون، تۆ ڕەزامەندیت لەسەر سیاسەتی پاراستنی نهێنی Dlly Las",
   "WeWillSendYouOTP": "کۆدی نهێنی دەنێرین بۆ ژمارە تەلەفونەکەت بۆ دڵنیابونەوە",
   "Account Pendding": "...چاوەڕوانبە",
   "Account npt approved by admin yet": "بەشداربووی بەڕێز بەم زووانە ڕەزامەندی سەرپەرشتیار وەردەگریت. بۆ زانیاری زیاتر پەیوەندی بکەن بە (07509583333)",
-  
   "Account Disabled": "هەژمارەکە ڕاگیرا",
   "Account is disable please contact athome admin": "هەژمارەکە ڕاگیرا ،تکایە پەیوەندی بە کارمەندی بەشی پەیوەندیەکان بکە لە ڕێگەی ژمارە تەلەفۆنی (0750 958 3333)",
-  
   "Account range out": "...ببورە",
   "Account range out content": "لە ئێستادا خۆ تۆمارکردن بەردەست نییە. تکایە لە ماوەی 24 کاتژمێردا دووبارە هەوڵبدەرەوە یان پەیوەندی بکەن بە ( 07509583333) بۆ هاوکاری.",
-  
+
   // Landing --> singin_up
   "Complete Account": "زانیاری کەسی",
   "Enter your account information to complete your account": "تکایە زانیاری پێویست بۆ خۆ تۆمار کردن داخڵ بکە",
   "Enter your Name": "ناوت تۆمار بکە",
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
   "Confirm": "دووپاتکردنەوە",
+  "Name": "ناو", // singin_up, locationdeatil
+  "City": "شار", // singin_up
+  "Age": "ته‌مه‌ن", // singin_up
+  
 
   // Landing --> verification
   "Verification": "دڵنیابوونەوە",
@@ -361,6 +363,7 @@ const Map<String, String> kur = {
   "Resend": "دووبارە ناردنەوە",
   "Please enter code": "تکایە کۆدی دڵنیابوونەوە تۆمار بکە",
   "Verify": "دڵنیا بوونەوە",
+  "Paste": "چه‌سپاندن",
 
   // Landing --> welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",

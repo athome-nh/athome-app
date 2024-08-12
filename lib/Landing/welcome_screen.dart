@@ -110,53 +110,45 @@ class WelcomeScreenState extends State<WelcomeScreen>
                     ),
                   )
                 : Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getWidth(context, 5),
-                    ),
+                    padding: EdgeInsets.all(getWidth(context, 5),),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // 3 dote
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: getWidth(context, 1), left: 5),
-                              width: getWidth(context, 2.5),
-                              height: getWidth(context, 2.5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: currentIndex == 0
-                                    ? mainColorGrey
-                                    : mainColorRed,
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: getWidth(context, 1), left: 5),
-                              width: getWidth(context, 2.5),
-                              height: getWidth(context, 2.5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: currentIndex == 1
-                                    ? mainColorGrey
-                                    : mainColorRed,
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: getWidth(context, 1), left: 5),
-                              width: getWidth(context, 2.5),
-                              height: getWidth(context, 2.5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: currentIndex == 2
-                                    ? mainColorGrey
-                                    : mainColorRed,
-                              ),
-                            ),
-                          ],
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: getWidth(context, 1), left: 5),
+                          width: getWidth(context, 2.5),
+                          height: getWidth(context, 2.5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: currentIndex == 0
+                                ? mainColorGrey
+                                : mainColorRed,
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: getWidth(context, 1), left: 5),
+                          width: getWidth(context, 2.5),
+                          height: getWidth(context, 2.5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: currentIndex == 1
+                                ? mainColorGrey
+                                : mainColorRed,
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: getWidth(context, 1), left: 5),
+                          width: getWidth(context, 2.5),
+                          height: getWidth(context, 2.5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: currentIndex == 2
+                                ? mainColorGrey
+                                : mainColorRed,
+                          ),
                         ),
                       ],
                     ),

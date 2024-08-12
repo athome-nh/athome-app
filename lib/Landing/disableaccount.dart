@@ -1,3 +1,4 @@
+import 'package:dllylas/Config/property.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +14,14 @@ class _disableaccountState extends State<disableaccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("account is disabled".tr),
+        child: Text(
+          "account is disabled".tr,
+          style: TextStyle(
+            fontFamily: mainFontnormal,
+            fontSize: 22.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

@@ -307,7 +307,7 @@ const Map<String, String> en = {
   "Not found any item": "No item found",
   "Search": "Search", // all_gudide
 
-  // home --> successScreen
+  // home --> successScreen ----> Done
   "Ordered successfully": "Ordered successfully",
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
@@ -326,7 +326,7 @@ const Map<String, String> en = {
   "Get Start": "Get Started", // login_page, welcome_screen
 
   // Landing --> disableaccount ----> Done
-  "account is disabled": "account is disabled",
+  "account is disabled": "Account is disabled",
 
   // Landing --> login_page ----> Done
   "Wellcome back": "Welcome back",
@@ -349,9 +349,10 @@ const Map<String, String> en = {
   "Enter your Name": "Enter your Name",
   "Enter your full name": "Enter your full name",
   "Confirm": "Confirm",
-  "Name": "Name", // singin_up, locationdeatil
   "please, Enter the number only": "please, Enter the number only", // singin_up
+  "Name": "Name", // singin_up, locationdeatil
   "City": "City", // singin_up
+  "Age": "Age", // singin_up
 
   // Landing --> verification ----> Done
   "Verification": "Verification",
@@ -362,6 +363,8 @@ const Map<String, String> en = {
   "Resend": "Resend",
   "Please enter code": "Please enter verification code",
   "Verify": "Verify",
+  "Paste": "Paste",
+
 
   // Landing --> welcome_screen  ----> Done
   "wst01": "Shop Smarter & Easier",

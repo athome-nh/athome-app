@@ -315,7 +315,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  _buildButton('Paste',
+                                  _buildButton('Paste'.tr,
                                       onPressed: _pasteFromClipboard),
                                   _buildButton('0'),
                                   _buildButton_backspace('⌫',
@@ -449,8 +449,6 @@ class _VerificatoinState extends State<Verificatoin> {
         }
       });
     } else {
-      // Handle case where clipboard code is longer than the number of fields
-      print('Code from clipboard is too long');
     }
     _code = getVerificationCode();
     if (_code.length == 6) {
@@ -472,7 +470,7 @@ class _VerificatoinState extends State<Verificatoin> {
           fixedSize: Size(getWidth(context, 25), getHeight(context, 3))),
       onPressed: onPressed ?? () => _input(text),
       child: Text(
-        text,
+      text ,
         style: TextStyle(fontSize: 16),
       ),
     );

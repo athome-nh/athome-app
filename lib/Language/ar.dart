@@ -338,18 +338,20 @@ const Map<String, String> ar = {
   "WeWillSendYouOTP": "سنرسل لك رمز التحقق",
   "Account Pendding": "...انتظر",
   "Account npt approved by admin yet": "عزيزي المشترك، سوف تحصل على موافقة المشرف قريبا. للاستفسار الاتصال على (07509583333)",
-  
   "Account Disabled": "الحساب متوقف",
   "Account is disable please contact athome admin": "تم إيقاف الحساب، يرجى التواصل مع موظفي قسم الاتصالات على الرقم (07509583333)",
   "Account range out": "...آسف",
   "Account range out content": "التسجيل غير متاح حاليا. يرجى المحاولة مرة أخرى خلال 24 ساعة أو الاتصال بالرقم (07509583333) للحصول على المساعدة.",
-  
+
   // Landing --> singin_up
   "Complete Account": "معلومات شخصية",
   "Enter your account information to complete your account": "یرجی إدخال المعلومات المطلوبة للتسجيل",
   "Enter your Name": "ادخال الاسم",
   "Enter your full name": "یرجی ادخال الاسم الکامل",
   "Confirm": "تثبيت",
+  "Name": "الاسم", // singin_up, locationdeatil
+  "City": "المدینة", // singin_up
+  "Age": "العمر", // singin_up
 
   // Landing --> verification
   "Verification": "التحقق",
@@ -360,6 +362,7 @@ const Map<String, String> ar = {
   "Resend": "اعادة الارسال",
   "Please enter code": "الرجاء إدخال الرمز التحقق",
   "Verify": "التحقق",
+  "Paste": "لصق",
 
   // Landing --> welcome_screen
   "wst01": "تسوق بطريقة أذكى وأسهل",
