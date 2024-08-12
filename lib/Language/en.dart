@@ -254,19 +254,7 @@ const Map<String, String> en = {
   // home --> favorite ----> Done
   "Favorite": "Favorite", // nav_switch
   "No have any favorite":"You have not set any favorite items.\nMake it your own!",
-  
-  // home --> home_page
-  // "rating detail text": "Please rate our service",
-  // "Wellcome to": "Wellcome to",
-  // "Dlly Las": "Dlly Las",
-  // "Supermarket": "Supermarket",
-  // "Categories": "Category",
-  // "View All": "View All",
-  // "cateItem": "cateItem",
-  // "Could not launch": "Could not launch",
-  // "Update": "Update",
-  // "tap View": "tap View",
-  
+
   // home --> item_ctegories ----> Done
   'All Items': 'All Items',
 
@@ -365,16 +353,12 @@ const Map<String, String> en = {
   "Verify": "Verify",
   "Paste": "Paste",
 
-
   // Landing --> welcome_screen  ----> Done
   "wst01": "Shop Smarter & Easier",
   "wsd01": "is an innovative platform designed to enhance your online shopping experience.",
-  //// "wst02": "Learn From the Best",
   "wst02": "Developed by the best",
-  //// "wsd02": "We will guide you with the best tutors and experts in Kurdistan/Iraq",
   "wsd02": "We selected the best in Kurdistan Iraq to make your shopping easy and fun",
   "wst03": "Fast Delevery",
-  //// "wsd03": "We will reach you wherever you are",
   "wsd03": "We will reach you wherever you are the quickest way possible",
   "Start": "Start",
 
@@ -382,6 +366,7 @@ const Map<String, String> en = {
   "House": "House",
   "Office": "Office",
   "Apartment": "Apartment",
+  "Add": "Add",
   "Add name": "Add name",
   "Add name location": "Add name location",
   "Area": "Area",
@@ -391,7 +376,7 @@ const Map<String, String> en = {
   "Enter floor number": "Enter floor number",
   "building name/number": "building name/number",
   "Enter building name/number": "Enter building name/number",
-  "number": "number ",
+  "number": "number",
   "Enter number": "Enter number",
   "Phone number": "Phone number",
   "Add phone number": "Add phone number",

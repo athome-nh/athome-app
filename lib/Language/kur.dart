@@ -254,19 +254,7 @@ const Map<String, String> kur = {
   // home --> favorite
   "Favorite": "دڵخوازه‌كان",
   "No have any favorite": "بابەتی دڵخواز دیاری نەکراوە.\nبابەتی دلخوازت دیاری بکە بە پێی ویستی خۆت",
-  
-  // home --> home_page
-  // "rating detail text": "تکایە هەڵسەنگاندن بۆ خزمەتگوزارییەکەمان بکە",
-  // "Wellcome to": "بەخێربێیت بۆ",
-  // "Dlly Las": "دڵی لاس",
-  // "Supermarket": 'سوپەرمارکێت',
-  // "Categories": "پۆلێنەکان",
-  // "View All": "بینینی هەموو",
-  // "cateItem": "",
-  // "Could not launch": "",
-  // "Update": "دابەزاندن",
-  // "tap View": "",
-
+ 
   // home --> item_ctegories
   'All Items': "گشت كالاكان",
 
@@ -349,11 +337,11 @@ const Map<String, String> kur = {
   "Enter your Name": "ناوت تۆمار بکە",
   "Enter your full name": "ناوی تەواوت تۆمار بکە",
   "Confirm": "دووپاتکردنەوە",
-  "Name": "ناو", // singin_up, locationdeatil
-  "City": "شار", // singin_up
-  "Age": "ته‌مه‌ن", // singin_up
+  "please, Enter the number only": "تکایە، تەنها ژمارەکە داخڵ بکە",
+  "Name": "ناو",
+  "City": "شار",
+  "Age": "ته‌مه‌ن",
   
-
   // Landing --> verification
   "Verification": "دڵنیابوونەوە",
   "Please enter the 6 digit code sent to": "تکایە کۆدی ٦ ژمارەیی تۆمار بکە",
@@ -368,12 +356,9 @@ const Map<String, String> kur = {
   // Landing --> welcome_screen
   "wst01": "ئاسانتر و زیرەکانەتر  بازاڕ بکە",
   "wsd01": "پلاتفۆرمێکی داهێنەرانەیە کە بۆ بەرزکردنەوەی ئەزموونی کڕینی ئۆنلاینەکەت دیزاین کراوە",
-  //// "wst02": "لە باشترینەکانەوە فێر ببە",
   "wst02": "باشترینەکان پەرەیان پێداوه‌",
-  //// "wsd02": "ئێمە ڕێنیشاندەری باشترین گەیاندن دەکەین لە کوردستان/ عێراق",
   "wsd02": "باشترینەکانمان لە کوردستانی عێراق هەڵبژارد بۆ ئەوەی بازاڕکردنتان ئاسان و خۆش بێت",
   "wst03": "گەیاندنی خێرا",
-  //// "wsd03": "لە هەر کوێیەک بن دەگەینە لاتان",
   "wsd03": "ئێمە لە هەر شوێنێک بیت بە خێراترین ڕێگا كالاكان دەگەینینە دەستتان",
   "Start": "دەست پێبکە",
 
@@ -381,6 +366,7 @@ const Map<String, String> kur = {
   "House": "خانوو",
   "Office": "نووسینگە",
   "Apartment": "شوقە",
+  "Add": "زیادبكه‌",
   "Add name": "زیادکردنی ناو",
   "Add name location": "ناوی شوێنەکەت تۆمار بکە",
   "Area": "ناوچە",

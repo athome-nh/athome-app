@@ -1030,7 +1030,7 @@ Future<void> loiginPopup(BuildContext context) {
                       style: TextStyle(
                         color: mainColorBlack,
                         fontFamily: mainFontbold,
-                        fontSize: 25,
+                        fontSize: 18,
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -1141,7 +1141,7 @@ loginFirstContainer(BuildContext context) {
               "Register".tr,
               style: TextStyle(
                   color: mainColorWhite,
-                  fontSize: 22,
+                  fontSize: 16,
                   fontFamily: mainFontnormal),
             ),
           ),

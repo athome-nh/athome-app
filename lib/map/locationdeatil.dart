@@ -611,15 +611,19 @@ class _location_DeatilState extends State<location_Deatil> {
                           ),
                         ),
                         labelText: lang == "en"
-                            ? "${type.tr} ${"number".tr}"
-                            : "number".tr + type.tr,
+                            ? "${type.tr + " " } ${"number".tr}"
+                            : lang == "ar"
+                                ? "number".tr + " "  + "ال" + type.tr
+                                : "number".tr + " " + type.tr,
                         labelStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.8),
                             fontSize: 16,
                             fontFamily: mainFontnormal),
                         hintText: lang == "en"
-                            ? "${type.tr} ${"number".tr}"
-                            : "number".tr + type.tr,
+                            ? "${"Add".tr + " "}${type.tr} ${" " + "number".tr}"
+                            : lang == "ar"
+                                ? "${"Add".tr + " "}${"number".tr + " "}${"ال"}${type.tr}"
+                                : "${"number".tr+ " "}${type.tr}${" " + "Add".tr}",
                         hintStyle: TextStyle(
                             color: mainColorBlack.withOpacity(0.5),
                             fontSize: 14,

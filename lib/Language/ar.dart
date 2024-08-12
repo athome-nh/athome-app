@@ -254,18 +254,6 @@ const Map<String, String> ar = {
   // home --> favorite
   "Favorite": "مفضلاتي",
   "No have any favorite": "لم تقم بتحديد أي تفضيلات حتى الآن.\nقم بتخصيصها وفقا لاختياراتك الخاصة",
-  
-  // home --> home_page
-  // "rating detail text": "يرجى تقييم خدمتنا",
-  // "Wellcome to": "مرحبا بك في",
-  // "Dlly Las": "دڵی لاس",
-  // "Supermarket": "سوبر ماركت",
-  // "Categories": "الفئات",
-  // "View All": "عرض الکل",
-  // "cateItem": "",
-  // "Could not launch": "",
-  // "Update": "تحديث",
-  // "tap View": "",
 
   // home --> item_ctegories
   'All Items': 'جميع المواد',
@@ -349,9 +337,10 @@ const Map<String, String> ar = {
   "Enter your Name": "ادخال الاسم",
   "Enter your full name": "یرجی ادخال الاسم الکامل",
   "Confirm": "تثبيت",
-  "Name": "الاسم", // singin_up, locationdeatil
-  "City": "المدینة", // singin_up
-  "Age": "العمر", // singin_up
+  "Name": "الاسم",
+  "please, Enter the number only": "من فضلك أدخل الرقم فقط",
+  "City": "المدینة",
+  "Age": "العمر",
 
   // Landing --> verification
   "Verification": "التحقق",
@@ -367,12 +356,9 @@ const Map<String, String> ar = {
   // Landing --> welcome_screen
   "wst01": "تسوق بطريقة أذكى وأسهل",
   "wsd01": "منصة مبتكرة مصممة لتعزيز تجربة التسوق عبر الإنترنت",
-  //// "wst02": "تعلم من الأفضل",
   "wst02": "تم انشاؤه‌ من قبل الأفضل",
-  //// "wsd02": "سنوجهك الی افضل طرائق التوصیل من کردستان العراق",
   "wsd02": "لقد اخترنا الأفضل في كردستان العراق لنجعل التسوق الخاص بك سهلاً وممتعا",
   "wst03": "توصیل سریع",
-  //// "wsd03": "سنصل الیك أینما ما كنت",
   "wsd03": "سنصل إليك أينما كنت بأسرع طريقة ممكنة",
   "Start": "ابدأ",
 
@@ -380,6 +366,7 @@ const Map<String, String> ar = {
   "House": "منزل",
   "Office": "مكتب",
   "Apartment": "شقة",
+  "Add": "اضف",
   "Add name": "اضافة الاسم",
   "Add name location": "اضافة اسم الموقع",
   "Area": "المنطقة",
