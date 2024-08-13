@@ -226,7 +226,7 @@ const Map<String, String> kur = {
   "Today": "ئەمڕۆ",
   "Select Day to show time deleverys": "ڕۆژی گەیاندن دیاری  بکە",
   "Select the Time please": "کاتی گەیاندن دیاری بکە",
-  "Select": "دیاریکردن",
+  "Select": "دیاربكه‌",
   "Voucher Code": "كۆدی پسوله‌",
   "Please select Your Voucher": "تكایه‌ پسوله‌كه‌ت دیاری بكه‌",
   "must order by": "به‌كاردێت دوای داواكردن به‌ به‌های",
@@ -382,9 +382,10 @@ const Map<String, String> kur = {
   "Add phone number": "زیادکردنی ژمارەی مۆبایل",
 
   // map --> location
-  "Selected": "",
+  "Location": "ناونیشان",
   "Delete location success": "سڕینەوەی ناونیشان ئەنجام درا",
-
+  "Selected": "دیاركرا",
+  
   // map --> map_screen
   "Map": "نەخشە",
   "Zoom in Please": "نزیکتر بکەوە",
@@ -397,13 +398,15 @@ const Map<String, String> kur = {
   "An error occurred, Please try again later.": "هەڵەیەک ڕووی داوە. تکایە دواتر هەوڵبدەرەوە.",
 
   // Notification --> notification_page
-  "Notification": "ئاگادارکردنەوە",
+  "Notification": "ئاگاداركردنه‌وه‌كان",
   "New": "نوێ",
   "You dont have any notification": "هیچ ئاگادارکردنەوەکت نیە",
 
   // Order --> old_order
   "Order Deatil": "زانیاری داواکاریەکە",
-  "Quantity: ": "بڕی: ",
+  "Ordered": "داواكرا",
+  "Picked": "هەڵبژێردرا",
+  "Deleverd": "گه‌یاندرا",
   "Order Placed": "داواکاریەکەت تۆمارکرا",
   "Processing Order": "داواکاریەکە ئامادە دەکرێ",
   "Order Is On way": "داواکاریەکەت لە ڕێگایە",
@@ -412,6 +415,11 @@ const Map<String, String> kur = {
   "Undelivered": "داواکاریەکە نەگەیەنرا",
   "Date and Time": "کات و بەروار",
   "Order No.": "ژمارەی داواکاری",
+
+  // Order --> old_items
+  "Past Order": "لیستی داواکاریەکان",
+  "Re order": "دوبارە داواکردن",
+  "Add More Items": "زیادکردنی بەرهەمی تر",
 
   
 
@@ -453,12 +461,8 @@ const Map<String, String> kur = {
   "Order number:": "ژمارەی داواکاری: ",
   "Date:": "به‌روار:",
   "You not have any order": "هیچ داواکاریەکت نیە",
-  "Re order": "دوبارە داواکردن",
+  
   "View": "پیشاندان",
-
-  // order_items
-  "Past Order": "لیستی داواکاریەکان",
-  "Add More Items": "زیادکردنی بەرهەمی تر",
 
   // check_out
   "Delivery Address": "ناونیشانی گەیاندن",

@@ -1,12 +1,8 @@
-import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/productprovider.dart';
-import 'package:dllylas/home/item_categories.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -191,6 +187,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                   // icon and text
                                   Row(
                                     children: [
+                                      
                                       Container(
                                         width: getWidth(context, 6),
                                         height: getWidth(context, 6),
@@ -205,16 +202,21 @@ class _NotificationPageState extends State<NotificationPage> {
                                           size: getWidth(context, 4),
                                         ),
                                       ),
+
                                       SizedBox(
                                         width: getWidth(context, 2),
                                       ),
-                                      Text(
-                                        maxLines: 1,
-                                        notification.title!,
-                                        style: TextStyle(
-                                            color: mainColorGrey,
-                                            fontSize: 12,
-                                            fontFamily: mainFontbold),
+
+                                      Container(
+                                        width: getWidth(context, 63),
+                                        child: Text(
+                                          maxLines: 1,
+                                          notification.title!,
+                                          style: TextStyle(
+                                              color: mainColorGrey,
+                                              fontSize: 12,
+                                              fontFamily: mainFontbold),
+                                        ),
                                       ),
                                     ],
                                   ),

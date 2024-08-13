@@ -157,7 +157,7 @@ class _OldOrderState extends State<OldOrder> {
                                         Row(
                                           children: [
                                             Text(
-                                              "Ordered: ".tr,
+                                              "Ordered".tr + " : ",
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,
@@ -175,8 +175,8 @@ class _OldOrderState extends State<OldOrder> {
                                             ),
                                             Text(
                                               order.status! < 5
-                                                  ? "Picked: ".tr
-                                                  : "Deleverd: ".tr,
+                                                  ? "Picked".tr + " : "
+                                                  : "Deleverd".tr + " : ",
                                               style: TextStyle(
                                                   color: mainColorBlack,
                                                   fontFamily: mainFontnormal,

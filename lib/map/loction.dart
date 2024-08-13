@@ -103,7 +103,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                           horizontal: 12),
                                       child: RichText(
                                         text: TextSpan(
-                                          text: location.type.toString(),
+                                          text: location.type.toString().tr ,
                                           style: TextStyle(
                                               fontSize: 20,
                                               color: mainColorGrey,
@@ -112,7 +112,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                             TextSpan(text: "\n"),
                                             new TextSpan(
                                               text:
-                                                  "Location: " + location.area!,
+                                                  "Location".tr + " : " + location.area!,
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   color: mainColorRed,
@@ -191,8 +191,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                 children: [
                                   Text(
                                     productrovider.defultlocation == location.id
-                                        ? "Selected"
-                                        : "Selecte",
+                                        ? "Selected".tr
+                                        : "Select".tr,
                                     style: TextStyle(
                                         color: mainColorBlack,
                                         fontFamily: mainFontnormal,

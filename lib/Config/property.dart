@@ -3,13 +3,21 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/// Define {NRT Fonts } in AtHome
+/// Define {NRT Fonts }
 String mainFontbold = 'nrtB';
 String mainFontnormal = 'nrtN';
 
-/// Define {Iranyakan Fonts } in AtHome
+/// Define {Iranyakan Fonts }
 // String mainFontbold = 'iraniB';
 // String mainFontnormal = 'iraniN';
+
+/// Define {Font Size}
+double sizePageTitle = 20;
+double sizeInputText = 16;
+double sizeTitle = 16;
+double sizeSubtitle = 14;
+
+
 
 /// Define { Colors } in AtHome
 const Color green = Color(0xFF2FA849);

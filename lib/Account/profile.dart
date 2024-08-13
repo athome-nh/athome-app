@@ -6,6 +6,7 @@ import 'package:dllylas/Account/all_gudide.dart';
 import 'package:dllylas/Account/chatscreen.dart';
 import 'package:dllylas/Account/reward.dart';
 import 'package:dllylas/Account/voucher_code.dart';
+import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
@@ -535,7 +536,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyle(
                 fontFamily: mainFontnormal,
                 color: mainColorGrey,
-                fontSize: 16,
+                fontSize: sizeSubtitle,
               ),
             ),
           ),
@@ -572,7 +573,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         style: TextStyle(
           fontFamily: mainFontbold,
           color: mainColorGrey,
-          fontSize: 16,
+          fontSize: sizeTitle,
         ),
       ),
     );
@@ -638,9 +639,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Text(
                               "Guest Account".tr,
                               style: TextStyle(
-                                fontFamily: mainFontbold,
-                                fontSize: 16,
+                                fontSize: sizeSubtitle,
                                 color: mainColorBlack,
+                                fontFamily: mainFontnormal,
                               ),
                             ),
                           ),
@@ -661,9 +662,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Text(
                               "+964 7-- --- ----",
                               style: TextStyle(
-                                  fontFamily: mainFontbold,
-                                  fontSize: 14,
-                                  color: mainColorBlack),
+                                fontSize: sizeSubtitle,
+                                color: mainColorBlack,
+                                fontFamily: mainFontnormal,
+                              ),
                             ),
                           ),
                         ],
@@ -685,9 +687,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Text(
                               "0",
                               style: TextStyle(
-                                  fontSize: 14,
-                                  color: mainColorBlack,
-                                  fontFamily: mainFontbold),
+                                fontSize: sizeSubtitle,
+                                color: mainColorBlack,
+                                fontFamily: mainFontnormal,
+                              ),
                             ),
                           ),
                         ],
@@ -764,9 +767,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Text(
               title,
               style: TextStyle(
-                fontFamily: mainFontnormal,
+                fontFamily: fontNormalChoose(),
                 color: mainColorGrey,
-                fontSize: 16,
+                fontSize: sizeSubtitle, 
               ),
             ),
           ),
@@ -923,7 +926,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                               color: mainColorBlack,
                               fontFamily: mainFontnormal,
-                              fontSize: 16,
+                              fontSize: sizeTitle,
                             ),
                           ),
                           const SizedBox(),

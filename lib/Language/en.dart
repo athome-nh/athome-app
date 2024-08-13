@@ -226,11 +226,11 @@ const Map<String, String> en = {
   "Today": "Today",
   "Select Day to show time deleverys": "Choose a delivery date",
   "Select the Time please": "Choose a delivery time",
-  "Select": "Select",
+  "Select": "Select", // location
   "Voucher Code": "Voucher Code",
   "Please select Your Voucher": "Please select Your Voucher",
   "must order by": "Use after order of",
-  "Voucher": "Voucher",
+  "Voucher": "Voucher", // old_order
   "Submit": "Submit",
   "Add your note": "Add your note",
   "Note": "Note",
@@ -238,10 +238,10 @@ const Map<String, String> en = {
   "Sub Total": "Sub Total", // old_order, my_cart
   "Voucher Amount": "Voucher Amount", // old_order
   "Delivery Cost": "Delivery Cost", // old_order, my_cart
-  "Free Delivery": "Free Delivery", // my_cart
+  "Free Delivery": "Free Delivery", // old_order, my_cart
   "Pyment Method": "Payment Method",
   "Cash": "Cash",
-  "Total": "Total", // my_cart
+  "Total": "Total", // old_order, my_cart, order_items
   "unknown occurred error please try again later": "Error please try again later", // singin_up, login_page
   "Send Order": "Send Order",
   "AM": "AM",
@@ -263,8 +263,8 @@ const Map<String, String> en = {
   "Clear cart": "Clear all cart",
   "Are you sure you want to continue?": "Are you sure about continuing?",
   "Clear": "Clear",
-  "Delete": "Delete", // location
-  "Your cart is empty": "Your cart is empty",
+  "Delete": "Delete", // location, order_item
+  "Your cart is empty": "Your cart is empty",// order_item
   "min title": "Minimum Order required",
   "min deatil": "Dear Customer, The minimum acceptable order is",
  
@@ -362,7 +362,7 @@ const Map<String, String> en = {
   "wsd03": "We will reach you wherever you are the quickest way possible",
   "Start": "Start",
 
-  // map --> locationdeatil
+  // map --> locationdeatil  ----> Done
   "House": "House",
   "Office": "Office",
   "Apartment": "Apartment",
@@ -381,12 +381,12 @@ const Map<String, String> en = {
   "Phone number": "Phone number",
   "Add phone number": "Add phone number",
 
-  // map --> location
+  // map --> location  ----> Done
+  "Location": "Location",
+  "Delete location success": "Location deleted successfully",
   "Selected": "Selected",
-  "Delete location success": "Delete location success",
-  
 
-  // map --> map_screen
+  // map --> map_screen  ----> Done
   "Map": "Map",
   "Zoom in Please": "Zoom in",
   "Sorry, we don't deliver here": "your location excludes delivery service",
@@ -394,17 +394,19 @@ const Map<String, String> en = {
   "try again": "try again",
   "Failed to load data": "Failed to load data",
 
-  // Network --> Network 
+  // Network --> Network   ----> Done
   "An error occurred, Please try again later.": "An error occurred, Please try again later.",
 
-  // Notification --> notification_page
-  "Notification": "Notification",
+  // Notification --> notification_page   ----> Done
+  "Notification": "Notifications",
   "New": "New",
-  "You dont have any notification": "You don\'t have any notification.",
+  "You dont have any notification": "You do not have any notification.",
 
-  // Order --> old_order
+  // Order --> old_order   ----> Done
   "Order Deatil": "Order Deatil",
-  "Quantity: ": "Quantity: ",
+  "Ordered": "Ordered",
+  "Picked": "Picked",
+  "Deleverd": "Deleverd",
   "Order Placed": "Order Placed",
   "Processing Order": "Processing Order",
   "Order Is On way": "Your order is on it's way",
@@ -414,7 +416,23 @@ const Map<String, String> en = {
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
 
-////////////////////////////////////
+  // Order --> old_items
+  "Past Order": "Order history",
+  "Re order": "Reorder",
+  "Add More Items": "Add More Items",
+
+  
+
+
+
+
+
+
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
   // my_cart
   "you can not add more this item": "you can not add more items",
   
@@ -462,12 +480,10 @@ const Map<String, String> en = {
   "Order number:": "Order number: ",
   "Date:": "Date:",
   "You not have any order": "You do not have any order",
-  "Re order": "Reorder",
+  
   "View": "View",
 
-  // order_items
-  "Past Order": "Order history",
-  "Add More Items": "Add More Items",
+ 
 
   // track_order
   "Track Order": "Track your Order",

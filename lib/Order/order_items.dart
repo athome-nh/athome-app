@@ -75,7 +75,7 @@ class _OrederItemsState extends State<OrederItems> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                "Delete".tr + name,
+                                "Delete".tr +" " + name,
                               ),
                             ),
                           );

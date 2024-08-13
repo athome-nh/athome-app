@@ -160,7 +160,7 @@ const Map<String, String> ar = {
   "Account & Security": "الحساب والأمان",
   "Account Information": "معلومات الحساب",
   "Orders": "طلباتي",
-  "Locations": "الموقع",
+  "Locations": "المواقع",
   "Coin & Reward": "النقاط والمكافات",
   "My Voucher": "قسيمتي",
   "General": "عام",
@@ -382,14 +382,14 @@ const Map<String, String> ar = {
   "Add phone number": "اضافة رقم الهاتف",
 
   // map --> location
-  "Selected": "",
+  "Location": "الموقع",
   "Delete location success": "تم إزالة الموقع بنجاح",
+  "Selected": "اختیر",
   
-
   // map --> map_screen
   "Map": "الخريطة",
   "Zoom in Please": "تكبير",
-  "Sorry, we don't deliver here": "للأسف -لا يوجد خدمة توصيل في هذا الموقع",
+  "Sorry, we don't deliver here": "للأسف -لا يوجد خدمة توصيل الی هذا الموقع",
   "Delivery To": "التوصیل الی",
   "try again": "يرجى المحاولة مرة أخرى",
   "Failed to load data": "فشلت عملية تحميل البيانات",
@@ -398,21 +398,28 @@ const Map<String, String> ar = {
   "An error occurred, Please try again later.": "عذرا لقد حدث خطأ، يرجى المحاولة لاحقا.",
 
   // Notification --> notification_page
-  "Notification": "إشعار",
+  "Notification": "إشعارات",
   "New": "جديد",
-  "You dont have any notification": "هیليس لديك أي إشعار", 
+  "You dont have any notification": "ليس لديك أي إشعار", 
 
   // Order --> old_order
   "Order Deatil": "تفاصيل الطلبية",
-  "Quantity: ": "العدد: ",
+  "Ordered": "تم الطلب",
+  "Picked": "تم الانتقاء",
+  "Deleverd": "تم التوصیل",
   "Order Placed": "تم التثبیت الطلب",
   "Processing Order": "قید العمل",
-  "Order Is On way": "سيتم توصيل طلبك قريبا",
-  "Order Ready For Pickup": "الطلبیة جاهز للاستلام",
+  "Order Is On way": "طلبك في طريقه إليك",
+  "Order Ready For Pickup": "الطلبية جاهزة للاستلام",
   "Order is delivered": "تم توصيل الطلب",
   "Undelivered": "لم يتم توصيل الطلب",
   "Date and Time": "التاریخ و الوقت",
   "Order No.": "رقم الطلبیة",
+
+  // Order --> old_items
+  "Past Order": "سجل الطلبات",
+  "Re order": "إعادة الطلب",
+  "Add More Items": "اضافة المزيد",
 
   
   
@@ -449,14 +456,7 @@ const Map<String, String> ar = {
   "Order number:": "رقم الطلبیة: ",
   "Date:": "التأريخ:",
   "You not have any order": "لیس لدیك اي طلب",
-  "Re order": "إعادة الطلب",
   "View": "عرض",
-
-  // order_items
-  "Past Order": "سجل الطلبات",
-  "Add More Items": "اضافة مزيد من المنتجات",
-
- 
 
   // check_out
   "Delivery Address": "عنوان التوصیل",
