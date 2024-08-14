@@ -1,4 +1,8 @@
 const Map<String, String> en = {
+
+  /// Start Translation {English}
+  
+
   // Account --> about_screen ----> Done
   "About Us": "About Us",
   "AboutTextOne":
@@ -44,53 +48,7 @@ const Map<String, String> en = {
   "English": "English", // chatscreen, profile, choose_lan
   "Arabic": "Arabic ", // chatscreen, profile, choose_lan
   "Kurdish": "Kurdish", // chatscreen, profile, choose_lan
-  
-  // Account --> all_gudide ----> Pause
-  "FAQs": "FAQs",
-  "What\'s New": "What\'s New",
-  "Title_FAQ_1": "General",
-  "Title_FAQ_2": "Installation",
-  "Title_FAQ_3": "Development",
-  "Title_FAQ_4": "Performance",
-  "Title_FAQ_5": "Features",
-  "Title_FAQ_6": "Learning Resources",
-  "Question_FAQ_1": "What is Flutter?",
-  "Question_FAQ_2": "What programming language does Flutter use?",
-  "Question_FAQ_3": "Is Flutter free to use?",
-  "Question_FAQ_4": "How do I install Flutter?",
-  "Question_FAQ_5": "What are the system requirements for Flutter?",
-  "Question_FAQ_6": "Can I use Flutter with my existing project?",
-  "Question_FAQ_7": "What IDEs can I use with Flutter?",
-  "Question_FAQ_8": "Does Flutter support hot reload?",
-  "Question_FAQ_9": "How does Flutter perform compared to native apps?",
-  "Question_FAQ_10": "Does Flutter have access to native device features?",
-  "Question_FAQ_11": "Where can I find Flutter tutorials?",
-  "Answer_FAQ_1": "Flutter is an open-source UI software development kit created by Google.",
-  "Answer_FAQ_2": "Flutter uses the Dart programming language.",
-  "Answer_FAQ_3": "Yes, Flutter is free and open-source.",
-  "Answer_FAQ_4": "You can install Flutter by following the instructions on the official website.",
-  "Answer_FAQ_5": "Refer to the official documentation for detailed requirements.",
-  "Answer_FAQ_6": "You can integrate Flutter into existing applications incrementally.",
-  "Answer_FAQ_7": "You can use Android Studio, IntelliJ IDEA, and Visual Studio Code with Flutter.",
-  "Answer_FAQ_8": "Yes, Flutter supports hot reload.",
-  "Answer_FAQ_9": "Flutter provides high performance on both Android and iOS.",
-  "Answer_FAQ_10": "Yes, Flutter provides plugins to access native device features.",
-  "Answer_FAQ_11": "There are many resources available, including the official documentation.",
-  "Title_Update_1": "New Feature: Dark Mode",
-  "Title_Update_2": "Improved Performance",
-  "Title_Update_3": "Bug Fixes",
-  "Title_Update_4": "Enhanced Security",
-  "Title_Update_5": "User Interface Overhaul",
-  "Title_Update_6": "New Language Support",
-  "Title_Update_7": "Social Media Integration",
-  "Description_Update_1": "We\'ve added a new dark mode to help reduce eye strain at night.",
-  "Description_Update_2": "App startup time is now 50% faster!",
-  "Description_Update_3": "Fixed various bugs reported by users to improve stability.",
-  "Description_Update_4": "Implemented new security protocols to keep your data safe.",
-  "Description_Update_5": "Revamped the UI for a more modern and intuitive experience.",
-  "Description_Update_6": "Added support for Spanish and French languages.",
-  "Description_Update_7": "You can now link your social media accounts with the app.",
-  
+
   // Account --> chatscreen ----> Done
   "Select Bug": "Select section",
   "Customer Support": "Customer Support",
@@ -250,10 +208,10 @@ const Map<String, String> en = {
   // home --> DetailsPage ----> Done
   "Add to cart": "Add to cart",
   "Similar item": "Related items",
-  
+
   // home --> favorite ----> Done
   "Favorite": "Favorite", // nav_switch
-  "No have any favorite":"You have not set any favorite items.\nMake it your own!",
+  "No have any favorite": "You have not set any favorite items.\nMake it your own!",
 
   // home --> item_ctegories ----> Done
   'All Items': 'All Items',
@@ -264,10 +222,10 @@ const Map<String, String> en = {
   "Are you sure you want to continue?": "Are you sure about continuing?",
   "Clear": "Clear",
   "Delete": "Delete", // location, order_item
-  "Your cart is empty": "Your cart is empty",// order_item
+  "Your cart is empty": "Your cart is empty", // order_item
   "min title": "Minimum Order required",
   "min deatil": "Dear Customer, The minimum acceptable order is",
- 
+
   // home --> nav_switch ----> Done
   "Home": "Home",
   "Cart": "Cart",
@@ -300,11 +258,9 @@ const Map<String, String> en = {
   "Thank You!": "Thank You!",
   "for yor order": "For shopping with Dlly Lass Market.",
   "Order Number": "Order Number",
-  "sorryWeDoNotHaveDelivery":
-      "We are sorry our delivery service is close .\nWould you like your order to be delivered after",
+  "sorryWeDoNotHaveDelivery": "We are sorry our delivery service is close .\nWould you like your order to be delivered after",
   "am": "am?",
-  "YourOrderIsNowBeingProcessed":
-      "Your Order is now being processed. We will let you know as soon as your order finished picking from the store",
+  "YourOrderIsNowBeingProcessed": "Your Order is now being processed. We will let you know as soon as your order finished picking from the store",
   "Yes i Agree": "Yes",
   "Track My Order": "Track My Order",
   "No, Cancel order": "Cancel order",
@@ -330,7 +286,7 @@ const Map<String, String> en = {
   "Account is disable please contact athome admin": "Your account is on hold. Reach out to Communications for details: (07509583333)", // check
   "Account range out": "Sorry....",
   "Account range out content": "Registration is currently unavailable. Please try again within 24 hours or call (0750 958 3333) for help.",
-  
+
   // Landing --> singin_up ----> Done
   "Complete Account": "Personal Information",
   "Enter your account information to complete your account": "Please enter the required information for registration",
@@ -430,8 +386,8 @@ const Map<String, String> en = {
   "Dlly Las Market": "Dlly Las Market",
   "Order Case": "Order status",
   "View": "View",
-  
-  // Order --> track_order
+
+  // Order --> track_order   ----> Done
   "Track Order": "Track your order",
   "Order": "Order",
   "Cancel order": "Cancel order",
@@ -439,57 +395,16 @@ const Map<String, String> en = {
   "Are you sure Cancel order": "Are you sure you want to Cancel the order ?",
 
 
-///////////////////////////////////////
-///////////////////////////////////////
-  
 
-  // check_out
-  // "Delivery Address": "Delivery Address",
-  // "Not have any location": "you don't have any location",
-  // "Add new Location": "Add a new Location",
-  // "Cash on delivery": "Cash on delivery",
-  // "Coming soon": "Coming soon",
-  // "Please Delivery Address": "Please Add Delivery Address",
-  // "the code is un correct": "the code is wrong",
-  
-  // Notification
-  // "1 week ago": "1 week ago",
-  // "1 day ago": "One day ago",
-  // "An hour ago": "An hour ago",
-  // "A minute ago": "A minute ago",  
-  
-  //
-  // "New update is available": "New update is available",
-  // "A newer version of dlly las application is available, please download the latest version .":
-  //     "A newer version of dlly las application is available, please download the latest version .",
-  
-  // Ziyadaa
-  // "NEXT": "NEXT",
-  // "SKIP":
-  // "SKIP",
-  
-  // profilo Chenged
-  // "Information": "Information",
-  // "Enter Name": "Enter Name",
-  // "Enter Age": "Enter Age",
-  // "Address": "Address",
-  
-  // Dialogbox ( Register ) --> my_widget
-  // "You need login": "You have to register first",
-  // item_categories
-  // "You not have any item": "You do not have any items",
 
-  //
-  // "Privacy Poilcy": "Privacy policy",
-  // "Terms Of Use": "Terms and Condition",
+  /// End Translation {English}
 
-  // "Account recovery opportunity":
-  //     "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
 
-/////////////////////////////////
-/////////////////////////////////
 
-  //Privacy Policy
+
+  ///Privacy Policy
+  ///
+  
   "Privacy Policy Title": "Privacy Policy for Dlly Las Grocery App",
   "Privacy Policy intoduction":
       """This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your
@@ -590,52 +505,46 @@ you through the app.""",
       """If you have any questions about this privacy policy, please contact us at [Info@Dllylas.com] or using this
 phone number (+964 750 958 3333)""",
 
-  //Terms and Condition
-  "Terms and Condition for Dlly Las Grocery App title": "Terms and Condition for Dlly Las Grocery App",
+  /// Terms and Condition
+  /// 
+  
+  "Terms and Condition for Dlly Las Grocery App title":
+      "Terms and Condition for Dlly Las Grocery App",
   "Terms and Condition for Dlly Las Grocery App content":
       """These terms and conditions govern your access and use of the dlly las application.
 note: By accessing or using dlly las app constitutes your agreement to be bound by all the following terms and conditions. if you disagree with these terms and conditions, please refrain from using the app or website.""",
-
   "General:": "General:",
   "General: content": """• You must be at least 14 years old to use the app.
 • You agree to use the app only for its intended purpose.
 • to register or log in to the app, customers must utilize the one-time password (OTP) system for verification.
 • We reserve the right to cancel or modify orders at any time.""",
-
   "Delivery:": "Delivery:",
   "Delivery: content": """• Delivering all the items will be free.
 • We will deliver your groceries to the address you provide.
 • You are responsible for being available to receive your delivery.
 • the minimum order to qualify for free delivery is 10000 IQD.""",
-
   "Returns and Refunds:": "Returns and Refunds:",
   "Returns and Refunds: content":
       """• upon receiving your order, you can request to return any items from your order list before the driver leaves.
 • Once you submit a return request for any items from your order list, we'll give you a full refund when the driver delivers your order.""",
-
   "Payment:": "Payment:",
   "Payment:content":
       "• we'll expand our payment options soon to include most major credit cards.",
-
   "Privacy:": "Privacy:",
   "Privacy:content":
       """• We collect certain information about you when you use the app.
 • We use this information to provide you with a better experience.
 • We will not share your information with third parties without your consent.""",
-
   "Content Protection:": "Content Protection:",
   "Content Protection:content":
       """Republishing or redistributing any content or item descriptions found within dlly las is strictly prohibited without our express written permission. This includes product listings, images, and any other information we provide on the platform.""",
-
   "Changes to Terms and Conditions:": "Changes to Terms and Conditions:",
   "Changes to Terms and Conditions:content":
       """To stay current with evolving services and legal requirements, we may periodically update our Terms and Conditions. Rest assured, you will be directly notified through a pop-up message within the app whenever there are updates. If you have any questions, you can refer to our dedicated Terms and Conditions page or reach out to our support team.
 """,
-
   "Governing Law:": "Governing Law:",
   "Governing Law:content":
       "These terms and conditions are governed by the iraqy laws .",
-
   "Contact Us:TC": "Contact Us:",
   "Contact Us:TC content":
       """If you have any questions about these terms and conditions, please contact us at [Info@Dllylas.com]. or using this phone number (+964 750 958 3333).""",

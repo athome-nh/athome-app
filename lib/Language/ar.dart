@@ -1,4 +1,8 @@
 const Map<String, String> ar = {
+
+  /// Start Translation {Arabic}
+  
+
   // Account --> about_screen
   "About Us": "حول التطبیق",
   "AboutTextOne":
@@ -44,53 +48,7 @@ const Map<String, String> ar = {
   "English": "إنجليزي",
   "Arabic": "العربية",
   "Kurdish": "كردي",
-
-  // Account --> all_gudide
-  "FAQs": "FAQs",
-  "What\'s New": "",
-  "Title_FAQ_1": "",
-  "Title_FAQ_2": "",
-  "Title_FAQ_3": "",
-  "Title_FAQ_4": "",
-  "Title_FAQ_5": "",
-  "Title_FAQ_6": "",
-  "Question_FAQ_1": "",
-  "Question_FAQ_2": "",
-  "Question_FAQ_3": "",
-  "Question_FAQ_4": "",
-  "Question_FAQ_5": "",
-  "Question_FAQ_6": "",
-  "Question_FAQ_7": "",
-  "Question_FAQ_8": "",
-  "Question_FAQ_9": "",
-  "Question_FAQ_10": "",
-  "Question_FAQ_11": "",
-  "Answer_FAQ_1": "",
-  "Answer_FAQ_2": "",
-  "Answer_FAQ_3": "",
-  "Answer_FAQ_4": "",
-  "Answer_FAQ_5": "",
-  "Answer_FAQ_6": "",
-  "Answer_FAQ_7": "",
-  "Answer_FAQ_8": "",
-  "Answer_FAQ_9": "",
-  "Answer_FAQ_10": "",
-  "Answer_FAQ_11": "",
-  "Title_Update_1": "",
-  "Title_Update_2": "",
-  "Title_Update_3": "",
-  "Title_Update_4": "",
-  "Title_Update_5": "",
-  "Title_Update_6": "",
-  "Title_Update_7": "",
-  "Description_Update_1": "",
-  "Description_Update_2": "",
-  "Description_Update_3": "",
-  "Description_Update_4": "",
-  "Description_Update_5": "",
-  "Description_Update_6": "",
-  "Description_Update_7": "",
-
+  
   // Account --> chatscreen
   "Select Bug": "حدد القسم",
   "Customer Support": "دعم العملاء",
@@ -300,11 +258,9 @@ const Map<String, String> ar = {
   "Thank You!": "شکرا",
   "for yor order": "لاختيارك التسوق مع دلي لاس ماركت",
   "Order Number": "رقم الطلبیة",
-  "sorryWeDoNotHaveDelivery":
-      "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
+  "sorryWeDoNotHaveDelivery": "نحن اسفون خدمة التوصيل مغلقة حاليا هل تحب إيصال الطلبية بعد",
   "am": "صباحا؟",
-  "YourOrderIsNowBeingProcessed":
-      "يتم الآن تجهیز طلبك. سنخبرك بمجرد الانتهاء من تجهیز طلبك في المتجر",
+  "YourOrderIsNowBeingProcessed": "يتم الآن تجهیز طلبك. سنخبرك بمجرد الانتهاء من تجهیز طلبك في المتجر",
   "Yes i Agree": "نعم",
   "Track My Order": "متابعة الطلب",
   "No, Cancel order": "إلغاء الطلب",
@@ -438,71 +394,19 @@ const Map<String, String> ar = {
   "View order": "عرض الطلب",
   "Are you sure Cancel order": "هل انت متاكد من الغاء الطلبیة ؟",
 
-  
 
-  
-  // "Please Delivery Address": "يرجى إضافة الموقع",
-
-  // home_page
-  // "Order now": "اطلب الان",
-  
-  
-  
-  // Ziyadaa
-  // "NEXT": "التالي",
-  // "SKIP": "تخطي",
-
-  // profilo
-  // "Information": "حسابي",
-  // "Enter Name": "ادخل الاسم",
-  // "Enter Age": "ادخل العمر",
-  // "Address": "الموقع",
-
-  // Dialogbox ( Register ) --> my_widget
-  
-  // "You need login": "یرجی التسجیل أولا",
-
-  // Page --> Login First --> my_widget
-  // "Please login first": "الرجاء تسجیل الدخول أولا",
-
-  // check_out
-  // "Delivery Address": "عنوان التوصیل",
-  // "Not have any location": "لیس لدیك موقع محفوظ",
-  // "Add new Location": "إضافة عنوان جديد",
-  // "Cash on delivery": "الدفع عند التسلیم",
-  // "Coming soon": "قریبا",
-
-  // login_page
-  // "Please remove 0 form start": "یرجی إزالة 0 من البداية",
-
-  // "the code is un correct": "الرمز غیر صحیع",
-
-  // item_categories
-  // "You not have any item": "لا تملك أي عنصر",
-
-  // //
-  // "Privacy Poilcy": "سياسة الخصوصية",
-  // "Terms Of Use": "الشروط والأحكام",
-  
 
   
-  //
-  // "New update is available": "يوجد تحديث للتطبيق",
-  // "A newer version of dlly las application is available, please download the latest version .":
-  //     "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",
-  
-  
-  
-  // "Account recovery opportunity":
-  //     "فرصة استعادة الحساب متاحة حتى @date@، يرجي التواصل معنا:(07509583333)",
+  /// End Translation {Arabic}
 
 
 
-  //Privacy Policy
+
+  ///Privacy Policy
+  ///
+  
   "Privacy Policy Title": "سياسة الخصوصية لتطبيق دلي لاس",
-  "Privacy Policy intoduction":
-      """هذا البيان الخاص بالخصوصية يصف سياساتنا وإجراءاتنا فيما يتعلق بجمع المعلومات واستخدامها والكشف عنها عند استخدامك للخدمة، ويُخبرك عن حقوق خصوصيتك وكيفية حمايتك بموجب القانون. نستخدم بياناتك الشخصية لتوفير الخدمة وتحسينها. عند استخدام الخدمة، توافق على جمع واستخدام المعلومات وفقًا لهذا البيان الخاص بالخصوصية.""",
-
+  "Privacy Policy intoduction": """هذا البيان الخاص بالخصوصية يصف سياساتنا وإجراءاتنا فيما يتعلق بجمع المعلومات واستخدامها والكشف عنها عند استخدامك للخدمة، ويُخبرك عن حقوق خصوصيتك وكيفية حمايتك بموجب القانون. نستخدم بياناتك الشخصية لتوفير الخدمة وتحسينها. عند استخدام الخدمة، توافق على جمع واستخدام المعلومات وفقًا لهذا البيان الخاص بالخصوصية.""",
   "collection and using personal data - types of data collected ":
       "جمع واستخدام البيانات الشخصية - أنواع البيانات المجمعة",
   "personal data": "البيانات الشخصية",
@@ -574,8 +478,9 @@ const Map<String, String> ar = {
   "Contact Us content":
       """إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا عبر البريد الإلكتروني [Info@Dllylas.com] أو استخدام هذا الرقم الهاتفي (.(+964 750 958 3333""",
 
-  //Terms and Condition
-
+  /// Terms and Condition
+  /// 
+  
   "Terms and Condition for Dlly Las Grocery App title":
       "الشروط والأحكام لتطبيق دلي لاس",
 
