@@ -185,7 +185,7 @@ const Map<String, String> ar = {
   "Used": "مستخدم",
   "Expired": "منتهي الصلاحية",
   "Do not have any Voucher Code": "ليس لديك قسيمة اشتراك",
-  "Date": "",
+  "Date": "التاریخ",
 
   // Config --> my_widget
   "No internet connection, check your connection": "لا يوجد اتصال بالإنترنت، تحقق من اتصالك",
@@ -421,85 +421,84 @@ const Map<String, String> ar = {
   "Re order": "إعادة الطلب",
   "Add More Items": "اضافة المزيد",
 
-  
+  // Order --> order_screen
+  "My Orders": "طلباتي",
+  "On going": "قید التنفیذ",
+  "History": "السجل",
+  "Order number": "رقم الطلبیة",
+  "You not have any order": "لیس لدیك اي طلب",
+  "Dlly Las Market": "دلی لاس ماركت",
+  "Order Case": "حالة الطلبیة",
+  "View": "عرض",
+
+  // Order --> track_order
+  "Track Order": "تابع الطلبیة",
+  "Order": "الطلبیة",
+  "Cancel order": "الغاء الطلب",
+  "View order": "عرض الطلب",
+  "Are you sure Cancel order": "هل انت متاكد من الغاء الطلبیة ؟",
+
   
 
   
-  "Please Delivery Address": "يرجى إضافة الموقع",
+  // "Please Delivery Address": "يرجى إضافة الموقع",
 
   // home_page
-  "Order now": "اطلب الان",
+  // "Order now": "اطلب الان",
   
   
   
   // Ziyadaa
-  "NEXT": "التالي",
-  "SKIP": "تخطي",
+  // "NEXT": "التالي",
+  // "SKIP": "تخطي",
 
   // profilo
-  "Information": "حسابي",
-  "Enter Name": "ادخل الاسم",
-  "Enter Age": "ادخل العمر",
-  "Address": "الموقع",
+  // "Information": "حسابي",
+  // "Enter Name": "ادخل الاسم",
+  // "Enter Age": "ادخل العمر",
+  // "Address": "الموقع",
 
   // Dialogbox ( Register ) --> my_widget
   
-  "You need login": "یرجی التسجیل أولا",
+  // "You need login": "یرجی التسجیل أولا",
 
   // Page --> Login First --> my_widget
-  "Please login first": "الرجاء تسجیل الدخول أولا",
-
-  // order_screen
-  "My Orders": "طلباتي",
-  "On going": "جاري التنفیذ",
-  "History": "السجل",
-  "Order number:": "رقم الطلبیة: ",
-  "Date:": "التأريخ:",
-  "You not have any order": "لیس لدیك اي طلب",
-  "View": "عرض",
+  // "Please login first": "الرجاء تسجیل الدخول أولا",
 
   // check_out
-  "Delivery Address": "عنوان التوصیل",
-  "Not have any location": "لیس لدیك موقع محفوظ",
-  "Add new Location": "إضافة عنوان جديد",
-  "Cash on delivery": "الدفع عند التسلیم",
-  "Coming soon": "قریبا",
-  
-  
-  
+  // "Delivery Address": "عنوان التوصیل",
+  // "Not have any location": "لیس لدیك موقع محفوظ",
+  // "Add new Location": "إضافة عنوان جديد",
+  // "Cash on delivery": "الدفع عند التسلیم",
+  // "Coming soon": "قریبا",
 
   // login_page
-  "Please remove 0 form start": "یرجی إزالة 0 من البداية",
+  // "Please remove 0 form start": "یرجی إزالة 0 من البداية",
 
-  "the code is un correct": "الرمز غیر صحیع",
-
-  // track_order
-  "Track Order": "تابع الطلبیة",
-  "Order:": "الطلبیة: ",
-  "Cancel order": "الغاء الطلب",
-  "View order": "عرض الطلب",
+  // "the code is un correct": "الرمز غیر صحیع",
 
   // item_categories
-  "You not have any item": "لا تملك أي عنصر",
+  // "You not have any item": "لا تملك أي عنصر",
 
-  //
-  "Privacy Poilcy": "سياسة الخصوصية",
-  "Terms Of Use": "الشروط والأحكام",
+  // //
+  // "Privacy Poilcy": "سياسة الخصوصية",
+  // "Terms Of Use": "الشروط والأحكام",
   
 
   
   //
-  "New update is available": "يوجد تحديث للتطبيق",
-  "A newer version of dlly las application is available, please download the latest version .":
-      "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",
+  // "New update is available": "يوجد تحديث للتطبيق",
+  // "A newer version of dlly las application is available, please download the latest version .":
+  //     "نسخة جديدة من التطبيق دلي لاس متاحة الآن، نرجو تحديث.",
   
   
   
-  "Account recovery opportunity":
-      "فرصة استعادة الحساب متاحة حتى @date@، يرجي التواصل معنا:(07509583333)",
+  // "Account recovery opportunity":
+  //     "فرصة استعادة الحساب متاحة حتى @date@، يرجي التواصل معنا:(07509583333)",
+
+
 
   //Privacy Policy
-
   "Privacy Policy Title": "سياسة الخصوصية لتطبيق دلي لاس",
   "Privacy Policy intoduction":
       """هذا البيان الخاص بالخصوصية يصف سياساتنا وإجراءاتنا فيما يتعلق بجمع المعلومات واستخدامها والكشف عنها عند استخدامك للخدمة، ويُخبرك عن حقوق خصوصيتك وكيفية حمايتك بموجب القانون. نستخدم بياناتك الشخصية لتوفير الخدمة وتحسينها. عند استخدام الخدمة، توافق على جمع واستخدام المعلومات وفقًا لهذا البيان الخاص بالخصوصية.""",

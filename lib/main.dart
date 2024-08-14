@@ -98,14 +98,15 @@ class _AtHomeAppState extends State<AtHomeApp> {
       child: GetMaterialApp(
         theme: AppThemes.lightTheme1,
         translations: Translation(),
-        locale: const Locale("en"),
-        fallbackLocale: const Locale("en"),
+        locale: const Locale("ar"),
+        fallbackLocale: const Locale("ar"),
         title: 'DLLY LAS Market',
         debugShowCheckedModeBanner: false,
         initialRoute: '/splash',
         navigatorKey: navigatorKey,
         getPages: [
           GetPage(name: '/splash', page: () => SplashScreen()),
+          // GetPage(name: '/splash', page: () => RatePage()),
           GetPage(name: '/home', page: () => NavSwitch()),
         ],
       ),

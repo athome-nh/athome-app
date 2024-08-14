@@ -5,7 +5,6 @@ import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
-import '../Landing/splash_screen.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
 
@@ -67,29 +66,29 @@ class _TrackOrderState extends State<TrackOrder> {
         "Undelivered",
       ];
       content = [
-        "Great choice! Your order is confirmed. Thanks for shopping with us.",
+        "Your order is confirmed. Thanks for shopping with us.",
         "Our team is working on your order. Updates will follow shortly.",
         "Our team is working on your order. Updates will follow shortly.",
-        "Your order is in transit and will be at your doorstep soon.",
+        "Your order is on the way and will be at your doorstep soon.",
         "You can now pick up your order. The driver is waiting on your doorstep!",
         "We are pleased to inform you that your esteemed order has been delivered successfully.",
         "Unfortunately, your order wasn't delivered. Please call our customer support team.",
       ];
     } else if (lang == "ar") {
       titles = [
-        "تم التثبیت الطلب",
+        "تم تثبیت الطلب",
         "قید العمل",
         "قید العمل",
         "الطلبیة قيد التوصيل",
-        "الطلبیة جاهز للاستلام",
+        "الطلبیة جاهزة للاستلام",
         "تم توصيل الطلب",
         "لم يتم توصيل الطلب",
       ];
       content = [
-        "اختيار رائع! تم تأكيد طلبك. شكرا لتسوقك معنا",
+        "تم تأكيد طلبك. شكرا لتسوقك معنا",
         "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبا",
         "يعمل فريقنا على طلبك حاليا. يتم إرسال التحديثات إليك قريبا",
-        "تم الشحن الطلبیة، وسيصل إلى باب بیتکم قريبا",
+        "تم ارسال الطلبیة، وسيصل إلى باب بیتکم قريبا",
         "الطلب جاهز للاستلام الآن. السائق في انتظارك",
         "يسعدنا إخباركم بأن طلبكم الموقر قد تم تسليمه بنجاح",
         "نعتذر، طلبكم لم يصل، فضلا اتصلوا بدعم العملاء لحل مشكلة",
@@ -105,7 +104,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "داواکاریەکە نەگەیەنرا",
       ];
       content = [
-        "داواکاریەکی دروست! ، داواکاریەکەت وەرگیرا. سوپاس بۆ بازاڕکردنت لەگەڵ ئێمە",
+        "داواکاریەکەت وەرگیرا. سوپاس بۆ بازاڕکردنت لەگەڵ ئێمە",
         "داواکاریەکەت کاری لەسەر دەکرێت، لەهەر نوێکاریەک بە زووترین کات ئاگادار دەکرێیتەوە",
         "داواکاریەکەت کاری لەسەر دەکرێت، لەهەر نوێکاریەک بە زووترین کات ئاگادار دەکرێیتەوە",
         "داواکاریەکە لە ڕێگایە لە زووترین کاتدا دەگاتە لات",
@@ -161,7 +160,7 @@ class _TrackOrderState extends State<TrackOrder> {
                   SizedBox(
                     height: getHeight(context, 1),
                   ),
-                  Text("Order:".tr + widget.id.toString(),
+                  Text("Order".tr + " : " + widget.id.toString(),
                       style: TextStyle(
                         color: mainColorBlack,
                         fontSize: 28,
@@ -404,7 +403,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         children: [
                           const SizedBox(),
                           Text(
-                            "Are you sure Cancel order",
+                            "Are you sure Cancel order".tr,
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               color: mainColorBlack,

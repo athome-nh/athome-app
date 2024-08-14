@@ -137,7 +137,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                           title: Row(
                                             children: [
                                               Text(
-                                                "Order number:".tr,
+                                                "Order number".tr + " : ",
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: mainFontbold,
@@ -169,7 +169,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                             ),
                                           ),
                                           subtitle: Text(
-                                            "Date:".tr +
+                                            "Date".tr + " : " +
                                                 convertToBaghdadTime(
                                                     order.createdAt.toString()),
                                             style: TextStyle(
@@ -262,7 +262,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              "Dlly Las Market",
+                                                              "Dlly Las Market".tr,
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
@@ -271,7 +271,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                                       mainColorBlack),
                                                             ),
                                                             Text(
-                                                              "Order ID:".tr +
+                                                              "Order number".tr + " : "+
                                                                   order.id
                                                                       .toString(),
                                                               style: TextStyle(
@@ -320,7 +320,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                       CrossAxisAlignment.end,
                                                   children: [
                                                     Text(
-                                                      "Order Case:",
+                                                      "Order Case".tr,
                                                       style: TextStyle(
                                                           fontSize: 16,
                                                           fontFamily:
@@ -544,8 +544,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   children: [
                                                     Text(
                                                       order.status == 5
-                                                          ? "Deleverd"
-                                                          : "Undeliverd",
+                                                          ? "Deleverd".tr
+                                                          : "Undelivered".tr,
                                                       style: TextStyle(
                                                           fontSize: 10,
                                                           fontFamily:
@@ -554,7 +554,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                               mainColorBlack),
                                                     ),
                                                     Text(
-                                                      "Date:" +
+                                                      "Date".tr +" : " +
                                                           convertToBaghdadTime(
                                                               order.createdAt
                                                                   .toString()),

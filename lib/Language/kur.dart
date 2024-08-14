@@ -185,7 +185,7 @@ const Map<String, String> kur = {
   "Used": "بەکارهاتوو",
   "Expired": "بەسەرچوو",
   "Do not have any Voucher Code": "به‌رێزهیچ پسۆله‌یه‌كت نیه‌",
-  "Date": "رێكه‌وت",
+  "Date": "به‌روار",
 
   // Config --> my_widget
   "No internet connection, check your connection": "هێڵی ئینتەرنێت نییە",
@@ -421,81 +421,84 @@ const Map<String, String> kur = {
   "Re order": "دوبارە داواکردن",
   "Add More Items": "زیادکردنی بەرهەمی تر",
 
+  // Order --> order_screen
+  "My Orders": "داواکاریەکانم",
+  "On going": "له‌ جێبه‌جیكردن دایه‌",
+  "History": "داواکاریەکانی ڕابردوو",
+  "Order number": "ژمارەی داواکاری",
+  "You not have any order": "هیچ داواکاریەکت نیە",
+  "Dlly Las Market": "دڵی لاس ماركێت",
+  "Order Case": "دۆخی داواكاری",
+  "View": "پیشاندان",
+
+  // Order --> track_order
+  "Track Order": "بەدواداچوونی داواکاری",
+  "Order": "داواکاری",
+  "Cancel order": "پوچەڵ کردنەوە",
+  "View order": "بینینی داواکاری ",
+  "Are you sure Cancel order": "دڵنیای له‌ پۆچه‌لكردنه‌وه‌ی داواكاریه‌كه‌؟",
   
 
-  "Please Delivery Address": "تکایە ناونیشانی گەیاندن زیاد بکە",
+
+  // "Please Delivery Address": "تکایە ناونیشانی گەیاندن زیاد بکە",
 
   // my_cart
-  "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
+  // "you can not add more this item": "ناتوانی زیاتر داوا بکەیت",
 
   // home_page
-  "Order now": "ئێستا داوا بكه‌",
+  // "Order now": "ئێستا داوا بكه‌",
   
 
   
 
-  "the code is un correct": "کۆدەکە هەڵەیە",
+  // "the code is un correct": "کۆدەکە هەڵەیە",
 
   // Ziyadaa
-  "NEXT": "NEXT",
-  "SKIP": "SKIP",
+  // "NEXT": "NEXT",
+  // "SKIP": "SKIP",
 
   // profilo
-  "Information": "زانیاری",
-  "Enter Name": "تۆمارکردنی ناو",
-  "Enter Age": "تۆمارکدنی تەمەن",
-  "Address": "ناونیشان",
+  // "Information": "زانیاری",
+  // "Enter Name": "تۆمارکردنی ناو",
+  // "Enter Age": "تۆمارکدنی تەمەن",
+  // "Address": "ناونیشان",
 
   // Dialogbox ( Register ) --> my_widget
   
-  "You need login": "پێویستە خۆت تۆمار بکەیت",
+  // "You need login": "پێویستە خۆت تۆمار بکەیت",
   
 
   // Page --> Login First --> my_widget
-  "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa
-
-  // order_screen
-  "My Orders": "داواکاریەکانم",
-  "On going": "بەردەوامی هەیە",
-  "History": "داواکاریەکانی ڕابردوو",
-  "Order number:": "ژمارەی داواکاری: ",
-  "Date:": "به‌روار:",
-  "You not have any order": "هیچ داواکاریەکت نیە",
+  // "Please login first": "تکایە خۆت تۆمار بکە", // nmayaa
   
-  "View": "پیشاندان",
 
   // check_out
-  "Delivery Address": "ناونیشانی گەیاندن",
-  "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
-  "Add new Location": "زیاد کردنی ناونیشانی گەیاندن",
+  // "Delivery Address": "ناونیشانی گەیاندن",
+  // "Not have any location": "هیچ ناونیشانێک تۆمار نەکراوە",
+  // "Add new Location": "زیاد کردنی ناونیشانی گەیاندن",
   
-  "Cash on delivery": "پارەدان لەکاتی گەیاندن",
-  "Coming soon": "بەم زوانە",
+  // "Cash on delivery": "پارەدان لەکاتی گەیاندن",
+  // "Coming soon": "بەم زوانە",
 
 
   // login_page
-  "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
+  // "Please remove 0 form start": "تکایە سفری سەرەتا بسڕەوە",
 
-  // track_order
-  "Track Order": "بەدواداچوونی داواکاری",
-  "Order:": "داواکاری: ",
-  "Cancel order": "پوچەڵ کردنەوە",
-  "View order": "بینینی داواکاری ",
 
   // item_categories
-  "You not have any item": "هیچ بابەتێک بەردەست نیە",
+  // "You not have any item": "هیچ بابەتێک بەردەست نیە",
 
   //
-  "Privacy Poilcy": "سیاسەتی  تایبەتمەندێتی",
-  "Terms Of Use": "مەرج و ڕێساکانی",
+  // "Privacy Poilcy": "سیاسەتی  تایبەتمەندێتی",
+  // "Terms Of Use": "مەرج و ڕێساکانی",
   
   
-  "New update is available": "ئەپدەیتێکی نوێ بەردەستە",
-  "A newer version of dlly las application is available, please download the latest version .":
-      "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
+  // "New update is available": "ئەپدەیتێکی نوێ بەردەستە",
+  // "A newer version of dlly las application is available, please download the latest version .":
+  //     "ڤێرژنێکی نوێی دڵی لاس بەردەستە، تکایە کۆتا ڤێرژن دابەزێنە.",
   
-  "Account recovery opportunity":
-      "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
+  // "Account recovery opportunity":
+  //     "دەرفەتی گەڕاندنەوەی هەژمارەکەت تا @date@ بەردەستە. تکایە پەیوەندیمان پێوە بکەن:(0750 958 3333 )",
 
   //Privacy Policy
 

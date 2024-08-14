@@ -406,7 +406,7 @@ const Map<String, String> en = {
   "Order Deatil": "Order Deatil",
   "Ordered": "Ordered",
   "Picked": "Picked",
-  "Deleverd": "Deleverd",
+  "Deleverd": "Delevered",
   "Order Placed": "Order Placed",
   "Processing Order": "Processing Order",
   "Order Is On way": "Your order is on it's way",
@@ -416,92 +416,78 @@ const Map<String, String> en = {
   "Date and Time": "Date and Time",
   "Order No.": "Order No.",
 
-  // Order --> old_items
+  // Order --> old_items   ----> Done
   "Past Order": "Order history",
   "Re order": "Reorder",
   "Add More Items": "Add More Items",
 
-  
-
-
-
-
-
-
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
-  // my_cart
-  "you can not add more this item": "you can not add more items",
-  
-  // home_page
-  "Order now": "Order now",
-
-  // check_out
-  "Delivery Address": "Delivery Address",
-  "Not have any location": "you don't have any location",
-  "Add new Location": "Add a new Location",
-  "Cash on delivery": "Cash on delivery",
-  "Coming soon": "Coming soon",
-  "Please Delivery Address": "Please Add Delivery Address",
-  "the code is un correct": "the code is wrong",
-  
-  // Notification
-  "1 week ago": "1 week ago",
-  "1 day ago": "One day ago",
-  "An hour ago": "An hour ago",
-  "A minute ago": "A minute ago",  
-  
-  //
-  "New update is available": "New update is available",
-  "A newer version of dlly las application is available, please download the latest version .":
-      "A newer version of dlly las application is available, please download the latest version .",
-  
-  // Ziyadaa
-  "NEXT": "NEXT",
-  "SKIP":
-  "SKIP",
-  
-  // profilo Chenged
-  "Information": "Information",
-  "Enter Name": "Enter Name",
-  "Enter Age": "Enter Age",
-  "Address": "Address",
-  
-  // Dialogbox ( Register ) --> my_widget
-  "You need login": "You have to register first",
-
-  // order_screen
+  // Order --> order_screen   ----> Done
   "My Orders": "My Orders",
   "On going": "On going",
   "History": "History",
-  "Order number:": "Order number: ",
-  "Date:": "Date:",
+  "Order number": "Order number",
   "You not have any order": "You do not have any order",
-  
+  "Dlly Las Market": "Dlly Las Market",
+  "Order Case": "Order status",
   "View": "View",
-
- 
-
-  // track_order
-  "Track Order": "Track your Order",
-  "Order:": "Order: ",
+  
+  // Order --> track_order
+  "Track Order": "Track your order",
+  "Order": "Order",
   "Cancel order": "Cancel order",
   "View order": "View order",
+  "Are you sure Cancel order": "Are you sure you want to Cancel the order ?",
 
+
+///////////////////////////////////////
+///////////////////////////////////////
+  
+
+  // check_out
+  // "Delivery Address": "Delivery Address",
+  // "Not have any location": "you don't have any location",
+  // "Add new Location": "Add a new Location",
+  // "Cash on delivery": "Cash on delivery",
+  // "Coming soon": "Coming soon",
+  // "Please Delivery Address": "Please Add Delivery Address",
+  // "the code is un correct": "the code is wrong",
+  
+  // Notification
+  // "1 week ago": "1 week ago",
+  // "1 day ago": "One day ago",
+  // "An hour ago": "An hour ago",
+  // "A minute ago": "A minute ago",  
+  
+  //
+  // "New update is available": "New update is available",
+  // "A newer version of dlly las application is available, please download the latest version .":
+  //     "A newer version of dlly las application is available, please download the latest version .",
+  
+  // Ziyadaa
+  // "NEXT": "NEXT",
+  // "SKIP":
+  // "SKIP",
+  
+  // profilo Chenged
+  // "Information": "Information",
+  // "Enter Name": "Enter Name",
+  // "Enter Age": "Enter Age",
+  // "Address": "Address",
+  
+  // Dialogbox ( Register ) --> my_widget
+  // "You need login": "You have to register first",
   // item_categories
-  "You not have any item": "You do not have any items",
+  // "You not have any item": "You do not have any items",
 
   //
-  "Privacy Poilcy": "Privacy policy",
-  "Terms Of Use": "Terms and Condition",
+  // "Privacy Poilcy": "Privacy policy",
+  // "Terms Of Use": "Terms and Condition",
 
-  "Account recovery opportunity":
-      "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
+  // "Account recovery opportunity":
+  //     "Account recovery opportunity available until @date@. Please contact us: (0750 958 3333 )",
 
-//////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
 
   //Privacy Policy
   "Privacy Policy Title": "Privacy Policy for Dlly Las Grocery App",
@@ -605,10 +591,7 @@ you through the app.""",
 phone number (+964 750 958 3333)""",
 
   //Terms and Condition
-
-  "Terms and Condition for Dlly Las Grocery App title":
-      "Terms and Condition for Dlly Las Grocery App",
-
+  "Terms and Condition for Dlly Las Grocery App title": "Terms and Condition for Dlly Las Grocery App",
   "Terms and Condition for Dlly Las Grocery App content":
       """These terms and conditions govern your access and use of the dlly las application.
 note: By accessing or using dlly las app constitutes your agreement to be bound by all the following terms and conditions. if you disagree with these terms and conditions, please refrain from using the app or website.""",
@@ -657,4 +640,3 @@ note: By accessing or using dlly las app constitutes your agreement to be bound 
   "Contact Us:TC content":
       """If you have any questions about these terms and conditions, please contact us at [Info@Dllylas.com]. or using this phone number (+964 750 958 3333).""",
 };
-
