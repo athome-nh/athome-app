@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -1700,7 +1699,6 @@ class _newhomePageState extends State<newhomePage> {
                                                     floatingLabelBehavior:
                                                         FloatingLabelBehavior
                                                             .always,
-                                                    //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                                                   ),
                                                 ),
                                               ),
@@ -1821,9 +1819,7 @@ class _newhomePageState extends State<newhomePage> {
       setState(() {
         isExpanded = false;
         feedbackController.clear();
-        // selectedWords.clear();
         selectedRating = 0;
-        // displayedWords.clear();
       });
     });
   }
