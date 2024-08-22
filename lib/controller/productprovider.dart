@@ -1,19 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/property.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/Network/Network.dart';
-
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/brandmodel/brandmodel.dart';
 import 'package:dllylas/model/category_model/category_model.dart';
 import 'package:dllylas/model/chatmodel/chatmodel.dart';
-
 import 'package:dllylas/model/location/location.dart';
-
 import 'package:dllylas/model/order_items/order_items.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:dllylas/model/point_model/point_model.dart';
@@ -25,16 +21,12 @@ import 'package:dllylas/model/slidemodel/slidemodel.dart';
 import 'package:dllylas/model/sub_category/sub_category.dart';
 import 'package:dllylas/model/topmodel/topmodel.dart';
 import 'package:dllylas/model/voucher/voucher.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../model/notficaion_model/notficaion_model.dart';
 
 class productProvider extends ChangeNotifier {
   productProvider() {
-    // loadPostData();
-    //  updatePost();
   }
   getproductitems(int id) {
     vouchernow = {"discount_amount": 0};

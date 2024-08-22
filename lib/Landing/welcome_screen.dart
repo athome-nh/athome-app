@@ -8,20 +8,24 @@ import 'package:get/get.dart';
 import '../Config/property.dart';
 import '../home/nav_switch.dart';
 
+/// `WelcomeScreen` is a StatefulWidget that displays a welcome screen with a carousel slider
+/// and a start button that navigates to the `NavSwitch` screen after user completes the carousel.
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => WelcomeScreenState();
 }
 
 class WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
-  int currentIndex = 0;
-  CarouselController buttonCarouselController = CarouselController();
+  int currentIndex = 0; // Tracks the current page index of the carousel slider.
+  CarouselController buttonCarouselController =
+      CarouselController(); // Controller for the carousel slider.
 
   @override
   void initState() {
-    clearPrifrences();
+    clearPrifrences(); // Clears preferences when the widget is initialized.
     super.initState();
   }
 
@@ -33,23 +37,23 @@ class WelcomeScreenState extends State<WelcomeScreen>
         appBar: AppBar(
           backgroundColor: mainColorWhite,
           leading: IconButton(
-              onPressed: () {
-                if (currentIndex == 0) {
-                  Navigator.pop(context);
-                } else if (currentIndex == 1) {
-                  buttonCarouselController.jumpToPage(currentIndex - 1);
-                } else if (currentIndex == 2) {
-                  buttonCarouselController.jumpToPage(currentIndex - 1);
-                }
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-              )),
+            onPressed: () {
+              // Handles back navigation or carousel navigation based on the current index.
+              if (currentIndex == 0) {
+                Navigator.pop(context);
+              } else {
+                buttonCarouselController.jumpToPage(currentIndex - 1);
+              }
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+            ),
+          ),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // slide 3 page
+            // Carousel Slider displaying different slides.
             CarouselSlider(
               carouselController: buttonCarouselController,
               options: CarouselOptions(
@@ -60,22 +64,21 @@ class WelcomeScreenState extends State<WelcomeScreen>
                 enlargeCenterPage: false,
                 enableInfiniteScroll: false,
                 onPageChanged: (index, reason) {
-                  setState(
-                    () {
-                      currentIndex = index;
-                    },
-                  );
+                  setState(() {
+                    currentIndex =
+                        index; // Updates the current index when the page changes.
+                  });
                 },
               ),
               items: [
-                slid1(),
-                slid2(),
-                slid3(),
+                slid1(), // Slide 1 widget.
+                slid2(), // Slide 2 widget.
+                slid3(), // Slide 3 widget.
               ],
             ),
 
+            // Displays the "Start" button only on the last slide.
             currentIndex == 2
-                // Get Start button
                 ? ZoomIn(
                     delay: const Duration(milliseconds: 100),
                     child: Container(
@@ -86,6 +89,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
                           borderRadius: BorderRadius.circular(15)),
                       child: TextButton(
                         onPressed: () {
+                          // Saves the onboarding status and navigates to `NavSwitch` screen.
                           Map<String, dynamic> myMap = {};
                           myMap["onbord"] = true;
                           setStringPrefs("data", json.encode(myMap));
@@ -98,22 +102,23 @@ class WelcomeScreenState extends State<WelcomeScreen>
                         child: Padding(
                           padding: const EdgeInsets.only(top: 2),
                           child: Text(
-                            "Start".tr,
+                            "Start".tr, // Translated "Start" text.
                             style: TextStyle(
-                                fontFamily: mainFontbold,
-                                fontSize: 18,
-                                color: mainColorWhite,
-                                ),
+                              fontFamily: mainFontbold,
+                              fontSize: 18,
+                              color: mainColorWhite,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   )
                 : Padding(
-                    padding: EdgeInsets.all(getWidth(context, 5),),
+                    padding: EdgeInsets.all(getWidth(context, 5)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        // Page indicator dots.
                         Container(
                           margin: EdgeInsets.only(
                               top: getWidth(context, 1), left: 5),
@@ -159,11 +164,11 @@ class WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  // Slide One
+  /// Creates the first slide for the carousel.
   Widget slid1() {
     return Column(
       children: [
-        // image
+        // Image for Slide 1.
         Image.asset(
           "assets/images/003_welcome_1.png",
           width: getWidth(context, 100),
@@ -172,8 +177,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-
-        // text
+        // Title text for Slide 1.
         Text(
           "wst01".tr,
           style: TextStyle(
@@ -186,6 +190,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 2),
         ),
+        // Description text for Slide 1.
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: getWidth(context, 7),
@@ -204,11 +209,11 @@ class WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  // Slide Two
+  /// Creates the second slide for the carousel.
   Widget slid2() {
     return Column(
       children: [
-        // image
+        // Image for Slide 2.
         Image.asset(
           "assets/images/003_welcome_2.png",
           width: getWidth(context, 100),
@@ -217,8 +222,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-
-        // text
+        // Title text for Slide 2.
         Text(
           "wst02".tr,
           style: TextStyle(
@@ -231,6 +235,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 2),
         ),
+        // Description text for Slide 2.
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: getWidth(context, 7),
@@ -249,11 +254,11 @@ class WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  // Slide Three
+  /// Creates the third slide for the carousel.
   Widget slid3() {
     return Column(
       children: [
-        // image
+        // Image for Slide 3.
         Image.asset(
           "assets/images/003_welcome_3.png",
           width: getWidth(context, 100),
@@ -262,8 +267,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 5),
         ),
-
-        // text
+        // Title text for Slide 3.
         Text(
           "wst03".tr,
           style: TextStyle(
@@ -276,6 +280,7 @@ class WelcomeScreenState extends State<WelcomeScreen>
         SizedBox(
           height: getHeight(context, 2),
         ),
+        // Description text for Slide 3.
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: getWidth(context, 7),

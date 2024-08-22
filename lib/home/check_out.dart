@@ -1390,21 +1390,16 @@ class _CheckOutState extends State<CheckOut> {
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: mainColorGrey.withOpacity(0.5),
-                                  width: 1.0, // Customize border width
+                                  width: 1.0,
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: mainColorGrey.withOpacity(0.5),
-                                  width: 1.0, // Customize border width
+                                  width: 1.0,
                                 ),
                               ),
-                              // labelText: "Add your note".tr,
-                              // labelStyle: TextStyle(
-                              //     color: mainColorGrey.withOpacity(0.8),
-                              //     fontSize: 20,
-                              //     fontFamily: mainFontbold),
                               hintText: "Note".tr,
                               hintStyle: TextStyle(
                                   color: mainColorBlack.withOpacity(0.5),
@@ -1412,7 +1407,6 @@ class _CheckOutState extends State<CheckOut> {
                                   fontFamily: mainFontnormal),
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
-                              //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                             ),
                           ),
                         ],
@@ -1775,79 +1769,4 @@ class _CheckOutState extends State<CheckOut> {
         return '';
     }
   }
-
-//   Future<void> alert(
-//     BuildContext context,
-//   ) async {
-//     return showDialog<void>(
-//       context: context,
-//       barrierDismissible: true,
-//       builder: (BuildContext context) {
-//         return StatefulBuilder(builder: (context2, state) {
-//           return AlertDialog(
-//               backgroundColor: mainColorGrey,
-//               contentPadding: const EdgeInsets.all(0),
-//               content: ClipRRect(
-//                 borderRadius: BorderRadius.circular(5),
-//                 child: ClipRect(
-//                   child: Container(
-//                     width: getWidth(context, 90),
-//                     height: getHeight(context, 30),
-//                     decoration: BoxDecoration(
-//                         color: mainColorGrey.withOpacity(0.1),
-//                         border:
-//                             Border.all(color: mainColorWhite.withOpacity(0.1)),
-//                         borderRadius: BorderRadius.circular(5)),
-//                     padding: const EdgeInsets.all(10),
-//                     child: ConstrainedBox(
-//                       constraints: BoxConstraints(
-//                         maxHeight: getHeight(context, 30),
-//                       ),
-//                       child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.center,
-//                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                           children: [
-//                             const SizedBox(),
-//                             Text(
-//                               "sorryWeDoNotHaveDelivery".tr,
-//                               textAlign: TextAlign.justify,
-//                               style: TextStyle(
-//                                 color: mainColorWhite.withOpacity(0.7),
-//                                 fontFamily: mainFontnormal,
-//                                 fontSize: 18,
-//                               ),
-//                             ),
-//                             const SizedBox(),
-//                             const SizedBox(),
-//                             const SizedBox(),
-//                             const SizedBox(),
-//                             ElevatedButton(
-//                               onPressed: () {
-//                                 Navigator.pop(context);
-//                                 Navigator.pop(context);
-//                                 Navigator.pop(context);
-//                                 Navigator.pop(context);
-//                               },
-//                               style: ElevatedButton.styleFrom(
-//                                 backgroundColor: mainColorRed,
-//                                 fixedSize: const Size(70, 35),
-//                                 shape: RoundedRectangleBorder(
-//                                   borderRadius: BorderRadius.circular(10),
-//                                 ),
-//                               ),
-//                               child: Text(
-//                                 "OK".tr,
-//                                 style: TextStyle(
-//                                     fontSize: 18, fontFamily: mainFontnormal),
-//                               ),
-//                             ),
-//                           ]),
-//                     ),
-//                   ),
-//                 ),
-//               ));
-//         });
-//       },
-//     );
-//   }
 }

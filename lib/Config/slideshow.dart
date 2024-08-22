@@ -1,18 +1,24 @@
+// Import necessary packages and libraries
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Home/all_item.dart';
 import 'package:dllylas/controller/productprovider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-// ignore: must_be_immutable
+/// A carousel slider widget that displays a series of images with optional placeholders.
+/// It also uses a shimmer effect when loading images, and handles user interaction for navigation.
+
 class Carousel extends StatelessWidget {
-  productProvider pro;
+  final productProvider pro;
+
+  /// Constructor requires a product provider for data and operations.
   Carousel(this.pro, {Key? key}) : super(key: key);
-  List<String> temp = [
+
+  /// Temporary list of strings used when no image data is available from the provider.
+  final List<String> temp = [
     "sddsdsdsd",
     "sddsdsdsd",
     "sddsdsdsd",
@@ -22,12 +28,14 @@ class Carousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// A list of image widgets built dynamically depending on whether data is available.
     List<Widget> imageSliders = pro.show
         ? pro.slides
             .map((item) => Container(
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     child: GestureDetector(
+                      /// On tap, navigates to a new page with the selected item's details.
                       onTap: () {
                         pro.settype("brand");
                         pro.setidbrand(item.brandId!);
@@ -40,9 +48,14 @@ class Carousel extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15.0),
                         child: CachedNetworkImage(
+                          /// Retrieves the image from the network.
                           imageUrl: dotenv.env['imageUrlServer']! + item.img!,
+                          
+                          /// Placeholder image shown while loading.
                           placeholder: (context, url) =>
                               Image.asset("assets/images/Logo-Type-2.png"),
+                              
+                          /// Error image displayed if the network image fails to load.
                           errorWidget: (context, url, error) =>
                               Image.asset("assets/images/Logo-Type-2.png"),
                           filterQuality: FilterQuality.low,
@@ -60,7 +73,6 @@ class Carousel extends StatelessWidget {
                   effect: ShimmerEffect.raw(colors: [
                     mainColorGrey.withOpacity(0.1),
                     mainColorWhite,
-                    // mainColorRed.withOpacity(0.1),
                   ]),
                   child: Container(
                     child: ClipRRect(
@@ -68,6 +80,7 @@ class Carousel extends StatelessWidget {
                       child: Stack(
                         children: <Widget>[
                           GestureDetector(
+                            /// No action when tapped as the image is just a placeholder.
                             onTap: () {},
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -92,7 +105,9 @@ class Carousel extends StatelessWidget {
                   ),
                 ))
             .toList();
+
     return RepaintBoundary(
+      /// CarouselSlider widget that automatically rotates through images.
       child: CarouselSlider(
         options: CarouselOptions(
             viewportFraction: 0.9,
@@ -106,6 +121,7 @@ class Carousel extends StatelessWidget {
     );
   }
 
+  /// Builds the indicator for the active image in the carousel.
   Widget _indicator(bool isActive) {
     return Container(
       height: 10,
@@ -121,10 +137,7 @@ class Carousel extends StatelessWidget {
                     color: Color(0XFF2FB7B2).withOpacity(0.72),
                     blurRadius: 4.0,
                     spreadRadius: 1.0,
-                    offset: Offset(
-                      0.0,
-                      0.0,
-                    ),
+                    offset: Offset(0.0, 0.0),
                   )
                 : BoxShadow(
                     color: Colors.transparent,

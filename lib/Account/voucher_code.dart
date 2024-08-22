@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../Config/property.dart';
 
+// VoucherCodePage is a StatefulWidget that displays vouchers in different tabs: Active, Used, and Expired.
 class VoucherCodePage extends StatefulWidget {
   const VoucherCodePage({super.key});
 
@@ -16,24 +18,27 @@ class VoucherCodePage extends StatefulWidget {
 class _VoucherCodePageState extends State<VoucherCodePage> {
   @override
   Widget build(BuildContext context) {
+    // DefaultTabController manages the state of the tab bar and the tab views.
     return DefaultTabController(
-      length: 3,
+      length: 3, // Number of tabs
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Vouchers'.tr),
+          title: Text('Vouchers'.tr), // Title of the app bar, translated
           bottom: TabBar(
+            // TabBar to switch between different voucher categories
             tabs: [
-              Tab(text: "Active".tr),
-              Tab(text: "Used".tr),
-              Tab(text: "Expired".tr),
+              Tab(text: "Active".tr),   // Tab for active vouchers
+              Tab(text: "Used".tr),     // Tab for used vouchers
+              Tab(text: "Expired".tr),  // Tab for expired vouchers
             ],
           ),
         ),
         body: TabBarView(
+          // TabBarView to display content for each tab
           children: [
-            ActiveTab(),
-            UsedTab(),
-            ExpiredTab(),
+            ActiveTab(),  // Widget to display active vouchers
+            UsedTab(),    // Widget to display used vouchers
+            ExpiredTab(), // Widget to display expired vouchers
           ],
         ),
       ),
@@ -41,29 +46,35 @@ class _VoucherCodePageState extends State<VoucherCodePage> {
   }
 }
 
+// ActiveTab displays the list of active (unused) vouchers.
 class ActiveTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Access the productProvider to get unused vouchers
     final productrovider = Provider.of<productProvider>(context, listen: true);
+    
+    // Directionality widget sets the text direction based on the language
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: productrovider.unusedVouchers.isEmpty
           ? Center(
+              // Displayed when there are no unused vouchers
               child: Text(
-                "Do not have any Voucher Code".tr,
+                "Do not have any Voucher Code".tr, // Translated message
                 style: TextStyle(
-                  fontFamily: mainFontnormal,
-                  fontSize: 20,
-                  color: mainColorGrey,
+                  fontFamily: mainFontnormal, // Font style
+                  fontSize: 20, // Font size
+                  color: mainColorGrey, // Text color
                 ),
               ),
             )
           : ListView.builder(
+              // ListView.builder to display a list of active vouchers
               itemCount: productrovider.unusedVouchers.length,
               itemBuilder: (context, index) {
-                final voucher = productrovider.unusedVouchers[index];
+                final voucher = productrovider.unusedVouchers[index]; // Get voucher by index
                 return Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8), // Padding around each voucher item
                   child: Stack(
                     alignment: lang == "en"
                         ? Alignment.bottomRight
@@ -71,12 +82,12 @@ class ActiveTab extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: mainColorGrey2),
-                            borderRadius: BorderRadius.circular(15),
-                            color: mainColorlightGrey),
+                            border: Border.all(color: mainColorGrey2), // Border color
+                            borderRadius: BorderRadius.circular(15), // Rounded corners
+                            color: mainColorlightGrey), // Background color
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 8),
+                              vertical: 16, horizontal: 8), // Padding inside the container
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,35 +96,27 @@ class ActiveTab extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  // voucher image
                                   Image.asset(
-                                    "assets/images/Voucher.png",
-                                    height: getHeight(context, 6),
+                                    "assets/images/Voucher.png", // Voucher image
+                                    height: getHeight(context, 6), // Image height
                                   ),
-                          
-                                  SizedBox(
-                                    width: getWidth(context, 3),
-                                  ),
-                          
-                                  // Text
+                                  SizedBox(width: getWidth(context, 3)), // Spacing
                                   Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
                                           Text(
-                                            "Discont".tr + " ",
+                                            "Discont".tr + " ", // Discount label
                                             style: new TextStyle(
-                                              fontFamily: mainFontbold,
-                                              color: mainColorBlack,
-                                              fontSize: 14,
+                                              fontFamily: mainFontbold, // Bold font style
+                                              color: mainColorBlack, // Text color
+                                              fontSize: 14, // Font size
                                             ),
                                           ),
-                                          
                                           Text(
                                             addCommasToPriceWithoutIQD(
-                                                voucher.discountAmount!),
+                                                voucher.discountAmount!), // Discount amount
                                             style: new TextStyle(
                                               fontFamily: mainFontbold,
                                               color: mainColorBlack,
@@ -121,14 +124,13 @@ class ActiveTab extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            " " + "IQD".tr,
+                                            " " + "IQD".tr, // Currency label
                                             style: new TextStyle(
                                               fontFamily: mainFontbold,
                                               color: mainColorBlack,
                                               fontSize: 14,
                                             ),
                                           ),
-                                          
                                         ],
                                       ),
                                       Text(
@@ -136,10 +138,10 @@ class ActiveTab extends StatelessWidget {
                                             ? voucher.titleEn!
                                             : lang == "ar"
                                                 ? voucher.titleAr!
-                                                : voucher.titleKu!,
+                                                : voucher.titleKu!, // Voucher title based on language
                                         style: new TextStyle(
                                           fontFamily: mainFontbold,
-                                          color: mainColorRed,
+                                          color: mainColorRed, // Title color
                                           fontSize: 14,
                                         ),
                                       ),
@@ -151,10 +153,8 @@ class ActiveTab extends StatelessWidget {
                           ),
                         ),
                       ),
-
-                      // date
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0), // Padding around the status indicator
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -162,15 +162,15 @@ class ActiveTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Active".tr,
+                                  "Active".tr, // Status label for active vouchers
                                   style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: mainFontnormal,
-                                      color: mainColorBlack),
+                                      fontSize: 10, // Font size
+                                      fontFamily: mainFontnormal, // Font style
+                                      color: mainColorBlack), // Text color
                                 ),
                                 Text(
                                   "Date".tr + ": " +
-                                      convertToBaghdadTime(voucher.expireDate!),
+                                      convertToBaghdadTime(voucher.expireDate!), // Expiry date
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -178,17 +178,15 @@ class ActiveTab extends StatelessWidget {
                                 )
                               ],
                             ),
-                            SizedBox(width: 5),
-
+                            SizedBox(width: 5), // Space between text and icon
                             Icon(
-                              Icons.circle,
-                              size: 15,
-                              color: green,
+                              Icons.circle, // Status indicator icon
+                              size: 15, // Icon size
+                              color: green, // Color indicating active status
                             )
                           ],
                         ),
                       ),
-                    
                     ],
                   ),
                 );
@@ -198,16 +196,21 @@ class ActiveTab extends StatelessWidget {
   }
 }
 
+// UsedTab displays the list of used vouchers.
 class UsedTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Access the productProvider to get used vouchers
     final productrovider = Provider.of<productProvider>(context, listen: true);
+    
+    // Directionality widget sets the text direction based on the language
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: productrovider.usedVouchers.isEmpty
           ? Center(
+              // Displayed when there are no used vouchers
               child: Text(
-                "Do not have any Voucher Code".tr,
+                "Do not have any Voucher Code".tr, // Translated message
                 style: TextStyle(
                   fontFamily: mainFontnormal,
                   fontSize: 20,
@@ -216,11 +219,12 @@ class UsedTab extends StatelessWidget {
               ),
             )
           : ListView.builder(
+              // ListView.builder to display a list of used vouchers
               itemCount: productrovider.usedVouchers.length,
               itemBuilder: (context, index) {
-                final voucher = productrovider.usedVouchers[index];
+                final voucher = productrovider.usedVouchers[index]; // Get voucher by index
                 return Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8), // Padding around each voucher item
                   child: Stack(
                     alignment: lang == "en"
                         ? Alignment.bottomRight
@@ -228,12 +232,12 @@ class UsedTab extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: mainColorGrey2),
-                            borderRadius: BorderRadius.circular(15),
-                            color: mainColorlightGrey),
+                            border: Border.all(color: mainColorGrey2), // Border color
+                            borderRadius: BorderRadius.circular(15), // Rounded corners
+                            color: mainColorlightGrey), // Background color
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 8),
+                              vertical: 16, horizontal: 8), // Padding inside the container
                           child: Column(
                             children: [
                               Row(
@@ -245,17 +249,11 @@ class UsedTab extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      // voucher image
                                       Image.asset(
-                                        "assets/images/Voucher.png",
-                                        height: getHeight(context, 6),
+                                        "assets/images/Voucher.png", // Voucher image
+                                        height: getHeight(context, 6), // Image height
                                       ),
-
-                                      SizedBox(
-                                        width: getWidth(context, 3),
-                                      ),
-
-                                      // Text
+                                      SizedBox(width: getWidth(context, 3)), // Spacing
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -263,16 +261,16 @@ class UsedTab extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                "Discont".tr + " ",
+                                                "Discont".tr + " ", // Discount label
                                                 style: new TextStyle(
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorBlack,
-                                                  fontSize: 14,
+                                                  fontFamily: mainFontbold, // Bold font style
+                                                  color: mainColorBlack, // Text color
+                                                  fontSize: 14, // Font size
                                                 ),
                                               ),
                                               Text(
                                                 addCommasToPriceWithoutIQD(
-                                                    voucher.discountAmount!),
+                                                    voucher.discountAmount!), // Discount amount
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
@@ -280,7 +278,7 @@ class UsedTab extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                " " + "IQD".tr,
+                                                " " + "IQD".tr, // Currency label
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
@@ -294,10 +292,10 @@ class UsedTab extends StatelessWidget {
                                                 ? voucher.titleEn!
                                                 : lang == "ar"
                                                     ? voucher.titleAr!
-                                                    : voucher.titleKu!,
+                                                    : voucher.titleKu!, // Voucher title based on language
                                             style: new TextStyle(
                                               fontFamily: mainFontbold,
-                                              color: mainColorRed,
+                                              color: mainColorRed, // Title color
                                               fontSize: 14,
                                             ),
                                           ),
@@ -311,10 +309,8 @@ class UsedTab extends StatelessWidget {
                           ),
                         ),
                       ),
-
-                      // date
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0), // Padding around the status indicator
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -322,14 +318,14 @@ class UsedTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Used".tr,
+                                  "Used".tr, // Status label for used vouchers
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 18, // Font size
                                       fontFamily: mainFontnormal,
-                                      color: mainColorGrey),
+                                      color: mainColorGrey), // Text color
                                 ),
                                 Text(
-                                  "Expired".tr,
+                                  "Expired".tr, // Status label for expired vouchers
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontFamily: mainFontnormal,
@@ -337,7 +333,7 @@ class UsedTab extends StatelessWidget {
                                 ),
                                 Text(
                                   "Date".tr + ": " +
-                                      convertToBaghdadTime(voucher.expireDate!),
+                                      convertToBaghdadTime(voucher.expireDate!), // Expiry date
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -345,11 +341,11 @@ class UsedTab extends StatelessWidget {
                                 )
                               ],
                             ),
-                            SizedBox(width: 5),
+                            SizedBox(width: 5), // Space between text and icon
                             Icon(
-                              Icons.circle,
-                              size: 15,
-                              color: mainColorlightGrey,
+                              Icons.circle, // Status indicator icon
+                              size: 15, // Icon size
+                              color: mainColorlightGrey, // Color indicating used status
                             )
                           ],
                         ),
@@ -363,16 +359,21 @@ class UsedTab extends StatelessWidget {
   }
 }
 
+// ExpiredTab displays the list of expired vouchers.
 class ExpiredTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Access the productProvider to get expired vouchers
     final productrovider = Provider.of<productProvider>(context, listen: true);
+    
+    // Directionality widget sets the text direction based on the language
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: productrovider.expireVouchers.isEmpty
           ? Center(
+              // Displayed when there are no expired vouchers
               child: Text(
-                "Do not have any Voucher Code".tr,
+                "Do not have any Voucher Code".tr, // Translated message
                 style: TextStyle(
                   fontFamily: mainFontnormal,
                   fontSize: 20,
@@ -381,11 +382,12 @@ class ExpiredTab extends StatelessWidget {
               ),
             )
           : ListView.builder(
+              // ListView.builder to display a list of expired vouchers
               itemCount: productrovider.expireVouchers.length,
               itemBuilder: (context, index) {
-                final voucher = productrovider.expireVouchers[index];
+                final voucher = productrovider.expireVouchers[index]; // Get voucher by index
                 return Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8), // Padding around each voucher item
                   child: Stack(
                     alignment: lang == "en"
                         ? Alignment.bottomRight
@@ -393,12 +395,12 @@ class ExpiredTab extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: mainColorGrey2),
-                            borderRadius: BorderRadius.circular(15),
-                            color: mainColorlightGrey),
+                            border: Border.all(color: mainColorGrey2), // Border color
+                            borderRadius: BorderRadius.circular(15), // Rounded corners
+                            color: mainColorlightGrey), // Background color
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 8),
+                              vertical: 16, horizontal: 8), // Padding inside the container
                           child: Column(
                             children: [
                               Row(
@@ -410,17 +412,11 @@ class ExpiredTab extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      // voucher image
                                       Image.asset(
-                                        "assets/images/Voucher.png",
-                                        height: getHeight(context, 6),
+                                        "assets/images/Voucher.png", // Voucher image
+                                        height: getHeight(context, 6), // Image height
                                       ),
-
-                                      SizedBox(
-                                        width: getWidth(context, 3),
-                                      ),
-
-                                      // Text
+                                      SizedBox(width: getWidth(context, 3)), // Spacing
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -428,17 +424,16 @@ class ExpiredTab extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                "Discont".tr + " ",
+                                                "Discont".tr + " ", // Discount label
                                                 style: new TextStyle(
-                                                  fontFamily: mainFontbold,
-                                                  color: mainColorBlack,
-                                                  fontSize: 14,
+                                                  fontFamily: mainFontbold, // Bold font style
+                                                  color: mainColorBlack, // Text color
+                                                  fontSize: 14, // Font size
                                                 ),
                                               ),
-                                              
                                               Text(
                                                 addCommasToPriceWithoutIQD(
-                                                    voucher.discountAmount!),
+                                                    voucher.discountAmount!), // Discount amount
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
@@ -446,14 +441,13 @@ class ExpiredTab extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                " " + "IQD".tr,
+                                                " " + "IQD".tr, // Currency label
                                                 style: new TextStyle(
                                                   fontFamily: mainFontbold,
                                                   color: mainColorBlack,
                                                   fontSize: 14,
                                                 ),
                                               ),
-                                              
                                             ],
                                           ),
                                           Text(
@@ -461,10 +455,10 @@ class ExpiredTab extends StatelessWidget {
                                                 ? voucher.titleEn!
                                                 : lang == "ar"
                                                     ? voucher.titleAr!
-                                                    : voucher.titleKu!,
+                                                    : voucher.titleKu!, // Voucher title based on language
                                             style: new TextStyle(
                                               fontFamily: mainFontbold,
-                                              color: mainColorRed,
+                                              color: mainColorRed, // Title color
                                               fontSize: 14,
                                             ),
                                           ),
@@ -478,9 +472,8 @@ class ExpiredTab extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // date
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0), // Padding around the status indicator
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -488,15 +481,15 @@ class ExpiredTab extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "Expired".tr,
+                                  "Expired".tr, // Status label for expired vouchers
                                   style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 10, // Font size
                                       fontFamily: mainFontnormal,
-                                      color: mainColorBlack),
+                                      color: mainColorBlack), // Text color
                                 ),
                                 Text(
                                   "Date".tr + ": " +
-                                      convertToBaghdadTime(voucher.expireDate!),
+                                      convertToBaghdadTime(voucher.expireDate!), // Expiry date
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontFamily: mainFontnormal,
@@ -504,236 +497,16 @@ class ExpiredTab extends StatelessWidget {
                                 )
                               ],
                             ),
-                            SizedBox(width: 5),
+                            SizedBox(width: 5), // Space between text and icon
                             Icon(
-                              Icons.circle,
-                              size: 15,
-                              color: mainColorRed,
+                              Icons.circle, // Status indicator icon
+                              size: 15, // Icon size
+                              color: mainColorRed, // Color indicating expired status
                             )
                           ],
                         ),
                       ),
                     ],
-                  ),
-                );
-              },
-            ),
-    );
-  }
-}
-
-class UsedTabOld extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final productrovider = Provider.of<productProvider>(context, listen: true);
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.usedVouchers.isEmpty
-          ? Center(
-              child: Text(
-                "Do not have any Voucher Code".tr,
-                style: TextStyle(
-                  fontFamily: mainFontnormal,
-                  fontSize: 20,
-                  color: mainColorGrey,
-                ),
-              ),
-            )
-          : ListView.builder(
-              itemCount: productrovider.usedVouchers.length,
-              itemBuilder: (context, index) {
-                final voucher = productrovider.usedVouchers[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: getHeight(context, 17),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: mainColorBlack.withOpacity(0.5)),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: getWidth(context, 100),
-                          height: getHeight(context, 8),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15.0),
-                                topRight: Radius.circular(15.0),
-                              ),
-                              color: mainColorGrey),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/App-Icon.png",
-                                height: 50,
-                              ),
-                              Text(
-                                lang == "en"
-                                    ? voucher.titleEn!
-                                    : lang == "ar"
-                                        ? voucher.titleAr!
-                                        : voucher.titleKu!,
-                                style: TextStyle(
-                                    color: mainColorWhite, fontSize: 18),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              RichText(
-                                text: new TextSpan(
-                                  // Note: Styles for TextSpans must be explicitly defined.
-                                  // Child text spans will inherit styles from parent
-                                  style: new TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.black,
-                                  ),
-                                  children: <TextSpan>[
-                                    new TextSpan(
-                                      text: addCommasToPrice(
-                                          voucher.discountAmount!),
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.green,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: mainFontnormal),
-                                    ),
-                                    new TextSpan(
-                                      text: " " + "OFF".tr,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: mainColorRed,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: mainFontnormal),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                voucher.expireDate!,
-                                style: TextStyle(
-                                    color: mainColorBlack, fontSize: 12),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-    );
-  }
-}
-
-class ExpiredTabOld extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final productrovider = Provider.of<productProvider>(context, listen: true);
-    return Directionality(
-      textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
-      child: productrovider.expireVouchers.isEmpty
-          ? Center(
-              child: Text(
-                "Do not have any Voucher Code".tr,
-                style: TextStyle(
-                  fontFamily: mainFontnormal,
-                  fontSize: 20,
-                  color: mainColorGrey,
-                ),
-              ),
-            )
-          : ListView.builder(
-              itemCount: productrovider.expireVouchers.length,
-              itemBuilder: (context, index) {
-                final voucher = productrovider.expireVouchers[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: getHeight(context, 17),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: mainColorBlack.withOpacity(0.5)),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: getWidth(context, 100),
-                          height: getHeight(context, 8),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(14),
-                                topRight: Radius.circular(14),
-                              ),
-                              color: mainColorGrey),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/App-Icon.png",
-                                height: 50,
-                              ),
-                              Text(
-                                lang == "en"
-                                    ? voucher.titleEn!
-                                    : lang == "ar"
-                                        ? voucher.titleAr!
-                                        : voucher.titleKu!,
-                                style: TextStyle(
-                                    color: mainColorWhite, fontSize: 18),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              RichText(
-                                text: new TextSpan(
-                                  style: new TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.black,
-                                  ),
-                                  children: <TextSpan>[
-                                    new TextSpan(
-                                      text: addCommasToPrice(
-                                          voucher.discountAmount!),
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.green,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: mainFontnormal),
-                                    ),
-                                    new TextSpan(
-                                      text: " " + "OFF".tr,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: mainColorRed,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: mainFontnormal),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                voucher.expireDate!,
-                                style: TextStyle(
-                                    color: mainColorRed, fontSize: 12),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                 );
               },

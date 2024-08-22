@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'dart:convert';
 import 'package:dllylas/Account/about_screen.dart';
 import 'package:dllylas/Account/all_gudide.dart';
@@ -6,7 +7,6 @@ import 'package:dllylas/Account/help_screen.dart';
 import 'package:dllylas/Config/local_data.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
-import 'package:dllylas/Notifications/notification_page.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
@@ -18,20 +18,21 @@ import '../Network/Network.dart';
 import '../controller/cartprovider.dart';
 import '../home/nav_switch.dart';
 
+/// A StatefulWidget that manages the account settings screen.
 class AccountSetting extends StatefulWidget {
   @override
   _AccountSettingState createState() => _AccountSettingState();
 }
 
 class _AccountSettingState extends State<AccountSetting> {
-  bool waiting = false;
-
-  String selectedItem = 'English';
-  bool _isSwitched = true;
-  bool switchedWait = false;
+  bool waiting = false; // Indicates if a network operation is in progress
+  String selectedItem = 'English'; // Currently selected language
+  bool _isSwitched = true; // State of the notification switch
+  bool switchedWait = false; // Indicates if the switch operation is in progress
 
   @override
   void initState() {
+    // Initialize notification switch state based on user data
     if (userdata["SendNotfi"] == 1) {
       setState(() {
         _isSwitched = true;
@@ -41,15 +42,17 @@ class _AccountSettingState extends State<AccountSetting> {
         _isSwitched = false;
       });
     }
+    // Set the default language based on saved preference
     selectedItem = lang == "en"
         ? "English"
         : lang == "ar"
             ? "Arabic"
             : "Kurdish";
-
+            
     super.initState();
   }
 
+  /// Updates the application language and stores the preference.
   void _updateLanguage(String language) {
     selectedItem = language;
     if (selectedItem == 'English') {
@@ -69,16 +72,16 @@ class _AccountSettingState extends State<AccountSetting> {
 
   @override
   Widget build(BuildContext context) {
+    // Check for internet connection and display appropriate widget
     return Provider.of<productProvider>(context, listen: true).nointernetCheck
         ? noInternetWidget(context)
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
-              // AppBar
               appBar: AppBar(
                 leading: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                     Navigator.pop(context); // Navigate back to the previous screen
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios,
@@ -87,18 +90,15 @@ class _AccountSettingState extends State<AccountSetting> {
                   "Account Settings".tr,
                 ),
               ),
-
-              // body
-              body: !isLogin
-                  ? loginFirstContainer(context)
+              
+              body: !isLogin // Show login prompt if not logged in 
+                  ? loginFirstContainer(context) 
                   : SingleChildScrollView(
                       child: Column(
                         children: [
-                          // Title 1
+                          // Add vertical space
                           SizedBox(height: getHeight(context, 2)),
                           _titles("Setting".tr),
-
-                          // Notification Setting
 
                           Column(
                             children: [
@@ -125,15 +125,18 @@ class _AccountSettingState extends State<AccountSetting> {
                                           child: waitingWiget2(context),
                                         )
                                       : Switch(
+                                          // Current switch state
                                           value: _isSwitched,
                                           onChanged: (value) {
                                             setState(() {
+                                              // Indicate that switch operation is in progress
                                               switchedWait = true;
                                             });
                                             var data = {
                                               "id": userdata["id"],
                                               "SendNotfi": value
                                             };
+                                            // Make network request to update notification settings
                                             Network(false)
                                                 .postData("SendNotfi_Change",
                                                     data, context)
@@ -172,30 +175,17 @@ class _AccountSettingState extends State<AccountSetting> {
                               ),
                             ],
                           ),
-                          // Language
                           _Language(Ionicons.globe_outline, 'Language'.tr),
-
-                          // Title 2
                           SizedBox(height: getHeight(context, 2)),
                           _titles("Support".tr),
-
-                          // Help center
                           _listTiles(Icons.description_outlined,
                               "Help center".tr, HelpScreen()),
-
-                          // About us
                           _listTiles(Icons.privacy_tip_outlined, 'About us'.tr,
                               AboutScreen()),
-
-                          // Guide
                           _listTiles(
                               Icons.support_agent, 'Guide'.tr, GuidePage()),
-
-                          // Feedback
                           _listTiles(Icons.feedback_outlined, 'Feedback'.tr,
                               FeedbackScreen()),
-
-                          // Delete Account
                           _DeleteAccount(
                               Ionicons.trash_outline, 'Delete Account'.tr),
                         ],
@@ -204,7 +194,7 @@ class _AccountSettingState extends State<AccountSetting> {
             ),
           );
   }
-
+  /// Widget to display section titles.
   Widget _titles(String title) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -220,6 +210,7 @@ class _AccountSettingState extends State<AccountSetting> {
     );
   }
 
+  /// Widget to create list tiles for navigation.
   Widget _listTiles(IconData icon, String title, Widget destination) {
     return Column(
       children: [
@@ -243,6 +234,7 @@ class _AccountSettingState extends State<AccountSetting> {
             Navigator.push(
               context,
               MaterialPageRoute(
+                // Navigate to the destination screen
                 builder: (context) => destination,
               ),
             );
@@ -255,7 +247,7 @@ class _AccountSettingState extends State<AccountSetting> {
       ],
     );
   }
-
+  /// Widget for language selection
   Widget _Language(IconData icon, String title) {
     return Column(
       children: [
@@ -391,6 +383,7 @@ class _AccountSettingState extends State<AccountSetting> {
     );
   }
 
+  /// Widget for account deletion
   Widget _DeleteAccount(IconData icon, String title) {
     return Column(
       children: [

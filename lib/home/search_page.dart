@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'dart:async';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/controller/cartprovider.dart';
@@ -12,35 +13,59 @@ import 'package:dllylas/Config/property.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
+/// A screen that allows users to search for products.
+/// It handles connectivity issues and displays search results or appropriate messages.
 class Search extends StatefulWidget {
   const Search({super.key});
+
   @override
   State<Search> createState() => _SearchState();
 }
 
 class _SearchState extends State<Search> {
+  // Keeps track of the current connectivity status
   List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
+  
+  // Used to listen for connectivity changes
   final Connectivity _connectivity = Connectivity();
+  
+  // Subscription to manage connectivity change events
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+  
+  // FocusNode for the search TextField to manage its focus
   late FocusNode _searchFocusNode;
+
   @override
   void initState() {
+    super.initState();
+    
+    // Start listening to connectivity changes
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
-    // Initialize the FocusNode
+
+    // Initialize FocusNode to manage search TextField's focus
     _searchFocusNode = FocusNode();
 
-    // Call a method to open the keyboard when the page is opened
+    // Automatically open the keyboard after a slight delay
     _openKeyboard();
-    super.initState();
   }
 
+  @override
+  void dispose() {
+    // Cancel the connectivity subscription when the widget is disposed
+    _connectivitySubscription.cancel();
+    super.dispose();
+  }
+
+  // Updates the connectivity status and informs the product provider
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     final pro = Provider.of<productProvider>(context, listen: false);
 
+    // Check if there is no internet connection
     if (result[0] == ConnectivityResult.none) {
       pro.setnointernetcheck(true);
     } else {
+      // If there was no internet previously, update the product provider
       if (pro.nointernetCheck) {
         pro.updatePost(false);
         pro.setnointernetcheck(false);
@@ -51,29 +76,33 @@ class _SearchState extends State<Search> {
     });
   }
 
+  // Opens the keyboard after a slight delay to ensure the TextField is rendered
   void _openKeyboard() {
-    // Delay opening the keyboard slightly to ensure that the text field is fully rendered
     Future.delayed(Duration(milliseconds: 300), () {
-      // Request focus on the text field
       FocusScope.of(context).requestFocus(_searchFocusNode);
     });
   }
 
-  @override
-  void dispose() {
-    _connectivitySubscription.cancel();
-    super.dispose();
-  }
-
+  // GlobalKey for form state management
   final formKey = GlobalKey<FormState>();
-  bool isSearch = false;
+  
+  // Controller to manage the search text field's text
   TextEditingController searchCon = TextEditingController();
+  
+  // Flag to manage search state (whether it is active or not)
+  bool isSearch = false;
+
   @override
   Widget build(BuildContext context) {
+    // Access the product provider and cart provider
     final productPro = Provider.of<productProvider>(context, listen: true);
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
+    // Set the search text controller to the current search text
     searchCon.text = productPro.searchproduct;
+
     return productPro.nointernetCheck
+        // Display a no internet connection widget if the connectivity check fails
         ? noInternetWidget(context)
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
@@ -81,6 +110,7 @@ class _SearchState extends State<Search> {
               appBar: AppBar(
                 leading: IconButton(
                   onPressed: () {
+                    // Clear the search field and navigate back
                     isSearch = false;
                     searchCon.text = "";
                     productPro.setsearch("");
@@ -101,6 +131,7 @@ class _SearchState extends State<Search> {
                         );
                       },
                       icon: cartProvider.cartItems.isNotEmpty
+                          // Show a badge with the number of items if the cart is not empty
                           ? Badge(
                               label: Text(
                                 cartProvider.cartItems.length.toString(),
@@ -123,14 +154,16 @@ class _SearchState extends State<Search> {
               ),
               body: GestureDetector(
                 onTap: () {
+                  // Dismiss the keyboard when tapping outside the TextField
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
                 child: !productPro.show
+                    // Show a loading shimmer effect while products are being fetched
                     ? listItemsBigShimer(context)
                     : productPro
                             .getProductsBySearch(productPro.searchproduct)
                             .isEmpty
-                        // if not have item
+                        // Show a message when no products are found
                         ? Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -147,7 +180,7 @@ class _SearchState extends State<Search> {
                                         borderRadius: BorderRadius.circular(10),
                                         border: Border.all(
                                             color: mainColorlightGrey)),
-                                    height: getHeight(context,7),
+                                    height: getHeight(context, 7),
                                     child: TextField(
                                       key: formKey,
                                       focusNode: _searchFocusNode,
@@ -158,6 +191,7 @@ class _SearchState extends State<Search> {
                                           fontFamily: mainFontbold),
                                       keyboardType: TextInputType.text,
                                       onChanged: (value) {
+                                        // Update the search query in the provider
                                         productPro.setsearch(searchCon.text);
                                       },
                                       decoration: InputDecoration(
@@ -166,6 +200,7 @@ class _SearchState extends State<Search> {
                                                 icon: const Icon(Icons.cancel),
                                                 onPressed: () {
                                                   setState(() {
+                                                    // Clear the search field
                                                     isSearch = false;
                                                     searchCon.text = "";
                                                     productPro.setsearch("");
@@ -245,8 +280,7 @@ class _SearchState extends State<Search> {
                               ],
                             ),
                           )
-
-                        // if have item
+                        // Show the list of search results if any items are found
                         : Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -274,6 +308,7 @@ class _SearchState extends State<Search> {
                                           fontFamily: mainFontbold),
                                       keyboardType: TextInputType.text,
                                       onChanged: (value) {
+                                        // Update the search query in the provider
                                         productPro.setsearch(searchCon.text);
                                       },
                                       decoration: InputDecoration(
@@ -282,6 +317,7 @@ class _SearchState extends State<Search> {
                                                 icon: const Icon(Icons.cancel),
                                                 onPressed: () {
                                                   setState(() {
+                                                    // Clear the search field
                                                     isSearch = false;
                                                     searchCon.text = "";
                                                     productPro.setsearch("");

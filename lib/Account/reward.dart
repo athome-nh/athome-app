@@ -1,5 +1,5 @@
+// Import necessary packages and libraries
 import 'dart:async';
-
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+/// `coinReward` widget manages coin and reward system for the user.
+/// Users can view and purchase vouchers using accumulated points.
 class coinReward extends StatefulWidget {
   const coinReward({super.key});
 
@@ -20,20 +22,24 @@ class coinReward extends StatefulWidget {
 }
 
 class _coinRewardState extends State<coinReward> {
-  bool waiting = false;
-  int id = -1;
-  int time = 6;
-  Timer? _timer;
+  bool waiting = false; // Indicates if the user is waiting after pressing 'Buy Now'
+  int id = -1; // Stores the ID of the selected voucher
+  int time = 6; // Countdown timer for purchasing process
+  Timer? _timer; // Timer instance to handle the countdown
+
   @override
   void dispose() {
+    // Clean up the timer when the widget is disposed of
     _timer?.cancel();
     super.dispose();
   }
 
+  /// Starts the countdown timer for handling purchase cooldowns.
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (time < 1) {
+          // Reset timer and stop it once countdown ends
           time = 6;
           _timer?.cancel();
         } else {
@@ -46,7 +52,9 @@ class _coinRewardState extends State<coinReward> {
 
   @override
   Widget build(BuildContext context) {
+    // Access product provider to fetch the user's available points and vouchers
     final productrovider = Provider.of<productProvider>(context, listen: false);
+    
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -57,26 +65,14 @@ class _coinRewardState extends State<coinReward> {
               Icons.arrow_back_ios,
             )),
         title: Text(
-          "Coin & Reward".tr,
+          "Coin & Reward".tr, // Translated title
         ),
       ),
       body: Directionality(
         textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
         child: 
-        // todo: Labar away lamdaa chonka aw page batal nabet
-        // productrovider.points.isEmpty
-        //     ? Center(
-        //         child: Text(
-        //           "Do not have any Voucher Code".tr,
-        //           style: TextStyle(
-        //             fontFamily: mainFontnormal,
-        //             fontSize: 20,
-        //             color: mainColorGrey,
-        //           ),
-        //         ),
-        //       )
-        //     : 
-            ListView.builder(
+        // Check if the user has any points available
+        ListView.builder(
                 itemCount: productrovider.points.length,
                 itemBuilder: (context, index) {
                   final point = productrovider.points[index];
@@ -108,7 +104,7 @@ class _coinRewardState extends State<coinReward> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: [
-                                        // voucher image
+                                        // Voucher image
                                         Image.asset(
                                           "assets/images/Voucher.png",
                                           height: getHeight(context, 6),
@@ -118,13 +114,14 @@ class _coinRewardState extends State<coinReward> {
                                           width: getWidth(context, 3),
                                         ),
 
-                                        // Text
+                                        // Text section showing discount and point details
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
                                             Row(
                                               children: [
+                                                // Display discount information
                                                 Text(
                                                   "Discont".tr + " ",
                                                   style: new TextStyle(
@@ -151,8 +148,9 @@ class _coinRewardState extends State<coinReward> {
                                                     fontSize: 14,
                                                   ),
                                                 ),
-                                                ],
+                                              ],
                                             ),
+                                            // Display points required for voucher
                                             Text(
                                               "VALUE".tr +
                                                   ": " +
@@ -168,6 +166,7 @@ class _coinRewardState extends State<coinReward> {
                                         ),
                                       ],
                                     ),
+                                    // Show waiting widget if user has initiated a purchase
                                     waiting && id == point.id
                                         ? Container(
                                             width: getHeight(context, 5),
@@ -185,6 +184,7 @@ class _coinRewardState extends State<coinReward> {
                                                         id == point.id)
                                                 ? null
                                                 : () {
+                                                    // Start purchase process
                                                     setState(() {
                                                       waiting = true;
                                                       id = point.id!;
@@ -194,6 +194,7 @@ class _coinRewardState extends State<coinReward> {
                                                       "discount": point.price,
                                                       "point": point.porint,
                                                     };
+                                                    // Send data to backend for voucher purchase
                                                     Network(false)
                                                         .postData("buy_voucher",
                                                             data, context)
@@ -202,6 +203,7 @@ class _coinRewardState extends State<coinReward> {
                                                         if (value["code"] ==
                                                             "200") {
                                                           setState(() {
+                                                            // Update vouchers and user points
                                                             productrovider.setvouchers(
                                                                 (value['data']
                                                                         as List)
@@ -242,6 +244,7 @@ class _coinRewardState extends State<coinReward> {
                                                       }
                                                     });
                                                   },
+                                            // Show countdown timer or 'Buy Now' button text
                                             child: Text(
                                               time != 6 && id == point.id
                                                   ? time.toString()

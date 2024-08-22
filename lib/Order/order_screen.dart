@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Order/old_order.dart';
 import 'package:dllylas/Order/order_items.dart';
+import 'package:dllylas/Order/track_order.dart';
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/cartpast.dart';
@@ -13,8 +14,8 @@ import 'package:provider/provider.dart';
 import '../Config/my_widget.dart';
 import '../Config/property.dart';
 import '../controller/productprovider.dart';
-import 'track_order.dart';
 
+/// This is a stateful widget that represents the Order Screen of the application.
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
 
@@ -22,10 +23,16 @@ class OrderScreen extends StatefulWidget {
   State<OrderScreen> createState() => _OrderScreenState();
 }
 
+/// This state class manages the OrderScreen UI and its connectivity status.
 class _OrderScreenState extends State<OrderScreen> {
+  // Declaring a Connectivity instance to monitor internet connectivity.
   final Connectivity _connectivity = Connectivity();
+
+  // Declaring a StreamSubscription to listen to connectivity changes.
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
 
+  /// This method is called when the state is initialized.
+  /// It subscribes to the connectivity status changes and calls _updateConnectionStatus when a change occurs.
   @override
   void initState() {
     _connectivitySubscription =
@@ -33,11 +40,15 @@ class _OrderScreenState extends State<OrderScreen> {
     super.initState();
   }
 
+  /// This function updates the connection status based on the connectivity result.
+  /// It modifies the provider's 'no internet' check status accordingly.
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     final pro = Provider.of<productProvider>(context, listen: false);
     if (result[0] == ConnectivityResult.none) {
+      // If no internet connection, set 'noInternetCheck' to true.
       pro.setnointernetcheck(true);
     } else {
+      // If internet connection is restored, update and reset the 'noInternetCheck' flag.
       if (pro.nointernetCheck) {
         pro.updatePost(false);
         pro.setnointernetcheck(false);
@@ -45,35 +56,34 @@ class _OrderScreenState extends State<OrderScreen> {
     }
   }
 
+  /// Disposes the connectivity subscription to avoid memory leaks when the widget is disposed.
   @override
   void dispose() {
     _connectivitySubscription.cancel();
     super.dispose();
   }
 
+  /// Builds the UI of the OrderScreen, showing either the ongoing or history tab based on user login and order status.
   @override
   Widget build(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: true);
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
+    // Check if there is no internet connection, display the no internet widget.
     return productrovider.nointernetCheck
         ? noInternetWidget(context)
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: DefaultTabController(
-              length: 2,
+              length: 2, // Two tabs: "On going" and "History".
               child: Scaffold(
-                // AppBar
                 appBar: AppBar(
                   leading: IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context); // Navigates back on press.
                       },
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                      )),
-                  title: Text(
-                    "My Orders".tr,
-                  ),
+                      icon: const Icon(Icons.arrow_back_ios)),
+                  title: Text("My Orders".tr), // Translated "My Orders" title.
                   bottom: TabBar(
                     unselectedLabelColor: mainColorGrey,
                     labelColor: mainColorGrey,
@@ -83,19 +93,17 @@ class _OrderScreenState extends State<OrderScreen> {
                     unselectedLabelStyle:
                         TextStyle(fontFamily: mainFontnormal, fontSize: 14),
                     tabs: [
-                      Tab(
-                        text: "On going".tr,
-                      ),
-                      Tab(text: "History".tr),
-                    ],
+                      Tab(text: "On going".tr),
+                      Tab(text: "History".tr)
+                    ], // Two tabs for ongoing and history orders.
                   ),
                 ),
-
-                // Body
                 body: TabBarView(
                   children: [
+                    // Ongoing Orders Tab
                     !isLogin
-                        ? loginFirstContainer(context)
+                        ? loginFirstContainer(
+                            context) // If not logged in, display login prompt.
                         : productrovider.Orders.any(
                                 (order) => order.status! < 5)
                             ? ListView.builder(
@@ -155,13 +163,11 @@ class _OrderScreenState extends State<OrderScreen> {
                                           trailing: IconButton(
                                             onPressed: () {
                                               Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        TrackOrder(
-                                                          order.id!,
-                                                        )),
-                                              );
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          TrackOrder(order
+                                                              .id!))); // Navigate to track order page.
                                             },
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
@@ -169,7 +175,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                             ),
                                           ),
                                           subtitle: Text(
-                                            "Date".tr + " : " +
+                                            "Date".tr +
+                                                " : " +
                                                 convertToBaghdadTime(
                                                     order.createdAt.toString()),
                                             style: TextStyle(
@@ -184,22 +191,18 @@ class _OrderScreenState extends State<OrderScreen> {
                                 })
                             : Center(
                                 child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  //textcheck
-                                  Image.asset("assets/Victors/empty.png"),
-                                  SizedBox(
-                                    height: getHeight(context, 1),
-                                  ),
-                                  Text(
-                                    "You not have any order".tr,
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: mainFontnormal),
-                                  ),
-                                ],
-                              )),
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                    Image.asset("assets/Victors/empty.png"),
+                                    SizedBox(height: getHeight(context, 1)),
+                                    Text("You not have any order".tr,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: mainFontnormal))
+                                  ])),
+                    // Order History Tab
                     !isLogin
                         ? loginFirstContainer(context)
                         : productrovider.getOrderHistory().isNotEmpty
@@ -211,15 +214,13 @@ class _OrderScreenState extends State<OrderScreen> {
                                       .getOrderHistory()
                                       .reversed
                                       .toList()[index];
-
                                   return Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                            color:
-                                                mainColorGrey2.withOpacity(0.5),
-                                          ),
+                                              color: mainColorGrey2
+                                                  .withOpacity(0.5)),
                                           color: mainColorlightGrey,
                                           borderRadius:
                                               BorderRadius.circular(10)),
@@ -262,7 +263,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              "Dlly Las Market".tr,
+                                                              "Dlly Las Market"
+                                                                  .tr,
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
@@ -271,7 +273,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                                                       mainColorBlack),
                                                             ),
                                                             Text(
-                                                              "Order number".tr + " : "+
+                                                              "Order number"
+                                                                      .tr +
+                                                                  " : " +
                                                                   order.id
                                                                       .toString(),
                                                               style: TextStyle(
@@ -285,34 +289,6 @@ class _OrderScreenState extends State<OrderScreen> {
                                                         )
                                                       ],
                                                     ),
-                                                    // SizedBox(
-                                                    //   height: getHeight(
-                                                    //       context, 0.7),
-                                                    // ),
-                                                    // Container(
-                                                    //   decoration: BoxDecoration(
-                                                    //       borderRadius:
-                                                    //           BorderRadius
-                                                    //               .circular(5),
-                                                    //       border: Border.all(
-                                                    //           color:
-                                                    //               mainColorGrey2)),
-                                                    //   child: Padding(
-                                                    //     padding:
-                                                    //         const EdgeInsets
-                                                    //             .all(2.0),
-                                                    //     child: Text(
-                                                    //       addCommasToPrice(order
-                                                    //           .returnTotalPrice!),
-                                                    //       style: TextStyle(
-                                                    //           fontSize: 14,
-                                                    //           fontFamily:
-                                                    //               mainFontnormal,
-                                                    //           color:
-                                                    //               mainColorBlack),
-                                                    //     ),
-                                                    //   ),
-                                                    // ),
                                                   ],
                                                 ),
                                                 Column(
@@ -351,8 +327,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                               ],
                                             ),
                                             SizedBox(
-                                              height: getHeight(context, 1),
-                                            ),
+                                                height: getHeight(context, 1)),
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -379,7 +354,6 @@ class _OrderScreenState extends State<OrderScreen> {
 
                                                           if (existingItemIndex !=
                                                               -1) {
-                                                            //count order
                                                             final productitem =
                                                                 productrovider
                                                                         .products[
@@ -494,9 +468,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(
-                                                      width: 10,
-                                                    ),
+                                                    SizedBox(width: 10),
                                                     GestureDetector(
                                                       onTap: () {
                                                         productrovider
@@ -521,9 +493,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                             color:
                                                                 mainColorBlack,
                                                           ),
-                                                          SizedBox(
-                                                            width: 3,
-                                                          ),
+                                                          SizedBox(width: 3),
                                                           Text(
                                                             "View".tr,
                                                             style: TextStyle(
@@ -544,7 +514,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   children: [
                                                     Text(
                                                       order.status == 5
-                                                          ? "Deleverd".tr
+                                                          ? "Delivered".tr
                                                           : "Undelivered".tr,
                                                       style: TextStyle(
                                                           fontSize: 10,
@@ -554,7 +524,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                               mainColorBlack),
                                                     ),
                                                     Text(
-                                                      "Date".tr +" : " +
+                                                      "Date".tr +
+                                                          " : " +
                                                           convertToBaghdadTime(
                                                               order.createdAt
                                                                   .toString()),
@@ -577,22 +548,20 @@ class _OrderScreenState extends State<OrderScreen> {
                                 })
                             : Center(
                                 child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  //textcheck
-                                  Image.asset("assets/Victors/empty.png"),
-                                  SizedBox(
-                                    height: getHeight(context, 1),
-                                  ),
-                                  Text(
-                                    "You not have any order".tr,
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: mainFontnormal),
-                                  ),
-                                ],
-                              )),
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset("assets/Victors/empty.png"),
+                                    SizedBox(height: getHeight(context, 1)),
+                                    Text(
+                                      "You not have any order".tr,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: mainFontnormal),
+                                    ),
+                                  ],
+                                ),
+                              ),
                   ],
                 ),
               ),

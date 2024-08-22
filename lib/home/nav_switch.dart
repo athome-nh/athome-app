@@ -1,68 +1,40 @@
+// Import necessary packages and libraries
 import 'dart:io';
-
 import 'package:dllylas/Account/profile.dart';
-
 import 'package:dllylas/controller/cartprovider.dart';
 import 'package:dllylas/home/favorite.dart';
 import 'package:dllylas/home/my_cart.dart';
 import 'package:dllylas/home/newhomePage.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
 import 'package:dllylas/Config/property.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
-import 'home_page.dart';
 import 'package:line_icons/line_icons.dart';
 
+/// `NavSwitch` is a StatefulWidget that provides a bottom navigation bar
+/// for switching between different pages in the app.
 class NavSwitch extends StatefulWidget {
+  // The index of the page to be displayed initially
   int pageNum = 0;
+
+  /// Constructor for `NavSwitch`.
+  ///
+  /// The [pageNum] parameter sets the initial page index.
   NavSwitch({this.pageNum = 0, Key? key}) : super(key: key);
 
   @override
   State<NavSwitch> createState() => _NavSwitchState();
 }
 
-// Widget buildFAB(BuildContext context) {
-//   final cartProvider = Provider.of<CartProvider>(context, listen: true);
-//   return Visibility(
-//     visible: Provider.of<productProvider>(context, listen: true).nointernetCheck
-//         ? false
-//         : cartProvider.cartItems.isNotEmpty
-//             ? true
-//             : false,
-//     child: Badge(
-//       label: Text(cartProvider.cartItems.length.toString()),
-//       backgroundColor: mainColorWhite,
-//       textColor: mainColorRed,
-//       child: FloatingActionButton(
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(5),
-//         ),
-//         onPressed: () {
-//           Navigator.push(
-//             context,
-//             MaterialPageRoute(builder: (context) => const MyCart()),
-//           );
-//         },
-//         backgroundColor: mainColorRed,
-//         child: Icon(
-//           Ionicons.cart_sharp,
-//           size: getHeight(context, 5),
-//         ),
-//       ),
-//     ),
-//   );
-// }
-
 class _NavSwitchState extends State<NavSwitch> {
+  // Index of the currently selected tab
   int selectedIndex = 0;
+
+  // List of widgets to be displayed based on the selected tab
   static final List<Widget> _widgetOptions = <Widget>[
     const newhomePage(),
-    // const Search(),
     MyCart(false),
     const Favorite(),
     ProfileScreen(),
@@ -70,25 +42,30 @@ class _NavSwitchState extends State<NavSwitch> {
 
   @override
   void initState() {
+    super.initState();
+    // Set the initial selected index from the widget's pageNum
     setState(() {
       selectedIndex = widget.pageNum;
     });
-
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Access the CartProvider to display cart items count
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
     return Directionality(
+      // Set text direction based on the language
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: PopScope(
         canPop: false,
         onPopInvoked: (didPop) {
+          // Show a dialog when attempting to exit the app
           yesNoOption(context);
         },
         child: Scaffold(
           body: Center(
+            // Display the widget based on the selected tab index
             child: _widgetOptions.elementAt(selectedIndex),
           ),
           bottomNavigationBar: Container(
@@ -164,6 +141,7 @@ class _NavSwitchState extends State<NavSwitch> {
                   ],
                   selectedIndex: selectedIndex,
                   onTabChange: (index) {
+                    // Update the selected index when a tab is changed
                     setState(() {
                       selectedIndex = index;
                     });
@@ -177,7 +155,7 @@ class _NavSwitchState extends State<NavSwitch> {
     );
   }
 
-  // Dialogbox ( yes and no )
+  /// Displays a dialog box with Yes and No options for exiting the app.
   Future<void> yesNoOption(
     BuildContext context,
   ) async {
@@ -216,13 +194,9 @@ class _NavSwitchState extends State<NavSwitch> {
                             ),
                           ),
                           const SizedBox(),
-                          const SizedBox(),
-                          // const SizedBox(),
-                          // const SizedBox(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              const SizedBox(),
                               ElevatedButton(
                                 onPressed: () async {
                                   Navigator.pop(context);
@@ -246,7 +220,6 @@ class _NavSwitchState extends State<NavSwitch> {
                                   "Yes".tr,
                                 ),
                               ),
-                              const SizedBox(),
                             ],
                           ),
                         ]),

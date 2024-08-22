@@ -1,7 +1,7 @@
+// Import necessary packages and libraries
 import 'dart:convert';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/local_data.dart';
-import 'package:dllylas/controller/productprovider.dart';
 import '../Landing/splash_screen.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:dllylas/model/cartpast.dart';
@@ -15,7 +15,6 @@ class CartProvider extends ChangeNotifier {
     // When the CartProvider is created, load cart data from shared preferences.
   }
   List<CartItem> cartItems = [];
-  // ignore: non_constant_identifier_names
   List<CartItem> FavItems = [];
   List<CartItemPast> _cartItemsPast = [];
   List<CartItemPast> get cartItemsPast => _cartItemsPast;
@@ -148,22 +147,6 @@ class CartProvider extends ChangeNotifier {
 
     return totalPrice;
   }
-
-  // int calculateTotalPriceWithOutDiscount(List<ProductModel> product) {
-  //   int totalPrice = 0;
-
-  //   for (var element in product) {
-  //     final item = cartItems.firstWhere((cart) => cart.product == element.id);
-
-  //     if (element.price2! > -1) {
-  //       totalPrice += element.price2! * item.quantity;
-  //     } else {
-  //       totalPrice += element.price! * item.quantity;
-  //     }
-  //   }
-
-  //   return totalPrice;
-  // }
 
   void clearCart() {
     cartItems.clear();
@@ -322,20 +305,6 @@ class CartProvider extends ChangeNotifier {
     }
 
     return totalPrice;
-    // int totalPrice = 0;
-    // int i = 0;
-    // for (var cartItem in cartItemsPast) {
-    //   if (checkOferPrice(product[i])) {
-    //     totalPrice += product[i].offerPrice! * cartItem.quantity;
-    //   } else if (product[i].price2! > -1) {
-    //     totalPrice += product[i].price2! * cartItem.quantity;
-    //   } else {
-    //     totalPrice += product[i].price! * cartItem.quantity;
-    //   }
-    //   i++;
-    // }
-
-    // return totalPrice;
   }
 
   List<int> ListIdPast() {

@@ -7,20 +7,21 @@ import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/model/order_model/order_model.dart';
 import 'package:dllylas/main.dart';
 import 'package:flutter/material.dart';
-
 import 'package:dllylas/Config/property.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
+// StatefulWidget to track the status of an order
 class TrackOrder extends StatefulWidget {
-  int id;
-
+  int id; // Order ID
   TrackOrder(this.id, {super.key});
+
   @override
   State<TrackOrder> createState() => _TrackOrderState();
 }
 
+// List of images representing order statuses
 List images = [
   "assets/images/new_pick.gif",
   "assets/images/new_process.gif",
@@ -30,12 +31,15 @@ List images = [
   "assets/images/Order-Success.gif",
   "assets/images/Order-Faild.gif",
 ];
+
+// Status and localization titles/content
 late List titles;
 late List content;
 
 int status = 0;
 
 class _TrackOrderState extends State<TrackOrder> {
+  // Method to update the order status
   int updateStatus() {
     final pro = Provider.of<productProvider>(context, listen: false);
     pro.refreshOrderData();
@@ -53,8 +57,12 @@ class _TrackOrderState extends State<TrackOrder> {
 
   bool loading = false;
   Timer? _timer;
+
   @override
   void initState() {
+    super.initState();
+
+    // Set localization titles and content based on language
     if (lang == "en") {
       titles = [
         "Order Placed",
@@ -79,7 +87,7 @@ class _TrackOrderState extends State<TrackOrder> {
         "تم تثبیت الطلب",
         "قید العمل",
         "قید العمل",
-        "الطلبیة قيد التوصيل",
+        "الطلبیة قید التوصيل",
         "الطلبیة جاهزة للاستلام",
         "تم توصيل الطلب",
         "لم يتم توصيل الطلب",
@@ -115,9 +123,9 @@ class _TrackOrderState extends State<TrackOrder> {
     }
     updateStatus();
     _startTimer();
-    super.initState();
   }
 
+  // Method to start a timer for periodically updating order status
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       if (status <= 5) {
@@ -136,16 +144,17 @@ class _TrackOrderState extends State<TrackOrder> {
   Widget build(BuildContext context) {
     final pro = Provider.of<productProvider>(context, listen: false);
     final OrderModel order = pro.getoneOrderById(widget.id);
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Track Order".tr,
+            "Track Order".tr, // Title of the app bar
           ),
           leading: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context); // Navigate back
               },
               icon: const Icon(
                 Icons.arrow_back_ios,
@@ -158,7 +167,7 @@ class _TrackOrderState extends State<TrackOrder> {
               Column(
                 children: [
                   SizedBox(
-                    height: getHeight(context, 1),
+                    height: getHeight(context, 1), // Spacer
                   ),
                   Text("Order".tr + " : " + widget.id.toString(),
                       style: TextStyle(
@@ -177,7 +186,7 @@ class _TrackOrderState extends State<TrackOrder> {
               loading
                   ? Column(
                       children: [
-                        // gif image place and size
+                        // Display order status image
                         Image.asset(
                           images[status],
                           width: getWidth(context, 100),
@@ -188,6 +197,7 @@ class _TrackOrderState extends State<TrackOrder> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              // Status indicators
                               Container(
                                 alignment: Alignment.center,
                                 width: getWidth(context, 8),
@@ -297,7 +307,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         SizedBox(
                           height: getHeight(context, 3),
                         ),
-                        Text(titles[status],
+                        Text(titles[status], // Status title
                             style: TextStyle(
                               color: mainColorBlack,
                               fontSize: 28,
@@ -307,7 +317,7 @@ class _TrackOrderState extends State<TrackOrder> {
                           padding: EdgeInsets.symmetric(
                               horizontal: getWidth(context, 10)),
                           child: Text(
-                            content[status],
+                            content[status], // Status content
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: mainColorBlack,
@@ -318,9 +328,9 @@ class _TrackOrderState extends State<TrackOrder> {
                         ),
                       ],
                     )
-                  : waitingWiget(context),
+                  : waitingWiget(context), // Display a waiting widget if not loading
               SizedBox(
-                height: getHeight(context, 2),
+                height: getHeight(context, 2), // Spacer
               ),
               Row(
                 mainAxisAlignment: status > 0
@@ -331,7 +341,7 @@ class _TrackOrderState extends State<TrackOrder> {
                       ? status == 0
                           ? TextButton(
                               onPressed: () {
-                                yesNoOption(context);
+                                yesNoOption(context); // Show cancel confirmation dialog
                               },
                               style: TextButton.styleFrom(
                                 backgroundColor: mainColorRed,
@@ -339,7 +349,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                     getHeight(context, 3)),
                               ),
                               child: Text(
-                                "Cancel order".tr,
+                                "Cancel order".tr, // Cancel button
                               ),
                             )
                           : const SizedBox()
@@ -360,7 +370,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 getWidth(context, 35), getHeight(context, 3)),
                           ),
                           child: Text(
-                            "View order".tr,
+                            "View order".tr, // View order button
                           ),
                         )
                       : const SizedBox(),
@@ -373,7 +383,7 @@ class _TrackOrderState extends State<TrackOrder> {
     );
   }
 
-  // Dialogbox
+  // Dialog box for canceling the order
   Future<void> yesNoOption(
     BuildContext context,
   ) async {
@@ -403,7 +413,7 @@ class _TrackOrderState extends State<TrackOrder> {
                         children: [
                           const SizedBox(),
                           Text(
-                            "Are you sure Cancel order".tr,
+                            "Are you sure Cancel order".tr, // Confirmation text
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               color: mainColorBlack,
@@ -419,18 +429,19 @@ class _TrackOrderState extends State<TrackOrder> {
                               const SizedBox(),
                               TextButton(
                                 onPressed: () async {
-                                  Navigator.pop(context);
+                                  Navigator.pop(context); // Close dialog
                                 },
                                 style: TextButton.styleFrom(
                                     backgroundColor: mainColorRed,
                                     fixedSize: Size(getWidth(context, 30),
                                         getHeight(context, 4))),
                                 child: Text(
-                                  "No".tr,
+                                  "No".tr, // No button
                                 ),
                               ),
                               TextButton(
                                 onPressed: () {
+                                  // Post request to cancel the order
                                   Network(false)
                                       .postData("userCancel",
                                           {"oid": widget.id}, context)
@@ -443,8 +454,8 @@ class _TrackOrderState extends State<TrackOrder> {
                                                 listen: false);
                                         productrovider.refreshOrderData();
 
-                                        Navigator.pop(context);
-                                        Navigator.pop(context);
+                                        Navigator.pop(context); // Close dialog
+                                        Navigator.pop(context); // Go back
                                       }
                                     }
                                   });
@@ -453,7 +464,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                     fixedSize: Size(getWidth(context, 30),
                                         getHeight(context, 4))),
                                 child: Text(
-                                  "Yes".tr,
+                                  "Yes".tr, // Yes button
                                 ),
                               ),
                               const SizedBox(),

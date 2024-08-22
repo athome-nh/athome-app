@@ -28,9 +28,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
 
-// Entry point of the application
+
 Future<void> main() async {
-  // Ensure the widget binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
   // Load environment variables from the .env file
@@ -128,15 +127,11 @@ class _AtHomeAppState extends State<AtHomeApp> {
         translations: Translation(),
         locale: const Locale("ar"),
         fallbackLocale: const Locale("ar"),
-        // Set the app title
         title: 'DLLY LAS Market',
         // Disable the debug banner
         debugShowCheckedModeBanner: false,
-        // Set the initial route to the splash screen
         initialRoute: '/splash',
-        // Use the global navigator key for navigation management
         navigatorKey: navigatorKey,
-        // Define the pages for navigation
         getPages: [
           GetPage(name: '/splash', page: () => SplashScreen()),
           GetPage(name: '/home', page: () => NavSwitch()),

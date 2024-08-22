@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'package:animate_do/animate_do.dart';
 import 'package:dllylas/home/DetailsPage.dart';
 import 'package:dllylas/Config/athome_functions.dart';

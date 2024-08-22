@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -14,6 +15,7 @@ import '../Network/Network.dart';
 import '../controller/productprovider.dart';
 import '../main.dart';
 
+// Widget to display and edit user account information
 class AccountInfo2 extends StatefulWidget {
   const AccountInfo2({super.key});
 
@@ -22,34 +24,36 @@ class AccountInfo2 extends StatefulWidget {
 }
 
 class _AccountInfo2State extends State<AccountInfo2> {
+  // Device info plugin and image picker instance
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   final picker = ImagePicker();
-  XFile? _image;
+  XFile? _image; // To hold selected image
 
+  // Controllers for user input fields
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  bool isEdit = false;
-  bool waiting = false;
+  // State variables
+  bool isEdit = false; // Toggle edit mode
+  bool waiting = false; // Show loading state
 
-  String image = "";
-  String gender = "Male";
-  String city = "Erbil";
-  String selectedItem = 'English';
+  String image = ""; // User profile image URL
+  String gender = "Male"; // User gender
+  String city = "Erbil"; // User city
+  String selectedItem = 'English'; // Language selection
 
+  // Options for dropdown fields
   List<String> genderOptions = ['Male', 'Female'];
   List<String> cityOptions = ['Erbil', 'Sulaymaniyah', 'Duhok', 'Halabja'];
 
   @override
   void initState() {
     super.initState();
-    selectedItem = lang == "en"
-        ? "English"
-        : lang == "ar"
-            ? "Arabic"
-            : "Kurdish";
+    // Initialize selectedItem based on language setting
+    selectedItem = lang == "en" ? "English" : lang == "ar" ? "Arabic" : "Kurdish";
     if (isLogin && userdata.isNotEmpty) {
+      // Load user data if logged in
       nameController.text = userdata["name"];
       ageController.text = userdata["age"].toString();
       phoneController.text = userdata["phone"].toString();
@@ -58,9 +62,9 @@ class _AccountInfo2State extends State<AccountInfo2> {
     }
   }
 
+  // Method to pick an image from gallery
   Future<void> _getImage() async {
-    final pickedFile =
-        await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     if (pickedFile != null) {
       setState(() {
         _image = pickedFile;
@@ -68,15 +72,15 @@ class _AccountInfo2State extends State<AccountInfo2> {
     }
   }
 
+  // Method to save profile changes
   void _saveProfile() async {
     setState(() {
-      waiting = true;
+      waiting = true; // Set waiting state to true while saving
     });
     if (_image != null) {
+      // Upload new profile image if selected
       Map<String, String> body = {"id": userdata["id"].toString()};
-      Network(false)
-          .addImage("profileImg", body, _image!.path)
-          .then((value) {});
+      Network(false).addImage("profileImg", body, _image!.path).then((value) {});
     }
 
     var data = {
@@ -85,20 +89,20 @@ class _AccountInfo2State extends State<AccountInfo2> {
       "age": ageController.text,
       "gender": gender,
     };
+    // Post updated user data to the server
     Network(false).postData("profile", data, context).then((value) {
       print(value);
-      if (value != "") {
-        if (value["code"] == "201") {
-          userdata = value["data"];
-          setState(() {
-            waiting = false;
-            isEdit = false;
-          });
-        }
+      if (value != "" && value["code"] == "201") {
+        userdata = value["data"];
+        setState(() {
+          waiting = false; // Reset waiting state
+          isEdit = false; // Exit edit mode
+        });
       }
     });
   }
 
+  // Method to cancel editing and revert changes
   void _cancelEdit() {
     setState(() {
       isEdit = false;
@@ -114,20 +118,20 @@ class _AccountInfo2State extends State<AccountInfo2> {
   @override
   Widget build(BuildContext context) {
     return Provider.of<productProvider>(context, listen: true).nointernetCheck
-        ? noInternetWidget(context)
+        ? noInternetWidget(context) // Show no internet widget if there is no connection
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
               body: !isLogin
-                  ? loginFirstContainer(context)
+                  ? loginFirstContainer(context) // Show login prompt if not logged in
                   : SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          profileHeader(),
+                          profileHeader(), // Display profile header
                           SizedBox(height: getHeight(context, 3)),
-                          profileFields(),
+                          profileFields(), // Display profile fields
                           SizedBox(height: getHeight(context, 8)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -144,6 +148,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
           );
   }
 
+  // Widget for profile header containing image and details
   Widget profileHeader() {
     return Container(
       height: getHeight(context, 25),
@@ -158,20 +163,23 @@ class _AccountInfo2State extends State<AccountInfo2> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          profileImage(),
+          profileImage(), // Display profile image
           SizedBox(width: getHeight(context, 4)),
-          profileDetails(),
+          profileDetails(), // Display profile details
         ],
       ),
     );
   }
 
+  // Widget for displaying profile image
   Widget profileImage() {
     return Container(
       width: getWidth(context, 30),
       height: getWidth(context, 30),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100), color: mainColorWhite),
+        borderRadius: BorderRadius.circular(100),
+        color: mainColorWhite,
+      ),
       child: _image != null
           ? Stack(
               alignment: Alignment.bottomRight,
@@ -190,7 +198,6 @@ class _AccountInfo2State extends State<AccountInfo2> {
                     ),
                   ),
                 ),
-
                 // Icon (Edit)
                 isEdit
                     ? IconButton(
@@ -229,9 +236,6 @@ class _AccountInfo2State extends State<AccountInfo2> {
                         dotenv.env['imageUrlServer']! + userdata["img"],
                       ),
                       backgroundColor: mainColorWhite,
-                      // foregroundImage: AssetImage(
-                      //   "assets/images/test1.png",
-                      // ),
                     )),
                 isEdit
                     ? IconButton(
@@ -258,6 +262,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for displaying profile details
   Widget profileDetails() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -271,9 +276,10 @@ class _AccountInfo2State extends State<AccountInfo2> {
             Text(
               userdata["name"].toString(),
               style: TextStyle(
-                  fontFamily: mainFontbold,
-                  fontSize: 16,
-                  color: mainColorWhite),
+                fontFamily: mainFontbold,
+                fontSize: 16,
+                color: mainColorWhite,
+              ),
             ),
           ],
         ),
@@ -281,14 +287,18 @@ class _AccountInfo2State extends State<AccountInfo2> {
         Text(
           userdata["phone"].toString(),
           style: TextStyle(
-              fontFamily: mainFontnormal, fontSize: 14, color: mainColorWhite),
+            fontFamily: mainFontnormal,
+            fontSize: 14,
+            color: mainColorWhite,
+          ),
         ),
         SizedBox(height: getHeight(context, 1)),
-        pointsContainer(),
+        pointsContainer(), // Display user points
       ],
     );
   }
 
+  // Widget for displaying user points
   Widget pointsContainer() {
     return Container(
       height: getHeight(context, 4),
@@ -304,7 +314,10 @@ class _AccountInfo2State extends State<AccountInfo2> {
           Text(
             userdata["point"].toString(),
             style: TextStyle(
-                fontSize: 16, color: mainColorBlack, fontFamily: mainFontbold),
+              fontSize: 16,
+              color: mainColorBlack,
+              fontFamily: mainFontbold,
+            ),
           ),
           CircleAvatar(
             backgroundImage: AssetImage("assets/images/App-Icon.png"),
@@ -315,6 +328,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for displaying profile fields (editable when in edit mode)
   Widget profileFields() {
     return Column(
       children: [
@@ -338,6 +352,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for creating editable text fields
   Widget textFields(IconData icon, String label,
       TextEditingController controller, String initialValue) {
     return Column(
@@ -364,7 +379,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
                       )
                     : TextField(
                         controller: controller,
-                        readOnly: true,
+                        readOnly: true, // Make field read-only when not in edit mode
                         decoration: InputDecoration(
                           hintText: label.tr,
                           hintStyle: TextStyle(
@@ -389,6 +404,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for creating read-only text fields
   Widget textFieldsLock(IconData icon, String label,
       TextEditingController controller, String initialValue) {
     return Column(
@@ -426,6 +442,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for creating dropdown fields
   Widget dropdownField(
       IconData icon, String label, List<String> options, String value) {
     return Column(
@@ -485,9 +502,10 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for the save button
   Widget saveButton() {
     return TextButton(
-      onPressed: waiting ? null : _saveProfile,
+      onPressed: waiting ? null : _saveProfile, // Disable button while saving
       style: TextButton.styleFrom(
         fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
         side: BorderSide(color: mainColorGrey.withOpacity(0.5), width: 1),
@@ -499,6 +517,7 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for the cancel button
   Widget cancelButton() {
     return TextButton(
       onPressed: _cancelEdit,
@@ -514,10 +533,11 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for the back button
   Widget backButton() {
     return TextButton(
       onPressed: () {
-        Navigator.pop(context);
+        Navigator.pop(context); // Navigate back to the previous screen
       },
       style: TextButton.styleFrom(
         fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
@@ -531,9 +551,10 @@ class _AccountInfo2State extends State<AccountInfo2> {
     );
   }
 
+  // Widget for the edit button
   Widget editButton() {
     return TextButton(
-      onPressed: () => setState(() => isEdit = true),
+      onPressed: () => setState(() => isEdit = true), // Enable edit mode
       style: TextButton.styleFrom(
         fixedSize: Size(getWidth(context, 40), getHeight(context, 5)),
         side: BorderSide(color: mainColorGrey.withOpacity(0.5), width: 1),

@@ -5,8 +5,10 @@ import '../Config/local_data.dart';
 import '../Config/property.dart';
 import '../main.dart';
 
+/// The `ChooseLang` class is a StatefulWidget that allows users to select their preferred language.
 class ChooseLang extends StatefulWidget {
   const ChooseLang({super.key});
+
   @override
   State<ChooseLang> createState() => _ChooseLangState();
 }
@@ -20,18 +22,19 @@ class _ChooseLangState extends State<ChooseLang> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
+      // Set text direction based on the selected language
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         body: Center(
           child: Column(
             children: [
-              // top image
+              // Display the top image
               Image.asset(
                 "assets/images/world.png",
                 width: getWidth(context, 100),
                 height: getHeight(context, 45),
               ),
-              // Language
+              // Display the "Language" header text
               Text(
                 "Language".tr,
                 style: TextStyle(
@@ -39,13 +42,14 @@ class _ChooseLangState extends State<ChooseLang> {
                     fontSize: 24,
                     color: mainColorBlack),
               ),
-              // Space
+              // Spacer
               SizedBox(
                 height: getHeight(context, 1),
               ),
-              // Kurdish
+              // Kurdish Language Selection
               GestureDetector(
                 onTap: () {
+                  // Update the language to Kurdish
                   lang = "kur";
                   Get.updateLocale(const Locale("kur"));
                   setStringPrefs("lang", "kur");
@@ -79,13 +83,14 @@ class _ChooseLangState extends State<ChooseLang> {
                   ),
                 ),
               ),
-              // Space
+              // Spacer
               SizedBox(
                 height: getHeight(context, 1),
               ),
-              // Arabic
+              // Arabic Language Selection
               GestureDetector(
                 onTap: () {
+                  // Update the language to Arabic
                   lang = "ar";
                   Get.updateLocale(const Locale("ar"));
                   setStringPrefs("lang", "ar");
@@ -119,13 +124,14 @@ class _ChooseLangState extends State<ChooseLang> {
                   ),
                 ),
               ),
-              // Space
+              // Spacer
               SizedBox(
                 height: getHeight(context, 1),
               ),
-              // English
+              // English Language Selection
               GestureDetector(
                 onTap: () {
+                  // Update the language to English
                   lang = "en";
                   Get.updateLocale(const Locale("en"));
                   setStringPrefs("lang", "en");
@@ -159,13 +165,14 @@ class _ChooseLangState extends State<ChooseLang> {
                   ),
                 ),
               ),
-              // Space
+              // Spacer
               SizedBox(
                 height: getHeight(context, 5),
               ),
-              // Get Start
+              // "Get Start" Button
               GestureDetector(
                 onTap: () {
+                  // Navigate to the WelcomeScreen
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => const WelcomeScreen(),

@@ -1,3 +1,4 @@
+// Importing necessary packages and files
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
@@ -12,48 +13,60 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+// StatefulWidget for displaying old order details
 class OldOrder extends StatefulWidget {
-  int id;
+  int id; // Order ID
+  bool ongoing = false; // Indicates if the order is ongoing
+  OldOrder(this.id, this.ongoing, {super.key}); // Constructor for OldOrder
 
-  bool ongoing = false;
-  OldOrder(this.id, this.ongoing, {super.key});
   @override
-  State<OldOrder> createState() => _OldOrderState();
+  State<OldOrder> createState() =>
+      _OldOrderState(); // Creates the state for OldOrder
 }
 
+// State class for OldOrder
 class _OldOrderState extends State<OldOrder> {
   @override
   Widget build(BuildContext context) {
+    // Access product provider from context
     final productrovider = Provider.of<productProvider>(context, listen: true);
 
+    // Get list of order items by order ID
     List<OrderItems> items =
         productrovider.getordersbyOrderId(widget.id.toString());
+    // Get the order details by order ID
     final OrderModel order = productrovider.getoneOrderById(widget.id);
+
+    // Build the UI based on network status
     return productrovider.nointernetCheck
-        ? noInternetWidget(context)
+        ? noInternetWidget(context) // Show no internet widget
         : Directionality(
-            textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
+            textDirection: lang == "en"
+                ? TextDirection.ltr
+                : TextDirection.rtl, // Set text direction based on language
             child: Scaffold(
               appBar: AppBar(
                 leading: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pop(context); // Navigate back on button press
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios,
                     )),
                 title: Text(
-                  "Order Deatil".tr,
+                  "Order Deatil".tr, // Translated title
                 ),
               ),
               body: Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: (productrovider.productitems.isEmpty)
-                    ? Center(child: waitingWiget(context))
+                    ? Center(
+                        child: waitingWiget(
+                            context)) // Show waiting widget if no products
                     : ListView.builder(
-                        itemCount: items.length,
+                        itemCount: items.length, // Number of items in the order
                         itemBuilder: (BuildContext context, int index) {
-                          final item = items[index];
+                          final item = items[index]; // Get order item
 
                           return Column(
                             children: [
@@ -164,7 +177,8 @@ class _OldOrderState extends State<OldOrder> {
                                                   fontSize: 14),
                                             ),
                                             Text(
-                                              item.qt.toString(),
+                                              item.qt
+                                                  .toString(), // Ordered quantity
                                               style: TextStyle(
                                                   color: mainColorRed,
                                                   fontFamily: mainFontnormal,
@@ -185,7 +199,7 @@ class _OldOrderState extends State<OldOrder> {
                                             Text(
                                               (item.pickedQt! -
                                                       item.returnedQt!)
-                                                  .toString(),
+                                                  .toString(), // Quantity picked
                                               style: TextStyle(
                                                   color: mainColorRed,
                                                   fontFamily: mainFontnormal,
@@ -210,13 +224,15 @@ class _OldOrderState extends State<OldOrder> {
                                   ],
                                 ),
                               ),
-                              const Divider()
+                              const Divider() // Divider between items
                             ],
                           );
                         }),
               ),
               bottomNavigationBar: (productrovider.productitems.isEmpty)
-                  ? Center(child: waitingWiget(context))
+                  ? Center(
+                      child: waitingWiget(
+                          context)) // Show waiting widget if no products
                   : Container(
                       height: getHeight(
                           context,
@@ -226,10 +242,6 @@ class _OldOrderState extends State<OldOrder> {
                               : 35),
                       decoration: BoxDecoration(
                         color: mainColorWhite,
-                        // borderRadius: const BorderRadius.only(
-                        //   topLeft: Radius.circular(25),
-                        //   topRight: Radius.circular(25),
-                        // ),
                       ),
                       child: Column(
                         children: [
@@ -348,7 +360,7 @@ class _OldOrderState extends State<OldOrder> {
                           ),
                           vouchernow["discount_amount"] == 0 ||
                                   order.status! > 5
-                              ? SizedBox()
+                              ? SizedBox() // No voucher section if there's no discount or order status > 5
                               : Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: getWidth(context, 4)),
@@ -411,7 +423,7 @@ class _OldOrderState extends State<OldOrder> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth(context, 4)),
-                            child: const Divider(),
+                            child: const Divider(), // Divider before total
                           ),
                           SizedBox(
                             height: getHeight(context, 1),

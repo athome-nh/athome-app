@@ -1,24 +1,28 @@
+// Import necessary packages and libraries
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
+// GuidePage is a StatefulWidget that manages the guide sections (FAQs and Updates)
 class GuidePage extends StatefulWidget {
   @override
   _GuidePageState createState() => _GuidePageState();
 }
 
-class _GuidePageState extends State<GuidePage>
-    with SingleTickerProviderStateMixin {
+class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMixin {
+  // Controller to manage tab selection
   late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    // Initialize TabController with 2 tabs
     _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   void dispose() {
+    // Dispose of the TabController when the widget is disposed
     _tabController.dispose();
     super.dispose();
   }
@@ -39,28 +43,30 @@ class _GuidePageState extends State<GuidePage>
         bottom: TabBar(
           controller: _tabController,
           tabs: [
-            Tab(text: 'FAQs'.tr),
-            Tab(text: 'What\'s New'.tr),
+            Tab(text: 'FAQs'.tr), // Tab for FAQs
+            Tab(text: 'What\'s New'.tr), // Tab for Updates
           ],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: [
-          FAQScreen(),
-          UpdatesPage(),
+          FAQScreen(), // Screen for FAQs
+          UpdatesPage(), // Screen for Updates
         ],
       ),
     );
   }
 }
 
+// FAQScreen is a StatefulWidget that displays the frequently asked questions
 class FAQScreen extends StatefulWidget {
   @override
   _FAQScreenState createState() => _FAQScreenState();
 }
 
 class _FAQScreenState extends State<FAQScreen> {
+  // List of FAQs to display
   final List<FAQ> faqs = [
     FAQ(
         title: 'Title_FAQ_1'.tr,
@@ -108,18 +114,25 @@ class _FAQScreenState extends State<FAQScreen> {
         answer: 'Answer_FAQ_11'.tr),
   ];
 
+  // List of filtered FAQs based on search query
   late List<FAQ> filteredFaqs;
+  // Controller for the search input
   TextEditingController searchController = TextEditingController();
+  // List to track which FAQ tiles are expanded
   late List<bool> _isTileExpanded;
 
   @override
   void initState() {
     super.initState();
+    // Initialize filtered FAQs with all FAQs
     filteredFaqs = faqs;
+    // Add a listener to the search controller to filter FAQs
     searchController.addListener(filterFaqs);
+    // Initialize list to track expansion state of each FAQ tile
     _isTileExpanded = List<bool>.filled(faqs.length, false);
   }
 
+  // Function to filter FAQs based on the search query
   void filterFaqs() {
     final query = searchController.text.toLowerCase();
     setState(() {
@@ -128,6 +141,7 @@ class _FAQScreenState extends State<FAQScreen> {
               faq.question.toLowerCase().contains(query) ||
               faq.answer.toLowerCase().contains(query))
           .toList();
+      // Update expansion state list based on filtered FAQs
       _isTileExpanded = List<bool>.filled(filteredFaqs.length, false);
     });
   }
@@ -141,7 +155,7 @@ class _FAQScreenState extends State<FAQScreen> {
           child: TextField(
             controller: searchController,
             decoration: InputDecoration(
-              hintText: 'Search'.tr,
+              hintText: 'Search'.tr, // Placeholder text for search
               prefixIcon: Icon(Ionicons.search_outline),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
@@ -152,6 +166,7 @@ class _FAQScreenState extends State<FAQScreen> {
           child: ListView.builder(
             itemCount: filteredFaqs.length,
             itemBuilder: (context, index) {
+              // Determine whether to show the FAQ section title
               bool showTitle = index == 0 ||
                   filteredFaqs[index].title != filteredFaqs[index - 1].title;
               return Column(
@@ -171,6 +186,7 @@ class _FAQScreenState extends State<FAQScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(filteredFaqs[index].answer))
                     ],
+                    // Update the expanded state when the tile is expanded or collapsed
                     onExpansionChanged: (expanded) =>
                         setState(() => _isTileExpanded[index] = expanded),
                   ),
@@ -186,12 +202,15 @@ class _FAQScreenState extends State<FAQScreen> {
 
   @override
   void dispose() {
+    // Dispose of the search controller when the widget is disposed
     searchController.dispose();
     super.dispose();
   }
 }
 
+// UpdatesPage is a StatelessWidget that displays a list of updates
 class UpdatesPage extends StatelessWidget {
+  // List of updates to display
   final List<Update> updates = [
     Update(
         title: 'Title_Update_1',
@@ -254,6 +273,7 @@ class UpdatesPage extends StatelessWidget {
   }
 }
 
+// FAQ model class to represent an individual FAQ
 class FAQ {
   final String title;
   final String question;
@@ -262,6 +282,7 @@ class FAQ {
   FAQ({required this.title, required this.question, required this.answer});
 }
 
+// Update model class to represent an individual update
 class Update {
   final String title;
   final String description;

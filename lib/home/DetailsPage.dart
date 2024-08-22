@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Config/athome_functions.dart';
 import 'package:dllylas/Config/my_widget.dart';
@@ -8,7 +9,6 @@ import 'package:dllylas/home/my_cart.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/cart.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,43 +18,45 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class DetailsPage extends StatelessWidget {
+  // Color index used for the AppBar background
   int color = 0;
+
+  /// The [color] parameter sets the background color of the AppBar.
   DetailsPage({Key? key, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Access the product provider and cart provider
     final productrovider = Provider.of<productProvider>(context, listen: true);
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
+    // Get the product details based on the product ID
     ProductModel Item = productrovider.getoneProductById(productrovider.idItem);
+
+    // Check if the item is in the cart and if it's a favorite
     final isItemInCart = cartProvider.itemExistsInCart(Item);
     final isFavInCart = cartProvider.FavExistsInCart(Item);
     int count =
         cartProvider.calculateQuantityForProduct(int.parse(Item.id.toString()));
-    // List<ProductsImage> images =
-    //     productrovider.getproductimages(productrovider.idItem);
 
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
+        // AppBar for the DetailsPage
         appBar: AppBar(
           backgroundColor: categoryColors[color],
           title: productrovider.show
-              ? Text(
-                  lang == "en"
-                      ? Item.nameEn!
-                      : lang == "ar"
-                          ? Item.nameAr!
-                          : Item.nameKu!,
-                )
+              ? Text(lang == "en"
+                  ? Item.nameEn!
+                  : lang == "ar"
+                      ? Item.nameAr!
+                      : Item.nameKu!)
               : Text(""),
-
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
-                Icons.arrow_back_ios,
-              )),
+              icon: Icon(Icons.arrow_back_ios)),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -75,8 +77,7 @@ class DetailsPage extends StatelessWidget {
                           size: 30,
                           LineIcons.shoppingCart,
                           color: mainColorGrey,
-                        ),
-                      )
+                        ))
                     : Icon(
                         size: 30,
                         LineIcons.shoppingCart,
@@ -85,24 +86,23 @@ class DetailsPage extends StatelessWidget {
               ),
             )
           ],
-
-          // Change the color of the unselected tab labels
         ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Conditional display of product details or a loading skeleton
                 Visibility(
                   visible: productrovider.show,
                   replacement: Skeletonizer(
                     effect: ShimmerEffect.raw(colors: [
                       mainColorGrey.withOpacity(0.1),
                       mainColorWhite,
-                      // mainColorRed.withOpacity(0.1),
                     ]),
                     child: Column(
                       children: [
+                        // Product image and favorite icon
                         Stack(
                           alignment: lang == "en"
                               ? Alignment.centerRight
@@ -142,9 +142,7 @@ class DetailsPage extends StatelessWidget {
                                             bottomLeft: Radius.circular(100),
                                           )
                                         : const BorderRadius.only(
-                                            //  topLeft: Radius.circular(20.0),
                                             topRight: Radius.circular(100),
-                                            // bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(100),
                                           ),
                                   ),
@@ -266,6 +264,7 @@ class DetailsPage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
+                      // Product image and favorite icon (visible state)
                       Stack(
                         alignment: lang == "en"
                             ? Alignment.centerRight
@@ -275,7 +274,7 @@ class DetailsPage extends StatelessWidget {
                             height: getHeight(context, 35),
                             width: getWidth(context, 100),
                             decoration: BoxDecoration(
-                              color: mainColorlightGrey,
+                              color: categoryColors[color],
                               boxShadow: [
                                 BoxShadow(
                                   color: categoryColors[color].withOpacity(0.2),
@@ -305,7 +304,6 @@ class DetailsPage extends StatelessWidget {
                               onTap: () {
                                 if (!isLogin) {
                                   loiginPopup(context);
-
                                   return;
                                 }
                                 final cartItem = CartItem(product: Item.id!);
@@ -322,9 +320,7 @@ class DetailsPage extends StatelessWidget {
                                           bottomLeft: Radius.circular(100),
                                         )
                                       : const BorderRadius.only(
-                                          //  topLeft: Radius.circular(20.0),
                                           topRight: Radius.circular(100),
-                                          // bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(100),
                                         ),
                                 ),
@@ -348,9 +344,9 @@ class DetailsPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Flexible(
-                                  flex: 3,
-                                  child: RichText(
-                                    text: TextSpan(
+                                    flex: 3,
+                                    child: RichText(
+                                        text: TextSpan(
                                       children: [
                                         TextSpan(
                                           text: lang == "en"
@@ -375,115 +371,20 @@ class DetailsPage extends StatelessWidget {
                                           ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                ),
+                                    ))),
                                 Flexible(
-                                  flex: 2,
-                                  child: Row(
-                                                                   
-                                    children: [
-                                      isItemInCart
-                                          ? SizedBox()
-                                          : GestureDetector(
-                                              onTap: checkProductStock(
-                                                          Item, count) ||
-                                                      checkProductLimit(
-                                                          Item, count)
-                                                  ? null
-                                                  : () {
-                                                      if (!isLogin) {
-                                                        loiginPopup(context);
-                                                        return;
-                                                      }
-                                                      final cartItem = CartItem(
-                                                          product: Item.id!);
-                                                      cartProvider
-                                                          .addToCart(cartItem);
-                                                    },
-                                              child: Chip(
-                                              
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                ),
-                                                backgroundColor: mainColorGrey,
-                                                label: Text(
-                                                  "Add to cart".tr,
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontFamily:
-                                                          mainFontnormal,
-                                                      color: mainColorWhite),
-                                                ),
-                                                avatar: Icon(
-                                                    LineIcons.shoppingCart,
-                                                    color: mainColorWhite),
-                                              ),
-                                            ),
-                                      isItemInCart
-                                          ? Container(
-                                              width: getWidth(context, 32),
-                                              height: getHeight(context, 6),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        getHeight(context, 4),
-                                                    height:
-                                                        getHeight(context, 4),
-                                                    decoration: BoxDecoration(
-                                                        color: mainColorRed,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(100)),
-                                                    child: IconButton(
-                                                      onPressed: () {
-                                                        if (!isLogin) {
-                                                          loiginPopup(context);
-                                                          return;
-                                                        }
-                                                        final cartItem =
-                                                            CartItem(
-                                                                product:
-                                                                    Item.id!);
-                                                        cartProvider
-                                                            .removeFromCart(
-                                                                cartItem);
-                                                      },
-                                                      icon: Icon(
-                                                        Icons.remove,
-                                                        color: mainColorWhite,
-                                                        size: getHeight(
-                                                            context, 2),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    count.toString().length == 1
-                                                        ? "0" + count.toString()
-                                                        : count.toString(),
-                                                    style: TextStyle(
-                                                        color: mainColorGrey,
-                                                        fontFamily:
-                                                            mainFontnormal,
-                                                        fontSize: 20),
-                                                  ),
-                                                  Container(
-                                                    width:
-                                                        getHeight(context, 4),
-                                                    height:
-                                                        getHeight(context, 4),
-                                                    decoration: BoxDecoration(
-                                                        color: mainColorGrey,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(100)),
-                                                    child: IconButton(
-                                                      onPressed: () {
+                                    flex: 2,
+                                    child: Row(
+                                      children: [
+                                        isItemInCart
+                                            ? SizedBox()
+                                            : GestureDetector(
+                                                onTap: checkProductStock(
+                                                            Item, count) ||
+                                                        checkProductLimit(
+                                                            Item, count)
+                                                    ? null
+                                                    : () {
                                                         if (!isLogin) {
                                                           loiginPopup(context);
                                                           return;
@@ -495,27 +396,127 @@ class DetailsPage extends StatelessWidget {
                                                         cartProvider.addToCart(
                                                             cartItem);
                                                       },
-                                                      icon: Icon(
-                                                        Icons.add,
-                                                        color: mainColorWhite,
-                                                        size: getHeight(
-                                                            context, 2),
+                                                child: Chip(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                  ),
+                                                  backgroundColor:
+                                                      mainColorGrey,
+                                                  label: Text(
+                                                    "Add to cart".tr,
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontFamily:
+                                                            mainFontnormal,
+                                                        color: mainColorWhite),
+                                                  ),
+                                                  avatar: Icon(
+                                                      LineIcons.shoppingCart,
+                                                      color: mainColorWhite),
+                                                ),
+                                              ),
+                                        isItemInCart
+                                            ? Container(
+                                                width: getWidth(context, 32),
+                                                height: getHeight(context, 6),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                        width: getHeight(
+                                                            context, 4),
+                                                        height: getHeight(
+                                                            context, 4),
+                                                        decoration: BoxDecoration(
+                                                            color: mainColorRed,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100)),
+                                                        child: IconButton(
+                                                            onPressed: () {
+                                                              if (!isLogin) {
+                                                                loiginPopup(
+                                                                    context);
+                                                                return;
+                                                              }
+                                                              final cartItem =
+                                                                  CartItem(
+                                                                      product: Item
+                                                                          .id!);
+                                                              cartProvider
+                                                                  .removeFromCart(
+                                                                      cartItem);
+                                                            },
+                                                            icon: Icon(
+                                                                Icons.remove,
+                                                                color:
+                                                                    mainColorWhite,
+                                                                size: getHeight(
+                                                                    context,
+                                                                    2)))),
+                                                    Text(
+                                                      count.toString().length ==
+                                                              1
+                                                          ? "0" +
+                                                              count.toString()
+                                                          : count.toString(),
+                                                      style: TextStyle(
+                                                          color: mainColorGrey,
+                                                          fontFamily:
+                                                              mainFontnormal,
+                                                          fontSize: 20),
+                                                    ),
+                                                    Container(
+                                                      width:
+                                                          getHeight(context, 4),
+                                                      height:
+                                                          getHeight(context, 4),
+                                                      decoration: BoxDecoration(
+                                                          color: mainColorGrey,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100)),
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          if (!isLogin) {
+                                                            loiginPopup(
+                                                                context);
+                                                            return;
+                                                          }
+                                                          final cartItem =
+                                                              CartItem(
+                                                                  product:
+                                                                      Item.id!);
+                                                          cartProvider
+                                                              .addToCart(
+                                                                  cartItem);
+                                                        },
+                                                        icon: Icon(
+                                                          Icons.add,
+                                                          color: mainColorWhite,
+                                                          size: getHeight(
+                                                              context, 2),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          : const SizedBox(),
-                                    ],
-                                  ),
-                                ),
+                                                  ],
+                                                ),
+                                              )
+                                            : const SizedBox(),
+                                      ],
+                                    ))
                               ],
                             ),
                             RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
+                                text: TextSpan(
+                              children: [
+                                TextSpan(
                                     text: checkOferPrice(Item)
                                         ? addCommasToPrice(Item.offerPrice!)
                                         : addCommasToPrice(Item.price2! > -1
@@ -525,25 +526,23 @@ class DetailsPage extends StatelessWidget {
                                       color: mainColorBlack.withOpacity(0.8),
                                       fontFamily: mainFontbold,
                                       fontSize: 16.0,
-                                    ),
-                                  ),
-                                  checkOferPrice(Item)
-                                      ? TextSpan(
-                                          text: "/" +
-                                              addCommasToPrice(Item.price2! > -1
-                                                  ? Item.price2!
-                                                  : Item.price!),
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                            color: mainColorRed,
-                                            fontSize: 14.0,
-                                          ),
-                                        )
-                                      : TextSpan(),
-                                ],
-                              ),
-                            ),
+                                    )),
+                                checkOferPrice(Item)
+                                    ? TextSpan(
+                                        text: "/" +
+                                            addCommasToPrice(Item.price2! > -1
+                                                ? Item.price2!
+                                                : Item.price!),
+                                        style: TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: mainColorRed,
+                                          fontSize: 14.0,
+                                        ),
+                                      )
+                                    : TextSpan(),
+                              ],
+                            )),
                             const SizedBox(height: 20.0),
                             RichText(
                               text: TextSpan(
@@ -574,6 +573,7 @@ class DetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                // Display similar items
                 listItemsSmall(
                     context,
                     productrovider.getProductsBySubCategory2(

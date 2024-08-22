@@ -1,4 +1,3 @@
-// Import necessary packages and libraries
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';

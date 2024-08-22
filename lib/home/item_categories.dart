@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
@@ -11,18 +12,25 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 
+/// `itemCategories` is a StatefulWidget that displays items categorized by categories and subcategories.
 class itemCategories extends StatefulWidget {
+  // The ID of the selected subcategory
   int subcateID = 0;
+
+  /// The [subcateID] parameter sets the ID of the selected subcategory.
   itemCategories({this.subcateID = 0, Key? key}) : super(key: key);
+
   @override
   State<itemCategories> createState() => _itemCategoriesState();
 }
 
 class _itemCategoriesState extends State<itemCategories>
     with TickerProviderStateMixin {
+  // Controllers for managing tab selection
   late TabController _categoryTabController;
   late TabController _subcategoryTabController;
 
+  // Indices for selected category and subcategory
   int selectedCategoryIndex = 0;
   int selectedSubcategoryIndex = 0;
 
@@ -30,9 +38,10 @@ class _itemCategoriesState extends State<itemCategories>
   void initState() {
     super.initState();
 
+    // Access product provider to initialize tab controllers
     final productPro = Provider.of<productProvider>(context, listen: false);
-    print(productPro.subCategores
-        .indexWhere((subCategory) => subCategory.id == widget.subcateID));
+
+    // Initialize the category tab controller
     _categoryTabController = TabController(
         length: productPro.categores.length,
         initialIndex: productPro.categores
@@ -40,16 +49,17 @@ class _itemCategoriesState extends State<itemCategories>
         vsync: this,
         animationDuration: Duration(milliseconds: 300));
 
+    // Initialize the subcategory tab controller
     _subcategoryTabController = TabController(
         length: productPro.getsubcateById(productPro.cateType).length + 1,
         initialIndex: widget.subcateID != 0
             ? productPro.getsubcateById(productPro.cateType).indexWhere(
                     (subCategory) => subCategory.id == widget.subcateID) +
-                1
-            : 0,
+                1 : 0,
         vsync: this,
         animationDuration: Duration(milliseconds: 300));
 
+    // Listener for category tab changes
     _categoryTabController.addListener(() {
       setState(() {
         _subcategoryTabController.index = 0;
@@ -60,6 +70,7 @@ class _itemCategoriesState extends State<itemCategories>
       });
     });
 
+    // Listener for subcategory tab changes
     _subcategoryTabController.addListener(() {
       setState(() {
         selectedSubcategoryIndex = _subcategoryTabController.index;
@@ -73,11 +84,9 @@ class _itemCategoriesState extends State<itemCategories>
     });
   }
 
+  /// Updates the length of the subcategory tab controller when the number of subcategories changes.
   void _updateSubcategoryTabControllerLength(productProvider productPro) {
-    // Dispose the previous subcategory TabController
     _subcategoryTabController.dispose();
-
-    // Create a new subcategory TabController with updated length
     _subcategoryTabController = TabController(
       length: productPro.getsubcateById(productPro.cateType).length + 1,
       vsync: this,
@@ -86,14 +95,18 @@ class _itemCategoriesState extends State<itemCategories>
 
   @override
   Widget build(BuildContext context) {
+    // Access product provider and cart provider
     final productPro = Provider.of<productProvider>(context, listen: true);
     final cartProvider = Provider.of<CartProvider>(context, listen: true);
+
+    // Get the category name and products
     String categoryName = productPro.getCategoryNameById(productPro.cateType);
     final subcategoriesWithProducts =
         productPro.getsubcateById(productPro.cateType).toList();
     final allProducts = productPro.getProductsByCategory(productPro.cateType);
 
     return DefaultTabController(
+      // Set the number of tabs for the DefaultTabController
       length: subcategoriesWithProducts.length + 1,
       child: Directionality(
         textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
@@ -140,34 +153,29 @@ class _itemCategoriesState extends State<itemCategories>
           ),
           body: Column(
             children: [
+              // TabBar for categories
               TabBar(
                 splashFactory: NoSplash.splashFactory,
                 physics: const ClampingScrollPhysics(),
                 padding: EdgeInsets.symmetric(vertical: 10),
                 unselectedLabelColor: mainColorGrey,
-
                 indicatorSize: TabBarIndicatorSize.label,
                 indicator: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: mainColorGrey, // Set your desired color here
-                      width: 3.0, // Set the width of the border
+                      color: mainColorGrey,
+                      width: 3.0,
                     ),
                   ),
                   borderRadius: BorderRadius.only(
-                    bottomLeft:
-                        Radius.circular(10), // Adjust the radius as needed
-                    bottomRight:
-                        Radius.circular(10), // Adjust the radius as needed
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
                   ),
                 ),
-                // dividerColor: mainColorGrey.withOpacity(0.05),
                 tabAlignment: TabAlignment.start,
                 isScrollable: true,
                 controller: _categoryTabController,
-
                 labelStyle: TextStyle(fontFamily: mainFontnormal),
-                // indicator: BoxDecoration(),
                 tabs: productPro.categores.map((category) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -181,6 +189,7 @@ class _itemCategoriesState extends State<itemCategories>
                   );
                 }).toList(),
               ),
+              // TabBar for subcategories
               Material(
                 child: Container(
                   height: 60,
@@ -246,6 +255,7 @@ class _itemCategoriesState extends State<itemCategories>
                   ),
                 ),
               ),
+              // Display products based on selected tab
               Expanded(
                 child: TabBarView(
                   controller: _subcategoryTabController,
@@ -272,6 +282,7 @@ class _itemCategoriesState extends State<itemCategories>
     );
   }
 
+  /// The [tabtitle] parameter is the text displayed on the tab, and [imagepath] is the path to the icon image.
   Tab getTab(String tabtitle, String imagepath) {
     return Tab(
       icon: CachedNetworkImage(

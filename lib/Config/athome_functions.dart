@@ -1,21 +1,19 @@
+// Import necessary packages and libraries
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-
 import 'package:dio/dio.dart';
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/product_model/product_model.dart';
-
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart' as encryption;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:ntp/ntp.dart';
 import 'package:path_provider/path_provider.dart';
 
-//// a fast way to push to a new screen
+/// a fast way to push to a new screen
 void to(BuildContext context, Widget screen) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
 }
@@ -60,7 +58,7 @@ String code_3(String code_2, String randomText) {
   return result;
 }
 
-//// a fast way to push to a new screen and cut the previous route
+/// a fast way to push to a new screen and cut the previous route
 void toOff(BuildContext context, Widget screen) {
   Navigator.pushAndRemoveUntil(
     context,
@@ -69,7 +67,7 @@ void toOff(BuildContext context, Widget screen) {
   );
 }
 
-//// check allowed image extentions
+/// check allowed image extentions
 bool isImageValidaty(String path) {
   path = path.toLowerCase();
   if (path.endsWith(".png") ||
@@ -95,7 +93,7 @@ bool checkProductLimit(ProductModel product, int i) {
   return checkOferPrice(product) && product.orderLimit == i;
 }
 
-//// Cut text length according to the parameter
+/// Cut text length according to the parameter
 String textCount(String txt, int num) {
   String r = "";
 

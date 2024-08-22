@@ -3,7 +3,6 @@ import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/Network/Network.dart';
 import 'package:dllylas/controller/productprovider.dart';
-
 import 'package:dllylas/main.dart';
 import 'package:dllylas/model/location/location.dart';
 import 'package:flutter/material.dart';

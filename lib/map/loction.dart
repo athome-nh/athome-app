@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -32,7 +31,6 @@ class _LocationScreenState extends State<LocationScreen> {
                   LocationPermission permission =
                       await Geolocator.requestPermission();
                   if (permission == LocationPermission.denied) {
-                    // Handle case where the user denied access to their location
                   }
                   Navigator.push(
                     context,

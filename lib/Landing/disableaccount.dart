@@ -2,6 +2,7 @@ import 'package:dllylas/Config/property.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+/// The `disableaccount` class is a StatefulWidget that displays a message indicating the account is disabled.
 class disableaccount extends StatefulWidget {
   const disableaccount({super.key});
 
@@ -15,11 +16,12 @@ class _disableaccountState extends State<disableaccount> {
     return Scaffold(
       body: Center(
         child: Text(
+          // Display a message indicating that the account is disabled.
           "account is disabled".tr,
           style: TextStyle(
-            fontFamily: mainFontnormal,
-            fontSize: 22.0,
-            fontWeight: FontWeight.bold,
+            fontFamily: mainFontnormal, // Font style for the text.
+            fontSize: 22.0,             // Font size for the text.
+            fontWeight: FontWeight.bold, // Font weight for the text.
           ),
         ),
       ),
