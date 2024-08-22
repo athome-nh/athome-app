@@ -10,10 +10,11 @@ import 'package:flutter/material.dart';
 
 class CartProvider extends ChangeNotifier {
   CartProvider() {
+// When the CartProvider is created, load cart data and favourite data from shared preferences.
     loadCartFromPreferences(userdata["id"].toString());
     loadFavCartFromPreferences(userdata["id"].toString());
-    // When the CartProvider is created, load cart data from shared preferences.
   }
+
   List<CartItem> cartItems = [];
   List<CartItem> FavItems = [];
   List<CartItemPast> _cartItemsPast = [];
@@ -76,6 +77,7 @@ class CartProvider extends ChangeNotifier {
     setStringPrefs(name, jsonData);
   }
 
+  //return all product ids in cart
   List<int> ListId() {
     List<int> cardIDs = [];
     cartItems.forEach((element) {
@@ -84,6 +86,7 @@ class CartProvider extends ChangeNotifier {
     return cardIDs;
   }
 
+//return all product ids in favourite list
   List<int> ListFavId() {
     List<int> cardIDs = [];
 
@@ -162,6 +165,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
+  //delete item in cart
   void deleteitem(int id) {
     final existingItemIndex = cartItems.indexWhere(
       (item) => item.product == id,
@@ -172,6 +176,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners(); // Notify listeners when the cart is cleared
   }
 
+  //delete item in cart
   void removeFromCart(CartItem cartItem) {
     // Check if the item already exists in the cart
     final existingItemIndex = cartItems.indexWhere(

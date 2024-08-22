@@ -26,8 +26,8 @@ import 'package:get/get.dart';
 import '../model/notficaion_model/notficaion_model.dart';
 
 class productProvider extends ChangeNotifier {
-  productProvider() {
-  }
+  productProvider() {}
+  //return products in order and voucher if used
   getproductitems(int id) {
     vouchernow = {"discount_amount": 0};
     productitems.clear();
@@ -52,6 +52,7 @@ class productProvider extends ChangeNotifier {
     });
   }
 
+  //return all data
   getDataAll(bool user) {
     Network(false).getData("showData").then((value) async {
       if (value != "") {
@@ -103,6 +104,7 @@ class productProvider extends ChangeNotifier {
     });
   }
 
+//return user data
   getuserdata(String id) {
     Network(false).getData("showDataUser/$id").then((value) async {
       if (value != "") {
@@ -235,6 +237,7 @@ class productProvider extends ChangeNotifier {
     } else {}
   }
 
+  //update user info
   updateUser() async {
     if (isLogin) {
       Network(false).getDatauser("userInfo", token).then((valueuser) {
