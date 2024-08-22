@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -13,7 +14,6 @@ import 'package:dllylas/Landing/choose_lan.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/home/all_item.dart';
 import 'package:dllylas/home/item_categories.dart';
-
 import 'package:dllylas/Order/track_order.dart';
 import 'package:dllylas/main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -22,26 +22,33 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../Config/property.dart';
 import '../home/nav_switch.dart';
 
+/// A screen displayed when the app starts, handling various initializations,
+/// including connectivity checks, platform-specific updates, and navigation
+/// based on remote messages.
 class SplashScreen extends StatefulWidget {
+  /// An optional [RemoteMessage] to handle specific actions.
   final RemoteMessage? message;
 
+  /// Constructs a [SplashScreen] with an optional [RemoteMessage].
   SplashScreen({RemoteMessage? message, Key? key})
       : message = message ?? RemoteMessage(),
         super(key: key);
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+// Global variables for various data
 var vouchernow = {};
 var userdata = {};
 var homePopupData = {};
 
+// Flags for data loading and home popup state
 bool loaddata = false;
 bool seenHomepopup = false;
 
@@ -52,8 +59,10 @@ class _SplashScreenState extends State<SplashScreen> {
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   bool check = true;
+
   @override
   void initState() {
+    super.initState();
     checkinternet();
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
@@ -96,9 +105,9 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       }
     });
-    super.initState();
   }
 
+  /// Updates the connection status and performs actions based on internet availability.
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     final pro = Provider.of<productProvider>(context, listen: false);
     if (result[0] == ConnectivityResult.none) {
@@ -139,6 +148,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
+  /// Navigates to a different screen based on the type of remote message.
   void navigator(BuildContext context) {
     final productrovider = Provider.of<productProvider>(context, listen: false);
 
@@ -264,6 +274,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.dispose();
   }
 
+  /// Checks internet connectivity and performs actions based on availability.
   Future<void> checkinternet() async {
     final pro = Provider.of<productProvider>(context, listen: false);
     if (await noInternet(context)) {
@@ -303,13 +314,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return textshow
-        ? noInternetWidget(context)
+        ? noInternetWidget(context) // Displays a widget when there's no internet
         : Directionality(
             textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
             child: Scaffold(
               body: Center(
                 child: Image.asset(
-                  mainImageLogo1,
+                  mainImageLogo1, // Displays the app logo
                   width: getWidth(context, 100),
                 ),
               ),
@@ -317,6 +328,7 @@ class _SplashScreenState extends State<SplashScreen> {
           );
   }
 
+  /// Shows an informational dialog with a title, content, and button.
   Future<void> ShowInfo(
     BuildContext context,
     String title,
@@ -378,7 +390,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         const SizedBox(height: 30),
                         TextButton(
                           onPressed: () async {
-                            exit(0);
+                            exit(0); // Exits the app when the button is pressed
                           },
                           style: TextButton.styleFrom(
                             fixedSize: Size(
@@ -400,6 +412,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+  /// Displays a home popup dialog with a specific image and update button.
   Future<void> _homePopup(
     BuildContext context,
     String type,
@@ -483,7 +496,6 @@ class _SplashScreenState extends State<SplashScreen> {
                             fixedSize: Size(
                                 getWidth(context, 45), getHeight(context, 5)),
                           ),
-                          //checkText
                           child: Text(
                             "Update".tr,
                           ),
@@ -500,6 +512,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+  /// Checks the platform and determines whether to return "huawei", "android", or "ios".
   Future<String> checkPlatformAndLaunchUrl() async {
     DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
 

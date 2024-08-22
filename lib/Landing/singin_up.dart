@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'dart:convert';
 import 'dart:io';
 import 'package:animate_do/animate_do.dart';
@@ -19,14 +20,19 @@ import 'package:gender_picker/source/enums.dart';
 import 'package:get/get.dart';
 import 'package:huawei_push/huawei_push.dart';
 import 'package:provider/provider.dart';
-
 import '../home/nav_switch.dart';
 
+/// This class represents the sign-in/up screen of the application.
+/// It allows users to complete their account setup by providing additional details.
 class SingInUp extends StatefulWidget {
-  String phone_number;
-  String isNotApprove;
-  String token_user;
+  final String phone_number;
+  final String isNotApprove;
+  final String token_user;
 
+  /// Constructor for [SingInUp] widget.
+  /// [phone_number]: The phone number associated with the user.
+  /// [isNotApprove]: Indicates if the account is not approved.
+  /// [token_user]: The token of the user.
   SingInUp(this.phone_number, this.isNotApprove, this.token_user, {super.key});
 
   @override
@@ -34,169 +40,196 @@ class SingInUp extends StatefulWidget {
 }
 
 class _SingInUpState extends State<SingInUp> {
-  bool _isLoading = false;
+  bool _isLoading = false; // Tracks if the app is in loading state
 
-  String gender = "";
-  List<String> items = ['Erbil', 'Sulaymaniyah', 'Duhok', 'Halabja'];
-  String city = "Erbil";
-  bool nameE = false;
-  bool ageE = false;
-  bool cityE = false;
-  bool genderE = false;
-  String token2 = "";
-  TextEditingController nameController = TextEditingController();
-  TextEditingController age = TextEditingController();
-  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  String gender = ""; // Holds the selected gender
+  List<String> items = [
+    'Erbil',
+    'Sulaymaniyah',
+    'Duhok',
+    'Halabja'
+  ]; // List of cities
+  String city = "Erbil"; // Default city
+  bool nameE = false; // Indicates if there is a name error
+  bool ageE = false; // Indicates if there is an age error
+  bool cityE = false; // Indicates if there is a city error
+  bool genderE = false; // Indicates if there is a gender error
+  String token2 = ""; // Token for push notifications
+  TextEditingController nameController =
+      TextEditingController(); // Controller for name input
+  TextEditingController age =
+      TextEditingController(); // Controller for age input
+  static final DeviceInfoPlugin deviceInfoPlugin =
+      DeviceInfoPlugin(); // Device info plugin instance
 
   @override
   void initState() {
-    gettokenDevices();
     super.initState();
+    gettokenDevices(); // Fetches device token
   }
 
+  /// Retrieves the device token for push notifications.
+  /// It handles different cases for Android and iOS devices.
   Future<void> gettokenDevices() async {
     if (Platform.isAndroid) {
       String check = _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
       if (check.toLowerCase() == "HUAWEI".toLowerCase()) {
-        Push.enableLogger();
-        Push.disableLogger();
-        initPlatformState();
-        Push.getToken('');
+        Push.enableLogger(); // Enables logging for Huawei push notifications
+        Push.disableLogger(); // Disables logging
+        initPlatformState(); // Initializes platform-specific push settings
+        Push.getToken(''); // Retrieves Huawei push token
       } else {
-        FirebaseMessaging.instance
-            .getToken(
-                // vapidKey: firebaseCloudvapidKey
-                )
-            .then((val) async {
+        // Retrieves Firebase push token for non-Huawei Android devices
+        FirebaseMessaging.instance.getToken().then((val) async {
           token2 = val.toString();
         });
       }
     } else {
-      FirebaseMessaging.instance
-          .getToken(
-              // vapidKey: firebaseCloudvapidKey
-              )
-          .then((val) async {
+      // Retrieves Firebase push token for iOS devices
+      FirebaseMessaging.instance.getToken().then((val) async {
         token2 = val.toString();
       });
     }
   }
 
+  /// Initializes platform-specific push notification settings.
+  /// This method is called when the device is running on Huawei.
   Future<void> initPlatformState() async {
-    if (!mounted) return;
-    await Push.setAutoInitEnabled(true);
+    if (!mounted) return; // Ensures the widget is still mounted
+    await Push.setAutoInitEnabled(
+        true); // Enables auto-initialization for Huawei push notifications
 
+    // Listens for token updates from Huawei push notifications
     Push.getTokenStream.listen(
       _onTokenEvent,
       onError: _onTokenError,
     );
   }
 
+  /// Handles the event when a new push notification token is received.
+  /// [event]: The new token received.
   void _onTokenEvent(String event) {
-    token2 = event;
+    token2 = event; // Updates the token
   }
 
+  /// Handles errors that occur while receiving push notification tokens.
+  /// [error]: The error that occurred.
   void _onTokenError(Object error) {
-    PlatformException e = error as PlatformException;
+    PlatformException e =
+        error as PlatformException; // Casts error to PlatformException
   }
 
   @override
+
+  /// Builds the UI for the Sign-In/Sign-Up screen.
+  /// This method constructs a form where users can complete their account setup.
+  /// The layout includes fields for name, age, city, and gender, with validation and animations.
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: mainColorWhite,
+        backgroundColor: mainColorWhite, // Background color of the screen
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: mainColorWhite,
+          backgroundColor: mainColorWhite, // AppBar background color
           leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: mainColorGrey,
-              )),
+            onPressed: () {
+              Navigator.pop(context); // Navigates back to the previous screen
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: mainColorGrey, // Color of the back arrow icon
+            ),
+          ),
         ),
         body: SingleChildScrollView(
           child: Container(
-              padding: EdgeInsets.all(getHeight(context, 3)),
-              width: getWidth(context, 100),
+              padding: EdgeInsets.all(
+                  getHeight(context, 3)), // Padding around the container
+              width: getWidth(context, 100), // Width of the container
               child: Column(
                 children: [
+                  // Title of the screen with animation
                   FadeInDown(
                     duration: const Duration(milliseconds: 500),
                     child: Text(
-                      "Complete Account".tr,
+                      "Complete Account".tr, // Translated title
                       style: TextStyle(
-                          color: mainColorBlack,
-                          fontSize: 30,
-                          fontFamily: mainFontbold),
+                        color: mainColorBlack,
+                        fontSize: 30,
+                        fontFamily: mainFontbold,
+                      ),
                     ),
                   ),
                   SizedBox(
-                    height: getHeight(context, 1),
+                    height: getHeight(context, 1), // Spacing between elements
                   ),
+                  // Subtitle of the screen with animation
                   FadeInDown(
                     duration: const Duration(milliseconds: 500),
                     child: Text(
-                        "Enter your account information to complete your account"
-                            .tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: mainColorBlack,
-                          fontFamily: mainFontnormal,
-                        )),
+                      "Enter your account information to complete your account"
+                          .tr, // Translated subtitle
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: mainColorBlack,
+                        fontFamily: mainFontnormal,
+                      ),
+                    ),
                   ),
                   SizedBox(
-                    height: getHeight(context, 4),
+                    height: getHeight(context, 4), // Spacing between elements
                   ),
+                  // Name input field with animation
                   FadeInDown(
                     delay: const Duration(milliseconds: 500),
                     duration: const Duration(milliseconds: 500),
                     child: TextFormField(
                       controller: nameController,
-                      cursorColor: mainColorGrey,
-                      keyboardType: TextInputType.text,
+                      cursorColor: mainColorGrey, // Color of the cursor
+                      keyboardType: TextInputType.text, // Type of keyboard
                       onChanged: (value) {
                         setState(() {
-                          nameE = false;
+                          nameE =
+                              false; // Resets name error state on input change
                         });
                       },
                       validator: (value) {
-                        return null;
+                        return null; // Validation logic (currently none)
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                           borderSide: BorderSide(
-                            color: mainColorGrey, // Customize border color
-                            width: 1.0, // Customize border width
+                            color: mainColorGrey, // Border color when focused
+                            width: 1.0, // Border width when focused
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey
-                                .withOpacity(0.5), // Customize border color
-                            width: 1.0, // Customize border width
+                                .withOpacity(0.5), // Border color when enabled
+                            width: 1.0, // Border width when enabled
                           ),
                         ),
-                        labelText: "Name".tr,
+                        labelText: "Name".tr, // Translated label text
                         labelStyle: TextStyle(
-                            color: mainColorBlack.withOpacity(0.8),
-                            fontSize: 18,
-                            fontFamily: mainFontbold),
-                        hintText: "Enter your Name".tr,
+                          color: mainColorBlack.withOpacity(0.8),
+                          fontSize: 18,
+                          fontFamily: mainFontbold,
+                        ),
+                        hintText: "Enter your Name".tr, // Translated hint text
                         hintStyle: TextStyle(
-                            color: mainColorBlack.withOpacity(0.5),
-                            fontSize: 14,
-                            fontFamily: mainFontnormal),
+                          color: mainColorBlack.withOpacity(0.5),
+                          fontSize: 14,
+                          fontFamily: mainFontnormal,
+                        ),
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                       ),
                     ),
                   ),
+                  // Displays an error message if nameE is true
                   nameE
                       ? Padding(
                           padding: EdgeInsets.only(
@@ -213,7 +246,8 @@ class _SingInUpState extends State<SingInUp> {
                                 width: getWidth(context, 1),
                               ),
                               Text(
-                                "Enter your full name".tr,
+                                "Enter your full name"
+                                    .tr, // Translated error message
                                 style: TextStyle(
                                   fontFamily: mainFontbold,
                                   color: mainColorRed.withOpacity(0.8),
@@ -224,111 +258,122 @@ class _SingInUpState extends State<SingInUp> {
                         )
                       : const SizedBox(),
                   SizedBox(
-                    height: getHeight(context, 3),
+                    height: getHeight(context, 3), // Spacing between elements
                   ),
+                  // City dropdown field with animation
                   FadeInDown(
-                      delay: const Duration(milliseconds: 600),
-                      duration: const Duration(milliseconds: 500),
-                      child: FormField<String>(
-                        builder: (FormFieldState<String> state) {
-                          return InputDecorator(
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: mainColorGrey.withOpacity(
-                                        0.5), // Customize border color
-                                    width: 1.0, // Customize border width
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                labelText: "City".tr,
-                                labelStyle: TextStyle(
-                                    color: mainColorBlack,
-                                    fontSize: 18,
-                                    fontFamily: mainFontbold),
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: mainColorBlack.withOpacity(
-                                          0.5), // Customize border color
-                                      width: 1.0, // Customize border width
-                                    ),
-                                    borderRadius: BorderRadius.circular(15.0))),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                value: city,
-                                isDense: true,
-                                onChanged: true
-                                    ? null
-                                    : (value) {
-                                        setState(() {
-                                          city = value.toString();
-                                        });
-                                      },
-                                items: items.map((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value.tr,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: mainFontnormal),
-                                    ),
-                                  );
-                                }).toList(),
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 500),
+                    child: FormField<String>(
+                      builder: (FormFieldState<String> state) {
+                        return InputDecorator(
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: mainColorGrey.withOpacity(
+                                    0.5), // Border color when enabled
+                                width: 1.0, // Border width when enabled
                               ),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                          );
-                        },
-                      )),
-                  SizedBox(
-                    height: getHeight(context, 3),
+                            labelText: "City".tr, // Translated label text
+                            labelStyle: TextStyle(
+                              color: mainColorBlack,
+                              fontSize: 18,
+                              fontFamily: mainFontbold,
+                            ),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: mainColorBlack
+                                    .withOpacity(0.5), // Border color
+                                width: 1.0, // Border width
+                              ),
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                          ),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              value: city,
+                              isDense: true,
+                              onChanged: true
+                                  ? null
+                                  : (value) {
+                                      setState(() {
+                                        city = value
+                                            .toString(); // Updates city on selection
+                                      });
+                                    },
+                              items: items.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value.tr, // Translated city name
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: mainFontnormal,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
+                  SizedBox(
+                    height: getHeight(context, 3), // Spacing between elements
+                  ),
+                  // Age input field with animation
                   FadeInDown(
                     delay: const Duration(milliseconds: 700),
                     duration: const Duration(milliseconds: 500),
                     child: TextFormField(
                       controller: age,
-                      cursorColor: mainColorGrey,
-                      keyboardType: TextInputType.number,
+                      cursorColor: mainColorGrey, // Color of the cursor
+                      keyboardType: TextInputType.number, // Type of keyboard
                       onChanged: (value) {
                         setState(() {
-                          ageE = false;
+                          ageE =
+                              false; // Resets age error state on input change
                         });
                       },
                       validator: (value) {
-                        return null;
+                        return null; // Validation logic (currently none)
                       },
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
-                            color: mainColorGrey, // Customize border color
-                            width: 1.0, // Customize border width
+                            color: mainColorGrey, // Border color when focused
+                            width: 1.0, // Border width when focused
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
                             color: mainColorGrey
-                                .withOpacity(0.5), // Customize border color
-                            width: 1.0, // Customize border width
+                                .withOpacity(0.5), // Border color when enabled
+                            width: 1.0, // Border width when enabled
                           ),
                         ),
-                        labelText: "Age".tr,
+                        labelText: "Age".tr, // Translated label text
                         labelStyle: TextStyle(
-                            color: mainColorBlack.withOpacity(0.8),
-                            fontSize: 18,
-                            fontFamily: mainFontbold),
-                        hintText: "Enter your age".tr,
+                          color: mainColorBlack.withOpacity(0.8),
+                          fontSize: 18,
+                          fontFamily: mainFontbold,
+                        ),
+                        hintText: "Enter your age".tr, // Translated hint text
                         hintStyle: TextStyle(
-                            color: mainColorBlack.withOpacity(0.5),
-                            fontSize: 14,
-                            fontFamily: mainFontnormal),
+                          color: mainColorBlack.withOpacity(0.5),
+                          fontSize: 14,
+                          fontFamily: mainFontnormal,
+                        ),
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
                       ),
                     ),
                   ),
+                  // Displays an error message if ageE is true
                   ageE
                       ? Padding(
                           padding: EdgeInsets.only(
@@ -345,7 +390,8 @@ class _SingInUpState extends State<SingInUp> {
                                 width: getWidth(context, 1),
                               ),
                               Text(
-                                "please, Enter the number only".tr,
+                                "please, Enter the number only"
+                                    .tr, // Translated error message
                                 style: TextStyle(
                                   fontFamily: mainFontbold,
                                   color: mainColorRed.withOpacity(0.8),
@@ -356,16 +402,19 @@ class _SingInUpState extends State<SingInUp> {
                         )
                       : const SizedBox(),
                   SizedBox(
-                    height: getHeight(context, 2),
+                    height: getHeight(context, 2), // Spacing between elements
                   ),
+                  // Gender picker widget with animation
                   FadeInDown(
                     delay: const Duration(milliseconds: 800),
                     duration: const Duration(milliseconds: 500),
                     child: _genderWidget(true, false),
                   ),
                   SizedBox(
-                    height: getHeight(context, 15),
+                    height: getHeight(
+                        context, 15), // Spacing before the confirm button
                   ),
+                  // Confirm button with animation and loading indicator
                   FadeInDown(
                     delay: const Duration(milliseconds: 900),
                     duration: const Duration(milliseconds: 500),
@@ -592,47 +641,67 @@ class _SingInUpState extends State<SingInUp> {
     );
   }
 
-  _readAndroidBuildData(AndroidDeviceInfo build) {
-    return build.manufacturer;
+  /// Retrieves the manufacturer of the Android device.
+  ///
+  /// [build] contains information about the Android device.
+  /// Returns a string representing the manufacturer of the device.
+  String _readAndroidBuildData(AndroidDeviceInfo build) {
+    return build
+        .manufacturer; // Returns the manufacturer name of the Android device
   }
 
-  _readIosDeviceInfo(IosDeviceInfo data) {
-    return data.name;
+  /// Retrieves the name of the iOS device.
+  ///
+  /// [data] contains information about the iOS device.
+  /// Returns a string representing the name of the device.
+  String _readIosDeviceInfo(IosDeviceInfo data) {
+    return data.name; // Returns the name of the iOS device
   }
 
+  /// Checks if the given text contains only numeric characters.
+  ///
+  /// [text] is the string to be checked.
+  /// Returns true if [text] contains only numbers, false otherwise.
   bool containsOnlyNumbers(String text) {
-    final RegExp numberRegex = RegExp(r'^[0-9]+$');
-    return numberRegex.hasMatch(text);
+    final RegExp numberRegex =
+        RegExp(r'^[0-9]+$'); // Regex pattern for numeric values
+    return numberRegex.hasMatch(text); // Checks if the text matches the pattern
   }
 
+  /// Constructs a widget for selecting gender with images.
+  ///
+  /// [showOther] indicates whether to show additional options.
+  /// [alignment] determines the alignment of the text within the widget.
+  /// Returns a [Widget] for gender selection.
   Widget _genderWidget(bool showOther, bool alignment) {
     return Container(
       alignment: Alignment.center,
       child: GenderPickerWithImage(
-        verticalAlignedText: alignment,
+        verticalAlignedText: alignment, // Aligns text vertically
         onChanged: (value) {
-          final split = value.toString().split('.');
-          gender = split[1];
+          final split =
+              value.toString().split('.'); // Splits the value to extract gender
+          gender = split[1]; // Sets the gender based on the selected value
         },
         selectedGenderTextStyle: TextStyle(
-          fontFamily: mainFontnormal,
+          fontFamily: mainFontnormal, // Style for selected gender text
         ),
         unSelectedGenderTextStyle: TextStyle(
-          fontFamily: mainFontnormal,
+          fontFamily: mainFontnormal, // Style for unselected gender text
         ),
-        maleText: "Male".tr,
-        femaleText: "Female".tr,
+        maleText: "Male".tr, // Translated text for male option
+        femaleText: "Female".tr, // Translated text for female option
         selectedGender: gender == "Male"
-            ? Gender.Male
+            ? Gender.Male // Sets selected gender to Male if gender is "Male"
             : gender == ""
-                ? null
-                : Gender.Female, //By Default
-        equallyAligned: true,
-        size: 70.0, // default size 40.0
-        animationDuration: const Duration(seconds: 1),
-        isCircular: true, // by default true
-        opacityOfGradient: 0.5,
-        padding: const EdgeInsets.all(8.0),
+                ? null // No selection if gender is empty
+                : Gender.Female, // Sets selected gender to Female by default
+        equallyAligned: true, // Aligns gender options equally
+        size: 70.0, // Size of the gender picker
+        animationDuration: const Duration(seconds: 1), // Duration of animation
+        isCircular: true, // Circular shape for the picker
+        opacityOfGradient: 0.5, // Opacity of the gradient effect
+        padding: const EdgeInsets.all(8.0), // Padding around the gender picker
       ),
     );
   }

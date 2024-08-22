@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'package:animate_do/animate_do.dart';
 import 'package:dllylas/Config/my_widget.dart';
 import 'package:dllylas/Config/property.dart';
@@ -9,9 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
+/// A StatefulWidget that provides a registration screen for users to enter their phone number.
+///
+/// This screen handles the input of a phone number, validates it, and provides feedback
+/// to the user. It also includes a loading state to manage network requests and interactions
+/// with the registration process.
 class RegisterWithPhoneNumber extends StatefulWidget {
   const RegisterWithPhoneNumber({Key? key}) : super(key: key);
-  
 
   @override
   RegisterWithPhoneNumberState createState() => RegisterWithPhoneNumberState();
@@ -338,20 +343,32 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
     );
   }
 
+  /// Sends an SMS request to the server with the provided phone number.
+  ///
+  /// This function handles the process of sending a phone number to the server for SMS
+  /// verification. It processes the server's response and shows appropriate dialogs based on
+  /// the response status. If an SMS is successfully sent, it navigates to the verification screen.
+  ///
+  /// [phone_number] The phone number to be used for sending the SMS.
   void RQsms(String phone_number) {
+    // Prepare the data to be sent in the request
     var data = {
       "phone": phone_number,
     };
+
+    // Send the SMS request to the server
     Network(false).postData("dllylaslogo", data, context).then((value) async {
+      // Reset loading state once response is received
       setState(() {
         _isLoading = false;
       });
+
+      // Check if the response value is not empty
       if (value != "") {
+        // Handle different response cases
         if (value["code"] == "200") {
+          // Check if the account is pending approval
           if (value["isNotApprove"] == "true") {
-            setState(() {
-              _isLoading = false;
-            });
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -367,15 +384,14 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            //textcheck
+                            // Display pending account image
                             Image.asset(
                               "assets/Victors/pendding.png",
                               width: getWidth(context, 40),
                               height: getWidth(context, 40),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            SizedBox(height: 10),
+                            // Display account pending text
                             Text(
                               "Account Pendding".tr,
                               textAlign: TextAlign.center,
@@ -396,6 +412,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 fontSize: 16,
                               ),
                             ),
+                            // OK button to close the dialog
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
@@ -411,6 +428,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           ],
                         ),
                       ),
+                      // Close button for the dialog
                       IconButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -423,10 +441,9 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
             );
             return;
           }
+
+          // Check if the account is disabled
           if (value["isNotActive"] == "true") {
-            setState(() {
-              _isLoading = false;
-            });
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -442,14 +459,14 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            // Display disabled account image
                             Image.asset(
                               "assets/Victors/disabled.png",
                               width: getWidth(context, 40),
                               height: getWidth(context, 40),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            SizedBox(height: 10),
+                            // Display account disabled text
                             Text(
                               "Account Disabled".tr,
                               textAlign: TextAlign.center,
@@ -471,6 +488,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 fontSize: 16,
                               ),
                             ),
+                            // OK button to close the dialog
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
@@ -486,6 +504,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           ],
                         ),
                       ),
+                      // Close button for the dialog
                       IconButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -496,9 +515,10 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                 );
               },
             );
-
             return;
           }
+
+          // Check if the SMS was sent successfully
           if (value["isSendSms"] == "true") {
             Navigator.push(
                 context,
@@ -513,6 +533,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
             });
           }
         } else {
+          // Handle other error codes
           setState(() {
             _isLoading = false;
           });
@@ -534,15 +555,14 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            //textcheck
+                            // Display pending account image for error
                             Image.asset(
                               "assets/Victors/pendding.png",
                               width: getWidth(context, 40),
                               height: getWidth(context, 40),
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
+                            // Display error text
                             Text(
                               "Account range out".tr,
                               textAlign: TextAlign.center,
@@ -563,6 +583,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 fontSize: 16,
                               ),
                             ),
+                            // OK button to close the dialog
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
@@ -578,6 +599,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                           ],
                         ),
                       ),
+                      // Close button for the dialog
                       IconButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -594,6 +616,7 @@ class RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
           });
         }
       } else {
+        // Handle the case where no response is received
         toastShort("unknown occurred error please try again later".tr);
         setState(() {
           _isLoading = false;

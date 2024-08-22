@@ -1,3 +1,4 @@
+// Import necessary packages and libraries
 import 'package:dllylas/Config/property.dart';
 import 'package:dllylas/controller/productprovider.dart';
 import 'package:dllylas/main.dart';
@@ -6,26 +7,37 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-// ignore: must_be_immutable
+/// This class represents the notification page of the app.
+/// It is a StatefulWidget that takes in a notification ID [notID].
 class NotificationPage extends StatefulWidget {
   int notID = 0;
+  
+  /// Constructor for NotificationPage. It initializes [notID].
   NotificationPage({this.notID = 0, Key? key}) : super(key: key);
 
   @override
   State<NotificationPage> createState() => _NotificationPageState();
 }
 
+/// The state class for NotificationPage.
 class _NotificationPageState extends State<NotificationPage> {
+  
+  /// Initializes the state of the NotificationPage.
   @override
   void initState() {
     super.initState();
   }
 
+  /// Builds the UI of the NotificationPage.
   @override
   Widget build(BuildContext context) {
+    // Get the product provider from the context.
     final productrovider = Provider.of<productProvider>(context, listen: true);
+
+    // Filter the notifications to exclude 'chat' type notifications.
     final filteredNotifications = productrovider.Notfication.where(
         (notification) => notification.type != 'chat').toList();
+
     return Directionality(
       textDirection: lang == "en" ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -47,6 +59,8 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
         body: Visibility(
           visible: productrovider.show,
+          
+          /// Skeleton loading effect when notifications are not ready to display.
           replacement: Skeletonizer(
             effect: ShimmerEffect.raw(colors: [
               mainColorGrey.withOpacity(0.1),
@@ -76,7 +90,7 @@ class _NotificationPageState extends State<NotificationPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              // icon and text
+                              /// Icon for the notification
                               Row(
                                 children: [
                                   Container(
@@ -99,7 +113,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                   ),
                                   Text(
                                     maxLines: 1,
-                                    "Hello Every one whatsUp",
+                                    "Hello Everyone, what's up",
                                     style: TextStyle(
                                         color: mainColorGrey,
                                         fontSize: 12,
@@ -107,8 +121,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                   ),
                                 ],
                               ),
-
-                              // text now
+                              
+                              /// Time indicator for the notification
                               Text(
                                 "now",
                                 style: TextStyle(
@@ -121,10 +135,10 @@ class _NotificationPageState extends State<NotificationPage> {
                           SizedBox(
                             height: 10,
                           ),
-                          // text description
+                          /// Description text of the notification
                           Text(
                             maxLines: 2,
-                            "To finish setting up your Microsoft account,To finish setting up your Microsoft account,  ",
+                            "To finish setting up your Microsoft account...",
                             style: TextStyle(
                                 color: mainColorBlack,
                                 fontSize: 12,
@@ -138,6 +152,8 @@ class _NotificationPageState extends State<NotificationPage> {
               },
             ),
           ),
+
+          /// If there are no notifications, show a default image and message.
           child: filteredNotifications.isEmpty
               ? Column(
                   children: [
@@ -151,7 +167,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       ),
                     ),
                     Text(
-                      "You dont have any notification".tr,
+                      "You don't have any notification".tr,
                       style: TextStyle(
                           fontFamily: mainFontnormal,
                           fontSize: 20.0,
@@ -184,10 +200,9 @@ class _NotificationPageState extends State<NotificationPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  // icon and text
+                                  /// Icon and title of the notification
                                   Row(
                                     children: [
-                                      
                                       Container(
                                         width: getWidth(context, 6),
                                         height: getWidth(context, 6),
@@ -202,11 +217,9 @@ class _NotificationPageState extends State<NotificationPage> {
                                           size: getWidth(context, 4),
                                         ),
                                       ),
-
                                       SizedBox(
                                         width: getWidth(context, 2),
                                       ),
-
                                       Container(
                                         width: getWidth(context, 63),
                                         child: Text(
@@ -221,7 +234,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                     ],
                                   ),
 
-                                  // text now
+                                  /// Time when the notification was created.
                                   Text(
                                     timeAgo(notification.createdAt!),
                                     style: TextStyle(
@@ -234,7 +247,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               SizedBox(
                                 height: 10,
                               ),
-                              // text description
+                              /// Content/description of the notification
                               Text(
                                 maxLines: 2,
                                 notification.content!,
@@ -255,30 +268,33 @@ class _NotificationPageState extends State<NotificationPage> {
     );
   }
 
+  /// This method calculates the time difference between the current time and the provided [datetime].
+  /// It returns a human-readable string like 'Just now', '1 hour ago', or 'Last week'.
   String timeAgo(String datetime) {
     bool numericDates = false;
     final date2 = DateTime.now();
     DateTime date = DateTime.parse(datetime);
     final difference = date2.difference(date);
-    // check text bawar
+
+    // Return formatted string based on the time difference.
     if ((difference.inDays / 7).floor() > 1) {
       return datetime.substring(0, 10);
     } else if ((difference.inDays / 7).floor() == 1) {
       return 'Last week'.tr;
     } else if (difference.inDays >= 2) {
-      return '${difference.inDays}' + 'days ago'.tr;
+      return '${difference.inDays}' + ' days ago'.tr;
     } else if (difference.inDays >= 1) {
       return 'Yesterday'.tr;
     } else if (difference.inHours >= 2) {
-      return '${difference.inHours}' + 'hours ago'.tr;
+      return '${difference.inHours}' + ' hours ago'.tr;
     } else if (difference.inHours >= 1) {
       return '1 hour ago'.tr;
     } else if (difference.inMinutes >= 2) {
-      return '${difference.inMinutes}' + 'minutes ago'.tr;
+      return '${difference.inMinutes}' + ' minutes ago'.tr;
     } else if (difference.inMinutes >= 1) {
       return '1 minute ago'.tr;
     } else if (difference.inSeconds >= 3) {
-      return '${difference.inSeconds}' + 'seconds ago'.tr;
+      return '${difference.inSeconds}' + ' seconds ago'.tr;
     } else {
       return 'Just now'.tr;
     }

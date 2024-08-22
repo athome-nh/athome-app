@@ -15,7 +15,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
-import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:get/get.dart';
 import 'package:huawei_push/huawei_push.dart';
 import 'package:provider/provider.dart';
